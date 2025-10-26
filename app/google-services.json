@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "8952260739",
+    "project_id": "marimo-care",
+    "storage_bucket": "marimo-care.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:8952260739:android:5c3978d59ec1f8f53e93b6",
+        "android_client_info": {
+          "package_name": "rpt.tool.marimocare"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCL6BGF_e1UHPQApn-xpsA6yqe87nA8RIY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

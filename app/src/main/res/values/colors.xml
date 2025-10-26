@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Colori principali -->
+    <color name="marimo_primary">#0B6E4F</color>        <!-- Verde principale -->
+    <color name="marimo_primary_light">#E8FFF5</color>  <!-- Verde chiaro per background -->
+    <color name="marimo_accent">#009C73</color>         <!-- Verde più vivace -->
+    <color name="marimo_error">#D9534F</color>          <!-- Rosso per errori -->
+    <color name="marimo_warning">#E1A500</color>        <!-- Giallo per “due soon” -->
+    <color name="marimo_background">#F3FFFA</color>     <!-- Sfondo app -->
+    <color name="marimo_surface">#FFFFFF</color>        <!-- Card e modali -->
+    <color name="marimo_text_primary">#0B6E4F</color>
+    <color name="marimo_text_secondary">#555555</color>
+    <color name="marimo_black">#000000</color>
+
+
+    <!-- Testi neutri -->
+    <color name="marimo_text_hint">#888888</color>
+    <color name="marimo_outline">#CCDDD4</color>
+
+    <!-- Overlay e toni -->
+    <color name="marimo_shadow">#22000000</color>
+</resources>

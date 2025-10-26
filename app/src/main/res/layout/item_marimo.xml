@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardMarimo"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="12dp"
+    android:padding="16dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp"
+    android:background="@drawable/bg_card_marimo">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- HEADER -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/imgMarimoIcon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_water_drop"
+                android:padding="8dp"
+                android:background="@drawable/bg_circle_green"
+                android:contentDescription="@string/img" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="12dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtName"
+                    android:text="Mochi"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#1A1A1A"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/txtFrequency"
+                    android:text="Changes every 14 days"
+                    android:textSize="14sp"
+                    android:textColor="#777777"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_days_left_pill"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp">
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/ic_clock"
+                    app:tint="#0A9A67"
+                    android:layout_marginEnd="6dp" />
+
+                <TextView
+                    android:id="@+id/txtDaysLeft"
+                    android:text="12 days left"
+                    android:textSize="12sp"
+                    android:textColor="#0A9A67"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- DATE ROW -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:text="Last changed"
+                    android:textSize="13sp"
+                    android:textColor="#777777"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/txtLastChange"
+                    android:text="Oct 15, 2025"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:textColor="#1A1A1A"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:text="Next change"
+                    android:textSize="13sp"
+                    android:textColor="#777777"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/txtNextChange"
+                    android:text="Oct 29, 2025"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:textColor="#0A9A67"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- NOTES LABEL -->
+        <TextView
+            android:text="Notes"
+            android:textSize="13sp"
+            android:textColor="#777777"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- NOTES BOX -->
+        <TextView
+            android:id="@+id/txtNotes"
+            android:text="My first marimo! Very round and bouncy."
+            android:textSize="14sp"
+            android:textColor="#1A1A1A"
+            android:background="@drawable/bg_notes_box"
+            android:padding="10dp"
+            android:layout_marginTop="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- BUTTONS -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="14dp">
+
+            <Button
+                android:id="@+id/btnWaterChanged"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="0.65"
+                android:text="Water Changed"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:background="@drawable/bg_btn_primary"
+                android:drawableStart="@drawable/ic_water_drop_white"
+                android:drawablePadding="8dp" />
+
+            <Button
+                android:id="@+id/btnEdit"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="0.35"
+                android:layout_marginStart="10dp"
+                android:text="Edit"
+                android:textAllCaps="false"
+                android:textColor="#0A9A67"
+                android:background="@drawable/bg_btn_edit_border" />
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

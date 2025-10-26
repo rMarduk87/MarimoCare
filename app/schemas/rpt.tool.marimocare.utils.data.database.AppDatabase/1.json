@@ -1,0 +1,53 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "cd5d460d83d348bc48c952197e346f73",
+    "entities": [
+      {
+        "tableName": "marimo",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`code` INTEGER NOT NULL, `name` TEXT NOT NULL, `last_water_changes` TEXT, `frequency_changes` INTEGER NOT NULL, `notes` TEXT, PRIMARY KEY(`code`))",
+        "fields": [
+          {
+            "fieldPath": "code",
+            "columnName": "code",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastWaterChanges",
+            "columnName": "last_water_changes",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "frequencyChanges",
+            "columnName": "frequency_changes",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "notes",
+            "columnName": "notes",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "code"
+          ]
+        }
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'cd5d460d83d348bc48c952197e346f73')"
+    ]
+  }
+}
