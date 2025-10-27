@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardMarimo"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -20,7 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:padding="20dp">
 
             <ImageView
                 android:id="@+id/imgMarimoIcon"
@@ -36,11 +38,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:paddingStart="12dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                tools:ignore="RtlSymmetry">
 
                 <TextView
                     android:id="@+id/txtName"
-                    android:text="Mochi"
+                    android:text="@string/mochi"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:textColor="#1A1A1A"
@@ -49,7 +52,7 @@
 
                 <TextView
                     android:id="@+id/txtFrequency"
-                    android:text="Changes every 14 days"
+                    android:text="@string/changes_every_14_days"
                     android:textSize="14sp"
                     android:textColor="#777777"
                     android:layout_width="wrap_content"
@@ -70,11 +73,12 @@
                     android:layout_height="14dp"
                     android:src="@drawable/ic_clock"
                     app:tint="#0A9A67"
+                    android:contentDescription="@string/img"
                     android:layout_marginEnd="6dp" />
 
                 <TextView
                     android:id="@+id/txtDaysLeft"
-                    android:text="12 days left"
+                    android:text="@string/_12_days_left"
                     android:textSize="12sp"
                     android:textColor="#0A9A67"
                     android:layout_width="wrap_content"
@@ -86,7 +90,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:baselineAligned="false"
             android:orientation="horizontal"
+            android:paddingStart="20dp"
             android:layout_marginTop="12dp">
 
             <LinearLayout
@@ -96,7 +102,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:text="Last changed"
+                    android:text="@string/last_changed"
                     android:textSize="13sp"
                     android:textColor="#777777"
                     android:layout_width="wrap_content"
@@ -104,7 +110,7 @@
 
                 <TextView
                     android:id="@+id/txtLastChange"
-                    android:text="Oct 15, 2025"
+                    android:text="@string/oct_15_2025"
                     android:textStyle="bold"
                     android:textSize="14sp"
                     android:textColor="#1A1A1A"
@@ -119,7 +125,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:text="Next change"
+                    android:text="@string/next_change"
                     android:textSize="13sp"
                     android:textColor="#777777"
                     android:layout_width="wrap_content"
@@ -127,7 +133,7 @@
 
                 <TextView
                     android:id="@+id/txtNextChange"
-                    android:text="Oct 29, 2025"
+                    android:text="@string/oct_29_2025"
                     android:textStyle="bold"
                     android:textSize="14sp"
                     android:textColor="#0A9A67"
@@ -138,21 +144,24 @@
 
         <!-- NOTES LABEL -->
         <TextView
-            android:text="Notes"
+            android:text="@string/notes"
             android:textSize="13sp"
             android:textColor="#777777"
             android:layout_marginTop="10dp"
+            android:paddingStart="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <!-- NOTES BOX -->
         <TextView
             android:id="@+id/txtNotes"
-            android:text="My first marimo! Very round and bouncy."
+            android:text="@string/my_first_marimo_very_round_and_bouncy"
             android:textSize="14sp"
             android:textColor="#1A1A1A"
             android:background="@drawable/bg_notes_box"
-            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginTop="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -163,30 +172,36 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:layout_marginTop="14dp">
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:layout_marginTop="14dp"
+            tools:ignore="RtlSymmetry">
 
             <Button
                 android:id="@+id/btnWaterChanged"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
-                android:layout_weight="0.65"
-                android:text="Water Changed"
+                android:layout_weight="0.7"
+                android:text="@string/water_changed"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 android:background="@drawable/bg_btn_primary"
-                android:drawableStart="@drawable/ic_water_drop_white"
-                android:drawablePadding="8dp" />
+                android:drawableLeft="@drawable/ic_water_drop_white_mini"
+                android:drawablePadding="8dp"
+                tools:ignore="ButtonStyle,RtlHardcoded" />
 
             <Button
                 android:id="@+id/btnEdit"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
-                android:layout_weight="0.35"
+                android:layout_weight="0.30"
                 android:layout_marginStart="10dp"
-                android:text="Edit"
+                android:text="@string/edit"
                 android:textAllCaps="false"
-                android:textColor="#0A9A67"
-                android:background="@drawable/bg_btn_edit_border" />
+                android:textColor="@color/marimo_black"
+                app:backgroundTint="@null"
+                android:background="@drawable/bg_btn_edit_border"
+                tools:ignore="ButtonStyle" />
         </LinearLayout>
 
     </LinearLayout>

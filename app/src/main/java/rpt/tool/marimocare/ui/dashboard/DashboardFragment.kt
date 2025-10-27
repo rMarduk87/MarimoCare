@@ -7,14 +7,13 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
-import rpt.tool.marimocare.utils.view.recyclerview.items.client.hooks.ChangeWaterEventHook
-import rpt.tool.marimocare.utils.view.recyclerview.items.client.hooks.EditMarimoEventHook
+import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.ChangeWaterEventHook
+import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.EditMarimoEventHook
 import rpt.tool.marimocare.BaseFragment
 import rpt.tool.marimocare.databinding.FragmentDashboardBinding
-import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.view.defaultSetUp
 import rpt.tool.marimocare.utils.view.gone
-import rpt.tool.marimocare.utils.view.recyclerview.items.client.MarimoItem
+import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.MarimoItem
 import rpt.tool.marimocare.utils.view.visible
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -55,11 +54,11 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             // Apri schermata di aggiunta (es. AddMarimoActivity)
         }
 
-        binding.btnAddMarimoHeader.setOnClickListener {
+        binding.include1!!.btnAddMarimoHeader.setOnClickListener {
             // Apri schermata di aggiunta (es. AddMarimoActivity)
         }
 
-        binding.btnDashboardHeader.setOnClickListener {
+        binding.include1!!.btnDashboardHeader.setOnClickListener {
         }
     }
 

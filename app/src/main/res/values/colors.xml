@@ -11,7 +11,8 @@
     <color name="marimo_text_primary">#0B6E4F</color>
     <color name="marimo_text_secondary">#555555</color>
     <color name="marimo_black">#000000</color>
-
+    <color name="marimo_header">#d1fae5</color>
+    <color name="marimo_header_icon">#0B6E4F</color>
 
     <!-- Testi neutri -->
     <color name="marimo_text_hint">#888888</color>

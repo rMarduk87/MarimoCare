@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/scrollView"
     android:layout_width="match_parent"
@@ -12,80 +12,10 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- HEADER (fisso, tutta larghezza) -->
-        <LinearLayout
-            android:id="@+id/header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorSurface"
-            android:paddingStart="16dp"
-            android:paddingEnd="12dp"
-            android:paddingTop="12dp"
-            android:paddingBottom="12dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:elevation="4dp">
 
-        <!-- Logo -->
-        <ImageView
-            android:background="@drawable/bg_button_green"
-            android:id="@+id/appLogo"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_water_drop_white"
-            app:tint="@color/marimo_surface"
-            android:padding="8dp"
-            android:contentDescription="@string/app_name" />
-
-        <!-- Titoli -->
-            <LinearLayout
-                android:layout_width="155dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:paddingStart="10dp">
-
-                <TextView
-                    android:id="@+id/titleMain"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Marimo Care"
-                    android:textColor="@android:color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/titleSub"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Water Change Tracker"
-                    android:textColor="@color/marimo_primary"
-                    android:textSize="13sp" />
-            </LinearLayout>
-
-        <!-- Pulsante Casa (tondo verde) -->
-        <ImageButton
-            android:id="@+id/btnDashboardHeader"
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/bg_button_green"
-            android:src="@drawable/ic_home"
-            app:tint="@android:color/white"
-            android:contentDescription="@string/dashboard" />
-
-        <!-- FAB bianco + icona nera (mini) -->
-            <ImageButton
-                android:id="@+id/btnAddMarimoHeader"
-                android:layout_width="44dp"
-                android:layout_height="44dp"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/bg_button_white"
-                android:src="@drawable/ic_add"
-                app:tint="@android:color/darker_gray"
-                android:contentDescription="@string/add_marimo" />
-    </LinearLayout>
-
+<include
+    android:id="@+id/include1" layout="@layout/header">
+</include>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -97,7 +27,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:paddingVertical="12dp"
-            android:text="🌿 Marimo Care Dashboard"
+            android:text="@string/marimo_care_dashboard"
             android:textColor="#0B6E4F"
             android:textSize="22sp"
             android:textStyle="bold" />
@@ -108,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:paddingBottom="16dp"
-                android:text="Keep track of your marimo moss balls and never miss a water change again!"
+                android:text="@string/keep_track_of_your_marimo_moss_balls_and_never_miss_a_water_change_again"
                 android:textColor="#555"
                 android:textSize="14sp" /> <!-- Tip Card -->
             <androidx.cardview.widget.CardView
@@ -123,7 +53,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
-                    android:text="💡 Marimo Tip: Use filtered or distilled water. Chlorinated water can harm marimos."
+                    android:text="@string/marimo_tip_use_filtered_or_distilled_water_chlorinated_water_can_harm_marimos"
                     android:textColor="#0B6E4F"
                     android:textSize="14sp" />
             </androidx.cardview.widget.CardView> <!-- Summary Grid -->
@@ -149,14 +79,14 @@
                     android:padding="16dp">
 
                     <TextView
-                        android:text="Total"
+                        android:text="@string/total"
                         android:textColor="#0B6E4F"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
                     <TextView
-                        android:text="3"
+                        android:text="@string/_3"
                         android:textColor="#0B6E4F"
                         android:textSize="22sp"
                         android:textStyle="bold"
@@ -175,14 +105,14 @@
                     android:padding="16dp">
 
                     <TextView
-                        android:text="Overdue"
+                        android:text="@string/overdue"
                         android:textColor="#D9534F"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
                     <TextView
-                        android:text="3"
+                        android:text="@string/_3"
                         android:textColor="#D9534F"
                         android:textSize="22sp"
                         android:textStyle="bold"
@@ -201,14 +131,14 @@
                     android:padding="16dp">
 
                     <TextView
-                        android:text="Due Soon"
+                        android:text="@string/due_soon"
                         android:textColor="#E1A500"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
                     <TextView
-                        android:text="0"
+                        android:text="@string/_0"
                         android:textColor="#E1A500"
                         android:textSize="22sp"
                         android:textStyle="bold"
@@ -216,14 +146,29 @@
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
             </GridLayout> <!-- Section Title -->
-            <TextView
-                android:paddingBottom="8dp"
-                android:text="Your Marimos"
-                android:textColor="@color/marimo_black"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/> <!-- RecyclerView per le card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dp">
+                <TextView
+                    android:text="@string/your_marimos"
+                    android:textColor="@color/marimo_black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <Button
+                    android:id="@+id/btnAddMarimo"
+                    android:layout_marginStart="125dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/add_marimo"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/bg_btn_primary"
+                    />
+            </LinearLayout>
+             <!-- RecyclerView per le card -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerMarimos"
                 android:layout_width="match_parent"
@@ -236,19 +181,17 @@
                 android:layout_height="wrap_content"
                 android:text="@string/no_data"
                 android:visibility="gone" />
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnAddMarimo"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="+ Add Marimo"
-                android:textColor="#0B6E4F"
-                app:strokeColor="#0B6E4F"
-                app:strokeWidth="2dp" />
+
         </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/bottomText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:text="@string/bottom" />
 
     </LinearLayout>
 
 
-</ScrollView>
+</androidx.core.widget.NestedScrollView>

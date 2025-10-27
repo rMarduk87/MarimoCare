@@ -7,7 +7,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.managers.RepositoryManager
-import rpt.tool.marimocare.utils.view.recyclerview.items.client.MarimoItem
+import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.MarimoItem
 
 class DashboardViewModel : ViewModel() {
 

@@ -31,6 +31,7 @@ review = "2.0.2"
 roomKtx = "2.8.0"
 timber = "5.0.1"
 activity = "1.11.0"
+core = "1.17.0"
 
 [libraries]
 androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activityKtx" }
@@ -70,6 +71,7 @@ play-services-tasks = { module = "com.google.android.gms:play-services-tasks", v
 review = { module = "com.google.android.play:review", version.ref = "review" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+androidx-core = { group = "androidx.core", name = "core", version.ref = "core" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
