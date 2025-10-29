@@ -29,6 +29,8 @@
         <item name="android:background">@color/marimo_surface</item>
     </style>
 
+
+
     <!-- TextField -->
     <style name="Widget.Marimo.TextField" parent="Widget.Material3.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/marimo_primary</item>
@@ -53,5 +55,10 @@
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>
         <item name="android:layout_gravity">center</item>
+    </style>
+
+    <!--Card View Contatore -->
+    <style name="CardCounterStyle">
+        <item name="cardBackgroundColor">@android:color/white</item>
     </style>
 </resources>

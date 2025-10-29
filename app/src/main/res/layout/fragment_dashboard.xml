@@ -160,25 +160,16 @@
 
                 <!-- TOTAL -->
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_counter_total"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_margin="4dp"
-                    app:cardBackgroundColor="@android:color/white"
                     app:strokeColor="@color/marimo_item_board"
                     app:cardCornerRadius="12dp"
                     app:strokeWidth="1dp"
                     android:elevation="2dp">
-                <!--<com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_rowWeight="1"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="4dp"
-                    app:backgroundTint="@null"
-                    app:cardPreventCornerOverlap="false"
-                    android:background="@drawable/bg_card_marimo_status_t">-->
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -190,7 +181,7 @@
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:src="@drawable/ic_water_drop"
+                            android:src="@drawable/ic_water_drop_green"
                             android:scaleType="centerCrop"
                             android:layout_marginBottom="8dp"
                             android:padding="8dp"
@@ -218,15 +209,18 @@
 
 
                 <!-- OVERDUE -->
-                <androidx.cardview.widget.CardView
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_counter_overdue"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_margin="4dp"
-                    app:backgroundTint="@null"
-                    app:cardPreventCornerOverlap="false"
-                    android:background="@drawable/bg_card_marimo_status_o">
+                    app:strokeColor="@color/marimo_peach"
+                    app:cardCornerRadius="12dp"
+                    app:strokeWidth="1dp"
+                    android:elevation="2dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -248,7 +242,7 @@
 
                         <TextView
                             android:text="@string/_3"
-                            android:textColor="#D9534F"
+                            android:textColor="@color/marimo_red"
                             android:textSize="22sp"
                             android:textStyle="bold"
                             android:layout_width="wrap_content"
@@ -256,25 +250,27 @@
 
                         <TextView
                             android:text="@string/overdue"
-                            android:textColor="#D9534F"
+                            android:textColor="@color/marimo_red"
                             android:textStyle="bold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
 
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
 
                 <!-- DUE SOON -->
-                <androidx.cardview.widget.CardView
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_counter_due"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_margin="4dp"
-                    app:backgroundTint="@null"
-                    app:cardPreventCornerOverlap="false"
-                    android:background="@drawable/bg_card_marimo_status_s">
+                    app:strokeColor="@color/marimo_light_yellow"
+                    app:cardCornerRadius="12dp"
+                    app:strokeWidth="1dp"
+                    android:elevation="2dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -296,7 +292,7 @@
 
                         <TextView
                             android:text="@string/_0"
-                            android:textColor="#E1A500"
+                            android:textColor="@color/marimo_orange"
                             android:textSize="22sp"
                             android:textStyle="bold"
                             android:layout_width="wrap_content"
@@ -304,13 +300,13 @@
 
                         <TextView
                             android:text="@string/due_soon"
-                            android:textColor="#E1A500"
+                            android:textColor="@color/marimo_orange"
                             android:textStyle="bold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
 
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
             </GridLayout>
             <GridLayout

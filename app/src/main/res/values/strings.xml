@@ -36,4 +36,7 @@
     <string name="notes">Notes</string>
     <string name="bottom">Keep your marimo friends happy and healthy! 🌱</string>
     <string name="loading_your_little_friends">Loading your little friends…</string>
+    <string name="days_overdue">days overdue</string>
+    <string name="due_in">Due in</string>
+    <string name="days">days</string>
 </resources>

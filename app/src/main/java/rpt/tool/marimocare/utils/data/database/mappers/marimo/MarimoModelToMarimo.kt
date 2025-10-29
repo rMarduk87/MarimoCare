@@ -22,7 +22,9 @@ class MarimoModelToMarimo : ModelMapper<MarimoModel, Marimo> {
                 source.lastWaterChanges,
                 source.frequencyChanges),
             daysLeft = AppUtils.daysUntil(
-                source.lastWaterChanges)
+                AppUtils.nextChange(
+                    source.lastWaterChanges,
+                    source.frequencyChanges))
         )
     }
 }

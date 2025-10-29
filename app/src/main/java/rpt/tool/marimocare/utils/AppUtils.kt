@@ -23,15 +23,20 @@ class AppUtils {
 
         @RequiresApi(Build.VERSION_CODES.O)
         fun daysUntil(date: String?): Int {
-            return try {
-                val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-                val nextChange = LocalDate.parse(date, formatter)
-                val today = LocalDate.now()
-                ChronoUnit.DAYS.between(today, nextChange).toInt()
-            } catch (e: Exception) {
-                e(Throwable(e),e.message.toString())
-                0
-            }
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+            val nextChange = LocalDate.parse(date, formatter)
+            val today = LocalDate.now()
+            val left = ChronoUnit.DAYS.between(today, nextChange).toInt()
+            return left
+        }
+
+        @RequiresApi(Build.VERSION_CODES.O)
+        fun isDueSoon(dayleft:Int): Boolean{
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+            val today = LocalDate.now()
+            val dataNext = today.plusDays(dayleft.toLong()).format(formatter)
+            return ChronoUnit.DAYS.between(today,
+                LocalDate.parse(dataNext, formatter)).toInt() == 0
         }
     }
 }

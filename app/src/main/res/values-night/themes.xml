@@ -11,7 +11,7 @@
         <item name="colorOnPrimary">@color/marimo_surface</item>
 
         <item name="colorSurface">@color/marimo_surface</item>
-        <item name="colorError">@color/marimo_error</item>
+        <item name="colorError">@color/marimo_red</item>
 
         <!-- Text color -->
         <item name="android:textColorPrimary">@color/marimo_text_primary</item>

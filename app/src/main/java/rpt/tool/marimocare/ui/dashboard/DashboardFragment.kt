@@ -1,9 +1,11 @@
 package rpt.tool.marimocare.ui.dashboard
 
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
@@ -37,6 +39,10 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         super.onViewCreated(view, savedInstanceState)
 
         binding.include1.btnDashboardHeader.enable(false)
+
+        binding.cardCounterTotal.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_card_marimo_status_t)
+        binding.cardCounterOverdue.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_card_marimo_status_o)
+        binding.cardCounterDue.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_card_marimo_status_s)
 
         binding.recyclerMarimos.defaultSetUp(
             fastAdapter,
