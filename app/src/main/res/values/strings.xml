@@ -2,7 +2,10 @@
     <string name="app_name">Marimo Care</string>
     <string name="marimo_care_dashboard">🌿 Marimo Care Dashboard</string>
     <string name="keep_track_of_your_marimo_moss_balls_and_never_miss_a_water_change_again">Keep track of your marimo moss balls and never miss a water change again!</string>
-    <string name="marimo_tip_use_filtered_or_distilled_water_chlorinated_water_can_harm_marimos">💡 Marimo Tip: Use filtered or distilled water. Chlorinated water can harm marimos.</string>
+    <string name="marimo_tip_title">💡 Marimo Tip: Perfect Temperature</string>
+    <string name="marimo_tip_body_1">Keep marimos in cool water (15–25°C). Avoid direct sunlight and warm spots.</string>
+    <string name="marimo_tip_body_2">Keep marimos in cool water (15–25°C). Avoid direct sunlight and warm spots.</string>
+    <string name="marimo_tip_body_3">Keep marimos in cool water (15–25°C). Avoid direct sunlight and warm spots.</string>
     <string name="total">Total</string>
     <string name="_3">3</string>
     <string name="overdue">Overdue</string>
@@ -23,7 +26,7 @@
     <string name="dashboard">Dashboard</string>
     <string name="changes_every_days">Changes every %1$d days</string>
     <string name="no_notes">No notes</string>
-    <string name="days_left">%1$d days left</string>
+    <string name="days_left">days left</string>
     <string name="no_data">No Marimos found</string>
     <string name="_12_days_left">12 days left</string>
     <string name="last_changed">Last changed</string>
@@ -32,4 +35,5 @@
     <string name="oct_29_2025">Oct 29, 2025</string>
     <string name="notes">Notes</string>
     <string name="bottom">Keep your marimo friends happy and healthy! 🌱</string>
+    <string name="loading_your_little_friends">Loading your little friends…</string>
 </resources>

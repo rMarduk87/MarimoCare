@@ -46,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/water_change_tracker"
-            android:textColor="@color/marimo_primary"
+            android:textColor="@color/marimo_text"
             android:textSize="14sp" />
     </LinearLayout>
 
@@ -60,10 +60,10 @@
             android:layout_width="wrap_content"
             android:layout_height="42dp"
             android:drawableLeft="@drawable/ic_dashboard"
-            android:drawableTint="@color/marimo_header_icon"
+            android:drawableTint="@color/marimo_item_green"
             android:text="@string/dashboard"
             android:textAllCaps="false"
-            android:textColor="@color/marimo_header_icon"
+            android:textColor="@color/marimo_item_green"
             app:backgroundTint="@null"
             android:background="@drawable/bg_button_light_green"
             android:paddingLeft="16dp"
@@ -77,7 +77,7 @@
             android:layout_marginStart="12dp"
             android:text="@string/add_marimo"
             android:textAllCaps="false"
-            android:textColor="@android:color/darker_gray"
+            android:textColor="@color/marimo_add_icon"
             android:background="@drawable/bg_button_white"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"

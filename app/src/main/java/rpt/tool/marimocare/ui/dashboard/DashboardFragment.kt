@@ -10,10 +10,13 @@ import com.mikepenz.fastadapter.adapters.ItemAdapter
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.ChangeWaterEventHook
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.EditMarimoEventHook
 import rpt.tool.marimocare.BaseFragment
+import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentDashboardBinding
 import rpt.tool.marimocare.utils.view.defaultSetUp
+import rpt.tool.marimocare.utils.view.enable
 import rpt.tool.marimocare.utils.view.gone
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.MarimoItem
+import rpt.tool.marimocare.utils.view.viewpager.tips.TipsPagerAdapter
 import rpt.tool.marimocare.utils.view.visible
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -33,6 +36,8 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.include1.btnDashboardHeader.enable(false)
+
         binding.recyclerMarimos.defaultSetUp(
             fastAdapter,
             ChangeWaterEventHook(),
@@ -42,35 +47,51 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         viewModel.marimoItems.observe(viewLifecycleOwner) {
             if (it.isEmpty()) {
                 binding.recyclerMarimos.gone()
-                binding.emptyListLabel!!.visible()
+                binding.emptyListLabel.visible()
             } else {
                 binding.recyclerMarimos.visible()
-                binding.emptyListLabel!!.gone()
+                binding.emptyListLabel.gone()
                 itemAdapter.set(it)
             }
         }
 
         binding.btnAddMarimo.setOnClickListener {
-            // Apri schermata di aggiunta (es. AddMarimoActivity)
+           addNewMarimo()
         }
 
-        binding.include1!!.btnAddMarimoHeader.setOnClickListener {
-            // Apri schermata di aggiunta (es. AddMarimoActivity)
+        binding.include1.btnAddMarimoHeader.setOnClickListener {
+            addNewMarimo()
         }
 
-        binding.include1!!.btnDashboardHeader.setOnClickListener {
+
+        val tips = listOf(
+            getString(R.string.marimo_tip_body_1),
+            getString(R.string.marimo_tip_body_2),
+            getString(R.string.marimo_tip_body_3)
+        )
+
+        val adapter = TipsPagerAdapter(tips)
+        binding.tipsPager.adapter = adapter
+
+        binding.tipsPager.setPageTransformer { page, position ->
+            page.alpha = 1 - kotlin.math.abs(position)
         }
+
+        binding.dotsIndicator.attachTo(binding.tipsPager)
+
+        binding.arrowLeft.setOnClickListener {
+            val c = binding.tipsPager.currentItem
+            binding.tipsPager.setCurrentItem(if (c > 0) c - 1 else adapter.itemCount - 1, true)
+        }
+
+        binding.arrowRight.setOnClickListener {
+            val c = binding.tipsPager.currentItem
+            binding.tipsPager.setCurrentItem(if (c < adapter.itemCount - 1) c + 1 else 0, true)
+        }
+
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun daysUntil(date: String): Int {
-        return try {
-            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-            val nextChange = LocalDate.parse(date, formatter)
-            val today = LocalDate.now()
-            ChronoUnit.DAYS.between(today, nextChange).toInt()
-        } catch (e: Exception) {
-            0
-        }
+    private fun addNewMarimo() {
+
     }
 }

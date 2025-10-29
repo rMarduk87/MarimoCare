@@ -5,6 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Handler
+import android.os.Looper
+import android.view.View
 import android.view.WindowManager
 import rpt.tool.marimocare.databinding.ActivitySplashScreenBinding
 
@@ -28,7 +30,28 @@ class SplashScreenActivity : AppCompatActivity() {
 
         window.setFlags(
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+
+        Handler(Looper.getMainLooper()).postDelayed({
+
+            binding.titleText.visibility = View.VISIBLE
+
+            binding.titleText.alpha = 0f
+
+            binding.titleText.animate().alpha(1f).setDuration(250).start()
+
+
+        }, 890)
+
+        Handler(Looper.getMainLooper()).postDelayed({
+
+            binding.subtitleText.visibility = View.VISIBLE
+
+            binding.subtitleText.alpha = 0f
+
+            binding.subtitleText.animate().alpha(1f).setDuration(250).start()
+
+        }, 940)
     }
 
     @SuppressLint("UnsafeIntentLaunch")
@@ -41,7 +64,7 @@ class SplashScreenActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-        handler = Handler()
+        handler = Handler(Looper.getMainLooper())
         handler!!.postDelayed(runnable!!, millisecond.toLong())
     }
 

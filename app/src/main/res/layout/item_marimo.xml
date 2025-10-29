@@ -9,6 +9,7 @@
     android:padding="16dp"
     app:cardCornerRadius="16dp"
     app:cardElevation="0dp"
+    app:backgroundTint="@null"
     android:background="@drawable/bg_card_marimo">
 
     <LinearLayout
@@ -93,7 +94,8 @@
             android:baselineAligned="false"
             android:orientation="horizontal"
             android:paddingStart="20dp"
-            android:layout_marginTop="12dp">
+            android:layout_marginTop="-5dp"
+            tools:ignore="RtlSymmetry">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -136,7 +138,7 @@
                     android:text="@string/oct_29_2025"
                     android:textStyle="bold"
                     android:textSize="14sp"
-                    android:textColor="#0A9A67"
+                    android:textColor="@color/marimo_item_green"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -150,7 +152,8 @@
             android:layout_marginTop="10dp"
             android:paddingStart="20dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            tools:ignore="RtlSymmetry" />
 
         <!-- NOTES BOX -->
         <TextView
@@ -164,7 +167,8 @@
             android:layout_marginEnd="10dp"
             android:layout_marginTop="4dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            tools:ignore="RtlSymmetry" />
 
         <!-- BUTTONS -->
         <LinearLayout
@@ -174,17 +178,19 @@
             android:gravity="center_vertical"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             tools:ignore="RtlSymmetry">
 
             <Button
                 android:id="@+id/btnWaterChanged"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
-                android:layout_weight="0.7"
+                android:layout_weight="0.75"
                 android:text="@string/water_changed"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
+                app:backgroundTint="@null"
                 android:background="@drawable/bg_btn_primary"
                 android:drawableLeft="@drawable/ic_water_drop_white_mini"
                 android:drawablePadding="8dp"
@@ -194,7 +200,7 @@
                 android:id="@+id/btnEdit"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
-                android:layout_weight="0.30"
+                android:layout_weight="0.25"
                 android:layout_marginStart="10dp"
                 android:text="@string/edit"
                 android:textAllCaps="false"

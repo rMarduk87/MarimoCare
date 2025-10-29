@@ -26,7 +26,8 @@ class MarimoItem(val marimo: Marimo) :
         binding.txtNotes.text = marimo.notes ?: binding.root.resources.getString(R.string.no_notes)
 
         val daysLeft = marimo.daysLeft
-        binding.txtDaysLeft.text = binding.root.resources.getString(R.string.days_left)
+        binding.txtDaysLeft.text = daysLeft.toString() + " " +
+                binding.root.resources.getString(R.string.days_left)
 
         /*val bgColor = if (daysLeft < 0) "#FFE5E5" else "#E3F9F1"
         binding.txtDaysLeft.setBackgroundColor(bgColor.toColorInt())*/

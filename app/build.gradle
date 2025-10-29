@@ -52,6 +52,7 @@ android {
     }
     buildFeatures {
         viewBinding true
+        buildConfig true
     }
     packagingOptions {
         resources {
@@ -109,6 +110,8 @@ dependencies {
     implementation libs.fastadapter.extensions.binding
     implementation libs.fastadapter.extensions.expandable
     implementation libs.fastadapter.extensions.utils
+    //DotsIndicator
+    implementation(libs.dotsindicator)
     //Test
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
