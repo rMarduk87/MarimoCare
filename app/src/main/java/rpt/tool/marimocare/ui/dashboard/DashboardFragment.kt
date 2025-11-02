@@ -14,6 +14,8 @@ import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.EditMarimo
 import rpt.tool.marimocare.BaseFragment
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentDashboardBinding
+import rpt.tool.marimocare.utils.navigation.safeNavController
+import rpt.tool.marimocare.utils.navigation.safeNavigate
 import rpt.tool.marimocare.utils.view.defaultSetUp
 import rpt.tool.marimocare.utils.view.enable
 import rpt.tool.marimocare.utils.view.gone
@@ -98,6 +100,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     }
 
     private fun addNewMarimo() {
-
+        safeNavController?.safeNavigate(DashboardFragmentDirections.
+        actionDashboardFragmentToAddOrEditFragment())
     }
 }

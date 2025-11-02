@@ -437,13 +437,9 @@
                 android:text="@string/no_data"
                 android:visibility="gone" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/bottomText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="10dp"
-                android:text="@string/bottom" />
+            <include
+                android:id="@+id/include2" layout="@layout/footer">
+            </include>
 
         </LinearLayout>
 

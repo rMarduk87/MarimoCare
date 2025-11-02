@@ -83,6 +83,7 @@
                     android:text="@string/_12_days_left"
                     android:textSize="12sp"
                     android:textColor="#0A9A67"
+                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>

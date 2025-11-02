@@ -39,4 +39,16 @@
     <string name="days_overdue">days overdue</string>
     <string name="due_in">Due in</string>
     <string name="days">days</string>
+    <string name="add_new_marimo">Add New Marimo</string>
+    <string name="add_a_new_marimo_friend_to_track">Add a new marimo friend to track</string>
+    <string name="marimo_name">Marimo Name *</string>
+    <string name="e_g_mochi_bubbles_green_bean">e.g., Mochi, Bubbles, Green Bean...</string>
+    <string name="last_water_change">Last Water Change *</string>
+    <string name="october_30th_2025">October 30th, 2025</string>
+    <string name="change_frequency">Change Frequency *</string>
+    <string name="notes_optional">Notes (Optional)</string>
+    <string name="any_special_care_instructions_or_observations">Any special care instructions or observations...</string>
+    <string name="cancel">Cancel</string>
+    <string name="btn_add_marimo">Add Marimo</string>
+    <string name="every_14_days_bi_weekly">Every 14 days (Bi-weekly)</string>
 </resources>
