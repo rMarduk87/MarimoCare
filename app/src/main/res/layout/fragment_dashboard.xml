@@ -42,6 +42,48 @@
                 android:text="@string/keep_track_of_your_marimo_moss_balls_and_never_miss_a_water_change_again"
                 android:textColor="#555"
                 android:textSize="14sp" /> <!-- Tip Card -->
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/alertCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="12dp"
+                app:strokeColor="@color/marimo_red"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="@color/marimo_red"
+                android:visibility="gone"
+                android:elevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="14dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_warning_triangle_red"
+                        android:contentDescription="@string/img"
+                        app:tint="@android:color/white"
+                        android:layout_marginEnd="10dp" />
+
+                    <TextView
+                        android:id="@+id/alertText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@android:color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="@string/attenzione_un_marimo_in_ritardo"
+                        tools:ignore="HardcodedText" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/tipsCard"
                 android:layout_width="match_parent"
@@ -76,10 +118,11 @@
                             android:src="@drawable/ic_tip_lightbulb" />
 
                         <TextView
+                            android:id="@+id/tipTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="12dp"
-                            android:text="@string/marimo_tip_title"
+                            android:text="@string/marimo_tip_title_1"
                             android:textColor="#347156"
                             android:textSize="14sp"
                             android:textStyle="bold" />
@@ -190,6 +233,7 @@
                             android:background="@drawable/circle_mask_total"/>
 
                         <TextView
+                            android:id="@+id/totalMarimo"
                             android:text="@string/_3"
                             android:textColor="#0B6E4F"
                             android:textSize="22sp"
@@ -241,6 +285,7 @@
                             android:background="@drawable/circle_mask_overdue"/>
 
                         <TextView
+                            android:id="@+id/overdueMarimo"
                             android:text="@string/_3"
                             android:textColor="@color/marimo_red"
                             android:textSize="22sp"
@@ -291,6 +336,7 @@
                             android:background="@drawable/circle_mask_soon"/>
 
                         <TextView
+                            android:id="@+id/dueSoonMarimo"
                             android:text="@string/_0"
                             android:textColor="@color/marimo_orange"
                             android:textSize="22sp"
@@ -406,6 +452,7 @@
                 android:paddingBottom="16dp">
                 <TextView
                     android:text="@string/your_marimos"
+                    android:layout_marginStart="12dp"
                     android:textColor="@color/marimo_black"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -424,11 +471,17 @@
                     />
             </LinearLayout>
              <!-- RecyclerView per le card -->
+            <!-- Example of a correctly constrained RecyclerView in ConstraintLayout -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerMarimos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:nestedScrollingEnabled="false"/>
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/emptyListLabel"
                 style="@style/NoDataTextView"

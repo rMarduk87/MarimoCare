@@ -10,7 +10,7 @@ import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.view.recyclerview.BaseRecyclerViewBindingItem
 import rpt.tool.marimocare.utils.data.enums.MarimoStatus
 
-class MarimoItem(private val marimo: Marimo) :
+class MarimoItem(val marimo: Marimo) :
     BaseRecyclerViewBindingItem<ItemMarimoBinding>(ItemMarimoBinding::inflate) {
 
     override val type: Int = R.id.rv_marimo
@@ -45,6 +45,9 @@ class MarimoItem(private val marimo: Marimo) :
 
         binding.btnWaterChanged.setBackgroundResource(status.buttonChangeBg)
         binding.btnEdit.setBackgroundResource(status.buttonEditBg)
+
+        binding.cardNotes.setBackgroundResource(status.notesCardBg)
+        binding.cardDate.setBackgroundResource(status.cardDateBg)
     }
 
     override fun unbindView(binding: ItemMarimoBinding) = Unit

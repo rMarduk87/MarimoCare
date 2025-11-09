@@ -112,6 +112,8 @@ dependencies {
     implementation libs.fastadapter.extensions.utils
     //DotsIndicator
     implementation(libs.dotsindicator)
+    //Calendar
+    implementation libs.materialdatetimepicker
     //Test
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit

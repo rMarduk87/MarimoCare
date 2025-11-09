@@ -16,6 +16,9 @@ interface MarimoDao {
     @Query("DELETE FROM marimo")
     fun clear()
 
+    @Query("SELECT max(code) FROM marimo")
+    fun getLastId() : Int
+
     @Transaction
     @Query("SELECT * FROM marimo ORDER BY code COLLATE NOCASE ASC")
     fun getMarimos(): LiveData<List<MarimoModel>>

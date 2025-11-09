@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="48dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:gravity="center_vertical"
-    android:background="@drawable/bg_spinner"
+    android:background="@drawable/spinner_background"
     android:paddingHorizontal="12dp">
 
-    <TextView
-        android:id="@+id/spinnerText"
+    <Spinner
+        android:id="@+id/customSpinner"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="1"
-        android:textColor="#222222"
-        android:textSize="15sp"
-        android:text="@string/every_14_days_bi_weekly" />
+        android:spinnerMode="dropdown"
+        android:background="@android:color/transparent"
+        android:gravity="center_vertical"
+        android:paddingEnd="8dp"
+        tools:ignore="RtlSymmetry" />
 
     <ImageView
+        android:id="@+id/arrow"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:src="@drawable/ic_arrow_down"
-        android:contentDescription="@null"
-        app:tint="#222222" />
+        android:contentDescription="@string/img" />
 </LinearLayout>

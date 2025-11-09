@@ -2,14 +2,11 @@ package rpt.tool.marimocare
 
 import android.os.Build
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
@@ -26,6 +23,10 @@ import com.lorenzofelletti.permissions.dispatcher.dsl.withRequestCode
 import rpt.tool.marimocare.databinding.ActivityMainBinding
 import rpt.tool.marimocare.utils.log.d
 import rpt.tool.marimocare.utils.log.w
+import androidx.work.*
+import rpt.tool.marimocare.utils.notification.AlertWorker
+import rpt.tool.marimocare.utils.notification.NotifyWorker
+import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -35,12 +36,15 @@ class MainActivity : AppCompatActivity() {
 
     private val pm = PermissionManager(this)
 
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initPermissions()
         initInAppUpdate()
+
+        scheduleBackgroundChecks()
     }
 
     override fun onResume() {
@@ -137,8 +141,27 @@ class MainActivity : AppCompatActivity() {
 
     override fun onNavigateUp(): Boolean {
         val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.main_activity_nav_host_fragment) as NavHostFragment
+            supportFragmentManager.findFragmentById(R.id.main_activity_nav_host_fragment) as
+                    NavHostFragment
         val navController = navHostFragment.navController
         return navController.navigateUp() || super.onSupportNavigateUp()
+    }
+
+    private fun scheduleBackgroundChecks() {
+        val notifyWorker = PeriodicWorkRequestBuilder<NotifyWorker>(1,
+            TimeUnit.DAYS).build()
+        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+            "notifyMarimoWork",
+            ExistingPeriodicWorkPolicy.UPDATE,
+            notifyWorker
+        )
+
+        val alertWorker = PeriodicWorkRequestBuilder<AlertWorker>(1,
+            TimeUnit.DAYS).build()
+        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+            "alertMarimoWork",
+            ExistingPeriodicWorkPolicy.UPDATE,
+            alertWorker
+        )
     }
 }

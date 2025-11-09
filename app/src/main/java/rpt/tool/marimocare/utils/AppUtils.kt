@@ -6,6 +6,7 @@ import rpt.tool.marimocare.utils.log.e
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
+import java.util.Calendar
 
 class AppUtils {
     companion object {
@@ -38,5 +39,22 @@ class AppUtils {
             return ChronoUnit.DAYS.between(today,
                 LocalDate.parse(dataNext, formatter)).toInt() == 0
         }
+
+        fun getMaxDate(): Long {
+            val calendarToday = Calendar.getInstance()
+            return calendarToday.timeInMillis
+        }
+
+        fun extractDay(string: String): Int {
+            val regex = """\d+""".toRegex()
+            val matchResult = regex.find(string)
+            return matchResult?.value?.toIntOrNull() ?: 0
+        }
+
+        const val USERS_SHARED_PREF : String = "user_pref"
+        const val ALERTS : String = "alerts"
+
+        const val SHOW_ALERT: String = "show_alert"
+
     }
 }

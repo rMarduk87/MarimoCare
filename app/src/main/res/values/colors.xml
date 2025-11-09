@@ -26,4 +26,5 @@
     <color name="marimo_dark">#000000</color>
     <color name="spinner_item_selected">#F3F4F6</color>
     <color name="light_gray">#F5F5F5</color>
+    <color name="note_gray">#B0B0B0</color>
 </resources>

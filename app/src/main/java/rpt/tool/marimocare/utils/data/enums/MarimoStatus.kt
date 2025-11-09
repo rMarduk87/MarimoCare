@@ -14,7 +14,9 @@ enum class MarimoStatus(
     val dropIcon: Int,
     val dropCircle: Int,
     val buttonChangeBg: Int,
-    val buttonEditBg: Int
+    val buttonEditBg: Int,
+    val notesCardBg: Int,
+    val cardDateBg: Int,
 ) {
     NORMAL(
         color = R.color.marimo_item_green,
@@ -24,7 +26,9 @@ enum class MarimoStatus(
         dropIcon = R.drawable.ic_water_drop_green,
         dropCircle = R.drawable.bg_circle_green,
         buttonChangeBg = R.drawable.bg_btn_primary,
-        buttonEditBg = R.drawable.bg_btn_edit_border
+        buttonEditBg = R.drawable.bg_btn_edit_border,
+        notesCardBg = R.drawable.bg_notes_card,
+        cardDateBg = R.drawable.bg_card_date
     ),
     DUE_SOON(
         color = R.color.marimo_orange,
@@ -34,7 +38,9 @@ enum class MarimoStatus(
         dropIcon = R.drawable.ic_water_drop_orange,
         dropCircle = R.drawable.bg_circle_orange,
         buttonChangeBg = R.drawable.bg_btn_orange,
-        buttonEditBg = R.drawable.bg_btn_edit_border_orange
+        buttonEditBg = R.drawable.bg_btn_edit_border_orange,
+        notesCardBg = R.drawable.bg_notes_card,
+        cardDateBg = R.drawable.bg_card_date_orange
     ),
     OVERDUE(
         color = R.color.marimo_red,
@@ -44,7 +50,10 @@ enum class MarimoStatus(
         dropIcon = R.drawable.ic_water_drop_red,
         dropCircle = R.drawable.bg_circle_red,
         buttonChangeBg = R.drawable.bg_btn_red,
-        buttonEditBg = R.drawable.bg_btn_edit_border_red
+        buttonEditBg = R.drawable.bg_btn_edit_border_red,
+        notesCardBg = R.drawable.bg_notes_card,
+        cardDateBg = R.drawable.bg_card_date_red
+
     );
 
     companion object {

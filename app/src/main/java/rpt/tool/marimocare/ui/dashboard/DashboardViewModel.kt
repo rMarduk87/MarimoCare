@@ -1,24 +1,46 @@
 package rpt.tool.marimocare.ui.dashboard
 
+import android.os.Build
+import androidx.annotation.RequiresApi
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
 import androidx.lifecycle.map
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
+import rpt.tool.marimocare.utils.data.enums.MarimoStatus
+import rpt.tool.marimocare.utils.log.d
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.MarimoItem
 
 class DashboardViewModel : ViewModel() {
 
-    private val marimos = mutableListOf<Marimo>()
+    val allMarimos: LiveData<List<Marimo>> = RepositoryManager.marimoRepository.marimos
 
+    val marimoItems: LiveData<List<MarimoItem>> = allMarimos.map { marimos ->
+        // ADD THIS LOG to see what `allMarimos` contains
+        d("ViewModelLog", "All Marimos LiveData updated. Count: ${marimos.size}")
 
-    val marimoItems = liveData {
-        withContext(Dispatchers.Main) {
-            emitSource(RepositoryManager.marimoRepository.marimos.map {
-                it.map { MarimoItem(it) }
-            })
+        marimos.map { marimo ->
+            MarimoItem(marimo)
         }
     }
+
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    val overdueMarimo = getOverdueMarimoCounter(marimoItems)
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    val dueSoonMarimo =  getDueSoonMarimoCounter(marimoItems)
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun getOverdueMarimoCounter(marimoItems: LiveData<List<MarimoItem>>): LiveData<Int> =
+        marimoItems.map { items ->
+            items.count { MarimoStatus.from(it.marimo.daysLeft) == MarimoStatus.OVERDUE }
+        }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun getDueSoonMarimoCounter(marimoItems: LiveData<List<MarimoItem>>): LiveData<Int> =
+        marimoItems.map { items ->
+            items.count { MarimoStatus.from(it.marimo.daysLeft) == MarimoStatus.DUE_SOON }
+        }
+
 }

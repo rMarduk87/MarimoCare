@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -97,15 +98,18 @@
                         android:id="@+id/inputDate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:autofillHints=""
                         android:hint="@string/october_30th_2025"
                         android:focusable="false"
                         android:drawableStart="@drawable/ic_calendar"
                         android:drawablePadding="8dp"
                         android:background="@drawable/edittext_outline"
+                        android:inputType="text"
                         android:padding="10dp"
                         android:textColor="#111827"
                         android:textColorHint="#9CA3AF"
-                        android:layout_marginBottom="10dp"/>
+                        android:layout_marginBottom="10dp"
+                        tools:ignore="TextFields" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -116,18 +120,9 @@
                         android:layout_marginTop="12dp"
                         android:layout_marginBottom="4dp" />
 
-                    <Spinner
-                        android:id="@+id/inputFrequency"
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:background="@drawable/spinner_with_arrow"
-                        android:spinnerMode="dropdown"
-                        android:popupBackground="@drawable/spinner_popup_bg"
-                        android:paddingVertical="10dp"
-                        android:paddingStart="12dp"
-                        android:paddingEnd="36dp"
-                        android:padding="10dp"
-                        android:layout_marginBottom="10dp"/>
+                    <include
+                        android:id="@+id/marimoSpinnerLayout"
+                        layout="@layout/spinner_with_arrow" />
 
                     <!-- Note -->
                     <TextView

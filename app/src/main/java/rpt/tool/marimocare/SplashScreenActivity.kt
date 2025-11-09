@@ -18,7 +18,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
     var handler: Handler? = null
     var runnable: Runnable? = null
-    var millisecond: Int = 1000
+    var millisecond: Int = 1100
 
 
 
