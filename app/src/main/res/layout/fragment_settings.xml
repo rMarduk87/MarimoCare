@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F3FFFA"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header -->
+        <include
+            android:id="@+id/include1"
+            layout="@layout/header" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingVertical="12dp"
+                android:text="@string/marimo_care_settings"
+                android:textColor="#0B6E4F"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="16dp"
+                android:text="@string/customize_your_marimo_care_experience"
+                android:textColor="#555"
+                android:textSize="14sp" />
+
+            <!-- MaterialCardView container ottimizzata -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:padding="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:contentDescription="@string/img"
+                            android:layout_marginEnd="10dp"
+                            android:src="@drawable/ic_palette"
+                            app:tint="#0B6E4F">
+
+                        </ImageView>
+
+                        <TextView
+                            android:id="@+id/txtTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/dashboard_card_style"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/marimo_black"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:paddingBottom="4dp" />
+
+
+
+                    </LinearLayout>
+
+                    <!-- Titolo -->
+
+
+
+                    <TextView
+                        android:id="@+id/txtSubtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/choose_how_you_want_your_marimo_statistics_cards_to_appear_on_the_dashboard"
+                        android:textColor="@color/marimo_dark"
+                        android:textSize="14sp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:paddingBottom="16dp" />
+
+                    <!-- Default Style -->
+                    <LinearLayout
+                        android:id="@+id/dash_default"
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_card_selected"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:padding="16dp"
+                        android:layout_marginBottom="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingBottom="8dp"
+                            tools:ignore="UseCompoundDrawables">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="15dp"
+                                android:text="@string/default_style"
+                                android:textSize="21sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/marimo_black" />
+
+                            <include android:id="@+id/includeDef" layout="@layout/checkmark"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:text="@string/clean_cards_with_icons_and_subtle_backgrounds"
+                            android:textColor="@color/marimo_dark"
+                            android:textSize="14sp"
+                            android:paddingBottom="12dp" />
+
+                        <GridLayout
+                            android:id="@+id/grid_status"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="20dp"
+                            android:layout_marginStart="15dp"
+                            android:alignmentMode="alignMargins"
+                            android:columnCount="3"
+                            android:columnOrderPreserved="false"
+                            android:layout_gravity="center"
+                            android:rowCount="1"
+                            android:useDefaultMargins="true">
+
+                            <include android:id="@+id/include3" layout="@layout/item_card_default"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <include android:id="@+id/include4" layout="@layout/item_card_default_overdue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <include android:id="@+id/include5" layout="@layout/item_card_default_duesoon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </GridLayout>
+                    </LinearLayout>
+
+                    <!-- Colored Style -->
+                    <LinearLayout
+                        android:id="@+id/dash_colored"
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_card_unselected"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:padding="16dp"
+                        android:layout_marginBottom="35dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingBottom="8dp"
+                            tools:ignore="UseCompoundDrawables">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="15dp"
+                                android:text="@string/colored_style"
+                                android:textSize="21sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/marimo_black" />
+
+                            <include android:id="@+id/includeCol" layout="@layout/checkmark"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/bold_colored_backgrounds_without_icons"
+                            android:textColor="@color/marimo_dark"
+                            android:textSize="14sp"
+                            android:layout_marginStart="15dp"
+                            android:paddingBottom="12dp" />
+
+                        <GridLayout
+                            android:id="@+id/grid_status_colored"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="20dp"
+                            android:layout_marginStart="15dp"
+                            android:alignmentMode="alignMargins"
+                            android:columnCount="3"
+                            android:columnOrderPreserved="false"
+                            android:layout_gravity="center"
+                            android:rowCount="1"
+                            android:useDefaultMargins="true">
+
+                            <include android:id="@+id/include6" layout="@layout/item_card_colored_total"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                            <include android:id="@+id/include7" layout="@layout/item_card_colored_overdue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                            <include android:id="@+id/include8" layout="@layout/item_card_colored_duesoon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        </GridLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Pulsanti -->
+            <LinearLayout
+                style="?android:attr/buttonBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="end"
+                android:layout_marginTop="30dp">
+
+                <Button
+                    android:id="@+id/btnCancel"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="120dp"
+                    android:layout_height="48dp"
+                    android:text="@string/cancel"
+                    android:textAllCaps="false"
+                    android:textColor="@color/marimo_dark"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/bg_btn_grey"
+                    android:layout_marginEnd="8dp" />
+
+                <Button
+                    android:id="@+id/btnSave"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="120dp"
+                    android:layout_height="48dp"
+                    android:text="@string/btn_save"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/bg_btn_primary" />
+            </LinearLayout>
+
+            <!-- Footer -->
+            <include
+                android:id="@+id/include2"
+                layout="@layout/footer" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

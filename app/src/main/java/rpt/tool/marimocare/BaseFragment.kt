@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import rpt.tool.marimocare.utils.Inflate
+import rpt.tool.marimocare.utils.view.HeaderButtonConfig
+import rpt.tool.marimocare.utils.view.HeaderHelper
 
 
 abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) : Fragment() {
@@ -23,12 +25,11 @@ abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) 
         return binding.root
     }
 
-
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
 
 
 }

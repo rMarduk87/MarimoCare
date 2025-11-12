@@ -27,7 +27,7 @@ class AlertWorker(private val appContext: Context, workerParams: WorkerParameter
 
         val names = marimosLate.joinToString(", ") { it.name }
         SharedPreferencesManager.alerts = if(marimosLate.isNotEmpty()) appContext.getString(
-            R.string.marimo_in_ritardo,
+            R.string.overdue_marimo,
             names
         )
         else ""

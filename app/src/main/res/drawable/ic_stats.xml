@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+
+    <!-- Icona statistiche / grafico a barre -->
+    <path
+        android:fillColor="@color/marimo_dark"
+        android:pathData="M3,17h2v4H3v-4zM7,10h2v11H7V10zM11,13h2v8h-2v-8zM15,6h2v15h-2V6zM19,2h2v19h-2V2z"/>
+
+
+</vector>

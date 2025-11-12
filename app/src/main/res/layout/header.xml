@@ -53,30 +53,56 @@
 
     <Button
         android:id="@+id/btnDashboardHeader"
-        android:layout_width="96dp"
-        android:layout_height="42dp"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:background="@drawable/bg_button_light_green"
         android:drawableTop="@drawable/ic_dashboard"
         android:drawableTint="@color/marimo_item_green"
-        android:textAllCaps="false"
-        android:textColor="@color/marimo_item_green"
+        android:text=""
+        android:gravity="center"
+        android:padding="8dp"
         app:backgroundTint="@null"
-        android:background="@drawable/bg_button_light_green"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        tools:ignore="ButtonStyle,RtlHardcoded" />
+        tools:ignore="ButtonStyle" />
 
     <Button
         android:id="@+id/btnAddMarimoHeader"
-        android:layout_width="96dp"
-        android:layout_height="42dp"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
         android:layout_marginStart="9dp"
-        android:text="@string/add_marimo"
-        android:textAllCaps="false"
+        android:background="@drawable/bg_button_white"
         android:drawableTop="@drawable/ic_add"
         android:drawableTint="@color/marimo_add_icon"
+        android:text=""
+        android:gravity="center"
+        android:padding="8dp"
+        app:backgroundTint="@null"
+        tools:ignore="ButtonStyle" />
+
+    <Button
+        android:id="@+id/btnOpenSettings"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="9dp"
         android:background="@drawable/bg_button_white"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
+        android:drawableTop="@drawable/ic_settings"
+        android:drawableTint="@color/marimo_add_icon"
+        android:text=""
+        android:gravity="center"
+        android:padding="8dp"
+        app:backgroundTint="@null"
+        tools:ignore="ButtonStyle" />
+
+    <Button
+        android:id="@+id/btnOpenStats"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="9dp"
+        android:background="@drawable/bg_button_white"
+        android:drawableTop="@drawable/ic_stats"
+        android:drawableTint="@color/marimo_add_icon"
+        android:text=""
+        android:gravity="center"
+        android:padding="8dp"
         app:backgroundTint="@null"
         tools:ignore="ButtonStyle" />
 </LinearLayout>

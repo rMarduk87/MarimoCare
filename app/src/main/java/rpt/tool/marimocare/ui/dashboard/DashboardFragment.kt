@@ -22,7 +22,6 @@ import rpt.tool.marimocare.databinding.FragmentDashboardBinding
 import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 import rpt.tool.marimocare.utils.navigation.safeNavController
 import rpt.tool.marimocare.utils.navigation.safeNavigate
-import rpt.tool.marimocare.utils.view.defaultSetUp
 import rpt.tool.marimocare.utils.view.enable
 import rpt.tool.marimocare.utils.view.gone
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.MarimoItem
@@ -47,27 +46,27 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         itemAdapter = ItemAdapter()
         fastAdapter = FastAdapter.with(itemAdapter)
 
-        // --- HEADER ---
         binding.include1.btnDashboardHeader.enable(false)
         binding.include1.btnAddMarimoHeader.setOnClickListener { addNewMarimo() }
+        binding.include1.btnOpenSettings.setOnClickListener {
+            safeNavController?.safeNavigate(DashboardFragmentDirections.
+            actionDashboardFragmentToSettingsFragment()) }
+        binding.include1.btnOpenStats.setOnClickListener {
+            safeNavController?.safeNavigate(DashboardFragmentDirections
+                .actionDashboardFragmentToStatsFragment()) }
 
-        // --- COUNTER CARDS BACKGROUND ---
         binding.cardCounterTotal.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_card_marimo_status_t)
         binding.cardCounterOverdue.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_card_marimo_status_o)
         binding.cardCounterDue.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_card_marimo_status_s)
 
-        // --- RECYCLER VIEW SETUP ---
         binding.recyclerMarimos.apply {
-            // This is the most important part - sets how items are laid out
             layoutManager = androidx.recyclerview.widget.LinearLayoutManager(requireContext())
             adapter = fastAdapter
         }
 
-        // 3. ADD the hooks manually to the adapter
         fastAdapter.addEventHook(ChangeWaterEventHook())
         fastAdapter.addEventHook(EditMarimoEventHook())
 
-        // --- OBSERVER MARIMO ITEMS ---
         viewModel.marimoItems.observe(viewLifecycleOwner) { items ->
             if (items.isEmpty()) {
                 binding.recyclerMarimos.gone()
@@ -82,7 +81,6 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             }
         }
 
-        // --- OBSERVER OVERDUE & DUE SOON ---
         viewModel.overdueMarimo.observe(viewLifecycleOwner) { count ->
             binding.overdueMarimo.text = count.toString()
         }
@@ -91,10 +89,8 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             binding.dueSoonMarimo.text = count.toString()
         }
 
-        // --- BUTTON ADD MARIMO ---
         binding.btnAddMarimo.setOnClickListener { addNewMarimo() }
 
-        // --- TIPS VIEWPAGER ---
         val tips = listOf(
             getString(R.string.marimo_tip_body_1),
             getString(R.string.marimo_tip_body_2),
@@ -126,7 +122,6 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         binding.tipsPager.setPageTransformer { page, position -> page.alpha = 1 - kotlin.math.abs(position) }
         binding.dotsIndicator.attachTo(binding.tipsPager)
 
-        // --- TIPS ARROWS ---
         binding.arrowLeft.setOnClickListener {
             stopAutoScroll()
             val adapter = binding.tipsPager.adapter ?: return@setOnClickListener
@@ -145,10 +140,8 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             binding.tipTitle.text = tipsTitle[next]
         }
 
-        // --- AUTO SCROLL ---
         startAutoScroll(5000L)
 
-        // --- SHOW ALERT IF NEEDED ---
         showAlertForOverdueMarimo()
     }
 

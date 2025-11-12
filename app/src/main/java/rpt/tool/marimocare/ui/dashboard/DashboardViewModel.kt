@@ -16,7 +16,6 @@ class DashboardViewModel : ViewModel() {
     val allMarimos: LiveData<List<Marimo>> = RepositoryManager.marimoRepository.marimos
 
     val marimoItems: LiveData<List<MarimoItem>> = allMarimos.map { marimos ->
-        // ADD THIS LOG to see what `allMarimos` contains
         d("ViewModelLog", "All Marimos LiveData updated. Count: ${marimos.size}")
 
         marimos.map { marimo ->

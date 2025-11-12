@@ -14,6 +14,12 @@
         <action
             android:id="@+id/action_dashboardFragment_to_addOrEditFragment"
             app:destination="@id/addOrEditFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_statsFragment"
+            app:destination="@id/statsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addOrEditFragment"
@@ -21,10 +27,54 @@
         tools:layout="@layout/fragment_add_or_edit"
         android:label="AddOrEditMarimoFragment">
 
-
         <action
             android:id="@+id/action_addOrEditFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment" />
+
+        <action
+            android:id="@+id/action_addOrEditFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_addOrEditFragment_to_statsFragment"
+            app:destination="@id/statsFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="rpt.tool.marimocare.ui.settings.SettingsFragment"
+        tools:layout="@layout/fragment_settings"
+        android:label="SettingsFragment">
+
+        <action
+            android:id="@+id/action_settingsFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_addOrEditFragment"
+            app:destination="@id/addOrEditFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_statsFragment"
+            app:destination="@id/statsFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/statsFragment"
+        android:name="rpt.tool.marimocare.ui.stats.StatsFragment"
+        tools:layout="@layout/fragment_stats"
+        android:label="StatsFragment">
+
+        <action
+            android:id="@+id/action_statsFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+
+        <action
+            android:id="@+id/action_statsFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_statsFragment_to_addOrEditFragment"
+            app:destination="@id/addOrEditFragment" />
 
     </fragment>
 </navigation>

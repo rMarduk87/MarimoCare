@@ -25,4 +25,8 @@ object SharedPreferencesManager {
         get() = sharedPreferences.getBoolean(AppUtils.SHOW_ALERT, true)
         set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_ALERT, value) }
 
+    var coloredIsSelected: Boolean
+        get() = sharedPreferences.getBoolean(AppUtils.COLORED_IS_SELECTED, false)
+        set(value) = sharedPreferences.edit() { putBoolean(AppUtils.COLORED_IS_SELECTED, value) }
+
 }

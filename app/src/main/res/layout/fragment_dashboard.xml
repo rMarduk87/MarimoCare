@@ -79,7 +79,7 @@
                         android:textColor="@android:color/white"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        android:text="@string/attenzione_un_marimo_in_ritardo"
+                        android:text="@string/attention"
                         tools:ignore="HardcodedText" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>

@@ -53,8 +53,9 @@ class AppUtils {
 
         const val USERS_SHARED_PREF : String = "user_pref"
         const val ALERTS : String = "alerts"
-
         const val SHOW_ALERT: String = "show_alert"
+        const val COLORED_IS_SELECTED: String = "colored_is_selected"
+
 
     }
 }

@@ -68,6 +68,24 @@
     <string name="btn_add_marimo">Add Marimo</string>
     <string name="every_14_days_bi_weekly">Every 14 days (Bi-weekly)</string>
     <string name="please_fill_all_the_fields">Please fill all the fields</string>
-    <string name="attenzione_un_marimo_in_ritardo">⚠️ Attenzione: un Marimo è in ritardo!</string>
-    <string name="marimo_in_ritardo">⚠️ Marimo in ritardo: %1$s</string>
+    <string name="attention">⚠️ Attenzione: un Marimo è in ritardo!</string>
+    <string name="overdue_marimo">⚠️ Marimo in ritardo: %1$s</string>
+    <string name="settings">Settings</string>
+    <string name="stats">Stats</string>
+    <string name="marimo_care_settings">⚙️ Marimo Care Settings</string>
+    <string name="customize_your_marimo_care_experience">Customize your marimo care experience</string>
+    <string name="btn_save">Save Changes</string>
+    <string name="dashboard_card_style">Dashboard Card Style</string>
+    <string name="choose_how_you_want_your_marimo_statistics_cards_to_appear_on_the_dashboard">Choose how you want your marimo\nstatistics cards to appear on the dashboard</string>
+    <string name="default_style">Default Style</string>
+    <string name="clean_cards_with_icons_and_subtle_backgrounds">Clean cards with icons and subtle backgrounds</string>
+    <string name="colored_style">Colored Style</string>
+    <string name="bold_colored_backgrounds_without_icons">Bold colored backgrounds without icons</string>
+    <string-array name="marimo_frequencies">
+        <item>Every 7 days (Weekly)</item>
+        <item>Every 10 days</item>
+        <item>Every 14 days (Bi-weekly)</item>
+        <item>Every 21 days</item>
+        <item>Every 30 days (Monthly)</item>
+    </string-array>
 </resources>
