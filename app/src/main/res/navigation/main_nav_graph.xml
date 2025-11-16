@@ -37,6 +37,10 @@
         <action
             android:id="@+id/action_addOrEditFragment_to_statsFragment"
             app:destination="@id/statsFragment" />
+        <argument
+            android:name="MarimoCode"
+            app:argType="integer"
+            android:defaultValue="0" />
 
     </fragment>
     <fragment

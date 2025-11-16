@@ -386,6 +386,7 @@
                         android:layout_height="wrap_content"/>
 
                     <TextView
+                        android:id="@+id/totalMarimo_alternative"
                         android:text="@string/_3"
                         android:textColor="#0B6E4F"
                         android:textSize="22sp"
@@ -412,6 +413,7 @@
                         android:layout_height="wrap_content"/>
 
                     <TextView
+                        android:id="@+id/overdueMarimo_alternative"
                         android:text="@string/_3"
                         android:textColor="#D9534F"
                         android:textSize="22sp"
@@ -438,6 +440,7 @@
                         android:layout_height="wrap_content"/>
 
                     <TextView
+                        android:id="@+id/dueSoonMarimo_alternative"
                         android:text="@string/_0"
                         android:textColor="#E1A500"
                         android:textSize="22sp"
@@ -467,11 +470,80 @@
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     app:backgroundTint="@null"
-                    android:background="@drawable/bg_btn_primary"
+                    android:background="@drawable/bg_notes_green_card"
                     />
             </LinearLayout>
-             <!-- RecyclerView per le card -->
-            <!-- Example of a correctly constrained RecyclerView in ConstraintLayout -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dp">
+                <TextView
+                    android:text="@string/filters"
+                    android:layout_marginStart="12dp"
+                    android:textColor="@color/marimo_black"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:drawableStartCompat="@drawable/ic_filter" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+
+                <Button
+                    android:id="@+id/btnAllFilter"
+                    android:layout_marginStart="25dp"
+                    android:layout_width="100dp"
+                    android:layout_height="48dp"
+                    android:text="@string/all"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/bg_btn_primary"
+                    />
+                <Button
+                    android:id="@+id/btnOverdueFilter"
+                    android:layout_marginStart="25dp"
+                    android:layout_width="125dp"
+                    android:layout_height="48dp"
+                    android:text="@string/overdue_f"
+                    android:textAllCaps="false"
+                    android:textColor="@color/marimo_dark"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/bg_btn_white"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/btnDueSoonFilter"
+                    android:layout_marginStart="25dp"
+                    android:layout_width="145dp"
+                    android:layout_height="48dp"
+                    android:text="@string/soon_f"
+                    android:textAllCaps="false"
+                    android:textColor="@color/marimo_dark"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/bg_btn_white"
+                    />
+                <Button
+                    android:id="@+id/btnUpToDateFilter"
+                    android:layout_marginStart="25dp"
+                    android:layout_width="145dp"
+                    android:layout_height="48dp"
+                    android:text="@string/upToDate"
+                    android:textAllCaps="false"
+                    android:textColor="@color/marimo_dark"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/bg_btn_white"
+                    />
+
+            </LinearLayout>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerMarimos"
                 android:layout_width="match_parent"

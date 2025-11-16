@@ -30,7 +30,7 @@ class NotificationHelper(private val context: Context) {
 
         val notification = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_launcher_foreground)
-            .setContentTitle("Notifica automatica 🤖")
+            .setContentTitle(context.getString(R.string.water_change_today))
             .setContentText(message)
             .setStyle(NotificationCompat.BigTextStyle().bigText(message))
             .setPriority(NotificationCompat.PRIORITY_HIGH)
@@ -48,7 +48,7 @@ class NotificationHelper(private val context: Context) {
         NotificationManagerCompat.from(context).notify(System.currentTimeMillis().toInt(), notification)
     }
 
-    private fun createNotificationChannel() {
+    fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = "Canale Notifiche Automatiche"
             val descriptionText = "Notifiche automatiche per i Marimo"

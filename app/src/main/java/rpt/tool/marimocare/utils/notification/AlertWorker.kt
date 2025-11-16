@@ -9,29 +9,41 @@ import rpt.tool.marimocare.utils.AlertDataUtils
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 import java.time.LocalDate
 import rpt.tool.marimocare.R
+import rpt.tool.marimocare.utils.log.d
 import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 
-class AlertWorker(private val appContext: Context, workerParams: WorkerParameters) :
-    Worker(appContext, workerParams) {
+class AlertWorker(appContext: Context, params: WorkerParameters) :
+    Worker(appContext, params) {
+
+    private val context = appContext
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun doWork(): Result {
 
-        val marimosLate = AlertDataUtils.marimosForAlert.value ?: run {
-            val marimos = RepositoryManager.marimoRepository.marimos.value ?: emptyList()
-            val today = LocalDate.now()
-            marimos.filter {
-                AlertDataUtils.getNextChangeDate(it).isBefore(today)
-            }
-        }
+        d("AlertWorker", "Worker START")
 
-        val names = marimosLate.joinToString(", ") { it.name }
-        SharedPreferencesManager.alerts = if(marimosLate.isNotEmpty()) appContext.getString(
-            R.string.overdue_marimo,
-            names
-        )
-        else ""
-        SharedPreferencesManager.showAlert = marimosLate.isNotEmpty()
+        val overdue = AlertDataUtils.getMarimosLate()
+        val dueSoon = AlertDataUtils.getMarimosDueSoon(2) // entro 2 giorni
+
+        val overdueNames = overdue.joinToString(", ") { it.name }
+        val soonNames = dueSoon.joinToString(", ") { it.name }
+
+        // Salviamo solo ALERT OVERDUE e SOON per il fragment
+        SharedPreferencesManager.alertOverdue =
+            if (overdue.isNotEmpty())
+                context.getString(R.string.overdue_marimo, overdueNames)
+            else ""
+
+        SharedPreferencesManager.alertSoon =
+            if (dueSoon.isNotEmpty())
+                context.getString(R.string.soon_marimo, soonNames)
+            else ""
+
+        SharedPreferencesManager.showAlertOverdue = overdue.isNotEmpty()
+        SharedPreferencesManager.showAlertSoon = dueSoon.isNotEmpty()
+
+        d("AlertWorker", "Overdue: $overdueNames | Soon: $soonNames")
+
         return Result.success()
     }
 }

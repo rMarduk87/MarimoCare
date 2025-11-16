@@ -1,5 +1,6 @@
 package rpt.tool.marimocare
 
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.result.ActivityResultLauncher
@@ -43,8 +44,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         initPermissions()
         initInAppUpdate()
-
-        scheduleBackgroundChecks()
     }
 
     override fun onResume() {
@@ -145,23 +144,5 @@ class MainActivity : AppCompatActivity() {
                     NavHostFragment
         val navController = navHostFragment.navController
         return navController.navigateUp() || super.onSupportNavigateUp()
-    }
-
-    private fun scheduleBackgroundChecks() {
-        val notifyWorker = PeriodicWorkRequestBuilder<NotifyWorker>(1,
-            TimeUnit.DAYS).build()
-        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
-            "notifyMarimoWork",
-            ExistingPeriodicWorkPolicy.UPDATE,
-            notifyWorker
-        )
-
-        val alertWorker = PeriodicWorkRequestBuilder<AlertWorker>(1,
-            TimeUnit.DAYS).build()
-        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
-            "alertMarimoWork",
-            ExistingPeriodicWorkPolicy.UPDATE,
-            alertWorker
-        )
     }
 }

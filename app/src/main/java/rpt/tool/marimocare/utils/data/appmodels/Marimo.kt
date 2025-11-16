@@ -12,12 +12,12 @@ import java.io.Serializable
 @Keep
 data class Marimo(
     val code: Int,
-    val name: String,
-    val changeFrequencyDays: Int,
-    val lastChanged: String?,
-    val nextChange: String,
-    val notes: String?,
-    val daysLeft: Int
+    var name: String,
+    var changeFrequencyDays: Int,
+    var lastChanged: String?,
+    var nextChange: String,
+    var notes: String?,
+    var daysLeft: Int
 ) : AppModel(), Serializable {
 
     init {

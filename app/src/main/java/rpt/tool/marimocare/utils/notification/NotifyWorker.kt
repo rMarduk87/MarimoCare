@@ -5,21 +5,31 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.work.Worker
 import androidx.work.WorkerParameters
+import rpt.tool.marimocare.R
 import rpt.tool.marimocare.utils.AlertDataUtils
+import rpt.tool.marimocare.utils.log.d
 
 class NotifyWorker(appContext: Context, workerParams: WorkerParameters) :
     Worker(appContext, workerParams) {
 
-    private val notificationHelper = NotificationHelper(appContext)
-
     @RequiresApi(Build.VERSION_CODES.O)
     override fun doWork(): Result {
-        val marimosToNotify = AlertDataUtils.marimosForNotification.value ?: emptyList()
-        if (marimosToNotify.isNotEmpty()) {
-            val names = marimosToNotify.joinToString(", ") { it.name }
-            NotificationHelper(applicationContext)
-                .sendNotification("Ciao sono una notifica...ma va? Marimo da controllare: $names")
+
+        d("NotifyWorker", "Worker START")
+
+        val marimosToday = AlertDataUtils.getMarimosToNotifyToday()
+
+        if (marimosToday.isNotEmpty()) {
+
+            val names = marimosToday.joinToString(", ") { it.name }
+
+            NotificationHelper(applicationContext).sendNotification(
+                applicationContext.getString(R.string.today_marimo_list, names)
+            )
+
+            d("NotifyWorker", "Notifica inviata: $names")
         }
+
         return Result.success()
     }
 }

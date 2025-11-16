@@ -10,16 +10,28 @@ import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.view.recyclerview.BaseRecyclerViewBindingItem
 import rpt.tool.marimocare.utils.data.enums.MarimoStatus
 
-class MarimoItem(val marimo: Marimo) :
+class MarimoItem(var marimo: Marimo) :
     BaseRecyclerViewBindingItem<ItemMarimoBinding>(ItemMarimoBinding::inflate) {
 
     override val type: Int = R.id.rv_marimo
+    private var binding: ItemMarimoBinding? = null
 
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("SetTextI18n")
     override fun bindView(binding: ItemMarimoBinding, payloads: List<Any>) {
         super.bindView(binding, payloads)
 
+        updateUI(binding)
+        this.binding = binding
+    }
+
+    override fun unbindView(binding: ItemMarimoBinding) {
+        super.unbindView(binding)
+        this.binding = null
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun updateUI(binding: ItemMarimoBinding) {
         val context = binding.root.context
         val res = binding.root.resources
         val daysLeft = marimo.daysLeft
@@ -49,6 +61,9 @@ class MarimoItem(val marimo: Marimo) :
         binding.cardNotes.setBackgroundResource(status.notesCardBg)
         binding.cardDate.setBackgroundResource(status.cardDateBg)
     }
-
-    override fun unbindView(binding: ItemMarimoBinding) = Unit
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun update(newMarimo: Marimo) {
+        this.marimo = newMarimo
+        binding?.let { updateUI(it) }
+    }
 }

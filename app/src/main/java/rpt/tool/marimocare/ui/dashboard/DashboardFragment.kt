@@ -55,16 +55,20 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             safeNavController?.safeNavigate(DashboardFragmentDirections
                 .actionDashboardFragmentToStatsFragment()) }
 
-        binding.cardCounterTotal.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_card_marimo_status_t)
-        binding.cardCounterOverdue.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_card_marimo_status_o)
-        binding.cardCounterDue.background = ContextCompat.getDrawable(requireContext(), R.drawable.bg_card_marimo_status_s)
+        binding.cardCounterTotal.background = ContextCompat.getDrawable(requireContext(),
+            R.drawable.bg_card_marimo_status_t)
+        binding.cardCounterOverdue.background = ContextCompat.getDrawable(requireContext(),
+            R.drawable.bg_card_marimo_status_o)
+        binding.cardCounterDue.background = ContextCompat.getDrawable(requireContext(),
+            R.drawable.bg_card_marimo_status_s)
 
         binding.recyclerMarimos.apply {
-            layoutManager = androidx.recyclerview.widget.LinearLayoutManager(requireContext())
+            layoutManager = androidx.recyclerview.widget.LinearLayoutManager(
+                requireContext())
             adapter = fastAdapter
         }
 
-        fastAdapter.addEventHook(ChangeWaterEventHook())
+        fastAdapter.addEventHook(ChangeWaterEventHook(viewLifecycleOwner))
         fastAdapter.addEventHook(EditMarimoEventHook())
 
         viewModel.marimoItems.observe(viewLifecycleOwner) { items ->
@@ -72,22 +76,58 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                 binding.recyclerMarimos.gone()
                 binding.emptyListLabel.visible()
                 binding.totalMarimo.text = "0"
+                binding.totalMarimoAlternative.text = "0"
+                binding.btnAllFilter.text = resources.getString(R.string.all)
+
             } else {
                 binding.recyclerMarimos.visible()
                 binding.emptyListLabel.gone()
                 itemAdapter.set(items)
                 binding.totalMarimo.text = items.size.toString()
+                binding.totalMarimoAlternative.text = items.size.toString()
                 fastAdapter.notifyAdapterDataSetChanged()
+                binding.btnAllFilter.text = buildString {
+                    append(getString(R.string.all_counter))
+                    append(items.size.toString())
+                    append(")")
+                }
             }
         }
 
         viewModel.overdueMarimo.observe(viewLifecycleOwner) { count ->
             binding.overdueMarimo.text = count.toString()
+            binding.overdueMarimoAlternative.text = count.toString()
+            binding.btnOverdueFilter.text = buildString {
+                append(getString(R.string.overdue_counter))
+                append(count.toString())
+                append(")")
+            }
         }
 
         viewModel.dueSoonMarimo.observe(viewLifecycleOwner) { count ->
             binding.dueSoonMarimo.text = count.toString()
+            binding.dueSoonMarimoAlternative.text = count.toString()
+            binding.btnDueSoonFilter.text = buildString {
+                append(getString(R.string.due_soon_counter))
+                append(count.toString())
+                append(")")
+            }
         }
+
+        viewModel.upToDateMarimo.observe(viewLifecycleOwner) { count ->
+            binding.btnUpToDateFilter.text = buildString {
+                append(getString(R.string.upToDate_counter))
+                append(count.toString())
+                append(")")
+            }
+        }
+
+        binding.btnOverdueFilter.setBackgroundResource(R.drawable.bg_notes_card)
+        binding.btnDueSoonFilter.setBackgroundResource(R.drawable.bg_notes_card)
+        binding.btnUpToDateFilter.setBackgroundResource(R.drawable.bg_notes_card)
+        binding.btnAllFilter.setBackgroundResource(R.drawable.bg_notes_green_card)
+
+        manageFilters()
 
         binding.btnAddMarimo.setOnClickListener { addNewMarimo() }
 
@@ -119,7 +159,8 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
         val adapter = TipsPagerAdapter(tips)
         binding.tipsPager.adapter = adapter
-        binding.tipsPager.setPageTransformer { page, position -> page.alpha = 1 - kotlin.math.abs(position) }
+        binding.tipsPager.setPageTransformer { page, position -> page.alpha = 1 -
+                kotlin.math.abs(position) }
         binding.dotsIndicator.attachTo(binding.tipsPager)
 
         binding.arrowLeft.setOnClickListener {
@@ -136,18 +177,26 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             val adapter = binding.tipsPager.adapter ?: return@setOnClickListener
             val current = binding.tipsPager.currentItem
             val next = if (current < adapter.itemCount - 1) current + 1 else 0
-            binding.tipsPager.setCurrentItem(next, current != adapter.itemCount - 1)
+            binding.tipsPager.setCurrentItem(next, current !=
+                    adapter.itemCount - 1)
             binding.tipTitle.text = tipsTitle[next]
         }
 
-        startAutoScroll(5000L)
+        startAutoScroll(SharedPreferencesManager.tipsAutoScrollSped.toLong() * 1000)
 
-        showAlertForOverdueMarimo()
+        updateAlertsUI()
+
+        binding.gridStatus.visibility = if(!SharedPreferencesManager.coloredIsSelected)
+            View.VISIBLE else View.GONE
+        binding.gridStatusAlternative.visibility = if(SharedPreferencesManager.coloredIsSelected)
+            View.VISIBLE else View.GONE
+
     }
 
     private fun addNewMarimo() {
         safeNavController?.safeNavigate(DashboardFragmentDirections.
-        actionDashboardFragmentToAddOrEditFragment())
+        actionDashboardFragmentToAddOrEditFragment()
+        )
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -202,21 +251,71 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onResume() {
         super.onResume()
-        startAutoScroll(5000L)
-        showAlertForOverdueMarimo()
+        startAutoScroll(SharedPreferencesManager.tipsAutoScrollSped.toLong() * 1000)
+        updateAlertsUI()
     }
 
-    private fun showAlertForOverdueMarimo() {
+    private fun updateAlertsUI() {
 
-        val showAlert = SharedPreferencesManager.showAlert
-        val message = SharedPreferencesManager.alerts
+        val hasOverdue = SharedPreferencesManager.showAlertOverdue
+        val hasSoon = SharedPreferencesManager.showAlertSoon
 
-        if (showAlert && !message.isNullOrEmpty()) {
-            binding.alertText.text = message
+        val overdueText = SharedPreferencesManager.alertOverdue
+        val soonText = SharedPreferencesManager.alertSoon
+
+        // CARD ALERT ROSSA (OVERDUE)
+        if (hasOverdue) {
             binding.alertCard.visibility = View.VISIBLE
-        } else {
+            binding.alertCard.setCardBackgroundColor(
+                ContextCompat.getColor(requireContext(), R.color.marimo_red)
+            )
+            binding.alertText.text = overdueText
+        }
+
+        // CARD ALERT ARANCIONE (DUE SOON)
+        if (!hasOverdue && hasSoon) {
+            binding.alertCard.visibility = View.VISIBLE
+            binding.alertCard.setCardBackgroundColor(
+                ContextCompat.getColor(requireContext(), R.color.marimo_orange)
+            )
+            binding.alertText.text = soonText
+        }
+
+        // Nessun alert → nascondi card
+        if (!hasOverdue && !hasSoon) {
             binding.alertCard.visibility = View.GONE
         }
+    }
+
+    private fun manageFilters() {
+        binding.btnAllFilter.setOnClickListener {
+            binding.btnOverdueFilter.setBackgroundResource(R.drawable.bg_notes_card)
+            binding.btnDueSoonFilter.setBackgroundResource(R.drawable.bg_notes_card)
+            binding.btnUpToDateFilter.setBackgroundResource(R.drawable.bg_notes_card)
+            binding.btnAllFilter.setBackgroundResource(R.drawable.bg_notes_green_card)
+        }
+
+        binding.btnOverdueFilter.setOnClickListener {
+            binding.btnOverdueFilter.setBackgroundResource(R.drawable.bg_notes_green_card)
+            binding.btnDueSoonFilter.setBackgroundResource(R.drawable.bg_notes_card)
+            binding.btnUpToDateFilter.setBackgroundResource(R.drawable.bg_notes_card)
+            binding.btnAllFilter.setBackgroundResource(R.drawable.bg_notes_card)
+        }
+
+        binding.btnDueSoonFilter.setOnClickListener {
+            binding.btnOverdueFilter.setBackgroundResource(R.drawable.bg_notes_card)
+            binding.btnDueSoonFilter.setBackgroundResource(R.drawable.bg_notes_green_card)
+            binding.btnUpToDateFilter.setBackgroundResource(R.drawable.bg_notes_card)
+            binding.btnAllFilter.setBackgroundResource(R.drawable.bg_notes_card)
+        }
+
+        binding.btnUpToDateFilter.setOnClickListener {
+            binding.btnOverdueFilter.setBackgroundResource(R.drawable.bg_notes_card)
+            binding.btnDueSoonFilter.setBackgroundResource(R.drawable.bg_notes_card)
+            binding.btnUpToDateFilter.setBackgroundResource(R.drawable.bg_notes_green_card)
+            binding.btnAllFilter.setBackgroundResource(R.drawable.bg_notes_card)
+        }
+
     }
 
     override fun onDestroyView() {

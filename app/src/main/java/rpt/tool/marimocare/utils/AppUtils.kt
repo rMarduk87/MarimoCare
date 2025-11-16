@@ -51,10 +51,25 @@ class AppUtils {
             return matchResult?.value?.toIntOrNull() ?: 0
         }
 
+        fun indexOfContaining(input: String, items: List<String>): Int {
+            return items.indexOfFirst { it.contains(input, ignoreCase = true) }
+        }
+
+        @RequiresApi(Build.VERSION_CODES.O)
+        fun getCurrentDate() : String {
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+            val today = LocalDate.now()
+            return today.format(formatter)
+        }
+
         const val USERS_SHARED_PREF : String = "user_pref"
-        const val ALERTS : String = "alerts"
-        const val SHOW_ALERT: String = "show_alert"
+        const val SHOW_ALERT_OVERDUE : String = "showAlertOverdue"
+        const val SHOW_ALERT_SOON: String = "showAlertSoon"
+        const val ALERT_OVERDUE: String = "alertOverdue"
+        const val ALERT_SOON : String = "alertSoon"
         const val COLORED_IS_SELECTED: String = "colored_is_selected"
+        const val TIPS_AUTO_SCROLL_SPEED : String = "tips_auto_scroll_speed"
+
 
 
     }

@@ -237,16 +237,160 @@
                             android:rowCount="1"
                             android:useDefaultMargins="true">
 
-                            <include android:id="@+id/include6" layout="@layout/item_card_colored_total"
+                            <include android:id="@+id/include6"
+                                layout="@layout/item_card_colored_total"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
-                            <include android:id="@+id/include7" layout="@layout/item_card_colored_overdue"
+                            <include android:id="@+id/include7"
+                                layout="@layout/item_card_colored_overdue"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
-                            <include android:id="@+id/include8" layout="@layout/item_card_colored_duesoon"
+                            <include android:id="@+id/include8"
+                                layout="@layout/item_card_colored_duesoon"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
                         </GridLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/container_speed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:padding="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:contentDescription="@string/img"
+                            android:layout_marginEnd="10dp"
+                            android:src="@drawable/ic_clock"
+                            app:tint="#0B6E4F">
+
+                        </ImageView>
+
+                        <TextView
+                            android:id="@+id/txtTitleSpeed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tips_auto_scroll_speed"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/marimo_black"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:paddingBottom="4dp" />
+
+
+
+                    </LinearLayout>
+
+                    <!-- Titolo -->
+
+
+
+                    <TextView
+                        android:id="@+id/txtSubtitleSpeed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/choose_how_quickly_the_marimo_care_tips_automatically_rotate"
+                        android:textColor="@color/marimo_dark"
+                        android:textSize="14sp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:paddingBottom="16dp" />
+
+                    <LinearLayout
+                        android:id="@+id/speed"
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:padding="16dp"
+                        android:layout_marginBottom="16dp">
+
+                        <EditText
+                            android:id="@+id/inputVeryFast"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/very_fast_5_seconds"
+                            android:background="@drawable/edittext_outline_grey"
+                            android:padding="10dp"
+                            android:editable="false"
+                            android:textColor="#111827"
+                            android:textColorHint="#9CA3AF"
+                            android:layout_marginBottom="10dp"
+                            tools:ignore="Deprecated" />
+
+                        <EditText
+                            android:id="@+id/inputFast"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/fast_10_seconds"
+                            android:background="@drawable/edittext_outline_grey"
+                            android:editable="false"
+                            android:padding="10dp"
+                            android:textColor="#111827"
+                            android:textColorHint="#9CA3AF"
+                            android:layout_marginBottom="10dp"
+                            tools:ignore="Deprecated" />
+
+                        <EditText
+                            android:id="@+id/inputNormal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/normal_15_seconds"
+                            android:background="@drawable/edittext_outline_grey"
+                            android:editable="false"
+                            android:padding="10dp"
+                            android:textColor="#111827"
+                            android:textColorHint="#9CA3AF"
+                            android:layout_marginBottom="10dp"
+                            tools:ignore="Deprecated" />
+
+                        <EditText
+                            android:id="@+id/inputSlow"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/slow_20_seconds"
+                            android:background="@drawable/edittext_outline_grey"
+                            android:editable="false"
+                            android:padding="10dp"
+                            android:textColor="#111827"
+                            android:textColorHint="#9CA3AF"
+                            android:layout_marginBottom="10dp"
+                            tools:ignore="Deprecated" />
+
+                        <EditText
+                            android:id="@+id/inputVerySlow"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/very_slow_25_seconds"
+                            android:background="@drawable/edittext_outline_grey"
+                            android:editable="false"
+                            android:padding="10dp"
+                            android:textColor="#111827"
+                            android:textColorHint="#9CA3AF"
+                            android:layout_marginBottom="10dp"
+                            tools:ignore="Deprecated" />
+
                     </LinearLayout>
 
                 </LinearLayout>
@@ -282,7 +426,7 @@
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     app:backgroundTint="@null"
-                    android:background="@drawable/bg_btn_primary" />
+                    android:background="@drawable/bg_notes_green_card" />
             </LinearLayout>
 
             <!-- Footer -->

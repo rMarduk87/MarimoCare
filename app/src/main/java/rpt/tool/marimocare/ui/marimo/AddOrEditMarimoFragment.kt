@@ -12,12 +12,15 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.navArgs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import rpt.tool.marimocare.BaseFragment
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentAddOrEditBinding
 import rpt.tool.marimocare.utils.AppUtils
+import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.tool.marimocare.utils.navigation.safeNavController
 import rpt.tool.marimocare.utils.navigation.safeNavigate
@@ -30,17 +33,29 @@ import java.util.Calendar
 class AddOrEditMarimoFragment :
     BaseFragment<FragmentAddOrEditBinding>(FragmentAddOrEditBinding::inflate) {
 
+    private lateinit var frequencies: List<String>
     private var freq: Int = 0
+    private var marimoCode: Int = 0
+    private val args: AddOrEditMarimoFragmentArgs by navArgs()
+    private var marimo: Marimo? = null
+
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("ClickableViewAccessibility", "SimpleDateFormat")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        frequencies = resources.getStringArray(R.array.marimo_frequencies).toList()
+
         setupHeaderButtons()
-        setupSpinner()
+        setupSpinner(frequencies)
         setupDatePicker()
-        setupActionButtons()
+
+        marimoCode = args.MarimoCode
+
+        addDataToMarimo(marimoCode)
+
     }
 
     private fun setupHeaderButtons() {
@@ -91,8 +106,8 @@ class AddOrEditMarimoFragment :
         )
     }
 
-    private fun setupSpinner() {
-        val frequencies = resources.getStringArray(R.array.marimo_frequencies).toList()
+    @SuppressLint("ClickableViewAccessibility")
+    private fun setupSpinner(frequencies: List<String>) {
         val spinner = binding.marimoSpinnerLayout.customSpinner
         val arrow = binding.marimoSpinnerLayout.arrow
         val adapter = CustomSpinnerAdapter(requireContext(), frequencies)
@@ -146,27 +161,50 @@ class AddOrEditMarimoFragment :
         }
     }
 
-    private fun setupActionButtons() {
-        binding.btnAdd.setOnClickListener { saveMarimoIfValid() }
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun setupActionButtons(marimo: Marimo?) {
+        binding.btnAdd.setOnClickListener { saveMarimoIfValid(marimo) }
         binding.btnCancel.setOnClickListener { clearAll() }
     }
 
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun saveMarimoIfValid() {
+    private fun saveMarimoIfValid(marimo: Marimo?) {
         val name = binding.inputName.text.toString()
         val lastWater = binding.inputDate.text.toString()
         val notes = binding.inputNotes.text.toString()
 
         if (name.isBlank() || lastWater.isBlank()) {
             Toast.makeText(requireContext(), getString(
-                R.string.please_fill_all_the_fields), Toast.LENGTH_SHORT).show()
+                R.string.please_fill_all_the_fields),
+                Toast.LENGTH_SHORT).show()
             return
         }
 
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-            RepositoryManager.marimoRepository.addMarimo(name,
-                lastWater, notes, freq)
+            if(marimo != null) {
+                RepositoryManager.marimoRepository.updateMarimo(
+                    marimo.code,
+                    name,
+                    lastWater, notes, freq
+                )
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(requireContext(), getString(
+                        R.string.updated_ok),
+                        Toast.LENGTH_SHORT).show()
+                }
+
+            }
+            else{
+                RepositoryManager.marimoRepository.addMarimo(name,
+                    lastWater, notes, freq)
+
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(requireContext(), getString(
+                        R.string.new_marimo_added),
+                        Toast.LENGTH_SHORT).show()
+                }
+            }
         }
         clearAll()
     }
@@ -176,5 +214,28 @@ class AddOrEditMarimoFragment :
         binding.inputDate.text.clear()
         binding.inputNotes.text.clear()
         binding.marimoSpinnerLayout.customSpinner.setSelection(0)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun addDataToMarimo(marimoCode: Int) {
+        if(marimoCode != 0){
+            viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+                marimo = RepositoryManager.marimoRepository.getMarimo(marimoCode)
+                if(marimo != null) {
+                    withContext(Dispatchers.Main) {
+                        binding.inputName.setText(marimo!!.name)
+                        binding.inputDate.setText(marimo!!.lastChanged)
+                        binding.inputNotes.setText(marimo!!.notes)
+                        val index = AppUtils.indexOfContaining(
+                            marimo!!.changeFrequencyDays.toString(),frequencies)
+                        binding.marimoSpinnerLayout.customSpinner.setSelection(if(index != -1)
+                            index else index)
+                        binding.btnAdd.text = getString(R.string.update)
+                    }
+                }
+            }
+        }
+
+        setupActionButtons(marimo)
     }
 }

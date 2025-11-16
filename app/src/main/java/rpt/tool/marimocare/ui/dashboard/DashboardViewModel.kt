@@ -31,6 +31,11 @@ class DashboardViewModel : ViewModel() {
     val dueSoonMarimo =  getDueSoonMarimoCounter(marimoItems)
 
     @RequiresApi(Build.VERSION_CODES.O)
+    val upToDateMarimo =  getUpToDateMarimoCounter(marimoItems)
+
+
+
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun getOverdueMarimoCounter(marimoItems: LiveData<List<MarimoItem>>): LiveData<Int> =
         marimoItems.map { items ->
             items.count { MarimoStatus.from(it.marimo.daysLeft) == MarimoStatus.OVERDUE }
@@ -41,5 +46,12 @@ class DashboardViewModel : ViewModel() {
         marimoItems.map { items ->
             items.count { MarimoStatus.from(it.marimo.daysLeft) == MarimoStatus.DUE_SOON }
         }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun getUpToDateMarimoCounter(marimoItems: LiveData<List<MarimoItem>>): LiveData<Int> =
+        marimoItems.map { items ->
+            items.count { MarimoStatus.from(it.marimo.daysLeft) == MarimoStatus.NORMAL }
+        }
+
 
 }

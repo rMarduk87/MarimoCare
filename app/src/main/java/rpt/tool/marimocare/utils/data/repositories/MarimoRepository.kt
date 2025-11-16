@@ -4,9 +4,11 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
+import org.checkerframework.checker.units.qual.s
 import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.data.database.dao.MarimoDao
+import kotlin.collections.map
 
 class MarimoRepository(
     private val marimoDao: MarimoDao
@@ -16,7 +18,7 @@ class MarimoRepository(
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    suspend fun addMarimo(marimoName: String, lastWaterChange: String, notes: String, freq: Int) {
+    fun addMarimo(marimoName: String, lastWaterChange: String, notes: String, freq: Int) {
         Marimo(marimoDao.getLastId()+1,marimoName, freq,
             lastWaterChange, AppUtils.nextChange(
             lastWaterChange,
@@ -29,7 +31,27 @@ class MarimoRepository(
         }
     }
 
+    fun getMarimo(marimoCode: Int): Marimo? {
+        return marimoDao.getMarimo(marimoCode).map()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun updateMarimo(code: Int, name: String, lastWater: String, notes: String, freq: Int) {
+        marimoDao.update(code,name, freq,
+                lastWater, notes)
+    }
+
+    fun updateWaterMarimo(lastChanged: String, code: Int) {
+        marimoDao.updateWater(lastChanged, code)
+    }
+
+    fun getAllSync():List<Marimo> {
+        return marimoDao.getAll().map { it.map() }
+    }
+
     val marimos: LiveData<List<Marimo>> =
         marimoDao.getMarimos().map { it.map { it.map() } }
+
+
 
 }

@@ -25,7 +25,7 @@ enum class MarimoStatus(
         cardBackground = R.drawable.bg_card_marimo,
         dropIcon = R.drawable.ic_water_drop_green,
         dropCircle = R.drawable.bg_circle_green,
-        buttonChangeBg = R.drawable.bg_btn_primary,
+        buttonChangeBg = R.drawable.bg_notes_green_card,
         buttonEditBg = R.drawable.bg_btn_edit_border,
         notesCardBg = R.drawable.bg_notes_card,
         cardDateBg = R.drawable.bg_card_date
@@ -37,7 +37,7 @@ enum class MarimoStatus(
         cardBackground = R.drawable.bg_card_marimo_orange,
         dropIcon = R.drawable.ic_water_drop_orange,
         dropCircle = R.drawable.bg_circle_orange,
-        buttonChangeBg = R.drawable.bg_btn_orange,
+        buttonChangeBg = R.drawable.bg_orange_card,
         buttonEditBg = R.drawable.bg_btn_edit_border_orange,
         notesCardBg = R.drawable.bg_notes_card,
         cardDateBg = R.drawable.bg_card_date_orange
@@ -49,7 +49,7 @@ enum class MarimoStatus(
         cardBackground = R.drawable.bg_card_marimo_red,
         dropIcon = R.drawable.ic_water_drop_red,
         dropCircle = R.drawable.bg_circle_red,
-        buttonChangeBg = R.drawable.bg_btn_red,
+        buttonChangeBg = R.drawable.bg_red_card,
         buttonEditBg = R.drawable.bg_btn_edit_border_red,
         notesCardBg = R.drawable.bg_notes_card,
         cardDateBg = R.drawable.bg_card_date_red

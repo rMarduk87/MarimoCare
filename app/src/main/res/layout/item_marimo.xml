@@ -223,7 +223,6 @@
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 app:backgroundTint="@null"
-                android:background="@drawable/bg_btn_primary"
                 android:drawableLeft="@drawable/ic_water_drop_white_mini"
                 android:drawablePadding="8dp"
                 tools:ignore="ButtonStyle,RtlHardcoded" />

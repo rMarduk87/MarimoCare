@@ -17,16 +17,28 @@ object SharedPreferencesManager {
 
     private val sharedPreferences by lazy { createSharedPreferences() }
 
-    var alerts: String?
-        get() = sharedPreferences.getString(AppUtils.ALERTS, "")
-        set(value) = sharedPreferences.edit() { putString(AppUtils.ALERTS, value) }
+    var showAlertOverdue: Boolean
+        get() = sharedPreferences.getBoolean(AppUtils.SHOW_ALERT_OVERDUE, false)
+        set(value) = sharedPreferences.edit { putBoolean(AppUtils.SHOW_ALERT_OVERDUE, value) }
 
-    var showAlert: Boolean
-        get() = sharedPreferences.getBoolean(AppUtils.SHOW_ALERT, true)
-        set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_ALERT, value) }
+    var showAlertSoon: Boolean
+        get() = sharedPreferences.getBoolean(AppUtils.SHOW_ALERT_SOON, false)
+        set(value) = sharedPreferences.edit { putBoolean(AppUtils.SHOW_ALERT_SOON, value) }
+
+    var alertOverdue: String
+        get() = sharedPreferences.getString(AppUtils.ALERT_OVERDUE, "") ?: ""
+        set(value) = sharedPreferences.edit { putString(AppUtils.ALERT_OVERDUE, value) }
+
+    var alertSoon: String
+        get() = sharedPreferences.getString(AppUtils.ALERT_SOON, "") ?: ""
+        set(value) = sharedPreferences.edit { putString(AppUtils.ALERT_SOON, value) }
 
     var coloredIsSelected: Boolean
         get() = sharedPreferences.getBoolean(AppUtils.COLORED_IS_SELECTED, false)
         set(value) = sharedPreferences.edit() { putBoolean(AppUtils.COLORED_IS_SELECTED, value) }
+
+    var tipsAutoScrollSped: Int
+        get() = sharedPreferences.getInt(AppUtils.TIPS_AUTO_SCROLL_SPEED, 15)
+        set(value) = sharedPreferences.edit() { putInt(AppUtils.TIPS_AUTO_SCROLL_SPEED, value) }
 
 }
