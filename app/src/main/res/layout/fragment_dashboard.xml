@@ -494,7 +494,7 @@
                 <Button
                     android:id="@+id/btnAllFilter"
                     android:layout_marginStart="25dp"
-                    android:layout_width="100dp"
+                    android:layout_width="130dp"
                     android:layout_height="48dp"
                     android:text="@string/all"
                     android:textAllCaps="false"
@@ -505,14 +505,16 @@
                 <Button
                     android:id="@+id/btnOverdueFilter"
                     android:layout_marginStart="25dp"
-                    android:layout_width="125dp"
+                    android:layout_width="170dp"
                     android:layout_height="48dp"
                     android:text="@string/overdue_f"
                     android:textAllCaps="false"
                     android:textColor="@color/marimo_dark"
                     app:backgroundTint="@null"
                     android:background="@drawable/bg_btn_white"
-                    />
+                    android:drawableEnd="@drawable/ic_warning_triangle_red"
+                    android:drawablePadding="8dp"
+                    app:drawableTint="@color/marimo_dark" />
             </LinearLayout>
 
             <LinearLayout
@@ -522,25 +524,50 @@
                 <Button
                     android:id="@+id/btnDueSoonFilter"
                     android:layout_marginStart="25dp"
-                    android:layout_width="145dp"
+                    android:layout_width="170dp"
                     android:layout_height="48dp"
                     android:text="@string/soon_f"
                     android:textAllCaps="false"
                     android:textColor="@color/marimo_dark"
                     app:backgroundTint="@null"
                     android:background="@drawable/bg_btn_white"
-                    />
+                    android:drawableEnd="@drawable/ic_calendar_due_soon"
+                    android:drawablePadding="8dp"
+                    app:drawableTint="@color/marimo_dark" />
                 <Button
                     android:id="@+id/btnUpToDateFilter"
                     android:layout_marginStart="25dp"
-                    android:layout_width="145dp"
+                    android:layout_width="170dp"
                     android:layout_height="48dp"
                     android:text="@string/upToDate"
                     android:textAllCaps="false"
                     android:textColor="@color/marimo_dark"
                     app:backgroundTint="@null"
                     android:background="@drawable/bg_btn_white"
-                    />
+                    android:drawableEnd="@drawable/ic_clock"
+                    android:drawablePadding="8dp"
+                    app:drawableTint="@color/marimo_dark" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dp"
+                android:layout_marginTop="16dp">
+                <TextView
+                    android:text="@string/sort"
+                    android:layout_marginStart="12dp"
+                    android:textColor="@color/marimo_black"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    app:drawableStartCompat="@drawable/ic_sort" />
+
+                <include
+                    android:id="@+id/marimoSpinnerLayout"
+                    layout="@layout/spinner_sorting_with_arrow" />
 
             </LinearLayout>
 

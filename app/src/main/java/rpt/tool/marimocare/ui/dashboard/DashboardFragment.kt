@@ -1,8 +1,14 @@
 package rpt.tool.marimocare.ui.dashboard
 
+import android.annotation.SuppressLint
+import android.content.res.ColorStateList
 import android.os.Build
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
+import android.view.animation.AnimationUtils
+import android.widget.AdapterView
+import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.navigation.navGraphViewModels
@@ -19,9 +25,14 @@ import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.EditMarimo
 import rpt.tool.marimocare.BaseFragment
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentDashboardBinding
+import rpt.tool.marimocare.utils.AppUtils
+import rpt.tool.marimocare.utils.data.enums.MarimoStatus
 import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
+import rpt.tool.marimocare.utils.marimo.MarimoFilterUtils
+import rpt.tool.marimocare.utils.marimo.MarimoSortingUtils
 import rpt.tool.marimocare.utils.navigation.safeNavController
 import rpt.tool.marimocare.utils.navigation.safeNavigate
+import rpt.tool.marimocare.utils.view.adapters.CustomSpinnerAdapter
 import rpt.tool.marimocare.utils.view.enable
 import rpt.tool.marimocare.utils.view.gone
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.MarimoItem
@@ -34,14 +45,15 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
     private lateinit var itemAdapter: ItemAdapter<MarimoItem>
     private lateinit var fastAdapter: FastAdapter<MarimoItem>
-
     private val viewModel: DashboardViewModel by navGraphViewModels(R.id.main_nav_graph)
-
     private var autoScrollJob: Job? = null
+    private lateinit var sorting: List<String>
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        sorting = resources.getStringArray(R.array.marimo_sorting).toList()
 
         itemAdapter = ItemAdapter()
         fastAdapter = FastAdapter.with(itemAdapter)
@@ -191,6 +203,8 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         binding.gridStatusAlternative.visibility = if(SharedPreferencesManager.coloredIsSelected)
             View.VISIBLE else View.GONE
 
+        setupSpinner(sorting)
+
     }
 
     private fun addNewMarimo() {
@@ -263,7 +277,6 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         val overdueText = SharedPreferencesManager.alertOverdue
         val soonText = SharedPreferencesManager.alertSoon
 
-        // CARD ALERT ROSSA (OVERDUE)
         if (hasOverdue) {
             binding.alertCard.visibility = View.VISIBLE
             binding.alertCard.setCardBackgroundColor(
@@ -272,7 +285,6 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             binding.alertText.text = overdueText
         }
 
-        // CARD ALERT ARANCIONE (DUE SOON)
         if (!hasOverdue && hasSoon) {
             binding.alertCard.visibility = View.VISIBLE
             binding.alertCard.setCardBackgroundColor(
@@ -281,41 +293,153 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             binding.alertText.text = soonText
         }
 
-        // Nessun alert → nascondi card
         if (!hasOverdue && !hasSoon) {
             binding.alertCard.visibility = View.GONE
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun manageFilters() {
+
         binding.btnAllFilter.setOnClickListener {
-            binding.btnOverdueFilter.setBackgroundResource(R.drawable.bg_notes_card)
-            binding.btnDueSoonFilter.setBackgroundResource(R.drawable.bg_notes_card)
-            binding.btnUpToDateFilter.setBackgroundResource(R.drawable.bg_notes_card)
-            binding.btnAllFilter.setBackgroundResource(R.drawable.bg_notes_green_card)
+            MarimoFilterUtils.filterByStatus(
+                viewModel.marimoItems.value ?: emptyList(),
+                itemAdapter,
+                null
+            )
+            highlightFilterButton(binding.btnAllFilter)
         }
 
         binding.btnOverdueFilter.setOnClickListener {
-            binding.btnOverdueFilter.setBackgroundResource(R.drawable.bg_notes_green_card)
-            binding.btnDueSoonFilter.setBackgroundResource(R.drawable.bg_notes_card)
-            binding.btnUpToDateFilter.setBackgroundResource(R.drawable.bg_notes_card)
-            binding.btnAllFilter.setBackgroundResource(R.drawable.bg_notes_card)
+            MarimoFilterUtils.filterByStatus(
+                viewModel.marimoItems.value ?: emptyList(),
+                itemAdapter,
+                MarimoStatus.OVERDUE
+            )
+            highlightFilterButton(binding.btnOverdueFilter)
         }
 
         binding.btnDueSoonFilter.setOnClickListener {
-            binding.btnOverdueFilter.setBackgroundResource(R.drawable.bg_notes_card)
-            binding.btnDueSoonFilter.setBackgroundResource(R.drawable.bg_notes_green_card)
-            binding.btnUpToDateFilter.setBackgroundResource(R.drawable.bg_notes_card)
-            binding.btnAllFilter.setBackgroundResource(R.drawable.bg_notes_card)
+            MarimoFilterUtils.filterByStatus(
+                viewModel.marimoItems.value ?: emptyList(),
+                itemAdapter,
+                MarimoStatus.DUE_SOON
+            )
+            highlightFilterButton(binding.btnDueSoonFilter)
         }
 
         binding.btnUpToDateFilter.setOnClickListener {
-            binding.btnOverdueFilter.setBackgroundResource(R.drawable.bg_notes_card)
-            binding.btnDueSoonFilter.setBackgroundResource(R.drawable.bg_notes_card)
-            binding.btnUpToDateFilter.setBackgroundResource(R.drawable.bg_notes_green_card)
-            binding.btnAllFilter.setBackgroundResource(R.drawable.bg_notes_card)
+            MarimoFilterUtils.filterByStatus(
+                viewModel.marimoItems.value ?: emptyList(),
+                itemAdapter,
+                MarimoStatus.NORMAL
+            )
+            highlightFilterButton(binding.btnUpToDateFilter)
+        }
+    }
+
+    @SuppressLint("UseCompatTextViewDrawableApis")
+    private fun highlightFilterButton(selected: View) {
+
+        val allButtons = listOf(
+            binding.btnAllFilter,
+            binding.btnOverdueFilter,
+            binding.btnDueSoonFilter,
+            binding.btnUpToDateFilter
+        )
+
+        allButtons.forEach { btn ->
+            btn.setBackgroundResource(R.drawable.bg_notes_card)
+            (btn as? android.widget.TextView)?.setTextColor(
+                ContextCompat.getColor(requireContext(), R.color.marimo_dark)
+            )
+            btn.compoundDrawableTintList =
+                ColorStateList.valueOf(ContextCompat.getColor(requireContext(),
+                    R.color.marimo_dark))
         }
 
+        when (selected) {
+            binding.btnAllFilter->{
+                selected.setBackgroundResource(R.drawable.bg_notes_green_card)
+                (selected as android.widget.TextView).setTextColor(
+                    ContextCompat.getColor(requireContext(), android.R.color.white)
+                )
+            }
+
+            binding.btnUpToDateFilter -> {
+                selected.setBackgroundResource(R.drawable.bg_notes_green_card)
+                (selected as android.widget.TextView).setTextColor(
+                    ContextCompat.getColor(requireContext(), android.R.color.white)
+                )
+                (selected as Button).compoundDrawableTintList =
+                    ColorStateList.valueOf(ContextCompat.getColor(
+                        requireContext(), android.R.color.white))
+            }
+
+            binding.btnOverdueFilter -> {
+                selected.setBackgroundResource(R.drawable.bg_notes_red_card)
+                (selected as android.widget.TextView).setTextColor(
+                    ContextCompat.getColor(requireContext(), android.R.color.white)
+                )
+                (selected as Button).compoundDrawableTintList =
+                    ColorStateList.valueOf(ContextCompat.getColor(
+                        requireContext(), android.R.color.white))
+            }
+
+            binding.btnDueSoonFilter -> {
+                selected.setBackgroundResource(R.drawable.bg_notes_orange_card)
+                (selected as android.widget.TextView).setTextColor(
+                    ContextCompat.getColor(requireContext(), android.R.color.white)
+                )
+                (selected as Button).compoundDrawableTintList =
+                    ColorStateList.valueOf(ContextCompat.getColor(requireContext(),
+                        android.R.color.white))
+            }
+
+        }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun setupSpinner(sorting: List<String>) {
+        val spinner = binding.marimoSpinnerLayout.customSpinner
+        val arrow = binding.marimoSpinnerLayout.arrow
+        val adapter = CustomSpinnerAdapter(requireContext(), sorting)
+        spinner.adapter = adapter
+        spinner.setPopupBackgroundDrawable(ContextCompat.getDrawable(requireContext(),
+            R.drawable.spinner_dropdown_background))
+
+        val rotateUp = AnimationUtils.loadAnimation(requireContext(),
+            R.anim.rotate_up)
+        val rotateDown = AnimationUtils.loadAnimation(requireContext(),
+            R.anim.rotate_down)
+
+        spinner.setOnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_UP) arrow.startAnimation(rotateUp)
+            false
+        }
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int,
+                                        id: Long) {
+                adapter.setSelectedIndex(position)
+                arrow.startAnimation(rotateDown)
+                sortMarimo(position)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                arrow.startAnimation(rotateDown)
+            }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun sortMarimo(position: Int){
+        MarimoSortingUtils.sortBy(
+            viewModel.marimoItems.value ?: emptyList(),
+            itemAdapter, position
+        )
     }
 
     override fun onDestroyView() {

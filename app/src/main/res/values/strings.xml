@@ -88,17 +88,17 @@
     <string name="automatic_notification">Automatic notification 🤖</string>
     <string name="overdue_marimo_list">There are several Marimo that have not had their water changed for a long time: %1$s</string>
     <string name="filters">\t\tFilter:</string>
-    <string name="all">All (3)</string>
-    <string name="overdue_f">Overdue (3)</string>
+    <string name="all">All (0)</string>
+    <string name="overdue_f">Overdue (0)</string>
     <string name="soon_f">Due Soon (0)</string>
-    <string name="upToDate">Up to Date (1)</string>
+    <string name="upToDate">Up to Date (0)</string>
     <string name="all_counter">All (</string>
     <string name="overdue_counter">Overdue (</string>
     <string name="due_soon_counter">Due Soon (</string>
     <string name="upToDate_counter">Up to Date (</string>
     <string name="water_change_today">Hey, today you have to change the water for some Marimos</string>
     <string name="soon_marimo">There are some Marimos about to change their water: %1$s</string>
-    <string name="today_marimo_list">List of Marimo to change the water today: %1$s</string>
+    <string name="today_marimo_list">List of Marimo to change the water today:\n%1$s</string>
     <string name="tips_auto_scroll_speed">Tips Auto-Scroll Speed</string>
     <string name="choose_how_quickly_the_marimo_care_tips_automatically_rotate">Choose how quickly the marimo care tips\nautomatically rotate</string>
     <string name="very_fast_5_seconds">Very Fast (5 seconds)</string>
@@ -106,11 +106,17 @@
     <string name="normal_15_seconds">Normal (15 seconds)</string>
     <string name="slow_20_seconds">Slow (20 seconds)</string>
     <string name="very_slow_25_seconds">Very Slow (25 seconds)</string>
+    <string name="sort">\t\tSort by:</string>
     <string-array name="marimo_frequencies">
         <item>Every 7 days (Weekly)</item>
         <item>Every 10 days</item>
         <item>Every 14 days (Bi-weekly)</item>
         <item>Every 21 days</item>
         <item>Every 30 days (Monthly)</item>
+    </string-array>
+    <string-array name="marimo_sorting">
+        <item>Status</item>
+        <item>Name</item>
+        <item>Last Change</item>
     </string-array>
 </resources>
