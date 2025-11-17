@@ -90,82 +90,82 @@
         </LinearLayout>
 
         <!-- DATE ROW -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:cardElevation="2dp"
-        app:backgroundTint="@null"
-        app:cardPreventCornerOverlap="false"
-        app:cardUseCompatPadding="true">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:baselineAligned="false"
-        android:orientation="horizontal"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"
-        android:layout_marginTop="-5dp"
-        tools:ignore="RtlSymmetry">
-
-        <LinearLayout
-            android:layout_width="0dp"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardDate"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_margin="10dp"
+            app:cardElevation="2dp"
+            app:backgroundTint="@null"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="true">
 
-            <TextView
-                android:text="@string/last_changed"
-                android:textSize="13sp"
-                android:textColor="#777777"
-                android:layout_width="wrap_content"
-                app:drawableStartCompat="@drawable/ic_clock_mini"
-                android:drawablePadding="5dp"
-                app:drawableTint="#777777"
-                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:layout_marginTop="-5dp"
+                tools:ignore="RtlSymmetry">
 
-            <TextView
-                android:id="@+id/txtLastChange"
-                android:text="@string/oct_15_2025"
-                android:textStyle="bold"
-                android:textSize="14sp"
-                android:textColor="#1A1A1A"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+                    <TextView
+                        android:text="@string/last_changed"
+                        android:textSize="13sp"
+                        android:textColor="#777777"
+                        android:layout_width="wrap_content"
+                        app:drawableStartCompat="@drawable/ic_clock_mini"
+                        android:drawablePadding="5dp"
+                        app:drawableTint="#777777"
+                        android:layout_height="wrap_content" />
 
-            <TextView
-                android:text="@string/next_change"
-                android:textSize="13sp"
-                android:textColor="#777777"
-                android:drawablePadding="5dp"
-                app:drawableStartCompat="@drawable/ic_calendar_mini"
-                app:drawableTint="#777777"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/txtLastChange"
+                        android:text="@string/oct_15_2025"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:textColor="#1A1A1A"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
 
-            <TextView
-                android:id="@+id/txtNextChange"
-                android:text="@string/oct_29_2025"
-                android:textStyle="bold"
-                android:textSize="14sp"
-                android:textColor="@color/marimo_item_green"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-    </LinearLayout>
-</com.google.android.material.card.MaterialCardView>
+                    <TextView
+                        android:text="@string/next_change"
+                        android:textSize="13sp"
+                        android:textColor="#777777"
+                        android:drawablePadding="5dp"
+                        app:drawableStartCompat="@drawable/ic_calendar_mini"
+                        app:drawableTint="#777777"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/txtNextChange"
+                        android:text="@string/oct_29_2025"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:textColor="@color/marimo_item_green"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <!-- NOTES LABEL -->
         <TextView
@@ -179,28 +179,28 @@
             tools:ignore="RtlSymmetry" />
 
         <!-- NOTES BOX -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardNotes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:backgroundTint="@null"
-        app:cardElevation="2dp"
-        app:cardPreventCornerOverlap="false"
-        app:cardUseCompatPadding="true">
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardNotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:backgroundTint="@null"
+            app:cardElevation="2dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="true">
 
-    <TextView
-        android:id="@+id/txtNotes"
-        android:text="@string/my_first_marimo_very_round_and_bouncy"
-        android:textSize="14sp"
-        android:textColor="#1A1A1A"
-        android:padding="16dp"
-        app:backgroundTint="@null"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="RtlSymmetry" />
+            <TextView
+                android:id="@+id/txtNotes"
+                android:text="@string/my_first_marimo_very_round_and_bouncy"
+                android:textSize="14sp"
+                android:textColor="#1A1A1A"
+                android:padding="16dp"
+                app:backgroundTint="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="RtlSymmetry" />
 
-</com.google.android.material.card.MaterialCardView>
+        </com.google.android.material.card.MaterialCardView>
 
         <!-- BUTTONS -->
         <LinearLayout

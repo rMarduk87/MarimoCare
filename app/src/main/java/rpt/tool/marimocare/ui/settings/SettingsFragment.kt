@@ -40,43 +40,54 @@ class SettingsFragment :
             requireContext(),
             listOf(
                 HeaderButtonConfig(
-                    binding.include1.btnDashboardHeader,
-                    R.drawable.ic_dashboard,
-                    R.color.marimo_add_icon,
-                    R.drawable.bg_button_white
-                ) {
-                    safeNavController?.safeNavigate(
-                        SettingsFragmentDirections.
-                        actionSettingsFragmentToDashboardFragment()
-                    )
-                },
+                    button = binding.include1.btnDashboardHeader,
+                    iconRes = R.drawable.ic_dashboard,
+                    colorRes = R.color.marimo_add_icon,
+                    backgroundRes = R.drawable.bg_button_white,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.dashboard),
+                    onClick = {
+                        safeNavController?.safeNavigate(
+                            SettingsFragmentDirections.actionSettingsFragmentToDashboardFragment()
+                        )
+                    }
+                ),
                 HeaderButtonConfig(
-                    binding.include1.btnAddMarimoHeader,
-                    R.drawable.ic_add,
-                    R.color.marimo_add_icon,
-                    R.drawable.bg_button_white
-                ) {
-                    safeNavController?.safeNavigate(
-                        SettingsFragmentDirections.actionSettingsFragmentToAddOrEditFragment()
-                    )
-                },
+                    button = binding.include1.btnAddMarimoHeader,
+                    iconRes = R.drawable.ic_add,
+                    colorRes = R.color.marimo_add_icon,
+                    backgroundRes = R.drawable.bg_button_white,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.add_marimo),
+                    onClick = {
+                        safeNavController?.safeNavigate(
+                            SettingsFragmentDirections
+                                .actionSettingsFragmentToAddOrEditFragment()
+                        )
+                    }
+                ),
                 HeaderButtonConfig(
-                    binding.include1.btnOpenSettings,
-                    R.drawable.ic_settings,
-                    R.color.marimo_item_green,
-                    R.drawable.bg_button_light_green,
+                    button = binding.include1.btnOpenSettings,
+                    iconRes = R.drawable.ic_settings,
+                    colorRes = R.color.marimo_item_green,
+                    backgroundRes = R.drawable.bg_button_light_green,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.settings),
                     enabled = false
                 ),
                 HeaderButtonConfig(
-                    binding.include1.btnOpenStats,
-                    R.drawable.ic_stats,
-                    R.color.marimo_add_icon,
-                    R.drawable.bg_button_white
-                ) {
-                    safeNavController?.safeNavigate(
-                        SettingsFragmentDirections.actionSettingsFragmentToStatsFragment()
-                    )
-                }
+                    button = binding.include1.btnOpenStats,
+                    iconRes = R.drawable.ic_stats,
+                    colorRes = R.color.marimo_add_icon,
+                    backgroundRes = R.drawable.bg_button_white,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.stats),
+                    onClick = {
+                        safeNavController?.safeNavigate(
+                            SettingsFragmentDirections
+                                .actionSettingsFragmentToStatsFragment())
+                    }
+                )
             )
         )
     }
@@ -86,8 +97,8 @@ class SettingsFragment :
             include3.cardCounterTotal.setBackgroundResource(R.drawable.bg_card_marimo_status_t)
             include4.cardCounterOverdue.setBackgroundResource(R.drawable.bg_card_marimo_status_o)
             include5.cardCounterDue.setBackgroundResource(R.drawable.bg_card_marimo_status_s)
-            container.setBackgroundResource(R.drawable.bg_card_marimo)
-            containerSpeed.setBackgroundResource(R.drawable.bg_card_marimo)
+            container.setBackgroundResource(R.drawable.bg_card_settings)
+            containerSpeed.setBackgroundResource(R.drawable.bg_card_settings)
         }
     }
 

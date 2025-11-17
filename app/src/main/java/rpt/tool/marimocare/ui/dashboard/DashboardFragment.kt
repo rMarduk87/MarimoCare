@@ -12,6 +12,7 @@ import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.navigation.navGraphViewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
 import kotlinx.coroutines.CoroutineScope
@@ -72,12 +73,19 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             R.drawable.bg_card_marimo_status_s)
 
         binding.recyclerMarimos.apply {
-            layoutManager = androidx.recyclerview.widget.LinearLayoutManager(
-                requireContext())
+            val isTablet = resources.configuration.smallestScreenWidthDp >= 600
+
+            val span = if (isTablet) 3 else 1
+
+            layoutManager = if (!isTablet) androidx.recyclerview.widget.LinearLayoutManager(
+                requireContext()) else
+                    GridLayoutManager(requireContext(), span)
             adapter = fastAdapter
         }
 
-        fastAdapter.addEventHook(ChangeWaterEventHook(viewLifecycleOwner))
+        fastAdapter.addEventHook(ChangeWaterEventHook(viewLifecycleOwner) {
+            updateAlertsUI()
+        })
         fastAdapter.addEventHook(EditMarimoEventHook())
 
         viewModel.marimoItems.observe(viewLifecycleOwner) { items ->

@@ -175,7 +175,7 @@
                             android:textAllCaps="false"
                             android:textColor="@android:color/white"
                             app:backgroundTint="@null"
-                            android:background="@drawable/bg_btn_primary"
+                            android:background="@drawable/bg_notes_green_card"
                             />
                     </LinearLayout>
 

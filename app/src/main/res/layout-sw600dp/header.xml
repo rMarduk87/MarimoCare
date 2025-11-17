@@ -8,7 +8,7 @@
     android:background="?attr/colorSurface"
     android:paddingStart="24dp"
     android:paddingEnd="24dp"
-    android:paddingTop="12dp"
+    android:paddingTop="5dp"
     android:paddingBottom="12dp"
     android:orientation="horizontal"
     android:gravity="center_vertical"
@@ -74,6 +74,8 @@
             android:id="@+id/btnAddMarimoHeader"
             android:layout_width="wrap_content"
             android:layout_height="42dp"
+            android:drawableLeft="@drawable/ic_add"
+            android:drawableTint="@color/marimo_add_icon"
             android:layout_marginStart="12dp"
             android:text="@string/add_marimo"
             android:textAllCaps="false"
@@ -82,7 +84,7 @@
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             app:backgroundTint="@null"
-            tools:ignore="ButtonStyle" />
+            tools:ignore="ButtonStyle,RtlHardcoded" />
 
         <Button
             android:id="@+id/btnOpenSettings"
@@ -105,7 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="42dp"
             android:layout_marginStart="9dp"
-            android:text="@string/settings"
+            android:text="@string/stats"
             android:textAllCaps="false"
             android:drawableLeft="@drawable/ic_stats"
             android:drawableTint="@color/marimo_add_icon"

@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.managers.RepositoryManager
+import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
@@ -43,5 +44,20 @@ object AlertDataUtils {
                 val next = parse(it.nextChange)
                 next == LocalDate.now()
             }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun recalc() {
+        val marimosLate = getMarimosLate()
+        val marimosSoon = getMarimosDueSoon(2)
+
+        SharedPreferencesManager.showAlertOverdue = marimosLate.isNotEmpty()
+        SharedPreferencesManager.showAlertSoon = marimosSoon.isNotEmpty()
+
+        SharedPreferencesManager.alertOverdue =
+            marimosLate.joinToString(", ") { it.name }
+
+        SharedPreferencesManager.alertSoon =
+            marimosSoon.joinToString(", ") { it.name }
     }
 }

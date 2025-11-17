@@ -67,9 +67,12 @@ class AddOrEditMarimoFragment :
                     iconRes = R.drawable.ic_dashboard,
                     colorRes = R.color.marimo_add_icon,
                     backgroundRes = R.drawable.bg_button_white,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.dashboard),
                     onClick = {
                         safeNavController?.safeNavigate(
-                            AddOrEditMarimoFragmentDirections.actionAddOrEditFragmentToDashboardFragment()
+                            AddOrEditMarimoFragmentDirections
+                                .actionAddOrEditFragmentToDashboardFragment()
                         )
                     }
                 ),
@@ -78,16 +81,21 @@ class AddOrEditMarimoFragment :
                     iconRes = R.drawable.ic_add,
                     colorRes = R.color.marimo_item_green,
                     backgroundRes = R.drawable.bg_button_light_green,
-                    enabled = false
+                    enabled = false,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.add_marimo),
                 ),
                 HeaderButtonConfig(
                     button = binding.include1.btnOpenSettings,
                     iconRes = R.drawable.ic_settings,
                     colorRes = R.color.marimo_add_icon,
                     backgroundRes = R.drawable.bg_button_white,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.settings),
                     onClick = {
                         safeNavController?.safeNavigate(
-                            AddOrEditMarimoFragmentDirections.actionAddOrEditFragmentToSettingsFragment()
+                            AddOrEditMarimoFragmentDirections
+                                .actionAddOrEditFragmentToSettingsFragment()
                         )
                     }
                 ),
@@ -96,9 +104,12 @@ class AddOrEditMarimoFragment :
                     iconRes = R.drawable.ic_stats,
                     colorRes = R.color.marimo_add_icon,
                     backgroundRes = R.drawable.bg_button_white,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.stats),
                     onClick = {
                         safeNavController?.safeNavigate(
-                            AddOrEditMarimoFragmentDirections.actionAddOrEditFragmentToStatsFragment()
+                            AddOrEditMarimoFragmentDirections
+                                .actionAddOrEditFragmentToStatsFragment()
                         )
                     }
                 )

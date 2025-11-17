@@ -463,10 +463,10 @@
                     android:layout_height="wrap_content"/>
                 <Button
                     android:id="@+id/btnAddMarimo"
-                    android:layout_marginStart="115dp"
+                    android:layout_marginStart="160dp"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
-                    android:text="@string/add_marimo"
+                    android:text="@string/add"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     app:backgroundTint="@null"

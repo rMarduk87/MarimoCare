@@ -28,7 +28,7 @@
     <string name="due_soon">In Scadenza</string>
     <string name="_0">0</string>
     <string name="your_marimos">I tuoi Marimo</string>
-    <string name="add_marimo">+ Aggiungi Marimo</string>
+    <string name="add_marimo">Nuovo Marimo</string>
     <string name="mochi">Mochi</string>
     <string name="changes_every_14_days">Modifiche ogni 14 giorni</string>
     <string name="_295_days_overdue">Scaduto 295 giorni</string>
@@ -69,7 +69,7 @@
     <string name="every_14_days_bi_weekly">Ogni 14 giorni (bisettimanale)</string>
     <string name="please_fill_all_the_fields">Si prega di compilare tutti i campi</string>
     <string name="attention">Attenzione: un Marimo è in ritardo!</string>
-    <string name="overdue_marimo">Marimo in ritardo: %1$s</string>
+    <string name="overdue_marimo">Urgente: Cambio dell\'acqua necessario per: %1$s</string>
     <string name="settings">Impostazioni</string>
     <string name="stats">Statistiche</string>
     <string name="marimo_care_settings">⚙️ Impostazioni Marimo Care</string>
@@ -86,7 +86,6 @@
     <string name="updated_ok">Marimo aggiornato</string>
     <string name="new_marimo_added">Nuovo Marimo aggiunto</string>
     <string name="automatic_notification">Notifica automatica 🤖</string>
-    <string name="overdue_marimo_list">Ci sono diversi Marimo a cui non viene cambiata l\'acqua da molto tempo: %1$s</string>
     <string name="filters">\t\tFiltro:</string>
     <string name="all">Tutti (0)</string>
     <string name="overdue_f">In ritardo (0)</string>
@@ -107,6 +106,7 @@
     <string name="slow_20_seconds">Lento (20 secondi)</string>
     <string name="very_slow_25_seconds">Molto lento (25 secondi)</string>
     <string name="sort">\t\tOrdina per:</string>
+    <string name="add">Nuovo</string>
     <string-array name="marimo_frequencies">
         <item>Ogni 7 giorni (settimanale)</item>
         <item>Ogni 10 giorni</item>

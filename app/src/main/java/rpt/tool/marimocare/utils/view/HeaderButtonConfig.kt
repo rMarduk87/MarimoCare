@@ -11,7 +11,9 @@ data class HeaderButtonConfig(
     val colorRes: Int,
     val backgroundRes: Int,
     val enabled: Boolean = true,
-    val onClick: (() -> Unit)? = null
+    val onClick: (() -> Unit)? = null,
+    val isTablet: Boolean = false,
+    val text: String? = null
 )
 
 object HeaderHelper {
@@ -25,6 +27,17 @@ object HeaderHelper {
                 DrawableCompat.setTint(compoundDrawables[1],
                     ContextCompat.getColor(context, config.colorRes))
                 isEnabled = config.enabled
+                if(config.isTablet){
+                    text = config.text
+                    setTextColor(ContextCompat.getColor(context, config.colorRes))
+                    background = ContextCompat.getDrawable(context, config.backgroundRes)
+                    setCompoundDrawablesWithIntrinsicBounds(config.iconRes, 0,
+                        0, 0)
+                    DrawableCompat.setTint(compoundDrawables[0],
+                        ContextCompat.getColor(context, config.colorRes))
+                    isEnabled = config.enabled
+                }
+
                 config.onClick?.let { setOnClickListener { it() } }
             }
         }

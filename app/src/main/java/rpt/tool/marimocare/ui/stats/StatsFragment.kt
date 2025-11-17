@@ -27,9 +27,12 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
                     iconRes = R.drawable.ic_dashboard,
                     colorRes = R.color.marimo_add_icon,
                     backgroundRes = R.drawable.bg_button_white,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.dashboard),
                     onClick = {
                         safeNavController?.safeNavigate(
-                            StatsFragmentDirections.actionStatsFragmentToDashboardFragment()
+                            StatsFragmentDirections
+                                .actionStatsFragmentToDashboardFragment()
                         )
                     }
                 ),
@@ -38,9 +41,12 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
                     iconRes = R.drawable.ic_add,
                     colorRes = R.color.marimo_add_icon,
                     backgroundRes = R.drawable.bg_button_white,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.add_marimo),
                     onClick = {
                         safeNavController?.safeNavigate(
-                            StatsFragmentDirections.actionStatsFragmentToAddOrEditFragment()
+                            StatsFragmentDirections
+                                .actionStatsFragmentToAddOrEditFragment()
                         )
                     }
                 ),
@@ -49,10 +55,12 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
                     iconRes = R.drawable.ic_settings,
                     colorRes = R.color.marimo_add_icon,
                     backgroundRes = R.drawable.bg_button_white,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.settings),
                     onClick = {
                         safeNavController?.safeNavigate(
-                            StatsFragmentDirections.actionStatsFragmentToSettingsFragment()
-                        )
+                            StatsFragmentDirections
+                                .actionStatsFragmentToSettingsFragment())
                     }
                 ),
                 HeaderButtonConfig(
@@ -60,6 +68,8 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
                     iconRes = R.drawable.ic_stats,
                     colorRes = R.color.marimo_item_green,
                     backgroundRes = R.drawable.bg_button_light_green,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.stats),
                     enabled = false
                 )
             )

@@ -12,12 +12,16 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import rpt.tool.marimocare.databinding.ItemMarimoBinding
+import rpt.tool.marimocare.utils.AlertDataUtils
 import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.tool.marimocare.utils.view.getFastAdapterItemViewBinding
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.MarimoItem
 
-class ChangeWaterEventHook(private val lifecycleOwner: LifecycleOwner) : ClickEventHook<MarimoItem>() {
+class ChangeWaterEventHook(
+    private val lifecycleOwner: LifecycleOwner,
+    private val onWaterChanged: () -> Unit
+) : ClickEventHook<MarimoItem>() {
 
     override fun onBind(viewHolder: RecyclerView.ViewHolder): View? {
         val binding = viewHolder.getFastAdapterItemViewBinding<ItemMarimoBinding>()
@@ -32,20 +36,27 @@ class ChangeWaterEventHook(private val lifecycleOwner: LifecycleOwner) : ClickEv
         item: MarimoItem,
     ) {
 
-
         lifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+
             val marimo = RepositoryManager.marimoRepository.getMarimo(item.marimo.code)
             if (marimo != null) {
+
                 val lastChanged = AppUtils.getCurrentDate()
-                RepositoryManager.marimoRepository.updateWaterMarimo(lastChanged,item.marimo.code)
-                val marimoItem = RepositoryManager.marimoRepository.getMarimo(
-                    item.marimo.code)
+                RepositoryManager.marimoRepository.updateWaterMarimo(lastChanged, item.marimo.code)
+
+                val updated = RepositoryManager.marimoRepository.getMarimo(item.marimo.code)
+
+                withContext(Dispatchers.IO) {
+                    AlertDataUtils.recalc()
+                }
 
                 withContext(Dispatchers.Main) {
-                    if (marimoItem != null) {
-                        item.update(marimoItem)
+                    if (updated != null) {
+                        item.update(updated)
                         fastAdapter.notifyAdapterItemChanged(position)
                     }
+
+                    onWaterChanged()
                 }
             }
         }
