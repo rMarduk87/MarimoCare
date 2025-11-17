@@ -25,11 +25,8 @@ import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.EditMarimo
 import rpt.tool.marimocare.BaseFragment
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentDashboardBinding
-import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.data.enums.MarimoStatus
 import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
-import rpt.tool.marimocare.utils.marimo.MarimoFilterUtils
-import rpt.tool.marimocare.utils.marimo.MarimoSortingUtils
 import rpt.tool.marimocare.utils.navigation.safeNavController
 import rpt.tool.marimocare.utils.navigation.safeNavigate
 import rpt.tool.marimocare.utils.view.adapters.CustomSpinnerAdapter
@@ -203,7 +200,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         binding.gridStatusAlternative.visibility = if(SharedPreferencesManager.coloredIsSelected)
             View.VISIBLE else View.GONE
 
-        setupSpinner(sorting)
+        setupSpinner(sorting, SharedPreferencesManager.marimoSorting)
 
     }
 
@@ -267,6 +264,9 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         super.onResume()
         startAutoScroll(SharedPreferencesManager.tipsAutoScrollSped.toLong() * 1000)
         updateAlertsUI()
+        manageFilters()
+        setupSpinner(sorting, SharedPreferencesManager.marimoSorting)
+        applyFilterAndSort()
     }
 
     private fun updateAlertsUI() {
@@ -300,44 +300,81 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun manageFilters() {
+        manageFiltersFromSharedPreferences()
 
         binding.btnAllFilter.setOnClickListener {
-            MarimoFilterUtils.filterByStatus(
-                viewModel.marimoItems.value ?: emptyList(),
-                itemAdapter,
-                null
-            )
+            SharedPreferencesManager.marimoFilter = -1
+            applyFilterAndSort()
             highlightFilterButton(binding.btnAllFilter)
         }
 
         binding.btnOverdueFilter.setOnClickListener {
-            MarimoFilterUtils.filterByStatus(
-                viewModel.marimoItems.value ?: emptyList(),
-                itemAdapter,
-                MarimoStatus.OVERDUE
-            )
+            SharedPreferencesManager.marimoFilter = MarimoStatus.OVERDUE.ordinal
+            applyFilterAndSort()
             highlightFilterButton(binding.btnOverdueFilter)
         }
 
         binding.btnDueSoonFilter.setOnClickListener {
-            MarimoFilterUtils.filterByStatus(
-                viewModel.marimoItems.value ?: emptyList(),
-                itemAdapter,
-                MarimoStatus.DUE_SOON
-            )
+            SharedPreferencesManager.marimoFilter = MarimoStatus.DUE_SOON.ordinal
+            applyFilterAndSort()
             highlightFilterButton(binding.btnDueSoonFilter)
         }
 
         binding.btnUpToDateFilter.setOnClickListener {
-            MarimoFilterUtils.filterByStatus(
-                viewModel.marimoItems.value ?: emptyList(),
-                itemAdapter,
-                MarimoStatus.NORMAL
-            )
+            SharedPreferencesManager.marimoFilter = MarimoStatus.NORMAL.ordinal
+            applyFilterAndSort()
             highlightFilterButton(binding.btnUpToDateFilter)
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun applyFilterAndSort() {
+
+        val original = viewModel.marimoItems.value ?: emptyList()
+
+        val savedFilter = SharedPreferencesManager.marimoFilter
+        val filteredList = when (savedFilter) {
+            -1 -> original
+            MarimoStatus.NORMAL.ordinal -> original.filter {
+                MarimoStatus.from(it.marimo.daysLeft) == MarimoStatus.NORMAL }
+            MarimoStatus.OVERDUE.ordinal -> original.filter {
+                MarimoStatus.from(it.marimo.daysLeft) == MarimoStatus.OVERDUE }
+            MarimoStatus.DUE_SOON.ordinal -> original.filter {
+                MarimoStatus.from(it.marimo.daysLeft) == MarimoStatus.DUE_SOON }
+            else -> original
+        }
+
+        val sorting = SharedPreferencesManager.marimoSorting
+        val finalList = when (sorting) {
+            0 -> filteredList.sortedBy { MarimoStatus.from(it.marimo.daysLeft) }
+            1 -> filteredList.sortedBy { it.marimo.name }
+            2 -> filteredList.sortedByDescending { it.marimo.lastChanged }
+            else -> filteredList
+        }
+
+        itemAdapter.set(finalList)
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun manageFiltersFromSharedPreferences() {
+        val savedFilter = SharedPreferencesManager.marimoFilter
+        applyFilterAndSort()
+        if(savedFilter == -1){
+            highlightFilterButton(binding.btnAllFilter)
+        }
+        else{
+            var viewToBind = binding.btnAllFilter
+            when (savedFilter) {
+                MarimoStatus.NORMAL.ordinal -> viewToBind = binding.btnUpToDateFilter
+                MarimoStatus.OVERDUE.ordinal -> viewToBind = binding.btnOverdueFilter
+                MarimoStatus.DUE_SOON.ordinal -> viewToBind = binding.btnDueSoonFilter
+            }
+            highlightFilterButton(viewToBind)
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("UseCompatTextViewDrawableApis")
     private fun highlightFilterButton(selected: View) {
 
@@ -360,6 +397,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
         when (selected) {
             binding.btnAllFilter->{
+                SharedPreferencesManager.marimoFilter = -1
                 selected.setBackgroundResource(R.drawable.bg_notes_green_card)
                 (selected as android.widget.TextView).setTextColor(
                     ContextCompat.getColor(requireContext(), android.R.color.white)
@@ -367,6 +405,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             }
 
             binding.btnUpToDateFilter -> {
+                SharedPreferencesManager.marimoFilter = MarimoStatus.NORMAL.ordinal
                 selected.setBackgroundResource(R.drawable.bg_notes_green_card)
                 (selected as android.widget.TextView).setTextColor(
                     ContextCompat.getColor(requireContext(), android.R.color.white)
@@ -377,6 +416,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             }
 
             binding.btnOverdueFilter -> {
+                SharedPreferencesManager.marimoFilter = MarimoStatus.OVERDUE.ordinal
                 selected.setBackgroundResource(R.drawable.bg_notes_red_card)
                 (selected as android.widget.TextView).setTextColor(
                     ContextCompat.getColor(requireContext(), android.R.color.white)
@@ -387,6 +427,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             }
 
             binding.btnDueSoonFilter -> {
+                SharedPreferencesManager.marimoFilter = MarimoStatus.DUE_SOON.ordinal
                 selected.setBackgroundResource(R.drawable.bg_notes_orange_card)
                 (selected as android.widget.TextView).setTextColor(
                     ContextCompat.getColor(requireContext(), android.R.color.white)
@@ -401,10 +442,11 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
     @SuppressLint("ClickableViewAccessibility")
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun setupSpinner(sorting: List<String>) {
+    private fun setupSpinner(sorting: List<String>, marimoSorting: Int) {
         val spinner = binding.marimoSpinnerLayout.customSpinner
         val arrow = binding.marimoSpinnerLayout.arrow
         val adapter = CustomSpinnerAdapter(requireContext(), sorting)
+        spinner.adapter = null
         spinner.adapter = adapter
         spinner.setPopupBackgroundDrawable(ContextCompat.getDrawable(requireContext(),
             R.drawable.spinner_dropdown_background))
@@ -425,21 +467,16 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                                         id: Long) {
                 adapter.setSelectedIndex(position)
                 arrow.startAnimation(rotateDown)
-                sortMarimo(position)
+                SharedPreferencesManager.marimoSorting = position
+                applyFilterAndSort()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
                 arrow.startAnimation(rotateDown)
             }
         }
-    }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun sortMarimo(position: Int){
-        MarimoSortingUtils.sortBy(
-            viewModel.marimoItems.value ?: emptyList(),
-            itemAdapter, position
-        )
+        spinner.setSelection(marimoSorting)
     }
 
     override fun onDestroyView() {

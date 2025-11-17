@@ -66,6 +66,14 @@ enum class MarimoStatus(
                 else -> NORMAL
             }
         }
+
+        fun fromInt(index: Int): MarimoStatus {
+            return when(index) {
+                0 -> NORMAL
+                1 -> DUE_SOON
+                else -> OVERDUE
+            }
+        }
     }
 
     fun formatDaysLeftText(res: android.content.res.Resources, daysLeft: Int): String = when {

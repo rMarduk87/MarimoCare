@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Marimo Care</string>
     <string name="marimo_care_dashboard">🌿 Marimo Care Dashboard</string>
-    <string name="keep_track_of_your_marimo_moss_balls_and_never_miss_a_water_change_again">Keep track of your marimo moss balls and never miss a water change again!</string>
+    <string name="keep_track_of_your_marimo">Keep track of your marimo moss balls and never miss a water change again!</string>
     <string name="marimo_tip_title_1">💡 Marimo Tip: Perfect Temperature</string>
     <string name="marimo_tip_title_2">💡 Marimo Tip: Gentle Rolling</string>
     <string name="marimo_tip_title_3">💡 Marimo Tip: Clean Water is Key</string>
@@ -28,7 +28,7 @@
     <string name="due_soon">Due Soon</string>
     <string name="_0">0</string>
     <string name="your_marimos">Your Marimos</string>
-    <string name="add_marimo">+ Add Marimo</string>
+    <string name="add_marimo">+ New Marimo</string>
     <string name="mochi">Mochi</string>
     <string name="changes_every_14_days">Changes every 14 days</string>
     <string name="_295_days_overdue">295 days overdue</string>

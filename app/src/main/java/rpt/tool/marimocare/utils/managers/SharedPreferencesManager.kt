@@ -41,4 +41,11 @@ object SharedPreferencesManager {
         get() = sharedPreferences.getInt(AppUtils.TIPS_AUTO_SCROLL_SPEED, 15)
         set(value) = sharedPreferences.edit() { putInt(AppUtils.TIPS_AUTO_SCROLL_SPEED, value) }
 
+    var marimoFilter: Int
+        get() = sharedPreferences.getInt(AppUtils.MARIMO_FILTER_SELECTED, -1)
+        set(value) = sharedPreferences.edit() { putInt(AppUtils.MARIMO_FILTER_SELECTED, value) }
+
+    var marimoSorting: Int
+        get() = sharedPreferences.getInt(AppUtils.MARIMO_SORTING_SELECTED, 0)
+        set(value) = sharedPreferences.edit() { putInt(AppUtils.MARIMO_SORTING_SELECTED, value) }
 }

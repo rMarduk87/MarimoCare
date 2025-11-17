@@ -69,6 +69,8 @@ class AppUtils {
         const val ALERT_SOON : String = "alertSoon"
         const val COLORED_IS_SELECTED: String = "colored_is_selected"
         const val TIPS_AUTO_SCROLL_SPEED : String = "tips_auto_scroll_speed"
+        const val MARIMO_FILTER_SELECTED : String = "marimo_filter_selected"
+        const val MARIMO_SORTING_SELECTED : String = "marimo_sorting_selected"
 
 
 
