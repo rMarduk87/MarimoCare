@@ -107,6 +107,23 @@
     <string name="very_slow_25_seconds">Very Slow (25 seconds)</string>
     <string name="sort">\t\tSort by:</string>
     <string name="add">+ Add</string>
+    <string name="plus">+</string>
+    <string name="in">In</string>
+    <string name="due_soon_">Due</string>
+    <string name="dashboard_filters_amp_sorting"><![CDATA[Dashboard Filters & Sorting]]></string>
+    <string name="customize_how_marimos_are_filtered_and_sorted_on_the_dashboard">Customize how marimos are filtered\nand sorted on the dashboard</string>
+    <string name="display_controls">Display Controls</string>
+    <string name="show_filters_and_sort_controls">Show filters and sort controls</string>
+    <string name="hide_filters_and_sort_controls">Hide filters and sort controls</string>
+    <string name="default_filter">Default filter</string>
+    <string name="all_marimos">All Marimos</string>
+    <string name="overdue_only">Overdue Only</string>
+    <string name="due_soon_only">Due Soon Only</string>
+    <string name="up_to_date_only">Up to Date Only</string>
+    <string name="default_sort_order">Default Sort Order</string>
+    <string name="sort_by_status_overdue_first">By Status (Overdue first)</string>
+    <string name="sorted_by_name_a_z">By Name (A-Z)</string>
+    <string name="sort_by_last_changed_newest_first">By Last Changed (Newest first)</string>
     <string-array name="marimo_frequencies">
         <item>Every 7 days (Weekly)</item>
         <item>Every 10 days</item>

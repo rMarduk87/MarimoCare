@@ -57,7 +57,7 @@
 
         <Button
             android:id="@+id/btnDashboardHeader"
-            android:layout_width="wrap_content"
+            android:layout_width="160dp"
             android:layout_height="42dp"
             android:drawableLeft="@drawable/ic_dashboard"
             android:drawableTint="@color/marimo_item_green"
@@ -72,7 +72,7 @@
 
         <Button
             android:id="@+id/btnAddMarimoHeader"
-            android:layout_width="wrap_content"
+            android:layout_width="160dp"
             android:layout_height="42dp"
             android:drawableLeft="@drawable/ic_add"
             android:drawableTint="@color/marimo_add_icon"
@@ -88,7 +88,7 @@
 
         <Button
             android:id="@+id/btnOpenSettings"
-            android:layout_width="wrap_content"
+            android:layout_width="160dp"
             android:layout_height="42dp"
             android:layout_marginStart="9dp"
             android:text="@string/settings"
@@ -104,7 +104,7 @@
 
         <Button
             android:id="@+id/btnOpenStats"
-            android:layout_width="wrap_content"
+            android:layout_width="160dp"
             android:layout_height="42dp"
             android:layout_marginStart="9dp"
             android:text="@string/stats"

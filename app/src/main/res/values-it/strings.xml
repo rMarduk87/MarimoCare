@@ -38,7 +38,7 @@
     <string name="water_changed">Cambia l\' acqua</string>
     <string name="edit">Modifica</string>
     <string name="img">Immagine</string>
-    <string name="water_change_tracker">Tracciatore dei cambiamenti d\'acqua</string>
+    <string name="water_change_tracker">Registro del cambio\nd\'acqua</string>
     <string name="dashboard">Dashboard</string>
     <string name="changes_every_days">Cambia ogni %1$d giorni</string>
     <string name="no_notes">Nessuna nota</string>
@@ -47,13 +47,13 @@
     <string name="_12_days_left">12 giorni rimasti</string>
     <string name="last_changed">Ultima modifica</string>
     <string name="oct_15_2025">15 ottobre 2025</string>
-    <string name="next_change">Prossima modifica</string>
+    <string name="next_change">Prossimo cambio</string>
     <string name="oct_29_2025">29 ottobre 2025</string>
     <string name="notes">Note</string>
     <string name="bottom">Mantieni i tuoi amici marimo felici e in salute! 🌱</string>
     <string name="loading_your_little_friends">Caricamento dei tuoi piccoli amici…</string>
     <string name="days_overdue">giorni di ritardo</string>
-    <string name="due_in">Da consegnare entro</string>
+    <string name="due_in">Cambio in</string>
     <string name="days">giorni</string>
     <string name="add_new_marimo">Aggiungi un nuovo marimo</string>
     <string name="add_a_new_marimo_friend_to_track">Aggiungi un nuovo amico marimo da tracciare</string>
@@ -61,7 +61,7 @@
     <string name="e_g_mochi_bubbles_green_bean">es. Mochi, Bubbles, Green Bean…</string>
     <string name="last_water_change">Ultimo cambio d\'acqua *</string>
     <string name="october_30th_2025">2025–10–30</string>
-    <string name="change_frequency">Frequenza di modifica *</string>
+    <string name="change_frequency">Frequenza di cambio *</string>
     <string name="notes_optional">Note (facoltative)</string>
     <string name="any_special_care_instructions_or_observations">Istruzioni o osservazioni per cure speciali…</string>
     <string name="cancel">Annulla</string>
@@ -99,7 +99,7 @@
     <string name="soon_marimo">Ci sono alcuni Marimo che a breve necessiteranno il cambio d\' acqua: %1$s</string>
     <string name="today_marimo_list">Elenco dei Marimo da cambiare oggi:\n%1$s</string>
     <string name="tips_auto_scroll_speed">Velocità di scorrimento\nautomatico dei suggerimenti</string>
-    <string name="choose_how_quickly_the_marimo_care_tips_automatically_rotate">Scegli la velocità con cui i suggerimenti per la cura dei Marimo ruotano automaticamente</string>
+    <string name="choose_how_quickly_the_marimo_care_tips_automatically_rotate">Scegli la velocità con cui i suggerimenti per la cura\ndei Marimo ruotano automaticamente</string>
     <string name="very_fast_5_seconds">Molto veloce (5 secondi)</string>
     <string name="fast_10_seconds">Veloce (10 secondi)</string>
     <string name="normal_15_seconds">Normale (15 secondi)</string>
@@ -107,6 +107,23 @@
     <string name="very_slow_25_seconds">Molto lento (25 secondi)</string>
     <string name="sort">\t\tOrdina per:</string>
     <string name="add">Nuovo</string>
+    <string name="plus">+</string>
+    <string name="in">In</string>
+    <string name="due_soon_">Scadenza</string>
+    <string name="dashboard_filters_amp_sorting"><![CDATA[Filtri e ordinamento della dashboard]]></string>
+    <string name="customize_how_marimos_are_filtered_and_sorted_on_the_dashboard">Personalizza il modo in cui i marimo vengono filtrati\ne ordinati sulla dashboard</string>
+    <string name="display_controls">Controlli di visualizzazione</string>
+    <string name="show_filters_and_sort_controls">Mostra filtri e ordinamento</string>
+    <string name="hide_filters_and_sort_controls">Nascondi filtri e ordinamento</string>
+    <string name="default_filter">Filtro predefinito</string>
+    <string name="all_marimos">Tutti i marimo</string>
+    <string name="overdue_only">Solo in ritardo</string>
+    <string name="due_soon_only">Solo in scadenza a breve</string>
+    <string name="up_to_date_only">Solo Aggiornato</string>
+    <string name="default_sort_order">Ordinamento predefinito per</string>
+    <string name="sort_by_status_overdue_first">Stato (prima quelli in ritardo)</string>
+    <string name="sorted_by_name_a_z">Nome (dalla A alla Z)</string>
+    <string name="sort_by_last_changed_newest_first">Ultimo cambio (dal più recente)</string>
     <string-array name="marimo_frequencies">
         <item>Ogni 7 giorni (settimanale)</item>
         <item>Ogni 10 giorni</item>

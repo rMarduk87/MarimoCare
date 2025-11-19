@@ -463,7 +463,7 @@
                     android:layout_height="wrap_content"/>
                 <Button
                     android:id="@+id/btnAddMarimo"
-                    android:layout_marginStart="160dp"
+                    android:layout_marginStart="200dp"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:text="@string/add"
@@ -474,6 +474,7 @@
                     />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/filterTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="16dp">
@@ -487,6 +488,7 @@
                     app:drawableStartCompat="@drawable/ic_filter" />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/buttonFilter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp">
@@ -518,6 +520,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/buttonFilter2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp">
@@ -539,6 +542,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/buttonFilter3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -559,6 +563,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/sorts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="16dp"

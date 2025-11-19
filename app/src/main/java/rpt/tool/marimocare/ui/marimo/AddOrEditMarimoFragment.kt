@@ -229,24 +229,30 @@ class AddOrEditMarimoFragment :
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun addDataToMarimo(marimoCode: Int) {
-        if(marimoCode != 0){
+        if (marimoCode != 0) {
             viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
                 marimo = RepositoryManager.marimoRepository.getMarimo(marimoCode)
-                if(marimo != null) {
-                    withContext(Dispatchers.Main) {
+                withContext(Dispatchers.Main) {
+                    if (marimo != null) {
                         binding.inputName.setText(marimo!!.name)
                         binding.inputDate.setText(marimo!!.lastChanged)
                         binding.inputNotes.setText(marimo!!.notes)
+
                         val index = AppUtils.indexOfContaining(
-                            marimo!!.changeFrequencyDays.toString(),frequencies)
-                        binding.marimoSpinnerLayout.customSpinner.setSelection(if(index != -1)
-                            index else index)
+                            marimo!!.changeFrequencyDays.toString(), frequencies
+                        )
+                        binding.marimoSpinnerLayout.customSpinner
+                            .setSelection(if (index != -1) index else 0)
+
                         binding.btnAdd.text = getString(R.string.update)
                     }
+
+                    setupActionButtons(marimo)
                 }
             }
+        } else {
+            // Caso nuovo marimo
+            setupActionButtons(null)
         }
-
-        setupActionButtons(marimo)
     }
 }

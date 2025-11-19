@@ -4,13 +4,18 @@ import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.os.Build
 import android.os.Bundle
+import android.os.LocaleList
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.AdapterView
 import android.widget.Button
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
+import androidx.core.view.marginTop
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.mikepenz.fastadapter.FastAdapter
@@ -21,11 +26,13 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.ChangeWaterEventHook
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.EditMarimoEventHook
 import rpt.tool.marimocare.BaseFragment
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentDashboardBinding
+import rpt.tool.marimocare.utils.AlertDataUtils
 import rpt.tool.marimocare.utils.data.enums.MarimoStatus
 import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 import rpt.tool.marimocare.utils.navigation.safeNavController
@@ -84,6 +91,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         }
 
         fastAdapter.addEventHook(ChangeWaterEventHook(viewLifecycleOwner) {
+            applyFilterAndSort()
             updateAlertsUI()
         })
         fastAdapter.addEventHook(EditMarimoEventHook())
@@ -210,7 +218,10 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
         setupSpinner(sorting, SharedPreferencesManager.marimoSorting)
 
+        manageLayoutBySizeAndLocation()
+
     }
+
 
     private fun addNewMarimo() {
         safeNavController?.safeNavigate(DashboardFragmentDirections.
@@ -270,11 +281,19 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onResume() {
         super.onResume()
+
         startAutoScroll(SharedPreferencesManager.tipsAutoScrollSped.toLong() * 1000)
-        updateAlertsUI()
-        manageFilters()
-        setupSpinner(sorting, SharedPreferencesManager.marimoSorting)
-        applyFilterAndSort()
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            withContext(Dispatchers.IO) {
+                AlertDataUtils.recalc()
+            }
+
+            updateAlertsUI()
+            manageFilters()
+            setupSpinner(sorting, SharedPreferencesManager.marimoSorting)
+            applyFilterAndSort()
+        }
     }
 
     private fun updateAlertsUI() {
@@ -354,7 +373,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
         val sorting = SharedPreferencesManager.marimoSorting
         val finalList = when (sorting) {
-            0 -> filteredList.sortedBy { MarimoStatus.from(it.marimo.daysLeft) }
+            0 -> filteredList.sortedByDescending { MarimoStatus.from(it.marimo.daysLeft) }
             1 -> filteredList.sortedBy { it.marimo.name }
             2 -> filteredList.sortedByDescending { it.marimo.lastChanged }
             else -> filteredList
@@ -380,6 +399,22 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             }
             highlightFilterButton(viewToBind)
         }
+
+        binding.filterTitle.visibility = if(SharedPreferencesManager.showFilterAndSort)
+            View.VISIBLE else View.GONE
+
+        binding.buttonFilter?.visibility = if(SharedPreferencesManager.showFilterAndSort)
+            View.VISIBLE else View.GONE
+
+        binding.buttonFilter2?.visibility = if(SharedPreferencesManager.showFilterAndSort)
+            View.VISIBLE else View.GONE
+
+        binding.buttonFilter3?.visibility = if(SharedPreferencesManager.showFilterAndSort)
+            View.VISIBLE else View.GONE
+
+        binding.sorts?.visibility = if(SharedPreferencesManager.showFilterAndSort)
+            View.VISIBLE else View.GONE
+
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -395,7 +430,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
         allButtons.forEach { btn ->
             btn.setBackgroundResource(R.drawable.bg_notes_card)
-            (btn as? android.widget.TextView)?.setTextColor(
+            (btn as? TextView)?.setTextColor(
                 ContextCompat.getColor(requireContext(), R.color.marimo_dark)
             )
             btn.compoundDrawableTintList =
@@ -407,7 +442,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             binding.btnAllFilter->{
                 SharedPreferencesManager.marimoFilter = -1
                 selected.setBackgroundResource(R.drawable.bg_notes_green_card)
-                (selected as android.widget.TextView).setTextColor(
+                (selected as TextView).setTextColor(
                     ContextCompat.getColor(requireContext(), android.R.color.white)
                 )
             }
@@ -415,7 +450,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             binding.btnUpToDateFilter -> {
                 SharedPreferencesManager.marimoFilter = MarimoStatus.NORMAL.ordinal
                 selected.setBackgroundResource(R.drawable.bg_notes_green_card)
-                (selected as android.widget.TextView).setTextColor(
+                (selected as TextView).setTextColor(
                     ContextCompat.getColor(requireContext(), android.R.color.white)
                 )
                 (selected as Button).compoundDrawableTintList =
@@ -426,7 +461,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             binding.btnOverdueFilter -> {
                 SharedPreferencesManager.marimoFilter = MarimoStatus.OVERDUE.ordinal
                 selected.setBackgroundResource(R.drawable.bg_notes_red_card)
-                (selected as android.widget.TextView).setTextColor(
+                (selected as TextView).setTextColor(
                     ContextCompat.getColor(requireContext(), android.R.color.white)
                 )
                 (selected as Button).compoundDrawableTintList =
@@ -437,7 +472,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             binding.btnDueSoonFilter -> {
                 SharedPreferencesManager.marimoFilter = MarimoStatus.DUE_SOON.ordinal
                 selected.setBackgroundResource(R.drawable.bg_notes_orange_card)
-                (selected as android.widget.TextView).setTextColor(
+                (selected as TextView).setTextColor(
                     ContextCompat.getColor(requireContext(), android.R.color.white)
                 )
                 (selected as Button).compoundDrawableTintList =
@@ -485,6 +520,41 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         }
 
         spinner.setSelection(marimoSorting)
+    }
+
+    private fun manageLayoutBySizeAndLocation() {
+        val isSmall = resources.configuration.smallestScreenWidthDp <= 370
+        val isLocateItaly = resources.configuration.locales.get(0).country == "IT"
+
+        if(isSmall && isLocateItaly) {
+            binding.italian1!!.visibility = if (!SharedPreferencesManager.coloredIsSelected)
+                View.VISIBLE else View.GONE
+            binding.italian2!!.visibility = if (!SharedPreferencesManager.coloredIsSelected)
+                View.VISIBLE else View.GONE
+            binding.italian1Alternative!!.visibility =
+                if (SharedPreferencesManager.coloredIsSelected) View.VISIBLE else View.GONE
+            binding.italian2Alternative!!.visibility =
+                if (SharedPreferencesManager.coloredIsSelected) View.VISIBLE else View.GONE
+        }
+        else if(isSmall){
+            binding.italian1!!.visibility = if (!SharedPreferencesManager.coloredIsSelected)
+                View.VISIBLE else View.GONE
+            binding.italian1!!.text = resources.getString(R.string.due_soon)
+            if(binding.italian1!!.visibility == View.VISIBLE){
+                val layoutParams = binding.italian1!!.layoutParams as ViewGroup.MarginLayoutParams
+                layoutParams.setMargins(0, 34, 0, 0);
+            }
+            binding.italian2!!.visibility = View.GONE
+            binding.italian1Alternative!!.visibility =
+                if (SharedPreferencesManager.coloredIsSelected) View.VISIBLE else View.GONE
+            binding.italian2Alternative!!.visibility = View.GONE
+            binding.italian1Alternative!!.text = resources.getString(R.string.due_soon)
+            if(binding.italian1Alternative!!.visibility == View.VISIBLE){
+                val layoutParams = binding.italian1Alternative!!.layoutParams
+                        as ViewGroup.MarginLayoutParams
+                layoutParams.setMargins(0, 34, 0, 0);
+            }
+        }
     }
 
     override fun onDestroyView() {

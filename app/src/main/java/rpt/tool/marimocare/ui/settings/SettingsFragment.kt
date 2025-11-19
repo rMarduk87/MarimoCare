@@ -19,19 +19,30 @@ class SettingsFragment :
 
     private var coloredOptionSelected = false
     private var tipsAutoScrollSped = 15
+    private var showFilterAndSort = true
+    private var filterSelected = 0
+    private var sortingSelected = 0
 
     private val speedViews: MutableMap<Int, TextView> = mutableMapOf()
+    private val filterViews: MutableMap<Int, TextView> = mutableMapOf()
+    private val sortedViews: MutableMap<Int, TextView> = mutableMapOf()
+    private val showViews: MutableMap<Boolean, TextView> = mutableMapOf()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         initSpeedViews()
+        initShowViews()
+        initFilterViews()
+        initSortedViews()
         setupHeaderButtons()
         setupCardBackgrounds()
         setupDashboardColorSelection()
         setupDashboardListeners()
         setupSpeedTipsSelection()
         setupSpeedTipsListeners()
+        setupFilterAndSortSelection()
+        setupFilterAndSortListeners()
         setupSaveCancelListeners()
     }
 
@@ -94,11 +105,9 @@ class SettingsFragment :
 
     private fun setupCardBackgrounds() {
         binding.apply {
-            include3.cardCounterTotal.setBackgroundResource(R.drawable.bg_card_marimo_status_t)
-            include4.cardCounterOverdue.setBackgroundResource(R.drawable.bg_card_marimo_status_o)
-            include5.cardCounterDue.setBackgroundResource(R.drawable.bg_card_marimo_status_s)
-            container.setBackgroundResource(R.drawable.bg_card_settings)
+            container?.setBackgroundResource(R.drawable.bg_card_settings)
             containerSpeed.setBackgroundResource(R.drawable.bg_card_settings)
+            containerOrderAndFilters.setBackgroundResource(R.drawable.bg_card_settings)
         }
     }
 
@@ -141,6 +150,24 @@ class SettingsFragment :
         speedViews[25] = binding.inputVerySlow
     }
 
+    private fun initShowViews() {
+        showViews[true] = binding.inputShow
+        showViews[false] = binding.inputHide
+    }
+
+    private fun initFilterViews() {
+        filterViews[-1] = binding.inputAll
+        filterViews[0] = binding.inputOverdue
+        filterViews[1] = binding.inputDueSoon
+        filterViews[2] = binding.inputUpToDate
+    }
+
+    private fun initSortedViews() {
+        sortedViews[0] = binding.inputStatus
+        sortedViews[1] = binding.inputName
+        sortedViews[2] = binding.inputLastChanged
+    }
+
     private fun setupSpeedTipsSelection() {
         tipsAutoScrollSped = SharedPreferencesManager.tipsAutoScrollSped
         updateSpeedTipsSelection()
@@ -174,10 +201,104 @@ class SettingsFragment :
         }
     }
 
+    private fun setupFilterAndSortSelection() {
+        showFilterAndSort = SharedPreferencesManager.showFilterAndSort
+        filterSelected = SharedPreferencesManager.marimoFilter
+        sortingSelected = SharedPreferencesManager.marimoSorting
+        updateFilterAndSortSelection()
+    }
+
+    private fun updateFilterAndSortSelection() {
+        binding.defaultFilters.visibility = View.GONE
+        binding.defaultSort.visibility = View.GONE
+        if(!showFilterAndSort) {
+            binding.defaultFilters.visibility = View.VISIBLE
+            binding.defaultSort.visibility = View.VISIBLE
+        }
+
+        showViews.forEach { (show, view) ->
+
+            val selected = (show == showFilterAndSort)
+
+            view.setBackgroundResource(
+                if (selected) R.drawable.edittext_outline_selected
+                else R.drawable.edittext_outline_grey
+            )
+
+            val checkIcon = if (selected)
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_check)
+            else null
+
+            view.setCompoundDrawablesWithIntrinsicBounds(null, null, checkIcon,
+                null)
+        }
+
+        filterViews.forEach { (filter, view) ->
+
+            val selected = (filter == filterSelected)
+
+            view.setBackgroundResource(
+                if (selected) R.drawable.edittext_outline_selected
+                else R.drawable.edittext_outline_grey
+            )
+
+            val checkIcon = if (selected)
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_check)
+            else null
+
+            view.setCompoundDrawablesWithIntrinsicBounds(null, null, checkIcon,
+                null)
+        }
+
+        sortedViews.forEach { (sort, view) ->
+
+            val selected = (sort == sortingSelected)
+
+            view.setBackgroundResource(
+                if (selected) R.drawable.edittext_outline_selected
+                else R.drawable.edittext_outline_grey
+            )
+
+            val checkIcon = if (selected)
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_check)
+            else null
+
+            view.setCompoundDrawablesWithIntrinsicBounds(null, null, checkIcon,
+                null)
+        }
+    }
+
+    private fun setupFilterAndSortListeners() {
+
+        showViews.forEach { (show, view) ->
+            view.setOnClickListener {
+                showFilterAndSort = show
+                updateFilterAndSortSelection()
+            }
+        }
+
+        filterViews.forEach { (filter, view) ->
+            view.setOnClickListener {
+                filterSelected = filter
+                updateFilterAndSortSelection()
+            }
+        }
+
+        sortedViews.forEach { (sort, view) ->
+            view.setOnClickListener {
+                sortingSelected = sort
+                updateFilterAndSortSelection()
+            }
+        }
+    }
+
     private fun setupSaveCancelListeners() {
         binding.btnSave.setOnClickListener {
             SharedPreferencesManager.coloredIsSelected = coloredOptionSelected
             SharedPreferencesManager.tipsAutoScrollSped = tipsAutoScrollSped
+            SharedPreferencesManager.showFilterAndSort = showFilterAndSort
+            SharedPreferencesManager.marimoFilter = filterSelected
+            SharedPreferencesManager.marimoSorting = sortingSelected
             Toast.makeText(
                 requireContext(),
                 getString(R.string.option_correctly_updated),
@@ -188,6 +309,9 @@ class SettingsFragment :
         binding.btnCancel.setOnClickListener {
             coloredOptionSelected = SharedPreferencesManager.coloredIsSelected
             tipsAutoScrollSped = SharedPreferencesManager.tipsAutoScrollSped
+            showFilterAndSort = SharedPreferencesManager.showFilterAndSort
+            filterSelected = SharedPreferencesManager.marimoFilter
+            sortingSelected = SharedPreferencesManager.marimoSorting
             updateDashboardSelection()
             updateSpeedTipsSelection()
         }

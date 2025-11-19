@@ -71,6 +71,7 @@ class AppUtils {
         const val TIPS_AUTO_SCROLL_SPEED : String = "tips_auto_scroll_speed"
         const val MARIMO_FILTER_SELECTED : String = "marimo_filter_selected"
         const val MARIMO_SORTING_SELECTED : String = "marimo_sorting_selected"
+        const val SHOW_FILTER_AND_SORT : String = "show_filter_and_sort"
 
 
 

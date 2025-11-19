@@ -24,6 +24,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <!-- Titoli -->
             <TextView
                 android:id="@+id/title"
                 android:layout_width="match_parent"
@@ -45,221 +46,387 @@
                 android:textColor="#555"
                 android:textSize="14sp" />
 
-            <!-- MaterialCardView container -->
-            <com.google.android.material.card.MaterialCardView
+            <!-- Container impostazioni Dashboard -->
+            <LinearLayout
                 android:id="@+id/container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:orientation="vertical"
+                android:background="@drawable/bg_card_settings"
                 android:padding="16dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="4dp">
+                android:layout_marginBottom="16dp">
 
+                <!-- Header card default -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="8dp">
 
-                    <LinearLayout
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_palette"
+                        android:contentDescription="@string/img"
+                        app:tint="#0B6E4F" />
+
+                    <TextView
+                        android:id="@+id/txtTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="15dp"
+                        android:text="@string/dashboard_card_style"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/marimo_black"
+                        android:paddingBottom="4dp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txtSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/choose_how_you_want_your_marimo_statistics_cards_to_appear_on_the_dashboard"
+                    android:textColor="@color/marimo_dark"
+                    android:textSize="14sp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:paddingBottom="16dp" />
+
+                <!-- DASHBOARD DEFAULT -->
+                <LinearLayout
+                    android:id="@+id/dash_default"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_card_selected"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:layout_marginBottom="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="8dp"
                         tools:ignore="UseCompoundDrawables">
 
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_marginEnd="10dp"
-                            android:src="@drawable/ic_palette"
-                            app:tint="#0B6E4F"
-                            android:contentDescription="@string/img" />
-
                         <TextView
-                            android:id="@+id/txtTitle"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="@string/dashboard_card_style"
-                            android:textColor="@color/marimo_black"
-                            android:textSize="20sp"
+                            android:layout_weight="1"
+                            android:layout_marginStart="15dp"
+                            android:text="@string/default_style"
+                            android:textSize="21sp"
                             android:textStyle="bold"
-                            android:paddingBottom="4dp" />
+                            android:textColor="@color/marimo_black" />
+
+                        <include android:id="@+id/includeDef" layout="@layout/checkmark"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+
                     </LinearLayout>
 
                     <TextView
-                        android:id="@+id/txtSubtitle"
+                        android:id="@+id/txtSubtitleDefault"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="@string/clean_cards_with_icons_and_subtle_backgrounds"
+                        android:textColor="@color/marimo_dark"
+                        android:textSize="14sp"
                         android:layout_gravity="center"
                         android:layout_marginStart="5dp"
                         android:paddingBottom="16dp"
-                        android:text="@string/choose_how_you_want_your_marimo_statistics_cards_to_appear_on_the_dashboard"
-                        android:textColor="@color/marimo_dark"
-                        android:textSize="14sp" />
+                        android:layout_marginBottom="4dp"/>
 
-                    <!-- Default + Colored centrati e distanziati -->
+
+                    <!-- Grid card default -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:weightSum="3">
+
+                        <!-- Total -->
+                        <LinearLayout
+                            android:id="@+id/include30"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:background="@drawable/bg_card_marimo_status_t"
+                            android:padding="12dp"
+                            android:layout_margin="4dp">
+
+                            <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:src="@drawable/circle_mask_total_mini"
+                                android:scaleType="centerCrop"
+                                android:layout_marginBottom="8dp"
+                                android:padding="12dp"
+                                android:contentDescription="@string/img"
+                                android:clipToOutline="true"
+                                android:background="@drawable/circle_mask_total"/>
+
+                            <TextView
+                                android:id="@+id/cardCounterTotal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/_3"
+                                android:textSize="20sp"
+                                android:textColor="#0B6E4F"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/cardTitleTotal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/total"
+                                android:textSize="12sp"
+                                android:textColor="#0B6E4F" />
+                        </LinearLayout>
+
+                        <!-- Overdue -->
+                        <LinearLayout
+                            android:id="@+id/include40"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:background="@drawable/bg_card_marimo_status_o"
+                            android:padding="12dp"
+                            android:layout_margin="4dp">
+
+                            <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:src="@drawable/circle_mask_overdue_mini"
+                                android:scaleType="centerCrop"
+                                android:layout_marginBottom="8dp"
+                                android:padding="12dp"
+                                android:contentDescription="@string/img"
+                                android:clipToOutline="true"
+                                android:background="@drawable/circle_mask_overdue"/>
+
+                            <TextView
+                                android:id="@+id/cardCounterOverdue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/_3"
+                                android:textSize="20sp"
+                                android:textColor="@color/marimo_red"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/cardTitleOverdue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/overdue"
+                                android:textSize="12sp"
+                                android:textColor="@color/marimo_red" />
+                        </LinearLayout>
+
+                        <!-- Due Soon -->
+                        <LinearLayout
+                            android:id="@+id/include50"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:background="@drawable/bg_card_marimo_status_s"
+                            android:padding="12dp"
+                            android:layout_margin="4dp">
+
+                            <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:src="@drawable/circle_mask_soon_mini"
+                                android:scaleType="centerCrop"
+                                android:layout_marginBottom="8dp"
+                                android:padding="12dp"
+                                android:contentDescription="@string/img"
+                                android:clipToOutline="true"
+                                android:background="@drawable/circle_mask_soon"/>
+
+                            <TextView
+                                android:id="@+id/cardCounterDue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/_0"
+                                android:textSize="20sp"
+                                android:textColor="@color/marimo_orange"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/cardTitleDue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/due_soon"
+                                android:textSize="12sp"
+                                android:textColor="@color/marimo_orange" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- DASHBOARD COLORED -->
+                <LinearLayout
+                    android:id="@+id/dash_colored"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_card_unselected"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:layout_marginBottom="16dp">
+
+                    <!-- Header card colored -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="8dp"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="15dp"
+                            android:text="@string/colored_style"
+                            android:textSize="21sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/marimo_black" />
+
+                        <include android:id="@+id/includeCol" layout="@layout/checkmark"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/txtSubtitleColored"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/bold_colored_backgrounds_without_icons"
+                        android:textColor="@color/marimo_dark"
+                        android:textSize="14sp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginBottom="4dp"
+                        android:paddingBottom="16dp" />
+
+                    <!-- Grid card colored -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="16dp">
+                        android:weightSum="3">
 
-                        <!-- Default Style -->
+                        <!-- Total -->
                         <LinearLayout
-                            android:id="@+id/dash_default"
-                            android:layout_width="350dp"
-                            android:layout_height="300dp"
+                            android:id="@+id/include60"
+                            android:layout_width="0dp"
+                            android:layout_height="70dp"
+                            android:layout_weight="1"
                             android:orientation="vertical"
-                            android:background="@drawable/bg_card_selected"
-                            android:padding="16dp"
-                            android:layout_marginEnd="50dp">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:gravity="center_vertical"
-                                android:paddingBottom="8dp"
-                                tools:ignore="UseCompoundDrawables">
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:layout_marginStart="15dp"
-                                    android:text="@string/default_style"
-                                    android:textSize="21sp"
-                                    android:textStyle="bold"
-                                    android:textColor="@color/marimo_black" />
-
-                                <include
-                                    android:id="@+id/includeDef"
-                                    layout="@layout/checkmark"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-                            </LinearLayout>
+                            android:gravity="center"
+                            android:background="#E8FFF5"
+                            android:padding="12dp"
+                            android:layout_margin="4dp">
 
                             <TextView
+                                android:id="@+id/cardCounterTotalColored"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="15dp"
-                                android:paddingBottom="12dp"
-                                android:text="@string/clean_cards_with_icons_and_subtle_backgrounds"
-                                android:textColor="@color/marimo_dark"
-                                android:textSize="14sp" />
-
-                            <GridLayout
-                                android:id="@+id/grid_status"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="20dp"
-                                android:layout_marginStart="15dp"
-                                android:alignmentMode="alignMargins"
-                                android:columnCount="3"
-                                android:useDefaultMargins="true">
-
-                                <include
-                                    android:id="@+id/include3"
-                                    layout="@layout/item_card_default"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-
-                                <include
-                                    android:id="@+id/include4"
-                                    layout="@layout/item_card_default_overdue"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-
-                                <include
-                                    android:id="@+id/include5"
-                                    layout="@layout/item_card_default_duesoon"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-                            </GridLayout>
-                        </LinearLayout>
-
-                        <!-- Colored Style -->
-                        <LinearLayout
-                            android:id="@+id/dash_colored"
-                            android:layout_width="350dp"
-                            android:layout_height="300dp"
-                            android:orientation="vertical"
-                            android:background="@drawable/bg_card_unselected"
-                            android:padding="16dp">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:gravity="center_vertical"
-                                android:paddingBottom="8dp"
-                                tools:ignore="UseCompoundDrawables">
-
-                                <TextView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:layout_marginStart="15dp"
-                                    android:text="@string/colored_style"
-                                    android:textSize="21sp"
-                                    android:textStyle="bold"
-                                    android:textColor="@color/marimo_black" />
-
-                                <include
-                                    android:id="@+id/includeCol"
-                                    layout="@layout/checkmark"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-                            </LinearLayout>
+                                android:text="@string/_3"
+                                android:textSize="20sp"
+                                android:textColor="#0B6E4F"
+                                android:textStyle="bold" />
 
                             <TextView
+                                android:id="@+id/cardTitleTotalColored"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="15dp"
-                                android:paddingBottom="12dp"
-                                android:text="@string/bold_colored_backgrounds_without_icons"
-                                android:textColor="@color/marimo_dark"
-                                android:textSize="14sp" />
-
-                            <GridLayout
-                                android:id="@+id/grid_status_colored"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="20dp"
-                                android:layout_marginStart="15dp"
-                                android:alignmentMode="alignMargins"
-                                android:columnCount="3"
-                                android:useDefaultMargins="true">
-
-                                <include
-                                    android:id="@+id/include6"
-                                    layout="@layout/item_card_colored_total"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-
-                                <include
-                                    android:id="@+id/include7"
-                                    layout="@layout/item_card_colored_overdue"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-
-                                <include
-                                    android:id="@+id/include8"
-                                    layout="@layout/item_card_colored_duesoon"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-                            </GridLayout>
+                                android:text="@string/total"
+                                android:textSize="12sp"
+                                android:textColor="#0B6E4F" />
                         </LinearLayout>
 
+                        <!-- Overdue -->
+                        <LinearLayout
+                            android:id="@+id/include70"
+                            android:layout_width="0dp"
+                            android:layout_height="70dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:background="#FFEDED"
+                            android:padding="12dp"
+                            android:layout_margin="4dp">
+
+                            <TextView
+                                android:id="@+id/cardCounterOverdueColored"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/_3"
+                                android:textSize="20sp"
+                                android:textColor="@color/marimo_red"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/cardTitleOverdueColored"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/overdue"
+                                android:textSize="12sp"
+                                android:textColor="@color/marimo_red" />
+                        </LinearLayout>
+
+                        <!-- Due Soon -->
+                        <LinearLayout
+                            android:id="@+id/include80"
+                            android:layout_width="0dp"
+                            android:layout_height="70dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:background="#FFF9E6"
+                            android:padding="12dp"
+                            android:layout_margin="4dp">
+
+                            <TextView
+                                android:id="@+id/cardCounterDueColored"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/_0"
+                                android:textSize="20sp"
+                                android:textColor="@color/marimo_orange"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/cardTitleDueColored"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/due_soon"
+                                android:textSize="12sp"
+                                android:textColor="@color/marimo_orange" />
+                        </LinearLayout>
                     </LinearLayout>
-
                 </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
 
-            <!-- Speed Settings (invariato) -->
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/container_speed"
                 android:layout_width="match_parent"
@@ -275,11 +442,11 @@
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:layout_marginTop="15dp"
                         android:orientation="horizontal"
+                        android:paddingStart="15dp"
                         tools:ignore="UseCompoundDrawables">
 
                         <ImageView
@@ -301,27 +468,30 @@
                             android:paddingBottom="4dp" />
                     </LinearLayout>
 
+                    <!-- Titolo -->
+
+
+
                     <TextView
                         android:id="@+id/txtSubtitleSpeed"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="5dp"
-                        android:paddingBottom="16dp"
                         android:text="@string/choose_how_quickly_the_marimo_care_tips_automatically_rotate"
                         android:textColor="@color/marimo_dark"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:paddingBottom="16dp" />
 
                     <LinearLayout
                         android:id="@+id/speed"
                         android:layout_width="350dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="16dp"
                         android:orientation="vertical"
-                        android:padding="16dp">
+                        android:layout_gravity="center"
+                        android:padding="16dp"
+                        android:layout_marginBottom="16dp">
 
-                        <!-- EditText aggiornati -->
                         <EditText
                             android:id="@+id/inputVeryFast"
                             android:layout_width="match_parent"
@@ -406,26 +576,294 @@
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/container_order_and_filters"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:padding="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal"
+                        android:paddingStart="15dp"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginEnd="10dp"
+                            android:src="@drawable/ic_filter"
+                            app:tint="#0B6E4F"
+                            android:contentDescription="@string/img" />
+
+                        <TextView
+                            android:id="@+id/txtTitleFilterAndOrder"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/dashboard_filters_amp_sorting"
+                            android:textColor="@color/marimo_black"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:paddingBottom="4dp" />
+                    </LinearLayout>
+
+                    <!-- Titolo -->
+
+
+
+                    <TextView
+                        android:id="@+id/txtSubtitleFilterAndOrder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/customize_how_marimos_are_filtered_and_sorted_on_the_dashboard"
+                        android:textColor="@color/marimo_dark"
+                        android:textSize="14sp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:paddingBottom="16dp" />
+
+                    <LinearLayout
+                        android:id="@+id/filterAndOrder"
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:padding="16dp"
+                        android:layout_marginBottom="4dp">
+
+                        <TextView
+                            android:id="@+id/txtDisplay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/display_controls"
+                            android:textColor="@color/marimo_dark"
+                            android:textSize="14sp"
+                            android:layout_marginStart="5dp"
+                            android:paddingBottom="16dp" />
+
+                        <EditText
+                            android:id="@+id/inputShow"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="@drawable/edittext_outline_grey"
+                            android:hint="@string/show_filters_and_sort_controls"
+                            android:padding="14dp"
+                            android:textColor="#111827"
+                            android:textColorHint="#9CA3AF"
+                            android:layout_marginBottom="12dp"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:cursorVisible="false"
+                            android:clickable="true"
+                            android:inputType="none" />
+
+                        <EditText
+                            android:id="@+id/inputHide"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="@drawable/edittext_outline_grey"
+                            android:hint="@string/hide_filters_and_sort_controls"
+                            android:padding="14dp"
+                            android:textColor="#111827"
+                            android:textColorHint="#9CA3AF"
+                            android:layout_marginBottom="4dp"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:cursorVisible="false"
+                            android:clickable="true"
+                            android:inputType="none" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/defaultFilters"
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:padding="16dp"
+                        android:visibility="gone"
+                        android:layout_marginBottom="4dp">
+
+                        <TextView
+                            android:id="@+id/txtFilter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/default_filter"
+                            android:textColor="@color/marimo_dark"
+                            android:textSize="14sp"
+                            android:layout_marginStart="5dp"
+                            android:paddingBottom="16dp" />
+
+                        <EditText
+                            android:id="@+id/inputAll"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="@drawable/edittext_outline_grey"
+                            android:hint="@string/all_marimos"
+                            android:padding="14dp"
+                            android:textColor="#111827"
+                            android:textColorHint="#9CA3AF"
+                            android:layout_marginBottom="12dp"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:cursorVisible="false"
+                            android:clickable="true"
+                            android:inputType="none" />
+
+                        <EditText
+                            android:id="@+id/inputOverdue"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="@drawable/edittext_outline_grey"
+                            android:hint="@string/overdue_only"
+                            android:padding="14dp"
+                            android:textColor="#111827"
+                            android:textColorHint="#9CA3AF"
+                            android:layout_marginBottom="12dp"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:cursorVisible="false"
+                            android:clickable="true"
+                            android:inputType="none" />
+
+                        <EditText
+                            android:id="@+id/inputDueSoon"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="@drawable/edittext_outline_grey"
+                            android:hint="@string/due_soon_only"
+                            android:padding="14dp"
+                            android:textColor="#111827"
+                            android:textColorHint="#9CA3AF"
+                            android:layout_marginBottom="12dp"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:cursorVisible="false"
+                            android:clickable="true"
+                            android:inputType="none" />
+
+                        <EditText
+                            android:id="@+id/inputUpToDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="@drawable/edittext_outline_grey"
+                            android:hint="@string/up_to_date_only"
+                            android:padding="14dp"
+                            android:textColor="#111827"
+                            android:textColorHint="#9CA3AF"
+                            android:layout_marginBottom="4dp"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:cursorVisible="false"
+                            android:clickable="true"
+                            android:inputType="none" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/defaultSort"
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:padding="16dp"
+                        android:visibility="gone"
+                        android:layout_marginBottom="16dp">
+
+                        <TextView
+                            android:id="@+id/txtSort"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/default_sort_order"
+                            android:textColor="@color/marimo_dark"
+                            android:textSize="14sp"
+                            android:layout_marginStart="5dp"
+                            android:paddingBottom="16dp" />
+
+                        <EditText
+                            android:id="@+id/inputStatus"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="@drawable/edittext_outline_grey"
+                            android:hint="@string/sort_by_status_overdue_first"
+                            android:padding="14dp"
+                            android:textColor="#111827"
+                            android:textColorHint="#9CA3AF"
+                            android:layout_marginBottom="12dp"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:cursorVisible="false"
+                            android:clickable="true"
+                            android:inputType="none" />
+
+                        <EditText
+                            android:id="@+id/inputName"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="@drawable/edittext_outline_grey"
+                            android:hint="@string/sorted_by_name_a_z"
+                            android:padding="14dp"
+                            android:textColor="#111827"
+                            android:textColorHint="#9CA3AF"
+                            android:layout_marginBottom="12dp"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:cursorVisible="false"
+                            android:clickable="true"
+                            android:inputType="none" />
+
+                        <EditText
+                            android:id="@+id/inputLastChanged"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="@drawable/edittext_outline_grey"
+                            android:hint="@string/sort_by_last_changed_newest_first"
+                            android:padding="14dp"
+                            android:textColor="#111827"
+                            android:textColorHint="#9CA3AF"
+                            android:layout_marginBottom="12dp"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:cursorVisible="false"
+                            android:clickable="true"
+                            android:inputType="none" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
             <!-- Pulsanti -->
             <LinearLayout
+                style="?android:attr/buttonBarStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:gravity="end"
                 android:orientation="horizontal"
-                style="?android:attr/buttonBarStyle">
+                android:gravity="end"
+                android:layout_marginTop="30dp">
 
                 <Button
                     android:id="@+id/btnCancel"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="120dp"
                     android:layout_height="48dp"
                     android:text="@string/cancel"
                     android:textAllCaps="false"
                     android:textColor="@color/marimo_dark"
+                    app:backgroundTint="@null"
                     android:background="@drawable/bg_btn_grey"
-                    android:layout_marginEnd="8dp"
-                    style="?android:attr/buttonBarButtonStyle" />
+                    android:layout_marginEnd="8dp" />
 
                 <Button
                     android:id="@+id/btnSave"
@@ -437,7 +875,6 @@
                     android:textColor="@android:color/white"
                     app:backgroundTint="@null"
                     android:background="@drawable/bg_notes_green_card" />
-
             </LinearLayout>
 
             <!-- Footer -->
@@ -446,7 +883,5 @@
                 layout="@layout/footer" />
 
         </LinearLayout>
-
     </LinearLayout>
-
 </androidx.core.widget.NestedScrollView>
