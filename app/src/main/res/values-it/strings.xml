@@ -124,6 +124,8 @@
     <string name="sort_by_status_overdue_first">Stato (prima quelli in ritardo)</string>
     <string name="sorted_by_name_a_z">Nome (dalla A alla Z)</string>
     <string name="sort_by_last_changed_newest_first">Ultimo cambio (dal più recente)</string>
+    <string name="track_your_marimo_care_patterns_and_insights_over_time">Track your marimo care patterns and insights over time</string>
+    <string name="marimo_care_stats">Marimo Statistics</string>
     <string-array name="marimo_frequencies">
         <item>Ogni 7 giorni (settimanale)</item>
         <item>Ogni 10 giorni</item>
