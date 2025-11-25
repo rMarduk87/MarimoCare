@@ -1,0 +1,123 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+    id 'com.google.devtools.ksp'
+}
+
+android {
+    namespace 'rpt.tool.marimocare'
+    compileSdk {
+        version = release(36)
+    }
+
+    defaultConfig {
+        applicationId "rpt.tool.marimocare"
+        minSdk 24
+        targetSdk 36
+        versionCode 1
+        versionName "1.0"
+
+        ksp {
+            arg("room.schemaLocation", "$projectDir/schemas".toString())
+            arg("room.incremental", "true")
+            arg("room.expandProjection", "true")
+        }
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            ndk { debugSymbolLevel = 'full' }
+            signingConfig signingConfigs.debug
+        }
+
+        debug {
+            versionNameSuffix '-debug'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+    buildFeatures {
+        viewBinding true
+        buildConfig true
+    }
+    packagingOptions {
+        resources {
+            excludes += ['META-INF/DEPENDENCIES', 'META-INF/LICENSE', 'META-INF/LICENSE.txt', 'META-INF/license.txt', 'META-INF/NOTICE', 'META-INF/NOTICE.txt', 'META-INF/notice.txt', 'META-INF/ASL2.0']
+        }
+        jniLibs {
+            useLegacyPackaging true
+        }
+    }
+}
+
+dependencies {
+    //AndroidX
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.constraintlayout
+    implementation libs.androidx.preference.ktx
+    implementation libs.androidx.recyclerview
+    implementation "androidx.gridlayout:gridlayout:1.0.0"
+    //Misc
+    implementation libs.material
+    implementation libs.jsr305
+    implementation libs.androidx.activity.ktx
+    implementation libs.kotlin.reflect
+    //Navigation
+    implementation libs.androidx.navigation.fragment.ktx
+    implementation libs.androidx.navigation.ui.ktx
+    implementation libs.androidx.navigation.dynamic.features.fragment
+    //Timber
+    implementation libs.timber
+    //Lottie
+    implementation libs.lottie
+    //Firebase
+    implementation(libs.firebase.analytics.ktx) // Replace with the latest version
+    //Crashlytics
+    implementation(libs.firebase.crashlytics) // Example version
+    //InApp Update
+    implementation libs.app.update
+    implementation libs.review
+    implementation libs.asset.delivery
+    //noinspection GradleDependency
+    implementation libs.play.services.tasks
+    //Permission Manager
+    implementation libs.permissions
+    //Lifecycle
+    implementation libs.androidx.lifecycle.viewmodel.ktx
+    implementation libs.androidx.lifecycle.livedata.ktx
+    implementation libs.androidx.lifecycle.common.java8
+    //Room
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation libs.androidx.room.ktx
+    implementation libs.androidx.core
+    ksp("androidx.room:room-compiler:$room_version")
+    //FastAdapter
+    implementation libs.fastadapter
+    implementation libs.fastadapter.extensions.binding
+    implementation libs.fastadapter.extensions.expandable
+    implementation libs.fastadapter.extensions.utils
+    //DotsIndicator
+    implementation(libs.dotsindicator)
+    //Calendar
+    implementation libs.materialdatetimepicker
+    //Chart
+    implementation libs.mpandroidchart
+    //Test
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.junit
+}

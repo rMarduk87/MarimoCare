@@ -1,0 +1,15 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="38dp"
+    android:height="56dp"
+    android:viewportWidth="38"
+    android:viewportHeight="56">
+
+    <!-- Ovale verticale verde -->
+    <path
+        android:fillColor="#1ABC9C"
+        android:pathData="M0,19
+                          a19,19 0 0 1 38,0
+                          v18
+                          a19,19 0 0 1 -38,0
+                          z" />
+</vector>

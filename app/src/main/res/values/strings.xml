@@ -1,0 +1,173 @@
+<resources>
+    <string name="app_name">Marimo Care</string>
+    <string name="marimo_care_dashboard">🌿 Marimo Care Dashboard</string>
+    <string name="keep_track_of_your_marimo">Keep track of your marimo moss balls and never miss a water change again!</string>
+    <string name="marimo_tip_title_1">💡 Marimo Tip: Perfect Temperature</string>
+    <string name="marimo_tip_title_2">💡 Marimo Tip: Gentle Rolling</string>
+    <string name="marimo_tip_title_3">💡 Marimo Tip: Clean Water is Key</string>
+    <string name="marimo_tip_title_4">💡 Marimo Tip: Low Light Living</string>
+    <string name="marimo_tip_title_5">💡 Marimo Tip: Room to Move</string>
+    <string name="marimo_tip_title_6">💡 Marimo Tip: Watch for Bubbles</string>
+    <string name="marimo_tip_title_7">💡 Marimo Tip: Seasonal Changes</string>
+    <string name="marimo_tip_title_8">💡 Marimo Tip: Slow Growth</string>
+    <string name="marimo_tip_title_9">💡 Marimo Tip: Division and Sharing</string>
+    <string name="marimo_tip_title_10">💡 Marimo Tip: Water Movement</string>
+    <string name="marimo_tip_body_1">Keep marimos in cool water (15–25°C). Avoid direct sunlight and warm spots.</string>
+    <string name="marimo_tip_body_2">Squeeze and roll your marimo gently to maintain its round shape.</string>
+    <string name="marimo_tip_body_3">Use filtered or distilled water. Chlorinated water can harm marimos.</string>
+    <string name="marimo_tip_body_4">Marimos prefer indirect light. Too much sun makes them brown.</string>
+    <string name="marimo_tip_body_5">Don\'t overcrowd containers. Each marimo needs space to move freely.</string>
+    <string name="marimo_tip_body_6">Healthy marimos make tiny oxygen bubbles - this is a great sign!</string>
+    <string name="marimo_tip_body_7">In winter, marimos grow slower and need less frequent water changes.</string>
+    <string name="marimo_tip_body_8">Marimos grow only 5mm per year. Patience is key with these friends!</string>
+    <string name="marimo_tip_body_9">Large marimos can be gently split into smaller ones to share.</string>
+    <string name="marimo_tip_body_10">Swirl the water occasionally to help marimos move and stay healthy.</string>
+    <string name="total">Total</string>
+    <string name="_3">3</string>
+    <string name="overdue">Overdue</string>
+    <string name="due_soon">Due Soon</string>
+    <string name="_0">0</string>
+    <string name="your_marimos">Your Marimos</string>
+    <string name="add_marimo">New Marimo</string>
+    <string name="mochi">Mochi</string>
+    <string name="changes_every_14_days">Changes every 14 days</string>
+    <string name="_295_days_overdue">295 days overdue</string>
+    <string name="last_changed_dec_15_2024">Last changed: Dec 15, 2024</string>
+    <string name="next_change_dec_29_2024">Next change: Dec 29, 2024</string>
+    <string name="my_first_marimo_very_round_and_bouncy">My first marimo! Very round and bouncy.</string>
+    <string name="water_changed">Water Changed</string>
+    <string name="edit">Edit</string>
+    <string name="img">Img</string>
+    <string name="water_change_tracker">Water Change Tracker</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="changes_every_days">Changes every %1$d days</string>
+    <string name="no_notes">No notes</string>
+    <string name="days_left">days left</string>
+    <string name="no_data">No Marimos found</string>
+    <string name="_12_days_left">12 days left</string>
+    <string name="last_changed">Last changed</string>
+    <string name="oct_15_2025">Oct 15, 2025</string>
+    <string name="next_change">Next change</string>
+    <string name="oct_29_2025">Oct 29, 2025</string>
+    <string name="notes">Notes</string>
+    <string name="bottom">Keep your marimo friends happy and healthy! 🌱</string>
+    <string name="loading_your_little_friends">Loading your little friends…</string>
+    <string name="days_overdue">days overdue</string>
+    <string name="due_in">Due in</string>
+    <string name="days">days</string>
+    <string name="add_new_marimo">Add New Marimo</string>
+    <string name="add_a_new_marimo_friend_to_track">Add a new marimo friend to track</string>
+    <string name="marimo_name">Marimo Name *</string>
+    <string name="e_g_mochi_bubbles_green_bean">e.g., Mochi, Bubbles, Green Bean…</string>
+    <string name="last_water_change">Last Water Change *</string>
+    <string name="october_30th_2025">2025–10–30</string>
+    <string name="change_frequency">Change Frequency *</string>
+    <string name="notes_optional">Notes (Optional)</string>
+    <string name="any_special_care_instructions_or_observations">Any special care instructions or observations…</string>
+    <string name="cancel">Cancel</string>
+    <string name="btn_add_marimo">Add Marimo</string>
+    <string name="every_14_days_bi_weekly">Every 14 days (Bi-weekly)</string>
+    <string name="please_fill_all_the_fields">Please fill all the fields</string>
+    <string name="attention">Attention: a Marimo is late!</string>
+    <string name="overdue_marimo">Urgent: Water Changed Needed for:\n%1$s</string>
+    <string name="settings">Settings</string>
+    <string name="stats">Stats</string>
+    <string name="marimo_care_settings">⚙️ Marimo Care Settings</string>
+    <string name="customize_your_marimo_care_experience">Customize your marimo care experience</string>
+    <string name="btn_save">Save Changes</string>
+    <string name="dashboard_card_style">Dashboard Card Style</string>
+    <string name="choose_how_you_want_your_marimo_statistics_cards_to_appear_on_the_dashboard">Choose how you want your marimo\nstatistics cards to appear on the dashboard</string>
+    <string name="default_style">Default Style</string>
+    <string name="clean_cards_with_icons_and_subtle_backgrounds">Clean cards with icons and subtle backgrounds</string>
+    <string name="colored_style">Colored Style</string>
+    <string name="bold_colored_backgrounds_without_icons">Bold colored backgrounds without icons</string>
+    <string name="option_correctly_updated">Option correctly updated</string>
+    <string name="update">Save Changes</string>
+    <string name="updated_ok">Marimo updated</string>
+    <string name="new_marimo_added">New Marimo Added</string>
+    <string name="automatic_notification">Automatic notification 🤖</string>
+    <string name="filters">\t\tFilter:</string>
+    <string name="all">All (0)</string>
+    <string name="overdue_f">Overdue (0)</string>
+    <string name="soon_f">Due Soon (0)</string>
+    <string name="upToDate">Up to Date (0)</string>
+    <string name="all_counter">All (</string>
+    <string name="overdue_counter">Overdue (</string>
+    <string name="due_soon_counter">Due Soon (</string>
+    <string name="upToDate_counter">Up to Date (</string>
+    <string name="water_change_today">Hey, today you have to change the water for some Marimos</string>
+    <string name="soon_marimo">There are some Marimos about to change their water:\n%1$s</string>
+    <string name="today_marimo_list">List of Marimo to change the water today:\n%1$s</string>
+    <string name="tips_auto_scroll_speed">Tips Auto-Scroll Speed</string>
+    <string name="choose_how_quickly_the_marimo_care_tips_automatically_rotate">Choose how quickly the marimo care tips\nautomatically rotate</string>
+    <string name="very_fast_5_seconds">Very Fast (5 seconds)</string>
+    <string name="fast_10_seconds">Fast (10 seconds)</string>
+    <string name="normal_15_seconds">Normal (15 seconds)</string>
+    <string name="slow_20_seconds">Slow (20 seconds)</string>
+    <string name="very_slow_25_seconds">Very Slow (25 seconds)</string>
+    <string name="sort">\t\tSort by:</string>
+    <string name="add">+ Add</string>
+    <string name="plus">+</string>
+    <string name="in">In</string>
+    <string name="due_soon_">Due</string>
+    <string name="dashboard_filters_amp_sorting"><![CDATA[Dashboard Filters & Sorting]]></string>
+    <string name="customize_how_marimos_are_filtered_and_sorted_on_the_dashboard">Customize how marimos are filtered\nand sorted on the dashboard</string>
+    <string name="display_controls">Display Controls</string>
+    <string name="show_filters_and_sort_controls">Show filters and sort controls</string>
+    <string name="hide_filters_and_sort_controls">Hide filters and sort controls</string>
+    <string name="default_filter">Default filter</string>
+    <string name="all_marimos">All Marimos</string>
+    <string name="overdue_only">Overdue Only</string>
+    <string name="due_soon_only">Due Soon Only</string>
+    <string name="up_to_date_only">Up to Date Only</string>
+    <string name="default_sort_order">Default Sort Order</string>
+    <string name="sort_by_status_overdue_first">By Status (Overdue first)</string>
+    <string name="sorted_by_name_a_z">By Name (A-Z)</string>
+    <string name="sort_by_last_changed_newest_first">By Last Changed (Newest first)</string>
+    <string name="track_your_marimo_care_patterns_and_insights_over_time">Track your marimo care patterns and insights over time</string>
+    <string name="marimo_care_stats">Marimo Statistics</string>
+    <string name="average_frequency">Average Frequency</string>
+    <string name="_10_3">10.3</string>
+    <string name="_days">days</string>
+    <string name="across_all_marimos">Across all marimos</string>
+    <string name="total_water_changed">Total Water Changes</string>
+    <string name="since_tracking_began">Since tracking began</string>
+    <string name="most_frequent">Most Frequent</string>
+    <string name="last_frequent">Last Frequent</string>
+    <string name="every">"Every "</string>
+    <string name="different">Different Marimo</string>
+    <string name="every_14_days">Every 14 days</string>
+    <string name="oct_30">Oct 30</string>
+    <string name="most_low_maintenance_marimos">Most Low-Maintenance Marimos</string>
+    <string name="these_marimos_require_water_changes_every_14_days">These marimos require water changes every 14 days</string>
+    <string name="most_attention_needed_marimos">Most Attention Needed Marimos</string>
+    <string name="these_marimos_require_water_changes_every">"These marimos require water changes every "</string>
+    <string name="__days">" days:"</string>
+    <string name="water_change_trend">Water Change Trend</string>
+    <string name="actual_water_changes_over_the_last_6_months">Actual water changes over the last 6 months</string>
+    <string name="change_frequency_distribution">Change Frequency Distribution</string>
+    <string name="how_often_you_change_water_for_your_marimos">How often you change water for your marimos per days</string>
+    <string name="there_are_no_statistics_yet">There are no statistics yet</string>
+    <string name="marimo_name_stats">Marimo Name</string>
+    <string name="change_frequency_stats">Change Frequency</string>
+    <string name="soon_marimo_one">%1$s is about to change his water</string>
+    <string-array name="marimo_frequencies">
+        <item>Every 7 days (Weekly)</item>
+        <item>Every 10 days</item>
+        <item>Every 14 days (Bi-weekly)</item>
+        <item>Every 21 days</item>
+        <item>Every 30 days (Monthly)</item>
+    </string-array>
+    <string-array name="marimo_sorting">
+        <item>Status</item>
+        <item>Name</item>
+        <item>Last Change</item>
+    </string-array>
+    <string-array name="marimo_frequencies_changes">
+        <item>7</item>
+        <item>10</item>
+        <item>14</item>
+        <item>21</item>
+        <item>30</item>
+    </string-array>
+</resources>

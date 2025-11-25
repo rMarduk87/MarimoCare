@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/checked_mark"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+<ImageView
+    android:layout_width="20dp"
+    android:layout_height="30dp"
+    android:contentDescription="@string/img"
+    android:src="@drawable/ic_check_circle"
+    app:tint="@color/marimo_item_green" />
+
+<ImageView
+    android:layout_width="20dp"
+    android:layout_height="30dp"
+    android:contentDescription="@string/img"
+    android:src="@drawable/ic_check_mark"/>
+
+</RelativeLayout>

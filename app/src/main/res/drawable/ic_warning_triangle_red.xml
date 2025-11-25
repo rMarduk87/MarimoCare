@@ -1,0 +1,28 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+android:width="24dp"
+android:height="24dp"
+android:viewportWidth="24"
+android:viewportHeight="24">
+
+<!-- Triangolo outline -->
+<path
+    android:fillColor="@android:color/transparent"
+    android:strokeColor="#e0403f"
+    android:strokeWidth="1"
+    android:pathData="M12,2 L22,20 L2,20 Z"/>
+
+<!-- Punto esclamativo verticale -->
+<path
+    android:fillColor="@android:color/transparent"
+    android:strokeColor="#e0403f"
+    android:strokeWidth="1"
+    android:strokeLineCap="round"
+    android:pathData="M12,8 v5"/>
+
+<!-- Punto esclamativo -->
+<path
+    android:fillColor="@android:color/transparent"
+    android:strokeColor="#e0403f"
+    android:strokeWidth="1"
+    android:pathData="M12,16 a1,1 0 1,0 0.01,0"/>
+</vector>
