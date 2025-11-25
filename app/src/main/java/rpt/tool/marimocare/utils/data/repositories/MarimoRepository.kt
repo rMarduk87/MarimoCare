@@ -7,6 +7,7 @@ import androidx.lifecycle.map
 import org.checkerframework.checker.units.qual.s
 import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
+import rpt.tool.marimocare.utils.data.appmodels.MarimoChange
 import rpt.tool.marimocare.utils.data.database.dao.MarimoDao
 import kotlin.collections.map
 
@@ -18,7 +19,7 @@ class MarimoRepository(
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun addMarimo(marimoName: String, lastWaterChange: String, notes: String, freq: Int) {
+    fun addMarimo(marimoName: String, lastWaterChange: String, notes: String, freq: Int) : Int {
         Marimo(marimoDao.getLastId()+1,marimoName, freq,
             lastWaterChange, AppUtils.nextChange(
             lastWaterChange,
@@ -29,6 +30,8 @@ class MarimoRepository(
 
             marimoDao.insert(it.map())
         }
+
+        return marimoDao.getLastId()
     }
 
     fun getMarimo(marimoCode: Int): Marimo? {
@@ -47,6 +50,40 @@ class MarimoRepository(
 
     fun getAllSync():List<Marimo> {
         return marimoDao.getAll().map { it.map() }
+    }
+
+    fun getAverageFrequency():Int {
+        var sum = 0
+        marimoDao.getAll().forEach {
+            sum += it.frequencyChanges
+        }
+
+        return sum/if(marimoDao.getAll().isNotEmpty()) marimoDao.getAll().size else 1
+
+    }
+
+    fun getMarimoMostFrequentChanged():List<Marimo> {
+        return marimoDao.getMarimoMostFrequentChanged().map() { it.map() }
+    }
+
+    fun getMarimoLastFrequentChanged():List<Marimo> {
+        return marimoDao.getMarimoLastFrequentChanged().map() { it.map() }
+    }
+
+    fun addWaterChanges(id: Int, lastWater: String) {
+        MarimoChange(marimoDao.getLastIdFromWaterChanges()+1,id.toString(),
+            lastWater).let {
+
+            marimoDao.insertWaterChanges(it.map())
+        }
+    }
+
+    fun getTotalWaterChanged() : Int {
+        return marimoDao.getTotalWaterChanges()
+    }
+
+    fun getAllChanges(): List<MarimoChange> {
+        return marimoDao.getAllWaterChanges().map { it.map() }
     }
 
     val marimos: LiveData<List<Marimo>> =

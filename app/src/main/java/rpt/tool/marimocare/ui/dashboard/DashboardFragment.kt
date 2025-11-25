@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.os.Build
 import android.os.Bundle
-import android.os.LocaleList
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +13,6 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
-import androidx.core.view.marginTop
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.GridLayoutManager
@@ -44,6 +42,7 @@ import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.MarimoItem
 import rpt.tool.marimocare.utils.view.viewpager.tips.TipsPagerAdapter
 import rpt.tool.marimocare.utils.view.visible
 import kotlin.getValue
+import androidx.core.view.isVisible
 
 class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     FragmentDashboardBinding::inflate) {
@@ -90,7 +89,8 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             adapter = fastAdapter
         }
 
-        fastAdapter.addEventHook(ChangeWaterEventHook(viewLifecycleOwner) {
+        fastAdapter.addEventHook(ChangeWaterEventHook(viewLifecycleOwner,
+            requireContext()) {
             applyFilterAndSort()
             updateAlertsUI()
         })
@@ -286,7 +286,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
         viewLifecycleOwner.lifecycleScope.launch {
             withContext(Dispatchers.IO) {
-                AlertDataUtils.recalc()
+                AlertDataUtils.recalc(requireContext())
             }
 
             updateAlertsUI()
@@ -305,23 +305,24 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         val soonText = SharedPreferencesManager.alertSoon
 
         if (hasOverdue) {
-            binding.alertCard.visibility = View.VISIBLE
-            binding.alertCard.setCardBackgroundColor(
-                ContextCompat.getColor(requireContext(), R.color.marimo_red)
+            binding.alertCardRed.visibility = View.VISIBLE
+            binding.alertCardRed.setCardBackgroundColor(
+                ContextCompat.getColor(requireContext(), R.color.marimo_pink)
             )
-            binding.alertText.text = overdueText
+            binding.alertTextRed.text = overdueText
         }
 
-        if (!hasOverdue && hasSoon) {
-            binding.alertCard.visibility = View.VISIBLE
-            binding.alertCard.setCardBackgroundColor(
-                ContextCompat.getColor(requireContext(), R.color.marimo_orange)
+        if (!hasOverdue && hasSoon || (hasOverdue && hasSoon)) {
+            binding.alertCardOrange.visibility = View.VISIBLE
+            binding.alertCardOrange.setCardBackgroundColor(
+                ContextCompat.getColor(requireContext(), R.color.marimo_light_orange)
             )
-            binding.alertText.text = soonText
+            binding.alertTextOrange.text = soonText
         }
 
         if (!hasOverdue && !hasSoon) {
-            binding.alertCard.visibility = View.GONE
+            binding.alertCardRed.visibility = View.GONE
+            binding.alertCardOrange.visibility = View.GONE
         }
     }
 
@@ -540,7 +541,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             binding.italian1!!.visibility = if (!SharedPreferencesManager.coloredIsSelected)
                 View.VISIBLE else View.GONE
             binding.italian1!!.text = resources.getString(R.string.due_soon)
-            if(binding.italian1!!.visibility == View.VISIBLE){
+            if(binding.italian1!!.isVisible){
                 val layoutParams = binding.italian1!!.layoutParams as ViewGroup.MarginLayoutParams
                 layoutParams.setMargins(0, 34, 0, 0);
             }
@@ -549,7 +550,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                 if (SharedPreferencesManager.coloredIsSelected) View.VISIBLE else View.GONE
             binding.italian2Alternative!!.visibility = View.GONE
             binding.italian1Alternative!!.text = resources.getString(R.string.due_soon)
-            if(binding.italian1Alternative!!.visibility == View.VISIBLE){
+            if(binding.italian1Alternative!!.isVisible){
                 val layoutParams = binding.italian1Alternative!!.layoutParams
                         as ViewGroup.MarginLayoutParams
                 layoutParams.setMargins(0, 34, 0, 0);

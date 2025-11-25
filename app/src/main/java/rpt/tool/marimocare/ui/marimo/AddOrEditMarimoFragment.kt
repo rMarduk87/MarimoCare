@@ -199,16 +199,18 @@ class AddOrEditMarimoFragment :
                     name,
                     lastWater, notes, freq
                 )
+
                 withContext(Dispatchers.Main) {
                     Toast.makeText(requireContext(), getString(
                         R.string.updated_ok),
                         Toast.LENGTH_SHORT).show()
                 }
-
             }
             else{
-                RepositoryManager.marimoRepository.addMarimo(name,
+                val id = RepositoryManager.marimoRepository.addMarimo(name,
                     lastWater, notes, freq)
+
+                RepositoryManager.marimoRepository.addWaterChanges(id, lastWater)
 
                 withContext(Dispatchers.Main) {
                     Toast.makeText(requireContext(), getString(

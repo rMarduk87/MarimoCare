@@ -65,6 +65,20 @@
         tools:ignore="ButtonStyle" />
 
     <Button
+        android:id="@+id/btnOpenStats"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="9dp"
+        android:background="@drawable/bg_button_white"
+        android:drawableTop="@drawable/ic_stats"
+        android:drawableTint="@color/marimo_add_icon"
+        android:text=""
+        android:gravity="center"
+        android:padding="8dp"
+        app:backgroundTint="@null"
+        tools:ignore="ButtonStyle" />
+
+    <Button
         android:id="@+id/btnAddMarimoHeader"
         android:layout_width="38dp"
         android:layout_height="38dp"
@@ -92,17 +106,4 @@
         app:backgroundTint="@null"
         tools:ignore="ButtonStyle" />
 
-    <Button
-        android:id="@+id/btnOpenStats"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="9dp"
-        android:background="@drawable/bg_button_white"
-        android:drawableTop="@drawable/ic_stats"
-        android:drawableTint="@color/marimo_add_icon"
-        android:text=""
-        android:gravity="center"
-        android:padding="8dp"
-        app:backgroundTint="@null"
-        tools:ignore="ButtonStyle" />
 </LinearLayout>

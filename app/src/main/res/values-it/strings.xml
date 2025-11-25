@@ -96,7 +96,7 @@
     <string name="due_soon_counter">In Scadenza (</string>
     <string name="upToDate_counter">Aggiornato (</string>
     <string name="water_change_today">Ehi, oggi devi cambiare l\'acqua ad alcuni Marimo</string>
-    <string name="soon_marimo">Ci sono alcuni Marimo che a breve necessiteranno il cambio d\' acqua: %1$s</string>
+    <string name="soon_marimo">Ci sono alcuni Marimo che a breve necessiteranno il cambio d\' acqua:\n%1$s</string>
     <string name="today_marimo_list">Elenco dei Marimo da cambiare oggi:\n%1$s</string>
     <string name="tips_auto_scroll_speed">Velocità di scorrimento\nautomatico dei suggerimenti</string>
     <string name="choose_how_quickly_the_marimo_care_tips_automatically_rotate">Scegli la velocità con cui i suggerimenti per la cura\ndei Marimo ruotano automaticamente</string>
@@ -124,8 +124,33 @@
     <string name="sort_by_status_overdue_first">Stato (prima quelli in ritardo)</string>
     <string name="sorted_by_name_a_z">Nome (dalla A alla Z)</string>
     <string name="sort_by_last_changed_newest_first">Ultimo cambio (dal più recente)</string>
-    <string name="track_your_marimo_care_patterns_and_insights_over_time">Track your marimo care patterns and insights over time</string>
-    <string name="marimo_care_stats">Marimo Statistics</string>
+    <string name="track_your_marimo_care_patterns_and_insights_over_time">Monitora i tuoi modelli di cura e le tue informazioni sui marimo nel tempo</string>
+    <string name="marimo_care_stats">Statistiche Marimo</string>
+    <string name="average_frequency">Frequenza media</string>
+    <string name="_10_3">10,3</string>
+    <string name="_days">giorni</string>
+    <string name="across_all_marimos">Di tutti i marimo</string>
+    <string name="total_water_changed">Cambi d\'acqua totali</string>
+    <string name="since_tracking_began">Dall\'inizio del monitoraggio</string>
+    <string name="most_frequent">Più frequenti</string>
+    <string name="last_frequent">Ultime frequenti</string>
+    <string name="every">"Ogni "</string>
+    <string name="different">Diversi Marimo</string>
+    <string name="every_14_days">Ogni 14 giorni</string>
+    <string name="oct_30">30 ottobre</string>
+    <string name="most_low_maintenance_marimos">Marimo che richiedono meno cure</string>
+    <string name="these_marimos_require_water_changes_every_14_days">Questi marimo richiedono cambi d\'acqua ogni 14 giorni</string>
+    <string name="most_attention_needed_marimos">Marimo che richiedono più attenzione</string>
+    <string name="these_marimos_require_water_changes_every">"Questi marimo richiedono cambi d\'acqua ogni "</string>
+    <string name="__days">" giorni:"</string>
+    <string name="water_change_trend">Tendenza al cambio d\'acqua</string>
+    <string name="actual_water_changes_over_the_last_6_months">Cambi d\'acqua effettuati negli ultimi 6 mesi</string>
+    <string name="change_frequency_distribution">Distribuzione della frequenza dei cambi</string>
+    <string name="how_often_you_change_water_for_your_marimos">Con quale frequenza cambi l\'acqua per i tuoi marimo in giorni</string>
+    <string name="there_are_no_statistics_yet">Non ci sono ancora statistiche</string>
+    <string name="marimo_name_stats">Nome del marimo</string>
+    <string name="change_frequency_stats">Frequenza di cambio </string>
+    <string name="soon_marimo_one">%1$s necessita il cambio d\'acqua</string>
     <string-array name="marimo_frequencies">
         <item>Ogni 7 giorni (settimanale)</item>
         <item>Ogni 10 giorni</item>
@@ -137,5 +162,12 @@
         <item>Stato</item>
         <item>Nome</item>
         <item>Ultima modifica</item>
+    </string-array>
+    <string-array name="marimo_frequencies_changes">
+        <item>7</item>
+        <item>10</item>
+        <item>14</item>
+        <item>21</item>
+        <item>30</item>
     </string-array>
 </resources>

@@ -71,6 +71,22 @@
             tools:ignore="ButtonStyle,RtlHardcoded" />
 
         <Button
+            android:id="@+id/btnOpenStats"
+            android:layout_width="160dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="9dp"
+            android:text="@string/stats"
+            android:textAllCaps="false"
+            android:drawableLeft="@drawable/ic_stats"
+            android:drawableTint="@color/marimo_add_icon"
+            android:textColor="@color/marimo_add_icon"
+            android:background="@drawable/bg_button_white"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            app:backgroundTint="@null"
+            tools:ignore="ButtonStyle,RtlHardcoded" />
+
+        <Button
             android:id="@+id/btnAddMarimoHeader"
             android:layout_width="160dp"
             android:layout_height="42dp"
@@ -94,22 +110,6 @@
             android:text="@string/settings"
             android:textAllCaps="false"
             android:drawableLeft="@drawable/ic_settings"
-            android:drawableTint="@color/marimo_add_icon"
-            android:textColor="@color/marimo_add_icon"
-            android:background="@drawable/bg_button_white"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            app:backgroundTint="@null"
-            tools:ignore="ButtonStyle,RtlHardcoded" />
-
-        <Button
-            android:id="@+id/btnOpenStats"
-            android:layout_width="160dp"
-            android:layout_height="42dp"
-            android:layout_marginStart="9dp"
-            android:text="@string/stats"
-            android:textAllCaps="false"
-            android:drawableLeft="@drawable/ic_stats"
             android:drawableTint="@color/marimo_add_icon"
             android:textColor="@color/marimo_add_icon"
             android:background="@drawable/bg_button_white"

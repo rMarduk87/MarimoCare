@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "cd5d460d83d348bc48c952197e346f73",
+    "identityHash": "2d68d17e46a6cf02968db9ca5557754f",
     "entities": [
       {
         "tableName": "marimo",
@@ -43,11 +43,40 @@
             "code"
           ]
         }
+      },
+      {
+        "tableName": "marimo_changes",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`code` INTEGER NOT NULL, `marimo_code` INTEGER NOT NULL, `water_changes_data` TEXT, PRIMARY KEY(`code`))",
+        "fields": [
+          {
+            "fieldPath": "code",
+            "columnName": "code",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "marimoCode",
+            "columnName": "marimo_code",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "waterChangesData",
+            "columnName": "water_changes_data",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "code"
+          ]
+        }
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'cd5d460d83d348bc48c952197e346f73')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2d68d17e46a6cf02968db9ca5557754f')"
     ]
   }
 }

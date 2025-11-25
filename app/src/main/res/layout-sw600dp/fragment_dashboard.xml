@@ -43,14 +43,15 @@
                 android:textSize="14sp" /> <!-- Tip Card -->
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/alertCard"
+                android:id="@+id/alertCardRed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
                 app:cardCornerRadius="12dp"
-                app:strokeColor="@color/marimo_red"
+                app:strokeColor="@color/marimo_peach"
                 app:strokeWidth="1dp"
-                app:cardBackgroundColor="@color/marimo_red"
+                app:backgroundTint="@null"
+                app:cardBackgroundColor="@color/marimo_pink"
                 android:visibility="gone"
                 android:elevation="3dp">
 
@@ -67,15 +68,55 @@
                         android:layout_height="32dp"
                         android:src="@drawable/ic_warning_triangle_red"
                         android:contentDescription="@string/img"
-                        app:tint="@android:color/white"
                         android:layout_marginEnd="10dp" />
 
                     <TextView
-                        android:id="@+id/alertText"
+                        android:id="@+id/alertTextRed"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/strong_red"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:text="@string/attention"
+                        tools:ignore="HardcodedText" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/alertCardOrange"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="12dp"
+                app:strokeColor="@color/marimo_light_yellow"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="@color/marimo_light_orange"
+                app:backgroundTint="@null"
+                android:visibility="gone"
+                android:elevation="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="14dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_warning_circle_orange"
+                        android:contentDescription="@string/img"
+                        android:layout_marginEnd="10dp" />
+
+                    <TextView
+                        android:id="@+id/alertTextOrange"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/marimo_orange"
                         android:textSize="15sp"
                         android:textStyle="bold"
                         android:text="@string/attention"

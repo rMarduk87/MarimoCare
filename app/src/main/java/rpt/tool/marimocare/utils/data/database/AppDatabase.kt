@@ -9,7 +9,8 @@ import rpt.tool.marimocare.utils.data.database.models.*
 
 @Database(
     entities = [
-        MarimoModel::class
+        MarimoModel::class,
+        MarimoChangeModel::class,
     ],
     version = 1,
     exportSchema = true,

@@ -1,9 +1,9 @@
 package rpt.tool.marimocare.utils
 
+import android.content.Context
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.map
+import rpt.tool.marimocare.R
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
@@ -47,17 +47,26 @@ object AlertDataUtils {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun recalc() {
+    fun recalc(context: Context) {
         val marimosLate = getMarimosLate()
-        val marimosSoon = getMarimosDueSoon(2)
+        val marimosSoon = getMarimosDueSoon(1)
 
         SharedPreferencesManager.showAlertOverdue = marimosLate.isNotEmpty()
         SharedPreferencesManager.showAlertSoon = marimosSoon.isNotEmpty()
 
+        val overdueNames = marimosLate.joinToString(", ") { it.name }
+        val soonNames = marimosSoon.joinToString(", ") { it.name }
+
         SharedPreferencesManager.alertOverdue =
-            marimosLate.joinToString(", ") { it.name }
+            if (marimosLate.isNotEmpty())
+                context.getString(R.string.overdue_marimo, overdueNames)
+            else ""
 
         SharedPreferencesManager.alertSoon =
-            marimosSoon.joinToString(", ") { it.name }
+            if (marimosSoon.isNotEmpty())
+                if(marimosSoon.size==1)
+                    context.getString(R.string.soon_marimo_one, soonNames)
+                else context.getString(R.string.soon_marimo, soonNames)
+            else ""
     }
 }

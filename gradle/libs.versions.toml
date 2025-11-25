@@ -24,6 +24,7 @@ lifecycleViewmodelKtx = "2.9.4"
 lottie = "6.7.1"
 material = "1.13.0"
 materialdatetimepicker = "4.2.3"
+mpandroidchart = "v3.1.0"
 navigationFragmentKtx = "2.9.6"
 permissions = "0.5.0"
 playServicesTasks = "18.4.0"
@@ -70,6 +71,7 @@ kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref =
 lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 materialdatetimepicker = { module = "com.wdullaer:materialdatetimepicker", version.ref = "materialdatetimepicker" }
+mpandroidchart = { module = "com.github.PhilJay:MPAndroidChart", version.ref = "mpandroidchart" }
 permissions = { module = "com.github.lorenzofelletti:permissions", version.ref = "permissions" }
 play-services-tasks = { module = "com.google.android.gms:play-services-tasks", version.ref = "playServicesTasks" }
 review = { module = "com.google.android.play:review", version.ref = "review" }

@@ -1,12 +1,18 @@
 package rpt.tool.marimocare.utils
 
+import android.content.Context
 import android.os.Build
 import androidx.annotation.RequiresApi
-import rpt.tool.marimocare.utils.log.e
+import rpt.tool.marimocare.R
+import rpt.tool.marimocare.utils.data.appmodels.Marimo
+import rpt.tool.marimocare.utils.view.recyclerview.items.frequency.MarimoFrequencyItem
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 import java.util.Calendar
+import androidx.core.graphics.toColorInt
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class AppUtils {
     companion object {
@@ -60,6 +66,53 @@ class AppUtils {
             val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
             val today = LocalDate.now()
             return today.format(formatter)
+        }
+
+        fun List<Marimo>.toMarimoItems(
+            context: Context,
+            color1: String,
+            color2: String,
+            bool: Boolean = false
+        ): List<MarimoFrequencyItem> {
+            return this.map { marimo ->
+
+                val freqText = buildString { append(context.getString(R.string.every))
+                    append(marimo.changeFrequencyDays)
+                    append(" ")
+                    append(context.getString(R.string.days))
+                }
+                val lastChangedText = marimo.lastChanged ?: "—"
+                val notesText = marimo.notes ?: "No notes"
+
+                val color = color1.toColorInt()
+                val background = color2.toColorInt()
+
+                MarimoFrequencyItem(
+                    name = marimo.name,
+                    frequencyDays = freqText,
+                    frequency = marimo.changeFrequencyDays,
+                    lastChanged = lastChangedText,
+                    notes = notesText,
+                    frequencyColor = color,
+                    lastChangedColor = color,
+                    cardBackgroundColor = background,
+                    isMost = bool
+                )
+            }
+        }
+
+        fun getLastSixMonthsLabels(): List<String> {
+            val calendar = Calendar.getInstance()
+            val sdf = SimpleDateFormat("yyyy-MM", Locale.getDefault())
+            val labels = mutableListOf<String>()
+
+            for (i in 5 downTo 0) {
+                val tempCal = calendar.clone() as Calendar
+                tempCal.add(Calendar.MONTH, -i)
+                labels.add(sdf.format(tempCal.time))
+            }
+
+            return labels
         }
 
         const val USERS_SHARED_PREF : String = "user_pref"

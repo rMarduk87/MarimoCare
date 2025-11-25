@@ -2,6 +2,7 @@ package rpt.tool.marimocare.utils.data.database.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import rpt.tool.marimocare.utils.data.database.models.MarimoChangeModel
 import rpt.tool.marimocare.utils.data.database.models.MarimoModel
 
 @Dao
@@ -45,6 +46,30 @@ interface MarimoDao {
     @Transaction
     @Query("SELECT * FROM marimo ORDER BY code COLLATE NOCASE ASC")
     fun getAll(): List<MarimoModel>
+
+    @Transaction
+    @Query("SELECT * FROM marimo WHERE frequency_changes = ( SELECT MIN(frequency_changes) " +
+            "FROM marimo ) order by name ASC;")
+    fun getMarimoMostFrequentChanged() : List<MarimoModel>
+
+    @Transaction
+    @Query("SELECT * FROM marimo WHERE frequency_changes = ( SELECT MAX(frequency_changes) " +
+            "FROM marimo ) order by name ASC;")
+    fun getMarimoLastFrequentChanged() : List<MarimoModel>
+
+    @Query("SELECT max(code) FROM marimo_changes")
+    fun getLastIdFromWaterChanges() : Int
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertWaterChanges(marimo: MarimoChangeModel)
+
+    @Transaction
+    @Query("SELECT count(*) FROM marimo_changes")
+    fun getTotalWaterChanges() : Int
+
+    @Transaction
+    @Query("SELECT * FROM marimo_changes ORDER BY code COLLATE NOCASE ASC")
+    fun getAllWaterChanges(): List<MarimoChangeModel>
 
 
 }

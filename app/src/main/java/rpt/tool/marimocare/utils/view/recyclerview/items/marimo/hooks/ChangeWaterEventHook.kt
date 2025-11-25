@@ -1,5 +1,6 @@
 package rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks
 
+import android.content.Context
 import android.os.Build
 import android.view.View
 import androidx.annotation.RequiresApi
@@ -20,6 +21,7 @@ import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.MarimoItem
 
 class ChangeWaterEventHook(
     private val lifecycleOwner: LifecycleOwner,
+    private val context: Context,
     private val onWaterChanged: () -> Unit
 ) : ClickEventHook<MarimoItem>() {
 
@@ -44,10 +46,11 @@ class ChangeWaterEventHook(
                 val lastChanged = AppUtils.getCurrentDate()
                 RepositoryManager.marimoRepository.updateWaterMarimo(lastChanged, item.marimo.code)
 
-                val updated = RepositoryManager.marimoRepository.getMarimo(item.marimo.code)
+                val updated = RepositoryManager.marimoRepository.getMarimo(
+                    item.marimo.code)
 
                 withContext(Dispatchers.IO) {
-                    AlertDataUtils.recalc()
+                    AlertDataUtils.recalc(context)
                 }
 
                 withContext(Dispatchers.Main) {

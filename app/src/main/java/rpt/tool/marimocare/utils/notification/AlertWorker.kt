@@ -23,12 +23,11 @@ class AlertWorker(appContext: Context, params: WorkerParameters) :
         d("AlertWorker", "Worker START")
 
         val overdue = AlertDataUtils.getMarimosLate()
-        val dueSoon = AlertDataUtils.getMarimosDueSoon(2) // entro 2 giorni
+        val dueSoon = AlertDataUtils.getMarimosDueSoon(1)
 
         val overdueNames = overdue.joinToString(", ") { it.name }
         val soonNames = dueSoon.joinToString(", ") { it.name }
 
-        // Salviamo solo ALERT OVERDUE e SOON per il fragment
         SharedPreferencesManager.alertOverdue =
             if (overdue.isNotEmpty())
                 context.getString(R.string.overdue_marimo, overdueNames)
@@ -36,7 +35,9 @@ class AlertWorker(appContext: Context, params: WorkerParameters) :
 
         SharedPreferencesManager.alertSoon =
             if (dueSoon.isNotEmpty())
-                context.getString(R.string.soon_marimo, soonNames)
+                if(dueSoon.size==1)
+                context.getString(R.string.soon_marimo_one, soonNames)
+            else context.getString(R.string.soon_marimo, soonNames)
             else ""
 
         SharedPreferencesManager.showAlertOverdue = overdue.isNotEmpty()
