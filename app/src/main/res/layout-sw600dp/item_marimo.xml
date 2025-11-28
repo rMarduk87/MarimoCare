@@ -218,7 +218,7 @@
                 android:id="@+id/btnWaterChanged"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
-                android:layout_weight="0.80"
+                android:layout_weight="0.60"
                 android:text="@string/water_changed"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
@@ -237,6 +237,18 @@
                 android:textColor="@color/marimo_black"
                 app:backgroundTint="@null"
                 android:background="@drawable/bg_btn_edit_border"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="0.20"
+                android:layout_marginStart="10dp"
+                android:textAllCaps="false"
+                android:textColor="@color/marimo_black"
+                app:backgroundTint="@null"
+                android:background="@drawable/bg_btn_delete_border"
                 tools:ignore="ButtonStyle" />
         </LinearLayout>
 

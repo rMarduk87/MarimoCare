@@ -71,5 +71,8 @@ interface MarimoDao {
     @Query("SELECT * FROM marimo_changes ORDER BY code COLLATE NOCASE ASC")
     fun getAllWaterChanges(): List<MarimoChangeModel>
 
+    @Transaction
+    @Query("DELETE FROM marimo WHERE code = :code")
+    fun delete(code: Int)
 
 }

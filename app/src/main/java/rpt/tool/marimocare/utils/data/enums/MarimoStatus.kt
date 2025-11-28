@@ -15,6 +15,7 @@ enum class MarimoStatus(
     val dropCircle: Int,
     val buttonChangeBg: Int,
     val buttonEditBg: Int,
+    val buttonDeleteBg: Int,
     val notesCardBg: Int,
     val cardDateBg: Int,
 ) {
@@ -27,6 +28,7 @@ enum class MarimoStatus(
         dropCircle = R.drawable.bg_circle_green,
         buttonChangeBg = R.drawable.bg_notes_green_card,
         buttonEditBg = R.drawable.bg_btn_edit_border,
+        buttonDeleteBg = R.drawable.bg_btn_delete_border,
         notesCardBg = R.drawable.bg_notes_card,
         cardDateBg = R.drawable.bg_card_date
     ),
@@ -39,6 +41,7 @@ enum class MarimoStatus(
         dropCircle = R.drawable.bg_circle_orange,
         buttonChangeBg = R.drawable.bg_orange_card,
         buttonEditBg = R.drawable.bg_btn_edit_border_orange,
+        buttonDeleteBg = R.drawable.bg_btn_delete_border_orange,
         notesCardBg = R.drawable.bg_notes_card,
         cardDateBg = R.drawable.bg_card_date_orange
     ),
@@ -51,6 +54,7 @@ enum class MarimoStatus(
         dropCircle = R.drawable.bg_circle_red,
         buttonChangeBg = R.drawable.bg_red_card,
         buttonEditBg = R.drawable.bg_btn_edit_border_red,
+        buttonDeleteBg = R.drawable.bg_btn_delete_border_red,
         notesCardBg = R.drawable.bg_notes_card,
         cardDateBg = R.drawable.bg_card_date_red
 

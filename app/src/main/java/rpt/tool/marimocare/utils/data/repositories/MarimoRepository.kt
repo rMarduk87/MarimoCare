@@ -86,6 +86,10 @@ class MarimoRepository(
         return marimoDao.getAllWaterChanges().map { it.map() }
     }
 
+    fun deleteMarimo(code: Int) {
+        marimoDao.delete(code)
+    }
+
     val marimos: LiveData<List<Marimo>> =
         marimoDao.getMarimos().map { it.map { it.map() } }
 
