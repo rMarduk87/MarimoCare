@@ -38,7 +38,8 @@ class MarimoItem(var marimo: Marimo) :
         val status = MarimoStatus.from(daysLeft)
 
         binding.txtName.text = marimo.name
-        binding.txtFrequency.text = res.getString(R.string.changes_every_days, marimo.changeFrequencyDays)
+        binding.txtFrequency.text = res.getString(R.string.changes_every_days,
+            marimo.changeFrequencyDays)
         binding.txtLastChange.text = marimo.lastChanged
         binding.txtNextChange.text = marimo.nextChange
         binding.txtNotes.text = marimo.notes ?: res.getString(R.string.no_notes)
@@ -57,6 +58,7 @@ class MarimoItem(var marimo: Marimo) :
 
         binding.btnWaterChanged.setBackgroundResource(status.buttonChangeBg)
         binding.btnEdit.setBackgroundResource(status.buttonEditBg)
+        binding.btnDelete.setBackgroundResource(status.buttonDeleteBg)
 
         binding.cardNotes.setBackgroundResource(status.notesCardBg)
         binding.cardDate.setBackgroundResource(status.cardDateBg)

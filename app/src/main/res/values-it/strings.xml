@@ -151,6 +151,9 @@
     <string name="marimo_name_stats">Nome del marimo</string>
     <string name="change_frequency_stats">Frequenza di cambio </string>
     <string name="soon_marimo_one">%1$s necessita il cambio d\'acqua</string>
+    <string name="are_you_sure_you_want_to_delete_this_marimo_this_action_cannot_be_undone">"Sei sicuro di voler eliminare questo marimo? Questa azione non può essere annullata."</string>
+    <string name="delete">"Elimina "</string>
+    <string name="delete_marimo_kuju">Eliminare Marimo Kuju?</string>
     <string-array name="marimo_frequencies">
         <item>Ogni 7 giorni (settimanale)</item>
         <item>Ogni 10 giorni</item>

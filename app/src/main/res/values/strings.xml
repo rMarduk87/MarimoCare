@@ -151,6 +151,9 @@
     <string name="marimo_name_stats">Marimo Name</string>
     <string name="change_frequency_stats">Change Frequency</string>
     <string name="soon_marimo_one">%1$s is about to change his water</string>
+    <string name="are_you_sure_you_want_to_delete_this_marimo_this_action_cannot_be_undone">"Are you sure you want to delete this marimo? This action cannot be undone. "</string>
+    <string name="delete">"Delete "</string>
+    <string name="delete_marimo_kuju">Delete Marimo Kuju?</string>
     <string-array name="marimo_frequencies">
         <item>Every 7 days (Weekly)</item>
         <item>Every 10 days</item>

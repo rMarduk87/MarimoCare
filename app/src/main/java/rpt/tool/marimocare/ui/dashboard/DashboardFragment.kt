@@ -43,6 +43,7 @@ import rpt.tool.marimocare.utils.view.viewpager.tips.TipsPagerAdapter
 import rpt.tool.marimocare.utils.view.visible
 import kotlin.getValue
 import androidx.core.view.isVisible
+import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.DeleteMarimoEventHook
 
 class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     FragmentDashboardBinding::inflate) {
@@ -95,6 +96,11 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             updateAlertsUI()
         })
         fastAdapter.addEventHook(EditMarimoEventHook())
+        fastAdapter.addEventHook(DeleteMarimoEventHook(viewLifecycleOwner,
+            requireContext()){
+            applyFilterAndSort()
+            updateAlertsUI()
+        })
 
         viewModel.marimoItems.observe(viewLifecycleOwner) { items ->
             if (items.isEmpty()) {
