@@ -1,7 +1,9 @@
 package rpt.tool.marimocare.utils
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.os.Build
+import android.util.Base64
 import androidx.annotation.RequiresApi
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
@@ -11,8 +13,14 @@ import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 import java.util.Calendar
 import androidx.core.graphics.toColorInt
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.common.BitMatrix
+import com.google.zxing.qrcode.QRCodeWriter
 import java.text.SimpleDateFormat
 import java.util.Locale
+import androidx.core.graphics.createBitmap
+import androidx.core.graphics.set
+import java.io.ByteArrayOutputStream
 
 class AppUtils {
     companion object {
@@ -113,6 +121,33 @@ class AppUtils {
             }
 
             return labels
+        }
+
+        fun generateQRCode(marimo: Marimo?) : Bitmap {
+            val deepLink = "marimocare://open?code=${marimo!!.code}&name=${marimo.name}"
+
+            val bitMatrix: BitMatrix =
+                QRCodeWriter().encode(deepLink,
+                    BarcodeFormat.QR_CODE, 800, 800)
+
+            val bmp = createBitmap(800, 800, Bitmap.Config.RGB_565)
+
+            for (x in 0 until 800) {
+                for (y in 0 until 800) {
+                    bmp[x, y] =
+                        if (bitMatrix[x, y]) android.graphics.Color.BLACK else
+                            android.graphics.Color.WHITE
+                }
+            }
+
+            return bmp
+        }
+
+        fun bitMapToString(bitmap: Bitmap): String {
+            val baos = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos)
+            val b = baos.toByteArray()
+            return Base64.encodeToString(b, Base64.DEFAULT)
         }
 
         const val USERS_SHARED_PREF : String = "user_pref"

@@ -8,6 +8,7 @@ import org.checkerframework.checker.units.qual.s
 import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.data.appmodels.MarimoChange
+import rpt.tool.marimocare.utils.data.appmodels.MarimoQR
 import rpt.tool.marimocare.utils.data.database.dao.MarimoDao
 import kotlin.collections.map
 
@@ -88,6 +89,16 @@ class MarimoRepository(
 
     fun deleteMarimo(code: Int) {
         marimoDao.delete(code)
+    }
+
+    fun addMarimoQR(marimoCode: Int, qrCodeToStore: String) {
+        val existingQR = marimoDao.getMarimoQR(marimoCode)
+        if (existingQR != null) {
+            marimoDao.invalidateMarimoQR(marimoCode, false)
+        }
+        MarimoQR(marimoDao.getLastQrId() + 1, marimoCode, qrCodeToStore, true).let {
+            marimoDao.insertQr(it.map())
+        }
     }
 
     val marimos: LiveData<List<Marimo>> =

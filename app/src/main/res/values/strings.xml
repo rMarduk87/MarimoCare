@@ -154,6 +154,14 @@
     <string name="are_you_sure_you_want_to_delete_this_marimo_this_action_cannot_be_undone">"Are you sure you want to delete this marimo? This action cannot be undone. "</string>
     <string name="delete">"Delete "</string>
     <string name="delete_marimo_kuju">Delete Marimo Kuju?</string>
+    <string name="generate">Generate QR Code</string>
+    <string name="marimo_qr_code">Marimo QR Code</string>
+    <string name="print_this_code_temp">Print this code, you can scan it later to quickly view the status of Bubbles and record a water change.</string>
+    <string name="qr_code_for_marimo">"Print this code, you can scan it later to quickly view the status of "</string>
+    <string name="qr_code_you_can_scan_it_later">" and record a water change."</string>
+    <string name="manage_qr">Manage QR</string>
+    <string name="what">What do you want to do?</string>
+    <string name="share_qr">Share QR</string>
     <string-array name="marimo_frequencies">
         <item>Every 7 days (Weekly)</item>
         <item>Every 10 days</item>
@@ -172,5 +180,9 @@
         <item>14</item>
         <item>21</item>
         <item>30</item>
+    </string-array>
+    <string-array name="marimo_qr_actions">
+        <item>Print QR</item>
+        <item>Send QR</item>
     </string-array>
 </resources>

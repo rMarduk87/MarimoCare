@@ -11,11 +11,12 @@ import rpt.tool.marimocare.utils.data.database.models.*
     entities = [
         MarimoModel::class,
         MarimoChangeModel::class,
+        MarimoQRModel::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = true,
     autoMigrations = [
-
+        AutoMigration(from = 1, to = 2),
     ]
 )
 

@@ -2,6 +2,7 @@ package rpt.tool.marimocare
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.result.ActivityResultLauncher
@@ -29,6 +30,7 @@ import rpt.tool.marimocare.databinding.ActivityMainBinding
 import rpt.tool.marimocare.utils.log.d
 import rpt.tool.marimocare.utils.log.w
 import androidx.work.*
+import rpt.tool.marimocare.ui.marimo.FromQRCodeMarimoFragment
 import rpt.tool.marimocare.utils.notification.AlertWorker
 import rpt.tool.marimocare.utils.notification.NotifyWorker
 import java.util.concurrent.TimeUnit
@@ -49,7 +51,10 @@ class MainActivity : AppCompatActivity() {
         initPermissions()
         initInAppUpdate()
         hideSystemBars()
+        handleDeepLink(intent)
     }
+
+
 
     override fun onResume() {
         super.onResume()
@@ -155,6 +160,32 @@ class MainActivity : AppCompatActivity() {
 
         controller.systemBarsBehavior =
             WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+    }
+
+    private fun handleDeepLink(intent: Intent) {
+        val uri = intent.data ?: return
+
+        if (uri.scheme == "marimocare") {
+            val code = uri.getQueryParameter("code")
+            val name = uri.getQueryParameter("name")
+
+            val bundle = Bundle().apply {
+                putString("code", code)
+                putString("name", name)
+            }
+
+            val fragment = FromQRCodeMarimoFragment()
+            fragment.arguments = bundle
+
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.container, fragment)
+                .commit()
+        }
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        handleDeepLink(intent)
     }
 
     override fun onNavigateUp(): Boolean {

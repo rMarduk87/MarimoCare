@@ -81,4 +81,22 @@
             app:destination="@id/addOrEditFragment" />
 
     </fragment>
+    <fragment
+        android:id="@+id/fromQRCodeMarimoFragment"
+        android:name="rpt.tool.marimocare.ui.marimo.FromQRCodeMarimoFragment"
+        tools:layout="@layout/fragment_from_qr_code"
+        android:label="FromQRCodeMarimoFragment">
+        <action
+            android:id="@+id/action_fromQRCodeMarimoFragment_to_dashboardFragment"
+            app:destination="@id/addOrEditFragment" />
+        <action
+            android:id="@+id/action_fromQRCodeMarimoFragment_to_addOrEditFragment"
+            app:destination="@id/addOrEditFragment" />
+        <action
+            android:id="@+id/action_fromQRCodeMarimoFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_fromQRCodeMarimoFragment_to_statsFragment"
+            app:destination="@id/statsFragment" />
+    </fragment>
 </navigation>
