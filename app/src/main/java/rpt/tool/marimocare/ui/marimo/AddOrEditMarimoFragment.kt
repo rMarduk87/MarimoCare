@@ -4,8 +4,6 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.Dialog
-import android.content.ClipData
-import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -27,13 +25,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.graphics.drawable.toDrawable
-import androidx.core.graphics.toColorInt
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -49,9 +43,14 @@ import rpt.tool.marimocare.utils.view.HeaderButtonConfig
 import rpt.tool.marimocare.utils.view.HeaderHelper
 import rpt.tool.marimocare.utils.view.adapters.CustomSpinnerAdapter
 import rpt.tool.marimocare.utils.view.adapters.ImagePrintAdapter
-import rpt.tool.marimocare.utils.view.adapters.MarimoFrequencyAdapter
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import androidx.core.net.toUri
+import android.content.ContentValues
+import android.os.Environment
+import java.io.File
+import java.io.FileOutputStream
+import java.io.OutputStream
 
 class AddOrEditMarimoFragment :
     BaseFragment<FragmentAddOrEditBinding>(FragmentAddOrEditBinding::inflate) {
@@ -342,6 +341,7 @@ class AddOrEditMarimoFragment :
                 when (which) {
                     0 -> printQr(qrCode)      // Stampa QR
                     1 -> shareQr(qrCode)      // Condivisione
+                    2 -> saveQr(qrCode)       // Salva QR)
                 }
             }
             .show()
@@ -359,12 +359,72 @@ class AddOrEditMarimoFragment :
     private fun shareQr(qrCode: Bitmap) {
         val path = MediaStore.Images.Media.insertImage(requireContext().contentResolver
             , qrCode, "QR Code", null)
-        val uri = Uri.parse(path)
+        val uri = path.toUri()
 
         val intent = Intent(Intent.ACTION_SEND).apply {
             type = "image/png"
             putExtra(Intent.EXTRA_STREAM, uri)
         }
         startActivity(Intent.createChooser(intent, getString(R.string.share_qr)))
+    }
+
+    private fun saveQr(qrCode: Bitmap): Uri?{
+        val mimeType = "image/png"
+        var uri: Uri? = null
+        var outputStream: OutputStream? = null
+        val fileName = "qr_${System.currentTimeMillis()}.png"
+
+        try {
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+
+                val values = ContentValues().apply {
+                    put(MediaStore.Images.Media.DISPLAY_NAME, fileName)
+                    put(MediaStore.Images.Media.MIME_TYPE, mimeType)
+                    put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES +
+                            "/MarimoCare")
+                    put(MediaStore.Images.Media.IS_PENDING, 1)
+                }
+
+                val resolver = requireContext().contentResolver
+                uri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
+
+                outputStream = uri?.let { resolver.openOutputStream(it) }
+
+                if (outputStream != null) {
+                    qrCode.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+                }
+
+                values.clear()
+                values.put(MediaStore.Images.Media.IS_PENDING, 0)
+                uri?.let { resolver.update(it, values, null, null) }
+
+            } else {
+
+                val imagesDir = Environment.getExternalStoragePublicDirectory(
+                    Environment.DIRECTORY_PICTURES + "/MarimoCare"
+                )
+
+                if (!imagesDir.exists()) imagesDir.mkdirs()
+
+                val image = File(imagesDir, fileName)
+                outputStream = FileOutputStream(image)
+                qrCode.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+
+                uri = Uri.fromFile(image)
+            }
+
+            Toast.makeText(context, getString(R.string.qr_saved),
+                Toast.LENGTH_SHORT).show()
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Toast.makeText(context, getString(R.string.save_error),
+                Toast.LENGTH_SHORT).show()
+        } finally {
+            outputStream?.close()
+        }
+
+        return uri
     }
 }

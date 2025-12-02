@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.navArgs
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.Dispatchers
@@ -25,6 +26,7 @@ import rpt.tool.marimocare.utils.navigation.safeNavController
 import rpt.tool.marimocare.utils.navigation.safeNavigate
 import rpt.tool.marimocare.utils.view.HeaderButtonConfig
 import rpt.tool.marimocare.utils.view.HeaderHelper
+import kotlin.getValue
 
 class FromQRCodeMarimoFragment :
     BaseFragment<FragmentFromQrCodeBinding>(FragmentFromQrCodeBinding::inflate) {
@@ -32,14 +34,16 @@ class FromQRCodeMarimoFragment :
     private var marimo: Marimo? = null
     private var code: String? = null
     private var name: String? = null
+    private val args: FromQRCodeMarimoFragmentArgs by navArgs()
 
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         setupHeaderButtons()
-        code = arguments?.getString("code")
-        name = arguments?.getString("name")
+        code = args.code
+        name = args.name
 
         initializeCard(code!!.toInt())
 
@@ -110,6 +114,7 @@ class FromQRCodeMarimoFragment :
         )
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun initializeCard(code: Int) {
         if (code != 0) {
             viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
@@ -121,56 +126,60 @@ class FromQRCodeMarimoFragment :
         }
     }
 
-    private fun updateUI(marimo: Marimo?) {
-        if (marimo != null) {
-            val daysLeft = marimo.daysLeft
-            val status = MarimoStatus.from(daysLeft)
+    @RequiresApi(Build.VERSION_CODES.O)
+    private suspend fun updateUI(marimo: Marimo?) {
+        withContext(Dispatchers.Main) {
+            if (marimo != null) {
+                val daysLeft = marimo.daysLeft
+                val status = MarimoStatus.from(daysLeft)
 
-            binding.includeM.txtName.text = marimo.name
-            binding.includeM.txtFrequency.text = requireContext()
-                .getString(R.string.changes_every_days,
-                    marimo.changeFrequencyDays)
-            binding.includeM.txtLastChange.text = marimo.lastChanged
-            binding.includeM.txtNextChange.text = marimo.nextChange
-            binding.includeM.txtNotes.text = marimo.notes ?: requireContext()
-                .getString(R.string.no_notes)
-            binding.includeM.txtDaysLeft.text = status.formatDaysLeftText(
-                requireContext().resources, daysLeft)
+                binding.includeM.txtName.text = marimo.name
+                binding.includeM.txtFrequency.text = requireContext()
+                    .getString(R.string.changes_every_days,
+                        marimo.changeFrequencyDays)
+                binding.includeM.txtLastChange.text = marimo.lastChanged
+                binding.includeM.txtNextChange.text = marimo.nextChange
+                binding.includeM.txtNotes.text = marimo.notes ?: requireContext()
+                    .getString(R.string.no_notes)
+                binding.includeM.txtDaysLeft.text = status.formatDaysLeftText(
+                    requireContext().resources, daysLeft)
 
-            binding.includeM.txtNextChange.setTextColor(ContextCompat.getColor(
-                requireContext(), status.color))
-            binding.includeM.txtDaysLeft.setTextColor(ContextCompat.getColor(
-                requireContext(), status.color))
-            binding.includeM.txtDaysLeftIcon.setImageResource(status.icon)
-            binding.includeM.layoutText.setBackgroundResource(status.daysLeftBackground)
-            binding.includeM.cardMarimo.setBackgroundResource(status.cardBackground)
+                binding.includeM.txtNextChange.setTextColor(ContextCompat.getColor(
+                    requireContext(), status.color))
+                binding.includeM.txtDaysLeft.setTextColor(ContextCompat.getColor(
+                    requireContext(), status.color))
+                binding.includeM.txtDaysLeftIcon.setImageResource(status.icon)
+                binding.includeM.layoutText.setBackgroundResource(status.daysLeftBackground)
+                binding.includeM.cardMarimo.setBackgroundResource(status.cardBackground)
 
-            binding.includeM.imgMarimoIcon.apply {
-                setImageResource(status.dropIcon)
-                background = ContextCompat.getDrawable(context, status.dropCircle)
-            }
+                binding.includeM.imgMarimoIcon.apply {
+                    setImageResource(status.dropIcon)
+                    background = ContextCompat.getDrawable(context, status.dropCircle)
+                }
 
-            binding.includeM.btnWaterChanged.setBackgroundResource(status.buttonChangeBg)
-            binding.includeM.btnEdit.setBackgroundResource(status.buttonEditBg)
-            binding.includeM.btnDelete.setBackgroundResource(status.buttonDeleteBg)
+                binding.includeM.btnWaterChanged.setBackgroundResource(status.buttonChangeBg)
+                binding.includeM.btnEdit.setBackgroundResource(status.buttonEditBg)
+                binding.includeM.btnDelete.setBackgroundResource(status.buttonDeleteBg)
 
-            binding.includeM.cardNotes.setBackgroundResource(status.notesCardBg)
-            binding.includeM.cardDate.setBackgroundResource(status.cardDateBg)
+                binding.includeM.cardNotes.setBackgroundResource(status.notesCardBg)
+                binding.includeM.cardDate.setBackgroundResource(status.cardDateBg)
 
-            binding.includeM.btnWaterChanged.setOnClickListener {
-                waterChange(marimo)
-            }
+                binding.includeM.btnWaterChanged.setOnClickListener {
+                    waterChange(marimo)
+                }
 
-            binding.includeM.btnEdit.setOnClickListener {
-                editMarimo(marimo)
-            }
+                binding.includeM.btnEdit.setOnClickListener {
+                    editMarimo(marimo)
+                }
 
-            binding.includeM.btnDelete.setOnClickListener {
-                deleteMarimoDialog(marimo)
+                binding.includeM.btnDelete.setOnClickListener {
+                    deleteMarimoDialog(marimo)
+                }
             }
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun waterChange(marimo: Marimo?) {
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
 
@@ -197,10 +206,12 @@ class FromQRCodeMarimoFragment :
         )
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun deleteMarimoDialog(marimo: Marimo?) {
         showDeleteMarimoDialog(marimo)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun showDeleteMarimoDialog(
         item: Marimo?
     ) {

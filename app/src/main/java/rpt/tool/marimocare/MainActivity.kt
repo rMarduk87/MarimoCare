@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
@@ -30,6 +31,7 @@ import rpt.tool.marimocare.databinding.ActivityMainBinding
 import rpt.tool.marimocare.utils.log.d
 import rpt.tool.marimocare.utils.log.w
 import androidx.work.*
+import rpt.tool.marimocare.ui.dashboard.DashboardFragmentDirections
 import rpt.tool.marimocare.ui.marimo.FromQRCodeMarimoFragment
 import rpt.tool.marimocare.utils.notification.AlertWorker
 import rpt.tool.marimocare.utils.notification.NotifyWorker
@@ -51,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         initPermissions()
         initInAppUpdate()
         hideSystemBars()
-        handleDeepLink(intent)
+        handleIntent(intent)
     }
 
 
@@ -162,30 +164,44 @@ class MainActivity : AppCompatActivity() {
             WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
     }
 
-    private fun handleDeepLink(intent: Intent) {
-        val uri = intent.data ?: return
+    private fun handleIntent(intent: Intent?) {
+        if (intent == null) return
 
-        if (uri.scheme == "marimocare") {
-            val code = uri.getQueryParameter("code")
-            val name = uri.getQueryParameter("name")
+        val data = intent.data ?: return
 
-            val bundle = Bundle().apply {
-                putString("code", code)
-                putString("name", name)
+        if (data.scheme == "rpt"
+            && data.host == "tool.marimocare"
+            && data.path == "/open") {
+
+            val code = data.getQueryParameter("code") ?: return
+            val name = data.getQueryParameter("name") ?: ""
+
+            val navHostFragment =
+                supportFragmentManager.findFragmentById(R.id.main_activity_nav_host_fragment) as
+                        NavHostFragment
+            val navController = navHostFragment.navController
+
+            val currentDestinationId = navController.currentDestination?.id
+
+            // Evita navigazioni doppie / crash
+            if (currentDestinationId != R.id.fromQRCodeMarimoFragment) {
+
+                val action =
+                    DashboardFragmentDirections
+                        .actionDashboardFragmentToFromQRCodeMarimoFragment(code, name)
+
+                try {
+                    navController.navigate(action)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
             }
-
-            val fragment = FromQRCodeMarimoFragment()
-            fragment.arguments = bundle
-
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, fragment)
-                .commit()
         }
     }
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
-        handleDeepLink(intent)
+        handleIntent(intent)
     }
 
     override fun onNavigateUp(): Boolean {

@@ -21,6 +21,7 @@ import java.util.Locale
 import androidx.core.graphics.createBitmap
 import androidx.core.graphics.set
 import java.io.ByteArrayOutputStream
+import java.net.URLEncoder
 
 class AppUtils {
     companion object {
@@ -124,7 +125,10 @@ class AppUtils {
         }
 
         fun generateQRCode(marimo: Marimo?) : Bitmap {
-            val deepLink = "marimocare://open?code=${marimo!!.code}&name=${marimo.name}"
+            val safeName = URLEncoder.encode(marimo!!.name, "UTF-8")
+
+            val deepLink =
+                "rpt://tool.marimocare/open?code=${marimo.code}&name=$safeName"
 
             val bitMatrix: BitMatrix =
                 QRCodeWriter().encode(deepLink,

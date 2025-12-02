@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
 
     <application
         android:name=".MarimoCareApplication"
@@ -16,16 +19,20 @@
         android:theme="@style/Theme.MarimoCare">
         <activity
             android:name=".MainActivity"
-            android:exported="false"
+            android:exported="true"
             android:screenOrientation="fullSensor"
-            tools:ignore="DiscouragedApi">
-            <intent-filter>
+            android:launchMode="singleTop"
+            tools:ignore="AppLinkUrlError,DiscouragedApi">
+            <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW"/>
 
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
 
-                <data android:scheme="marimocare" android:host="open" />
+                <data
+                    android:scheme="rpt"
+                    android:host="tool.marimocare"
+                    android:pathPrefix="/open"/>
             </intent-filter>
         </activity>
         <activity

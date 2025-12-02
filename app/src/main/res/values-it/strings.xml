@@ -162,6 +162,9 @@
     <string name="manage_qr">Gestisci QR</string>
     <string name="what">Cosa vuoi fare?</string>
     <string name="share_qr">Condividi QR</string>
+    <string name="qr_saved">QR salvato in galleria</string>
+    <string name="save_error">Errore nel salvataggio</string>
+    <string name="marimo_qr_dashboard">🌿 Gestisci Marimo dal codice QR</string>
     <string-array name="marimo_frequencies">
         <item>Ogni 7 giorni (settimanale)</item>
         <item>Ogni 10 giorni</item>
@@ -184,5 +187,6 @@
     <string-array name="marimo_qr_actions">
         <item>Stampa QR</item>
         <item>Invia QR</item>
+        <item>Salva QR</item>
     </string-array>
 </resources>

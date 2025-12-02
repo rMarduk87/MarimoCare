@@ -70,7 +70,7 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="fdashboardFragment">
+                  <entry key="fromQRCodeMarimoFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
@@ -81,17 +81,22 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_dashboardFragment_to_addOrEditFragment">
+                            <entry key="action_fromQRCodeMarimoFragment_to_addOrEditFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_dashboardFragment_to_settingsFragment">
+                            <entry key="action_fromQRCodeMarimoFragment_to_dashboardFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_dashboardFragment_to_statsFragment">
+                            <entry key="action_fromQRCodeMarimoFragment_to_settingsFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_fromQRCodeMarimoFragment_to_statsFragment">
                               <value>
                                 <LayoutPositions />
                               </value>

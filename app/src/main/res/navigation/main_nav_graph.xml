@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_statsFragment"
             app:destination="@id/statsFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_fromQRCodeMarimoFragment"
+            app:destination="@id/fromQRCodeMarimoFragment" />
     </fragment>
     <fragment
         android:id="@+id/addOrEditFragment"
@@ -88,7 +91,7 @@
         android:label="FromQRCodeMarimoFragment">
         <action
             android:id="@+id/action_fromQRCodeMarimoFragment_to_dashboardFragment"
-            app:destination="@id/addOrEditFragment" />
+            app:destination="@id/dashboardFragment" />
         <action
             android:id="@+id/action_fromQRCodeMarimoFragment_to_addOrEditFragment"
             app:destination="@id/addOrEditFragment" />
@@ -98,5 +101,14 @@
         <action
             android:id="@+id/action_fromQRCodeMarimoFragment_to_statsFragment"
             app:destination="@id/statsFragment" />
+
+        <argument
+            android:name="code"
+            app:argType="string" />
+
+        <argument
+            android:name="name"
+            app:argType="string" />
+
     </fragment>
 </navigation>

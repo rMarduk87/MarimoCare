@@ -162,6 +162,9 @@
     <string name="manage_qr">Manage QR</string>
     <string name="what">What do you want to do?</string>
     <string name="share_qr">Share QR</string>
+    <string name="qr_saved">QR saved to gallery</string>
+    <string name="save_error">Error saving</string>
+    <string name="marimo_qr_dashboard">🌿 Manage Marimo From QR Code</string>
     <string-array name="marimo_frequencies">
         <item>Every 7 days (Weekly)</item>
         <item>Every 10 days</item>
@@ -184,5 +187,6 @@
     <string-array name="marimo_qr_actions">
         <item>Print QR</item>
         <item>Send QR</item>
+        <item>Save QR</item>
     </string-array>
 </resources>
