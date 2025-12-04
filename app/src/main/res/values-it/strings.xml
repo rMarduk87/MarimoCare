@@ -87,14 +87,10 @@
     <string name="new_marimo_added">Nuovo Marimo aggiunto</string>
     <string name="automatic_notification">Notifica automatica 🤖</string>
     <string name="filters">\t\tFiltro:</string>
-    <string name="all">Tutti (0)</string>
-    <string name="overdue_f">In ritardo (0)</string>
-    <string name="soon_f">In scadenza a breve (0)</string>
-    <string name="upToDate">Aggiornato (0)</string>
-    <string name="all_counter">Tutti (</string>
-    <string name="overdue_counter">Scaduto (</string>
-    <string name="due_soon_counter">In Scadenza (</string>
-    <string name="upToDate_counter">Aggiornato (</string>
+    <string name="all">Tutti</string>
+    <string name="overdue_f">In ritardo</string>
+    <string name="soon_f">In scadenza</string>
+    <string name="upToDate">Aggiornato</string>
     <string name="water_change_today">Ehi, oggi devi cambiare l\'acqua ad alcuni Marimo</string>
     <string name="soon_marimo">Ci sono alcuni Marimo che a breve necessiteranno il cambio d\' acqua:\n%1$s</string>
     <string name="today_marimo_list">Elenco dei Marimo da cambiare oggi:\n%1$s</string>
@@ -165,6 +161,9 @@
     <string name="qr_saved">QR salvato in galleria</string>
     <string name="save_error">Errore nel salvataggio</string>
     <string name="marimo_qr_dashboard">🌿 Gestisci Marimo dal codice QR</string>
+    <string name="_6">6</string>
+    <string name="_1">1</string>
+    <string name="_4">4</string>
     <string-array name="marimo_frequencies">
         <item>Ogni 7 giorni (settimanale)</item>
         <item>Ogni 10 giorni</item>

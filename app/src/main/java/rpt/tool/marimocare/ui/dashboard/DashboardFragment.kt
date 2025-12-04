@@ -108,7 +108,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                 binding.emptyListLabel.visible()
                 binding.totalMarimo.text = "0"
                 binding.totalMarimoAlternative.text = "0"
-                binding.btnAllFilter.text = resources.getString(R.string.all)
+                binding.badgeAll.text = "0"
 
             } else {
                 binding.recyclerMarimos.visible()
@@ -117,40 +117,24 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                 binding.totalMarimo.text = items.size.toString()
                 binding.totalMarimoAlternative.text = items.size.toString()
                 fastAdapter.notifyAdapterDataSetChanged()
-                binding.btnAllFilter.text = buildString {
-                    append(getString(R.string.all_counter))
-                    append(items.size.toString())
-                    append(")")
-                }
+                binding.badgeAll.text = items.size.toString()
             }
         }
 
         viewModel.overdueMarimo.observe(viewLifecycleOwner) { count ->
             binding.overdueMarimo.text = count.toString()
             binding.overdueMarimoAlternative.text = count.toString()
-            binding.btnOverdueFilter.text = buildString {
-                append(getString(R.string.overdue_counter))
-                append(count.toString())
-                append(")")
-            }
+            binding.badgeOverdue.text = count.toString()
         }
 
         viewModel.dueSoonMarimo.observe(viewLifecycleOwner) { count ->
             binding.dueSoonMarimo.text = count.toString()
             binding.dueSoonMarimoAlternative.text = count.toString()
-            binding.btnDueSoonFilter.text = buildString {
-                append(getString(R.string.due_soon_counter))
-                append(count.toString())
-                append(")")
-            }
+            binding.badgeDueSoon.text = count.toString()
         }
 
         viewModel.upToDateMarimo.observe(viewLifecycleOwner) { count ->
-            binding.btnUpToDateFilter.text = buildString {
-                append(getString(R.string.upToDate_counter))
-                append(count.toString())
-                append(")")
-            }
+            binding.badgeUpToDate.text = count.toString()
         }
 
         binding.btnOverdueFilter.setBackgroundResource(R.drawable.bg_notes_card)
