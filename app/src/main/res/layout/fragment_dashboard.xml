@@ -22,7 +22,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp"> <!-- Header --> <TextView
+            android:padding="16dp"> <!-- Header -->
+
+            <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -532,65 +534,151 @@
                 android:id="@+id/buttonFilter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false"
                 android:layout_marginBottom="20dp">
 
-                <Button
-                    android:id="@+id/btnAllFilter"
-                    android:layout_marginStart="25dp"
-                    android:layout_width="130dp"
-                    android:layout_height="48dp"
-                    android:text="@string/all"
-                    android:textAllCaps="false"
-                    android:textColor="@android:color/white"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/bg_btn_primary"
-                    />
-                <Button
-                    android:id="@+id/btnOverdueFilter"
-                    android:layout_marginStart="25dp"
-                    android:layout_width="170dp"
-                    android:layout_height="48dp"
-                    android:text="@string/overdue_f"
-                    android:textAllCaps="false"
-                    android:textColor="@color/marimo_dark"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/bg_btn_white"
-                    android:drawableEnd="@drawable/ic_warning_triangle_red"
-                    android:drawablePadding="8dp"
-                    app:drawableTint="@color/marimo_dark" />
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAllFilter"
+                        android:layout_width="160dp"
+                        android:layout_height="48dp"
+                        android:text="@string/all"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        app:backgroundTint="@null"
+                        android:background="@drawable/bg_btn_primary"/>
+
+                    <!-- BADGE -->
+                    <TextView
+                        android:id="@+id/badgeAll"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:text="@string/_1"
+                        android:gravity="center"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/marimo_dark"
+                        android:background="@drawable/bg_badge_all"
+                        android:layout_gravity="top|end"
+                        android:translationX="6dp"
+                        android:translationY="-6dp"/>
+
+                </FrameLayout>
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnOverdueFilter"
+                        android:layout_width="160dp"
+                        android:layout_height="48dp"
+                        android:text="@string/overdue"
+                        android:textAllCaps="false"
+                        android:drawableEnd="@drawable/ic_warning_triangle_red"
+                        android:textColor="@color/marimo_dark"
+                        app:backgroundTint="@null"
+                        android:background="@drawable/bg_btn_white"/>
+
+                    <!-- BADGE -->
+                    <TextView
+                        android:id="@+id/badgeOverdue"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:text="@string/_6"
+                        android:gravity="center"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/marimo_red"
+                        android:background="@drawable/bg_badge_red"
+                        android:layout_gravity="top|end"
+                        android:translationX="6dp"
+                        android:translationY="-6dp"/>
+
+                </FrameLayout>
             </LinearLayout>
 
             <LinearLayout
+                android:clipChildren="false"
+                android:clipToPadding="false"
                 android:id="@+id/buttonFilter2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <Button
-                    android:id="@+id/btnDueSoonFilter"
-                    android:layout_marginStart="25dp"
-                    android:layout_width="170dp"
-                    android:layout_height="48dp"
-                    android:text="@string/soon_f"
-                    android:textAllCaps="false"
-                    android:textColor="@color/marimo_dark"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/bg_btn_white"
-                    android:drawableEnd="@drawable/ic_calendar_due_soon"
-                    android:drawablePadding="8dp"
-                    app:drawableTint="@color/marimo_dark" />
-                <Button
-                    android:id="@+id/btnUpToDateFilter"
-                    android:layout_marginStart="25dp"
-                    android:layout_width="170dp"
-                    android:layout_height="48dp"
-                    android:text="@string/upToDate"
-                    android:textAllCaps="false"
-                    android:textColor="@color/marimo_dark"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/bg_btn_white"
-                    android:drawableEnd="@drawable/ic_clock"
-                    android:drawablePadding="8dp"
-                    app:drawableTint="@color/marimo_dark" />
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnDueSoonFilter"
+                        android:layout_width="160dp"
+                        android:layout_height="48dp"
+                        android:text="@string/soon_f"
+                        android:textAllCaps="false"
+                        android:textColor="@color/marimo_dark"
+                        app:backgroundTint="@null"
+                        android:background="@drawable/bg_btn_white"
+                        android:drawableEnd="@drawable/ic_calendar_due_soon"
+                        android:drawablePadding="8dp"
+                        app:drawableTint="@color/marimo_dark"/>
+
+                    <!-- BADGE -->
+                    <TextView
+                        android:id="@+id/badgeDueSoon"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:text="@string/_3"
+                        android:gravity="center"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/marimo_orange"
+                        android:background="@drawable/bg_badge_orange"
+                        android:layout_gravity="top|end"
+                        android:translationX="6dp"
+                        android:translationY="-6dp"/>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnUpToDateFilter"
+                        android:layout_width="160dp"
+                        android:layout_height="48dp"
+                        android:text="@string/upToDate"
+                        android:textAllCaps="false"
+                        android:textColor="@color/marimo_dark"
+                        app:backgroundTint="@null"
+                        android:background="@drawable/bg_btn_white"
+                        android:drawableEnd="@drawable/ic_clock"
+                        android:drawablePadding="8dp"
+                        app:drawableTint="@color/marimo_dark"/>
+
+                    <!-- BADGE -->
+                    <TextView
+                        android:id="@+id/badgeUpToDate"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:text="@string/_4"
+                        android:gravity="center"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/marimo_item_green"
+                        android:background="@drawable/bg_badge_green"
+                        android:layout_gravity="top|end"
+                        android:translationX="6dp"
+                        android:translationY="-6dp"/>
+
+                </FrameLayout>
 
             </LinearLayout>
 

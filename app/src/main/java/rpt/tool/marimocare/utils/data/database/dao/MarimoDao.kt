@@ -2,8 +2,10 @@ package rpt.tool.marimocare.utils.data.database.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import rpt.tool.marimocare.utils.data.appmodels.MarimoQR
 import rpt.tool.marimocare.utils.data.database.models.MarimoChangeModel
 import rpt.tool.marimocare.utils.data.database.models.MarimoModel
+import rpt.tool.marimocare.utils.data.database.models.MarimoQRModel
 
 @Dao
 interface MarimoDao {
@@ -74,5 +76,19 @@ interface MarimoDao {
     @Transaction
     @Query("DELETE FROM marimo WHERE code = :code")
     fun delete(code: Int)
+
+    @Transaction
+    @Query("SELECT * FROM marimo_qr WHERE marimo_code = :marimoCode")
+    fun getMarimoQR(marimoCode: Int) : MarimoQRModel?
+
+    @Transaction
+    @Query("UPDATE marimo_qr SET validity = :bool WHERE marimo_code = :marimoCode")
+    fun invalidateMarimoQR(marimoCode: Int, bool: Boolean)
+
+    @Query("SELECT max(code) FROM marimo_qr")
+    fun getLastQrId() : Int
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertQr(marimoQr: MarimoQRModel)
 
 }

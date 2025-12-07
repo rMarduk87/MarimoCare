@@ -108,7 +108,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                 binding.emptyListLabel.visible()
                 binding.totalMarimo.text = "0"
                 binding.totalMarimoAlternative.text = "0"
-                binding.btnAllFilter.text = resources.getString(R.string.all)
+                binding.badgeAll.text = "0"
 
             } else {
                 binding.recyclerMarimos.visible()
@@ -117,40 +117,24 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                 binding.totalMarimo.text = items.size.toString()
                 binding.totalMarimoAlternative.text = items.size.toString()
                 fastAdapter.notifyAdapterDataSetChanged()
-                binding.btnAllFilter.text = buildString {
-                    append(getString(R.string.all_counter))
-                    append(items.size.toString())
-                    append(")")
-                }
+                binding.badgeAll.text = items.size.toString()
             }
         }
 
         viewModel.overdueMarimo.observe(viewLifecycleOwner) { count ->
             binding.overdueMarimo.text = count.toString()
             binding.overdueMarimoAlternative.text = count.toString()
-            binding.btnOverdueFilter.text = buildString {
-                append(getString(R.string.overdue_counter))
-                append(count.toString())
-                append(")")
-            }
+            binding.badgeOverdue.text = count.toString()
         }
 
         viewModel.dueSoonMarimo.observe(viewLifecycleOwner) { count ->
             binding.dueSoonMarimo.text = count.toString()
             binding.dueSoonMarimoAlternative.text = count.toString()
-            binding.btnDueSoonFilter.text = buildString {
-                append(getString(R.string.due_soon_counter))
-                append(count.toString())
-                append(")")
-            }
+            binding.badgeDueSoon.text = count.toString()
         }
 
         viewModel.upToDateMarimo.observe(viewLifecycleOwner) { count ->
-            binding.btnUpToDateFilter.text = buildString {
-                append(getString(R.string.upToDate_counter))
-                append(count.toString())
-                append(")")
-            }
+            binding.badgeUpToDate.text = count.toString()
         }
 
         binding.btnOverdueFilter.setBackgroundResource(R.drawable.bg_notes_card)
@@ -534,32 +518,51 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         val isLocateItaly = resources.configuration.locales.get(0).country == "IT"
 
         if(isSmall && isLocateItaly) {
-            binding.italian1!!.visibility = if (!SharedPreferencesManager.coloredIsSelected)
-                View.VISIBLE else View.GONE
-            binding.italian2!!.visibility = if (!SharedPreferencesManager.coloredIsSelected)
-                View.VISIBLE else View.GONE
-            binding.italian1Alternative!!.visibility =
-                if (SharedPreferencesManager.coloredIsSelected) View.VISIBLE else View.GONE
-            binding.italian2Alternative!!.visibility =
-                if (SharedPreferencesManager.coloredIsSelected) View.VISIBLE else View.GONE
-        }
-        else if(isSmall){
-            binding.italian1!!.visibility = if (!SharedPreferencesManager.coloredIsSelected)
-                View.VISIBLE else View.GONE
-            binding.italian1!!.text = resources.getString(R.string.due_soon)
-            if(binding.italian1!!.isVisible){
-                val layoutParams = binding.italian1!!.layoutParams as ViewGroup.MarginLayoutParams
-                layoutParams.setMargins(0, 34, 0, 0);
+            binding.italian1?.let { view ->
+                view.visibility = if (!SharedPreferencesManager.coloredIsSelected)
+                    View.VISIBLE else View.GONE
             }
-            binding.italian2!!.visibility = View.GONE
-            binding.italian1Alternative!!.visibility =
-                if (SharedPreferencesManager.coloredIsSelected) View.VISIBLE else View.GONE
-            binding.italian2Alternative!!.visibility = View.GONE
-            binding.italian1Alternative!!.text = resources.getString(R.string.due_soon)
-            if(binding.italian1Alternative!!.isVisible){
-                val layoutParams = binding.italian1Alternative!!.layoutParams
-                        as ViewGroup.MarginLayoutParams
-                layoutParams.setMargins(0, 34, 0, 0);
+
+            binding.italian2?.let { view2 ->
+                view2.visibility = if (!SharedPreferencesManager.coloredIsSelected)
+                    View.VISIBLE else View.GONE
+            }
+
+            binding.italian1Alternative?.let { view3 ->
+                view3.visibility =
+                    if (SharedPreferencesManager.coloredIsSelected) View.VISIBLE else View.GONE
+            }
+
+            binding.italian2Alternative?.let{ view4 ->{
+                view4.visibility = if (SharedPreferencesManager.coloredIsSelected) View.VISIBLE
+                else View.GONE
+            }
+                }
+        }else if(isSmall){
+            binding.italian1?.let { view ->
+                view.visibility = if (!SharedPreferencesManager.coloredIsSelected)
+                    View.VISIBLE
+                else
+                    View.GONE
+                view.text = resources.getString(R.string.due_soon)
+                if(view.isVisible){
+                    val layoutParams = view.layoutParams as ViewGroup.MarginLayoutParams
+                    layoutParams.setMargins(0, 34, 0, 0);
+                }
+            }
+            binding.italian2?.let{ view ->
+                view.visibility = View.GONE
+                binding.italian1Alternative?.let{ view2 ->
+                    view2.visibility =
+                        if (SharedPreferencesManager.coloredIsSelected) View.VISIBLE else View.GONE
+                    view2.visibility = View.GONE
+                    view2.text = resources.getString(R.string.due_soon)
+                    if(view2.isVisible){
+                        val layoutParams = view2.layoutParams
+                                as ViewGroup.MarginLayoutParams
+                        layoutParams.setMargins(0, 34, 0, 0);
+                    }
+                }
             }
         }
     }

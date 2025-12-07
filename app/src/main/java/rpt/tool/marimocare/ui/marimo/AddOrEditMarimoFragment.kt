@@ -1,16 +1,31 @@
 package rpt.tool.marimocare.ui.marimo
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.app.DatePickerDialog
+import android.app.Dialog
+import android.content.Context
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Color
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.print.PrintManager
+import android.provider.MediaStore
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewGroup
+import android.view.Window
 import android.view.animation.AnimationUtils
 import android.widget.AdapterView
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toDrawable
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import kotlinx.coroutines.Dispatchers
@@ -27,8 +42,15 @@ import rpt.tool.marimocare.utils.navigation.safeNavigate
 import rpt.tool.marimocare.utils.view.HeaderButtonConfig
 import rpt.tool.marimocare.utils.view.HeaderHelper
 import rpt.tool.marimocare.utils.view.adapters.CustomSpinnerAdapter
+import rpt.tool.marimocare.utils.view.adapters.ImagePrintAdapter
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import androidx.core.net.toUri
+import android.content.ContentValues
+import android.os.Environment
+import java.io.File
+import java.io.FileOutputStream
+import java.io.OutputStream
 
 class AddOrEditMarimoFragment :
     BaseFragment<FragmentAddOrEditBinding>(FragmentAddOrEditBinding::inflate) {
@@ -38,6 +60,7 @@ class AddOrEditMarimoFragment :
     private var marimoCode: Int = 0
     private val args: AddOrEditMarimoFragmentArgs by navArgs()
     private var marimo: Marimo? = null
+    private var qrCodeBtnEnabled: Boolean = false
 
 
 
@@ -54,7 +77,15 @@ class AddOrEditMarimoFragment :
 
         marimoCode = args.MarimoCode
 
+        qrCodeBtnEnabled = marimoCode != 0
+
+        binding.btnQrCode.isEnabled = qrCodeBtnEnabled
+
         addDataToMarimo(marimoCode)
+
+        binding.btnQrCode.setOnClickListener {
+            manageQRCode()
+        }
 
     }
 
@@ -216,6 +247,9 @@ class AddOrEditMarimoFragment :
                     Toast.makeText(requireContext(), getString(
                         R.string.new_marimo_added),
                         Toast.LENGTH_SHORT).show()
+                    qrCodeBtnEnabled = true
+                    binding.btnQrCode.isEnabled = qrCodeBtnEnabled
+                    marimoCode = id
                 }
             }
         }
@@ -256,5 +290,141 @@ class AddOrEditMarimoFragment :
             // Caso nuovo marimo
             setupActionButtons(null)
         }
+    }
+
+    private fun manageQRCode() {
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+            val marimo = RepositoryManager.marimoRepository.getMarimo(marimoCode)
+            val qrCode = AppUtils.generateQRCode(marimo)
+            val qrCodeToStore = AppUtils.bitMapToString(qrCode)
+            RepositoryManager.marimoRepository.addMarimoQR(marimoCode, qrCodeToStore)
+            withContext(Dispatchers.Main) {
+                showMarimoQR(marimo,qrCode)
+            }
+        }
+    }
+
+    private fun showMarimoQR(marimo: Marimo?, qrCode: Bitmap) {
+        val dialog = Dialog(requireContext())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.dialog_qr_code_marimo)
+        dialog.window?.setBackgroundDrawable(Color.WHITE.toDrawable())
+        dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT)
+
+        val icon = dialog.findViewById<ImageView>(R.id.qrCode)
+        val qrTitle = dialog.findViewById<TextView>(R.id.qrText)
+        qrTitle.text = buildString {
+            append(requireContext().getString(R.string.qr_code_for_marimo))
+            append(" ")
+            append(marimo?.name)
+            append(" ")
+            append(requireContext().getString(R.string.qr_code_you_can_scan_it_later))
+        }
+
+        icon.setImageBitmap(qrCode)
+
+        dialog.findViewById<ImageView>(R.id.btnCloseDialog).setOnClickListener {
+            dialog.dismiss() }
+
+        dialog.findViewById<Button>(R.id.btnQrActions).setOnClickListener {
+            manageQRActions(qrCode) }
+
+        dialog.show()
+    }
+
+    private fun manageQRActions(qrCode: Bitmap) {
+        val options =  resources.getStringArray(R.array.marimo_qr_actions)
+        AlertDialog.Builder(requireContext())
+            .setTitle(getString(R.string.what))
+            .setItems(options) { dialog, which ->
+                when (which) {
+                    0 -> printQr(qrCode)      // Stampa QR
+                    1 -> shareQr(qrCode)      // Condivisione
+                    2 -> saveQr(qrCode)       // Salva QR)
+                }
+            }
+            .show()
+    }
+
+    private fun printQr(qrCode: Bitmap) {
+        // Usa PrintManager per stampare l'ImageView del QR
+        val printManager = requireContext().getSystemService(Context.PRINT_SERVICE) as PrintManager
+        val jobName = "${getString(R.string.app_name)} QR"
+
+        val printAdapter = ImagePrintAdapter(requireContext(), qrCode)
+        printManager.print(jobName, printAdapter, null)
+    }
+
+    private fun shareQr(qrCode: Bitmap) {
+        val path = MediaStore.Images.Media.insertImage(requireContext().contentResolver
+            , qrCode, "QR Code", null)
+        val uri = path.toUri()
+
+        val intent = Intent(Intent.ACTION_SEND).apply {
+            type = "image/png"
+            putExtra(Intent.EXTRA_STREAM, uri)
+        }
+        startActivity(Intent.createChooser(intent, getString(R.string.share_qr)))
+    }
+
+    private fun saveQr(qrCode: Bitmap): Uri?{
+        val mimeType = "image/png"
+        var uri: Uri? = null
+        var outputStream: OutputStream? = null
+        val fileName = "qr_${System.currentTimeMillis()}.png"
+
+        try {
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+
+                val values = ContentValues().apply {
+                    put(MediaStore.Images.Media.DISPLAY_NAME, fileName)
+                    put(MediaStore.Images.Media.MIME_TYPE, mimeType)
+                    put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES +
+                            "/MarimoCare")
+                    put(MediaStore.Images.Media.IS_PENDING, 1)
+                }
+
+                val resolver = requireContext().contentResolver
+                uri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
+
+                outputStream = uri?.let { resolver.openOutputStream(it) }
+
+                if (outputStream != null) {
+                    qrCode.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+                }
+
+                values.clear()
+                values.put(MediaStore.Images.Media.IS_PENDING, 0)
+                uri?.let { resolver.update(it, values, null, null) }
+
+            } else {
+
+                val imagesDir = Environment.getExternalStoragePublicDirectory(
+                    Environment.DIRECTORY_PICTURES + "/MarimoCare"
+                )
+
+                if (!imagesDir.exists()) imagesDir.mkdirs()
+
+                val image = File(imagesDir, fileName)
+                outputStream = FileOutputStream(image)
+                qrCode.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+
+                uri = Uri.fromFile(image)
+            }
+
+            Toast.makeText(context, getString(R.string.qr_saved),
+                Toast.LENGTH_SHORT).show()
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Toast.makeText(context, getString(R.string.save_error),
+                Toast.LENGTH_SHORT).show()
+        } finally {
+            outputStream?.close()
+        }
+
+        return uri
     }
 }
