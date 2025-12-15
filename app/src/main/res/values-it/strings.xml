@@ -83,7 +83,7 @@
     <string name="bold_colored_backgrounds_without_icons">Sfondi colorati in grassetto senza icone</string>
     <string name="option_correctly_updated">Opzione aggiornata correttamente</string>
     <string name="update">Aggiorna</string>
-    <string name="updated_ok">Marimo aggiornato</string>
+    <string name="updated_ok">aggiornato correttamente</string>
     <string name="new_marimo_added">Nuovo Marimo aggiunto</string>
     <string name="automatic_notification">Notifica automatica 🤖</string>
     <string name="filters">\t\tFiltro:</string>
@@ -164,6 +164,13 @@
     <string name="_6">6</string>
     <string name="_1">1</string>
     <string name="_4">4</string>
+    <string name="photo">Per facilitare il riconoscimento del Marimo puoi aggiungere una sua foto o scattarne una nuova premendo qui.</string>
+    <string name="take_photo">Scatta foto</string>
+    <string name="choose_from_gallery">Scegli immagine dalla galleria</string>
+    <string name="photo_save_error">Errore salvataggio foto</string>
+    <string name="modify_marimo">Modifica il tuo marimo</string>
+    <string name="edit_marimo">Modifica</string>
+    <string name="add_new">Ora puoi continuare le modifiche oppure aggiungere un nuovo marimo premendo qui (o sceglire qualunque altra azione)</string>
     <string-array name="marimo_frequencies">
         <item>Ogni 7 giorni (settimanale)</item>
         <item>Ogni 10 giorni</item>

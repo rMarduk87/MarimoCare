@@ -2,7 +2,6 @@ package rpt.tool.marimocare.utils.data.database.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import rpt.tool.marimocare.utils.data.appmodels.MarimoQR
 import rpt.tool.marimocare.utils.data.database.models.MarimoChangeModel
 import rpt.tool.marimocare.utils.data.database.models.MarimoModel
 import rpt.tool.marimocare.utils.data.database.models.MarimoQRModel
@@ -32,13 +31,14 @@ interface MarimoDao {
 
     @Transaction
     @Query("UPDATE marimo SET name = :name, frequency_changes = :freq, " +
-            "last_water_changes = :lastWater, notes = :notes WHERE code = :code")
+            "last_water_changes = :lastWater, notes = :notes, photo = :photo WHERE code = :code")
     fun update(
         code: Int,
         name: String,
         freq: Int,
         lastWater: String,
-        notes: String
+        notes: String,
+        photo: String?
     )
 
     @Transaction

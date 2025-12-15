@@ -39,14 +39,17 @@
                     android:padding="20dp">
 
                     <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:id="@+id/marimo_picture"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:scaleType="centerCrop"
+                        android:adjustViewBounds="false"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_water_drop_white"
-                        android:contentDescription="@string/img"
-                        app:tint="#00BFA6" />
+                        android:contentDescription="@string/photo" />
 
                     <TextView
+                        android:id="@+id/title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/add_new_marimo"
@@ -57,6 +60,7 @@
                         android:layout_marginTop="12dp" />
 
                     <TextView
+                        android:id="@+id/subtitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/add_a_new_marimo_friend_to_track"

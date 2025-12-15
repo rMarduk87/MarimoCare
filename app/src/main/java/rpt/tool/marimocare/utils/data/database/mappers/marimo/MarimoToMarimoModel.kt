@@ -13,7 +13,8 @@ class MarimoToMarimoModel : ModelMapper<Marimo, MarimoModel> {
             name = source.name,
             lastWaterChanges = source.lastChanged,
             frequencyChanges = source.changeFrequencyDays,
-            notes = source.notes
+            notes = source.notes,
+            photo = source.photo
         )
     }
 }

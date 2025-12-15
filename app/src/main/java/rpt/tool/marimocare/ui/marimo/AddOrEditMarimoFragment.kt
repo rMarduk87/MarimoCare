@@ -1,6 +1,7 @@
 package rpt.tool.marimocare.ui.marimo
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.Dialog
@@ -47,20 +48,50 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import androidx.core.net.toUri
 import android.content.ContentValues
+import android.graphics.PorterDuff
 import android.os.Environment
+import android.os.Handler
+import android.os.Looper
+import androidx.core.content.FileProvider
+import com.skydoves.balloon.BalloonAlign
+import com.skydoves.balloon.balloon
+import rpt.tool.marimocare.utils.balloon.photo.MarimoPhotoInfoBalloonFactory
+import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
+import androidx.core.graphics.toColorInt
+import com.bumptech.glide.Glide
+import rpt.tool.marimocare.utils.balloon.newMarimo.MarimoAddNewInfoBalloonFactory
 
 class AddOrEditMarimoFragment :
     BaseFragment<FragmentAddOrEditBinding>(FragmentAddOrEditBinding::inflate) {
 
+    private var photoFile: File? = null
     private lateinit var frequencies: List<String>
     private var freq: Int = 0
     private var marimoCode: Int = 0
     private val args: AddOrEditMarimoFragmentArgs by navArgs()
     private var marimo: Marimo? = null
     private var qrCodeBtnEnabled: Boolean = false
+    private val marimoBalloon by balloon<MarimoPhotoInfoBalloonFactory>()
+    private val marimoAddNewBalloon by balloon<MarimoAddNewInfoBalloonFactory>()
+    private var photoUri: Uri? = null
+    private var marimoPhotoPath: String? = null
+    private val REQUEST_CAMERA = 1001
+    private val REQUEST_GALLERY = 1002
+
+    private fun takePhotoWithCamera() {
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        photoFile = File(requireContext().cacheDir,
+            "marimo_${System.currentTimeMillis()}.jpg")
+        photoUri = FileProvider.getUriForFile(requireContext(),
+            "${requireContext().packageName}.provider", photoFile!!)
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri)
+        intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION or
+                Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        startActivityForResult(intent, REQUEST_CAMERA)
+    }
 
 
 
@@ -87,6 +118,25 @@ class AddOrEditMarimoFragment :
             manageQRCode()
         }
 
+        if(SharedPreferencesManager.showBallonFirstTime){
+            SharedPreferencesManager.showBallonFirstTime = false
+            marimoBalloon.showAlign(
+                align = BalloonAlign.BOTTOM,
+                mainAnchor = binding.marimoPicture as View,
+                subAnchorList = listOf(binding.marimoPicture as View),
+            )
+        }
+
+        binding.marimoPicture.setOnClickListener {
+            showPhotoChooserDialog()
+        }
+
+        binding.marimoPicture.setOnLongClickListener {
+            photoFile?.let { file ->
+                if (file.exists()) showPhotoPreview(file)
+            }
+            true
+        }
     }
 
     private fun setupHeaderButtons() {
@@ -112,9 +162,12 @@ class AddOrEditMarimoFragment :
                     iconRes = R.drawable.ic_add,
                     colorRes = R.color.marimo_item_green,
                     backgroundRes = R.drawable.bg_button_light_green,
-                    enabled = false,
+                    enabled = true,
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.add_marimo),
+                    onClick = {
+                        clearAll()
+                    }
                 ),
                 HeaderButtonConfig(
                     button = binding.include1.btnOpenSettings,
@@ -228,18 +281,30 @@ class AddOrEditMarimoFragment :
                 RepositoryManager.marimoRepository.updateMarimo(
                     marimo.code,
                     name,
-                    lastWater, notes, freq
+                    lastWater, notes, freq,marimoPhotoPath
                 )
 
                 withContext(Dispatchers.Main) {
-                    Toast.makeText(requireContext(), getString(
+                    Toast.makeText(requireContext(), marimo.name + " " + getString(
                         R.string.updated_ok),
                         Toast.LENGTH_SHORT).show()
+
+                    Handler(Looper.getMainLooper()).postDelayed({
+
+                        if(SharedPreferencesManager.showBallonFirstUpdate){
+                            SharedPreferencesManager.showBallonFirstUpdate = false
+                            marimoAddNewBalloon.showAlign(
+                                align = BalloonAlign.BOTTOM,
+                                mainAnchor = binding.include1.btnAddMarimoHeader as View,
+                                subAnchorList = listOf(binding.include1.btnAddMarimoHeader as View),
+                            )
+                        }
+                    }, 1100)
                 }
             }
             else{
                 val id = RepositoryManager.marimoRepository.addMarimo(name,
-                    lastWater, notes, freq)
+                    lastWater, notes, freq,marimoPhotoPath)
 
                 RepositoryManager.marimoRepository.addWaterChanges(id, lastWater)
 
@@ -250,10 +315,10 @@ class AddOrEditMarimoFragment :
                     qrCodeBtnEnabled = true
                     binding.btnQrCode.isEnabled = qrCodeBtnEnabled
                     marimoCode = id
+                    clearAll()
                 }
             }
         }
-        clearAll()
     }
 
     private fun clearAll() {
@@ -261,6 +326,12 @@ class AddOrEditMarimoFragment :
         binding.inputDate.text.clear()
         binding.inputNotes.text.clear()
         binding.marimoSpinnerLayout.customSpinner.setSelection(0)
+        val imageView = binding.marimoPicture
+        imageView.setImageResource(R.drawable.ic_water_drop_white)
+        imageView.setColorFilter("#00BFA6".toColorInt(), PorterDuff.Mode.SRC_IN)
+        marimoPhotoPath = ""
+        binding.title.text = getString(R.string.add_new_marimo)
+        binding.subtitle.text = getString(R.string.add_a_new_marimo_friend_to_track)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -281,14 +352,32 @@ class AddOrEditMarimoFragment :
                             .setSelection(if (index != -1) index else 0)
 
                         binding.btnAdd.text = getString(R.string.update)
+                        marimoPhotoPath = marimo!!.photo
                     }
 
                     setupActionButtons(marimo)
+                    if(!marimo!!.photo.isNullOrEmpty()){
+                        showMarimoImage(File(marimo!!.photo!!))
+                    }
+                    else{
+                        showMarimoImage(null)
+                    }
+
+                    binding.title.text = buildString {
+                        append(getString(R.string.edit_marimo))
+                        append(" ${marimo!!.name}")
+                    }
+
+                    binding.subtitle.text = getString(R.string.modify_marimo)
+
                 }
             }
         } else {
             // Caso nuovo marimo
             setupActionButtons(null)
+            showMarimoImage(null)
+            binding.title.text = getString(R.string.add_new_marimo)
+            binding.subtitle.text = getString(R.string.add_a_new_marimo_friend_to_track)
         }
     }
 
@@ -348,7 +437,6 @@ class AddOrEditMarimoFragment :
     }
 
     private fun printQr(qrCode: Bitmap) {
-        // Usa PrintManager per stampare l'ImageView del QR
         val printManager = requireContext().getSystemService(Context.PRINT_SERVICE) as PrintManager
         val jobName = "${getString(R.string.app_name)} QR"
 
@@ -427,4 +515,111 @@ class AddOrEditMarimoFragment :
 
         return uri
     }
+
+    private fun showMarimoImage(file: File?) {
+        val imageView = binding.marimoPicture
+
+        imageView.clearColorFilter()
+        imageView.imageTintList = null
+        imageView.background = null
+
+        if (file != null && file.exists()) {
+            Glide.with(this)
+                .load(file)
+                .centerCrop()
+                .placeholder(R.drawable.ic_water_drop_white)
+                .into(imageView)
+        } else {
+            imageView.setImageResource(R.drawable.ic_water_drop_white)
+            imageView.setColorFilter("#00BFA6".toColorInt(), PorterDuff.Mode.SRC_IN)
+        }
+    }
+
+
+    private fun showPhotoPreview(file: File) {
+        val dialog = Dialog(requireContext(), android.R.style.
+                Theme_Black_NoTitleBar_Fullscreen)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.dialog_marimo_photo_preview)
+
+        val photoView = dialog.findViewById<com.github.chrisbanes.photoview.PhotoView>(
+            R.id.photoPreview)
+        val closeBtn = dialog.findViewById<ImageView>(R.id.btnClosePreview)
+
+        Glide.with(this)
+            .load(file)
+            .into(photoView)
+
+        closeBtn.setOnClickListener { dialog.dismiss() }
+        dialog.show()
+    }
+
+    private fun showPhotoChooserDialog() {
+        val options = arrayOf(
+            getString(R.string.take_photo),
+            getString(R.string.choose_from_gallery)
+        )
+
+        AlertDialog.Builder(requireContext())
+            .setTitle(getString(R.string.photo))
+            .setItems(options) { _, which ->
+                when (which) {
+                    0 -> takePhotoWithCamera()
+                    1 -> pickPhotoFromGallery()
+                }
+            }
+            .show()
+    }
+
+    private fun pickPhotoFromGallery() {
+        val intent = Intent(Intent.ACTION_PICK).apply {
+            type = "image/*"
+        }
+        startActivityForResult(intent, REQUEST_GALLERY)
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode != Activity.RESULT_OK) return
+
+        when (requestCode) {
+
+            REQUEST_CAMERA -> {
+                photoFile?.let {
+                    if (it.exists() && it.length() > 0) {
+                        showMarimoImage(it)
+                        marimoPhotoPath = it.absolutePath
+                        marimo?.photo = it.absolutePath
+                    }
+                }
+            }
+
+            REQUEST_GALLERY -> {
+                data?.data?.let { uri ->
+                    val file = copyUriToInternalFile(uri)
+                    photoFile = file
+                    photoUri = file.toUri()
+
+                    showMarimoImage(file)
+                    marimoPhotoPath = file.absolutePath
+                    marimo?.photo = file.absolutePath
+                }
+            }
+        }
+    }
+
+    private fun copyUriToInternalFile(uri: Uri): File {
+        val file = File(requireContext().filesDir,
+            "marimo_${System.currentTimeMillis()}.jpg")
+
+        requireContext().contentResolver.openInputStream(uri)?.use { input ->
+            FileOutputStream(file).use { output ->
+                input.copyTo(output)
+            }
+        }
+        return file
+    }
+
 }

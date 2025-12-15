@@ -1,14 +1,19 @@
 package rpt.tool.marimocare.utils.view.recyclerview.items.marimo
 
 import android.annotation.SuppressLint
+import android.graphics.PorterDuff
 import android.os.Build
+import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.toColorInt
+import com.bumptech.glide.Glide
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.ItemMarimoBinding
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.view.recyclerview.BaseRecyclerViewBindingItem
 import rpt.tool.marimocare.utils.data.enums.MarimoStatus
+import java.io.File
 
 class MarimoItem(var marimo: Marimo) :
     BaseRecyclerViewBindingItem<ItemMarimoBinding>(ItemMarimoBinding::inflate) {
@@ -51,10 +56,8 @@ class MarimoItem(var marimo: Marimo) :
         binding.layoutText.setBackgroundResource(status.daysLeftBackground)
         binding.cardMarimo.setBackgroundResource(status.cardBackground)
 
-        binding.imgMarimoIcon.apply {
-            setImageResource(status.dropIcon)
-            background = ContextCompat.getDrawable(context, status.dropCircle)
-        }
+        setImageForIcon(binding.imgMarimoIcon,status)
+
 
         binding.btnWaterChanged.setBackgroundResource(status.buttonChangeBg)
         binding.btnEdit.setBackgroundResource(status.buttonEditBg)
@@ -67,5 +70,38 @@ class MarimoItem(var marimo: Marimo) :
     fun update(newMarimo: Marimo) {
         this.marimo = newMarimo
         binding?.let { updateUI(it) }
+    }
+
+    fun setImageForIcon(imgMarimoIcon: ImageView, status: MarimoStatus) {
+
+        val context = imgMarimoIcon.context
+
+        imgMarimoIcon.setImageDrawable(null)
+        imgMarimoIcon.background = null
+        imgMarimoIcon.clearColorFilter()
+        imgMarimoIcon.imageTintList = null
+
+        val photoPath = marimo.photo
+
+        if (!photoPath.isNullOrEmpty()) {
+            val file = File(photoPath)
+
+            if (file.exists() && file.length() > 0) {
+
+                Glide.with(imgMarimoIcon)
+                    .load(file)
+                    .centerCrop()
+                    .placeholder(R.drawable.ic_water_drop_white)
+                    .error(R.drawable.ic_water_drop_white)
+                    .into(imgMarimoIcon)
+
+                return
+            }
+        }
+
+        imgMarimoIcon.apply {
+            setImageResource(status.dropIcon)
+            background = ContextCompat.getDrawable(context, status.dropCircle)
+        }
     }
 }
