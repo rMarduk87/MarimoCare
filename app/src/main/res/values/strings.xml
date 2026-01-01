@@ -171,6 +171,7 @@
     <string name="modify_marimo">Modify your marimo</string>
     <string name="edit_marimo">Edit</string>
     <string name="add_new">Now you can continue editing or add a new marimo by clicking here (or choosing any other action)</string>
+    <string name="photo_act">Choose what to do</string>
     <string-array name="marimo_frequencies">
         <item>Every 7 days (Weekly)</item>
         <item>Every 10 days</item>

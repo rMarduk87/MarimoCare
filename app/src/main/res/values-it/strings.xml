@@ -90,7 +90,7 @@
     <string name="all">Tutti</string>
     <string name="overdue_f">In ritardo</string>
     <string name="soon_f">In scadenza</string>
-    <string name="upToDate">Aggiornato</string>
+    <string name="upToDate">Cambiato</string>
     <string name="water_change_today">Ehi, oggi devi cambiare l\'acqua ad alcuni Marimo</string>
     <string name="soon_marimo">Ci sono alcuni Marimo che a breve necessiteranno il cambio d\' acqua:\n%1$s</string>
     <string name="today_marimo_list">Elenco dei Marimo da cambiare oggi:\n%1$s</string>
@@ -171,6 +171,7 @@
     <string name="modify_marimo">Modifica il tuo marimo</string>
     <string name="edit_marimo">Modifica</string>
     <string name="add_new">Ora puoi continuare le modifiche oppure aggiungere un nuovo marimo premendo qui (o sceglire qualunque altra azione)</string>
+    <string name="photo_act">Scegli cosa fare</string>
     <string-array name="marimo_frequencies">
         <item>Ogni 7 giorni (settimanale)</item>
         <item>Ogni 10 giorni</item>

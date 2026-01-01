@@ -561,7 +561,7 @@ class AddOrEditMarimoFragment :
         )
 
         AlertDialog.Builder(requireContext())
-            .setTitle(getString(R.string.photo))
+            .setTitle(getString(R.string.photo_act))
             .setItems(options) { _, which ->
                 when (which) {
                     0 -> takePhotoWithCamera()
