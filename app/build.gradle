@@ -19,7 +19,7 @@ android {
         applicationId "rpt.tool.marimocare"
         minSdk 24
         targetSdk 36
-        versionCode 3
+        versionCode 4
         versionName "1.0"
 
         ksp {
@@ -119,6 +119,12 @@ dependencies {
     implementation libs.mpandroidchart
     //QR Code
     implementation libs.core
+    //Balloon
+    implementation(libs.balloon)
+    //PhotoView
+    implementation libs.photoview
+    //Glide
+    implementation libs.glide
     //Test
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit

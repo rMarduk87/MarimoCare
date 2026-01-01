@@ -21,7 +21,9 @@ class MarimoModel(
     @ColumnInfo(name = "frequency_changes")
     val frequencyChanges: Int,
     @ColumnInfo(name = "notes")
-    val notes: String?
+    val notes: String?,
+    @ColumnInfo(name = "photo")
+    val photo: String?
 ) : DbModel() {
 
     init {

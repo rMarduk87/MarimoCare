@@ -164,6 +164,8 @@ class AppUtils {
         const val MARIMO_FILTER_SELECTED : String = "marimo_filter_selected"
         const val MARIMO_SORTING_SELECTED : String = "marimo_sorting_selected"
         const val SHOW_FILTER_AND_SORT : String = "show_filter_and_sort"
+        const val SHOW_MARIMO_BALLON : String = "show_marimo_balloon"
+        const val SHOW_NEW_MARIMO_BALLON : String = "show_new_marimo_balloon"
 
 
 

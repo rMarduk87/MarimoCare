@@ -52,4 +52,13 @@ object SharedPreferencesManager {
     var showFilterAndSort: Boolean
         get() = sharedPreferences.getBoolean(AppUtils.SHOW_FILTER_AND_SORT, true)
         set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_FILTER_AND_SORT, value) }
+
+    var showBallonFirstTime: Boolean
+        get() = sharedPreferences.getBoolean(AppUtils.SHOW_MARIMO_BALLON, true)
+        set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_MARIMO_BALLON, value) }
+
+    var showBallonFirstUpdate: Boolean
+        get() = sharedPreferences.getBoolean(AppUtils.SHOW_NEW_MARIMO_BALLON, true)
+        set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_NEW_MARIMO_BALLON, value) }
+
 }

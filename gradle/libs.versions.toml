@@ -3,6 +3,7 @@ activityKtx = "1.11.0"
 agp = "8.13.1"
 appUpdate = "2.1.0"
 assetDelivery = "2.3.0"
+balloon = "1.6.13"
 constraintlayout = "2.2.1"
 coreVersion = "3.5.4"
 dotsindicator = "5.1.0"
@@ -10,6 +11,7 @@ fastadapter = "5.7.0"
 firebaseAnalyticsKtx = "22.5.0"
 firebaseCrashlytics = "20.0.3"
 firebaseCrashlyticsGradle = "3.0.6"
+glide = "5.0.5"
 googleServices = "4.4.4"
 gradle = "8.13.1"
 gridlayout = "1.1.0"
@@ -29,6 +31,7 @@ materialdatetimepicker = "4.2.3"
 mpandroidchart = "v3.1.0"
 navigationFragmentKtx = "2.9.6"
 permissions = "0.5.0"
+photoview = "2.3.0"
 playServicesTasks = "18.4.0"
 preferenceKtx = "1.2.1"
 recyclerview = "1.4.0"
@@ -54,6 +57,7 @@ androidx-recyclerview = { module = "androidx.recyclerview:recyclerview", version
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomKtx" }
 app-update = { module = "com.google.android.play:app-update", version.ref = "appUpdate" }
 asset-delivery = { module = "com.google.android.play:asset-delivery", version.ref = "assetDelivery" }
+balloon = { module = "com.github.skydoves:balloon", version.ref = "balloon" }
 core = { module = "com.google.zxing:core", version.ref = "coreVersion" }
 dotsindicator = { module = "com.tbuonomo:dotsindicator", version.ref = "dotsindicator" }
 fastadapter = { module = "com.mikepenz:fastadapter", version.ref = "fastadapter" }
@@ -63,6 +67,7 @@ fastadapter-extensions-utils = { module = "com.mikepenz:fastadapter-extensions-u
 firebase-analytics-ktx = { module = "com.google.firebase:firebase-analytics-ktx", version.ref = "firebaseAnalyticsKtx" }
 firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics", version.ref = "firebaseCrashlytics" }
 firebase-crashlytics-gradle = { module = "com.google.firebase:firebase-crashlytics-gradle", version.ref = "firebaseCrashlyticsGradle" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 google-services = { module = "com.google.gms:google-services", version.ref = "googleServices" }
 gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
 jsr305 = { module = "com.google.code.findbugs:jsr305", version.ref = "jsr305" }
@@ -77,6 +82,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 materialdatetimepicker = { module = "com.wdullaer:materialdatetimepicker", version.ref = "materialdatetimepicker" }
 mpandroidchart = { module = "com.github.PhilJay:MPAndroidChart", version.ref = "mpandroidchart" }
 permissions = { module = "com.github.lorenzofelletti:permissions", version.ref = "permissions" }
+photoview = { module = "com.github.chrisbanes:PhotoView", version.ref = "photoview" }
 play-services-tasks = { module = "com.google.android.gms:play-services-tasks", version.ref = "playServicesTasks" }
 review = { module = "com.google.android.play:review", version.ref = "review" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }

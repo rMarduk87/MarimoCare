@@ -4,7 +4,6 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
-import org.checkerframework.checker.units.qual.s
 import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.data.appmodels.MarimoChange
@@ -20,14 +19,15 @@ class MarimoRepository(
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun addMarimo(marimoName: String, lastWaterChange: String, notes: String, freq: Int) : Int {
+    fun addMarimo(marimoName: String, lastWaterChange: String, notes: String, freq: Int,
+                  photo: String?) : Int {
         Marimo(marimoDao.getLastId()+1,marimoName, freq,
             lastWaterChange, AppUtils.nextChange(
             lastWaterChange,
             freq), notes, AppUtils.daysUntil(
             AppUtils.nextChange(
                 lastWaterChange,
-                freq))).let {
+                freq)),photo).let {
 
             marimoDao.insert(it.map())
         }
@@ -40,9 +40,10 @@ class MarimoRepository(
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun updateMarimo(code: Int, name: String, lastWater: String, notes: String, freq: Int) {
+    fun updateMarimo(code: Int, name: String, lastWater: String, notes: String, freq: Int,
+                     photo: String?) {
         marimoDao.update(code,name, freq,
-                lastWater, notes)
+                lastWater, notes,photo)
     }
 
     fun updateWaterMarimo(lastChanged: String, code: Int) {

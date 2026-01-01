@@ -36,4 +36,6 @@
     <color name="marimo_violet">#9538ea</color>
     <color name="marimo_light_violet">#eeecf9</color>
     <color name="strong_red">#a6331e</color>
+    <color name="marimo_white">#ddffffff</color>
+    <color name="overlay">#BF000000</color>
 </resources>

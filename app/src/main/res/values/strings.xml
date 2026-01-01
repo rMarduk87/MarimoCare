@@ -83,7 +83,7 @@
     <string name="bold_colored_backgrounds_without_icons">Bold colored backgrounds without icons</string>
     <string name="option_correctly_updated">Option correctly updated</string>
     <string name="update">Save Changes</string>
-    <string name="updated_ok">Marimo updated</string>
+    <string name="updated_ok">updated correctly</string>
     <string name="new_marimo_added">New Marimo Added</string>
     <string name="automatic_notification">Automatic notification 🤖</string>
     <string name="filters">\t\tFilter:</string>
@@ -164,6 +164,14 @@
     <string name="_6">6</string>
     <string name="_1">1</string>
     <string name="_4">4</string>
+    <string name="photo">To make it easier to recognize your Marimo, you can add a photo or take a new one by clicking here.</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="choose_from_gallery">Choose Image From Gallery</string>
+    <string name="photo_save_error">Error saving photo</string>
+    <string name="modify_marimo">Modify your marimo</string>
+    <string name="edit_marimo">Edit</string>
+    <string name="add_new">Now you can continue editing or add a new marimo by clicking here (or choosing any other action)</string>
+    <string name="photo_act">Choose what to do</string>
     <string-array name="marimo_frequencies">
         <item>Every 7 days (Weekly)</item>
         <item>Every 10 days</item>

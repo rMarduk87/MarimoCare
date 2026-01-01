@@ -24,7 +24,8 @@ class MarimoModelToMarimo : ModelMapper<MarimoModel, Marimo> {
             daysLeft = AppUtils.daysUntil(
                 AppUtils.nextChange(
                     source.lastWaterChanges,
-                    source.frequencyChanges))
+                    source.frequencyChanges)),
+            photo = source.photo
         )
     }
 }
