@@ -33,6 +33,10 @@ class DashboardViewModel : ViewModel() {
     @RequiresApi(Build.VERSION_CODES.O)
     val upToDateMarimo =  getUpToDateMarimoCounter(marimoItems)
 
+    val allMarimosToUpdate = getMarimosToUpdate(allMarimos)
+
+    private fun getMarimosToUpdate(allMarimos: LiveData<List<Marimo>>) =
+        allMarimos.map { marimos -> marimos.filter { MarimoStatus.from(it.daysLeft) == MarimoStatus.OVERDUE } }
 
 
     @RequiresApi(Build.VERSION_CODES.O)

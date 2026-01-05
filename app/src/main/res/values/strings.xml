@@ -172,6 +172,16 @@
     <string name="edit_marimo">Edit</string>
     <string name="add_new">Now you can continue editing or add a new marimo by clicking here (or choosing any other action)</string>
     <string name="photo_act">Choose what to do</string>
+    <string name="active_reminders">Active Reminders (1)</string>
+    <string name="active_reminders_text">Active Reminders</string>
+    <string name="select_marimos_to_update">Select Marimos to Update</string>
+    <string name="select_which_marimos_have_had_their_water_changed">Select which marimos have had their water changed</string>
+    <string name="update_1_marimo">Update 1 Marimo</string>
+    <string name="is_adapter">is</string>
+    <string name="days_overdue_adapter">days overdue!</string>
+    <string name="last_changed_adapter">Last changed:</string>
+    <string name="update_dialog">Update</string>
+    <string name="water_change_info">From the alert bar you can choose which marimos to update by selecting them from the list, just click here</string>
     <string-array name="marimo_frequencies">
         <item>Every 7 days (Weekly)</item>
         <item>Every 10 days</item>

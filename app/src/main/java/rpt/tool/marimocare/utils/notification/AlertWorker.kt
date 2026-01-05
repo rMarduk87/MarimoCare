@@ -28,6 +28,8 @@ class AlertWorker(appContext: Context, params: WorkerParameters) :
         val overdueNames = overdue.joinToString(", ") { it.name }
         val soonNames = dueSoon.joinToString(", ") { it.name }
 
+        SharedPreferencesManager.alertOverdueCounter = overdue.size
+
         SharedPreferencesManager.alertOverdue =
             if (overdue.isNotEmpty())
                 context.getString(R.string.overdue_marimo, overdueNames)
