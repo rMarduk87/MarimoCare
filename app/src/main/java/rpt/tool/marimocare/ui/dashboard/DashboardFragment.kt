@@ -611,6 +611,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun openWaterChangeDialog() {
         val view = layoutInflater.inflate(R.layout.dialog_update_marimo, null)
         val recycler = view.findViewById<RecyclerView>(R.id.recyclerMarimos)
@@ -652,6 +653,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         dialog.show()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun updateMarimos(list: List<MarimoUpdate>) {
 
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
