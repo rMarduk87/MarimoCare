@@ -168,7 +168,6 @@ class AppUtils {
         const val SHOW_MARIMO_DASHBOARD_BALLON : String = "show_marimo_dashboard_balloon"
         const val SHOW_NEW_MARIMO_BALLON : String = "show_new_marimo_balloon"
         const val MARIMO_OVERDUE_COUNTER : String = "marimo_overdue_counter"
-        const val MARIMO_UPDATE_COUNTER : String = "marimo_update_counter"
 
 
 

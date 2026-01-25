@@ -182,9 +182,6 @@
     <string name="last_changed_adapter">Ultima modifica:</string>
     <string name="update_dialog">Aggiorna</string>
     <string name="water_change_info">Dalla barra degli alert puoi scegliere quali marimo aggiornare selezionandoli dall\'elenco, basta cliccare qui</string>
-    <string name="update_marimo">Update Marimo</string>
-    <string name="marimo">Marimo</string>
-    <string name="to_update">To Update</string>
     <string-array name="marimo_frequencies">
         <item>Ogni 7 giorni (settimanale)</item>
         <item>Ogni 10 giorni</item>

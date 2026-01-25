@@ -68,8 +68,4 @@ object SharedPreferencesManager {
     var alertOverdueCounter: Int
         get() = sharedPreferences.getInt(AppUtils.MARIMO_OVERDUE_COUNTER, 0)
         set(value) = sharedPreferences.edit() { putInt(AppUtils.MARIMO_OVERDUE_COUNTER, value) }
-
-    var marimoUpdateCount: Int
-        get() = sharedPreferences.getInt(AppUtils.MARIMO_UPDATE_COUNTER, 0)
-        set(value) = sharedPreferences.edit() { putInt(AppUtils.MARIMO_UPDATE_COUNTER, value) }
 }

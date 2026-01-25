@@ -23,6 +23,7 @@ class DashboardViewModel : ViewModel() {
         }
     }
 
+
     @RequiresApi(Build.VERSION_CODES.O)
     val overdueMarimo = getOverdueMarimoCounter(marimoItems)
 
@@ -32,10 +33,8 @@ class DashboardViewModel : ViewModel() {
     @RequiresApi(Build.VERSION_CODES.O)
     val upToDateMarimo =  getUpToDateMarimoCounter(marimoItems)
 
-    @RequiresApi(Build.VERSION_CODES.O)
     val allMarimosToUpdate = getMarimosToUpdate(allMarimos)
 
-    @RequiresApi(Build.VERSION_CODES.O)
     private fun getMarimosToUpdate(allMarimos: LiveData<List<Marimo>>) =
         allMarimos.map { marimos -> marimos.filter { MarimoStatus.from(it.daysLeft) == MarimoStatus.OVERDUE } }
 

@@ -167,11 +167,6 @@ class MainActivity : AppCompatActivity() {
     private fun handleIntent(intent: Intent?) {
         if (intent == null) return
 
-        if (intent.getBooleanExtra(EXTRA_OPEN_UPDATE, false)) {
-            navigateToUpdateMarimo()
-            return
-        }
-
         val data = intent.data ?: return
 
         if (data.scheme == "rpt"
@@ -204,26 +199,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun navigateToUpdateMarimo() {
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(
-                R.id.main_activity_nav_host_fragment
-            ) as NavHostFragment
-
-        val navController = navHostFragment.navController
-
-        // Evita doppie navigazioni
-        if (navController.currentDestination?.id == R.id.updateMarimoFragment) {
-            return
-        }
-
-        try {
-            navController.navigate(R.id.action_global_updateMarimoFragment)
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
-
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         handleIntent(intent)
@@ -235,9 +210,5 @@ class MainActivity : AppCompatActivity() {
                     NavHostFragment
         val navController = navHostFragment.navController
         return navController.navigateUp() || super.onSupportNavigateUp()
-    }
-
-    companion object {
-        const val EXTRA_OPEN_UPDATE = "OPEN_UPDATE"
     }
 }
