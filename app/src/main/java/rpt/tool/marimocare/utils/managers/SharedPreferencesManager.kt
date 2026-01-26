@@ -57,8 +57,15 @@ object SharedPreferencesManager {
         get() = sharedPreferences.getBoolean(AppUtils.SHOW_MARIMO_BALLON, true)
         set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_MARIMO_BALLON, value) }
 
+    var showBallonDashboardFirstTime: Boolean
+        get() = sharedPreferences.getBoolean(AppUtils.SHOW_MARIMO_DASHBOARD_BALLON, true)
+        set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_MARIMO_DASHBOARD_BALLON, value) }
+
     var showBallonFirstUpdate: Boolean
         get() = sharedPreferences.getBoolean(AppUtils.SHOW_NEW_MARIMO_BALLON, true)
         set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_NEW_MARIMO_BALLON, value) }
 
+    var alertOverdueCounter: Int
+        get() = sharedPreferences.getInt(AppUtils.MARIMO_OVERDUE_COUNTER, 0)
+        set(value) = sharedPreferences.edit() { putInt(AppUtils.MARIMO_OVERDUE_COUNTER, value) }
 }

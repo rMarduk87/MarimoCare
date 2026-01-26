@@ -43,6 +43,35 @@
                 android:textColor="#555"
                 android:textSize="14sp" /> <!-- Tip Card -->
 
+            <LinearLayout
+                android:layout_marginBottom="8dp"
+                android:id="@+id/alertCounterLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                tools:ignore="UseCompoundDrawables"
+                >
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_alert_bell"
+                    android:contentDescription="@string/img"
+                    android:layout_marginEnd="10dp" />
+
+                <TextView
+                    android:id="@+id/alertCounter"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/marimo_dark"
+                    android:textSize="15sp"
+                    android:text="@string/active_reminders"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/alertCardRed"
                 android:layout_width="match_parent"
@@ -81,6 +110,15 @@
                         android:textStyle="bold"
                         android:text="@string/attention"
                         tools:ignore="HardcodedText" />
+
+                    <ImageView
+                        android:id="@+id/change"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_water_drop_red"
+                        android:contentDescription="@string/img"
+                        android:layout_marginEnd="10dp" />
+
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 

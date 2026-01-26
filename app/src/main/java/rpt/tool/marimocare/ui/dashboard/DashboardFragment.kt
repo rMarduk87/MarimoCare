@@ -1,6 +1,7 @@
 package rpt.tool.marimocare.ui.dashboard
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.res.ColorStateList
 import android.os.Build
 import android.os.Bundle
@@ -43,7 +44,18 @@ import rpt.tool.marimocare.utils.view.viewpager.tips.TipsPagerAdapter
 import rpt.tool.marimocare.utils.view.visible
 import kotlin.getValue
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.skydoves.balloon.BalloonAlign
+import com.skydoves.balloon.balloon
+import rpt.tool.marimocare.utils.AppUtils
+import rpt.tool.marimocare.utils.balloon.newMarimo.MarimoAddNewInfoBalloonFactory
+import rpt.tool.marimocare.utils.balloon.waterchange.WaterChangeInfoBalloonFactory
+import rpt.tool.marimocare.utils.data.appmodels.MarimoUpdate
+import rpt.tool.marimocare.utils.managers.RepositoryManager
+import rpt.tool.marimocare.utils.view.adapters.MarimoUpdateAdapter
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.DeleteMarimoEventHook
+import kotlin.getValue
 
 class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     FragmentDashboardBinding::inflate) {
@@ -53,6 +65,9 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     private val viewModel: DashboardViewModel by navGraphViewModels(R.id.main_nav_graph)
     private var autoScrollJob: Job? = null
     private lateinit var sorting: List<String>
+    private var marimoToUpdate: MutableList<MarimoUpdate> = mutableListOf()
+    private val marimoUpdateBalloon by balloon<WaterChangeInfoBalloonFactory>()
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -125,6 +140,22 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             binding.overdueMarimo.text = count.toString()
             binding.overdueMarimoAlternative.text = count.toString()
             binding.badgeOverdue.text = count.toString()
+        }
+
+        viewModel.allMarimosToUpdate.observe(viewLifecycleOwner) { marimos ->
+            if(SharedPreferencesManager.showBallonDashboardFirstTime && marimos.isNotEmpty()){
+                SharedPreferencesManager.showBallonDashboardFirstTime = false
+                marimoUpdateBalloon.showAlign(
+                    align = BalloonAlign.BOTTOM,
+                    mainAnchor = binding.change as View,
+                    subAnchorList = listOf(binding.change as View),
+                )
+            }
+            marimoToUpdate.apply {
+                clear()
+                addAll(marimos.map {
+                    MarimoUpdate(id = it.code, it.name, (it.daysLeft*-1), it.lastChanged!!) })
+            }
         }
 
         viewModel.dueSoonMarimo.observe(viewLifecycleOwner) { count ->
@@ -210,8 +241,11 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
         manageLayoutBySizeAndLocation()
 
-    }
+        binding.change.setOnClickListener {
+            openWaterChangeDialog()
+        }
 
+    }
 
     private fun addNewMarimo() {
         safeNavController?.safeNavigate(DashboardFragmentDirections.
@@ -294,12 +328,21 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         val overdueText = SharedPreferencesManager.alertOverdue
         val soonText = SharedPreferencesManager.alertSoon
 
+        val overDueCounter = SharedPreferencesManager.alertOverdueCounter
+
         if (hasOverdue) {
             binding.alertCardRed.visibility = View.VISIBLE
+            binding.alertCounterLayout.visibility = View.VISIBLE
             binding.alertCardRed.setCardBackgroundColor(
                 ContextCompat.getColor(requireContext(), R.color.marimo_pink)
             )
             binding.alertTextRed.text = overdueText
+            binding.alertCounter.text = buildString {
+                append(getString(R.string.active_reminders_text))
+                append(" (")
+                append(overDueCounter)
+                append(")")
+            }
         }
 
         if (!hasOverdue && hasSoon || (hasOverdue && hasSoon)) {
@@ -313,6 +356,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         if (!hasOverdue && !hasSoon) {
             binding.alertCardRed.visibility = View.GONE
             binding.alertCardOrange.visibility = View.GONE
+            binding.alertCounterLayout.visibility = View.GONE
         }
     }
 
@@ -563,6 +607,67 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                         layoutParams.setMargins(0, 34, 0, 0);
                     }
                 }
+            }
+        }
+    }
+
+    private fun openWaterChangeDialog() {
+        val view = layoutInflater.inflate(R.layout.dialog_update_marimo, null)
+        val recycler = view.findViewById<RecyclerView>(R.id.recyclerMarimos)
+        val btnUpdate = view.findViewById<Button>(R.id.btnUpdate)
+
+
+        fun updateButton() {
+            val count = marimoToUpdate.count { it.selected }
+            btnUpdate.text = buildString {
+                append(getString(R.string.update_dialog))
+                append(" ")
+                append(count)
+                append(" ")
+                append("Marimo")
+            }
+        }
+
+        val adapter = MarimoUpdateAdapter(marimoToUpdate) { updateButton() }
+
+        recycler.layoutManager = LinearLayoutManager(requireContext())
+        recycler.adapter = adapter
+
+        updateButton()
+
+        val dialog = AlertDialog.Builder(requireContext())
+            .setView(view)
+            .create()
+
+        view.findViewById<Button>(R.id.btnCancel).setOnClickListener {
+            dialog.dismiss()
+        }
+
+        btnUpdate.setOnClickListener {
+            val list = marimoToUpdate.filter { it.selected }
+            updateMarimos(list)
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
+
+    private fun updateMarimos(list: List<MarimoUpdate>) {
+
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+
+            list.forEach {
+                val marimo = RepositoryManager.marimoRepository.getMarimo(it.id)
+                if (marimo != null) {
+                    val lastChanged = AppUtils.getCurrentDate()
+                    RepositoryManager.marimoRepository.updateWaterMarimo(lastChanged, it.id)
+                }
+            }
+
+            AlertDataUtils.recalc(requireContext())
+            
+            withContext(Dispatchers.Main) {
+                updateAlertsUI()
             }
         }
     }

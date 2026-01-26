@@ -57,6 +57,8 @@ object AlertDataUtils {
         val overdueNames = marimosLate.joinToString(", ") { it.name }
         val soonNames = marimosSoon.joinToString(", ") { it.name }
 
+        SharedPreferencesManager.alertOverdueCounter = marimosLate.size
+
         SharedPreferencesManager.alertOverdue =
             if (marimosLate.isNotEmpty())
                 context.getString(R.string.overdue_marimo, overdueNames)

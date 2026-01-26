@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Corpo campana -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#0A976A"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="
+            M12,3
+            C8.7,3 6,5.7 6,9
+            V13
+            L4.5,15
+            H19.5
+            L18,13
+            V9
+            C18,5.7 15.3,3 12,3
+            Z" />
+
+    <!-- Batacchio -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#0A976A"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:pathData="
+            M10,18
+            C10,19.1 10.9,20 12,20
+            C13.1,20 14,19.1 14,18" />
+</vector>
