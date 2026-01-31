@@ -1,0 +1,209 @@
+<resources>
+    <string name="app_name">Marimo Care</string>
+    <string name="marimo_care_dashboard">🌿 Panel de control de Marimo Care</string>
+    <string name="keep_track_of_your_marimo">¡Lleva un registro de tus bolas de musgo Marimo y no te pierdas ningún cambio de agua!</string>
+    <string name="marimo_tip_title_1">💡 Consejo Marimo: Temperatura perfecta</string>
+    <string name="marimo_tip_title_2">💡 Consejo Marimo: Rodar suavemente</string>
+    <string name="marimo_tip_title_3">💡 Consejo Marimo: El agua limpia es clave</string>
+    <string name="marimo_tip_title_4">💡 Consejo Marimo: Vivir con poca luz</string>
+    <string name="marimo_tip_title_5">💡 Consejo Marimo: Espacio para moverse</string>
+    <string name="marimo_tip_title_6">💡 Consejo Marimo: Cuidado con las burbujas</string>
+    <string name="marimo_tip_title_7">💡 Consejo de Marimo: Cambios de estación</string>
+    <string name="marimo_tip_title_8">💡 Consejo de Marimo: Crecimiento lento</string>
+    <string name="marimo_tip_title_9">💡 Consejo de Marimo: Compartir y compartir</string>
+    <string name="marimo_tip_title_10">💡 Consejo de Marimo: Movimiento del agua</string>
+    <string name="marimo_tip_body_1">Guarda los marimo en agua fría (15–25 °C). Evita la luz solar directa y los lugares calientes.</string>
+    <string name="marimo_tip_body_2">Aprieta y enrolla suavemente los marimo para que mantengan su forma redonda.</string>
+    <string name="marimo_tip_body_3">Usa agua filtrada o destilada. El agua clorada puede dañarlos.</string>
+    <string name="marimo_tip_body_4">Los marimo prefieren la luz indirecta. Demasiado sol los oscurece.</string>
+    <string name="marimo_tip_body_5">No sobrecargues los recipientes. Cada marimo necesita espacio para moverse libremente.</string>
+    <string name="marimo_tip_body_6">Los marimo sanos producen pequeñas burbujas de oxígeno: ¡una gran señal!</string>
+    <string name="marimo_tip_body_7">En invierno, los marimo crecen más lentamente y requieren cambios de agua menos frecuentes.</string>
+    <string name="marimo_tip_body_8">Los marimo crecen solo 5 mm al año. ¡La paciencia es clave con estos amigos!</string>
+    <string name="marimo_tip_body_9">Los marimos grandes se pueden separar con cuidado en pequeños para compartir.</string>
+    <string name="marimo_tip_body_10">Agite el agua de vez en cuando para que los marimos se muevan y se mantengan sanos.</string>
+    <string name="total">Total</string>
+    <string name="_3">3</string>
+    <string name="overdue">Caducado</string>
+    <string name="due_soon">Caduca pronto</string>
+    <string name="_0">0</string>
+    <string name="your_marimos">Tus Marimos</string>
+    <string name="add_marimo">Nuevo Marimo</string>
+    <string name="mochi">Mochi</string>
+    <string name="changes_every_14_days">Cambia cada 14 días</string>
+    <string name="_295_days_overdue">Caducado hace 295 días</string>
+    <string name="last_changed_dec_15_2024">Último cambio: 15 de diciembre de 2024</string>
+    <string name="next_change_dec_29_2024">Próximo cambio: 29 de diciembre de 2024</string>
+    <string name="my_first_marimo_very_round_and_bouncy">¡Mi primer Marimo! Muy redondo y rebota.</string>
+    <string name="water_changed">Cambio de agua</string>
+    <string name="edit">Editar</string>
+    <string name="img">Imagen</string>
+    <string name="water_change_tracker">Registro de cambios de agua</string>
+    <string name="dashboard">Panel de control</string>
+    <string name="changes_every_days">Cambios cada %1$d días</string>
+    <string name="no_notes">Sin notas</string>
+    <string name="days_left">Días restantes</string>
+    <string name="no_data">No se encontró Marimo</string>
+    <string name="_12_days_left">12 días restantes</string>
+    <string name="last_changed">Último cambio</string>
+    <string name="oct_15_2025">15 de octubre de 2025</string>
+    <string name="next_change">Próximo cambio</string>
+    <string name="oct_29_2025">29 de octubre de 2025</string>
+    <string name="notes">Notas</string>
+    <string name="bottom">¡Mantén a tus amigos Marimo felices y sanos! 🌱</string>
+    <string name="loading_your_little_friends">Cargando a tus amiguitos…</string>
+    <string name="days_overdue">Días de retraso</string>
+    <string name="due_in">Cambio en</string>
+    <string name="days">Días</string>
+    <string name="add_new_marimo">Añadir un nuevo Marimo</string>
+    <string name="add_a_new_marimo_friend_to_track">Añadir un nuevo amigo Marimo para rastrear</string>
+    <string name="marimo_name">Nombre del Marimo *</string>
+    <string name="e_g_mochi_bubbles_green_bean">es. Mochi, Burbujas, Judías Verdes…</string>
+    <string name="last_water_change">Último cambio de agua *</string>
+    <string name="october_30th_2025">2025–10–30</string>
+    <string name="change_frequency">Frecuencia de cambio *</string>
+    <string name="notes_optional">Notas (opcional)</string>
+    <string name="any_special_care_instructions_or_observations">Instrucciones especiales de cuidado u observaciones…</string>
+    <string name="cancel">Cancelar</string>
+    <string name="btn_add_marimo">Guardar</string>
+    <string name="every_14_days_bi_weekly">Cada 14 días (quincenal)</string>
+    <string name="please_fill_all_the_fields">Por favor, rellene todos los campos</string>
+    <string name="attention">Atención: ¡Un Marimo está vencido!</string>
+    <string name="overdue_marimo">Urgente: Cambio de agua necesario para: %1$s</string>
+    <string name="settings">Configuración</string>
+    <string name="stats">Estadísticas</string>
+    <string name="marimo_care_settings">⚙️ Configuración de Marimo Care</string>
+    <string name="customize_your_marimo_care_experience">Personaliza tu experiencia de Marimo Care</string>
+    <string name="btn_save">Actualizar</string>
+    <string name="dashboard_card_style">Estilo de la tarjeta del panel</string>
+    <string name="choose_how_you_want_your_marimo_statistics_cards_to_appear_on_the_dashboard">Elige cómo quieres que aparezcan tus tarjetas de estadísticas de Marimo en el panel.</string>
+    <string name="default_style">Estilo predeterminado</string>
+    <string name="clean_cards_with_icons_and_subtle_backgrounds">Tarjetas limpias con iconos y fondos sutiles.</string>
+    <string name="colored_style">Estilo colorido.</string>
+    <string name="bold_colored_backgrounds_without_icons">Fondos de colores vivos sin iconos.</string>
+    <string name="option_correctly_updated">Opción actualizada correctamente.</string>
+    <string name="update">Actualizar.</string>
+    <string name="updated_ok">Actualizado correctamente.</string>
+    <string name="new_marimo_added">Nuevo Marimo añadido</string>
+    <string name="automatic_notification">Notificación automática 🤖</string>
+    <string name="filters">\t\tFiltro:</string>
+    <string name="all">Todos</string>
+    <string name="overdue_f">Vencido</string>
+    <string name="soon_f">Caducando</string>
+    <string name="upToDate">Cambio</string>
+    <string name="water_change_today">Hola, necesitas cambiar el agua de algunos Marimo hoy</string>
+    <string name="soon_marimo">Hay algunos Marimo que necesitarán cambios de agua pronto:\n%1$s</string>
+    <string name="today_marimo_list">Lista de Marimo para cambiar hoy:\n%1$s</string>
+    <string name="tips_auto_scroll_speed">Velocidad de desplazamiento: Rotar las puntas automáticamente</string>
+    <string name="choose_how_quickly_the_marimo_care_tips_automatically_rotate">Elige la velocidad con la que rotan automáticamente las puntas de cuidado Marimo.</string>
+    <string name="very_fast_5_seconds">Muy rápido (5 segundos)</string>
+    <string name="fast_10_seconds">Rápido (10 segundos)</string>
+    <string name="normal_15_seconds">Normal (15 segundos)</string>
+    <string name="slow_20_seconds">Lento (20 segundos)</string>
+    <string name="very_slow_25_seconds">Muy lento (25 segundos)</string>
+    <string name="sort">Ordenar por:</string>
+    <string name="add">Nuevo</string>
+    <string name="plus">+</string>
+    <string name="in">En</string>
+    <string name="due_soon_">Vence</string>
+    <string name="dashboard_filters_amp_sorting"><![CDATA[Filtros y ordenación del panel]]></string>
+    <string name="customize_how_marimos_are_filtered_and_sorted_on_the_dashboard">Personaliza cómo se filtran y ordenan los marimos en el panel</string>
+    <string name="display_controls">Mostrar controles</string>
+    <string name="show_filters_and_sort_controls">Mostrar filtros y ordenación</string>
+    <string name="hide_filters_and_sort_controls">Ocultar filtros y ordenación</string>
+    <string name="default_filter">Filtro predeterminado</string>
+    <string name="all_marimos">Todos los marimos</string>
+    <string name="overdue_only">Solo con retraso</string>
+    <string name="due_soon_only">Solo actualizado</string>
+    <string name="up_to_date_only">Actualizado Solo</string>
+    <string name="default_sort_order">Ordenar por defecto</string>
+    <string name="sort_by_status_overdue_first">Estado (vencido primero)</string>
+    <string name="sorted_by_name_a_z">Nombre (A a Z)</string>
+    <string name="sort_by_last_changed_newest_first">Último cambio (más reciente primero)</string>
+    <string name="track_your_marimo_care_patterns_and_insights_over_time">Seguimiento de los patrones de cuidado y los conocimientos de Marimo a lo largo del tiempo</string>
+    <string name="marimo_care_stats">Estadísticas de Marimo</string>
+    <string name="average_frequency">Frecuencia promedio</string>
+    <string name="_10_3">10.3</string>
+    <string name="_days">días</string>
+    <string name="across_all_marimos">De todos los Marimos</string>
+    <string name="total_water_changed">Cambios totales de agua</string>
+    <string name="since_tracking_began">Desde que comenzó el seguimiento</string>
+    <string name="most_frequent">Más frecuente</string>
+    <string name="last_frequent">Última frecuencia</string>
+    <string name="every">"Cada "</string>
+    <string name="different">Diferentes Marimos</string>
+    <string name="every_14_days">Cada 14 días</string>
+    <string name="oct_30">30 de octubre</string>
+    <string name="most_low_maintenance_marimos">Marimos que requieren menos mantenimiento</string>
+    <string name="these_marimos_require_water_changes_every_14_days">Estos Marimos requieren cambios de agua cada 14 días</string>
+    <string name="most_attention_needed_marimos">Marimos que requieren más atención</string>
+    <string name="these_marimos_require_water_changes_every">"Estos Marimos requieren cambios de agua cada "</string>
+    <string name="__days">" días:"</string>
+    <string name="water_change_trend">Tendencia de cambio de agua</string>
+    <string name="actual_water_changes_over_the_last_6_months">Cambios de agua realizados en los últimos 6 meses</string>
+    <string name="change_frequency_distribution">Distribución de la frecuencia de cambio de agua</string>
+    <string name="how_often_you_change_water_for_your_marimos">Con qué frecuencia cambia el agua de sus marimos en días</string>
+    <string name="there_are_no_statistics_yet">Aún no hay estadísticas</string>
+    <string name="marimo_name_stats">Nombre del marimo</string>
+    <string name="change_frequency_stats">Frecuencia de cambio</string>
+    <string name="soon_marimo_one">%1$s necesita un cambio de agua</string>
+    <string name="are_you_sure_you_want_to_delete_this_marimo_this_action_cannot_be_undone">"¿Está seguro?" ¿Quieres eliminar este Marimo? Esta acción no se puede deshacer.</string>
+    <string name="delete">"Eliminar"</string>
+    <string name="delete_marimo_kuju">¿Eliminar Marimo Kuju?</string>
+    <string name="generate">Generar código QR</string>
+    <string name="marimo_qr_code">Código QR de Marimo</string>
+    <string name="print_this_code_temp">Imprimir este código; Puedes escanearlo más tarde para ver rápidamente el estado de Bubbles y registrar un cambio de agua.</string>
+    <string name="qr_code_for_marimo">"Imprime este código. Puedes escanearlo más tarde para ver rápidamente el estado de "</string>
+    <string name="qr_code_you_can_scan_it_later">" y registrar un cambio de agua."</string>
+    <string name="manage_qr">Administrar QR</string>
+    <string name="what">¿Qué quieres hacer?</string>
+    <string name="share_qr">Compartir QR</string>
+    <string name="qr_saved">QR guardado en la galería</string>
+    <string name="save_error">Error al guardar</string>
+    <string name="marimo_qr_dashboard">🌿 Administrar Marimo desde el código QR</string>
+    <string name="_6">6</string>
+    <string name="_1">1</string>
+    <string name="_4">4</string>
+    <string name="photo">Para que sea más fácil reconocer tu Marimo, puedes añadir una foto o tomar una nueva haciendo clic aquí.</string>
+    <string name="take_photo">Tomar foto</string>
+    <string name="choose_from_gallery">Seleccionar imagen de la galería</string>
+    <string name="photo_save_error">Error al guardar la foto</string>
+    <string name="modify_marimo">Editar tu Marimo</string>
+    <string name="edit_marimo">Editar</string>
+    <string name="add_new">Ahora puedes seguir editando o añadir un nuevo Marimo haciendo clic aquí (o elegir cualquier otra acción).</string>
+    <string name="photo_act">Elige qué hacer</string>
+    <string name="active_reminders">Recordatorios activos (1)</string>
+    <string name="active_reminders_text">Recordatorios activos</string>
+    <string name="select_marimos_to_update">Selecciona los Marimos que quieres actualizar</string>
+    <string name="select_which_marimos_have_had_their_water_changed">Seleccionar marimos cuyo agua ha sido cambiada</string>
+    <string name="update_1_marimo">Actualizar 1 marimo</string>
+    <string name="is_adapter">tiene</string>
+    <string name="days_overdue_adapter">¡Días de retraso!</string>
+    <string name="last_changed_adapter">Última modificación:</string>
+    <string name="update_dialog">Actualizar</string>
+    <string name="water_change_info">Desde la barra de alertas, puedes seleccionar qué marimos actualizar seleccionándolos de la lista; solo haz clic aquí</string>
+    <string-array name="marimo_frequencies">
+        <item>Cada 7 días (semanal)</item>
+        <item>Cada 10 días</item>
+        <item>Cada 14 días (quincenal)</item>
+        <item>Cada 21 días</item>
+        <item>Cada 30 días (mensualmente)</item>
+    </string-array>
+    <string-array name="marimo_sorting">
+        <item>Estado</item>
+        <item>Nombre</item>
+        <item>Última modificación</item>
+    </string-array>
+    <string-array name="marimo_frequencies_changes">
+        <item>7</item>
+        <item>10</item>
+        <item>14</item>
+        <item>21</item>
+        <item>30</item>
+    </string-array>
+    <string-array name="marimo_qr_actions">
+        <item>Impresión QR</item>
+        <item>Enviar QR</item>
+        <item>Guardar QR</item>
+    </string-array>
+</resources>
