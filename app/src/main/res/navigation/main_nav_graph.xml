@@ -23,10 +23,13 @@
         <action
             android:id="@+id/action_dashboardFragment_to_fromQRCodeMarimoFragment"
             app:destination="@id/fromQRCodeMarimoFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_marimoDetailFragment"
+            app:destination="@id/marimoDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/addOrEditFragment"
-        android:name="rpt.tool.marimocare.ui.marimo.AddOrEditMarimoFragment"
+        android:name="rpt.tool.marimocare.ui.marimo.addoredit.AddOrEditMarimoFragment"
         tools:layout="@layout/fragment_add_or_edit"
         android:label="AddOrEditMarimoFragment">
 
@@ -86,7 +89,7 @@
     </fragment>
     <fragment
         android:id="@+id/fromQRCodeMarimoFragment"
-        android:name="rpt.tool.marimocare.ui.marimo.FromQRCodeMarimoFragment"
+        android:name="rpt.tool.marimocare.ui.marimo.qrcode.FromQRCodeMarimoFragment"
         tools:layout="@layout/fragment_from_qr_code"
         android:label="FromQRCodeMarimoFragment">
         <action
@@ -109,6 +112,22 @@
         <argument
             android:name="name"
             app:argType="string" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/marimoDetailFragment"
+        android:name="rpt.tool.marimocare.ui.marimo.details.MarimoDetailsFragment"
+        tools:layout="@layout/fragment_marimo_details"
+        android:label="MarimoDetailFragment">
+
+        <action
+            android:id="@+id/action_marimoDetailFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+
+        <argument
+            android:name="MarimoCode"
+            app:argType="integer"
+            android:defaultValue="0" />
 
     </fragment>
 </navigation>

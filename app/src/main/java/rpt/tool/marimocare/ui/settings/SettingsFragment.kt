@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat
 import rpt.tool.marimocare.BaseFragment
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentSettingsBinding
+import rpt.tool.marimocare.ui.marimo.addoredit.AddOrEditMarimoFragmentDirections
 import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 import rpt.tool.marimocare.utils.navigation.safeNavController
 import rpt.tool.marimocare.utils.navigation.safeNavigate
@@ -44,6 +45,12 @@ class SettingsFragment :
         setupFilterAndSortSelection()
         setupFilterAndSortListeners()
         setupSaveCancelListeners()
+
+        binding.include1.appLogo.setOnClickListener {
+            safeNavController?.safeNavigate(
+                SettingsFragmentDirections.actionSettingsFragmentToDashboardFragment()
+            )
+        }
     }
 
     private fun setupHeaderButtons() {

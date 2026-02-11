@@ -1,17 +1,22 @@
-package rpt.tool.marimocare.ui.marimo
+package rpt.tool.marimocare.ui.marimo.addoredit
 
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.graphics.PorterDuff
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Environment
+import android.os.Handler
+import android.os.Looper
 import android.print.PrintManager
 import android.provider.MediaStore
 import android.view.MotionEvent
@@ -26,9 +31,16 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
 import androidx.core.graphics.drawable.toDrawable
+import androidx.core.graphics.toColorInt
+import androidx.core.net.toUri
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
+import com.github.chrisbanes.photoview.PhotoView
+import com.skydoves.balloon.BalloonAlign
+import com.skydoves.balloon.balloon
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -36,33 +48,22 @@ import rpt.tool.marimocare.BaseFragment
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentAddOrEditBinding
 import rpt.tool.marimocare.utils.AppUtils
+import rpt.tool.marimocare.utils.balloon.newMarimo.MarimoAddNewInfoBalloonFactory
+import rpt.tool.marimocare.utils.balloon.photo.MarimoPhotoInfoBalloonFactory
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.managers.RepositoryManager
+import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 import rpt.tool.marimocare.utils.navigation.safeNavController
 import rpt.tool.marimocare.utils.navigation.safeNavigate
 import rpt.tool.marimocare.utils.view.HeaderButtonConfig
 import rpt.tool.marimocare.utils.view.HeaderHelper
 import rpt.tool.marimocare.utils.view.adapters.CustomSpinnerAdapter
 import rpt.tool.marimocare.utils.view.adapters.ImagePrintAdapter
-import java.text.SimpleDateFormat
-import java.util.Calendar
-import androidx.core.net.toUri
-import android.content.ContentValues
-import android.graphics.PorterDuff
-import android.os.Environment
-import android.os.Handler
-import android.os.Looper
-import androidx.core.content.FileProvider
-import com.skydoves.balloon.BalloonAlign
-import com.skydoves.balloon.balloon
-import rpt.tool.marimocare.utils.balloon.photo.MarimoPhotoInfoBalloonFactory
-import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
-import androidx.core.graphics.toColorInt
-import com.bumptech.glide.Glide
-import rpt.tool.marimocare.utils.balloon.newMarimo.MarimoAddNewInfoBalloonFactory
+import java.text.SimpleDateFormat
+import java.util.Calendar
 
 class AddOrEditMarimoFragment :
     BaseFragment<FragmentAddOrEditBinding>(FragmentAddOrEditBinding::inflate) {
@@ -83,12 +84,15 @@ class AddOrEditMarimoFragment :
 
     private fun takePhotoWithCamera() {
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        photoFile = File(requireContext().cacheDir,
-            "marimo_${System.currentTimeMillis()}.jpg")
+        photoFile = File(
+            requireContext().cacheDir,
+            "marimo_${System.currentTimeMillis()}.jpg"
+        )
         photoUri = FileProvider.getUriForFile(requireContext(),
             "${requireContext().packageName}.provider", photoFile!!)
         intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri)
-        intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION or
+        intent.addFlags(
+            Intent.FLAG_GRANT_WRITE_URI_PERMISSION or
                 Intent.FLAG_GRANT_READ_URI_PERMISSION)
         startActivityForResult(intent, REQUEST_CAMERA)
     }
@@ -137,6 +141,13 @@ class AddOrEditMarimoFragment :
             }
             true
         }
+
+        binding.include1.appLogo.setOnClickListener {
+            safeNavController?.safeNavigate(
+                AddOrEditMarimoFragmentDirections.Companion
+                    .actionAddOrEditFragmentToDashboardFragment()
+            )
+        }
     }
 
     private fun setupHeaderButtons() {
@@ -152,7 +163,7 @@ class AddOrEditMarimoFragment :
                     text = requireContext().getString(R.string.dashboard),
                     onClick = {
                         safeNavController?.safeNavigate(
-                            AddOrEditMarimoFragmentDirections
+                            AddOrEditMarimoFragmentDirections.Companion
                                 .actionAddOrEditFragmentToDashboardFragment()
                         )
                     }
@@ -178,7 +189,7 @@ class AddOrEditMarimoFragment :
                     text = requireContext().getString(R.string.settings),
                     onClick = {
                         safeNavController?.safeNavigate(
-                            AddOrEditMarimoFragmentDirections
+                            AddOrEditMarimoFragmentDirections.Companion
                                 .actionAddOrEditFragmentToSettingsFragment()
                         )
                     }
@@ -192,7 +203,7 @@ class AddOrEditMarimoFragment :
                     text = requireContext().getString(R.string.stats),
                     onClick = {
                         safeNavController?.safeNavigate(
-                            AddOrEditMarimoFragmentDirections
+                            AddOrEditMarimoFragmentDirections.Companion
                                 .actionAddOrEditFragmentToStatsFragment()
                         )
                     }
@@ -207,7 +218,8 @@ class AddOrEditMarimoFragment :
         val arrow = binding.marimoSpinnerLayout.arrow
         val adapter = CustomSpinnerAdapter(requireContext(), frequencies)
         spinner.adapter = adapter
-        spinner.setPopupBackgroundDrawable(ContextCompat.getDrawable(requireContext(),
+        spinner.setPopupBackgroundDrawable(
+            ContextCompat.getDrawable(requireContext(),
             R.drawable.spinner_dropdown_background))
 
         val rotateUp = AnimationUtils.loadAnimation(requireContext(),
@@ -225,7 +237,7 @@ class AddOrEditMarimoFragment :
                                         id: Long) {
                 adapter.setSelectedIndex(position)
                 arrow.startAnimation(rotateDown)
-                freq = AppUtils.extractDay(frequencies[position])
+                freq = AppUtils.Companion.extractDay(frequencies[position])
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
@@ -242,14 +254,15 @@ class AddOrEditMarimoFragment :
                 requireContext(),
                 { _, year, month, day ->
                     calendar.set(year, month, day)
-                    binding.inputDate.setText(SimpleDateFormat("yyyy-MM-dd").
-                    format(calendar.time))
+                    binding.inputDate.setText(
+                        SimpleDateFormat("yyyy-MM-dd").format(calendar.time)
+                    )
                 },
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH)
             ).apply {
-                datePicker.maxDate = AppUtils.getMaxDate()
+                datePicker.maxDate = AppUtils.Companion.getMaxDate()
                 setTitle("")
                 show()
             }
@@ -285,13 +298,16 @@ class AddOrEditMarimoFragment :
                 )
 
                 withContext(Dispatchers.Main) {
-                    Toast.makeText(requireContext(), marimo.name + " " + getString(
-                        R.string.updated_ok),
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(), marimo.name + " " + getString(
+                            R.string.updated_ok
+                        ),
+                        Toast.LENGTH_SHORT
+                    ).show()
 
                     Handler(Looper.getMainLooper()).postDelayed({
 
-                        if(SharedPreferencesManager.showBallonFirstUpdate){
+                        if (SharedPreferencesManager.showBallonFirstUpdate) {
                             SharedPreferencesManager.showBallonFirstUpdate = false
                             marimoAddNewBalloon.showAlign(
                                 align = BalloonAlign.BOTTOM,
@@ -306,12 +322,16 @@ class AddOrEditMarimoFragment :
                 val id = RepositoryManager.marimoRepository.addMarimo(name,
                     lastWater, notes, freq,marimoPhotoPath)
 
-                RepositoryManager.marimoRepository.addWaterChanges(id, lastWater)
+                RepositoryManager.marimoRepository.addWaterChanges(id, lastWater,
+                    null,null)
 
                 withContext(Dispatchers.Main) {
-                    Toast.makeText(requireContext(), getString(
-                        R.string.new_marimo_added),
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        requireContext(), getString(
+                            R.string.new_marimo_added
+                        ),
+                        Toast.LENGTH_SHORT
+                    ).show()
                     qrCodeBtnEnabled = true
                     binding.btnQrCode.isEnabled = qrCodeBtnEnabled
                     marimoCode = id
@@ -345,7 +365,7 @@ class AddOrEditMarimoFragment :
                         binding.inputDate.setText(marimo!!.lastChanged)
                         binding.inputNotes.setText(marimo!!.notes)
 
-                        val index = AppUtils.indexOfContaining(
+                        val index = AppUtils.Companion.indexOfContaining(
                             marimo!!.changeFrequencyDays.toString(), frequencies
                         )
                         binding.marimoSpinnerLayout.customSpinner
@@ -356,10 +376,9 @@ class AddOrEditMarimoFragment :
                     }
 
                     setupActionButtons(marimo)
-                    if(!marimo!!.photo.isNullOrEmpty()){
+                    if (!marimo!!.photo.isNullOrEmpty()) {
                         showMarimoImage(File(marimo!!.photo!!))
-                    }
-                    else{
+                    } else {
                         showMarimoImage(null)
                     }
 
@@ -384,11 +403,11 @@ class AddOrEditMarimoFragment :
     private fun manageQRCode() {
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
             val marimo = RepositoryManager.marimoRepository.getMarimo(marimoCode)
-            val qrCode = AppUtils.generateQRCode(marimo)
-            val qrCodeToStore = AppUtils.bitMapToString(qrCode)
+            val qrCode = AppUtils.Companion.generateQRCode(marimo)
+            val qrCodeToStore = AppUtils.Companion.bitMapToString(qrCode)
             RepositoryManager.marimoRepository.addMarimoQR(marimoCode, qrCodeToStore)
             withContext(Dispatchers.Main) {
-                showMarimoQR(marimo,qrCode)
+                showMarimoQR(marimo, qrCode)
             }
         }
     }
@@ -398,7 +417,8 @@ class AddOrEditMarimoFragment :
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(R.layout.dialog_qr_code_marimo)
         dialog.window?.setBackgroundDrawable(Color.WHITE.toDrawable())
-        dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,
+        dialog.window?.setLayout(
+            ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.WRAP_CONTENT)
 
         val icon = dialog.findViewById<ImageView>(R.id.qrCode)
@@ -469,7 +489,8 @@ class AddOrEditMarimoFragment :
                 val values = ContentValues().apply {
                     put(MediaStore.Images.Media.DISPLAY_NAME, fileName)
                     put(MediaStore.Images.Media.MIME_TYPE, mimeType)
-                    put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES +
+                    put(
+                        MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES +
                             "/MarimoCare")
                     put(MediaStore.Images.Media.IS_PENDING, 1)
                 }
@@ -537,12 +558,13 @@ class AddOrEditMarimoFragment :
 
 
     private fun showPhotoPreview(file: File) {
-        val dialog = Dialog(requireContext(), android.R.style.
-                Theme_Black_NoTitleBar_Fullscreen)
+        val dialog = Dialog(
+            requireContext(), android.R.style.Theme_Black_NoTitleBar_Fullscreen
+        )
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(R.layout.dialog_marimo_photo_preview)
 
-        val photoView = dialog.findViewById<com.github.chrisbanes.photoview.PhotoView>(
+        val photoView = dialog.findViewById<PhotoView>(
             R.id.photoPreview)
         val closeBtn = dialog.findViewById<ImageView>(R.id.btnClosePreview)
 
@@ -611,8 +633,10 @@ class AddOrEditMarimoFragment :
     }
 
     private fun copyUriToInternalFile(uri: Uri): File {
-        val file = File(requireContext().filesDir,
-            "marimo_${System.currentTimeMillis()}.jpg")
+        val file = File(
+            requireContext().filesDir,
+            "marimo_${System.currentTimeMillis()}.jpg"
+        )
 
         requireContext().contentResolver.openInputStream(uri)?.use { input ->
             FileOutputStream(file).use { output ->

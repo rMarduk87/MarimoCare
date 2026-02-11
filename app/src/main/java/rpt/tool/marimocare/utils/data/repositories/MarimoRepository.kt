@@ -72,9 +72,11 @@ class MarimoRepository(
         return marimoDao.getMarimoLastFrequentChanged().map() { it.map() }
     }
 
-    fun addWaterChanges(id: Int, lastWater: String) {
+    fun addWaterChanges(id: Int, lastWater: String, waterChangeNotes: String?, imagePath: String?
+                        ,isMilestone: Boolean = false) {
         MarimoChange(marimoDao.getLastIdFromWaterChanges()+1,id.toString(),
-            lastWater).let {
+            lastWater,waterChangeNotes,
+            imagePath,isMilestone).let {
 
             marimoDao.insertWaterChanges(it.map())
         }

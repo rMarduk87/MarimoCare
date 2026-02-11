@@ -35,7 +35,7 @@
     <string name="last_changed_dec_15_2024">Last changed: Dec 15, 2024</string>
     <string name="next_change_dec_29_2024">Next change: Dec 29, 2024</string>
     <string name="my_first_marimo_very_round_and_bouncy">My first marimo! Very round and bouncy.</string>
-    <string name="water_changed">Water Changed</string>
+    <string name="water_changed">Change</string>
     <string name="edit">Edit</string>
     <string name="img">Img</string>
     <string name="water_change_tracker">Water Change Tracker</string>
@@ -182,6 +182,13 @@
     <string name="last_changed_adapter">Last changed:</string>
     <string name="update_dialog">Update</string>
     <string name="water_change_info">From the alert bar you can choose which marimos to update by selecting them from the list, just click here</string>
+    <string name="log_water_change">Log Water Change</string>
+    <string name="log_notes_optional">Notes (Optional)</string>
+    <string name="how_is_your_marimo_looking_any_observations">How is your marimo looking?\nAny observations?</string>
+    <string name="upload_image_optional">Upload Image (Optional)</string>
+    <string name="click_to_upload_image">Click to upload image</string>
+    <string name="mark_as_milestone_special_moment">Mark as milestone (special moment)</string>
+    <string name="save_log">Save Log</string>
     <string-array name="marimo_frequencies">
         <item>Every 7 days (Weekly)</item>
         <item>Every 10 days</item>

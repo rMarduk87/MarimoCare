@@ -62,6 +62,7 @@ class MarimoItem(var marimo: Marimo) :
         binding.btnWaterChanged.setBackgroundResource(status.buttonChangeBg)
         binding.btnEdit.setBackgroundResource(status.buttonEditBg)
         binding.btnDelete.setBackgroundResource(status.buttonDeleteBg)
+        binding.btnDetails.setBackgroundResource(status.buttonDetailBg)
 
         binding.cardNotes.setBackgroundResource(status.notesCardBg)
         binding.cardDate.setBackgroundResource(status.cardDateBg)

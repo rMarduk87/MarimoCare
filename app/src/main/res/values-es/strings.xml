@@ -35,7 +35,7 @@
     <string name="last_changed_dec_15_2024">Último cambio: 15 de diciembre de 2024</string>
     <string name="next_change_dec_29_2024">Próximo cambio: 29 de diciembre de 2024</string>
     <string name="my_first_marimo_very_round_and_bouncy">¡Mi primer Marimo! Muy redondo y rebota.</string>
-    <string name="water_changed">Cambio de agua</string>
+    <string name="water_changed">Cambio</string>
     <string name="edit">Editar</string>
     <string name="img">Imagen</string>
     <string name="water_change_tracker">Registro de cambios de agua</string>
@@ -182,6 +182,13 @@
     <string name="last_changed_adapter">Última modificación:</string>
     <string name="update_dialog">Actualizar</string>
     <string name="water_change_info">Desde la barra de alertas, puedes seleccionar qué marimos actualizar seleccionándolos de la lista; solo haz clic aquí</string>
+    <string name="log_water_change">Log Water Change</string>
+    <string name="log_notes_optional">Notes (Optional)</string>
+    <string name="how_is_your_marimo_looking_any_observations">How is your marimo looking?\nAny observations?</string>
+    <string name="upload_image_optional">Upload Image (Optional)</string>
+    <string name="click_to_upload_image">Click to upload image</string>
+    <string name="mark_as_milestone_special_moment">Mark as milestone (special moment)</string>
+    <string name="save_log">Save Log</string>
     <string-array name="marimo_frequencies">
         <item>Cada 7 días (semanal)</item>
         <item>Cada 10 días</item>

@@ -15,7 +15,10 @@ class MarimoChangeToMarimoChangeModel : ModelMapper<MarimoChange, MarimoChangeMo
         return MarimoChangeModel(
             code = source.code,
             marimoCode =  source.coderMarimo.toInt(),
-            waterChangesData = source.waterChangeData
+            waterChangesData = source.waterChangeData,
+            waterChangesLog = source.waterChangesLog,
+            imagePath = source.waterChangeImage,
+            isMilestone = source.isMilestone
         )
     }
 }

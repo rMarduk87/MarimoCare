@@ -30,6 +30,7 @@ import rpt.tool.marimocare.BaseFragment
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentStatsBinding
 import rpt.tool.marimocare.databinding.StatsMarimoBinding
+import rpt.tool.marimocare.ui.settings.SettingsFragmentDirections
 import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.AppUtils.Companion.toMarimoItems
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
@@ -54,6 +55,12 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
         setupNavigation()
         setupTopStats()
         setupBottomStats()
+
+        binding.include1.appLogo.setOnClickListener {
+            safeNavController?.safeNavigate(
+                StatsFragmentDirections
+                    .actionStatsFragmentToDashboardFragment())
+        }
     }
 
     private fun setupHeaderButtons() {

@@ -55,6 +55,7 @@ import rpt.tool.marimocare.utils.data.appmodels.MarimoUpdate
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.tool.marimocare.utils.view.adapters.MarimoUpdateAdapter
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.DeleteMarimoEventHook
+import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.ShowMarimoDetailsEventHook
 import kotlin.getValue
 
 class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
@@ -99,7 +100,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
             val span = if (isTablet) 3 else 1
 
-            layoutManager = if (!isTablet) androidx.recyclerview.widget.LinearLayoutManager(
+            layoutManager = if (!isTablet) LinearLayoutManager(
                 requireContext()) else
                     GridLayoutManager(requireContext(), span)
             adapter = fastAdapter
@@ -116,6 +117,8 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             applyFilterAndSort()
             updateAlertsUI()
         })
+
+        fastAdapter.addEventHook(ShowMarimoDetailsEventHook())
 
         viewModel.marimoItems.observe(viewLifecycleOwner) { items ->
             if (items.isEmpty()) {
@@ -611,6 +614,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun openWaterChangeDialog() {
         val view = layoutInflater.inflate(R.layout.dialog_update_marimo, null)
         val recycler = view.findViewById<RecyclerView>(R.id.recyclerMarimos)
@@ -652,6 +656,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         dialog.show()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun updateMarimos(list: List<MarimoUpdate>) {
 
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {

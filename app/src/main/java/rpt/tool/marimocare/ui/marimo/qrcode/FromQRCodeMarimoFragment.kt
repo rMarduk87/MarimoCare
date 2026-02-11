@@ -1,4 +1,4 @@
-package rpt.tool.marimocare.ui.marimo
+package rpt.tool.marimocare.ui.marimo.qrcode
 
 import android.os.Build
 import android.os.Bundle
@@ -26,7 +26,6 @@ import rpt.tool.marimocare.utils.navigation.safeNavController
 import rpt.tool.marimocare.utils.navigation.safeNavigate
 import rpt.tool.marimocare.utils.view.HeaderButtonConfig
 import rpt.tool.marimocare.utils.view.HeaderHelper
-import kotlin.getValue
 
 class FromQRCodeMarimoFragment :
     BaseFragment<FragmentFromQrCodeBinding>(FragmentFromQrCodeBinding::inflate) {
@@ -63,8 +62,7 @@ class FromQRCodeMarimoFragment :
                     text = requireContext().getString(R.string.dashboard),
                     onClick = {
                         safeNavController?.safeNavigate(
-                            FromQRCodeMarimoFragmentDirections.
-                            actionFromQRCodeMarimoFragmentToDashboardFragment()
+                            FromQRCodeMarimoFragmentDirections.Companion.actionFromQRCodeMarimoFragmentToDashboardFragment()
                         )
                     }
                 ),
@@ -77,7 +75,7 @@ class FromQRCodeMarimoFragment :
                     text = requireContext().getString(R.string.add_marimo),
                     onClick = {
                         safeNavController?.safeNavigate(
-                            FromQRCodeMarimoFragmentDirections
+                            FromQRCodeMarimoFragmentDirections.Companion
                                 .actionFromQRCodeMarimoFragmentToAddOrEditFragment()
                         )
                     }
@@ -91,7 +89,7 @@ class FromQRCodeMarimoFragment :
                     text = requireContext().getString(R.string.settings),
                     onClick = {
                         safeNavController?.safeNavigate(
-                            FromQRCodeMarimoFragmentDirections
+                            FromQRCodeMarimoFragmentDirections.Companion
                                 .actionFromQRCodeMarimoFragmentToSettingsFragment()
                         )
                     }
@@ -105,7 +103,7 @@ class FromQRCodeMarimoFragment :
                     text = requireContext().getString(R.string.stats),
                     onClick = {
                         safeNavController?.safeNavigate(
-                            FromQRCodeMarimoFragmentDirections
+                            FromQRCodeMarimoFragmentDirections.Companion
                                 .actionFromQRCodeMarimoFragmentToStatsFragment()
                         )
                     }
@@ -131,23 +129,32 @@ class FromQRCodeMarimoFragment :
         withContext(Dispatchers.Main) {
             if (marimo != null) {
                 val daysLeft = marimo.daysLeft
-                val status = MarimoStatus.from(daysLeft)
+                val status = MarimoStatus.Companion.from(daysLeft)
 
                 binding.includeM.txtName.text = marimo.name
                 binding.includeM.txtFrequency.text = requireContext()
-                    .getString(R.string.changes_every_days,
-                        marimo.changeFrequencyDays)
+                    .getString(
+                        R.string.changes_every_days,
+                        marimo.changeFrequencyDays
+                    )
                 binding.includeM.txtLastChange.text = marimo.lastChanged
                 binding.includeM.txtNextChange.text = marimo.nextChange
                 binding.includeM.txtNotes.text = marimo.notes ?: requireContext()
                     .getString(R.string.no_notes)
                 binding.includeM.txtDaysLeft.text = status.formatDaysLeftText(
-                    requireContext().resources, daysLeft)
+                    requireContext().resources, daysLeft
+                )
 
-                binding.includeM.txtNextChange.setTextColor(ContextCompat.getColor(
-                    requireContext(), status.color))
-                binding.includeM.txtDaysLeft.setTextColor(ContextCompat.getColor(
-                    requireContext(), status.color))
+                binding.includeM.txtNextChange.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(), status.color
+                    )
+                )
+                binding.includeM.txtDaysLeft.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(), status.color
+                    )
+                )
                 binding.includeM.txtDaysLeftIcon.setImageResource(status.icon)
                 binding.includeM.layoutText.setBackgroundResource(status.daysLeftBackground)
                 binding.includeM.cardMarimo.setBackgroundResource(status.cardBackground)
@@ -184,7 +191,7 @@ class FromQRCodeMarimoFragment :
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
 
             val marimo = RepositoryManager.marimoRepository.getMarimo(marimo!!.code)
-            val lastChanged = AppUtils.getCurrentDate()
+            val lastChanged = AppUtils.Companion.getCurrentDate()
             RepositoryManager.marimoRepository.updateWaterMarimo(lastChanged, marimo!!.code)
 
             val updated = RepositoryManager.marimoRepository.getMarimo(
@@ -201,7 +208,7 @@ class FromQRCodeMarimoFragment :
 
     private fun editMarimo(marimo: Marimo?) {
         safeNavController?.safeNavigate(
-            FromQRCodeMarimoFragmentDirections
+            FromQRCodeMarimoFragmentDirections.Companion
                 .actionFromQRCodeMarimoFragmentToAddOrEditFragment(marimo!!.code)
         )
     }
