@@ -23,7 +23,11 @@ class MarimoModel(
     @ColumnInfo(name = "notes")
     val notes: String?,
     @ColumnInfo(name = "photo")
-    val photo: String?
+    val photo: String?,
+    @ColumnInfo(name = "health", defaultValue = "100" )
+    val health: Int,
+    @ColumnInfo(name = "registration_date")
+    val registrationDate: String?,
 ) : DbModel() {
 
     init {

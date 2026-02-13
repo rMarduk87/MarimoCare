@@ -3,6 +3,7 @@ package rpt.tool.marimocare.ui.dashboard
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.res.ColorStateList
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.MotionEvent
@@ -12,8 +13,10 @@ import android.view.animation.AnimationUtils
 import android.widget.AdapterView
 import android.widget.Button
 import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.GridLayoutManager
@@ -49,14 +52,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.skydoves.balloon.BalloonAlign
 import com.skydoves.balloon.balloon
 import rpt.tool.marimocare.utils.AppUtils
-import rpt.tool.marimocare.utils.balloon.newMarimo.MarimoAddNewInfoBalloonFactory
 import rpt.tool.marimocare.utils.balloon.waterchange.WaterChangeInfoBalloonFactory
+import rpt.tool.marimocare.utils.data.appmodels.MarimoToFix
 import rpt.tool.marimocare.utils.data.appmodels.MarimoUpdate
 import rpt.tool.marimocare.utils.managers.RepositoryManager
+import rpt.tool.marimocare.utils.view.adapters.MarimoToFixAdapter
 import rpt.tool.marimocare.utils.view.adapters.MarimoUpdateAdapter
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.DeleteMarimoEventHook
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.ShowMarimoDetailsEventHook
-import kotlin.getValue
+import java.io.File
 
 class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     FragmentDashboardBinding::inflate) {
@@ -67,7 +71,10 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     private var autoScrollJob: Job? = null
     private lateinit var sorting: List<String>
     private var marimoToUpdate: MutableList<MarimoUpdate> = mutableListOf()
+    private var marimoToFix: MutableList<MarimoToFix> = mutableListOf()
     private val marimoUpdateBalloon by balloon<WaterChangeInfoBalloonFactory>()
+    private var imagePath: String? = null
+    private var tempImageUri: Uri? = null
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -106,11 +113,19 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             adapter = fastAdapter
         }
 
-        fastAdapter.addEventHook(ChangeWaterEventHook(viewLifecycleOwner,
-            requireContext()) {
-            applyFilterAndSort()
-            updateAlertsUI()
-        })
+        fastAdapter.addEventHook(
+            ChangeWaterEventHook(
+                viewLifecycleOwner,
+                requireContext(),
+                onWaterChanged = {
+                    applyFilterAndSort()
+                    updateAlertsUI()
+                },
+                onPickImage = { callback ->
+                    openImagePicker(callback)
+                }
+            )
+        )
         fastAdapter.addEventHook(EditMarimoEventHook())
         fastAdapter.addEventHook(DeleteMarimoEventHook(viewLifecycleOwner,
             requireContext()){
@@ -127,7 +142,6 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                 binding.totalMarimo.text = "0"
                 binding.totalMarimoAlternative.text = "0"
                 binding.badgeAll.text = "0"
-
             } else {
                 binding.recyclerMarimos.visible()
                 binding.emptyListLabel.gone()
@@ -169,6 +183,24 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
         viewModel.upToDateMarimo.observe(viewLifecycleOwner) { count ->
             binding.badgeUpToDate.text = count.toString()
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+            val marimo = RepositoryManager.marimoRepository.getAllSync()
+            if(marimo.count()>0){
+                marimoToFix.apply {
+                    clear()
+                    addAll(
+                        marimo.map {
+                            MarimoToFix(
+                                id = it.code,
+                                name = it.name,
+                                registrationDate = it.registrationDate ?: AppUtils.getCurrentDate()
+                            )
+                        }
+                    )
+                }
+            }
         }
 
         binding.btnOverdueFilter.setBackgroundResource(R.drawable.bg_notes_card)
@@ -246,6 +278,11 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
         binding.change.setOnClickListener {
             openWaterChangeDialog()
+        }
+
+        if(SharedPreferencesManager.fixWaterChanges && marimoToFix.count() > 0){
+            openFixWaterChangeDialog()
+            SharedPreferencesManager.fixWaterChanges = false
         }
 
     }
@@ -681,4 +718,108 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         super.onDestroyView()
         stopAutoScroll()
     }
+
+    private val cameraLauncher =
+        registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
+            if (success) {
+                imagePath = tempImageUri?.toString()
+                currentImageCallback?.invoke(imagePath)
+            }
+        }
+
+    private val galleryLauncher =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+            uri?.let {
+                imagePath = it.toString()
+                currentImageCallback?.invoke(imagePath)
+            }
+        }
+
+    private var currentImageCallback: ((String?) -> Unit)? = null
+
+    fun openImagePicker(callback: (String?) -> Unit) {
+        currentImageCallback = callback
+
+        AlertDialog.Builder(requireContext())
+            .setTitle("Add Photo")
+            .setItems(arrayOf("Take Photo", "Choose from Gallery")) { _, which ->
+                when (which) {
+                    0 -> openCamera()
+                    1 -> galleryLauncher.launch("image/*")
+                }
+            }
+            .show()
+    }
+
+    private fun openCamera() {
+        val file = File.createTempFile(
+            "change_water_marimo_${System.currentTimeMillis()}",
+            ".jpg",
+            requireContext().externalCacheDir
+        )
+
+        tempImageUri = FileProvider.getUriForFile(
+            requireContext(),
+            "${requireContext().packageName}.provider",
+            file
+        )
+
+        cameraLauncher.launch(tempImageUri)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun openFixWaterChangeDialog() {
+        val view = layoutInflater.inflate(R.layout.dialog_fix_water_changes_marimo, null)
+        val recycler = view.findViewById<RecyclerView>(R.id.recyclerMarimos)
+        val btnUpdate = view.findViewById<Button>(R.id.btnUpdate)
+
+
+        val adapter = MarimoToFixAdapter(marimoToFix,requireContext())
+
+        recycler.layoutManager = LinearLayoutManager(requireContext())
+        recycler.adapter = adapter
+
+        val dialog = AlertDialog.Builder(requireContext())
+            .setView(view)
+            .create()
+
+        view.findViewById<Button>(R.id.btnCancel).setOnClickListener {
+            dialog.dismiss()
+        }
+
+        btnUpdate.setOnClickListener {
+            updateWaterChanges(marimoToFix)
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
+
+    private fun updateWaterChanges(list: MutableList<MarimoToFix>) {
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+
+            list.forEach {
+                val marimo = RepositoryManager.marimoRepository.getMarimo(it.id)
+                if (marimo != null) {
+                    marimo.registrationDate = it.registrationDate
+                    RepositoryManager.marimoRepository.updateMarimo(marimo)
+                    val frequency = marimo.changeFrequencyDays
+                    val listOfData = AppUtils.calcWaterChanges(
+                        marimo.lastChanged,
+                        frequency, marimo.registrationDate)
+                    listOfData.forEach {
+                        RepositoryManager.marimoRepository.addWaterChanges(marimo.code,
+                            it,null,null,false)
+                    }
+                }
+            }
+
+            AlertDataUtils.recalc(requireContext())
+
+            withContext(Dispatchers.Main) {
+                updateAlertsUI()
+            }
+        }
+    }
+
 }

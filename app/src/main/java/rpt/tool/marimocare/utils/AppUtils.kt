@@ -22,6 +22,7 @@ import androidx.core.graphics.createBitmap
 import androidx.core.graphics.set
 import java.io.ByteArrayOutputStream
 import java.net.URLEncoder
+import java.time.format.DateTimeParseException
 
 class AppUtils {
     companion object {
@@ -154,6 +155,48 @@ class AppUtils {
             return Base64.encodeToString(b, Base64.DEFAULT)
         }
 
+        fun calcWaterChanges(
+            lastChanged: String?,
+            frequency: Int,
+            registrationDate: String?
+        ): List<String> {
+
+            if (lastChanged.isNullOrBlank() || registrationDate.isNullOrBlank() || frequency <= 0) {
+                return emptyList()
+            }
+
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+            val resultDates = mutableListOf<String>()
+
+            try {
+                val lastDate = LocalDate.parse(lastChanged, formatter)
+                val regDate = LocalDate.parse(registrationDate, formatter)
+
+                val hardLimitDate = LocalDate.of(2025, 11, 25)
+
+                val stopDate = if (regDate.isAfter(hardLimitDate)) regDate else hardLimitDate
+
+                if (lastDate.isBefore(stopDate)) {
+                    return emptyList()
+                }
+
+                var calcDate = lastDate.minusDays(frequency.toLong())
+
+                while (!calcDate.isBefore(stopDate)) {
+
+                    resultDates.add(calcDate.format(formatter))
+
+                    calcDate = calcDate.minusDays(frequency.toLong())
+                }
+
+            } catch (e: DateTimeParseException) {
+                println("Errore nel parsing (formato atteso yyyy-MM-dd): ${e.message}")
+                return emptyList()
+            }
+
+            return resultDates.sorted()
+        }
+
         const val USERS_SHARED_PREF : String = "user_pref"
         const val SHOW_ALERT_OVERDUE : String = "showAlertOverdue"
         const val SHOW_ALERT_SOON: String = "showAlertSoon"
@@ -167,6 +210,7 @@ class AppUtils {
         const val SHOW_MARIMO_BALLON : String = "show_marimo_balloon"
         const val SHOW_MARIMO_DASHBOARD_BALLON : String = "show_marimo_dashboard_balloon"
         const val SHOW_NEW_MARIMO_BALLON : String = "show_new_marimo_balloon"
+        const val FIX : String = "fix_water_changes"
         const val MARIMO_OVERDUE_COUNTER : String = "marimo_overdue_counter"
 
 

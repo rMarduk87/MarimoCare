@@ -99,6 +99,10 @@
                     layout="@layout/stats_marimo" />
 
                 <include
+                    android:id="@+id/includeAHS"
+                    layout="@layout/stats_marimo" />
+
+                <include
                     android:id="@+id/includeMF"
                     layout="@layout/stats_marimo" />
 

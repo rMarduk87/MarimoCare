@@ -108,6 +108,13 @@
                     app:layout_columnWeight="1" />
 
                 <include
+                    android:id="@+id/includeAHS"
+                    layout="@layout/stats_marimo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_columnWeight="1" />
+
+                <include
                     android:id="@+id/includeMF"
                     layout="@layout/stats_marimo"
                     android:layout_width="0dp"

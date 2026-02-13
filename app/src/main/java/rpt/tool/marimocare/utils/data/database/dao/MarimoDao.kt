@@ -31,14 +31,16 @@ interface MarimoDao {
 
     @Transaction
     @Query("UPDATE marimo SET name = :name, frequency_changes = :freq, " +
-            "last_water_changes = :lastWater, notes = :notes, photo = :photo WHERE code = :code")
+            "last_water_changes = :lastWater, notes = :notes, photo = :photo, registration_date" +
+            " = :registrationDate WHERE code = :code")
     fun update(
         code: Int,
         name: String,
         freq: Int,
         lastWater: String,
         notes: String,
-        photo: String?
+        photo: String?,
+        registrationDate: String
     )
 
     @Transaction
@@ -70,6 +72,10 @@ interface MarimoDao {
     fun getTotalWaterChanges() : Int
 
     @Transaction
+    @Query("SELECT avg(health) FROM marimo")
+    fun getAverageHealth(): Int
+
+    @Transaction
     @Query("SELECT * FROM marimo_changes ORDER BY code COLLATE NOCASE ASC")
     fun getAllWaterChanges(): List<MarimoChangeModel>
 
@@ -90,5 +96,6 @@ interface MarimoDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertQr(marimoQr: MarimoQRModel)
+
 
 }

@@ -147,6 +147,16 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
                 colorStroke = R.color.marimo_light_blue
             ),
             StatsCardConfig(
+                requireContext().getString(R.string.average_health_score),
+                stringValue = "",
+                iconRes = R.drawable.ic_hearth,
+                colorText = R.color.marimo_great_red,
+                binding = binding.includeAHS,
+                subtitle = requireContext().getString(R.string.across_all_marimos),
+                unitText = "",
+                colorStroke = R.color.marimo_red
+            ),
+            StatsCardConfig(
                 requireContext().getString(R.string.most_frequent),
                 stringValue = "",
                 iconRes = R.drawable.ic_coccard,
@@ -184,6 +194,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
                 val marimoLastFrequentChanged =
                     RepositoryManager.marimoRepository.getMarimoLastFrequentChanged()
                 val totalWaterChanged = RepositoryManager.marimoRepository.getTotalWaterChanged()
+                val averageHealthScore = RepositoryManager.marimoRepository.getAverageHealth()
 
                 withContext(Dispatchers.Main) {
                     binding.cardsContainer.visibility = View.VISIBLE
@@ -192,6 +203,10 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
                     binding.noLabelContainer.visibility = View.GONE
                     binding.includeAF.tvValue.text = average.toString()
                     binding.includeTWC.tvValue.text = totalWaterChanged.toString()
+                    binding.includeAHS.tvValue.text = buildString {
+                        append(averageHealthScore.toString())
+                        append(" %")
+                    }
 
                     setupMarimoCard(binding.includeMF,
                         marimoMostFrequentChanged, true)

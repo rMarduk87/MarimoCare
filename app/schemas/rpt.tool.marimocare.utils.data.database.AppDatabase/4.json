@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 4,
-    "identityHash": "394f797624d6bc461eebd4230cb5db2f",
+    "identityHash": "fb04c034539990af0428b4dd747e6f4a",
     "entities": [
       {
         "tableName": "marimo",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`code` INTEGER NOT NULL, `name` TEXT NOT NULL, `last_water_changes` TEXT, `frequency_changes` INTEGER NOT NULL, `notes` TEXT, `photo` TEXT, PRIMARY KEY(`code`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`code` INTEGER NOT NULL, `name` TEXT NOT NULL, `last_water_changes` TEXT, `frequency_changes` INTEGER NOT NULL, `notes` TEXT, `photo` TEXT, `health` INTEGER NOT NULL DEFAULT 100, `registration_date` TEXT, PRIMARY KEY(`code`))",
         "fields": [
           {
             "fieldPath": "code",
@@ -39,6 +39,18 @@
           {
             "fieldPath": "photo",
             "columnName": "photo",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "health",
+            "columnName": "health",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "100"
+          },
+          {
+            "fieldPath": "registrationDate",
+            "columnName": "registration_date",
             "affinity": "TEXT"
           }
         ],
@@ -134,7 +146,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '394f797624d6bc461eebd4230cb5db2f')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'fb04c034539990af0428b4dd747e6f4a')"
     ]
   }
 }

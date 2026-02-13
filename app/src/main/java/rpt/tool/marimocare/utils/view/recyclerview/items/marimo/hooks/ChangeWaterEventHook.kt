@@ -1,15 +1,22 @@
 package rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks
 
+import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
+import android.net.Uri
 import android.os.Build
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.ImageButton
+import android.widget.ImageView
+import androidx.activity.result.ActivityResultCaller
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
+import androidx.core.content.FileProvider
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
@@ -28,12 +35,41 @@ import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.MarimoItem
 import androidx.core.graphics.drawable.toDrawable
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
+import java.io.File
+import androidx.core.net.toUri
 
 class ChangeWaterEventHook(
     private val lifecycleOwner: LifecycleOwner,
     private val context: Context,
-    private val onWaterChanged: () -> Unit
+    private val onWaterChanged: () -> Unit,
+    private val onPickImage: (callback: (String?) -> Unit) -> Unit
 ) : ClickEventHook<MarimoItem>() {
+
+    private var imagePath: String? = null
+    private lateinit var cameraLauncher: ActivityResultLauncher<Uri>
+    private lateinit var galleryLauncher: ActivityResultLauncher<String>
+    private var tempImageUri: Uri? = null
+
+    init {
+        if (lifecycleOwner is ActivityResultCaller) {
+
+            cameraLauncher = lifecycleOwner.registerForActivityResult(
+                ActivityResultContracts.TakePicture()
+            ) { success ->
+                if (success) {
+                    imagePath = tempImageUri?.path
+                }
+            }
+
+            galleryLauncher = lifecycleOwner.registerForActivityResult(
+                ActivityResultContracts.GetContent()
+            ) { uri ->
+                uri?.let {
+                    imagePath = it.toString()
+                }
+            }
+        }
+    }
 
     override fun onBind(viewHolder: RecyclerView.ViewHolder): View? {
         val binding = viewHolder.getFastAdapterItemViewBinding<ItemMarimoBinding>()
@@ -74,14 +110,19 @@ class ChangeWaterEventHook(
         val btnClose = dialog.findViewById<ImageButton>(R.id.btnClose)
         val checkboxMilestone = dialog.findViewById<CheckBox>(R.id.checkboxMilestone)
         val uploadContainer = dialog.findViewById<View>(R.id.uploadContainer)
+        val imagePreview = dialog.findViewById<ImageView>(R.id.imagePreview)
 
         var imagePath: String? = null
 
-        // ---- Upload click (placeholder) ----
         uploadContainer?.setOnClickListener {
-            // TODO: apri image picker
-            // Per ora solo esempio:
-            imagePath = "dummy_path.jpg"
+
+            onPickImage { selectedPath ->
+                imagePath = selectedPath
+
+                selectedPath?.let {
+                    imagePreview?.setImageURI(it.toUri())
+                }
+            }
         }
 
         // ---- Close / Cancel ----

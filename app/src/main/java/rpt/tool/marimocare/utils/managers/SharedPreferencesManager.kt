@@ -68,4 +68,8 @@ object SharedPreferencesManager {
     var alertOverdueCounter: Int
         get() = sharedPreferences.getInt(AppUtils.MARIMO_OVERDUE_COUNTER, 0)
         set(value) = sharedPreferences.edit() { putInt(AppUtils.MARIMO_OVERDUE_COUNTER, value) }
+
+    var fixWaterChanges: Boolean
+        get() = sharedPreferences.getBoolean(AppUtils.FIX, true)
+        set(value) = sharedPreferences.edit() { putBoolean(AppUtils.FIX, value) }
 }

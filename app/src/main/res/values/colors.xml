@@ -38,4 +38,5 @@
     <color name="strong_red">#a6331e</color>
     <color name="marimo_white">#ddffffff</color>
     <color name="overlay">#BF000000</color>
+    <color name="marimo_great_red">#f08353</color>
 </resources>

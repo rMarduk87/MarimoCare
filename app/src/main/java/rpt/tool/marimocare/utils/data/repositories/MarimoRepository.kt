@@ -19,15 +19,18 @@ class MarimoRepository(
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun addMarimo(marimoName: String, lastWaterChange: String, notes: String, freq: Int,
-                  photo: String?) : Int {
+    fun addMarimo(
+        marimoName: String, lastWaterChange: String, notes: String, freq: Int,
+        photo: String?,
+        registrationDate: String
+    ) : Int {
         Marimo(marimoDao.getLastId()+1,marimoName, freq,
             lastWaterChange, AppUtils.nextChange(
             lastWaterChange,
             freq), notes, AppUtils.daysUntil(
             AppUtils.nextChange(
                 lastWaterChange,
-                freq)),photo).let {
+                freq)),photo,100, registrationDate).let {
 
             marimoDao.insert(it.map())
         }
@@ -40,10 +43,25 @@ class MarimoRepository(
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun updateMarimo(code: Int, name: String, lastWater: String, notes: String, freq: Int,
-                     photo: String?) {
+    fun updateMarimo(
+        code: Int, name: String, lastWater: String, notes: String, freq: Int,
+        photo: String?,
+        registrationDate: String
+    ) {
         marimoDao.update(code,name, freq,
-                lastWater, notes,photo)
+                lastWater, notes,photo, registrationDate)
+    }
+
+    fun updateMarimo(marimo: Marimo){
+        marimo.lastChanged?.let {
+            marimo.notes?.let { notes ->
+                marimo.registrationDate?.let { registrationDate ->
+                    updateMarimo(marimo.code,marimo.name,it,
+                        notes,marimo.changeFrequencyDays,
+                        marimo.photo, registrationDate)
+                }
+            }
+        }
     }
 
     fun updateWaterMarimo(lastChanged: String, code: Int) {
@@ -86,6 +104,10 @@ class MarimoRepository(
         return marimoDao.getTotalWaterChanges()
     }
 
+    fun getAverageHealth() : Int {
+        return marimoDao.getAverageHealth()
+    }
+
     fun getAllChanges(): List<MarimoChange> {
         return marimoDao.getAllWaterChanges().map { it.map() }
     }
@@ -106,7 +128,5 @@ class MarimoRepository(
 
     val marimos: LiveData<List<Marimo>> =
         marimoDao.getMarimos().map { it.map { it.map() } }
-
-
 
 }

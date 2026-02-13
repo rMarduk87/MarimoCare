@@ -242,8 +242,7 @@ class FromQRCodeMarimoFragment :
 
             val dialog = MaterialAlertDialogBuilder(
                 requireContext(),
-                com.google.android.material
-                    .R.style.Theme_Material3_DayNight_Dialog_Alert
+                com.google.android.material.R.style.Theme_Material3_DayNight_Dialog_Alert
             )
                 .setView(view)
                 .create()

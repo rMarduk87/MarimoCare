@@ -19,6 +19,8 @@ data class Marimo(
     var notes: String?,
     var daysLeft: Int,
     var photo: String?,
+    var health: Int,
+    var registrationDate: String?
 ) : AppModel(), Serializable {
 
     init {

@@ -25,7 +25,9 @@ class MarimoModelToMarimo : ModelMapper<MarimoModel, Marimo> {
                 AppUtils.nextChange(
                     source.lastWaterChanges,
                     source.frequencyChanges)),
-            photo = source.photo
+            photo = source.photo,
+            health = source.health,
+            registrationDate = source.registrationDate
         )
     }
 }

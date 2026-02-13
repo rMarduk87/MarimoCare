@@ -128,6 +128,14 @@
                     android:layout_height="wrap_content"/>
             </LinearLayout>
 
+            <ImageView
+                android:contentDescription="@string/img"
+                android:id="@+id/imagePreview"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                android:visibility="visible"/>
+
             <Space android:layout_width="match_parent"
                 android:layout_height="22dp"/>
 

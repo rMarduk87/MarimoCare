@@ -267,6 +267,26 @@ class AddOrEditMarimoFragment :
                 show()
             }
         }
+
+        binding.inputAddDate.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            DatePickerDialog(
+                requireContext(),
+                { _, year, month, day ->
+                    calendar.set(year, month, day)
+                    binding.inputAddDate.setText(
+                        SimpleDateFormat("yyyy-MM-dd").format(calendar.time)
+                    )
+                },
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
+            ).apply {
+                datePicker.maxDate = AppUtils.Companion.getMaxDate()
+                setTitle("")
+                show()
+            }
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -281,6 +301,7 @@ class AddOrEditMarimoFragment :
         val name = binding.inputName.text.toString()
         val lastWater = binding.inputDate.text.toString()
         val notes = binding.inputNotes.text.toString()
+        val registrationDate = binding.inputAddDate.text.toString()
 
         if (name.isBlank() || lastWater.isBlank()) {
             Toast.makeText(requireContext(), getString(
@@ -294,7 +315,7 @@ class AddOrEditMarimoFragment :
                 RepositoryManager.marimoRepository.updateMarimo(
                     marimo.code,
                     name,
-                    lastWater, notes, freq,marimoPhotoPath
+                    lastWater, notes, freq,marimoPhotoPath, registrationDate
                 )
 
                 withContext(Dispatchers.Main) {
@@ -320,7 +341,7 @@ class AddOrEditMarimoFragment :
             }
             else{
                 val id = RepositoryManager.marimoRepository.addMarimo(name,
-                    lastWater, notes, freq,marimoPhotoPath)
+                    lastWater, notes, freq,marimoPhotoPath, registrationDate)
 
                 RepositoryManager.marimoRepository.addWaterChanges(id, lastWater,
                     null,null)
@@ -344,6 +365,7 @@ class AddOrEditMarimoFragment :
     private fun clearAll() {
         binding.inputName.text.clear()
         binding.inputDate.text.clear()
+        binding.inputAddDate.text.clear()
         binding.inputNotes.text.clear()
         binding.marimoSpinnerLayout.customSpinner.setSelection(0)
         val imageView = binding.marimoPicture
@@ -363,6 +385,7 @@ class AddOrEditMarimoFragment :
                     if (marimo != null) {
                         binding.inputName.setText(marimo!!.name)
                         binding.inputDate.setText(marimo!!.lastChanged)
+                        binding.inputAddDate.setText(marimo!!.registrationDate)
                         binding.inputNotes.setText(marimo!!.notes)
 
                         val index = AppUtils.Companion.indexOfContaining(
