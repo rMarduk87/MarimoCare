@@ -186,7 +186,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         }
 
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-            val marimo = RepositoryManager.marimoRepository.getAllSync()
+            val marimo = RepositoryManager.marimoRepository.getAllSync(true)
             if(marimo.count()>0){
                 marimoToFix.apply {
                     clear()

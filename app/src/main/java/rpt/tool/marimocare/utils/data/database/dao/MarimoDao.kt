@@ -2,6 +2,7 @@ package rpt.tool.marimocare.utils.data.database.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import rpt.tool.marimocare.utils.data.appmodels.MarimoHealthScore
 import rpt.tool.marimocare.utils.data.database.models.MarimoChangeModel
 import rpt.tool.marimocare.utils.data.database.models.MarimoModel
 import rpt.tool.marimocare.utils.data.database.models.MarimoQRModel
@@ -97,5 +98,23 @@ interface MarimoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertQr(marimoQr: MarimoQRModel)
 
+    @Query("""
+    SELECT 
+        m.code AS id,
+        m.name AS name,
+        m.frequency_changes AS frequency,
+        m.health AS health,
+        COUNT(c.code) AS totalChanges
+    FROM marimo m
+    LEFT JOIN marimo_changes c 
+        ON m.code = c.marimo_code
+    GROUP BY m.code
+    ORDER BY m.code ASC
+""")
+    fun getMarimoHealthScores(): List<MarimoHealthScore>
+
+    @Transaction
+    @Query("SELECT * FROM marimo where registration_date is null ORDER BY code COLLATE NOCASE ASC")
+    fun getAllWithoutRegistration(): List<MarimoModel>
 
 }

@@ -19,7 +19,7 @@ object AlertDataUtils {
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun getMarimosLate(): List<Marimo> {
-        return RepositoryManager.marimoRepository.getAllSync()
+        return RepositoryManager.marimoRepository.getAllSync(true)
             .filter {
                 val next = parse(it.nextChange)
                 next.isBefore(LocalDate.now())
@@ -28,7 +28,7 @@ object AlertDataUtils {
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun getMarimosDueSoon(days: Int): List<Marimo> {
-        return RepositoryManager.marimoRepository.getAllSync()
+        return RepositoryManager.marimoRepository.getAllSync(true)
             .filter {
                 val next = parse(it.nextChange)
                 val diff = ChronoUnit.DAYS.between(LocalDate.now(),
@@ -39,7 +39,7 @@ object AlertDataUtils {
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun getMarimosToNotifyToday(): List<Marimo> {
-        return RepositoryManager.marimoRepository.getAllSync()
+        return RepositoryManager.marimoRepository.getAllSync(true)
             .filter {
                 val next = parse(it.nextChange)
                 next == LocalDate.now()

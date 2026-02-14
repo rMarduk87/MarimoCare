@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.graphics.toColorInt
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.mikephil.charting.charts.BarChart
@@ -23,6 +24,7 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import com.google.android.material.tabs.TabLayout
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -30,7 +32,6 @@ import rpt.tool.marimocare.BaseFragment
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentStatsBinding
 import rpt.tool.marimocare.databinding.StatsMarimoBinding
-import rpt.tool.marimocare.ui.settings.SettingsFragmentDirections
 import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.AppUtils.Companion.toMarimoItems
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
@@ -42,11 +43,15 @@ import rpt.tool.marimocare.utils.view.HeaderButtonConfig
 import rpt.tool.marimocare.utils.view.HeaderHelper
 import rpt.tool.marimocare.utils.view.StatsCardConfig
 import rpt.tool.marimocare.utils.view.StatsHelper
+import rpt.tool.marimocare.utils.view.adapters.HealthMarimoAdapter
 import rpt.tool.marimocare.utils.view.adapters.MarimoFrequencyAdapter
+import rpt.tool.marimocare.utils.view.grid.GridSpacingItemDecoration
 import java.text.SimpleDateFormat
 import java.util.*
 
 class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::inflate) {
+
+    private lateinit var adapter: HealthMarimoAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -55,12 +60,15 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
         setupNavigation()
         setupTopStats()
         setupBottomStats()
+        setUpBottomTabs()
+        setUpHealthScore()
 
         binding.include1.appLogo.setOnClickListener {
             safeNavController?.safeNavigate(
                 StatsFragmentDirections
                     .actionStatsFragmentToDashboardFragment())
         }
+
     }
 
     private fun setupHeaderButtons() {
@@ -179,7 +187,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
         ))
 
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-            if(RepositoryManager.marimoRepository.getAllSync().isEmpty()){
+            if(RepositoryManager.marimoRepository.getAllSync(true).isEmpty()){
                 withContext(Dispatchers.Main) {
                     binding.cardsContainer.visibility = View.GONE
                     binding.includeDI.graphMarimo.visibility = View.GONE
@@ -288,7 +296,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
 
     private fun setupBottomStats() {
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-            val marimos = RepositoryManager.marimoRepository.getAllSync()
+            val marimos = RepositoryManager.marimoRepository.getAllSync(true)
             val changes = RepositoryManager.marimoRepository.getAllChanges()
             val last6Months = AppUtils.getLastSixMonthsLabels() // formato yyyy-MM
 
@@ -418,4 +426,69 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
         }
     }
 
+    private fun setUpBottomTabs(){
+        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+
+                when (tab?.position) {
+                    0 -> {
+                        binding.tabContentTrends.visibility = View.VISIBLE
+                        binding.tabContentHealth.visibility = View.GONE
+                        binding.tabContentCompare.visibility = View.GONE
+                    }
+                    1 -> {
+                        binding.tabContentTrends.visibility = View.GONE
+                        binding.tabContentHealth.visibility = View.VISIBLE
+                        binding.tabContentCompare.visibility = View.GONE
+                    }
+                    2 -> {
+                        binding.tabContentTrends.visibility = View.GONE
+                        binding.tabContentHealth.visibility = View.GONE
+                        binding.tabContentCompare.visibility = View.VISIBLE
+                    }
+                }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+            }
+        })
+    }
+
+    private fun setUpHealthScore(){
+        val isTablet = resources.configuration.smallestScreenWidthDp >= 600
+
+        val spanCount = when {
+            resources.configuration.smallestScreenWidthDp >= 840 -> 3
+            isTablet -> 2
+            else -> 1
+        }
+
+        adapter = HealthMarimoAdapter()
+
+        binding.includeHS.marimoRecycler.layoutManager =
+            GridLayoutManager(requireContext(), spanCount)
+
+        binding.includeHS.marimoRecycler.adapter = adapter
+
+        val spacing = resources.getDimensionPixelSize(R.dimen.grid_spacing)
+
+        binding.includeHS.marimoRecycler.addItemDecoration(
+            GridSpacingItemDecoration(spanCount, spacing, true)
+        )
+
+
+        loadData()
+    }
+
+    private fun loadData() {
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+            val list =  RepositoryManager.marimoRepository.getHealthScore();
+
+            adapter.submitList(list)
+        }
+    }
 }

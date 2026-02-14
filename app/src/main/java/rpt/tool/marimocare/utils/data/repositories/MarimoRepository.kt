@@ -7,6 +7,7 @@ import androidx.lifecycle.map
 import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.data.appmodels.MarimoChange
+import rpt.tool.marimocare.utils.data.appmodels.MarimoHealthScore
 import rpt.tool.marimocare.utils.data.appmodels.MarimoQR
 import rpt.tool.marimocare.utils.data.database.dao.MarimoDao
 import kotlin.collections.map
@@ -52,6 +53,7 @@ class MarimoRepository(
                 lastWater, notes,photo, registrationDate)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun updateMarimo(marimo: Marimo){
         marimo.lastChanged?.let {
             marimo.notes?.let { notes ->
@@ -68,8 +70,11 @@ class MarimoRepository(
         marimoDao.updateWater(lastChanged, code)
     }
 
-    fun getAllSync():List<Marimo> {
-        return marimoDao.getAll().map { it.map() }
+    fun getAllSync(check: Boolean = false):List<Marimo> {
+        if(!check){
+            return marimoDao.getAll().map { it.map() }
+        }
+        return marimoDao.getAllWithoutRegistration().map { it.map() }
     }
 
     fun getAverageFrequency():Int {
@@ -124,6 +129,10 @@ class MarimoRepository(
         MarimoQR(marimoDao.getLastQrId() + 1, marimoCode, qrCodeToStore, true).let {
             marimoDao.insertQr(it.map())
         }
+    }
+
+    fun getHealthScore() : List<MarimoHealthScore> {
+        return marimoDao.getMarimoHealthScores()
     }
 
     val marimos: LiveData<List<Marimo>> =

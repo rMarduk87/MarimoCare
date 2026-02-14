@@ -155,6 +155,7 @@ class AppUtils {
             return Base64.encodeToString(b, Base64.DEFAULT)
         }
 
+        @RequiresApi(Build.VERSION_CODES.O)
         fun calcWaterChanges(
             lastChanged: String?,
             frequency: Int,

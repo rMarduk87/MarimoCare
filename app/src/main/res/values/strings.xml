@@ -194,6 +194,10 @@
     <string name="last_changed_to_fix">Select the date you got your Marimo to best calculate previous water changes.</string>
     <string name="marimos_to_update">Update Water Changes for Stats</string>
     <string name="day_of_acquisition">Registration Date *</string>
+    <string name="trends">Trends</string>
+    <string name="health_scores">Health Scores</string>
+    <string name="compare">Compare</string>
+    <string name="individual_health_score">Individual Health Scores</string>
     <string-array name="marimo_frequencies">
         <item>Every 7 days (Weekly)</item>
         <item>Every 10 days</item>
