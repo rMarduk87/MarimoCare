@@ -195,7 +195,8 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                             MarimoToFix(
                                 id = it.code,
                                 name = it.name,
-                                registrationDate = it.registrationDate ?: AppUtils.getCurrentDate()
+                                registrationDate = it.registrationDate ?: AppUtils.getCurrentDate(),
+                                lastWaterChanges = it.lastChanged ?: AppUtils.getCurrentDate()
                             )
                         }
                     )
@@ -773,7 +774,6 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         val recycler = view.findViewById<RecyclerView>(R.id.recyclerMarimos)
         val btnUpdate = view.findViewById<Button>(R.id.btnUpdate)
 
-
         val adapter = MarimoToFixAdapter(marimoToFix,requireContext())
 
         recycler.layoutManager = LinearLayoutManager(requireContext())
@@ -795,6 +795,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         dialog.show()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun updateWaterChanges(list: MutableList<MarimoToFix>) {
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
 
@@ -811,6 +812,30 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                         RepositoryManager.marimoRepository.addWaterChanges(marimo.code,
                             it,null,null,false)
                     }
+
+                    val listOfDataHealth = AppUtils.calcWaterChanges(
+                        AppUtils.getCurrentDate(),
+                        1, marimo.lastChanged)
+
+                    listOfDataHealth.toMutableList().apply {
+                        removeAt(0)
+                    }
+
+                    listOfDataHealth.forEach { date ->
+                        RepositoryManager.marimoRepository.addMarimoHealthScore(
+                            marimo.code,
+                            date,
+                            AppUtils.calculateHealth(
+                                date,
+                                marimo.lastChanged!!
+                            )
+                        )
+                    }
+                    RepositoryManager.marimoRepository.addMarimoHealthScore(marimo.code,
+                        AppUtils.getCurrentDate(),
+                        RepositoryManager.marimoRepository.getSpecificHealth(
+                            marimo.code,
+                            listOfDataHealth.last())-1)
                 }
             }
 
@@ -818,8 +843,9 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
             withContext(Dispatchers.Main) {
                 updateAlertsUI()
+                applyFilterAndSort()
+                manageFilters()
             }
         }
     }
-
 }

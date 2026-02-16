@@ -346,6 +346,16 @@ class AddOrEditMarimoFragment :
                 RepositoryManager.marimoRepository.addWaterChanges(id, lastWater,
                     null,null)
 
+                val listOfData = AppUtils.calcWaterChanges(
+                    lastWater,
+                    1, AppUtils.getCurrentDate())
+
+                listOfData.forEach {
+                    RepositoryManager.marimoRepository.addMarimoHealthScore(id,it,
+                        AppUtils.calculateHealth(AppUtils.getCurrentDate(),
+                            lastWater))
+                }
+
                 withContext(Dispatchers.Main) {
                     Toast.makeText(
                         requireContext(), getString(

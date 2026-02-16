@@ -21,7 +21,7 @@ class MarimoToFixAdapter(
     private val context: Context
 ) : RecyclerView.Adapter<MarimoToFixAdapter.ViewHolder>() {
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val card: MaterialCardView = view as MaterialCardView
         val name: TextView = view.findViewById(R.id.txtName)
         val add: EditText = view.findViewById(R.id.inputAddDate)
@@ -46,31 +46,43 @@ class MarimoToFixAdapter(
 
     override fun getItemCount() = items.size
 
+    @SuppressLint("SimpleDateFormat")
     private fun setupDatePicker(holder: ViewHolder, marimo: MarimoToFix) {
         holder.add.setOnClickListener {
+
             val calendar = Calendar.getInstance()
 
-            DatePickerDialog(
+            val dialog = DatePickerDialog(
                 context,
                 { _, year, month, day ->
+
                     calendar.set(year, month, day)
 
                     val newDate = SimpleDateFormat("yyyy-MM-dd")
                         .format(calendar.time)
 
                     holder.add.setText(newDate)
-
                     marimo.registrationDate = newDate
                 },
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH)
-            ).apply {
-                datePicker.maxDate = AppUtils.getMaxDate()
-                setTitle("")
-                show()
+            )
+
+            try {
+                val sdf = SimpleDateFormat("yyyy-MM-dd")
+                val maxDate = sdf.parse(marimo.lastWaterChanges)
+
+                maxDate?.let {
+                    dialog.datePicker.maxDate = it.time
+                }
+
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
+
+            dialog.setTitle("")
+            dialog.show()
         }
     }
-
 }

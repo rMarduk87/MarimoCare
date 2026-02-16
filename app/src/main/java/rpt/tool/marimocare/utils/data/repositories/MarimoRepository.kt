@@ -8,6 +8,7 @@ import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.data.appmodels.MarimoChange
 import rpt.tool.marimocare.utils.data.appmodels.MarimoHealthScore
+import rpt.tool.marimocare.utils.data.appmodels.MarimoHealthScoreStats
 import rpt.tool.marimocare.utils.data.appmodels.MarimoQR
 import rpt.tool.marimocare.utils.data.database.dao.MarimoDao
 import kotlin.collections.map
@@ -31,7 +32,7 @@ class MarimoRepository(
             freq), notes, AppUtils.daysUntil(
             AppUtils.nextChange(
                 lastWaterChange,
-                freq)),photo,100, registrationDate).let {
+                freq)),photo,registrationDate).let {
 
             marimoDao.insert(it.map())
         }
@@ -109,8 +110,9 @@ class MarimoRepository(
         return marimoDao.getTotalWaterChanges()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun getAverageHealth() : Int {
-        return marimoDao.getAverageHealth()
+        return marimoDao.getAverageHealth(AppUtils.getCurrentDate())
     }
 
     fun getAllChanges(): List<MarimoChange> {
@@ -131,9 +133,37 @@ class MarimoRepository(
         }
     }
 
-    fun getHealthScore() : List<MarimoHealthScore> {
-        return marimoDao.getMarimoHealthScores()
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun getHealthScore() : List<MarimoHealthScoreStats> {
+        return marimoDao.getMarimoHealthScores(AppUtils.getCurrentDate())
     }
+
+    fun getMarimoTotalWaterChanged(marimoCode: Int): Int {
+        return marimoDao.getMarimoTotalWaterChanged(marimoCode)
+    }
+
+    fun getMarimoTotalMilestones(marimoCode: Int): Int  {
+        return marimoDao.getMarimoTotalMilestones(marimoCode)
+    }
+
+    fun getAllChanges(marimoCode: Int):List<MarimoChange> {
+        return marimoDao.getAllChanges(marimoCode).map { it.map() }
+
+    }
+
+    fun addMarimoHealthScore(id: Int, currentDate: String, health: Int) {
+        MarimoHealthScore(marimoDao.getLastIdFromMarimoHealth()+1, id, currentDate,
+            health).let{
+            marimoDao.insertNewHealth(it.map())
+        }
+
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun getSpecificHealth(marimoCode: Int, last: String?): Int {
+        return marimoDao.getCurrentHealth(marimoCode, last ?: AppUtils.getCurrentDate())
+    }
+
 
     val marimos: LiveData<List<Marimo>> =
         marimoDao.getMarimos().map { it.map { it.map() } }

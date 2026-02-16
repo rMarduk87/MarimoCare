@@ -15,7 +15,6 @@ class MarimoToMarimoModel : ModelMapper<Marimo, MarimoModel> {
             frequencyChanges = source.changeFrequencyDays,
             notes = source.notes,
             photo = source.photo,
-            health =  source.health,
             registrationDate = source.registrationDate
         )
     }

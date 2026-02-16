@@ -17,15 +17,14 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-        <!-- TITOLO -->
         <TextView
-            android:id="@+id/marimoTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/_21th_marimo"
+            android:text="@string/current_health_score"
             android:textSize="22sp"
             android:textStyle="bold"
             android:textColor="#000"/>
+
 
         <!-- HEALTH BOX -->
         <LinearLayout
@@ -47,7 +46,8 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
-                android:text="@string/health_scores"
+                android:id="@+id/healthTotal"
+                android:text="@string/out_of_19"
                 android:textSize="18sp"
                 android:textColor="#FFFFFF"
                 android:layout_width="wrap_content"
@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:text="@string/frequency"
+                    android:text="@string/last_changed"
                     android:textColor="#6D6D6D"
                     android:textSize="16sp"
                     android:layout_width="wrap_content"
@@ -78,7 +78,7 @@
 
                 <TextView
                     android:id="@+id/frequencyText"
-                    android:text="@string/_21d"
+                    android:text="@string/nov_25_2025"
                     android:textStyle="bold"
                     android:textSize="20sp"
                     android:textColor="#000"
@@ -93,7 +93,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:text="@string/total_changes"
+                    android:text="@string/next_change"
                     android:textColor="#6D6D6D"
                     android:textSize="16sp"
                     android:layout_width="wrap_content"
@@ -101,7 +101,7 @@
 
                 <TextView
                     android:id="@+id/totalChangesText"
-                    android:text="@string/_2"
+                    android:text="@string/dec_16_2025"
                     android:textStyle="bold"
                     android:textSize="20sp"
                     android:textColor="#000"

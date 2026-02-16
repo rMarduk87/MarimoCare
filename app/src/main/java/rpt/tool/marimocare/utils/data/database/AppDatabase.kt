@@ -11,7 +11,8 @@ import rpt.tool.marimocare.utils.data.database.models.*
     entities = [
         MarimoModel::class,
         MarimoChangeModel::class,
-        MarimoQRModel::class
+        MarimoQRModel::class,
+        MarimoHealthScoreModel::class
     ],
     version = 4,
     exportSchema = true,

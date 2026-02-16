@@ -191,13 +191,42 @@
     <string name="save_log">Save Log</string>
     <string name="average_health_score">Average Health Score</string>
     <string name="update_all_marimo">Update All</string>
-    <string name="last_changed_to_fix">Select the date you got your Marimo to best calculate previous water changes.</string>
+    <string name="last_changed_to_fix">Select the date you received your Marimo to best calculate previous water changes.
+Please note: the final date retrieved will be the same as the app release date, 2025-11-25.</string>
     <string name="marimos_to_update">Update Water Changes for Stats</string>
     <string name="day_of_acquisition">Registration Date *</string>
     <string name="trends">Trends</string>
     <string name="health_scores">Health Scores</string>
     <string name="compare">Compare</string>
     <string name="individual_health_score">Individual Health Scores</string>
+    <string name="_21th_marimo">21th Marimo</string>
+    <string name="complete_care_history_and_profile">Complete care history and profile</string>
+    <string name="out_of_19">out of 19</string>
+    <string name="nov_25_2025">Nov 25,2025</string>
+    <string name="dec_16_2025">Dec 16,2025</string>
+    <string name="current_health_score">Current Health Score</string>
+    <string name="_19">19</string>
+    <string name="health_score_history">Health Score History</string>
+    <string name="health_track">Track your marimo\'s health over the last 10 water changes</string>
+    <string name="frequency">Frequency</string>
+    <string name="_21d">21d</string>
+    <string name="total_changes">Total Changes</string>
+    <string name="_2">2</string>
+    <string name="_21_days">21 days</string>
+    <string name="milestones">Milestones</string>
+    <string name="quick_actions">Quick Actions</string>
+    <string name="wow">Wow</string>
+    <string name="milestone">Milestone</string>
+    <string name="health_98">Health: 98</string>
+    <string name="february_13_2026">February 13, 2026</string>
+    <string name="damn_i_change_it">Damn I Change It</string>
+    <string name="health_96">Health: 96</string>
+    <string name="yeah">Yeah</string>
+    <string name="star">🌟</string>
+    <string name="care_timeline">Care Timeline</string>
+    <string name="visual_history">Visual history of all water changes and milestones</string>
+    <string name="out_of_100">out of 100</string>
+    <string name="waters">Water Change</string>
     <string-array name="marimo_frequencies">
         <item>Cada 7 días (semanal)</item>
         <item>Cada 10 días</item>

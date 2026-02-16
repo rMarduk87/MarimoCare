@@ -198,6 +198,20 @@ class AppUtils {
             return resultDates.sorted()
         }
 
+        @RequiresApi(Build.VERSION_CODES.O)
+        fun calculateHealth(currentDate: String, lastWater: String): Int {
+
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+
+            val current = LocalDate.parse(currentDate, formatter)
+            val last = LocalDate.parse(lastWater, formatter)
+
+            val daysBetween = ChronoUnit.DAYS.between(last,
+                current).toInt()
+
+            return 100 - daysBetween
+        }
+
         const val USERS_SHARED_PREF : String = "user_pref"
         const val SHOW_ALERT_OVERDUE : String = "showAlertOverdue"
         const val SHOW_ALERT_SOON: String = "showAlertSoon"

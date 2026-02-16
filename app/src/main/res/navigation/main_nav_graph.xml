@@ -124,6 +124,16 @@
             android:id="@+id/action_marimoDetailFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment" />
 
+        <action
+            android:id="@+id/action_marimoDetailFragment_to_statsFragment"
+            app:destination="@id/statsFragment" />
+        <action
+            android:id="@+id/action_marimoDetailFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_marimoDetailFragment_to_addOrEditFragment"
+            app:destination="@id/addOrEditFragment" />
+
         <argument
             android:name="MarimoCode"
             app:argType="integer"

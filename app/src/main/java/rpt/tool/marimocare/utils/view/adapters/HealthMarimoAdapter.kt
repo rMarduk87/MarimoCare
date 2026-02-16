@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import rpt.tool.marimocare.databinding.ItemHealthMarimoBinding
-import rpt.tool.marimocare.utils.data.appmodels.MarimoHealthScore
+import rpt.tool.marimocare.utils.data.appmodels.MarimoHealthScoreStats
 import androidx.core.graphics.toColorInt
 
-class HealthMarimoAdapter : ListAdapter<MarimoHealthScore,
+class HealthMarimoAdapter : ListAdapter<MarimoHealthScoreStats,
         HealthMarimoAdapter.MarimoViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MarimoViewHolder {
@@ -27,7 +27,7 @@ class HealthMarimoAdapter : ListAdapter<MarimoHealthScore,
         private val binding: ItemHealthMarimoBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: MarimoHealthScore) = with(binding) {
+        fun bind(item: MarimoHealthScoreStats) = with(binding) {
 
             marimoTitle.text = item.name
             healthValue.text = item.health.toString()
@@ -72,13 +72,13 @@ class HealthMarimoAdapter : ListAdapter<MarimoHealthScore,
         }
     }
 
-    class DiffCallback : DiffUtil.ItemCallback<MarimoHealthScore>() {
-        override fun areItemsTheSame(oldItem: MarimoHealthScore, newItem: MarimoHealthScore):
+    class DiffCallback : DiffUtil.ItemCallback<MarimoHealthScoreStats>() {
+        override fun areItemsTheSame(oldItem: MarimoHealthScoreStats, newItem: MarimoHealthScoreStats):
                 Boolean {
             return oldItem.name == newItem.name
         }
 
-        override fun areContentsTheSame(oldItem: MarimoHealthScore, newItem: MarimoHealthScore):
+        override fun areContentsTheSame(oldItem: MarimoHealthScoreStats, newItem: MarimoHealthScoreStats):
                 Boolean {
             return oldItem == newItem
         }
