@@ -13,7 +13,7 @@
     app:strokeWidth="1dp"
     android:backgroundTint="#F7FFFB">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
@@ -24,7 +24,6 @@
             android:orientation="vertical"
             android:padding="18dp">
 
-            <!-- Titolo -->
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -49,12 +48,10 @@
                     android:layout_height="wrap_content"/>
             </LinearLayout>
 
-            <!-- Spazio -->
             <View
                 android:layout_width="match_parent"
                 android:layout_height="16dp"/>
 
-            <!-- RecyclerView ITEM come nella foto -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/marimoRecycler"
                 android:layout_width="match_parent"
@@ -63,6 +60,6 @@
 
         </LinearLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </com.google.android.material.card.MaterialCardView>

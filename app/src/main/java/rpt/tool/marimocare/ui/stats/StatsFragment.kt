@@ -2,12 +2,14 @@ package rpt.tool.marimocare.ui.stats
 
 import android.app.Dialog
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.graphics.toColorInt
 import androidx.lifecycle.lifecycleScope
@@ -37,6 +39,7 @@ import rpt.tool.marimocare.utils.AppUtils.Companion.toMarimoItems
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.data.appmodels.MarimoChange
 import rpt.tool.marimocare.utils.managers.RepositoryManager
+import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 import rpt.tool.marimocare.utils.navigation.safeNavController
 import rpt.tool.marimocare.utils.navigation.safeNavigate
 import rpt.tool.marimocare.utils.view.HeaderButtonConfig
@@ -53,6 +56,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
 
     private lateinit var adapter: HealthMarimoAdapter
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -132,6 +136,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun setupTopStats() {
         StatsHelper.setUpStatsTopCard(requireContext(), listOf(
             StatsCardConfig(
@@ -296,17 +301,16 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
 
     private fun setupBottomStats() {
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-            val marimos = RepositoryManager.marimoRepository.getAllSync(true)
+            val marimos = RepositoryManager.marimoRepository.getAllSync()
             val changes = RepositoryManager.marimoRepository.getAllChanges()
-            val last6Months = AppUtils.getLastSixMonthsLabels() // formato yyyy-MM
+            val last6Months = AppUtils.getLastSixMonthsLabels()
 
             withContext(Dispatchers.Main) {
-                // Line chart
+
                 val trendEntries = generateTrendData(last6Months, changes)
                 setupWaterTrendChart(binding.includeDI.waterTrendChart, trendEntries,
                     last6Months)
 
-                // Bar chart
                 val freqValues = generateFrequencyDistribution(marimos)
                 setupFrequencyChart(binding.includeDC.frequencyChart, freqValues)
             }
@@ -426,7 +430,10 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
         }
     }
 
-    private fun setUpBottomTabs(){
+    private fun setUpBottomTabs() {
+
+        val positionSelected = SharedPreferencesManager.tabSelected
+
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
@@ -448,16 +455,18 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
                         binding.tabContentCompare.visibility = View.VISIBLE
                     }
                 }
+
+                SharedPreferencesManager.tabSelected = tab?.position ?: 0
             }
 
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-            }
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
+        
+        binding.tabLayout.getTabAt(positionSelected)?.select()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun setUpHealthScore(){
         val isTablet = resources.configuration.smallestScreenWidthDp >= 600
 
@@ -484,6 +493,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
         loadData()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun loadData() {
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
             val list =  RepositoryManager.marimoRepository.getHealthScore();

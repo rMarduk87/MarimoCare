@@ -146,4 +146,14 @@ interface MarimoDao {
             "marimo_code =:marimoCode and date =:currentDate")
     fun getCurrentHealth(marimoCode: Int, currentDate: String): Int
 
+    @Transaction
+    @Query("SELECT count(*) FROM marimo_health_score where " +
+            "marimo_code =:marimoCode and date =:currentDate")
+    fun healthExists(marimoCode: Int, currentDate: String): Int
+
+    @Transaction
+    @Query("SELECT date FROM marimo_health_score where " +
+            "marimo_code =:code order by code desc limit 1")
+    fun getLastHealthDate(code: Int): String
+
 }

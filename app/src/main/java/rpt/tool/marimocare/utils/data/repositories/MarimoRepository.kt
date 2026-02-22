@@ -164,6 +164,14 @@ class MarimoRepository(
         return marimoDao.getCurrentHealth(marimoCode, last ?: AppUtils.getCurrentDate())
     }
 
+    fun healthExists(marimoCode: Int, last: String) : Int {
+        return marimoDao.healthExists(marimoCode, last)
+    }
+
+    fun getLastHealthDate(code: Int) : String {
+        return marimoDao.getLastHealthDate(code)
+    }
+
 
     val marimos: LiveData<List<Marimo>> =
         marimoDao.getMarimos().map { it.map { it.map() } }

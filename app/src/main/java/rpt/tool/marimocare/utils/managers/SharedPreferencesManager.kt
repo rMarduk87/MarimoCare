@@ -72,4 +72,8 @@ object SharedPreferencesManager {
     var fixWaterChanges: Boolean
         get() = sharedPreferences.getBoolean(AppUtils.FIX, true)
         set(value) = sharedPreferences.edit() { putBoolean(AppUtils.FIX, value) }
+
+    var tabSelected: Int
+        get() = sharedPreferences.getInt(AppUtils.TAB_SELECTED, 0)
+        set(value) = sharedPreferences.edit() { putInt(AppUtils.TAB_SELECTED, value) }
 }

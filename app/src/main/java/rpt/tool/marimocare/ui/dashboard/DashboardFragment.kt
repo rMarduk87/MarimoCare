@@ -49,6 +49,10 @@ import kotlin.getValue
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.work.Constraints
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
 import com.skydoves.balloon.BalloonAlign
 import com.skydoves.balloon.balloon
 import rpt.tool.marimocare.utils.AppUtils
@@ -60,7 +64,9 @@ import rpt.tool.marimocare.utils.view.adapters.MarimoToFixAdapter
 import rpt.tool.marimocare.utils.view.adapters.MarimoUpdateAdapter
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.DeleteMarimoEventHook
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.ShowMarimoDetailsEventHook
+import rpt.tool.marimocare.utils.workers.MidnightHealthWorker
 import java.io.File
+import java.util.concurrent.TimeUnit
 
 class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     FragmentDashboardBinding::inflate) {
@@ -285,7 +291,6 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             openFixWaterChangeDialog()
             SharedPreferencesManager.fixWaterChanges = false
         }
-
     }
 
     private fun addNewMarimo() {
@@ -848,4 +853,5 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             }
         }
     }
+
 }

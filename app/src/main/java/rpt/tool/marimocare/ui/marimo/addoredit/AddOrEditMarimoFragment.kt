@@ -346,13 +346,13 @@ class AddOrEditMarimoFragment :
                 RepositoryManager.marimoRepository.addWaterChanges(id, lastWater,
                     null,null)
 
-                val listOfData = AppUtils.calcWaterChanges(
+                val listOfData = AppUtils.calcWaterHealth(
                     lastWater,
                     1, AppUtils.getCurrentDate())
 
                 listOfData.forEach {
                     RepositoryManager.marimoRepository.addMarimoHealthScore(id,it,
-                        AppUtils.calculateHealth(AppUtils.getCurrentDate(),
+                        AppUtils.calculateHealth(it,
                             lastWater))
                 }
 

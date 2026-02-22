@@ -16,15 +16,12 @@ class CareTimeLineAdapter(
     private val items: List<MarimoChange>
 ) : RecyclerView.Adapter<CareTimeLineAdapter.MarimoChangeViewHolder>() {
 
-    inner class MarimoChangeViewHolder(
+    class MarimoChangeViewHolder(
         private val binding: ItemWaterMilestoneBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: MarimoChange) = with(binding) {
 
-            // ------------------------
-            // DATA COMUNE
-            // ------------------------
 
             cardDate.text = item.waterChangeData ?: ""
 
@@ -36,7 +33,6 @@ class CareTimeLineAdapter(
                 notes.visibility = View.GONE
             }
 
-            // IMMAGINE
             if (!item.waterChangeImage.isNullOrEmpty()) {
                 val file = File(item.waterChangeImage)
                 if (file.exists()) {
@@ -52,14 +48,10 @@ class CareTimeLineAdapter(
                 waterOrMilestoneImage.visibility = View.GONE
             }
 
-            // ------------------------
-            // CASO MILESTONE
-            // ------------------------
             if (item.isMilestone) {
 
                 cardTitle.setText(R.string.milestone)
 
-                // Icona timeline
                 timelineIconContainer.background =
                     ContextCompat.getDrawable(root.context, R.drawable.bg_badge_orange)
 
@@ -75,14 +67,11 @@ class CareTimeLineAdapter(
                 timelineIcon.imageTintList =
                     android.content.res.ColorStateList.valueOf("#FBC02D".toColorInt())
 
-                // Card icon (STAR testo)
                 cardIcon.visibility = View.VISIBLE
                 cardIcon.setText(R.string.star)
 
             }
-            // ------------------------
-            // CASO WATER CHANGE
-            // ------------------------
+
             else {
 
                 cardTitle.setText(R.string.waters)
@@ -101,7 +90,6 @@ class CareTimeLineAdapter(
                 timelineIcon.imageTintList =
                     android.content.res.ColorStateList.valueOf("#1EA65F".toColorInt())
 
-                // Nascondo testo STAR
                 cardIcon.visibility = View.INVISIBLE
             }
         }

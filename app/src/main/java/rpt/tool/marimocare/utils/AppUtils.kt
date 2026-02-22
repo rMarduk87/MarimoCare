@@ -199,6 +199,46 @@ class AppUtils {
         }
 
         @RequiresApi(Build.VERSION_CODES.O)
+        fun calcWaterHealth(
+            lastChanged: String?,
+            frequency: Int,
+            today: String?
+        ): List<String> {
+            // 1. Controllo validità degli input
+            if (lastChanged.isNullOrBlank() || today.isNullOrBlank() || frequency <= 0) {
+                return emptyList()
+            }
+
+            val resultDates = mutableListOf<String>()
+
+            // Il formato richiesto è "yyyy-MM-dd"
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+
+            try {
+                // 2. Parsing delle stringhe in LocalDate
+                val startDate = LocalDate.parse(lastChanged, formatter)
+                val endDate = LocalDate.parse(today, formatter)
+
+                // 3. Inizializzazione direttamente con la data di partenza per includerla
+                var currentDate = startDate
+
+                // 4. Ciclo finché la data corrente non supera la data finale
+                while (!currentDate.isAfter(endDate)) {
+                    // Aggiungiamo la data corrente (inclusa la prima)
+                    resultDates.add(currentDate.format(formatter))
+
+                    // Calcoliamo la prossima data aggiungendo la frequenza
+                    currentDate = currentDate.plusDays(frequency.toLong())
+                }
+            } catch (e: DateTimeParseException) {
+                // Gestione degli errori per formato date non valido
+                e.printStackTrace()
+            }
+
+            return resultDates
+        }
+
+        @RequiresApi(Build.VERSION_CODES.O)
         fun calculateHealth(currentDate: String, lastWater: String): Int {
 
             val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
@@ -210,6 +250,16 @@ class AppUtils {
                 current).toInt()
 
             return 100 - daysBetween
+        }
+
+        @RequiresApi(Build.VERSION_CODES.O)
+        fun getDifferenceBetweenDates(nextChange: String, currentDate: String): Int {
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+            val next = LocalDate.parse(nextChange, formatter)
+            val current = LocalDate.parse(currentDate, formatter)
+
+            return ChronoUnit.DAYS.between(current, next).toInt()
+
         }
 
         const val USERS_SHARED_PREF : String = "user_pref"
@@ -227,6 +277,7 @@ class AppUtils {
         const val SHOW_NEW_MARIMO_BALLON : String = "show_new_marimo_balloon"
         const val FIX : String = "fix_water_changes"
         const val MARIMO_OVERDUE_COUNTER : String = "marimo_overdue_counter"
+        const val TAB_SELECTED : String = "stats_tab_selected"
 
 
 

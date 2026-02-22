@@ -59,7 +59,7 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
 
         addDataToMarimo(marimoCode)
 
-        binding.include1.appLogo.setOnClickListener {
+        binding.include.appLogo.setOnClickListener {
             safeNavController?.safeNavigate(
                 MarimoDetailsFragmentDirections
                     .actionMarimoDetailFragmentToDashboardFragment()
@@ -72,7 +72,7 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
             requireContext(),
             listOf(
                 HeaderButtonConfig(
-                    button = binding.include1.btnDashboardHeader,
+                    button = binding.include.btnDashboardHeader,
                     iconRes = R.drawable.ic_dashboard,
                     colorRes = R.color.marimo_add_icon,
                     backgroundRes = R.drawable.bg_button_light_green,
@@ -86,7 +86,7 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
                     }
                 ),
                 HeaderButtonConfig(
-                    button = binding.include1.btnAddMarimoHeader,
+                    button = binding.include.btnAddMarimoHeader,
                     iconRes = R.drawable.ic_add,
                     colorRes = R.color.marimo_item_green,
                     backgroundRes = R.drawable.bg_button_white,
@@ -101,7 +101,7 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
                     }
                 ),
                 HeaderButtonConfig(
-                    button = binding.include1.btnOpenSettings,
+                    button = binding.include.btnOpenSettings,
                     iconRes = R.drawable.ic_settings,
                     colorRes = R.color.marimo_add_icon,
                     backgroundRes = R.drawable.bg_button_white,
@@ -115,7 +115,7 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
                     }
                 ),
                 HeaderButtonConfig(
-                    button = binding.include1.btnOpenStats,
+                    button = binding.include.btnOpenStats,
                     iconRes = R.drawable.ic_stats,
                     colorRes = R.color.marimo_add_icon,
                     backgroundRes = R.drawable.bg_button_white,
@@ -147,10 +147,10 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
                     if (marimo != null) {
                         binding.marimoName.text = marimo!!.name
                         includeProfile(marimo,changes,milestones)
-                        includeHealthScore(marimoHealth)
+                        includeHealthScore(marimoHealth,marimo)
                         includeLogChanges(marimo)
                         includeCareTimeLine(marimoChanges)
-                        includeHealthGraph(marimo)
+                        includeHealthGraph(marimoChanges)
                     }
                 }
             }
@@ -164,17 +164,17 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
             showMarimoImage(null)
         }
 
-        binding.include.txtFrequency.text = buildString {
+        binding.include1.txtFrequency.text = buildString {
             append(marimo.changeFrequencyDays.toString())
             append(" ")
             append(getString(R.string.days))
         }
-        binding.include.txtTotalChanges.text = changes.toString()
-        binding.include.txtMilestones.text = milestones.toString()
+        binding.include1.txtTotalChanges.text = changes.toString()
+        binding.include1.txtMilestones.text = milestones.toString()
     }
 
     private fun showMarimoImage(file: File?) {
-        val imageView = binding.include.imgIcon
+        val imageView = binding.include1.imgIcon
 
         imageView.clearColorFilter()
         imageView.imageTintList = null
@@ -192,32 +192,47 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
         }
     }
 
-    private fun includeHealthScore(marimoHealth: Int) {
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun includeHealthScore(marimoHealth: Int, marimo: Marimo?) {
         binding.include2.healthValue.text = marimoHealth.toString()
         binding.include2.healthTotal.text = getString(R.string.out_of_100)
         calculateHealthColor(marimoHealth)
+        binding.include2.txtLastChange.text = marimo!!.lastChanged
+        binding.include2.txtNextChange.text = marimo.nextChange
+        binding.include2.txtNextChange.setTextColor(getColorFromData(marimo.nextChange))
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun getColorFromData(nextChange: String):Int {
+        val differenceBetweenDate = AppUtils.getDifferenceBetweenDates(nextChange,
+            AppUtils.getCurrentDate())
+        return when(differenceBetweenDate) {
+            0 -> requireContext().getColor(R.color.marimo_orange)
+            in 1..Int.MAX_VALUE -> requireContext().getColor(R.color.marimo_item_green)
+            else -> requireContext().getColor(R.color.marimo_red)
+        }
     }
 
     private fun calculateHealthColor(health: Int) {
         val (strokeColor, boxColor) = when {
             health == 100 -> {
-                Pair("#2E7D32", "#2E7D32")   // Verde
+                Pair("#2E7D32", "#2E7D32")
             }
 
             health in 40..70 -> {
-                Pair("#FFFACD", "#FFFACD")   // Giallo
+                Pair("#FFFACD", "#FFFACD")
             }
 
             health in 1..19 -> {
-                Pair("#F57C00", "#F57C00")   // Arancione
+                Pair("#F57C00", "#F57C00")
             }
 
             health <= 0 -> {
-                Pair("#C62828", "#C62828")   // Rosso
+                Pair("#C62828", "#C62828")
             }
 
             else -> {
-                Pair("#4CAF50", "#4CAF50")   // Default verde soft
+                Pair("#4CAF50", "#4CAF50")
             }
         }
 
@@ -271,11 +286,9 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
             }
         }*/
 
-        // ---- Close / Cancel ----
         btnClose?.setOnClickListener { dialog.dismiss() }
         btnCancel?.setOnClickListener { dialog.dismiss() }
 
-        // ---- Save ----
         btnSave?.setOnClickListener {
 
             val notes = etNotes?.text?.toString()?.trim()
@@ -346,7 +359,7 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
             LinearLayoutManager(requireContext())
         binding.include4.marimoRecycler.adapter = adapter
     }
-    private fun includeHealthGraph(marimo: Marimo?) {
+    private fun includeHealthGraph(marimo: List<MarimoChange>) {
 
     }
 }

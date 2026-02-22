@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:paddingBottom="16dp"
-                android:text="@string/track_your_marimo_care_patterns_and_insights_over_time"
+                android:text="@string/stats_sub_title"
                 android:textColor="#555"
                 android:textSize="14sp" />
 

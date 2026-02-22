@@ -120,7 +120,7 @@
     <string name="sort_by_status_overdue_first">By Status (Overdue first)</string>
     <string name="sorted_by_name_a_z">By Name (A-Z)</string>
     <string name="sort_by_last_changed_newest_first">By Last Changed (Newest first)</string>
-    <string name="track_your_marimo_care_patterns_and_insights_over_time">Track your marimo care patterns and insights over time</string>
+    <string name="stats_sub_title">Advanced analytics and insights for your marimo collection</string>
     <string name="marimo_care_stats">Marimo Statistics</string>
     <string name="average_frequency">Average Frequency</string>
     <string name="_10_3">10.3</string>

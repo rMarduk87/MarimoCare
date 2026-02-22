@@ -120,7 +120,7 @@
     <string name="sort_by_status_overdue_first">Estado (vencido primero)</string>
     <string name="sorted_by_name_a_z">Nombre (A a Z)</string>
     <string name="sort_by_last_changed_newest_first">Último cambio (más reciente primero)</string>
-    <string name="track_your_marimo_care_patterns_and_insights_over_time">Seguimiento de los patrones de cuidado y los conocimientos de Marimo a lo largo del tiempo</string>
+    <string name="stats_sub_title">Análisis y conocimientos avanzados para su colección de marimo</string>
     <string name="marimo_care_stats">Estadísticas de Marimo</string>
     <string name="average_frequency">Frecuencia promedio</string>
     <string name="_10_3">10.3</string>
