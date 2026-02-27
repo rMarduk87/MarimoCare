@@ -462,7 +462,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
             override fun onTabUnselected(tab: TabLayout.Tab?) {}
             override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
-        
+
         binding.tabLayout.getTabAt(positionSelected)?.select()
     }
 

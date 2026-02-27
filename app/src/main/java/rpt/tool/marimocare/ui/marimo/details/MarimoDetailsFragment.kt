@@ -74,7 +74,7 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
                 HeaderButtonConfig(
                     button = binding.include.btnDashboardHeader,
                     iconRes = R.drawable.ic_dashboard,
-                    colorRes = R.color.marimo_add_icon,
+                    colorRes = R.color.marimo_item_green,
                     backgroundRes = R.drawable.bg_button_light_green,
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.dashboard),
@@ -88,7 +88,7 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
                 HeaderButtonConfig(
                     button = binding.include.btnAddMarimoHeader,
                     iconRes = R.drawable.ic_add,
-                    colorRes = R.color.marimo_item_green,
+                    colorRes = R.color.marimo_add_icon,
                     backgroundRes = R.drawable.bg_button_white,
                     enabled = true,
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,

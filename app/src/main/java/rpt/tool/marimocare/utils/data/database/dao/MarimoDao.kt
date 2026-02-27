@@ -156,4 +156,9 @@ interface MarimoDao {
             "marimo_code =:code order by code desc limit 1")
     fun getLastHealthDate(code: Int): String
 
+    @Transaction
+    @Query("UPDATE marimo_health_score SET health = :health where " +
+            "marimo_code =:marimoCoe and date =:last")
+    fun updateHealth(marimoCoe: Int, last: String, health: Int)
+
 }

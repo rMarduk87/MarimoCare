@@ -156,7 +156,10 @@ class MarimoRepository(
             health).let{
             marimoDao.insertNewHealth(it.map())
         }
+    }
 
+    fun updateHealthScore(marimoCoe: Int, last: String, health: Int) {
+        marimoDao.updateHealth(marimoCoe, last, health)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

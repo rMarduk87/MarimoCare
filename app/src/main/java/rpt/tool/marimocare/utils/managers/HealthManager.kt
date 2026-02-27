@@ -8,7 +8,7 @@ import rpt.tool.marimocare.utils.AppUtils.Companion.calculateHealth
 class HealthManager {
 
     @RequiresApi(Build.VERSION_CODES.O)
-    suspend fun calculateAndInsertHealthRobust(currentDay: String) {
+    fun calculateAndInsertHealthRobust(currentDay: String) {
 
         val marimos = RepositoryManager.marimoRepository.getAllSync()
 
@@ -18,13 +18,13 @@ class HealthManager {
                 RepositoryManager.marimoRepository.
                     getLastHealthDate(marimo.code)
 
-            val startDate = lastSavedDate ?: marimo.lastChanged!!
+            val startDate = lastSavedDate
 
-            val missingDates = AppUtils.calcWaterChanges(
-                currentDay,
+            val missingDates = AppUtils.calcWaterHealth(
+                startDate,
                 1,
-                startDate
-            ).drop(1)
+                currentDay
+            )
 
             missingDates.forEach { date ->
 

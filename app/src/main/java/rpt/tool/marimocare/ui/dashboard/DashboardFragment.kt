@@ -1,11 +1,14 @@
 package rpt.tool.marimocare.ui.dashboard
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.AlertDialog
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +20,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import androidx.core.net.toUri
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.GridLayoutManager
@@ -59,6 +63,7 @@ import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.balloon.waterchange.WaterChangeInfoBalloonFactory
 import rpt.tool.marimocare.utils.data.appmodels.MarimoToFix
 import rpt.tool.marimocare.utils.data.appmodels.MarimoUpdate
+import rpt.tool.marimocare.utils.managers.HealthManager
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.tool.marimocare.utils.view.adapters.MarimoToFixAdapter
 import rpt.tool.marimocare.utils.view.adapters.MarimoUpdateAdapter
@@ -66,11 +71,13 @@ import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.DeleteMari
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.ShowMarimoDetailsEventHook
 import rpt.tool.marimocare.utils.workers.MidnightHealthWorker
 import java.io.File
+import java.io.FileOutputStream
 import java.util.concurrent.TimeUnit
 
 class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     FragmentDashboardBinding::inflate) {
 
+    private lateinit var file: File
     private lateinit var itemAdapter: ItemAdapter<MarimoItem>
     private lateinit var fastAdapter: FastAdapter<MarimoItem>
     private val viewModel: DashboardViewModel by navGraphViewModels(R.id.main_nav_graph)
@@ -81,6 +88,9 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     private val marimoUpdateBalloon by balloon<WaterChangeInfoBalloonFactory>()
     private var imagePath: String? = null
     private var tempImageUri: Uri? = null
+
+    private val REQUEST_CAMERA = 1001
+    private val REQUEST_GALLERY = 1002
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -177,7 +187,8 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             marimoToUpdate.apply {
                 clear()
                 addAll(marimos.map {
-                    MarimoUpdate(id = it.code, it.name, (it.daysLeft*-1), it.lastChanged!!) })
+                    MarimoUpdate(id = it.code, it.name, (it.daysLeft*-1),
+                        it.lastChanged!!) })
             }
         }
 
@@ -364,6 +375,8 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             setupSpinner(sorting, SharedPreferencesManager.marimoSorting)
             applyFilterAndSort()
         }
+
+        forceHealthCheck()
     }
 
     private fun updateAlertsUI() {
@@ -736,7 +749,10 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     private val galleryLauncher =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
             uri?.let {
-                imagePath = it.toString()
+                val fileFromUri = copyUriToInternalFile(it)
+                file = fileFromUri
+
+                imagePath = fileFromUri.toURI().toString()
                 currentImageCallback?.invoke(imagePath)
             }
         }
@@ -758,19 +774,19 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     }
 
     private fun openCamera() {
-        val file = File.createTempFile(
-            "change_water_marimo_${System.currentTimeMillis()}",
-            ".jpg",
-            requireContext().externalCacheDir
-        )
 
-        tempImageUri = FileProvider.getUriForFile(
-            requireContext(),
-            "${requireContext().packageName}.provider",
-            file
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        file = File(
+            requireContext().cacheDir,
+            "change_water_marimo_${System.currentTimeMillis()}.jpg"
         )
-
-        cameraLauncher.launch(tempImageUri)
+        tempImageUri = FileProvider.getUriForFile(requireContext(),
+            "${requireContext().packageName}.provider", file!!)
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, tempImageUri)
+        intent.addFlags(
+            Intent.FLAG_GRANT_WRITE_URI_PERMISSION or
+                    Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        startActivityForResult(intent, REQUEST_CAMERA)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -852,6 +868,65 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                 manageFilters()
             }
         }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun forceHealthCheck() {
+
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+
+            val today = AppUtils.getCurrentDate()
+            val marimos = RepositoryManager.marimoRepository.getAllSync()
+
+            var needUpdate = false
+
+            marimos.forEach { marimo ->
+
+                val exists =
+                    RepositoryManager.marimoRepository.getSpecificHealth(
+                        marimo.code, today)
+
+                if (exists==0) {
+                    needUpdate = true
+                }
+            }
+
+            if (needUpdate) {
+                HealthManager()
+                    .calculateAndInsertHealthRobust(today)
+            }
+        }
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode != Activity.RESULT_OK) return
+
+        when (requestCode) {
+
+            REQUEST_CAMERA -> {
+                if (::file.isInitialized && file.exists() && file.length() > 0) {
+                    imagePath = tempImageUri?.toString()
+                    currentImageCallback?.invoke(imagePath)
+                }
+            }
+        }
+    }
+
+    private fun copyUriToInternalFile(uri: Uri): File {
+        val file = File(
+            requireContext().filesDir,
+            "marimo_${System.currentTimeMillis()}.jpg"
+        )
+
+        requireContext().contentResolver.openInputStream(uri)?.use { input ->
+            FileOutputStream(file).use { output ->
+                input.copyTo(output)
+            }
+        }
+        return file
     }
 
 }

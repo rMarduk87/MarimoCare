@@ -1,6 +1,5 @@
 package rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks
 
-import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
@@ -16,7 +15,6 @@ import androidx.activity.result.ActivityResultCaller
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
-import androidx.core.content.FileProvider
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
@@ -33,9 +31,7 @@ import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.tool.marimocare.utils.view.getFastAdapterItemViewBinding
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.MarimoItem
 import androidx.core.graphics.drawable.toDrawable
-import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
-import java.io.File
 import androidx.core.net.toUri
 
 class ChangeWaterEventHook(
@@ -103,7 +99,6 @@ class ChangeWaterEventHook(
             setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT)
         }
 
-        // ---- Views ----
         val etNotes = dialog.findViewById<TextInputEditText>(R.id.etNotes)
         val btnSave = dialog.findViewById<Button>(R.id.btnSave)
         val btnCancel = dialog.findViewById<Button>(R.id.btnCancel)
@@ -125,11 +120,9 @@ class ChangeWaterEventHook(
             }
         }
 
-        // ---- Close / Cancel ----
         btnClose?.setOnClickListener { dialog.dismiss() }
         btnCancel?.setOnClickListener { dialog.dismiss() }
 
-        // ---- Save ----
         btnSave?.setOnClickListener {
 
             val notes = etNotes?.text?.toString()?.trim()
@@ -183,6 +176,10 @@ class ChangeWaterEventHook(
                         isMilestone
                     )
 
+                    RepositoryManager.marimoRepository.updateHealthScore(
+                        item.marimo.code,
+                        lastChanged,100)
+
                     AlertDataUtils.recalc(context)
 
                     RepositoryManager.marimoRepository
@@ -191,7 +188,6 @@ class ChangeWaterEventHook(
                 } else null
             }
 
-            // MAIN THREAD
             if (updated != null) {
                 item.update(updated)
                 fastAdapter.notifyAdapterItemChanged(position)

@@ -76,4 +76,9 @@ object SharedPreferencesManager {
     var tabSelected: Int
         get() = sharedPreferences.getInt(AppUtils.TAB_SELECTED, 0)
         set(value) = sharedPreferences.edit() { putInt(AppUtils.TAB_SELECTED, value) }
+
+    var lastHealthExecutionDate: String?
+        get() = sharedPreferences.getString(AppUtils.LAST_HEALTH_EXECUTION_DATE, null)
+        set(value) = sharedPreferences.edit { putString(AppUtils.LAST_HEALTH_EXECUTION_DATE,
+            value) }
 }

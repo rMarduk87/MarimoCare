@@ -22,7 +22,6 @@ class CareTimeLineAdapter(
 
         fun bind(item: MarimoChange) = with(binding) {
 
-
             cardDate.text = item.waterChangeData ?: ""
 
             // NOTE
@@ -34,16 +33,13 @@ class CareTimeLineAdapter(
             }
 
             if (!item.waterChangeImage.isNullOrEmpty()) {
-                val file = File(item.waterChangeImage)
-                if (file.exists()) {
-                    waterOrMilestoneImage.visibility = View.VISIBLE
-                    Glide.with(root.context)
-                        .load(file)
-                        .centerCrop()
-                        .into(waterOrMilestoneImage)
-                } else {
-                    waterOrMilestoneImage.visibility = View.GONE
-                }
+                waterOrMilestoneImage.visibility = View.VISIBLE
+
+                Glide.with(root.context)
+                    .load(item.waterChangeImage)
+                    .centerCrop()
+                    .into(waterOrMilestoneImage)
+
             } else {
                 waterOrMilestoneImage.visibility = View.GONE
             }

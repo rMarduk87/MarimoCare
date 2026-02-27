@@ -6,6 +6,7 @@ import androidx.annotation.RequiresApi
 import androidx.work.*
 import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.managers.HealthManager
+import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 import java.time.LocalDateTime
 import java.time.Duration
 import java.util.concurrent.TimeUnit
@@ -23,6 +24,8 @@ class MidnightHealthWorker(
 
             HealthManager()
                 .calculateAndInsertHealthRobust(today)
+
+            SharedPreferencesManager.lastHealthExecutionDate = today
 
             scheduleNext(applicationContext)
 
