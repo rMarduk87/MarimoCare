@@ -192,7 +192,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
         ))
 
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-            if(RepositoryManager.marimoRepository.getAllSync(true).isEmpty()){
+            if(RepositoryManager.marimoRepository.getAllSync().isEmpty()){
                 withContext(Dispatchers.Main) {
                     binding.cardsContainer.visibility = View.GONE
                     binding.includeDI.graphMarimo.visibility = View.GONE

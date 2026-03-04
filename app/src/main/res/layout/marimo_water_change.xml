@@ -9,8 +9,7 @@
     app:cardCornerRadius="28dp"
     app:cardElevation="6dp"
     app:strokeWidth="3dp"
-    app:strokeColor="#B8E6D4"
-    android:backgroundTint="#F2F2F2">
+    app:strokeColor="#B8E6D4">
 
     <LinearLayout
         android:orientation="vertical"

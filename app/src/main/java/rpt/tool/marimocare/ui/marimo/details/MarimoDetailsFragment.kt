@@ -31,6 +31,7 @@ import rpt.tool.marimocare.utils.AlertDataUtils
 import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.data.appmodels.MarimoChange
+import rpt.tool.marimocare.utils.data.appmodels.MarimoHealthScore
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.tool.marimocare.utils.navigation.safeNavController
 import rpt.tool.marimocare.utils.navigation.safeNavigate
@@ -140,6 +141,7 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
                 val changes = RepositoryManager.marimoRepository.getMarimoTotalWaterChanged(marimoCode)
                 val milestones = RepositoryManager.marimoRepository.getMarimoTotalMilestones(marimoCode)
                 val marimoChanges = RepositoryManager.marimoRepository.getAllChanges(marimoCode)
+                val marimoHealths = RepositoryManager.marimoRepository.getAllHealth(marimoCode)
                 val marimoHealth = RepositoryManager.marimoRepository.getSpecificHealth(
                     marimoCode,null
                 )
@@ -150,7 +152,7 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
                         includeHealthScore(marimoHealth,marimo)
                         includeLogChanges(marimo)
                         includeCareTimeLine(marimoChanges)
-                        includeHealthGraph(marimoChanges)
+                        includeHealthGraph(marimoHealths)
                     }
                 }
             }
@@ -158,6 +160,7 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
     }
 
     private fun includeProfile(marimo: Marimo?, changes: Int, milestones: Int) {
+        binding.include1.marimoCard.setBackgroundResource(R.drawable.bg_card_marimo)
         if (!marimo!!.photo.isNullOrEmpty()) {
             showMarimoImage(File(marimo.photo!!))
         } else {
@@ -197,6 +200,7 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
         binding.include2.healthValue.text = marimoHealth.toString()
         binding.include2.healthTotal.text = getString(R.string.out_of_100)
         calculateHealthColor(marimoHealth)
+        calculateHealthColorText(marimoHealth)
         binding.include2.txtLastChange.text = marimo!!.lastChanged
         binding.include2.txtNextChange.text = marimo.nextChange
         binding.include2.txtNextChange.setTextColor(getColorFromData(marimo.nextChange))
@@ -214,37 +218,32 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
     }
 
     private fun calculateHealthColor(health: Int) {
-        val (strokeColor, boxColor) = when {
-            health == 100 -> {
-                Pair("#2E7D32", "#2E7D32")
-            }
-
-            health in 40..70 -> {
-                Pair("#FFFACD", "#FFFACD")
-            }
-
-            health in 1..19 -> {
-                Pair("#F57C00", "#F57C00")
-            }
-
-            health <= 0 -> {
-                Pair("#C62828", "#C62828")
-            }
-
-            else -> {
-                Pair("#4CAF50", "#4CAF50")
-            }
+        val themeColorHex = when {
+            health == 100 -> "#2E7D32"
+            health in 40..70 -> "#FFFACD"
+            health in 1..19 -> "#F57C00"
+            health <= 0 -> "#C62828"
+            else -> "#4CAF50"
         }
 
-        binding.include2.marimoCard.strokeColor =
-            strokeColor.toColorInt()
+        val themeColor = themeColorHex.toColorInt()
 
-        binding.include2.healthContainer.backgroundTintList =
-            ColorStateList.valueOf(boxColor.toColorInt())
+        binding.include2.healthContainer.backgroundTintList = ColorStateList.valueOf(themeColor)
+
+        binding.include2.marimoCard.setCardBackgroundColor(Color.WHITE)
+
+        binding.include2.marimoCard.strokeColor = themeColor
+    }
+
+    private fun calculateHealthColorText(health: Int) {
+        val textColor = if(health in 40..70) R.color.marimo_dark else android.R.color.white
+        binding.include2.healthValue.setTextColor(resources.getColor(textColor))
+        binding.include2.healthTotal.setTextColor(resources.getColor(textColor))
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun includeLogChanges(marimo: Marimo?) {
+        binding.include3.marimoCard.setBackgroundResource(R.drawable.bg_card_marimo)
         binding.include3.tvNotesContent.text = marimo!!.notes
         binding.include3.btnLogWaterChange.setOnClickListener {
             showLogDialog(marimo)
@@ -346,6 +345,7 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
 
     @SuppressLint("NotifyDataSetChanged")
     private fun includeCareTimeLine(marimo: List<MarimoChange>) {
+        binding.include4.marimoCard.setBackgroundResource(R.drawable.bg_card_marimo)
         dataToAdapter.apply {
             clear()
             addAll(marimo.map {
@@ -359,7 +359,7 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
             LinearLayoutManager(requireContext())
         binding.include4.marimoRecycler.adapter = adapter
     }
-    private fun includeHealthGraph(marimo: List<MarimoChange>) {
+    private fun includeHealthGraph(marimo: List<MarimoHealthScore>) {
 
     }
 }

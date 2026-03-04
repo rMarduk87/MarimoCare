@@ -2,6 +2,7 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/marimoCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -9,7 +10,7 @@
     app:cardCornerRadius="24dp"
     app:cardElevation="6dp"
     app:strokeWidth="0dp"
-    app:cardBackgroundColor="#F8FDFC">
+    app:strokeColor="#B8E6D4">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,7 +23,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="20dp"
+        tools:ignore="UseCompoundDrawables">
 
         <ImageView
             android:layout_width="24dp"
@@ -69,7 +71,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/notes"
+            android:text="@string/marimo_notes"
             android:textColor="#444444"
             android:textSize="16sp"
             android:layout_marginBottom="8dp"/>

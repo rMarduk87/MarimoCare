@@ -207,7 +207,7 @@ Please note: the final date retrieved will be the same as the app release date, 
     <string name="current_health_score">Current Health Score</string>
     <string name="_19">19</string>
     <string name="health_score_history">Health Score History</string>
-    <string name="health_track">Track your marimo\'s health over the last 10 water changes</string>
+    <string name="health_track">Track your marimo\'s health over the last month</string>
     <string name="frequency">Frequency</string>
     <string name="_21d">21d</string>
     <string name="total_changes">Total Changes</string>
@@ -227,6 +227,7 @@ Please note: the final date retrieved will be the same as the app release date, 
     <string name="visual_history">Visual history of all water changes and milestones</string>
     <string name="out_of_100">out of 100</string>
     <string name="waters">Water Change</string>
+    <string name="marimo_notes">Marimo Notes</string>
     <string-array name="marimo_frequencies">
         <item>Every 7 days (Weekly)</item>
         <item>Every 10 days</item>

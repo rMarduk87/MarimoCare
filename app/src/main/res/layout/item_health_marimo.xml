@@ -8,8 +8,7 @@
     android:layout_marginBottom="16dp"
     app:cardCornerRadius="24dp"
     app:cardElevation="6dp"
-    app:strokeWidth="3dp"
-    android:backgroundTint="#F2F2F2">
+    app:strokeWidth="3dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,6 +46,7 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
+                android:id="@+id/healthText"
                 android:text="@string/health_scores"
                 android:textSize="18sp"
                 android:textColor="#FFFFFF"

@@ -1,6 +1,7 @@
 package rpt.tool.marimocare.utils.view.adapters
 
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import rpt.tool.marimocare.databinding.ItemHealthMarimoBinding
 import rpt.tool.marimocare.utils.data.appmodels.MarimoHealthScoreStats
 import androidx.core.graphics.toColorInt
+import rpt.tool.marimocare.R
 
 class HealthMarimoAdapter : ListAdapter<MarimoHealthScoreStats,
         HealthMarimoAdapter.MarimoViewHolder>(DiffCallback()) {
@@ -23,7 +25,7 @@ class HealthMarimoAdapter : ListAdapter<MarimoHealthScoreStats,
         holder.bind(getItem(position))
     }
 
-    inner class MarimoViewHolder(
+    class MarimoViewHolder(
         private val binding: ItemHealthMarimoBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
@@ -38,37 +40,35 @@ class HealthMarimoAdapter : ListAdapter<MarimoHealthScoreStats,
             totalChangesText.text = item.totalChanges.toString()
 
             applyHealthStyle(item.health)
+            applyHealthStyleToText(item.health)
         }
 
         private fun applyHealthStyle(health: Int) {
 
-            val (strokeColor, boxColor) = when {
-                health == 100 -> {
-                    Pair("#2E7D32", "#2E7D32")   // Verde
-                }
-
-                health in 40..70 -> {
-                    Pair("#FFFACD", "#FFFACD")   // Giallo
-                }
-
-                health in 1..19 -> {
-                    Pair("#F57C00", "#F57C00")   // Arancione
-                }
-
-                health <= 0 -> {
-                    Pair("#C62828", "#C62828")   // Rosso
-                }
-
-                else -> {
-                    Pair("#4CAF50", "#4CAF50")   // Default verde soft
-                }
+            val themeColorHex = when {
+                health == 100 -> "#2E7D32"
+                health in 40..70 -> "#FFFACD"
+                health in 1..19 -> "#F57C00"
+                health <= 0 -> "#C62828"
+                else -> "#4CAF50"
             }
 
-            binding.marimoCard.strokeColor =
-                strokeColor.toColorInt()
+            val themeColor = themeColorHex.toColorInt()
 
-            binding.healthContainer.backgroundTintList =
-                ColorStateList.valueOf(boxColor.toColorInt())
+            binding.healthContainer.backgroundTintList = ColorStateList.valueOf(themeColor)
+            binding.marimoCard.setCardBackgroundColor(Color.WHITE)
+            binding.marimoCard.strokeColor = themeColor
+        }
+
+        private fun applyHealthStyleToText(health: Int) {
+            val textColorRes =
+                if (health in 40..70) R.color.marimo_dark
+                else android.R.color.white
+
+            val color = binding.root.context.getColor(textColorRes)
+
+            binding.healthValue.setTextColor(color)
+            binding.healthText.setTextColor(color)
         }
     }
 
