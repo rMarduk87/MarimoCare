@@ -1,12 +1,17 @@
 package rpt.tool.marimocare.ui.marimo.details
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.app.AlertDialog
 import android.app.Dialog
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.PorterDuff
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -14,12 +19,19 @@ import android.widget.CheckBox
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
+import androidx.core.content.FileProvider
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.graphics.toColorInt
+import androidx.core.net.toUri
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -39,6 +51,11 @@ import rpt.tool.marimocare.utils.view.HeaderButtonConfig
 import rpt.tool.marimocare.utils.view.HeaderHelper
 import rpt.tool.marimocare.utils.view.adapters.CareTimeLineAdapter
 import java.io.File
+import java.io.FileOutputStream
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 import kotlin.getValue
 
 class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
@@ -49,6 +66,9 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
     private var marimo: Marimo? = null
     private var dataToAdapter: MutableList<MarimoChange> = mutableListOf()
     private lateinit var adapter: CareTimeLineAdapter
+
+
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -150,7 +170,6 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
                         binding.marimoName.text = marimo!!.name
                         includeProfile(marimo,changes,milestones)
                         includeHealthScore(marimoHealth,marimo)
-                        includeLogChanges(marimo)
                         includeCareTimeLine(marimoChanges)
                         includeHealthGraph(marimoHealths)
                     }
@@ -241,111 +260,9 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
         binding.include2.healthTotal.setTextColor(resources.getColor(textColor))
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun includeLogChanges(marimo: Marimo?) {
-        binding.include3.marimoCard.setBackgroundResource(R.drawable.bg_card_marimo)
-        binding.include3.tvNotesContent.text = marimo!!.notes
-        binding.include3.btnLogWaterChange.setOnClickListener {
-            showLogDialog(marimo)
-        }
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun showLogDialog(
-        item: Marimo
-    ) {
-        val dialog = Dialog(requireContext())
-        dialog.setContentView(R.layout.dialog_log_water_change)
-
-        dialog.window?.apply {
-            setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
-            val width = (context.resources.displayMetrics.widthPixels * 0.90).toInt()
-            setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT)
-        }
-
-        // ---- Views ----
-        val etNotes = dialog.findViewById<TextInputEditText>(R.id.etNotes)
-        val btnSave = dialog.findViewById<Button>(R.id.btnSave)
-        val btnCancel = dialog.findViewById<Button>(R.id.btnCancel)
-        val btnClose = dialog.findViewById<ImageButton>(R.id.btnClose)
-        val checkboxMilestone = dialog.findViewById<CheckBox>(R.id.checkboxMilestone)
-        val uploadContainer = dialog.findViewById<View>(R.id.uploadContainer)
-        val imagePreview = dialog.findViewById<ImageView>(R.id.imagePreview)
-
-        var imagePath: String? = null
-
-        /*uploadContainer?.setOnClickListener {
-
-            onPickImage { selectedPath ->
-                imagePath = selectedPath
-
-                selectedPath?.let {
-                    imagePreview?.setImageURI(it.toUri())
-                }
-            }
-        }*/
-
-        btnClose?.setOnClickListener { dialog.dismiss() }
-        btnCancel?.setOnClickListener { dialog.dismiss() }
-
-        btnSave?.setOnClickListener {
-
-            val notes = etNotes?.text?.toString()?.trim()
-            val isMilestone = checkboxMilestone?.isChecked ?: false
-
-            updateMarimo(
-                marimo = item,
-                notes = if (notes.isNullOrEmpty()) null else notes,
-                imagePath = imagePath,
-                isMilestone = isMilestone
-            )
-
-            dialog.dismiss()
-        }
-
-        dialog.show()
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun updateMarimo(
-        marimo: Marimo,
-        notes: String?,
-        imagePath: String?,
-        isMilestone: Boolean
-    ) {
-        viewLifecycleOwner.lifecycleScope.launch {
-
-            val updated = withContext(Dispatchers.IO) {
-
-                run {
-
-                    val lastChanged = AppUtils.getCurrentDate()
-
-                    RepositoryManager.marimoRepository.updateWaterMarimo(
-                        lastChanged,
-                        marimo.code
-                    )
-
-                    RepositoryManager.marimoRepository.addWaterChanges(
-                        marimo.code,
-                        lastChanged,
-                        notes,
-                        imagePath,
-                        isMilestone
-                    )
-
-                    AlertDataUtils.recalc(requireContext())
-
-                    RepositoryManager.marimoRepository
-                        .getMarimo(marimo.code)
-                }
-            }
-        }
-    }
-
     @SuppressLint("NotifyDataSetChanged")
     private fun includeCareTimeLine(marimo: List<MarimoChange>) {
-        binding.include4.marimoCard.setBackgroundResource(R.drawable.bg_card_marimo)
+        binding.include3.marimoCard.setBackgroundResource(R.drawable.bg_card_marimo)
         dataToAdapter.apply {
             clear()
             addAll(marimo.map {
@@ -355,11 +272,83 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
 
         adapter = CareTimeLineAdapter(dataToAdapter)
         adapter.notifyDataSetChanged()
-        binding.include4.marimoRecycler.layoutManager =
+        binding.include3.marimoRecycler.layoutManager =
             LinearLayoutManager(requireContext())
-        binding.include4.marimoRecycler.adapter = adapter
+        binding.include3.marimoRecycler.adapter = adapter
     }
     private fun includeHealthGraph(marimo: List<MarimoHealthScore>) {
+        val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val outputFormat = SimpleDateFormat("dd MMM", Locale.getDefault())
 
+        val currentDate = Date()
+
+        val recentScores = marimo.mapNotNull { score ->
+            val parsedDate = score.date?.let {
+                try { inputFormat.parse(it) } catch (e: Exception) { null }
+            }
+            if (parsedDate != null && !parsedDate.after(currentDate)) {
+                Pair(score, parsedDate)
+            } else {
+                null
+            }
+        }
+            .sortedByDescending { it.second }
+            .take(10)
+            .reversed()
+
+        val entries = ArrayList<Entry>()
+        val xAxisLabels = ArrayList<String>()
+
+        recentScores.forEachIndexed { index, pair ->
+            val score = pair.first
+            val parsedDate = pair.second
+
+            entries.add(Entry(index.toFloat(), score.health.toFloat()))
+            xAxisLabels.add(outputFormat.format(parsedDate))
+        }
+
+        val dataSet = LineDataSet(entries, "Health Score").apply {
+            color = "#00A676".toColorInt()
+            lineWidth = 3f
+            setCircleColor("#00A676".toColorInt())
+            circleRadius = 5f
+            setDrawCircleHole(false)
+            setDrawValues(false)
+            mode = LineDataSet.Mode.CUBIC_BEZIER
+        }
+
+        binding.include4.marimoHealthChart.apply {
+            data = LineData(dataSet)
+            description.isEnabled = false
+            legend.isEnabled = false
+            setTouchEnabled(true)
+            isDragEnabled = true
+            setScaleEnabled(false)
+
+            xAxis.apply {
+                position = XAxis.XAxisPosition.BOTTOM
+                setDrawGridLines(false)
+                setDrawAxisLine(true)
+                granularity = 1f
+                isGranularityEnabled = true
+                valueFormatter = IndexAxisValueFormatter(xAxisLabels)
+                textColor = "#6D6D6D".toColorInt()
+            }
+
+            axisLeft.apply {
+                axisMinimum = 0f
+                axisMaximum = 100f
+                granularity = 20f
+                setDrawAxisLine(false)
+                gridColor = "#E0E0E0".toColorInt()
+                textColor = "#6D6D6D".toColorInt()
+            }
+
+            axisRight.isEnabled = false
+
+            setExtraOffsets(10f, 10f, 10f, 10f)
+            animateX(500)
+            invalidate()
+        }
     }
 }

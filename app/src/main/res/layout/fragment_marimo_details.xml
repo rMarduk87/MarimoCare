@@ -51,19 +51,15 @@
             </include>
 
             <include
-                android:id="@+id/include3" layout="@layout/marimo_log_changes">
+                android:id="@+id/include3" layout="@layout/marimo_water_change">
             </include>
 
             <include
-                android:id="@+id/include4" layout="@layout/marimo_water_change">
+                android:id="@+id/include4" layout="@layout/graph_health_marimo">
             </include>
 
             <include
-                android:id="@+id/include5" layout="@layout/graph_health_marimo">
-            </include>
-
-            <include
-                android:id="@+id/include6" layout="@layout/footer">
+                android:id="@+id/include5" layout="@layout/footer">
             </include>
 
         </LinearLayout>
