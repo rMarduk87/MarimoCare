@@ -39,4 +39,10 @@
     <color name="marimo_white">#ddffffff</color>
     <color name="overlay">#BF000000</color>
     <color name="marimo_great_red">#f08353</color>
+    <color name="bg_mint_light">#F2FAF8</color>
+    <color name="green_primary">#0B8A6A</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name="card_stroke">#E0EBE6</color>
+    <color name="text_title">#111827</color>
+    <color name="text_body">#6B7280</color>
 </resources>

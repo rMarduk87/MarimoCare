@@ -183,6 +183,9 @@
                     android:orientation="vertical"
                     android:visibility="gone">
 
+                    <include
+                        android:id="@+id/includeMC"
+                        layout="@layout/marimo_compare" />
 
                 </LinearLayout>
 

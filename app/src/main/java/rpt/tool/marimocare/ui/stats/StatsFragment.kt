@@ -13,6 +13,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.graphics.toColorInt
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -34,6 +35,7 @@ import rpt.tool.marimocare.BaseFragment
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentStatsBinding
 import rpt.tool.marimocare.databinding.StatsMarimoBinding
+import rpt.tool.marimocare.ui.dashboard.DashboardViewModel
 import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.AppUtils.Companion.toMarimoItems
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
@@ -47,6 +49,7 @@ import rpt.tool.marimocare.utils.view.HeaderHelper
 import rpt.tool.marimocare.utils.view.StatsCardConfig
 import rpt.tool.marimocare.utils.view.StatsHelper
 import rpt.tool.marimocare.utils.view.adapters.HealthMarimoAdapter
+import rpt.tool.marimocare.utils.view.adapters.MarimoChipAdapter
 import rpt.tool.marimocare.utils.view.adapters.MarimoFrequencyAdapter
 import rpt.tool.marimocare.utils.view.grid.GridSpacingItemDecoration
 import java.text.SimpleDateFormat
@@ -55,6 +58,9 @@ import java.util.*
 class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::inflate) {
 
     private lateinit var adapter: HealthMarimoAdapter
+    private lateinit var chipAdapter: MarimoChipAdapter
+
+    private val viewModel: StatsViewModel by navGraphViewModels(R.id.main_nav_graph)
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -66,6 +72,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
         setupBottomStats()
         setUpBottomTabs()
         setUpHealthScore()
+        setUpCompareStats()
 
         binding.include1.appLogo.setOnClickListener {
             safeNavController?.safeNavigate(
@@ -499,6 +506,32 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
             val list =  RepositoryManager.marimoRepository.getHealthScore();
 
             adapter.submitList(list)
+        }
+    }
+
+    private fun setUpCompareStats(){
+
+        chipAdapter = MarimoChipAdapter { selectedMarimos ->
+            handleSelectionChange(selectedMarimos)
+        }
+
+        binding.includeMC!!.rvMarimoChips.adapter = chipAdapter
+
+        viewModel.allMarimos.observe(viewLifecycleOwner) { marimoList ->
+            chipAdapter.submitList(marimoList)
+        }
+    }
+
+    private fun handleSelectionChange(selectedMarimos: List<Marimo>) {
+
+        if (selectedMarimos.isEmpty()) {
+
+            binding.includeMC!!.layoutEmptyState.visibility = View.VISIBLE
+            binding.includeMC!!.layoutDataState.visibility = View.GONE
+        } else {
+
+            binding.includeMC!!.layoutEmptyState.visibility = View.GONE
+            binding.includeMC!!.layoutDataState.visibility = View.VISIBLE
         }
     }
 }

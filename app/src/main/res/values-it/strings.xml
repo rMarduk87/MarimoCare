@@ -228,6 +228,14 @@ Please note: the final date retrieved will be the same as the app release date, 
     <string name="out_of_100">out of 100</string>
     <string name="waters">Water Change</string>
     <string name="marimo_notes">Marimo Notes</string>
+    <string name="_97_100">97/100</string>
+    <string name="_5">5</string>
+    <string name="days_tracked">Days Tracked</string>
+    <string name="_102">102</string>
+    <string name="compare_marimos">Compare Marimos</string>
+    <string name="select_marimos_above_to_compare_their_statistics">Select marimos above to compare their statistics</string>
+    <string name="performance_comparison">Performance Comparison</string>
+    <string name="detailed_comparison">Detailed Comparison</string>
     <string-array name="marimo_frequencies">
         <item>Ogni 7 giorni (settimanale)</item>
         <item>Ogni 10 giorni</item>
