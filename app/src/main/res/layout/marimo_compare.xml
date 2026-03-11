@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/bg_mint_light"
-    android:padding="24dp">
+    android:paddingTop="16dp"
+    android:paddingBottom="24dp">
 
     <TextView
         android:id="@+id/tvTitle"
@@ -15,21 +15,18 @@
         android:textColor="@color/text_title"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/rvMarimoChips"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/rvMarimoChips" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMarimoChips"
-        android:nestedScrollingEnabled="false"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_marginTop="16dp"
+        android:nestedScrollingEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvTitle"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
     <FrameLayout
         android:id="@+id/contentContainer"
@@ -37,15 +34,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvMarimoChips">
 
         <LinearLayout
             android:id="@+id/layoutEmptyState"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="250dp"
             android:background="@drawable/bg_card"
             android:gravity="center"
             android:orientation="vertical"
+            android:padding="24dp"
             android:visibility="visible">
 
             <ImageView
@@ -60,6 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/select_marimos_above_to_compare_their_statistics"
+                android:textAlignment="center"
                 android:textColor="@color/text_body"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -67,16 +68,14 @@
         <LinearLayout
             android:id="@+id/layoutDataState"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:visibility="gone">
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="12dp"
-                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
                 android:background="@drawable/bg_card"
                 android:orientation="vertical"
                 android:padding="24dp">
@@ -105,17 +104,16 @@
                         android:textStyle="bold" />
                 </LinearLayout>
 
-                <FrameLayout
-                    android:id="@+id/chartContainer"
+                <com.github.mikephil.charting.charts.RadarChart
+                    android:id="@+id/radarChart"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="250dp"
+                    android:layout_marginTop="16dp" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="12dp"
-                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/bg_card"
                 android:orientation="vertical"
                 android:padding="24dp">
@@ -146,10 +144,10 @@
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:nestedScrollingEnabled="false"
                     android:id="@+id/rvDetailedComparison"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
             </LinearLayout>
 

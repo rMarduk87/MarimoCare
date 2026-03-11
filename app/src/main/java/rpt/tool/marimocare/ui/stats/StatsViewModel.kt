@@ -1,61 +1,83 @@
 package rpt.tool.marimocare.ui.stats
 
+
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.map
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
-import rpt.tool.marimocare.utils.data.enums.MarimoStatus
-import rpt.tool.marimocare.utils.log.d
+import rpt.tool.marimocare.utils.data.appmodels.MarimoDetailUi
 import rpt.tool.marimocare.utils.managers.RepositoryManager
-import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.MarimoItem
 
 class StatsViewModel : ViewModel() {
 
     val allMarimos: LiveData<List<Marimo>> = RepositoryManager.marimoRepository.marimos
 
-    val marimoItems: LiveData<List<MarimoItem>> = allMarimos.map { marimos ->
-        d("ViewModelLog", "All Marimos LiveData updated. Count: ${marimos.size}")
+    private val _comparisonDetails = MutableStateFlow<List<MarimoDetailUi>>(emptyList())
+    val comparisonDetails: StateFlow<List<MarimoDetailUi>> = _comparisonDetails.asStateFlow()
 
-        marimos.map { marimo ->
-            MarimoItem(marimo)
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun calculateDetailsForSelection(selectedMarimos: List<Marimo>) {
+        if (selectedMarimos.isEmpty()) {
+            _comparisonDetails.value = emptyList()
+            return
+        }
+
+        viewModelScope.launch {
+            val uiModels = withContext(Dispatchers.IO) {
+                selectedMarimos.map { marimo ->
+
+                    val latestHealth = RepositoryManager.marimoRepository.getSpecificHealth(
+                        marimo.code, null
+                    )
+
+                    val healthString = latestHealth.let { "${it}/100" } ?: "N/A"
+
+                    val changesCount = RepositoryManager.marimoRepository
+                        .getMarimoTotalWaterChanged(marimo.code)
+
+                    val daysTracked = calculateDaysFromRegistration(
+                        marimo.registrationDate)
+
+                    MarimoDetailUi(
+                        marimoCode = marimo.code,
+                        name = marimo.name,
+                        healthValue = latestHealth,
+                        healthScoreString = healthString,
+                        totalChanges = changesCount.toString(),
+                        frequencyDays = marimo.changeFrequencyDays.toString(),
+                        daysTracked = daysTracked.toString()
+                    )
+                }
+            }
+
+            _comparisonDetails.value = uiModels
         }
     }
 
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    val overdueMarimo = getOverdueMarimoCounter(marimoItems)
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    val dueSoonMarimo =  getDueSoonMarimoCounter(marimoItems)
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    val upToDateMarimo =  getUpToDateMarimoCounter(marimoItems)
-
-    val allMarimosToUpdate = getMarimosToUpdate(allMarimos)
-
-    private fun getMarimosToUpdate(allMarimos: LiveData<List<Marimo>>) =
-        allMarimos.map { marimos -> marimos.filter { MarimoStatus.from(it.daysLeft) == MarimoStatus.OVERDUE } }
-
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun getOverdueMarimoCounter(marimoItems: LiveData<List<MarimoItem>>): LiveData<Int> =
-        marimoItems.map { items ->
-            items.count { MarimoStatus.from(it.marimo.daysLeft) == MarimoStatus.OVERDUE }
+    private fun calculateDaysFromRegistration(dateString: String?): Long {
+        if (dateString.isNullOrEmpty()) return 0
+        return try {
+            val format = java.text.SimpleDateFormat("yyyy-MM-dd",
+                java.util.Locale.getDefault())
+            val regDate = format.parse(dateString)
+            if (regDate != null) {
+                val diffInMillis = System.currentTimeMillis() - regDate.time
+                java.util.concurrent.TimeUnit.MILLISECONDS.toDays(diffInMillis)
+            } else 0L
+        } catch (e: Exception) {
+            0L
         }
+    }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun getDueSoonMarimoCounter(marimoItems: LiveData<List<MarimoItem>>): LiveData<Int> =
-        marimoItems.map { items ->
-            items.count { MarimoStatus.from(it.marimo.daysLeft) == MarimoStatus.DUE_SOON }
-        }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun getUpToDateMarimoCounter(marimoItems: LiveData<List<MarimoItem>>): LiveData<Int> =
-        marimoItems.map { items ->
-            items.count { MarimoStatus.from(it.marimo.daysLeft) == MarimoStatus.NORMAL }
-        }
-
-
+    fun resetComparison() {
+        _comparisonDetails.value = emptyList()
+    }
 }

@@ -236,6 +236,7 @@ Please note: the final date retrieved will be the same as the app release date, 
     <string name="select_marimos_above_to_compare_their_statistics">Select marimos above to compare their statistics</string>
     <string name="performance_comparison">Performance Comparison</string>
     <string name="detailed_comparison">Detailed Comparison</string>
+    <string name="empty">-</string>
     <string-array name="marimo_frequencies">
         <item>Cada 7 días (semanal)</item>
         <item>Cada 10 días</item>

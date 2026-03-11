@@ -10,9 +10,12 @@ import android.view.Window
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.graphics.toColorInt
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,7 +29,13 @@ import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.data.RadarData
+import com.github.mikephil.charting.data.RadarDataSet
+import com.github.mikephil.charting.data.RadarEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import com.google.android.flexbox.FlexDirection
+import com.google.android.flexbox.FlexWrap
+import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.material.tabs.TabLayout
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -40,6 +49,7 @@ import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.AppUtils.Companion.toMarimoItems
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.data.appmodels.MarimoChange
+import rpt.tool.marimocare.utils.data.appmodels.MarimoDetailUi
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 import rpt.tool.marimocare.utils.navigation.safeNavController
@@ -48,6 +58,7 @@ import rpt.tool.marimocare.utils.view.HeaderButtonConfig
 import rpt.tool.marimocare.utils.view.HeaderHelper
 import rpt.tool.marimocare.utils.view.StatsCardConfig
 import rpt.tool.marimocare.utils.view.StatsHelper
+import rpt.tool.marimocare.utils.view.adapters.DetailedComparisonAdapter
 import rpt.tool.marimocare.utils.view.adapters.HealthMarimoAdapter
 import rpt.tool.marimocare.utils.view.adapters.MarimoChipAdapter
 import rpt.tool.marimocare.utils.view.adapters.MarimoFrequencyAdapter
@@ -59,6 +70,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
 
     private lateinit var adapter: HealthMarimoAdapter
     private lateinit var chipAdapter: MarimoChipAdapter
+    private lateinit var detailAdapter: DetailedComparisonAdapter
 
     private val viewModel: StatsViewModel by navGraphViewModels(R.id.main_nav_graph)
 
@@ -509,29 +521,124 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
         }
     }
 
-    private fun setUpCompareStats(){
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun setUpCompareStats() {
 
+        viewModel.resetComparison()
+        setupAdapters()
+        observeViewModel()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun setupAdapters() {
         chipAdapter = MarimoChipAdapter { selectedMarimos ->
-            handleSelectionChange(selectedMarimos)
+            viewModel.calculateDetailsForSelection(selectedMarimos)
         }
 
+        val flexboxLayoutManager = FlexboxLayoutManager(requireContext()).apply {
+            flexWrap = FlexWrap.WRAP
+            flexDirection = FlexDirection.ROW
+        }
+
+        binding.includeMC!!.rvMarimoChips.layoutManager = flexboxLayoutManager
         binding.includeMC!!.rvMarimoChips.adapter = chipAdapter
 
+        detailAdapter = DetailedComparisonAdapter()
+        binding.includeMC!!.rvDetailedComparison.layoutManager =
+            LinearLayoutManager(requireContext())
+        binding.includeMC!!.rvDetailedComparison.adapter = detailAdapter
+
+        setupRadarChart()
+
+    }
+
+    private fun observeViewModel() {
         viewModel.allMarimos.observe(viewLifecycleOwner) { marimoList ->
             chipAdapter.submitList(marimoList)
         }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.comparisonDetails.collect { detailsList ->
+                    updateUiState(detailsList)
+                }
+            }
+        }
     }
 
-    private fun handleSelectionChange(selectedMarimos: List<Marimo>) {
-
-        if (selectedMarimos.isEmpty()) {
-
+    private fun updateUiState(detailsList: List<MarimoDetailUi>) {
+        if (detailsList.isEmpty()) {
             binding.includeMC!!.layoutEmptyState.visibility = View.VISIBLE
             binding.includeMC!!.layoutDataState.visibility = View.GONE
-        } else {
 
+            binding.includeMC!!.radarChart.clear()
+        } else {
             binding.includeMC!!.layoutEmptyState.visibility = View.GONE
             binding.includeMC!!.layoutDataState.visibility = View.VISIBLE
+
+            detailAdapter.submitList(detailsList)
+
+            updateChartData(detailsList)
         }
+    }
+
+    private fun setupRadarChart() {
+        val chart = binding.includeMC!!.radarChart
+
+        chart.description.isEnabled = false
+        chart.webLineWidth = 1f
+        chart.webColor = Color.LTGRAY
+        chart.webLineWidthInner = 1f
+        chart.webColorInner = Color.LTGRAY
+        chart.webAlpha = 100
+        chart.setTouchEnabled(false)
+
+        val xAxis = chart.xAxis
+        xAxis.textSize = 12f
+        xAxis.textColor = ContextCompat.getColor(requireContext(), R.color.text_body)
+        xAxis.yOffset = 0f
+        xAxis.xOffset = 0f
+
+        val yAxis = chart.yAxis
+        yAxis.setLabelCount(5, true)
+        yAxis.axisMinimum = 0f
+        yAxis.axisMaximum = 100f
+        yAxis.textSize = 12f
+        yAxis.textColor = Color.LTGRAY
+        yAxis.setDrawLabels(true)
+
+        chart.legend.isEnabled = false
+    }
+
+    private fun updateChartData(detailsList: List<MarimoDetailUi>) {
+        val chart = binding.includeMC!!.radarChart
+
+        val entries = ArrayList<RadarEntry>()
+        val labels = ArrayList<String>()
+
+        for (detail in detailsList) {
+            val health = detail.healthValue?.toFloat() ?: 0f
+            entries.add(RadarEntry(health))
+            labels.add(detail.name)
+        }
+
+        val dataSet = RadarDataSet(entries, "Health")
+        dataSet.color = ContextCompat.getColor(requireContext(),
+            R.color.green_primary)
+        dataSet.fillColor = ContextCompat.getColor(requireContext(),
+            R.color.green_primary)
+        dataSet.setDrawFilled(true)
+        dataSet.fillAlpha = 90
+        dataSet.lineWidth = 1.5f
+        dataSet.isDrawHighlightCircleEnabled = false
+        dataSet.setDrawHighlightIndicators(false)
+
+        chart.xAxis.valueFormatter = IndexAxisValueFormatter(labels)
+
+        val data = RadarData(dataSet)
+        data.setDrawValues(false)
+
+        chart.data = data
+        chart.invalidate()
     }
 }
