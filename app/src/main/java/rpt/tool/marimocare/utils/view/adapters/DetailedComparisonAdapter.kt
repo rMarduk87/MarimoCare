@@ -36,10 +36,12 @@ class DetailedComparisonAdapter : RecyclerView.Adapter<DetailedComparisonAdapter
                 return
             }
 
-            val textColorId = if (health in 40..70) {
-                R.color.marimo_dark
-            } else {
-                R.color.green_primary
+            val textColorId = when {
+                health == 100 -> R.color.health100
+                health in 40..70 -> R.color.health4070
+                health in 1..19 -> R.color.health119
+                health <= 0 -> R.color.health_red
+                else -> R.color.health_normal
             }
 
             binding.tvValueHealth.setTextColor(ContextCompat.getColor(context, textColorId))

@@ -33,18 +33,23 @@ import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.MarimoItem
 import androidx.core.graphics.drawable.toDrawable
 import com.google.android.material.textfield.TextInputEditText
 import androidx.core.net.toUri
+import com.skydoves.balloon.Balloon
+import com.skydoves.balloon.BalloonAlign
+import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 
 class ChangeWaterEventHook(
     private val lifecycleOwner: LifecycleOwner,
     private val context: Context,
     private val onWaterChanged: () -> Unit,
-    private val onPickImage: (callback: (String?) -> Unit) -> Unit
+    private val onPickImage: (callback: (String?) -> Unit) -> Unit,
+    private val newDialogChangeWaterBalloon: Balloon
 ) : ClickEventHook<MarimoItem>() {
 
     private var imagePath: String? = null
     private lateinit var cameraLauncher: ActivityResultLauncher<Uri>
     private lateinit var galleryLauncher: ActivityResultLauncher<String>
     private var tempImageUri: Uri? = null
+
 
     init {
         if (lifecycleOwner is ActivityResultCaller) {
@@ -100,12 +105,14 @@ class ChangeWaterEventHook(
         }
 
         val etNotes = dialog.findViewById<TextInputEditText>(R.id.etNotes)
+        val icon = dialog.findViewById<ImageView>(R.id.icon)
         val btnSave = dialog.findViewById<Button>(R.id.btnSave)
         val btnCancel = dialog.findViewById<Button>(R.id.btnCancel)
         val btnClose = dialog.findViewById<ImageButton>(R.id.btnClose)
         val checkboxMilestone = dialog.findViewById<CheckBox>(R.id.checkboxMilestone)
         val uploadContainer = dialog.findViewById<View>(R.id.uploadContainer)
         val imagePreview = dialog.findViewById<ImageView>(R.id.imagePreview)
+        val btnRemoveImage = dialog.findViewById<ImageButton>(R.id.btnRemoveImage)
 
         var imagePath: String? = null
 
@@ -115,9 +122,25 @@ class ChangeWaterEventHook(
                 imagePath = selectedPath
 
                 selectedPath?.let {
+
                     imagePreview?.setImageURI(it.toUri())
+
+                    uploadContainer.visibility = View.GONE
+                    imagePreview?.visibility = View.VISIBLE
+                    btnRemoveImage?.visibility = View.VISIBLE
                 }
             }
+        }
+
+        btnRemoveImage?.setOnClickListener {
+
+            imagePath = null
+
+            imagePreview?.setImageDrawable(null)
+
+            imagePreview?.visibility = View.GONE
+            btnRemoveImage.visibility = View.GONE
+            uploadContainer?.visibility = View.VISIBLE
         }
 
         btnClose?.setOnClickListener { dialog.dismiss() }
@@ -141,6 +164,18 @@ class ChangeWaterEventHook(
         }
 
         dialog.show()
+
+        if (SharedPreferencesManager.showNewLogChangeWater) {
+            SharedPreferencesManager.showNewLogChangeWater = false
+
+            icon.post {
+                newDialogChangeWaterBalloon.showAlign(
+                    align = BalloonAlign.BOTTOM,
+                    mainAnchor = icon,
+                    subAnchorList = listOf(icon),
+                )
+            }
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

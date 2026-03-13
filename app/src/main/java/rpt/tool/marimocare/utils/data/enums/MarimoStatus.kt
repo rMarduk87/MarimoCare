@@ -87,6 +87,6 @@ enum class MarimoStatus(
     fun formatDaysLeftText(res: android.content.res.Resources, daysLeft: Int): String = when {
         daysLeft < 0 -> "${-daysLeft} ${res.getString(R.string.days_overdue)}"
         daysLeft > 0 -> "$daysLeft ${res.getString(R.string.days_left)}"
-        else -> "${res.getString(R.string.due_in)} 0 ${res.getString(R.string.days)}"
+        else -> "${res.getString(R.string.due_in)} ${res.getString(R.string.today)}"
     }
 }

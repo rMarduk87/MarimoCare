@@ -20,7 +20,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
-import androidx.core.net.toUri
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.GridLayoutManager
@@ -53,13 +52,10 @@ import kotlin.getValue
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.work.Constraints
-import androidx.work.ExistingPeriodicWorkPolicy
-import androidx.work.PeriodicWorkRequestBuilder
-import androidx.work.WorkManager
 import com.skydoves.balloon.BalloonAlign
 import com.skydoves.balloon.balloon
 import rpt.tool.marimocare.utils.AppUtils
+import rpt.tool.marimocare.utils.balloon.waterchange.DialogChangeWaterBalloonFactory
 import rpt.tool.marimocare.utils.balloon.waterchange.WaterChangeInfoBalloonFactory
 import rpt.tool.marimocare.utils.data.appmodels.MarimoToFix
 import rpt.tool.marimocare.utils.data.appmodels.MarimoUpdate
@@ -69,10 +65,8 @@ import rpt.tool.marimocare.utils.view.adapters.MarimoToFixAdapter
 import rpt.tool.marimocare.utils.view.adapters.MarimoUpdateAdapter
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.DeleteMarimoEventHook
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.ShowMarimoDetailsEventHook
-import rpt.tool.marimocare.utils.workers.MidnightHealthWorker
 import java.io.File
 import java.io.FileOutputStream
-import java.util.concurrent.TimeUnit
 
 class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     FragmentDashboardBinding::inflate) {
@@ -86,6 +80,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     private var marimoToUpdate: MutableList<MarimoUpdate> = mutableListOf()
     private var marimoToFix: MutableList<MarimoToFix> = mutableListOf()
     private val marimoUpdateBalloon by balloon<WaterChangeInfoBalloonFactory>()
+    private val newDialogChangeWaterBalloon by balloon<DialogChangeWaterBalloonFactory>()
     private var imagePath: String? = null
     private var tempImageUri: Uri? = null
 
@@ -139,7 +134,8 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                 },
                 onPickImage = { callback ->
                     openImagePicker(callback)
-                }
+                },
+                newDialogChangeWaterBalloon
             )
         )
         fastAdapter.addEventHook(EditMarimoEventHook())

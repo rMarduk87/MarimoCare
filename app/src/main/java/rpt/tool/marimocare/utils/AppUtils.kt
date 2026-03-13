@@ -271,6 +271,8 @@ class AppUtils {
         const val MARIMO_OVERDUE_COUNTER : String = "marimo_overdue_counter"
         const val TAB_SELECTED : String = "stats_tab_selected"
         const val LAST_HEALTH_EXECUTION_DATE : String = "last_health_execution_date"
+        const val SHOW_NEW_LOG_CHANGE_WATER : String = "show_new_log_change_water"
+        const val SHOW_BALLON_NEW_STATS : String = "show_ballon-new_stats"
 
 
 

@@ -53,7 +53,7 @@
     <string name="bottom">Keep your marimo friends happy and healthy! 🌱</string>
     <string name="loading_your_little_friends">Loading your little friends…</string>
     <string name="days_overdue">days overdue</string>
-    <string name="due_in">Due in</string>
+    <string name="due_in">Due</string>
     <string name="days">days</string>
     <string name="add_new_marimo">Add New Marimo</string>
     <string name="add_a_new_marimo_friend_to_track">Add a new marimo friend to track</string>
@@ -237,6 +237,10 @@ Please note: the final date retrieved will be the same as the app release date, 
     <string name="performance_comparison">Performance Comparison</string>
     <string name="detailed_comparison">Detailed Comparison</string>
     <string name="empty">-</string>
+    <string name="new_change_log">In this new dialog, you can add a note about the water change, take or upload a souvenir photo, and…\nMark the moment as special!</string>
+    <string name="d">d</string>
+    <string name="today">today</string>
+    <string name="new_stats">New statistics have been added, grouped by topic.\nList of the health of all marimos, and comparison statistics.</string>
     <string-array name="marimo_frequencies">
         <item>Every 7 days (Weekly)</item>
         <item>Every 10 days</item>

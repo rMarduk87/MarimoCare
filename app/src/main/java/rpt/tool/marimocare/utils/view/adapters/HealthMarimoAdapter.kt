@@ -35,7 +35,7 @@ class HealthMarimoAdapter : ListAdapter<MarimoHealthScoreStats,
             healthValue.text = item.health.toString()
             frequencyText.text = buildString {
                 append(item.frequency)
-                append("d")
+                append(binding.root.context.getString(R.string.d))
             }
             totalChangesText.text = item.totalChanges.toString()
 

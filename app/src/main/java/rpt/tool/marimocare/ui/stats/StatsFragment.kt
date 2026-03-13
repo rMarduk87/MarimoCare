@@ -1,5 +1,8 @@
 package rpt.tool.marimocare.ui.stats
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ObjectAnimator
 import android.app.Dialog
 import android.graphics.Color
 import android.os.Build
@@ -13,6 +16,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.graphics.toColorInt
+import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -37,6 +41,8 @@ import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.android.material.tabs.TabLayout
+import com.skydoves.balloon.BalloonAlign
+import com.skydoves.balloon.balloon
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -44,9 +50,9 @@ import rpt.tool.marimocare.BaseFragment
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentStatsBinding
 import rpt.tool.marimocare.databinding.StatsMarimoBinding
-import rpt.tool.marimocare.ui.dashboard.DashboardViewModel
 import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.AppUtils.Companion.toMarimoItems
+import rpt.tool.marimocare.utils.balloon.stats.NewStatsBalloonFactory
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.data.appmodels.MarimoChange
 import rpt.tool.marimocare.utils.data.appmodels.MarimoDetailUi
@@ -65,6 +71,7 @@ import rpt.tool.marimocare.utils.view.adapters.MarimoFrequencyAdapter
 import rpt.tool.marimocare.utils.view.grid.GridSpacingItemDecoration
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.getValue
 
 class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::inflate) {
 
@@ -73,6 +80,8 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
     private lateinit var detailAdapter: DetailedComparisonAdapter
 
     private val viewModel: StatsViewModel by navGraphViewModels(R.id.main_nav_graph)
+
+    private val newStatsBalloon by balloon<NewStatsBalloonFactory>()
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -92,6 +101,50 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
                     .actionStatsFragmentToDashboardFragment())
         }
 
+        if(SharedPreferencesManager.showBallonNewStats){
+            SharedPreferencesManager.showBallonNewStats = false
+
+            scrollToTabLayoutAndShowBalloon(binding.scrollView, binding.tabLayout) {
+
+                newStatsBalloon.showAlign(
+                    align = BalloonAlign.BOTTOM,
+                    mainAnchor = binding.tabLayout as View,
+                    subAnchorList = listOf(binding.tabLayout as View)
+                )
+
+            }
+
+        }
+    }
+
+    fun scrollToTabLayoutAndShowBalloon(
+        scrollView: NestedScrollView,
+        tabLayout: TabLayout,
+        onScrollFinished: () -> Unit
+    ) {
+        scrollView.post {
+            var targetY = tabLayout.top
+            var currentParent = tabLayout.parent as? View
+
+            while (currentParent != null && currentParent != scrollView) {
+                targetY += currentParent.top
+                currentParent = currentParent.parent as? View
+            }
+
+            val scrollAnimator = ObjectAnimator.ofInt(scrollView, "scrollY",
+                targetY)
+            scrollAnimator.duration = 600
+
+            scrollAnimator.addListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    super.onAnimationEnd(animation)
+
+                    onScrollFinished()
+                }
+            })
+
+            scrollAnimator.start()
+        }
     }
 
     private fun setupHeaderButtons() {

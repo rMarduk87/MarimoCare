@@ -81,4 +81,12 @@ object SharedPreferencesManager {
         get() = sharedPreferences.getString(AppUtils.LAST_HEALTH_EXECUTION_DATE, null)
         set(value) = sharedPreferences.edit { putString(AppUtils.LAST_HEALTH_EXECUTION_DATE,
             value) }
+
+    var showNewLogChangeWater: Boolean
+        get() = sharedPreferences.getBoolean(AppUtils.SHOW_NEW_LOG_CHANGE_WATER, true)
+        set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_NEW_LOG_CHANGE_WATER, value) }
+
+    var showBallonNewStats: Boolean
+        get() = sharedPreferences.getBoolean(AppUtils.SHOW_BALLON_NEW_STATS, true)
+        set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_BALLON_NEW_STATS, value) }
 }
