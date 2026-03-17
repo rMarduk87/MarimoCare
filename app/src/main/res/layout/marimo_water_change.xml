@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/marimoCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    app:cardCornerRadius="28dp"
+    app:cardElevation="6dp"
+    app:strokeWidth="3dp"
+    app:strokeColor="#B8E6D4">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Titolo + Icona -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:src="@drawable/ic_calendar"
+                app:tint="#00A676"
+                android:contentDescription="@string/img"
+                android:layout_width="22dp"
+                android:layout_height="22dp"/>
+
+            <TextView
+                android:layout_marginStart="8dp"
+                android:text="@string/care_timeline"
+                android:textSize="20sp"
+                android:textColor="#000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <TextView
+            android:text="@string/visual_history"
+            android:textSize="13sp"
+            android:layout_marginTop="2dp"
+            android:textColor="#6D6D6D"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="16dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/marimoRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"/>
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi
 import rpt.tool.marimocare.utils.data.appmodels.MarimoChange
 import rpt.tool.marimocare.utils.data.database.mappers.ModelMapper
 import rpt.tool.marimocare.utils.data.database.models.MarimoChangeModel
+import kotlin.String
 
 class MarimoChangeModelToMarimoChange : ModelMapper<MarimoChangeModel, MarimoChange> {
     override val destination: Class<MarimoChange> = MarimoChange::class.java
@@ -14,7 +15,10 @@ class MarimoChangeModelToMarimoChange : ModelMapper<MarimoChangeModel, MarimoCha
         return MarimoChange(
             code = source.code,
             coderMarimo = source.marimoCode.toString(),
-            waterChangeData = source.waterChangesData
+            waterChangeData = source.waterChangesData,
+            waterChangesLog = source.waterChangesLog,
+            waterChangeImage = source.imagePath,
+            isMilestone = source.isMilestone
         )
     }
 }

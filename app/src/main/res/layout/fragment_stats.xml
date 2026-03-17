@@ -13,7 +13,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Header -->
         <include
             android:id="@+id/include1"
             layout="@layout/header" />
@@ -24,7 +23,6 @@
             android:orientation="vertical"
             android:padding="32dp">
 
-            <!-- Titoli -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -60,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:paddingBottom="16dp"
-                android:text="@string/track_your_marimo_care_patterns_and_insights_over_time"
+                android:text="@string/stats_sub_title"
                 android:textColor="#555"
                 android:textSize="14sp" />
 
@@ -99,6 +97,10 @@
                     layout="@layout/stats_marimo" />
 
                 <include
+                    android:id="@+id/includeAHS"
+                    layout="@layout/stats_marimo" />
+
+                <include
                     android:id="@+id/includeMF"
                     layout="@layout/stats_marimo" />
 
@@ -108,15 +110,87 @@
 
             </LinearLayout>
 
-            <include
-                android:id="@+id/includeDI"
-                layout="@layout/graph_marimo" />
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@android:color/transparent"
+                app:tabIndicatorColor="#0B6E4F"
+                app:tabSelectedTextColor="#0B6E4F"
+                app:tabTextColor="#555"
+                app:tabIconTint="#0B6E4F"
+                app:tabMode="fixed"
+                app:tabGravity="fill">
 
-            <include
-                android:id="@+id/includeDC"
-                layout="@layout/graph_change_marimo" />
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/trends"
+                    android:icon="@drawable/ic_trending_up"/>
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/health_scores"
+                    android:icon="@drawable/ic_hearth"/>
 
-            <!-- Footer -->
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/compare"
+                    android:icon="@android:drawable/ic_menu_sort_by_size"/>
+            </com.google.android.material.tabs.TabLayout>
+
+            <FrameLayout
+                android:id="@+id/tabContentFrame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp">
+
+                <LinearLayout
+                    android:id="@+id/tabContentTrends"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <include
+                        android:id="@+id/includeDI"
+                        layout="@layout/graph_marimo" />
+
+                    <include
+                        android:id="@+id/includeDC"
+                        layout="@layout/graph_change_marimo" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tabContentHealth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <include
+                        android:id="@+id/includeHS"
+                        layout="@layout/health_score" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tabContentCompare"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <include
+                        android:id="@+id/includeMC"
+                        layout="@layout/marimo_compare" />
+
+                </LinearLayout>
+
+            </FrameLayout>
+
             <include
                 android:id="@+id/include2"
                 layout="@layout/footer" />

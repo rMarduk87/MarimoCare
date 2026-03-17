@@ -17,7 +17,13 @@ class MarimoChangeModel(
     @ColumnInfo(name = "marimo_code")
     val marimoCode: Int,
     @ColumnInfo(name = "water_changes_data")
-    val waterChangesData: String?
+    val waterChangesData: String?,
+    @ColumnInfo(name = "water_changes_log")
+    val waterChangesLog: String?,
+    @ColumnInfo(name = "water_changes_image")
+    val imagePath: String?,
+    @ColumnInfo(name = "is_milestone", defaultValue = "false")
+    val isMilestone: Boolean
 ) : DbModel() {
 
     init {

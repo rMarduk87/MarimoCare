@@ -32,7 +32,7 @@ import rpt.tool.marimocare.utils.log.d
 import rpt.tool.marimocare.utils.log.w
 import androidx.work.*
 import rpt.tool.marimocare.ui.dashboard.DashboardFragmentDirections
-import rpt.tool.marimocare.ui.marimo.FromQRCodeMarimoFragment
+import rpt.tool.marimocare.ui.marimo.qrcode.FromQRCodeMarimoFragment
 import rpt.tool.marimocare.utils.notification.AlertWorker
 import rpt.tool.marimocare.utils.notification.NotifyWorker
 import java.util.concurrent.TimeUnit

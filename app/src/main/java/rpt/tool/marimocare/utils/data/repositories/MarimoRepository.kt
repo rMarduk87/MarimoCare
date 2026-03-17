@@ -7,6 +7,8 @@ import androidx.lifecycle.map
 import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.data.appmodels.MarimoChange
+import rpt.tool.marimocare.utils.data.appmodels.MarimoHealthScore
+import rpt.tool.marimocare.utils.data.appmodels.MarimoHealthScoreStats
 import rpt.tool.marimocare.utils.data.appmodels.MarimoQR
 import rpt.tool.marimocare.utils.data.database.dao.MarimoDao
 import kotlin.collections.map
@@ -19,15 +21,18 @@ class MarimoRepository(
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun addMarimo(marimoName: String, lastWaterChange: String, notes: String, freq: Int,
-                  photo: String?) : Int {
+    fun addMarimo(
+        marimoName: String, lastWaterChange: String, notes: String, freq: Int,
+        photo: String?,
+        registrationDate: String
+    ) : Int {
         Marimo(marimoDao.getLastId()+1,marimoName, freq,
             lastWaterChange, AppUtils.nextChange(
             lastWaterChange,
             freq), notes, AppUtils.daysUntil(
             AppUtils.nextChange(
                 lastWaterChange,
-                freq)),photo).let {
+                freq)),photo,registrationDate).let {
 
             marimoDao.insert(it.map())
         }
@@ -40,18 +45,37 @@ class MarimoRepository(
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun updateMarimo(code: Int, name: String, lastWater: String, notes: String, freq: Int,
-                     photo: String?) {
+    fun updateMarimo(
+        code: Int, name: String, lastWater: String, notes: String, freq: Int,
+        photo: String?,
+        registrationDate: String
+    ) {
         marimoDao.update(code,name, freq,
-                lastWater, notes,photo)
+                lastWater, notes,photo, registrationDate)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun updateMarimo(marimo: Marimo){
+        marimo.lastChanged?.let {
+            marimo.notes?.let { notes ->
+                marimo.registrationDate?.let { registrationDate ->
+                    updateMarimo(marimo.code,marimo.name,it,
+                        notes,marimo.changeFrequencyDays,
+                        marimo.photo, registrationDate)
+                }
+            }
+        }
     }
 
     fun updateWaterMarimo(lastChanged: String, code: Int) {
         marimoDao.updateWater(lastChanged, code)
     }
 
-    fun getAllSync():List<Marimo> {
-        return marimoDao.getAll().map { it.map() }
+    fun getAllSync(check: Boolean = false):List<Marimo> {
+        if(!check){
+            return marimoDao.getAll().map { it.map() }
+        }
+        return marimoDao.getAllWithoutRegistration().map { it.map() }
     }
 
     fun getAverageFrequency():Int {
@@ -72,9 +96,11 @@ class MarimoRepository(
         return marimoDao.getMarimoLastFrequentChanged().map() { it.map() }
     }
 
-    fun addWaterChanges(id: Int, lastWater: String) {
+    fun addWaterChanges(id: Int, lastWater: String, waterChangeNotes: String?, imagePath: String?
+                        ,isMilestone: Boolean = false) {
         MarimoChange(marimoDao.getLastIdFromWaterChanges()+1,id.toString(),
-            lastWater).let {
+            lastWater,waterChangeNotes,
+            imagePath,isMilestone).let {
 
             marimoDao.insertWaterChanges(it.map())
         }
@@ -82,6 +108,11 @@ class MarimoRepository(
 
     fun getTotalWaterChanged() : Int {
         return marimoDao.getTotalWaterChanges()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun getAverageHealth() : Int {
+        return marimoDao.getAverageHealth(AppUtils.getCurrentDate())
     }
 
     fun getAllChanges(): List<MarimoChange> {
@@ -102,9 +133,56 @@ class MarimoRepository(
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun getHealthScore() : List<MarimoHealthScoreStats> {
+        return marimoDao.getMarimoHealthScores(AppUtils.getCurrentDate())
+    }
+
+    fun getMarimoTotalWaterChanged(marimoCode: Int): Int {
+        return marimoDao.getMarimoTotalWaterChanged(marimoCode)
+    }
+
+    fun getMarimoTotalMilestones(marimoCode: Int): Int  {
+        return marimoDao.getMarimoTotalMilestones(marimoCode)
+    }
+
+    fun getAllChanges(marimoCode: Int):List<MarimoChange> {
+        return marimoDao.getAllChanges(marimoCode).map { it.map() }
+
+    }
+
+    fun addMarimoHealthScore(id: Int, currentDate: String, health: Int) {
+        MarimoHealthScore(marimoDao.getLastIdFromMarimoHealth()+1, id, currentDate,
+            health).let{
+            marimoDao.insertNewHealth(it.map())
+        }
+    }
+
+    fun updateHealthScore(marimoCoe: Int, last: String, health: Int) {
+        marimoDao.updateHealth(marimoCoe, last, health)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun getSpecificHealth(marimoCode: Int, last: String?): Int {
+        return marimoDao.getCurrentHealth(marimoCode, last ?: AppUtils.getCurrentDate())
+    }
+
+    fun healthExists(marimoCode: Int, last: String) : Int {
+        return marimoDao.healthExists(marimoCode, last)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun getLastHealthDate(code: Int) : String {
+        val date = marimoDao.getLastHealthDate(code)
+        return date ?: AppUtils.getCurrentDate()
+    }
+
+    fun getAllHealth(marimoCode: Int): List<MarimoHealthScore> {
+        return marimoDao.getAllHealth(marimoCode).map { it.map() }
+    }
+
+
     val marimos: LiveData<List<Marimo>> =
         marimoDao.getMarimos().map { it.map { it.map() } }
-
-
 
 }

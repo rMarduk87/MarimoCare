@@ -1,0 +1,180 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 4,
+    "identityHash": "e109d501c9bdb63b9cc861e1e41abbb3",
+    "entities": [
+      {
+        "tableName": "marimo",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`code` INTEGER NOT NULL, `name` TEXT NOT NULL, `last_water_changes` TEXT, `frequency_changes` INTEGER NOT NULL, `notes` TEXT, `photo` TEXT, `registration_date` TEXT, PRIMARY KEY(`code`))",
+        "fields": [
+          {
+            "fieldPath": "code",
+            "columnName": "code",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastWaterChanges",
+            "columnName": "last_water_changes",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "frequencyChanges",
+            "columnName": "frequency_changes",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "notes",
+            "columnName": "notes",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "photo",
+            "columnName": "photo",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "registrationDate",
+            "columnName": "registration_date",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "code"
+          ]
+        }
+      },
+      {
+        "tableName": "marimo_changes",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`code` INTEGER NOT NULL, `marimo_code` INTEGER NOT NULL, `water_changes_data` TEXT, `water_changes_log` TEXT, `water_changes_image` TEXT, `is_milestone` INTEGER NOT NULL DEFAULT false, PRIMARY KEY(`code`))",
+        "fields": [
+          {
+            "fieldPath": "code",
+            "columnName": "code",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "marimoCode",
+            "columnName": "marimo_code",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "waterChangesData",
+            "columnName": "water_changes_data",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "waterChangesLog",
+            "columnName": "water_changes_log",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "imagePath",
+            "columnName": "water_changes_image",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "isMilestone",
+            "columnName": "is_milestone",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "false"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "code"
+          ]
+        }
+      },
+      {
+        "tableName": "marimo_qr",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`code` INTEGER NOT NULL, `marimo_code` INTEGER NOT NULL, `marimo_qr_code` TEXT NOT NULL, `validity` INTEGER NOT NULL, PRIMARY KEY(`code`))",
+        "fields": [
+          {
+            "fieldPath": "code",
+            "columnName": "code",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "marimoCode",
+            "columnName": "marimo_code",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "marimoQRCode",
+            "columnName": "marimo_qr_code",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "validity",
+            "columnName": "validity",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "code"
+          ]
+        }
+      },
+      {
+        "tableName": "marimo_health_score",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`code` INTEGER NOT NULL, `marimo_code` INTEGER NOT NULL, `date` TEXT, `health` INTEGER NOT NULL, PRIMARY KEY(`code`))",
+        "fields": [
+          {
+            "fieldPath": "code",
+            "columnName": "code",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "marimoCode",
+            "columnName": "marimo_code",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "health",
+            "columnName": "health",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "code"
+          ]
+        }
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e109d501c9bdb63b9cc861e1e41abbb3')"
+    ]
+  }
+}

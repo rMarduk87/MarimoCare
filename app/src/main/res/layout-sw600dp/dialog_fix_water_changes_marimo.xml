@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+     android:layout_height="match_parent" >
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Title -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_water_drop_green"
+                android:contentDescription="@string/img">
+            </ImageView>
+
+            <TextView
+                android:layout_marginStart="8dp"
+                android:text="@string/marimos_to_update"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/green"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="8dp"
+            android:text="@string/last_changed_to_fix"
+            android:textColor="#666"
+            android:textSize="14sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!-- RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerMarimos"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!-- Buttons -->
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:gravity="end"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:text="@string/cancel"
+                android:backgroundTint="#EEEEEE"
+                android:textColor="#000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/btnUpdate"
+                android:text="@string/update_all_marimo"
+                android:layout_marginStart="12dp"
+                android:backgroundTint="@color/green"
+                android:textColor="@color/marimo_white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

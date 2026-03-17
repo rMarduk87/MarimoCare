@@ -29,8 +29,6 @@
         <item name="android:background">@color/marimo_surface</item>
     </style>
 
-
-
     <!-- TextField -->
     <style name="Widget.Marimo.TextField" parent="Widget.Material3.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/marimo_primary</item>
@@ -62,5 +60,9 @@
         <item name="cardBackgroundColor">@android:color/white</item>
     </style>
 
+    <style name="RoundedImageStyle">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
 
 </resources>
