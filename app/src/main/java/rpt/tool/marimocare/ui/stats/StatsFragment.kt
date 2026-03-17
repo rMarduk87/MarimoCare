@@ -593,13 +593,15 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
             flexDirection = FlexDirection.ROW
         }
 
-        binding.includeMC!!.rvMarimoChips.layoutManager = flexboxLayoutManager
-        binding.includeMC!!.rvMarimoChips.adapter = chipAdapter
+        binding.includeMC.rvMarimoChips.layoutManager = flexboxLayoutManager
+        binding.includeMC.rvMarimoChips.adapter = chipAdapter
 
         detailAdapter = DetailedComparisonAdapter()
-        binding.includeMC!!.rvDetailedComparison.layoutManager =
-            LinearLayoutManager(requireContext())
-        binding.includeMC!!.rvDetailedComparison.adapter = detailAdapter
+        val spanCount = if (resources.configuration.smallestScreenWidthDp >= 600) 3 else 1
+
+        binding.includeMC.rvDetailedComparison.layoutManager =
+            GridLayoutManager(requireContext(), spanCount)
+        binding.includeMC.rvDetailedComparison.adapter = detailAdapter
 
         setupRadarChart()
 

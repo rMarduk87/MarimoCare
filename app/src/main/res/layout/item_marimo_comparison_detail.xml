@@ -1,137 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingBottom="24dp">
-
-    <TextView
-        android:id="@+id/tvDetailName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/marimo_name"
-        android:textColor="@color/text_title"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvLabelHealth"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/health_scores"
-        android:textColor="@color/text_body"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineCenter"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDetailName" />
-
-    <TextView
-        android:id="@+id/tvValueHealth"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/empty"
-        android:textColor="@color/text_title"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineCenter"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvLabelHealth" />
-
-    <TextView
-        android:id="@+id/tvLabelFrequency"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/frequency"
-        android:textColor="@color/text_body"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineCenter"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvValueHealth" />
-
-    <TextView
-        android:id="@+id/tvValueFrequency"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/empty"
-        android:textColor="@color/text_title"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineCenter"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvLabelFrequency" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineCenter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
-
-    <TextView
-        android:id="@+id/tvLabelChanges"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:text="@string/total_changes"
-        android:textColor="@color/text_body"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/guidelineCenter"
-        app:layout_constraintTop_toBottomOf="@+id/tvDetailName" />
-
-    <TextView
-        android:id="@+id/tvValueChanges"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/empty"
-        android:textColor="@color/text_title"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/guidelineCenter"
-        app:layout_constraintTop_toBottomOf="@+id/tvLabelChanges" />
-
-    <TextView
-        android:id="@+id/tvLabelDays"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:text="@string/days_tracked"
-        android:textColor="@color/text_body"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/guidelineCenter"
-        app:layout_constraintTop_toBottomOf="@+id/tvValueChanges" />
-
-    <TextView
-        android:id="@+id/tvValueDays"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/empty"
-        android:textColor="@color/text_title"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/guidelineCenter"
-        app:layout_constraintTop_toBottomOf="@+id/tvLabelDays" />
+    
+    <View
+        android:id="@+id/separatorLeft"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:background="@color/card_stroke"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <View
-        android:id="@+id/separator"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="16dp"
+        android:id="@+id/separatorRight"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
         android:background="@color/card_stroke"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvValueFrequency" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.1"
+        android:orientation="vertical"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.9"
+        android:orientation="vertical"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/contentContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/guidelineStart"
+        app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvDetailName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/marimo_name"
+            android:textColor="@color/text_title"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineCenter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5"/>
+
+        <TextView
+            android:id="@+id/tvLabelHealth"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/health_scores"
+            android:textColor="@color/text_body"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guidelineCenter"
+            app:layout_constraintTop_toBottomOf="@id/tvDetailName"/>
+
+        <TextView
+            android:id="@+id/tvValueHealth"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/empty"
+            android:textColor="@color/text_title"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guidelineCenter"
+            app:layout_constraintTop_toBottomOf="@id/tvLabelHealth"/>
+
+        <TextView
+            android:id="@+id/tvLabelFrequency"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/frequency"
+            android:textColor="@color/text_body"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guidelineCenter"
+            app:layout_constraintTop_toBottomOf="@id/tvValueHealth"/>
+
+        <TextView
+            android:id="@+id/tvValueFrequency"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/empty"
+            android:textColor="@color/text_title"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guidelineCenter"
+            app:layout_constraintTop_toBottomOf="@id/tvLabelFrequency"/>
+
+        <TextView
+            android:id="@+id/tvLabelChanges"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/total_changes"
+            android:textColor="@color/text_body"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/guidelineCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDetailName"/>
+
+        <TextView
+            android:id="@+id/tvValueChanges"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/empty"
+            android:textColor="@color/text_title"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/guidelineCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvLabelChanges"/>
+
+        <TextView
+            android:id="@+id/tvLabelDays"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/days_tracked"
+            android:textColor="@color/text_body"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/guidelineCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvValueChanges"/>
+
+        <TextView
+            android:id="@+id/tvValueDays"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/empty"
+            android:textColor="@color/text_title"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/guidelineCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvLabelDays"/>
+
+        <View
+            android:id="@+id/separator"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/card_stroke"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvValueFrequency"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

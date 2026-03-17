@@ -81,52 +81,50 @@
 
             </LinearLayout>
 
-            <androidx.gridlayout.widget.GridLayout
+            <GridLayout
                 android:id="@+id/cardsContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="8dp"
-                app:alignmentMode="alignBounds"
-                app:columnCount="2"
-                app:rowCount="2"
-                app:useDefaultMargins="true">
+                android:columnCount="2"
+                android:useDefaultMargins="true"
+                android:gravity="center_horizontal">
 
                 <include
                     android:id="@+id/includeAF"
-                    layout="@layout/stats_marimo"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    app:layout_columnWeight="1" />
+                    android:layout_columnWeight="1"
+                    layout="@layout/stats_marimo" />
 
                 <include
                     android:id="@+id/includeTWC"
-                    layout="@layout/stats_marimo"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    app:layout_columnWeight="1" />
+                    android:layout_columnWeight="1"
+                    layout="@layout/stats_marimo" />
 
                 <include
                     android:id="@+id/includeAHS"
-                    layout="@layout/stats_marimo"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    app:layout_columnWeight="1" />
+                    android:layout_columnWeight="1"
+                    layout="@layout/stats_marimo" />
 
                 <include
                     android:id="@+id/includeMF"
-                    layout="@layout/stats_marimo"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    app:layout_columnWeight="1" />
+                    android:layout_columnWeight="1"
+                    layout="@layout/stats_marimo" />
 
                 <include
                     android:id="@+id/includeLF"
-                    layout="@layout/stats_marimo"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    app:layout_columnWeight="1" />
+                    android:layout_columnWeight="1"
+                    layout="@layout/stats_marimo" />
 
-            </androidx.gridlayout.widget.GridLayout>
+            </GridLayout>
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayout"
@@ -146,7 +144,6 @@
                     android:layout_height="wrap_content"
                     android:text="@string/trends"
                     android:icon="@drawable/ic_trending_up"/>
-
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -158,7 +155,6 @@
                     android:layout_height="wrap_content"
                     android:text="@string/compare"
                     android:icon="@android:drawable/ic_menu_sort_by_size"/>
-
             </com.google.android.material.tabs.TabLayout>
 
             <FrameLayout
@@ -167,32 +163,27 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp">
 
-                <LinearLayout
+                <GridLayout
                     android:id="@+id/tabContentTrends"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:baselineAligned="false"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    android:paddingTop="8dp"
+                    android:columnCount="2"
                     android:visibility="visible">
 
                     <include
                         android:id="@+id/includeDI"
-                        layout="@layout/graph_marimo"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_margin="8dp" />
+                        android:layout_columnWeight="1"
+                        layout="@layout/graph_marimo" />
 
                     <include
                         android:id="@+id/includeDC"
-                        layout="@layout/graph_change_marimo"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_margin="8dp" />
-                </LinearLayout>
+                        android:layout_columnWeight="1"
+                        layout="@layout/graph_change_marimo" />
+                </GridLayout>
 
                 <LinearLayout
                     android:id="@+id/tabContentHealth"
@@ -213,6 +204,10 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:visibility="gone">
+
+                    <include
+                        android:id="@+id/includeMC"
+                        layout="@layout/marimo_compare" />
 
                 </LinearLayout>
 
