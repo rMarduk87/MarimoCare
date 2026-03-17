@@ -1,0 +1,59 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Sfondo quadrato con bordo -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF"/>
+            <stroke
+                android:width="2dp"
+                android:color="@color/marimo_item_edit_board"/>
+            <corners android:radius="8dp"/>
+            <size
+                android:width="48dp"
+                android:height="48dp"/>
+        </shape>
+    </item>
+
+    <!-- Mini quadrato interno -->
+    <item android:gravity="center">
+        <layer-list>
+
+            <!-- Mini quadrato -->
+            <item>
+                <shape android:shape="rectangle">
+                    <solid android:color="#FFFFFF"/>
+                    <stroke
+                        android:width="2dp"
+                        android:color="@color/marimo_item_green"/>
+                    <corners android:radius="4dp"/>
+                    <size
+                        android:width="24dp"
+                        android:height="24dp"/>
+                </shape>
+            </item>
+
+            <!-- Icona occhio centrata -->
+            <item android:gravity="center">
+                <vector
+                    android:width="16dp"
+                    android:height="16dp"
+                    android:viewportWidth="24"
+                    android:viewportHeight="24">
+
+                    <!-- Contorno occhio -->
+                    <path
+                        android:fillColor="@color/marimo_item_green"
+                        android:pathData="M12,4.5C7,4.5 2.73,7.61 1,12c1.73,4.39 6,7.5 11,7.5s9.27,-3.11 11,-7.5C21.27,7.61 17,4.5 12,4.5z"/>
+
+                    <!-- Pupilla -->
+                    <path
+                        android:fillColor="#FFFFFF"
+                        android:pathData="M12,9a3,3 0 1,0 0.001,0z"/>
+
+                </vector>
+            </item>
+
+        </layer-list>
+    </item>
+
+</layer-list>

@@ -13,7 +13,10 @@ import java.io.Serializable
 data class MarimoChange(
     val code: Int,
     var coderMarimo: String,
-    var waterChangeData: String?
+    var waterChangeData: String?,
+    val waterChangesLog: String?,
+    val waterChangeImage: String?,
+    val isMilestone: Boolean
 ) : AppModel(), Serializable {
 
     init {

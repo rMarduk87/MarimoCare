@@ -68,4 +68,25 @@ object SharedPreferencesManager {
     var alertOverdueCounter: Int
         get() = sharedPreferences.getInt(AppUtils.MARIMO_OVERDUE_COUNTER, 0)
         set(value) = sharedPreferences.edit() { putInt(AppUtils.MARIMO_OVERDUE_COUNTER, value) }
+
+    var fixWaterChanges: Boolean
+        get() = sharedPreferences.getBoolean(AppUtils.FIX, true)
+        set(value) = sharedPreferences.edit() { putBoolean(AppUtils.FIX, value) }
+
+    var tabSelected: Int
+        get() = sharedPreferences.getInt(AppUtils.TAB_SELECTED, 0)
+        set(value) = sharedPreferences.edit() { putInt(AppUtils.TAB_SELECTED, value) }
+
+    var lastHealthExecutionDate: String?
+        get() = sharedPreferences.getString(AppUtils.LAST_HEALTH_EXECUTION_DATE, null)
+        set(value) = sharedPreferences.edit { putString(AppUtils.LAST_HEALTH_EXECUTION_DATE,
+            value) }
+
+    var showNewLogChangeWater: Boolean
+        get() = sharedPreferences.getBoolean(AppUtils.SHOW_NEW_LOG_CHANGE_WATER, true)
+        set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_NEW_LOG_CHANGE_WATER, value) }
+
+    var showBallonNewStats: Boolean
+        get() = sharedPreferences.getBoolean(AppUtils.SHOW_BALLON_NEW_STATS, true)
+        set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_BALLON_NEW_STATS, value) }
 }

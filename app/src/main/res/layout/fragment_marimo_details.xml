@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F3FFFA"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <include
+            android:id="@+id/include" layout="@layout/header">
+        </include>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"> <!-- Header -->
+
+            <TextView
+                android:id="@+id/marimoName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingVertical="12dp"
+                android:text="@string/_21th_marimo"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="16dp"
+                android:text="@string/complete_care_history_and_profile"
+                android:textColor="#555"
+                android:textSize="14sp" />
+
+            <include
+                android:id="@+id/include1" layout="@layout/marimo_profile">
+            </include>
+
+            <include
+                android:id="@+id/include2" layout="@layout/current_health_marimo">
+            </include>
+
+            <include
+                android:id="@+id/include3" layout="@layout/marimo_water_change">
+            </include>
+
+            <include
+                android:id="@+id/include4" layout="@layout/graph_health_marimo">
+            </include>
+
+            <include
+                android:id="@+id/include5" layout="@layout/footer">
+            </include>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+</androidx.core.widget.NestedScrollView>

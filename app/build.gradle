@@ -19,8 +19,8 @@ android {
         applicationId "rpt.tool.marimocare"
         minSdk 24
         targetSdk 36
-        versionCode 5
-        versionName "1.0"
+        versionCode 6
+        versionName "1.0.1"
 
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas".toString())
@@ -72,6 +72,7 @@ dependencies {
     implementation libs.androidx.preference.ktx
     implementation libs.androidx.recyclerview
     implementation libs.androidx.gridlayout
+    implementation libs.flexbox
     //Misc
     implementation libs.material
     implementation libs.jsr305

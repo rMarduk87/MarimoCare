@@ -2,4 +2,5 @@
 <resources>
     <dimen name="editBalloonOverlayPadding">6dp</dimen>
     <dimen name="editBalloonOverlayRadius">11dp</dimen>
+    <dimen name="grid_spacing">24dp</dimen>
 </resources>

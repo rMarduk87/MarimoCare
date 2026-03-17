@@ -18,10 +18,16 @@ object AlertDataUtils {
         LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"))
 
     @RequiresApi(Build.VERSION_CODES.O)
+    private fun calculateNextChange(marimo: Marimo): LocalDate {
+        val lastChangeDate = parse(marimo.lastChanged ?: LocalDate.now().toString())
+        return lastChangeDate.plusDays(marimo.changeFrequencyDays.toLong())
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
     fun getMarimosLate(): List<Marimo> {
         return RepositoryManager.marimoRepository.getAllSync()
             .filter {
-                val next = parse(it.nextChange)
+                val next = calculateNextChange(it)
                 next.isBefore(LocalDate.now())
             }
     }
@@ -30,7 +36,7 @@ object AlertDataUtils {
     fun getMarimosDueSoon(days: Int): List<Marimo> {
         return RepositoryManager.marimoRepository.getAllSync()
             .filter {
-                val next = parse(it.nextChange)
+                val next = calculateNextChange(it)
                 val diff = ChronoUnit.DAYS.between(LocalDate.now(),
                     next)
                 diff in 1..days
@@ -41,8 +47,8 @@ object AlertDataUtils {
     fun getMarimosToNotifyToday(): List<Marimo> {
         return RepositoryManager.marimoRepository.getAllSync()
             .filter {
-                val next = parse(it.nextChange)
-                next == LocalDate.now()
+                val next = calculateNextChange(it)
+                next.isEqual(LocalDate.now())
             }
     }
 
@@ -66,7 +72,7 @@ object AlertDataUtils {
 
         SharedPreferencesManager.alertSoon =
             if (marimosSoon.isNotEmpty())
-                if(marimosSoon.size==1)
+                if(marimosSoon.size == 1)
                     context.getString(R.string.soon_marimo_one, soonNames)
                 else context.getString(R.string.soon_marimo, soonNames)
             else ""

@@ -11,9 +11,10 @@ fastadapter = "5.7.0"
 firebaseAnalyticsKtx = "22.5.0"
 firebaseCrashlytics = "20.0.3"
 firebaseCrashlyticsGradle = "3.0.6"
+flexbox = "3.0.0"
 glide = "5.0.5"
 googleServices = "4.4.4"
-gradle = "8.13.2"
+gradle = "9.1.0"
 gridlayout = "1.1.0"
 jsr305 = "3.0.2"
 kotlin = "2.2.21"
@@ -67,6 +68,7 @@ fastadapter-extensions-utils = { module = "com.mikepenz:fastadapter-extensions-u
 firebase-analytics-ktx = { module = "com.google.firebase:firebase-analytics-ktx", version.ref = "firebaseAnalyticsKtx" }
 firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics", version.ref = "firebaseCrashlytics" }
 firebase-crashlytics-gradle = { module = "com.google.firebase:firebase-crashlytics-gradle", version.ref = "firebaseCrashlyticsGradle" }
+flexbox = { module = "com.google.android.flexbox:flexbox", version.ref = "flexbox" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 google-services = { module = "com.google.gms:google-services", version.ref = "googleServices" }
 gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }

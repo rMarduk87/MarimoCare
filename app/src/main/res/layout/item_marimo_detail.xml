@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="16dp">
+
+    <TextView
+        android:id="@+id/tvDetailName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_21th_marimo"
+        android:textColor="@color/text_title"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvLabelHealth"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/health_scores"
+        android:textColor="@color/text_body"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/tvLabelChanges"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDetailName" />
+
+    <TextView
+        android:id="@+id/tvValueHealth"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/_97_100"
+        android:textColor="@color/text_title"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/tvValueChanges"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLabelHealth" />
+
+    <TextView
+        android:id="@+id/tvLabelChanges"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/total_changes"
+        android:textColor="@color/text_body"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvLabelHealth"
+        app:layout_constraintTop_toBottomOf="@+id/tvDetailName" />
+
+    <TextView
+        android:id="@+id/tvValueChanges"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/_5"
+        android:textColor="@color/text_title"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvValueHealth"
+        app:layout_constraintTop_toBottomOf="@+id/tvLabelChanges" />
+
+    <TextView
+        android:id="@+id/tvLabelFrequency"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/frequency"
+        android:textColor="@color/text_body"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/tvLabelDays"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvValueHealth" />
+
+    <TextView
+        android:id="@+id/tvValueFrequency"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/_21_days"
+        android:textColor="@color/text_title"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/tvValueDays"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLabelFrequency" />
+
+    <TextView
+        android:id="@+id/tvLabelDays"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/days_tracked"
+        android:textColor="@color/text_body"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvLabelFrequency"
+        app:layout_constraintTop_toBottomOf="@+id/tvValueChanges" />
+
+    <TextView
+        android:id="@+id/tvValueDays"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/_102"
+        android:textColor="@color/text_title"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvValueFrequency"
+        app:layout_constraintTop_toBottomOf="@+id/tvLabelDays" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
