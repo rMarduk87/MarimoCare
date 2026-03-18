@@ -63,7 +63,7 @@
     <string name="october_30th_2025">2025–10–30</string>
     <string name="change_frequency">Frequenza di cambio *</string>
     <string name="notes_optional">Note (facoltative)</string>
-    <string name="any_special_care_instructions_or_observations">Istruzioni o osservazioni per cure speciali…</string>
+    <string name="observations">Istruzioni o osservazioni per cure speciali…</string>
     <string name="cancel">Annulla</string>
     <string name="btn_add_marimo">Salva</string>
     <string name="every_14_days_bi_weekly">Ogni 14 giorni (bisettimanale)</string>

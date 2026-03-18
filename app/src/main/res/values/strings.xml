@@ -63,7 +63,7 @@
     <string name="october_30th_2025">2025–10–30</string>
     <string name="change_frequency">Change Frequency *</string>
     <string name="notes_optional">Notes (Optional)</string>
-    <string name="any_special_care_instructions_or_observations">Any special care instructions or observations…</string>
+    <string name="observations">Any special care instructions or observations…</string>
     <string name="cancel">Cancel</string>
     <string name="btn_add_marimo">Add Marimo</string>
     <string name="every_14_days_bi_weekly">Every 14 days (Bi-weekly)</string>
