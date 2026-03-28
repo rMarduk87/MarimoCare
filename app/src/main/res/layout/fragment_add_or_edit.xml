@@ -170,7 +170,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
                         android:gravity="top"
-                        android:hint="@string/any_special_care_instructions_or_observations"
+                        android:hint="@string/observations"
                         android:background="@drawable/edittext_outline"
                         android:padding="10dp"
                         android:textColor="#111827"
