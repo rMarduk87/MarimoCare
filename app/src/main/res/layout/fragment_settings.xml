@@ -844,6 +844,108 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/container_stats_period"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:padding="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal"
+                        android:paddingStart="15dp"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginEnd="10dp"
+                            android:src="@drawable/ic_stats"
+                            app:tint="#0B6E4F"
+                            android:contentDescription="@string/img" />
+
+                        <TextView
+                            android:id="@+id/txtTitleStatsPeriod"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/stats_period"
+                            android:textColor="@color/marimo_black"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:paddingBottom="4dp" />
+                    </LinearLayout>
+
+                    <!-- Titolo -->
+
+
+
+                    <TextView
+                        android:id="@+id/txtSubtitleStatsPeriod"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/default_time_range_shown_in_the_water_change_trend_chart"
+                        android:textColor="@color/marimo_dark"
+                        android:textSize="14sp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:paddingBottom="16dp" />
+
+                    <LinearLayout
+                        android:id="@+id/statsPeriod"
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:padding="16dp"
+                        android:layout_marginBottom="4dp">
+
+                        <EditText
+                            android:id="@+id/inputSixthMonth"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="@drawable/edittext_outline_grey"
+                            android:hint="@string/last_sixth_month"
+                            android:padding="14dp"
+                            android:textColor="#111827"
+                            android:textColorHint="#9CA3AF"
+                            android:layout_marginBottom="12dp"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:cursorVisible="false"
+                            android:clickable="true"
+                            android:inputType="none" />
+
+                        <EditText
+                            android:id="@+id/inputOneYear"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="@drawable/edittext_outline_grey"
+                            android:hint="@string/last_year"
+                            android:padding="14dp"
+                            android:textColor="#111827"
+                            android:textColorHint="#9CA3AF"
+                            android:layout_marginBottom="4dp"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:cursorVisible="false"
+                            android:clickable="true"
+                            android:inputType="none" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
             <!-- Pulsanti -->
             <LinearLayout
                 style="?android:attr/buttonBarStyle"
