@@ -47,7 +47,7 @@ class HealthMarimoAdapter : ListAdapter<MarimoHealthScoreStats,
 
             val themeColorHex = when {
                 health == 100 -> "#2E7D32"
-                health in 40..70 -> "#FFFACD"
+                health in 40..70 -> "#c9bb3a"
                 health in 1..19 -> "#F57C00"
                 health <= 0 -> "#C62828"
                 else -> "#4CAF50"
