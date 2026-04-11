@@ -242,6 +242,11 @@
     <string name="d">g</string>
     <string name="today">oggi</string>
     <string name="new_stats">Sono state aggiunte nuove statistiche, raggruppate per argomento\nLista della salute di tutti i marimo, e statistiche di confronto</string>
+    <string name="stats_period">Statistiche - Periodo di riferimento per la variazione del consumo idrico</string>
+    <string name="default_time_range_shown_in_the_water_change_trend_chart">Intervallo di tempo predefinito visualizzato nel grafico della variazione del cambio d\' acqua</string>
+    <string name="last_sixth_month">Ultimi 6 mesi</string>
+    <string name="last_year">Ultimo Anno</string>
+    <string name="actual_water_changes_over_the_last_12_months">Cambi d\' acqua effettuati nell\' ultimo anno</string>
     <string-array name="marimo_frequencies">
         <item>Ogni 7 giorni (settimanale)</item>
         <item>Ogni 10 giorni</item>

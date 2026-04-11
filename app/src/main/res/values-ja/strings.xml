@@ -241,6 +241,11 @@
     <string name="d">d</string>
     <string name="today">today</string>
     <string name="new_stats">トピック別にグループ化された新しい統計情報が追加されました。\nすべてのマリモの健康状態と統計情報の比較リスト。</string>
+    <string name="stats_period">統計情報 – 水位変化傾向期間</string>
+    <string name="default_time_range_shown_in_the_water_change_trend_chart">水位変化傾向チャートに表示されるデフォルトの期間</string>
+    <string name="last_sixth_month">過去6ヶ月</string>
+    <string name="last_year">過去1年間</string>
+    <string name="actual_water_changes_over_the_last_12_months">過去1年間の実際の水位変化</string>
     <string-array name="marimo_frequencies">
         <item>7日ごと（週ごと）</item>
         <item>10日ごと</item>

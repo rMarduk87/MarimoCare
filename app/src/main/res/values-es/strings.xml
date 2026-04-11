@@ -240,6 +240,11 @@
     <string name="d">d</string>
     <string name="today">hoy</string>
     <string name="new_stats">Se han añadido nuevas estadísticas, agrupadas por tema.\nLista del estado de salud de todos los marimos y estadísticas comparativas.</string>
+    <string name="stats_period">Estadísticas – Periodo de tendencia de cambio de agua</string>
+    <string name="default_time_range_shown_in_the_water_change_trend_chart">Intervalo de tiempo predeterminado que se muestra en el gráfico de tendencia de cambio de agua</string>
+    <string name="last_sixth_month">Últimos 6 meses</string>
+    <string name="last_year">Último año</string>
+    <string name="actual_water_changes_over_the_last_12_months">Cambios de agua reales durante el último año</string>
     <string-array name="marimo_frequencies">
         <item>Cada 7 días (semanal)</item>
         <item>Cada 10 días</item>

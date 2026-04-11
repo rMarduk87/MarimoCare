@@ -242,6 +242,11 @@
     <string name="d">g</string>
     <string name="today">오늘</string>
     <string name="new_stats">주제별로 그룹화된 새로운 통계가 추가되었습니다. 모든 마리모의 건강 상태 목록과 비교 통계를 확인하세요.</string>
+    <string name="stats_period">통계 - 물 변화 추세 기간</string>
+    <string name="default_time_range_shown_in_the_water_change_trend_chart">물 변화 추세 차트에 표시되는 기본 시간 범위</string>
+    <string name="last_sixth_month">지난 6개월</string>
+    <string name="last_year">지난 1년</string>
+    <string name="actual_water_changes_over_the_last_12_months">지난 1년간의 실제 물 변화량</string>
     <string-array name="marimo_frequencies">
         <item>매 7일(주간)</item>
         <item>매 10일</item>
