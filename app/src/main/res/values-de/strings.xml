@@ -242,6 +242,11 @@
     <string name="d">g</string>
     <string name="today">heute</string>
     <string name="new_stats">Es wurden neue Statistiken hinzugefügt, gruppiert nach Themen. Liste des Gesundheitszustands aller Marimos und Vergleichsstatistiken.</string>
+    <string name="stats_period">Statistiken – Trendperiode für Wasserveränderungen</string>
+    <string name="default_time_range_shown_in_the_water_change_trend_chart">Standardmäßiger Zeitraum für die Trenddiagramme der Wasserveränderungen</string>
+    <string name="last_sixth_month">Letzte 6 Monate</string>
+    <string name="last_year">Letztes Jahr</string>
+    <string name="actual_water_changes_over_the_last_12_months">Tatsächliche Wasserveränderungen im letzten Jahr</string>
     <string-array name="marimo_frequencies">
         <item>Alle 7 Tage (wöchentlich)</item>
         <item>Alle 10 Tage</item>
