@@ -375,13 +375,21 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
             val marimos = RepositoryManager.marimoRepository.getAllSync()
             val changes = RepositoryManager.marimoRepository.getAllChanges()
-            val last6Months = AppUtils.getLastSixMonthsLabels()
+            val subTitle = if (SharedPreferencesManager.statPeriod == 0) {
+                getString(R.string.actual_water_changes_over_the_last_6_months)
+            } else{
+                getString(R.string.actual_water_changes_over_the_last_12_months)
+            }
+            binding.includeDI.waterTrendText.text = subTitle
+            val lastXMonths = if (SharedPreferencesManager.statPeriod == 0) AppUtils.getLastSixMonthsLabels()
+            else AppUtils.getLastYearMonthsLabels()
+
 
             withContext(Dispatchers.Main) {
 
-                val trendEntries = generateTrendData(last6Months, changes)
+                val trendEntries = generateTrendData(lastXMonths, changes)
                 setupWaterTrendChart(binding.includeDI.waterTrendChart, trendEntries,
-                    last6Months)
+                    lastXMonths)
 
                 val freqValues = generateFrequencyDistribution(marimos)
                 setupFrequencyChart(binding.includeDC.frequencyChart, freqValues)

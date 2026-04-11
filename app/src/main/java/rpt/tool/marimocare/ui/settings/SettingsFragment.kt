@@ -24,10 +24,14 @@ class SettingsFragment :
     private var filterSelected = 0
     private var sortingSelected = 0
 
+    private var statPeriodSelected = 0
+
     private val speedViews: MutableMap<Int, TextView> = mutableMapOf()
     private val filterViews: MutableMap<Int, TextView> = mutableMapOf()
     private val sortedViews: MutableMap<Int, TextView> = mutableMapOf()
     private val showViews: MutableMap<Boolean, TextView> = mutableMapOf()
+
+    private val statsPeriodViews: MutableMap<Int, TextView> = mutableMapOf()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,6 +40,7 @@ class SettingsFragment :
         initShowViews()
         initFilterViews()
         initSortedViews()
+        initStatPeriodViews()
         setupHeaderButtons()
         setupCardBackgrounds()
         setupDashboardColorSelection()
@@ -44,6 +49,8 @@ class SettingsFragment :
         setupSpeedTipsListeners()
         setupFilterAndSortSelection()
         setupFilterAndSortListeners()
+        setupStatPeriodSelection()
+        setupStatPeriodListeners()
         setupSaveCancelListeners()
 
         binding.include1.appLogo.setOnClickListener {
@@ -112,9 +119,10 @@ class SettingsFragment :
 
     private fun setupCardBackgrounds() {
         binding.apply {
-            container?.setBackgroundResource(R.drawable.bg_card_settings)
+            container.setBackgroundResource(R.drawable.bg_card_settings)
             containerSpeed.setBackgroundResource(R.drawable.bg_card_settings)
             containerOrderAndFilters.setBackgroundResource(R.drawable.bg_card_settings)
+            containerStatsPeriod.setBackgroundResource(R.drawable.bg_card_settings)
         }
     }
 
@@ -173,6 +181,11 @@ class SettingsFragment :
         sortedViews[0] = binding.inputStatus
         sortedViews[1] = binding.inputName
         sortedViews[2] = binding.inputLastChanged
+    }
+
+    private fun initStatPeriodViews() {
+        statsPeriodViews[0] = binding.inputSixthMonth
+        statsPeriodViews[1] = binding.inputOneYear
     }
 
     private fun setupSpeedTipsSelection() {
@@ -299,6 +312,41 @@ class SettingsFragment :
         }
     }
 
+    private fun setupStatPeriodSelection() {
+        statPeriodSelected = SharedPreferencesManager.statPeriod
+        updateStatPeriodSelection()
+    }
+
+    private fun updateStatPeriodSelection() {
+
+        statsPeriodViews.forEach { (stat, view) ->
+
+            val selected = (stat == statPeriodSelected)
+
+            view.setBackgroundResource(
+                if (selected) R.drawable.edittext_outline_selected
+                else R.drawable.edittext_outline_grey
+            )
+
+            val checkIcon = if (selected)
+                ContextCompat.getDrawable(requireContext(), R.drawable.ic_check)
+            else null
+
+            view.setCompoundDrawablesWithIntrinsicBounds(null, null, checkIcon,
+                null)
+        }
+    }
+
+    private fun setupStatPeriodListeners() {
+
+        statsPeriodViews.forEach { (stat, view) ->
+            view.setOnClickListener {
+                statPeriodSelected = stat
+                updateStatPeriodSelection()
+            }
+        }
+    }
+
     private fun setupSaveCancelListeners() {
         binding.btnSave.setOnClickListener {
             SharedPreferencesManager.coloredIsSelected = coloredOptionSelected
@@ -306,6 +354,7 @@ class SettingsFragment :
             SharedPreferencesManager.showFilterAndSort = showFilterAndSort
             SharedPreferencesManager.marimoFilter = filterSelected
             SharedPreferencesManager.marimoSorting = sortingSelected
+            SharedPreferencesManager.statPeriod = statPeriodSelected
             Toast.makeText(
                 requireContext(),
                 getString(R.string.option_correctly_updated),
@@ -319,6 +368,7 @@ class SettingsFragment :
             showFilterAndSort = SharedPreferencesManager.showFilterAndSort
             filterSelected = SharedPreferencesManager.marimoFilter
             sortingSelected = SharedPreferencesManager.marimoSorting
+            statPeriodSelected = SharedPreferencesManager.statPeriod
             updateDashboardSelection()
             updateSpeedTipsSelection()
         }

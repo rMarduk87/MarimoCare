@@ -125,6 +125,20 @@ class AppUtils {
             return labels
         }
 
+        fun getLastYearMonthsLabels(): List<String> {
+            val calendar = Calendar.getInstance()
+            val sdf = SimpleDateFormat("yyyy-MM", Locale.getDefault())
+            val labels = mutableListOf<String>()
+
+            for (i in 11 downTo 0) {
+                val tempCal = calendar.clone() as Calendar
+                tempCal.add(Calendar.MONTH, -i)
+                labels.add(sdf.format(tempCal.time))
+            }
+
+            return labels
+        }
+
         fun generateQRCode(marimo: Marimo?) : Bitmap {
             val safeName = URLEncoder.encode(marimo!!.name, "UTF-8")
 
@@ -263,6 +277,7 @@ class AppUtils {
         const val TIPS_AUTO_SCROLL_SPEED : String = "tips_auto_scroll_speed"
         const val MARIMO_FILTER_SELECTED : String = "marimo_filter_selected"
         const val MARIMO_SORTING_SELECTED : String = "marimo_sorting_selected"
+        const val STAT_PERIOD_SELECTED : String = "stat_period_selected"
         const val SHOW_FILTER_AND_SORT : String = "show_filter_and_sort"
         const val SHOW_MARIMO_BALLON : String = "show_marimo_balloon"
         const val SHOW_MARIMO_DASHBOARD_BALLON : String = "show_marimo_dashboard_balloon"

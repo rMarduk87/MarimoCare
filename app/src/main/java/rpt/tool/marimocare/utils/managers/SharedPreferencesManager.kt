@@ -49,6 +49,10 @@ object SharedPreferencesManager {
         get() = sharedPreferences.getInt(AppUtils.MARIMO_SORTING_SELECTED, 0)
         set(value) = sharedPreferences.edit() { putInt(AppUtils.MARIMO_SORTING_SELECTED, value) }
 
+    var statPeriod: Int
+        get() = sharedPreferences.getInt(AppUtils.STAT_PERIOD_SELECTED, 0)
+        set(value) = sharedPreferences.edit() { putInt(AppUtils.STAT_PERIOD_SELECTED, value) }
+
     var showFilterAndSort: Boolean
         get() = sharedPreferences.getBoolean(AppUtils.SHOW_FILTER_AND_SORT, true)
         set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_FILTER_AND_SORT, value) }

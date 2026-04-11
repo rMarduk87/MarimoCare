@@ -241,6 +241,11 @@ Please note: the final date retrieved will be the same as the app release date, 
     <string name="d">d</string>
     <string name="today">today</string>
     <string name="new_stats">New statistics have been added, grouped by topic.\nList of the health of all marimos, and comparison statistics.</string>
+    <string name="stats_period">Statistics – Water Change Trend Period</string>
+    <string name="default_time_range_shown_in_the_water_change_trend_chart">Default time range shown in the Water Change Trend chart</string>
+    <string name="last_sixth_month">Last 6 Months</string>
+    <string name="last_year">Last Year</string>
+    <string name="actual_water_changes_over_the_last_12_months">Actual water changes over the last year</string>
     <string-array name="marimo_frequencies">
         <item>Every 7 days (Weekly)</item>
         <item>Every 10 days</item>

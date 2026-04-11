@@ -43,6 +43,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/water_trend_text"
             android:text="@string/actual_water_changes_over_the_last_6_months"
             android:textSize="13sp"
             android:layout_marginTop="2dp"
