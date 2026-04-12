@@ -246,6 +246,24 @@
     <string name="last_sixth_month">過去6ヶ月</string>
     <string name="last_year">過去1年間</string>
     <string name="actual_water_changes_over_the_last_12_months">過去1年間の実際の水位変化</string>
+    <string name="feedback">Feedback</string>
+    <string name="help_us_improve_marimo_care_choose_a_topic_and_send_us_your_thoughts_ideas_or_bug_reports">Help us improve Marimo Care! Choose a topic and send us your thoughts, ideas, or bug reports.</string>
+    <string name="_1_choose_a_topic">1. Choose a Topic</string>
+    <string name="what_would_you_like_to_give_feedback_about">What would you like to give feedback about?</string>
+    <string name="bug_report">Bug Report</string>
+    <string name="_2_write_your_message">2. Write Your Message</string>
+    <string name="describe_your_idea_issue_or_suggestion_here">Describe your idea, issue, or suggestion here...</string>
+    <string name="send_feedback">Send Feedback</string>
+    <string name="join_the_marimo_community">Join the Marimo Community</string>
+    <string name="reddit">Reddit</string>
+    <string name="whatsapp">WhatsApp</string>
+    <string name="instagram">Instagram</string>
+    <string name="share_your_feedback">Share Your Feedback</string>
+    <string name="feature_request">Feature Request</string>
+    <string name="ui_design">UI / Design</string>
+    <string name="new_content">New Content</string>
+    <string name="general_feedback">General Feedback</string>
+    <string name="other">Other</string>
     <string-array name="marimo_frequencies">
         <item>7日ごと（週ごと）</item>
         <item>10日ごと</item>

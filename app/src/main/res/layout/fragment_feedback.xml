@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/marimo_background"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/include1"
+            layout="@layout/header" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/share_your_feedback"
+                android:textColor="@color/text_title"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/help_us_improve_marimo_care_choose_a_topic_and_send_us_your_thoughts_ideas_or_bug_reports"
+                android:textColor="@color/text_body"
+                android:textSize="14sp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:cardBackgroundColor="@color/card_background"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/marimo_border"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/_1_choose_a_topic"
+                        android:textColor="@color/text_title"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:alignmentMode="alignMargins"
+                        android:columnCount="2">
+
+                        <LinearLayout style="@style/TopicButtonStyle"
+                            tools:ignore="UseCompoundDrawables">
+                            <ImageView style="@style/TopicIconStyle" android:src="@drawable/ic_topic_bug" android:contentDescription="@string/img" />
+                            <TextView style="@style/TopicTextStyle" android:text="@string/bug_report" />
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/TopicButtonStyle"
+                            tools:ignore="UseCompoundDrawables">
+                            <ImageView style="@style/TopicIconStyle" android:src="@drawable/ic_topic_feature" android:contentDescription="@string/img" />
+                            <TextView style="@style/TopicTextStyle" android:text="@string/feature_request" />
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/TopicButtonStyle"
+                            tools:ignore="UseCompoundDrawables">
+                            <ImageView style="@style/TopicIconStyle" android:src="@drawable/ic_topic_ui" android:contentDescription="@string/img" />
+                            <TextView style="@style/TopicTextStyle" android:text="@string/ui_design" />
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/TopicButtonStyle"
+                            tools:ignore="UseCompoundDrawables">
+                            <ImageView style="@style/TopicIconStyle" android:src="@drawable/ic_topic_content" android:contentDescription="@string/img" />
+                            <TextView style="@style/TopicTextStyle" android:text="@string/new_content" />
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/TopicButtonStyle"
+                            tools:ignore="UseCompoundDrawables">
+                            <ImageView style="@style/TopicIconStyle" android:src="@drawable/ic_topic_feedback" android:contentDescription="@string/img" />
+                            <TextView style="@style/TopicTextStyle" android:text="@string/general_feedback" />
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/TopicButtonStyle"
+                            tools:ignore="UseCompoundDrawables">
+                            <ImageView style="@style/TopicIconStyle" android:src="@drawable/ic_topic_other" android:contentDescription="@string/img" />
+                            <TextView style="@style/TopicTextStyle" android:text="@string/other" />
+                        </LinearLayout>
+
+                    </GridLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="@color/card_background"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/marimo_border"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/_2_write_your_message"
+                        android:textColor="@color/text_title"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:layout_marginTop="12dp"
+                        android:autofillHints=""
+                        android:background="@drawable/bg_button_outlined"
+                        android:gravity="top"
+                        android:hint="@string/describe_your_idea_issue_or_suggestion_here"
+                        android:inputType="textMultiLine"
+                        android:padding="12dp"
+                        android:textSize="14sp" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="12dp"
+                        android:backgroundTint="@color/marimo_button_feedback"
+                        android:text="@string/send_feedback"
+                        android:textAllCaps="false" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="@color/card_background"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/marimo_border"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/join_the_marimo_community"
+                        android:textColor="@color/text_title"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="44dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_button_outlined"
+                            android:backgroundTint="@color/social_reddit"
+                            android:gravity="center"
+                            android:text="@string/reddit"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/btnWhatsapp"
+                            android:layout_width="0dp"
+                            android:layout_height="44dp"
+                            android:layout_marginHorizontal="6dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_button_outlined"
+                            android:backgroundTint="@color/social_whatsapp_bg"
+                            android:gravity="center"
+                            android:text="@string/whatsapp"
+                            android:textColor="@color/social_whatsapp_text"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="44dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_button_outlined"
+                            android:backgroundTint="@color/social_instagram"
+                            android:gravity="center"
+                            android:text="@string/instagram"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <include
+                android:id="@+id/include2"
+                layout="@layout/footer" />
+
+        </LinearLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

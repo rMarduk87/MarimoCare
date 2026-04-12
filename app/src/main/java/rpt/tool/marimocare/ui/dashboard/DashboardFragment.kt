@@ -106,6 +106,11 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             safeNavController?.safeNavigate(DashboardFragmentDirections
                 .actionDashboardFragmentToStatsFragment()) }
 
+        binding.include1.btnOpenFeedback.setOnClickListener {
+            safeNavController?.safeNavigate(DashboardFragmentDirections
+                .actionDashboardFragmentToFeedbackFragment())
+        }
+
         binding.cardCounterTotal.background = ContextCompat.getDrawable(requireContext(),
             R.drawable.bg_card_marimo_status_t)
         binding.cardCounterOverdue.background = ContextCompat.getDrawable(requireContext(),
@@ -298,6 +303,8 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             openFixWaterChangeDialog()
             SharedPreferencesManager.fixWaterChanges = false
         }
+
+        setupCompactFilters()
     }
 
     private fun addNewMarimo() {
@@ -472,39 +479,34 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         itemAdapter.set(finalList)
     }
 
-
     @RequiresApi(Build.VERSION_CODES.O)
     private fun manageFiltersFromSharedPreferences() {
         val savedFilter = SharedPreferencesManager.marimoFilter
         applyFilterAndSort()
-        if(savedFilter == -1){
+
+        if(savedFilter == -1) {
             highlightFilterButton(binding.btnAllFilter)
-        }
-        else{
-            var viewToBind = binding.btnAllFilter
+        } else {
+            var viewToBind: View? = binding.btnAllFilter
             when (savedFilter) {
                 MarimoStatus.NORMAL.ordinal -> viewToBind = binding.btnUpToDateFilter
                 MarimoStatus.OVERDUE.ordinal -> viewToBind = binding.btnOverdueFilter
                 MarimoStatus.DUE_SOON.ordinal -> viewToBind = binding.btnDueSoonFilter
             }
-            highlightFilterButton(viewToBind)
+            viewToBind?.let { highlightFilterButton(it) }
         }
 
-        binding.filterTitle.visibility = if(SharedPreferencesManager.showFilterAndSort)
-            View.VISIBLE else View.GONE
+        val isVisible = if(SharedPreferencesManager.showFilterAndSort) View.VISIBLE else View.GONE
 
-        binding.buttonFilter?.visibility = if(SharedPreferencesManager.showFilterAndSort)
-            View.VISIBLE else View.GONE
+        binding.filterTitle.visibility = isVisible
+        binding.sorts?.visibility = isVisible
 
-        binding.buttonFilter2?.visibility = if(SharedPreferencesManager.showFilterAndSort)
-            View.VISIBLE else View.GONE
+        binding.buttonFilter?.visibility = isVisible
+        binding.buttonFilter2?.visibility = isVisible
+        binding.buttonFilter3?.visibility = isVisible
 
-        binding.buttonFilter3?.visibility = if(SharedPreferencesManager.showFilterAndSort)
-            View.VISIBLE else View.GONE
-
-        binding.sorts?.visibility = if(SharedPreferencesManager.showFilterAndSort)
-            View.VISIBLE else View.GONE
-
+        binding.gridFilters?.visibility = isVisible
+        setupCompactFilters()
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -923,6 +925,47 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             }
         }
         return file
+    }
+
+    private fun setupCompactFilters() {
+        val screenWidthDp = resources.configuration.screenWidthDp
+        val isSmallScreen = screenWidthDp <= 320
+
+        val filterButtons = listOf(
+            binding.btnAllFilter to getString(R.string.all),
+            binding.btnOverdueFilter to getString(R.string.overdue),
+            binding.btnDueSoonFilter to getString(R.string.soon_f),
+            binding.btnUpToDateFilter to getString(R.string.upToDate)
+        )
+
+        filterButtons.forEach { (button, label) ->
+            if (isSmallScreen) {
+                button.text = ""
+                button.iconPadding = 0
+
+                val tooltip = com.skydoves.balloon.createBalloon(requireContext()) {
+                    setText(label)
+                    setTextColorResource(android.R.color.white)
+                    setBackgroundColorResource(R.color.marimo_dark)
+                    setPadding(8)
+                    setCornerRadius(8f)
+                    setBalloonAnimation(com.skydoves.balloon.BalloonAnimation.FADE)
+                    setAutoDismissDuration(2000L)
+                    build()
+                }
+
+                button.setOnLongClickListener {
+                    tooltip.showAlignTop(button)
+                    true
+                }
+            }
+        }
+
+        if (isSmallScreen) {
+            val params = binding.btnAddMarimo.layoutParams as ViewGroup.MarginLayoutParams
+            params.marginStart = 16
+            binding.btnAddMarimo.layoutParams = params
+        }
     }
 
 }

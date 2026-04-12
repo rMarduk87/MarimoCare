@@ -9,6 +9,7 @@ import rpt.tool.marimocare.BaseFragment
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentSettingsBinding
 import rpt.tool.marimocare.ui.marimo.addoredit.AddOrEditMarimoFragmentDirections
+import rpt.tool.marimocare.ui.stats.StatsFragmentDirections
 import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 import rpt.tool.marimocare.utils.navigation.safeNavController
 import rpt.tool.marimocare.utils.navigation.safeNavigate
@@ -111,6 +112,20 @@ class SettingsFragment :
                         safeNavController?.safeNavigate(
                             SettingsFragmentDirections
                                 .actionSettingsFragmentToStatsFragment())
+                    }
+                ),
+                HeaderButtonConfig(
+                    button = binding.include1.btnOpenFeedback,
+                    iconRes = R.drawable.ic_feedback,
+                    colorRes = R.color.marimo_add_icon,
+                    backgroundRes = R.drawable.bg_button_white,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.feedback),
+                    onClick = {
+                        safeNavController?.safeNavigate(
+                            SettingsFragmentDirections
+                                .actionSettingsFragmentToFeedbackFragment()
+                        )
                     }
                 )
             )
@@ -231,7 +246,7 @@ class SettingsFragment :
     private fun updateFilterAndSortSelection() {
         binding.defaultFilters.visibility = View.GONE
         binding.defaultSort.visibility = View.GONE
-        if(!showFilterAndSort) {
+        if(showFilterAndSort) {
             binding.defaultFilters.visibility = View.VISIBLE
             binding.defaultSort.visibility = View.VISIBLE
         }
