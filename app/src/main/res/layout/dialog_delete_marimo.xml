@@ -22,7 +22,7 @@
             android:text="@string/delete_marimo_kuju"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="#111111" />
+            android:textColor="@color/marimo_text_deep_black" />
 
         <!-- Subtitle / body -->
         <TextView
@@ -32,7 +32,7 @@
             android:layout_marginTop="10dp"
             android:text="@string/are_you_sure_you_want_to_delete_this_marimo_this_action_cannot_be_undone"
             android:textSize="14sp"
-            android:textColor="#666666" />
+            android:textColor="@color/marimo_text_dim" />
 
         <!-- Buttons row -->
         <LinearLayout
@@ -65,7 +65,7 @@
                 android:textAllCaps="false"
                 app:cornerRadius="8dp"
                 android:backgroundTint="@color/marimo_red"
-                android:textColor="@android:color/white"/>
+                android:textColor="@color/white"/>
         </LinearLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

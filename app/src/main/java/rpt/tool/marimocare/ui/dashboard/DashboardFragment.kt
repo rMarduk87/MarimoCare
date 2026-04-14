@@ -106,11 +106,6 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             safeNavController?.safeNavigate(DashboardFragmentDirections
                 .actionDashboardFragmentToStatsFragment()) }
 
-        binding.include1.btnOpenFeedback.setOnClickListener {
-            safeNavController?.safeNavigate(DashboardFragmentDirections
-                .actionDashboardFragmentToFeedbackFragment())
-        }
-
         binding.cardCounterTotal.background = ContextCompat.getDrawable(requireContext(),
             R.drawable.bg_card_marimo_status_t)
         binding.cardCounterOverdue.background = ContextCompat.getDrawable(requireContext(),
@@ -305,6 +300,11 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         }
 
         setupCompactFilters()
+
+        binding.btnOpenFeedbackDashboard.setOnClickListener {
+            safeNavController?.safeNavigate(DashboardFragmentDirections
+                .actionDashboardFragmentToFeedbackFragment())
+        }
     }
 
     private fun addNewMarimo() {

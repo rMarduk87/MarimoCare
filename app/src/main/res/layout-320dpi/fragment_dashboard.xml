@@ -5,7 +5,7 @@
     android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F3FFFA"
+    android:background="@color/marimo_background"
     android:fillViewport="true">
 
     <LinearLayout
@@ -23,16 +23,32 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <TextView
-                android:id="@+id/title"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingVertical="12dp"
-                android:text="@string/marimo_care_dashboard"
-                android:textColor="#0B6E4F"
-                android:textSize="22sp"
-                android:textStyle="bold" />
+                android:paddingVertical="12dp">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/marimo_care_dashboard"
+                    android:textColor="@color/marimo_text_primary"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/btnOpenFeedbackDashboard"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/send_feedback"
+                    android:src="@drawable/ic_feedback"
+                    app:tint="@color/marimo_text_primary" />
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/subtitle"
@@ -41,7 +57,7 @@
                 android:gravity="center"
                 android:paddingBottom="16dp"
                 android:text="@string/keep_track_of_your_marimo"
-                android:textColor="#555"
+                android:textColor="@color/marimo_text_secondary"
                 android:textSize="14sp" />
 
             <LinearLayout
@@ -199,7 +215,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="12dp"
                             android:text="@string/marimo_tip_title_1"
-                            android:textColor="#347156"
+                            android:textColor="@color/marimo_text_forest"
                             android:textSize="14sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -243,8 +259,8 @@
                             android:layout_marginTop="10dp"
                             app:dotsSize="6dp"
                             app:dotsSpacing="6dp"
-                            app:dotsColor="#a7f3d0"
-                            app:selectedDotColor="#10b981"/>
+                            app:dotsColor="@color/marimo_item_edit_board"
+                            app:selectedDotColor="@color/green_primary"/>
 
                         <ImageButton
                             android:id="@+id/arrowRight"
@@ -284,8 +300,8 @@
                     android:elevation="2dp">
                     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:orientation="vertical" android:padding="16dp">
                         <ImageView android:layout_width="48dp" android:layout_height="48dp" android:src="@drawable/ic_water_drop_green" android:scaleType="centerCrop" android:layout_marginBottom="8dp" android:padding="8dp" android:contentDescription="@string/img" android:clipToOutline="true" android:background="@drawable/circle_mask_total"/>
-                        <TextView android:id="@+id/totalMarimo" android:text="@string/_3" android:textColor="#0B6E4F" android:textSize="20sp" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                        <TextView android:text="@string/total" android:textColor="#0B6E4F" android:textStyle="bold" android:textSize="15sp" android:layout_marginTop="18sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                        <TextView android:id="@+id/totalMarimo" android:text="@string/_3" android:textColor="@color/marimo_text_primary" android:textSize="20sp" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                        <TextView android:text="@string/total" android:textColor="@color/marimo_text_primary" android:textStyle="bold" android:textSize="15sp" android:layout_marginTop="18sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
@@ -338,18 +354,18 @@
                 android:rowCount="1"
                 android:useDefaultMargins="true"
                 android:visibility="gone">
-                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_rowWeight="1" android:layout_columnWeight="1" android:layout_margin="4dp" android:background="#E8FFF5" android:gravity="center" android:orientation="vertical" android:padding="16dp">
-                    <TextView android:text="@string/total" android:layout_marginTop="16sp" android:textColor="#0B6E4F" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                    <TextView android:id="@+id/totalMarimo_alternative" android:text="@string/_3" android:textColor="#0B6E4F" android:textSize="22sp" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_rowWeight="1" android:layout_columnWeight="1" android:layout_margin="4dp" android:background="@color/marimo_primary_light" android:gravity="center" android:orientation="vertical" android:padding="16dp">
+                    <TextView android:text="@string/total" android:layout_marginTop="16sp" android:textColor="@color/marimo_text_primary" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <TextView android:id="@+id/totalMarimo_alternative" android:text="@string/_3" android:textColor="@color/marimo_text_primary" android:textSize="22sp" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
                 </LinearLayout>
-                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_rowWeight="1" android:layout_columnWeight="1" android:layout_margin="4dp" android:background="#FFEDED" android:gravity="center" android:orientation="vertical" android:padding="16dp">
-                    <TextView android:layout_marginTop="16sp" android:text="@string/overdue" android:textColor="#D9534F" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                    <TextView android:id="@+id/overdueMarimo_alternative" android:text="@string/_3" android:textColor="#D9534F" android:textSize="22sp" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_rowWeight="1" android:layout_columnWeight="1" android:layout_margin="4dp" android:background="@color/marimo_bg_error" android:gravity="center" android:orientation="vertical" android:padding="16dp">
+                    <TextView android:layout_marginTop="16sp" android:text="@string/overdue" android:textColor="@color/marimo_red" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <TextView android:id="@+id/overdueMarimo_alternative" android:text="@string/_3" android:textColor="@color/marimo_red" android:textSize="22sp" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
                 </LinearLayout>
-                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_rowWeight="1" android:layout_columnWeight="1" android:layout_margin="4dp" android:background="#FFF9E6" android:gravity="center" android:orientation="vertical" android:padding="16dp">
-                    <TextView android:id="@+id/italian1_alternative" android:text="@string/in" android:textColor="#E1A500" android:textStyle="bold" android:textSize="15sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                    <TextView android:id="@+id/italian2_alternative" android:text="@string/due_soon_" android:textColor="#E1A500" android:textStyle="bold" android:textSize="15sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-                    <TextView android:id="@+id/dueSoonMarimo_alternative" android:text="@string/_0" android:textColor="#E1A500" android:textSize="22sp" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_rowWeight="1" android:layout_columnWeight="1" android:layout_margin="4dp" android:background="@color/marimo_bg_light_yellow" android:gravity="center" android:orientation="vertical" android:padding="16dp">
+                    <TextView android:id="@+id/italian1_alternative" android:text="@string/in" android:textColor="@color/marimo_orange" android:textStyle="bold" android:textSize="15sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <TextView android:id="@+id/italian2_alternative" android:text="@string/due_soon_" android:textColor="@color/marimo_orange" android:textStyle="bold" android:textSize="15sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <TextView android:id="@+id/dueSoonMarimo_alternative" android:text="@string/_0" android:textColor="@color/marimo_orange" android:textSize="22sp" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
                 </LinearLayout>
             </GridLayout>
 

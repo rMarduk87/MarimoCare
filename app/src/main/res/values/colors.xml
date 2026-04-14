@@ -91,4 +91,6 @@
     <color name="marimo_tint_warning">#FBC02D</color>
     <color name="marimo_tint_star">#FFA000</color>
     <color name="marimo_text_hint_alt">#9CA3AF</color>
+    <color name="marimo_dialog_overlay">#CC000000</color>
+    <color name="marimo_bg_light_yellow">#FFF9E6</color>
 </resources>

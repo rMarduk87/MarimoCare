@@ -5,7 +5,7 @@
     android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F3FFFA"
+    android:background="@color/marimo_background"
     android:fillViewport="true">
 
     <LinearLayout
@@ -37,7 +37,7 @@
                     android:layout_marginEnd="10dp"
                     android:src="@drawable/ic_trending_up"
                     android:contentDescription="@string/img"
-                    app:tint="#0B6E4F" />
+                    app:tint="@color/marimo_text_primary" />
 
                 <TextView
                     android:id="@+id/txtTitle"
@@ -47,7 +47,7 @@
                     android:layout_gravity="center"
                     android:textSize="22sp"
                     android:textStyle="bold"
-                    android:textColor="#0B6E4F"
+                    android:textColor="@color/marimo_text_primary"
                     android:paddingBottom="4dp" />
 
             </LinearLayout>
@@ -59,7 +59,7 @@
                 android:gravity="center"
                 android:paddingBottom="16dp"
                 android:text="@string/stats_sub_title"
-                android:textColor="#555"
+                android:textColor="@color/marimo_text_secondary"
                 android:textSize="14sp" />
 
             <LinearLayout
@@ -116,10 +116,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:background="@android:color/transparent"
-                app:tabIndicatorColor="#0B6E4F"
-                app:tabSelectedTextColor="#0B6E4F"
-                app:tabTextColor="#555"
-                app:tabIconTint="#0B6E4F"
+                app:tabIndicatorColor="@color/marimo_text_primary"
+                app:tabSelectedTextColor="@color/marimo_text_primary"
+                app:tabTextColor="@color/marimo_text_secondary"
+                app:tabIconTint="@color/marimo_text_primary"
                 app:tabMode="fixed"
                 app:tabGravity="fill">
 

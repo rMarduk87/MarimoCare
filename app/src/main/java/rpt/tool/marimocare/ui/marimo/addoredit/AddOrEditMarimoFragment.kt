@@ -207,20 +207,6 @@ class AddOrEditMarimoFragment :
                                 .actionAddOrEditFragmentToStatsFragment()
                         )
                     }
-                ),
-                HeaderButtonConfig(
-                    button = binding.include1.btnOpenFeedback,
-                    iconRes = R.drawable.ic_feedback,
-                    colorRes = R.color.marimo_add_icon,
-                    backgroundRes = R.drawable.bg_button_white,
-                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
-                    text = requireContext().getString(R.string.feedback),
-                    onClick = {
-                        safeNavController?.safeNavigate(
-                            AddOrEditMarimoFragmentDirections
-                                .actionAddOrEditFragmentToFeedbackFragment()
-                        )
-                    }
                 )
             )
         )

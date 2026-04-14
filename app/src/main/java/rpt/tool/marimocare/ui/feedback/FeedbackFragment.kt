@@ -2,9 +2,11 @@ package rpt.tool.marimocare.ui.feedback
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import rpt.tool.marimocare.BaseFragment
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentFeedbackBinding
@@ -13,15 +15,20 @@ import rpt.tool.marimocare.utils.navigation.safeNavigate
 import rpt.tool.marimocare.utils.view.HeaderButtonConfig
 import rpt.tool.marimocare.utils.view.HeaderHelper
 import androidx.core.net.toUri
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 
 class FeedbackFragment :
     BaseFragment<FragmentFeedbackBinding>(FragmentFeedbackBinding::inflate) {
 
     private val selectedTopics = mutableSetOf<String>()
 
+    @RequiresApi(Build.VERSION_CODES.R)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setUpHeaderLayout()
         setupHeaderButtons()
 
         binding.include1.appLogo.setOnClickListener {
@@ -83,6 +90,37 @@ class FeedbackFragment :
                 getString(R.string.https_play_google_com_store_apps_details_id_rpt_tool_marimocare)
             shareViaWhatsApp(getString(R.string.check_out_marimo_care, appStoreLink))
         }
+
+        binding.btnClearAll.setOnClickListener {
+            selectedTopics.clear()
+            topics.forEach { (layout, _) ->
+                layout.setBackgroundResource(R.drawable.bg_button_outlined)
+            }
+            binding.etMessage.text?.clear()
+
+            Toast.makeText(requireContext(), getString(R.string.form_cleared),
+                Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.R)
+    private fun setUpHeaderLayout() {
+        val headerView = view?.findViewById<View>(R.id.header)
+
+        headerView?.fitsSystemWindows = false
+
+        headerView?.let {
+            ViewCompat.setOnApplyWindowInsetsListener(it) { v, insets ->
+                val statusBars = insets.getInsets(WindowInsetsCompat.Type.statusBars())
+                val density = v.resources.displayMetrics.density
+                val topPadding = statusBars.top + (12 * density).toInt()
+
+                v.updatePadding(top = topPadding)
+                insets
+            }
+        }
+
+        activity?.window?.setDecorFitsSystemWindows(false)
     }
 
     private fun setupHeaderButtons() {
@@ -133,15 +171,6 @@ class FeedbackFragment :
                     onClick = { safeNavController?.safeNavigate(
                         FeedbackFragmentDirections
                             .actionFeedbackFragmentToStatsFragment()) }
-                ),
-                HeaderButtonConfig(
-                    button = binding.include1.btnOpenFeedback,
-                    iconRes = R.drawable.ic_feedback,
-                    colorRes = R.color.marimo_item_green,
-                    backgroundRes = R.drawable.bg_button_light_green,
-                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
-                    text = requireContext().getString(R.string.feedback),
-                    enabled = false
                 )
             )
         )

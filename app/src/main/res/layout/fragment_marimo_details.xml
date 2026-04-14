@@ -3,7 +3,7 @@
     android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F3FFFA"
+    android:background="@color/marimo_background"
     android:fillViewport="true">
 
     <LinearLayout
@@ -39,7 +39,7 @@
                 android:gravity="center"
                 android:paddingBottom="16dp"
                 android:text="@string/complete_care_history_and_profile"
-                android:textColor="#555"
+                android:textColor="@color/marimo_text_secondary"
                 android:textSize="14sp" />
 
             <include

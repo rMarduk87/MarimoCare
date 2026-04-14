@@ -50,10 +50,6 @@
             android:name="MarimoCode"
             app:argType="integer"
             android:defaultValue="0" />
-        <action
-            android:id="@+id/action_addOrEditFragment_to_feedbackFragment"
-            app:destination="@id/feedbackFragment" />
-
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -70,9 +66,6 @@
         <action
             android:id="@+id/action_settingsFragment_to_statsFragment"
             app:destination="@id/statsFragment" />
-        <action
-            android:id="@+id/action_settingsFragment_to_feedbackFragment"
-            app:destination="@id/feedbackFragment" />
 
     </fragment>
     <fragment
@@ -94,9 +87,6 @@
         <action
             android:id="@+id/action_statsFragment_to_addOrEditFragment"
             app:destination="@id/addOrEditFragment" />
-        <action
-            android:id="@+id/action_statsFragment_to_feedbackFragment"
-            app:destination="@id/feedbackFragment" />
 
     </fragment>
     <fragment
@@ -104,7 +94,6 @@
         android:name="rpt.tool.marimocare.ui.feedback.FeedbackFragment"
         tools:layout="@layout/fragment_feedback"
         android:label="FeedbackFragment">
-
 
         <action
             android:id="@+id/action_feedbackFragment_to_dashboardFragment"
@@ -138,9 +127,6 @@
         <action
             android:id="@+id/action_fromQRCodeMarimoFragment_to_statsFragment"
             app:destination="@id/statsFragment" />
-        <action
-            android:id="@+id/action_fromQRCodeMarimoFragment_to_feedbackFragment"
-            app:destination="@id/feedbackFragment" />
 
         <argument
             android:name="code"
@@ -170,9 +156,6 @@
         <action
             android:id="@+id/action_marimoDetailFragment_to_addOrEditFragment"
             app:destination="@id/addOrEditFragment" />
-        <action
-            android:id="@+id/action_marimoDetailFragment_to_feedbackFragment"
-            app:destination="@id/feedbackFragment" />
 
         <argument
             android:name="MarimoCode"

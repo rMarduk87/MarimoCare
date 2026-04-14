@@ -13,7 +13,6 @@
     android:orientation="horizontal"
     android:gravity="center_vertical"
     android:clipToPadding="false"
-    android:fitsSystemWindows="true"
     android:elevation="4dp">
 
     <ImageView
@@ -117,19 +116,6 @@
                 app:backgroundTint="@null"
                 tools:ignore="ButtonStyle" />
 
-            <Button
-                android:id="@+id/btnOpenFeedback"
-                android:layout_width="38dp"
-                android:layout_height="38dp"
-                android:layout_marginStart="9dp"
-                android:background="@drawable/bg_button_white"
-                android:drawableTop="@drawable/ic_feedback"
-                android:drawableTint="@color/marimo_add_icon"
-                android:gravity="center"
-                android:padding="8dp"
-                android:text=""
-                app:backgroundTint="@null"
-                tools:ignore="ButtonStyle" />
 
         </LinearLayout>
 

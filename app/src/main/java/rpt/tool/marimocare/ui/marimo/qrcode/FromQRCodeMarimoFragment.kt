@@ -107,20 +107,6 @@ class FromQRCodeMarimoFragment :
                                 .actionFromQRCodeMarimoFragmentToStatsFragment()
                         )
                     }
-                ),
-                HeaderButtonConfig(
-                    button = binding.include1.btnOpenFeedback,
-                    iconRes = R.drawable.ic_feedback,
-                    colorRes = R.color.marimo_add_icon,
-                    backgroundRes = R.drawable.bg_button_white,
-                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
-                    text = requireContext().getString(R.string.stats),
-                    onClick = {
-                        safeNavController?.safeNavigate(
-                            FromQRCodeMarimoFragmentDirections
-                                .actionFromQRCodeMarimoFragmentToFeedbackFragment()
-                        )
-                    }
                 )
             )
         )

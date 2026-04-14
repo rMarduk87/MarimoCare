@@ -275,6 +275,8 @@
     <string name="check_out_marimo_care">マリモケアをチェック！ %1$s</string>
     <string name="unable_to_open_link">リンクを開けません。</string>
     <string name="whatsapp_is_not_installed_on_this_device">このデバイスにはWhatsAppがインストールされていません。</string>
+    <string name="clear_all">Clear all</string>
+    <string name="form_cleared">Form cleared</string>
     <string-array name="marimo_frequencies">
         <item>7日ごと（週ごと）</item>
         <item>10日ごと</item>

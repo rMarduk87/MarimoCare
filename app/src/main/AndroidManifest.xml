@@ -26,6 +26,7 @@
             android:exported="true"
             android:screenOrientation="fullSensor"
             android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustResize"
             tools:ignore="AppLinkUrlError,DiscouragedApi">
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW"/>
