@@ -24,7 +24,7 @@
             android:text="@string/_21th_marimo"
             android:textSize="22sp"
             android:textStyle="bold"
-            android:textColor="#000"/>
+            android:textColor="@color/black"/>
 
         <!-- HEALTH BOX -->
         <LinearLayout
@@ -41,7 +41,7 @@
                 android:text="@string/_19"
                 android:textSize="48sp"
                 android:textStyle="bold"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -49,7 +49,7 @@
                 android:id="@+id/healthText"
                 android:text="@string/health_scores"
                 android:textSize="18sp"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -71,7 +71,7 @@
 
                 <TextView
                     android:text="@string/frequency"
-                    android:textColor="#6D6D6D"
+                    android:textColor="@color/marimo_text_medium_gray"
                     android:textSize="16sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -81,7 +81,7 @@
                     android:text="@string/_21d"
                     android:textStyle="bold"
                     android:textSize="20sp"
-                    android:textColor="#000"
+                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
@@ -94,7 +94,7 @@
 
                 <TextView
                     android:text="@string/total_changes"
-                    android:textColor="#6D6D6D"
+                    android:textColor="@color/marimo_text_medium_gray"
                     android:textSize="16sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
@@ -104,7 +104,7 @@
                     android:text="@string/_2"
                     android:textStyle="bold"
                     android:textSize="20sp"
-                    android:textColor="#000"
+                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </LinearLayout>

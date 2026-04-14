@@ -8,6 +8,10 @@
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="28" />
 
+    <queries>
+        <package android:name="com.whatsapp" />
+    </queries>
+
     <application
         android:name=".MarimoCareApplication"
         android:allowBackup="true"

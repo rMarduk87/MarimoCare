@@ -1,6 +1,5 @@
 plugins {
     id 'com.android.application'
-    id 'kotlin-android'
     id 'org.jetbrains.kotlin.android'
     id 'androidx.navigation.safeargs.kotlin'
     id 'kotlin-parcelize'
@@ -11,9 +10,7 @@ plugins {
 
 android {
     namespace 'rpt.tool.marimocare'
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk 36
 
     defaultConfig {
         applicationId "rpt.tool.marimocare"
@@ -54,7 +51,7 @@ android {
         viewBinding true
         buildConfig true
     }
-    packagingOptions {
+    packaging {
         resources {
             excludes += ['META-INF/DEPENDENCIES', 'META-INF/LICENSE', 'META-INF/LICENSE.txt', 'META-INF/license.txt', 'META-INF/NOTICE', 'META-INF/NOTICE.txt', 'META-INF/notice.txt', 'META-INF/ASL2.0']
         }
