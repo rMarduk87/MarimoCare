@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import rpt.tool.marimocare.databinding.ItemHealthMarimoBinding
 import rpt.tool.marimocare.utils.data.appmodels.MarimoHealthScoreStats
-import androidx.core.graphics.toColorInt
 import rpt.tool.marimocare.R
+import rpt.tool.marimocare.utils.view.applyHealthColor
+import rpt.tool.marimocare.utils.view.applyHealthStroke
+import rpt.tool.marimocare.utils.view.applyHealthTextColor
 
 class HealthMarimoAdapter : ListAdapter<MarimoHealthScoreStats,
         HealthMarimoAdapter.MarimoViewHolder>(DiffCallback()) {
@@ -39,36 +41,12 @@ class HealthMarimoAdapter : ListAdapter<MarimoHealthScoreStats,
             }
             totalChangesText.text = item.totalChanges.toString()
 
-            applyHealthStyle(item.health)
-            applyHealthStyleToText(item.health)
-        }
+            healthContainer.applyHealthColor(item.health)
+            marimoCard.setCardBackgroundColor(Color.WHITE)
+            marimoCard.applyHealthStroke(item.health)
 
-        private fun applyHealthStyle(health: Int) {
-
-            val themeColorHex = when {
-                health == 100 -> "#2E7D32"
-                health in 40..70 -> "#c9bb3a"
-                health in 1..19 -> "#F57C00"
-                health <= 0 -> "#C62828"
-                else -> "#4CAF50"
-            }
-
-            val themeColor = themeColorHex.toColorInt()
-
-            binding.healthContainer.backgroundTintList = ColorStateList.valueOf(themeColor)
-            binding.marimoCard.setCardBackgroundColor(Color.WHITE)
-            binding.marimoCard.strokeColor = themeColor
-        }
-
-        private fun applyHealthStyleToText(health: Int) {
-            val textColorRes =
-                if (health in 40..70) R.color.marimo_dark
-                else android.R.color.white
-
-            val color = binding.root.context.getColor(textColorRes)
-
-            binding.healthValue.setTextColor(color)
-            binding.healthText.setTextColor(color)
+            healthValue.applyHealthTextColor(item.health)
+            healthText.applyHealthTextColor(item.health)
         }
     }
 

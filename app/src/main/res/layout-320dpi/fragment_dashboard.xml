@@ -30,9 +30,12 @@
 
                 <TextView
                     android:id="@+id/title"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@id/btnOpenFeedbackDashboard"
+                    android:layout_marginStart="40dp"
+                    android:gravity="center"
                     android:text="@string/marimo_care_dashboard"
                     android:textColor="@color/marimo_text_primary"
                     android:textSize="22sp"

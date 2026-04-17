@@ -59,6 +59,8 @@ import rpt.tool.marimocare.utils.view.HeaderButtonConfig
 import rpt.tool.marimocare.utils.view.HeaderHelper
 import rpt.tool.marimocare.utils.view.adapters.CustomSpinnerAdapter
 import rpt.tool.marimocare.utils.view.adapters.ImagePrintAdapter
+import rpt.tool.marimocare.utils.view.copyUriToInternalFile
+import rpt.tool.marimocare.utils.view.loadMarimoImage
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
@@ -378,9 +380,7 @@ class AddOrEditMarimoFragment :
         binding.inputAddDate.text.clear()
         binding.inputNotes.text.clear()
         binding.marimoSpinnerLayout.customSpinner.setSelection(0)
-        val imageView = binding.marimoPicture
-        imageView.setImageResource(R.drawable.ic_water_drop_white)
-        imageView.setColorFilter("#00BFA6".toColorInt(), PorterDuff.Mode.SRC_IN)
+        binding.marimoPicture.loadMarimoImage(null)
         marimoPhotoPath = ""
         binding.title.text = getString(R.string.add_new_marimo)
         binding.subtitle.text = getString(R.string.add_a_new_marimo_friend_to_track)
@@ -409,11 +409,7 @@ class AddOrEditMarimoFragment :
                     }
 
                     setupActionButtons(marimo)
-                    if (!marimo!!.photo.isNullOrEmpty()) {
-                        showMarimoImage(File(marimo!!.photo!!))
-                    } else {
-                        showMarimoImage(null)
-                    }
+                    binding.marimoPicture.loadMarimoImage(marimo?.photo?.let { File(it) })
 
                     binding.title.text = buildString {
                         append(getString(R.string.edit_marimo))
@@ -427,7 +423,7 @@ class AddOrEditMarimoFragment :
         } else {
             // Caso nuovo marimo
             setupActionButtons(null)
-            showMarimoImage(null)
+            binding.marimoPicture.loadMarimoImage(null)
             binding.title.text = getString(R.string.add_new_marimo)
             binding.subtitle.text = getString(R.string.add_a_new_marimo_friend_to_track)
         }
@@ -570,26 +566,6 @@ class AddOrEditMarimoFragment :
         return uri
     }
 
-    private fun showMarimoImage(file: File?) {
-        val imageView = binding.marimoPicture
-
-        imageView.clearColorFilter()
-        imageView.imageTintList = null
-        imageView.background = null
-
-        if (file != null && file.exists()) {
-            Glide.with(this)
-                .load(file)
-                .centerCrop()
-                .placeholder(R.drawable.ic_water_drop_white)
-                .into(imageView)
-        } else {
-            imageView.setImageResource(R.drawable.ic_water_drop_white)
-            imageView.setColorFilter("#00BFA6".toColorInt(), PorterDuff.Mode.SRC_IN)
-        }
-    }
-
-
     private fun showPhotoPreview(file: File) {
         val dialog = Dialog(
             requireContext(), android.R.style.Theme_Black_NoTitleBar_Fullscreen
@@ -644,7 +620,7 @@ class AddOrEditMarimoFragment :
             REQUEST_CAMERA -> {
                 photoFile?.let {
                     if (it.exists() && it.length() > 0) {
-                        showMarimoImage(it)
+                        binding.marimoPicture.loadMarimoImage(it)
                         marimoPhotoPath = it.absolutePath
                         marimo?.photo = it.absolutePath
                     }
@@ -653,30 +629,15 @@ class AddOrEditMarimoFragment :
 
             REQUEST_GALLERY -> {
                 data?.data?.let { uri ->
-                    val file = copyUriToInternalFile(uri)
+                    val file = requireContext().copyUriToInternalFile(uri)
                     photoFile = file
                     photoUri = file.toUri()
 
-                    showMarimoImage(file)
+                    binding.marimoPicture.loadMarimoImage(file)
                     marimoPhotoPath = file.absolutePath
                     marimo?.photo = file.absolutePath
                 }
             }
         }
     }
-
-    private fun copyUriToInternalFile(uri: Uri): File {
-        val file = File(
-            requireContext().filesDir,
-            "marimo_${System.currentTimeMillis()}.jpg"
-        )
-
-        requireContext().contentResolver.openInputStream(uri)?.use { input ->
-            FileOutputStream(file).use { output ->
-                input.copyTo(output)
-            }
-        }
-        return file
-    }
-
 }

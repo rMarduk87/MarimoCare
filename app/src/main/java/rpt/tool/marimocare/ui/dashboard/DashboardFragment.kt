@@ -64,6 +64,7 @@ import rpt.tool.marimocare.utils.managers.HealthManager
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.tool.marimocare.utils.view.adapters.MarimoToFixAdapter
 import rpt.tool.marimocare.utils.view.adapters.MarimoUpdateAdapter
+import rpt.tool.marimocare.utils.view.copyUriToInternalFile
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.DeleteMarimoEventHook
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.ShowMarimoDetailsEventHook
 import java.io.File
@@ -308,13 +309,16 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                 .actionDashboardFragmentToFeedbackFragment())
         }
 
-        if(SharedPreferencesManager.showBallonFeedback){
-            SharedPreferencesManager.showBallonFeedback = false
-            feedBackBalloon.showAlign(
-                align = BalloonAlign.BOTTOM,
-                mainAnchor = binding.btnOpenFeedbackDashboard as View,
-                subAnchorList = listOf(binding.btnOpenFeedbackDashboard as View),
-            )
+        if (SharedPreferencesManager.showBallonFeedback) {
+            binding.btnOpenFeedbackDashboard.post {
+                if (isAdded) {
+                    feedBackBalloon.showAlign(
+                        align = BalloonAlign.BOTTOM,
+                        mainAnchor = binding.btnOpenFeedbackDashboard
+                    )
+                    SharedPreferencesManager.showBallonFeedback = false
+                }
+            }
         }
     }
 
@@ -758,7 +762,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     private val galleryLauncher =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
             uri?.let {
-                val fileFromUri = copyUriToInternalFile(it)
+                val fileFromUri = requireContext().copyUriToInternalFile(it)
                 file = fileFromUri
 
                 imagePath = fileFromUri.toURI().toString()
@@ -922,20 +926,6 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                 }
             }
         }
-    }
-
-    private fun copyUriToInternalFile(uri: Uri): File {
-        val file = File(
-            requireContext().filesDir,
-            "marimo_${System.currentTimeMillis()}.jpg"
-        )
-
-        requireContext().contentResolver.openInputStream(uri)?.use { input ->
-            FileOutputStream(file).use { output ->
-                input.copyTo(output)
-            }
-        }
-        return file
     }
 
     private fun setupCompactFilters() {
