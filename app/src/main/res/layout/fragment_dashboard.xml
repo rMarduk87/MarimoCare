@@ -5,7 +5,7 @@
     android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F3FFFA"
+    android:background="@color/marimo_background"
     android:fillViewport="true">
 
     <LinearLayout
@@ -13,27 +13,42 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
         <include
-            android:id="@+id/include1" layout="@layout/header">
-        </include>
+            android:id="@+id/include1"
+            layout="@layout/header" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp"> <!-- Header -->
+            android:padding="16dp">
 
-            <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingVertical="12dp"
-            android:text="@string/marimo_care_dashboard"
-            android:textColor="#0B6E4F"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="12dp">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/marimo_care_dashboard"
+                    android:textColor="@color/marimo_text_primary"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/btnOpenFeedbackDashboard"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/send_feedback"
+                    android:src="@drawable/ic_feedback"
+                    app:tint="@color/marimo_text_primary" />
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/subtitle"
@@ -42,43 +57,42 @@
                 android:gravity="center"
                 android:paddingBottom="16dp"
                 android:text="@string/keep_track_of_your_marimo"
-                android:textColor="#555"
-                android:textSize="14sp" /> <!-- Tip Card -->
+                android:textColor="@color/marimo_text_secondary"
+                android:textSize="14sp" />
 
             <LinearLayout
-                android:layout_marginBottom="8dp"
                 android:id="@+id/alertCounterLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:orientation="horizontal"
                 android:visibility="gone"
-                tools:ignore="UseCompoundDrawables"
-                >
+                tools:ignore="UseCompoundDrawables">
 
                 <ImageView
                     android:layout_width="32dp"
                     android:layout_height="32dp"
-                    android:src="@drawable/ic_alert_bell"
+                    android:layout_marginEnd="10dp"
                     android:contentDescription="@string/img"
-                    android:layout_marginEnd="10dp" />
+                    android:src="@drawable/ic_alert_bell" />
 
                 <TextView
                     android:id="@+id/alertCounter"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:text="@string/active_reminders"
                     android:textColor="@color/marimo_dark"
                     android:textSize="15sp"
-                    android:text="@string/active_reminders"
                     tools:ignore="HardcodedText" />
 
                 <ImageView
                     android:id="@+id/change"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
-                    android:src="@drawable/ic_water_drop_red"
+                    android:layout_marginEnd="10dp"
                     android:contentDescription="@string/img"
-                    android:layout_marginEnd="10dp" />
+                    android:src="@drawable/ic_water_drop_red" />
 
             </LinearLayout>
 
@@ -87,38 +101,38 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
-                app:cardCornerRadius="12dp"
-                app:strokeColor="@color/marimo_peach"
-                app:strokeWidth="1dp"
+                android:elevation="3dp"
+                android:visibility="gone"
                 app:backgroundTint="@null"
                 app:cardBackgroundColor="@color/marimo_pink"
-                android:visibility="gone"
-                android:elevation="3dp">
+                app:cardCornerRadius="12dp"
+                app:strokeColor="@color/marimo_peach"
+                app:strokeWidth="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="14dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
+                    android:padding="14dp"
                     tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:src="@drawable/ic_warning_triangle_red"
+                        android:layout_marginEnd="10dp"
                         android:contentDescription="@string/img"
-                        android:layout_marginEnd="10dp" />
+                        android:src="@drawable/ic_warning_triangle_red" />
 
                     <TextView
                         android:id="@+id/alertTextRed"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:text="@string/attention"
                         android:textColor="@color/strong_red"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        android:text="@string/attention"
                         tools:ignore="HardcodedText" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -128,38 +142,38 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
+                android:elevation="3dp"
+                android:visibility="gone"
+                app:backgroundTint="@null"
+                app:cardBackgroundColor="@color/marimo_light_orange"
                 app:cardCornerRadius="12dp"
                 app:strokeColor="@color/marimo_light_yellow"
-                app:strokeWidth="1dp"
-                app:cardBackgroundColor="@color/marimo_light_orange"
-                app:backgroundTint="@null"
-                android:visibility="gone"
-                android:elevation="3dp">
+                app:strokeWidth="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="14dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
+                    android:padding="14dp"
                     tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:src="@drawable/ic_warning_circle_orange"
+                        android:layout_marginEnd="10dp"
                         android:contentDescription="@string/img"
-                        android:layout_marginEnd="10dp" />
+                        android:src="@drawable/ic_warning_circle_orange" />
 
                     <TextView
                         android:id="@+id/alertTextOrange"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:text="@string/attention"
                         android:textColor="@color/marimo_orange"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        android:text="@string/attention"
                         tools:ignore="HardcodedText" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -169,11 +183,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                app:cardBackgroundColor="#F3FFFA"
-                app:strokeColor="@color/marimo_item_edit_board"
+                android:elevation="2dp"
+                app:cardBackgroundColor="@color/marimo_background"
                 app:cardCornerRadius="12dp"
-                app:strokeWidth="1dp"
-                android:elevation="2dp">
+                app:strokeColor="@color/marimo_item_edit_board"
+                app:strokeWidth="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -181,20 +195,19 @@
                     android:orientation="vertical"
                     android:padding="16dp">
 
-                    <!-- TITLE ROW -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:gravity="center_vertical"
+                        android:orientation="horizontal"
                         tools:ignore="UseCompoundDrawables">
 
                         <ImageView
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:background="@drawable/bg_tip_icon_circle"
-                            android:padding="4dp"
                             android:contentDescription="@string/img"
+                            android:padding="4dp"
                             android:src="@drawable/ic_tip_lightbulb" />
 
                         <TextView
@@ -203,12 +216,11 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="12dp"
                             android:text="@string/marimo_tip_title_1"
-                            android:textColor="#347156"
+                            android:textColor="@color/marimo_text_forest"
                             android:textSize="14sp"
                             android:textStyle="bold" />
                     </LinearLayout>
 
-                    <!-- VIEWPAGER + ARROWS -->
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -218,9 +230,9 @@
                             android:id="@+id/tipsPager"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:minHeight="48dp"
+                            android:clipToOutline="false"
                             android:clipToPadding="false"
-                            android:clipToOutline="false" />
+                            android:minHeight="48dp" />
 
                     </RelativeLayout>
 
@@ -235,23 +247,22 @@
                             android:layout_height="28dp"
                             android:layout_alignParentStart="true"
                             android:layout_centerVertical="true"
-                            android:padding="4dp"
                             android:background="@android:color/transparent"
                             android:contentDescription="@string/img"
+                            android:padding="4dp"
                             android:src="@drawable/ic_arrow_left" />
 
-                        <!-- DOTS -->
                         <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
                             android:id="@+id/dotsIndicator"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
                             android:layout_centerHorizontal="true"
+                            android:layout_gravity="center_horizontal"
                             android:layout_marginTop="10dp"
+                            app:dotsColor="@color/marimo_item_edit_board"
                             app:dotsSize="6dp"
                             app:dotsSpacing="6dp"
-                            app:dotsColor="#a7f3d0"
-                            app:selectedDotColor="#10b981"/>
+                            app:selectedDotColor="@color/green_primary" />
 
                         <ImageButton
                             android:id="@+id/arrowRight"
@@ -259,17 +270,16 @@
                             android:layout_height="28dp"
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
-                            android:padding="4dp"
                             android:background="@android:color/transparent"
                             android:contentDescription="@string/img"
+                            android:padding="4dp"
                             android:src="@drawable/ic_arrow_right" />
 
                     </RelativeLayout>
 
-
-
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
+
             <GridLayout
                 android:id="@+id/grid_status"
                 android:layout_width="match_parent"
@@ -281,7 +291,6 @@
                 android:rowCount="1"
                 android:useDefaultMargins="true">
 
-                <!-- TOTAL -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_counter_total"
                     android:layout_width="0dp"
@@ -289,10 +298,10 @@
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_margin="4dp"
-                    app:strokeColor="@color/marimo_item_board"
+                    android:elevation="2dp"
                     app:cardCornerRadius="12dp"
-                    app:strokeWidth="1dp"
-                    android:elevation="2dp">
+                    app:strokeColor="@color/marimo_item_board"
+                    app:strokeWidth="1dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -304,35 +313,32 @@
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:src="@drawable/ic_water_drop_green"
-                            android:scaleType="centerCrop"
                             android:layout_marginBottom="8dp"
-                            android:padding="8dp"
-                            android:contentDescription="@string/img"
+                            android:background="@drawable/circle_mask_total"
                             android:clipToOutline="true"
-                            android:background="@drawable/circle_mask_total"/>
+                            android:contentDescription="@string/img"
+                            android:padding="8dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_water_drop_green" />
 
                         <TextView
                             android:id="@+id/totalMarimo"
-                            android:text="@string/_3"
-                            android:textColor="#0B6E4F"
-                            android:textSize="22sp"
-                            android:textStyle="bold"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:text="@string/_3"
+                            android:textColor="@color/marimo_text_primary"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
 
                         <TextView
-                            android:text="@string/total"
-                            android:textColor="#0B6E4F"
-                            android:textStyle="bold"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:text="@string/total"
+                            android:textColor="@color/marimo_text_primary"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
-
-
-                <!-- OVERDUE -->
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_counter_overdue"
@@ -341,10 +347,10 @@
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_margin="4dp"
-                    app:strokeColor="@color/marimo_peach"
+                    android:elevation="2dp"
                     app:cardCornerRadius="12dp"
-                    app:strokeWidth="1dp"
-                    android:elevation="2dp">
+                    app:strokeColor="@color/marimo_peach"
+                    app:strokeWidth="1dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -356,35 +362,33 @@
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:src="@drawable/ic_warning_triangle_red"
-                            android:scaleType="centerCrop"
                             android:layout_marginBottom="8dp"
-                            android:padding="8dp"
-                            android:contentDescription="@string/img"
+                            android:background="@drawable/circle_mask_overdue"
                             android:clipToOutline="true"
-                            android:background="@drawable/circle_mask_overdue"/>
+                            android:contentDescription="@string/img"
+                            android:padding="8dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_warning_triangle_red" />
 
                         <TextView
                             android:id="@+id/overdueMarimo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="@string/_3"
                             android:textColor="@color/marimo_red"
                             android:textSize="22sp"
-                            android:textStyle="bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:textStyle="bold" />
 
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="@string/overdue"
                             android:textColor="@color/marimo_red"
-                            android:textStyle="bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:textStyle="bold" />
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-
-                <!-- DUE SOON -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_counter_due"
                     android:layout_width="0dp"
@@ -392,10 +396,10 @@
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_margin="4dp"
-                    app:strokeColor="@color/marimo_light_yellow"
+                    android:elevation="2dp"
                     app:cardCornerRadius="12dp"
-                    app:strokeWidth="1dp"
-                    android:elevation="2dp">
+                    app:strokeColor="@color/marimo_light_yellow"
+                    app:strokeWidth="1dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -407,34 +411,35 @@
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:src="@drawable/ic_calendar_orange"
-                            android:scaleType="centerCrop"
                             android:layout_marginBottom="8dp"
-                            android:padding="8dp"
-                            android:contentDescription="@string/img"
+                            android:background="@drawable/circle_mask_soon"
                             android:clipToOutline="true"
-                            android:background="@drawable/circle_mask_soon"/>
+                            android:contentDescription="@string/img"
+                            android:padding="8dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_calendar_orange" />
 
                         <TextView
                             android:id="@+id/dueSoonMarimo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="@string/_0"
                             android:textColor="@color/marimo_orange"
                             android:textSize="22sp"
-                            android:textStyle="bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:textStyle="bold" />
 
                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:text="@string/due_soon"
                             android:textColor="@color/marimo_orange"
-                            android:textStyle="bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:textStyle="bold" />
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
             </GridLayout>
+
             <GridLayout
                 android:id="@+id/grid_status_alternative"
                 android:layout_width="match_parent"
@@ -445,135 +450,143 @@
                 android:columnOrderPreserved="false"
                 android:rowCount="1"
                 android:useDefaultMargins="true"
-                android:visibility="gone"> <!-- Total Marimos -->
+                android:visibility="gone">
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_margin="4dp"
-                    android:background="#E8FFF5"
-                    android:backgroundTint="#E8FFF5"
+                    android:background="@color/marimo_primary_light"
+                    android:backgroundTint="@color/marimo_primary_light"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="16dp">
 
                     <TextView
-                        android:text="@string/total"
-                        android:textColor="#0B6E4F"
-                        android:textStyle="bold"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:text="@string/total"
+                        android:textColor="@color/marimo_text_primary"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/totalMarimo_alternative"
-                        android:text="@string/_3"
-                        android:textColor="#0B6E4F"
-                        android:textSize="22sp"
-                        android:textStyle="bold"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                </LinearLayout> <!-- Overdue -->
+                        android:layout_height="wrap_content"
+                        android:text="@string/_3"
+                        android:textColor="@color/marimo_text_primary"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_margin="4dp"
-                    android:background="#FFEDED"
+                    android:background="@color/marimo_bg_error"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="16dp">
 
                     <TextView
-                        android:text="@string/overdue"
-                        android:textColor="#D9534F"
-                        android:textStyle="bold"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:text="@string/overdue"
+                        android:textColor="@color/marimo_red"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/overdueMarimo_alternative"
-                        android:text="@string/_3"
-                        android:textColor="#D9534F"
-                        android:textSize="22sp"
-                        android:textStyle="bold"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                </LinearLayout> <!-- Due Soon -->
+                        android:layout_height="wrap_content"
+                        android:text="@string/_3"
+                        android:textColor="@color/marimo_red"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_margin="4dp"
-                    android:background="#FFF9E6"
+                    android:background="@color/marimo_bg_light_yellow"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="16dp">
 
                     <TextView
-                        android:text="@string/due_soon"
-                        android:textColor="#E1A500"
-                        android:textStyle="bold"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:text="@string/due_soon"
+                        android:textColor="@color/marimo_orange"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/dueSoonMarimo_alternative"
-                        android:text="@string/_0"
-                        android:textColor="#E1A500"
-                        android:textSize="22sp"
-                        android:textStyle="bold"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:text="@string/_0"
+                        android:textColor="@color/marimo_orange"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
-            </GridLayout> <!-- Section Title -->
+            </GridLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="16dp">
+
                 <TextView
-                    android:text="@string/your_marimos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
+                    android:text="@string/your_marimos"
                     android:textColor="@color/marimo_black"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:textStyle="bold" />
+
                 <Button
                     android:id="@+id/btnAddMarimo"
-                    android:layout_marginStart="125dp"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
+                    android:layout_marginStart="125dp"
+                    android:background="@drawable/bg_notes_green_card"
                     android:text="@string/add_marimo"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
-                    app:backgroundTint="@null"
-                    android:background="@drawable/bg_notes_green_card"
-                    />
+                    app:backgroundTint="@null" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/filterTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="16dp">
+
                 <TextView
-                    android:text="@string/filters"
-                    android:layout_marginStart="12dp"
-                    android:textColor="@color/marimo_black"
-                    android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="@string/filters"
+                    android:textColor="@color/marimo_black"
+                    android:textSize="18sp"
                     app:drawableStartCompat="@drawable/ic_filter" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/buttonFilter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
                 android:clipChildren="false"
-                android:clipToPadding="false"
-                android:layout_marginBottom="20dp">
+                android:clipToPadding="false">
 
                 <FrameLayout
                     android:layout_width="wrap_content"
@@ -584,28 +597,28 @@
                         android:id="@+id/btnAllFilter"
                         android:layout_width="160dp"
                         android:layout_height="48dp"
+                        android:background="@drawable/bg_btn_primary"
                         android:text="@string/all"
                         android:textAllCaps="false"
                         android:textColor="@android:color/white"
-                        app:backgroundTint="@null"
-                        android:background="@drawable/bg_btn_primary"/>
+                        app:backgroundTint="@null" />
 
-                    <!-- BADGE -->
                     <TextView
                         android:id="@+id/badgeAll"
                         android:layout_width="22dp"
                         android:layout_height="22dp"
-                        android:text="@string/_1"
+                        android:layout_gravity="top|end"
+                        android:background="@drawable/bg_badge_all"
                         android:gravity="center"
+                        android:text="@string/_1"
+                        android:textColor="@color/marimo_dark"
                         android:textSize="12sp"
                         android:textStyle="bold"
-                        android:textColor="@color/marimo_dark"
-                        android:background="@drawable/bg_badge_all"
-                        android:layout_gravity="top|end"
                         android:translationX="6dp"
-                        android:translationY="-6dp"/>
+                        android:translationY="-6dp" />
 
                 </FrameLayout>
+
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -615,37 +628,36 @@
                         android:id="@+id/btnOverdueFilter"
                         android:layout_width="160dp"
                         android:layout_height="48dp"
+                        android:background="@drawable/bg_btn_white"
+                        android:drawableEnd="@drawable/ic_warning_triangle_red"
                         android:text="@string/overdue"
                         android:textAllCaps="false"
-                        android:drawableEnd="@drawable/ic_warning_triangle_red"
                         android:textColor="@color/marimo_dark"
-                        app:backgroundTint="@null"
-                        android:background="@drawable/bg_btn_white"/>
+                        app:backgroundTint="@null" />
 
-                    <!-- BADGE -->
                     <TextView
                         android:id="@+id/badgeOverdue"
                         android:layout_width="22dp"
                         android:layout_height="22dp"
-                        android:text="@string/_6"
+                        android:layout_gravity="top|end"
+                        android:background="@drawable/bg_badge_red"
                         android:gravity="center"
+                        android:text="@string/_6"
+                        android:textColor="@color/marimo_red"
                         android:textSize="12sp"
                         android:textStyle="bold"
-                        android:textColor="@color/marimo_red"
-                        android:background="@drawable/bg_badge_red"
-                        android:layout_gravity="top|end"
                         android:translationX="6dp"
-                        android:translationY="-6dp"/>
+                        android:translationY="-6dp" />
 
                 </FrameLayout>
             </LinearLayout>
 
             <LinearLayout
-                android:clipChildren="false"
-                android:clipToPadding="false"
                 android:id="@+id/buttonFilter2"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false">
 
                 <FrameLayout
                     android:layout_width="wrap_content"
@@ -656,29 +668,28 @@
                         android:id="@+id/btnDueSoonFilter"
                         android:layout_width="160dp"
                         android:layout_height="48dp"
+                        android:background="@drawable/bg_btn_white"
+                        android:drawableEnd="@drawable/ic_calendar_due_soon"
+                        android:drawablePadding="8dp"
                         android:text="@string/soon_f"
                         android:textAllCaps="false"
                         android:textColor="@color/marimo_dark"
                         app:backgroundTint="@null"
-                        android:background="@drawable/bg_btn_white"
-                        android:drawableEnd="@drawable/ic_calendar_due_soon"
-                        android:drawablePadding="8dp"
-                        app:drawableTint="@color/marimo_dark"/>
+                        app:drawableTint="@color/marimo_dark" />
 
-                    <!-- BADGE -->
                     <TextView
                         android:id="@+id/badgeDueSoon"
                         android:layout_width="22dp"
                         android:layout_height="22dp"
-                        android:text="@string/_3"
+                        android:layout_gravity="top|end"
+                        android:background="@drawable/bg_badge_orange"
                         android:gravity="center"
+                        android:text="@string/_3"
+                        android:textColor="@color/marimo_orange"
                         android:textSize="12sp"
                         android:textStyle="bold"
-                        android:textColor="@color/marimo_orange"
-                        android:background="@drawable/bg_badge_orange"
-                        android:layout_gravity="top|end"
                         android:translationX="6dp"
-                        android:translationY="-6dp"/>
+                        android:translationY="-6dp" />
 
                 </FrameLayout>
 
@@ -691,29 +702,28 @@
                         android:id="@+id/btnUpToDateFilter"
                         android:layout_width="160dp"
                         android:layout_height="48dp"
+                        android:background="@drawable/bg_btn_white"
+                        android:drawableEnd="@drawable/ic_clock"
+                        android:drawablePadding="8dp"
                         android:text="@string/upToDate"
                         android:textAllCaps="false"
                         android:textColor="@color/marimo_dark"
                         app:backgroundTint="@null"
-                        android:background="@drawable/bg_btn_white"
-                        android:drawableEnd="@drawable/ic_clock"
-                        android:drawablePadding="8dp"
-                        app:drawableTint="@color/marimo_dark"/>
+                        app:drawableTint="@color/marimo_dark" />
 
-                    <!-- BADGE -->
                     <TextView
                         android:id="@+id/badgeUpToDate"
                         android:layout_width="22dp"
                         android:layout_height="22dp"
-                        android:text="@string/_4"
+                        android:layout_gravity="top|end"
+                        android:background="@drawable/bg_badge_green"
                         android:gravity="center"
+                        android:text="@string/_4"
+                        android:textColor="@color/marimo_item_green"
                         android:textSize="12sp"
                         android:textStyle="bold"
-                        android:textColor="@color/marimo_item_green"
-                        android:background="@drawable/bg_badge_green"
-                        android:layout_gravity="top|end"
                         android:translationX="6dp"
-                        android:translationY="-6dp"/>
+                        android:translationY="-6dp" />
 
                 </FrameLayout>
 
@@ -723,16 +733,17 @@
                 android:id="@+id/sorts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="16dp"
-                android:layout_marginTop="16dp">
+                android:layout_marginTop="16dp"
+                android:paddingBottom="16dp">
+
                 <TextView
-                    android:text="@string/sort"
-                    android:layout_marginStart="12dp"
-                    android:textColor="@color/marimo_black"
-                    android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginStart="12dp"
+                    android:text="@string/sort"
+                    android:textColor="@color/marimo_black"
+                    android:textSize="18sp"
                     app:drawableStartCompat="@drawable/ic_sort" />
 
                 <include
@@ -745,11 +756,11 @@
                 android:id="@+id/recyclerMarimos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
+                android:nestedScrollingEnabled="false"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:nestedScrollingEnabled="false"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/emptyListLabel"
@@ -760,14 +771,11 @@
                 android:visibility="gone" />
 
             <include
-                android:id="@+id/include2" layout="@layout/footer">
-            </include>
+                android:id="@+id/include2"
+                layout="@layout/footer" />
 
         </LinearLayout>
 
-
-
     </LinearLayout>
-
 
 </androidx.core.widget.NestedScrollView>

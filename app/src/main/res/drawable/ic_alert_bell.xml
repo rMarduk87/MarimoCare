@@ -8,7 +8,7 @@
     <!-- Corpo campana -->
     <path
         android:fillColor="@android:color/transparent"
-        android:strokeColor="#0A976A"
+        android:strokeColor="@color/marimo_item_green"
         android:strokeWidth="1.5"
         android:strokeLineCap="round"
         android:strokeLineJoin="round"
@@ -26,7 +26,7 @@
     <!-- Batacchio -->
     <path
         android:fillColor="@android:color/transparent"
-        android:strokeColor="#0A976A"
+        android:strokeColor="@color/marimo_item_green"
         android:strokeWidth="1.5"
         android:strokeLineCap="round"
         android:pathData="

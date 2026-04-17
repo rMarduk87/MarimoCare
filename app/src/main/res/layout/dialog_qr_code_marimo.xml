@@ -48,7 +48,7 @@
                 android:text="@string/marimo_qr_code"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="#6A6A6A"
+                android:textColor="@color/marimo_text_label"
                 android:layout_marginTop="2dp" />
         </LinearLayout>
 
@@ -61,7 +61,7 @@
             android:padding="6dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_close_24"
-            app:tint="#000000"/>
+            app:tint="@color/black"/>
     </LinearLayout>
 
     <!-- Spaziatura -->
@@ -102,7 +102,7 @@
         android:layout_gravity="center"
         android:text="@string/print_this_code_temp"
         android:textSize="14sp"
-        android:textColor="#6A6A6A"
+        android:textColor="@color/marimo_text_label"
         android:layout_marginTop="2dp" />
 
     <!-- Pulsante azioni QR -->

@@ -50,4 +50,47 @@
     <color name="health119">#F57C00</color>
     <color name="health_red">#C62828</color>
     <color name="health_normal">#4CAF50</color>
+
+    <!-- Feedback & Community -->
+    <color name="marimo_button_feedback">#93C5A6</color>
+    <color name="social_reddit">#FF8C42</color>
+    <color name="social_whatsapp_bg">#E7FFDB</color>
+    <color name="social_whatsapp_text">#075E54</color>
+    <color name="social_instagram">#E1306C</color>
+    <color name="marimo_border">#E5E7EB</color>
+
+    <!-- UI Elements -->
+    <color name="marimo_text_accent">#0A9A67</color>
+    <color name="marimo_stroke_light">#B8E6D4</color>
+    <color name="marimo_text_dark">#222222</color>
+    <color name="marimo_text_stats">#546E6A</color>
+    <color name="marimo_text_gray">#777777</color>
+    <color name="marimo_bg_gray">#EEEEEE</color>
+    <color name="marimo_graph_accent">#00A676</color>
+    <color name="marimo_bg_light">#F7FFFB</color>
+    <color name="marimo_tint_green">#008F7A</color>
+    <color name="marimo_text_slate">#5A646E</color>
+    <color name="marimo_milestone_bg">#E0E0E0</color>
+    <color name="marimo_text_medium_gray">#6D6D6D</color>
+    <color name="marimo_text_dim">#666666</color>
+    <color name="marimo_text_black">#1A1A1A</color>
+    <color name="marimo_tint_accent">#21C58E</color>
+    <color name="marimo_text_deep_black">#111111</color>
+    <color name="marimo_text_charcoal">#444444</color>
+    <color name="marimo_text_cool_gray">#374151</color>
+    <color name="marimo_text_forest">#347156</color>
+    <color name="marimo_text_muted">#9AAEA8</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="marimo_text_orange">#E47A1F</color>
+    <color name="marimo_text_label">#6A6A6A</color>
+    <color name="marimo_text_sub_body">#424242</color>
+    <color name="marimo_text_light_gray">#757575</color>
+    <color name="marimo_bg_error">#FFEDED</color>
+    <color name="marimo_bg_warning">#FFF9C4</color>
+    <color name="marimo_tint_warning">#FBC02D</color>
+    <color name="marimo_tint_star">#FFA000</color>
+    <color name="marimo_text_hint_alt">#9CA3AF</color>
+    <color name="marimo_dialog_overlay">#CC000000</color>
+    <color name="marimo_bg_light_yellow">#FFF9E6</color>
 </resources>

@@ -47,7 +47,7 @@
                     android:text="@string/mochi"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="#1A1A1A"
+                    android:textColor="@color/marimo_text_black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -55,7 +55,7 @@
                     android:id="@+id/txtFrequency"
                     android:text="@string/changes_every_14_days"
                     android:textSize="14sp"
-                    android:textColor="#777777"
+                    android:textColor="@color/marimo_text_gray"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -82,7 +82,7 @@
                     android:id="@+id/txtDaysLeft"
                     android:text="@string/_12_days_left"
                     android:textSize="12sp"
-                    android:textColor="#0A9A67"
+                    android:textColor="@color/marimo_text_accent"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -121,11 +121,11 @@
                     <TextView
                         android:text="@string/last_changed"
                         android:textSize="13sp"
-                        android:textColor="#777777"
+                        android:textColor="@color/marimo_text_gray"
                         android:layout_width="wrap_content"
                         app:drawableStartCompat="@drawable/ic_clock_mini"
                         android:drawablePadding="5dp"
-                        app:drawableTint="#777777"
+                        app:drawableTint="@color/marimo_text_gray"
                         android:layout_height="wrap_content" />
 
                     <TextView
@@ -133,7 +133,7 @@
                         android:text="@string/oct_15_2025"
                         android:textStyle="bold"
                         android:textSize="14sp"
-                        android:textColor="#1A1A1A"
+                        android:textColor="@color/marimo_text_black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
@@ -147,10 +147,10 @@
                     <TextView
                         android:text="@string/next_change"
                         android:textSize="13sp"
-                        android:textColor="#777777"
+                        android:textColor="@color/marimo_text_gray"
                         android:drawablePadding="5dp"
                         app:drawableStartCompat="@drawable/ic_calendar_mini"
-                        app:drawableTint="#777777"
+                        app:drawableTint="@color/marimo_text_gray"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
@@ -171,7 +171,7 @@
         <TextView
             android:text="@string/notes"
             android:textSize="13sp"
-            android:textColor="#777777"
+            android:textColor="@color/marimo_text_gray"
             android:layout_marginTop="10dp"
             android:paddingStart="20dp"
             android:layout_width="wrap_content"
@@ -193,7 +193,7 @@
                 android:id="@+id/txtNotes"
                 android:text="@string/my_first_marimo_very_round_and_bouncy"
                 android:textSize="14sp"
-                android:textColor="#1A1A1A"
+                android:textColor="@color/marimo_text_black"
                 android:padding="16dp"
                 app:backgroundTint="@null"
                 android:layout_width="match_parent"

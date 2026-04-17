@@ -5,7 +5,7 @@
     android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F3FFFA"
+    android:background="@color/marimo_background"
     android:fillViewport="true">
 
     <LinearLayout
@@ -21,16 +21,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp"> <!-- Header --> <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingVertical="12dp"
-            android:text="@string/marimo_care_dashboard"
-            android:textColor="#0B6E4F"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            android:padding="16dp"> <!-- Header -->             <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="12dp">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/marimo_care_dashboard"
+                    android:textColor="@color/marimo_text_primary"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/btnOpenFeedbackDashboard"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/send_feedback"
+                    android:src="@drawable/ic_feedback"
+                    app:tint="@color/marimo_text_primary" />
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/subtitle"
@@ -39,7 +55,7 @@
                 android:gravity="center"
                 android:paddingBottom="16dp"
                 android:text="@string/keep_track_of_your_marimo"
-                android:textColor="#555"
+                android:textColor="@color/marimo_text_secondary"
                 android:textSize="14sp" /> <!-- Tip Card -->
 
             <LinearLayout
@@ -167,7 +183,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                app:cardBackgroundColor="#F3FFFA"
+                app:cardBackgroundColor="@color/marimo_background"
                 app:strokeColor="@color/marimo_item_edit_board"
                 app:cardCornerRadius="12dp"
                 app:strokeWidth="1dp"
@@ -201,7 +217,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="12dp"
                             android:text="@string/marimo_tip_title_1"
-                            android:textColor="#347156"
+                            android:textColor="@color/marimo_text_forest"
                             android:textSize="14sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -248,8 +264,8 @@
                             android:layout_marginTop="10dp"
                             app:dotsSize="6dp"
                             app:dotsSpacing="6dp"
-                            app:dotsColor="#a7f3d0"
-                            app:selectedDotColor="#10b981"/>
+                            app:dotsColor="@color/marimo_item_edit_board"
+                            app:selectedDotColor="@color/green_primary"/>
 
                         <ImageButton
                             android:id="@+id/arrowRight"
@@ -313,7 +329,7 @@
                         <TextView
                             android:id="@+id/totalMarimo"
                             android:text="@string/_3"
-                            android:textColor="#0B6E4F"
+                            android:textColor="@color/marimo_text_primary"
                             android:textSize="22sp"
                             android:textStyle="bold"
                             android:layout_width="wrap_content"
@@ -321,7 +337,7 @@
 
                         <TextView
                             android:text="@string/total"
-                            android:textColor="#0B6E4F"
+                            android:textColor="@color/marimo_text_primary"
                             android:textStyle="bold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
@@ -450,15 +466,15 @@
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_margin="4dp"
-                    android:background="#E8FFF5"
-                    android:backgroundTint="#E8FFF5"
+                    android:background="@color/marimo_primary_light"
+                    android:backgroundTint="@color/marimo_primary_light"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="16dp">
 
                     <TextView
                         android:text="@string/total"
-                        android:textColor="#0B6E4F"
+                        android:textColor="@color/marimo_text_primary"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
@@ -466,7 +482,7 @@
                     <TextView
                         android:id="@+id/totalMarimo_alternative"
                         android:text="@string/_3"
-                        android:textColor="#0B6E4F"
+                        android:textColor="@color/marimo_text_primary"
                         android:textSize="22sp"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
@@ -478,14 +494,14 @@
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_margin="4dp"
-                    android:background="#FFEDED"
+                    android:background="@color/marimo_bg_error"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="16dp">
 
                     <TextView
                         android:text="@string/overdue"
-                        android:textColor="#D9534F"
+                        android:textColor="@color/marimo_red"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
@@ -493,7 +509,7 @@
                     <TextView
                         android:id="@+id/overdueMarimo_alternative"
                         android:text="@string/_3"
-                        android:textColor="#D9534F"
+                        android:textColor="@color/marimo_red"
                         android:textSize="22sp"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
@@ -505,14 +521,14 @@
                     android:layout_rowWeight="1"
                     android:layout_columnWeight="1"
                     android:layout_margin="4dp"
-                    android:background="#FFF9E6"
+                    android:background="@color/marimo_bg_light_yellow"
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="16dp">
 
                     <TextView
                         android:text="@string/due_soon"
-                        android:textColor="#E1A500"
+                        android:textColor="@color/marimo_orange"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
@@ -520,7 +536,7 @@
                     <TextView
                         android:id="@+id/dueSoonMarimo_alternative"
                         android:text="@string/_0"
-                        android:textColor="#E1A500"
+                        android:textColor="@color/marimo_orange"
                         android:textSize="22sp"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"

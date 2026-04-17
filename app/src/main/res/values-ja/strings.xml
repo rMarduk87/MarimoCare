@@ -246,6 +246,37 @@
     <string name="last_sixth_month">過去6ヶ月</string>
     <string name="last_year">過去1年間</string>
     <string name="actual_water_changes_over_the_last_12_months">過去1年間の実際の水位変化</string>
+    <string name="feedback">フィードバック</string>
+    <string name="help_us_improve_marimo_care_choose_a_topic_and_send_us_your_thoughts_ideas_or_bug_reports">Marimo Careの改善にご協力ください！トピックを選択して、ご意見、アイデア、またはバグ報告をお送りください。</string>
+    <string name="_1_choose_a_topic">1. トピックを選択してください</string>
+    <string name="what_would_you_like_to_give_feedback_about">どのようなフィードバックをお寄せいただけますか？</string>
+    <string name="bug_report">バグ報告</string>
+    <string name="_2_write_your_message">2.メッセージを入力</string>
+    <string name="describe_your_idea_issue_or_suggestion_here">アイデア、問題、または提案をここに記述してください…</string>
+    <string name="send_feedback">フィードバックを送信</string>
+    <string name="join_the_marimo_community">マリモコミュニティに参加</string>
+    <string name="reddit">Reddit</string>
+    <string name="whatsapp">WhatsApp</string>
+    <string name="instagram">Instagram</string>
+    <string name="share_your_feedback">フィードバックを共有</string>
+    <string name="feature_request">機能リクエスト</string>
+    <string name="ui_design">UI / デザイン</string>
+    <string name="new_content">新しいコンテンツ</string>
+    <string name="general_feedback">一般的なフィードバック</string>
+    <string name="other">その他</string>
+    <string name="please_select_at_least_one_topic_and_write_a_message">少なくとも1つのトピックを選択してメッセージを書いてください。</string>
+    <string name="marimo_care_feedback">マリモケアに関するフィードバック: %1$s</string>
+    <string name="riccardo_pezzolati_gmail_com">riccardo.pezzolati@gmail.com</string>
+    <string name="choose_email_client">メールクライアントを選択してください…</string>
+    <string name="no_email_app_found_on_your_device">お使いのデバイスにメールアプリが見つかりませんでした。</string>
+    <string name="https_www_reddit_com_r_marimo">https://www.reddit.com/r/Marimo/</string>
+    <string name="https_www_instagram_com_explore_tags_marimo">https://www.instagram.com/explore/tags/marimo/</string>
+    <string name="https_play_google_com_store_apps_details_id_rpt_tool_marimocare">https://play.google.com/store/apps/details?id=rpt.tool.marimocare</string>
+    <string name="check_out_marimo_care">マリモケアをチェック！ %1$s</string>
+    <string name="unable_to_open_link">リンクを開けません。</string>
+    <string name="whatsapp_is_not_installed_on_this_device">このデバイスにはWhatsAppがインストールされていません。</string>
+    <string name="clear_all">すべてクリア</string>
+    <string name="form_cleared">フォームがクリアされました</string>
     <string-array name="marimo_frequencies">
         <item>7日ごと（週ごと）</item>
         <item>10日ごと</item>

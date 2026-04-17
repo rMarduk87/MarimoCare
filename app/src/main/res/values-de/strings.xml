@@ -247,6 +247,37 @@
     <string name="last_sixth_month">Letzte 6 Monate</string>
     <string name="last_year">Letztes Jahr</string>
     <string name="actual_water_changes_over_the_last_12_months">Tatsächliche Wasserveränderungen im letzten Jahr</string>
+    <string name="feedback">Feedback</string>
+    <string name="help_us_improve_marimo_care_choose_a_topic_and_send_us_your_thoughts_ideas_or_bug_reports">Helfen Sie uns, Marimo Care zu verbessern! Wählen Sie ein Thema und senden Sie uns Ihre Gedanken, Ideen oder Fehlerberichte.</string>
+    <string name="_1_choose_a_topic">1. Wählen Sie ein Thema</string>
+    <string name="what_would_you_like_to_give_feedback_about">Wozu möchten Sie Feedback geben?</string>
+    <string name="bug_report">Fehlerbericht</string>
+    <string name="_2_write_your_message">2. Schreiben Sie Ihre Nachricht</string>
+    <string name="describe_your_idea_issue_or_suggestion_here">Beschreiben Sie hier Ihre Idee, Ihr Problem oder Ihren Vorschlag…</string>
+    <string name="send_feedback">Feedback senden</string>
+    <string name="join_the_marimo_community">Treten Sie der Marimo-Community bei</string>
+    <string name="reddit">Reddit</string>
+    <string name="whatsapp">WhatsApp</string>
+    <string name="instagram">Instagram</string>
+    <string name="share_your_feedback">Teilen Sie Ihr Feedback</string>
+    <string name="feature_request">Funktionsanfrage</string>
+    <string name="ui_design">UI/Design</string>
+    <string name="new_content">Neue Inhalte</string>
+    <string name="general_feedback">Allgemeines Feedback</string>
+    <string name="other">Sonstiges</string>
+    <string name="please_select_at_least_one_topic_and_write_a_message">Bitte wählen Sie mindestens ein Thema aus und schreiben Sie eine Nachricht.</string>
+    <string name="marimo_care_feedback">Marimo-Care feedback: %1$s</string>
+    <string name="riccardo_pezzolati_gmail_com">riccardo.pezzolati@gmail.com</string>
+    <string name="choose_email_client">E-Mail-Client auswählen…</string>
+    <string name="no_email_app_found_on_your_device">Auf Ihrem Gerät wurde keine E-Mail-App gefunden.</string>
+    <string name="https_www_reddit_com_r_marimo">https://www.reddit.com/r/Marimo/</string>
+    <string name="https_www_instagram_com_explore_tags_marimo">https://www.instagram.com/explore/tags/marimo/</string>
+    <string name="https_play_google_com_store_apps_details_id_rpt_tool_marimocare">https://play.google.com/store/apps/details?id=rpt.tool.marimocare</string>
+    <string name="check_out_marimo_care">Entdecke Marimo Care! %1$s</string>
+    <string name="unable_to_open_link">Link konnte nicht geöffnet werden.</string>
+    <string name="whatsapp_is_not_installed_on_this_device">WhatsApp ist auf diesem Gerät nicht installiert.</string>
+    <string name="clear_all">Alle löschen</string>
+    <string name="form_cleared">Formular gelöscht</string>
     <string-array name="marimo_frequencies">
         <item>Alle 7 Tage (wöchentlich)</item>
         <item>Alle 10 Tage</item>

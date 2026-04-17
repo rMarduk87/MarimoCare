@@ -10,7 +10,7 @@
     app:cardCornerRadius="24dp"
     app:cardElevation="6dp"
     app:strokeWidth="0dp"
-    app:strokeColor="#B8E6D4">
+    app:strokeColor="@color/marimo_stroke_light">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/ic_coccard"
-            app:tint="#008F7A"
+            app:tint="@color/marimo_tint_green"
             android:contentDescription="@string/img"
             android:layout_marginEnd="12dp"/>
 
@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/quick_actions"
-            android:textColor="#000000"
+            android:textColor="@color/black"
             android:textSize="22sp"
             android:textStyle="bold"/>
     </LinearLayout>
@@ -48,13 +48,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/log_water_change"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         app:backgroundTint="@null"
         android:background="@drawable/bg_notes_green_card"
         app:icon="@drawable/ic_water_drop_white"
-        app:iconTint="#FFFFFF"
+        app:iconTint="@color/white"
         app:iconGravity="textStart"
         app:iconPadding="12dp"
         app:cornerRadius="16dp"
@@ -72,7 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/marimo_notes"
-            android:textColor="#444444"
+            android:textColor="@color/marimo_text_charcoal"
             android:textSize="16sp"
             android:layout_marginBottom="8dp"/>
 
@@ -81,7 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/wow"
-            android:textColor="#222222"
+            android:textColor="@color/marimo_text_dark"
             android:textSize="18sp"/>
     </LinearLayout>
 

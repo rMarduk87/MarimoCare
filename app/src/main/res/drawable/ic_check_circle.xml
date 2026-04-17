@@ -6,7 +6,7 @@
 
     <!-- Ovale verticale verde -->
     <path
-        android:fillColor="#1ABC9C"
+        android:fillColor="@color/marimo_primary"
         android:pathData="M0,19
                           a19,19 0 0 1 38,0
                           v18
