@@ -111,26 +111,12 @@ class AppUtils {
             }
         }
 
-        fun getLastSixMonthsLabels(): List<String> {
+        fun getMonthLabels(months: Int): List<String> {
             val calendar = Calendar.getInstance()
             val sdf = SimpleDateFormat("yyyy-MM", Locale.getDefault())
             val labels = mutableListOf<String>()
 
-            for (i in 5 downTo 0) {
-                val tempCal = calendar.clone() as Calendar
-                tempCal.add(Calendar.MONTH, -i)
-                labels.add(sdf.format(tempCal.time))
-            }
-
-            return labels
-        }
-
-        fun getLastYearMonthsLabels(): List<String> {
-            val calendar = Calendar.getInstance()
-            val sdf = SimpleDateFormat("yyyy-MM", Locale.getDefault())
-            val labels = mutableListOf<String>()
-
-            for (i in 11 downTo 0) {
+            for (i in (months - 1) downTo 0) {
                 val tempCal = calendar.clone() as Calendar
                 tempCal.add(Calendar.MONTH, -i)
                 labels.add(sdf.format(tempCal.time))

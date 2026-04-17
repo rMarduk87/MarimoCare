@@ -318,10 +318,8 @@
             </com.google.android.material.card.MaterialCardView>
 
             <include
-                android:id="@+id/include2"
-                layout="@layout/footer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:id="@+id/include2" layout="@layout/footer">
+            </include>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

@@ -24,6 +24,21 @@ import kotlin.sequences.forEach
 import kotlin.takeIf
 import kotlin.text.toIntOrNull
 
+import android.content.res.ColorStateList
+import android.graphics.Color
+import android.graphics.PorterDuff
+import android.widget.ImageView
+import androidx.core.graphics.toColorInt
+import com.bumptech.glide.Glide
+import com.google.android.material.card.MaterialCardView
+import rpt.tool.marimocare.R
+import java.io.File
+import android.content.Context
+import android.net.Uri
+import android.widget.TextView
+import androidx.core.content.ContextCompat
+import java.io.FileOutputStream
+
 fun View.enable(enabled: Boolean) {
     this.alpha = if (enabled) {
         1f
@@ -92,3 +107,63 @@ fun TextInputEditText.updateText(text: String?) {
 
 
 fun String.isInteger() = this.toIntOrNull()?.let { true } ?: false
+
+fun ImageView.loadMarimoImage(file: File?) {
+    this.clearColorFilter()
+    this.imageTintList = null
+    this.background = null
+
+    if (file != null && file.exists()) {
+        Glide.with(this.context)
+            .load(file)
+            .centerCrop()
+            .placeholder(R.drawable.ic_water_drop_white)
+            .into(this)
+    } else {
+        this.setImageResource(R.drawable.ic_water_drop_white)
+        this.setColorFilter("#00BFA6".toColorInt(), PorterDuff.Mode.SRC_IN)
+    }
+}
+
+fun getHealthColorHex(health: Int): String {
+    return when {
+        health == 100 -> "#2E7D32"
+        health in 40..70 -> "#c9bb3a"
+        health in 1..19 -> "#F57C00"
+        health <= 0 -> "#C62828"
+        else -> "#4CAF50"
+    }
+}
+
+fun Int.getHealthColor(): Int = getHealthColorHex(this).toColorInt()
+
+fun getHealthTextColorRes(health: Int): Int {
+    return if (health in 40..70) R.color.marimo_dark
+    else android.R.color.white
+}
+
+fun View.applyHealthColor(health: Int) {
+    this.backgroundTintList = ColorStateList.valueOf(health.getHealthColor())
+}
+
+fun MaterialCardView.applyHealthStroke(health: Int) {
+    this.strokeColor = health.getHealthColor()
+}
+
+fun TextView.applyHealthTextColor(health: Int) {
+    this.setTextColor(ContextCompat.getColor(this.context, getHealthTextColorRes(health)))
+}
+
+fun Context.copyUriToInternalFile(uri: Uri): File {
+    val file = File(
+        this.filesDir,
+        "marimo_${System.currentTimeMillis()}.jpg"
+    )
+
+    this.contentResolver.openInputStream(uri)?.use { input ->
+        FileOutputStream(file).use { output ->
+            input.copyTo(output)
+        }
+    }
+    return file
+}
