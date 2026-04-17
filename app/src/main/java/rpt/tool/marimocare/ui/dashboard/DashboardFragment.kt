@@ -55,6 +55,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.skydoves.balloon.BalloonAlign
 import com.skydoves.balloon.balloon
 import rpt.tool.marimocare.utils.AppUtils
+import rpt.tool.marimocare.utils.balloon.feedback.FeedbackBalloonFactory
 import rpt.tool.marimocare.utils.balloon.waterchange.DialogChangeWaterBalloonFactory
 import rpt.tool.marimocare.utils.balloon.waterchange.WaterChangeInfoBalloonFactory
 import rpt.tool.marimocare.utils.data.appmodels.MarimoToFix
@@ -81,6 +82,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     private var marimoToFix: MutableList<MarimoToFix> = mutableListOf()
     private val marimoUpdateBalloon by balloon<WaterChangeInfoBalloonFactory>()
     private val newDialogChangeWaterBalloon by balloon<DialogChangeWaterBalloonFactory>()
+    private val feedBackBalloon by balloon<FeedbackBalloonFactory>()
     private var imagePath: String? = null
     private var tempImageUri: Uri? = null
 
@@ -304,6 +306,15 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         binding.btnOpenFeedbackDashboard.setOnClickListener {
             safeNavController?.safeNavigate(DashboardFragmentDirections
                 .actionDashboardFragmentToFeedbackFragment())
+        }
+
+        if(SharedPreferencesManager.showBallonFeedback){
+            SharedPreferencesManager.showBallonFeedback = false
+            feedBackBalloon.showAlign(
+                align = BalloonAlign.BOTTOM,
+                mainAnchor = binding.btnOpenFeedbackDashboard as View,
+                subAnchorList = listOf(binding.btnOpenFeedbackDashboard as View),
+            )
         }
     }
 
