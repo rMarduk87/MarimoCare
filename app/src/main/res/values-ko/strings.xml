@@ -247,6 +247,37 @@
     <string name="last_sixth_month">지난 6개월</string>
     <string name="last_year">지난 1년</string>
     <string name="actual_water_changes_over_the_last_12_months">지난 1년간의 실제 물 변화량</string>
+    <string name="feedback">피드백</string>
+    <string name="help_us_improve_marimo_care_choose_a_topic_and_send_us_your_thoughts_ideas_or_bug_reports">마리모 케어 개선에 도움을 주세요! 주제를 선택하고 생각, 아이디어 또는 버그 보고서를 보내주세요.</string>
+    <string name="_1_choose_a_topic">1. 주제 선택</string>
+    <string name="what_would_you_like_to_give_feedback_about">어떤 내용에 대한 피드백을 주시겠습니까?</string>
+    <string name="bug_report">버그 보고</string>
+    <string name="_2_write_your_message">2. 메시지를 작성하세요</string>
+    <string name="describe_your_idea_issue_or_suggestion_here">아이디어, 문제 또는 제안을 여기에 작성하세요…</string>
+    <string name="send_feedback">피드백 보내기</string>
+    <string name="join_the_marimo_community">마리모 커뮤니티에 참여하세요</string>
+    <string name="reddit">레딧</string>
+    <string name="whatsapp">왓츠앱</string>
+    <string name="instagram">인스타그램</string>
+    <string name="share_your_feedback">피드백 공유</string>
+    <string name="feature_request">기능 요청</string>
+    <string name="ui_design">UI/디자인</string>
+    <string name="new_content">새 콘텐츠</string>
+    <string name="general_feedback">일반 피드백</string>
+    <string name="other">기타</string>
+    <string name="please_select_at_least_one_topic_and_write_a_message">주제를 하나 이상 선택하고 메시지를 작성해 주세요.</string>
+    <string name="marimo_care_feedback">마리모 고객 지원 피드백: %1$s</string>
+    <string name="riccardo_pezzolati_gmail_com">riccardo.pezzolati@gmail.com</string>
+    <string name="choose_email_client">이메일 클라이언트를 선택하세요…</string>
+    <string name="no_email_app_found_on_your_device">기기에서 이메일 앱을 찾을 수 없습니다.</string>
+    <string name="https_www_reddit_com_r_marimo">https://www.reddit.com/r/Marimo/</string>
+    <string name="https_www_instagram_com_explore_tags_marimo">https://www.instagram.com/explore/tags/marimo/</string>
+    <string name="https_play_google_com_store_apps_details_id_rpt_tool_marimocare">https://play.google.com/store/apps/details?id=rpt.tool.marimocare</string>
+    <string name="check_out_marimo_care">마리모 케어를 확인해 보세요! %1$s</string>
+    <string name="unable_to_open_link">링크를 열 수 없습니다.</string>
+    <string name="whatsapp_is_not_installed_on_this_device">이 기기에 WhatsApp이 설치되어 있지 않습니다.</string>
+    <string name="clear_all">모두 지우기</string>
+    <string name="form_cleared">폼이 지워졌습니다</string>
     <string-array name="marimo_frequencies">
         <item>매 7일(주간)</item>
         <item>매 10일</item>

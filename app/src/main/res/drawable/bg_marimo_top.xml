@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#A8D5C2"/>
+    <solid android:color="@color/marimo_button_feedback"/>
     <corners android:radius="32dp"/>
 </shape>

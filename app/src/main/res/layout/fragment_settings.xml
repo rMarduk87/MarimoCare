@@ -5,7 +5,7 @@
     android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F3FFFA"
+    android:background="@color/marimo_background"
     android:fillViewport="true">
 
     <LinearLayout
@@ -32,7 +32,7 @@
                 android:gravity="center"
                 android:paddingVertical="12dp"
                 android:text="@string/marimo_care_settings"
-                android:textColor="#0B6E4F"
+                android:textColor="@color/marimo_text_primary"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
@@ -43,7 +43,7 @@
                 android:gravity="center"
                 android:paddingBottom="16dp"
                 android:text="@string/customize_your_marimo_care_experience"
-                android:textColor="#555"
+                android:textColor="@color/marimo_text_secondary"
                 android:textSize="14sp" />
 
             <!-- Container impostazioni Dashboard -->
@@ -70,7 +70,7 @@
                         android:layout_marginEnd="10dp"
                         android:src="@drawable/ic_palette"
                         android:contentDescription="@string/img"
-                        app:tint="#0B6E4F" />
+                        app:tint="@color/marimo_text_primary" />
 
                     <TextView
                         android:id="@+id/txtTitle"
@@ -181,7 +181,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/_3"
                                 android:textSize="20sp"
-                                android:textColor="#0B6E4F"
+                                android:textColor="@color/marimo_text_primary"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -190,7 +190,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/total"
                                 android:textSize="12sp"
-                                android:textColor="#0B6E4F" />
+                                android:textColor="@color/marimo_text_primary" />
                         </LinearLayout>
 
                         <!-- Overdue -->
@@ -341,7 +341,7 @@
                             android:layout_weight="1"
                             android:orientation="vertical"
                             android:gravity="center"
-                            android:background="#E8FFF5"
+                            android:background="@color/marimo_primary_light"
                             android:padding="12dp"
                             android:layout_margin="4dp">
 
@@ -351,7 +351,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/_3"
                                 android:textSize="20sp"
-                                android:textColor="#0B6E4F"
+                                android:textColor="@color/marimo_text_primary"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -360,7 +360,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/total"
                                 android:textSize="12sp"
-                                android:textColor="#0B6E4F" />
+                                android:textColor="@color/marimo_text_primary" />
                         </LinearLayout>
 
                         <!-- Overdue -->
@@ -371,7 +371,7 @@
                             android:layout_weight="1"
                             android:orientation="vertical"
                             android:gravity="center"
-                            android:background="#FFEDED"
+                            android:background="@color/marimo_bg_error"
                             android:padding="12dp"
                             android:layout_margin="4dp">
 
@@ -401,7 +401,7 @@
                             android:layout_weight="1"
                             android:orientation="vertical"
                             android:gravity="center"
-                            android:background="#FFF9E6"
+                            android:background="@color/marimo_bg_warning"
                             android:padding="12dp"
                             android:layout_margin="4dp">
 
@@ -454,7 +454,7 @@
                             android:layout_height="30dp"
                             android:layout_marginEnd="10dp"
                             android:src="@drawable/ic_clock"
-                            app:tint="#0B6E4F"
+                            app:tint="@color/marimo_text_primary"
                             android:contentDescription="@string/img" />
 
                         <TextView
@@ -499,8 +499,8 @@
                             android:background="@drawable/edittext_outline_grey"
                             android:hint="@string/very_fast_5_seconds"
                             android:padding="14dp"
-                            android:textColor="#111827"
-                            android:textColorHint="#9CA3AF"
+                            android:textColor="@color/text_title"
+                            android:textColorHint="@color/marimo_text_hint_alt"
                             android:layout_marginBottom="12dp"
                             android:focusable="false"
                             android:focusableInTouchMode="false"
@@ -515,8 +515,8 @@
                             android:background="@drawable/edittext_outline_grey"
                             android:hint="@string/fast_10_seconds"
                             android:padding="14dp"
-                            android:textColor="#111827"
-                            android:textColorHint="#9CA3AF"
+                            android:textColor="@color/text_title"
+                            android:textColorHint="@color/marimo_text_hint_alt"
                             android:layout_marginBottom="12dp"
                             android:focusable="false"
                             android:focusableInTouchMode="false"
@@ -531,8 +531,8 @@
                             android:background="@drawable/edittext_outline_grey"
                             android:hint="@string/normal_15_seconds"
                             android:padding="14dp"
-                            android:textColor="#111827"
-                            android:textColorHint="#9CA3AF"
+                            android:textColor="@color/text_title"
+                            android:textColorHint="@color/marimo_text_hint_alt"
                             android:layout_marginBottom="12dp"
                             android:focusable="false"
                             android:focusableInTouchMode="false"
@@ -547,8 +547,8 @@
                             android:background="@drawable/edittext_outline_grey"
                             android:hint="@string/slow_20_seconds"
                             android:padding="14dp"
-                            android:textColor="#111827"
-                            android:textColorHint="#9CA3AF"
+                            android:textColor="@color/text_title"
+                            android:textColorHint="@color/marimo_text_hint_alt"
                             android:layout_marginBottom="12dp"
                             android:focusable="false"
                             android:focusableInTouchMode="false"
@@ -563,8 +563,8 @@
                             android:background="@drawable/edittext_outline_grey"
                             android:hint="@string/very_slow_25_seconds"
                             android:padding="14dp"
-                            android:textColor="#111827"
-                            android:textColorHint="#9CA3AF"
+                            android:textColor="@color/text_title"
+                            android:textColorHint="@color/marimo_text_hint_alt"
                             android:layout_marginBottom="12dp"
                             android:focusable="false"
                             android:focusableInTouchMode="false"
@@ -603,7 +603,7 @@
                             android:layout_height="30dp"
                             android:layout_marginEnd="10dp"
                             android:src="@drawable/ic_filter"
-                            app:tint="#0B6E4F"
+                            app:tint="@color/marimo_text_primary"
                             android:contentDescription="@string/img" />
 
                         <TextView
@@ -658,8 +658,8 @@
                             android:background="@drawable/edittext_outline_grey"
                             android:hint="@string/show_filters_and_sort_controls"
                             android:padding="14dp"
-                            android:textColor="#111827"
-                            android:textColorHint="#9CA3AF"
+                            android:textColor="@color/text_title"
+                            android:textColorHint="@color/marimo_text_hint_alt"
                             android:layout_marginBottom="12dp"
                             android:focusable="false"
                             android:focusableInTouchMode="false"
@@ -674,8 +674,8 @@
                             android:background="@drawable/edittext_outline_grey"
                             android:hint="@string/hide_filters_and_sort_controls"
                             android:padding="14dp"
-                            android:textColor="#111827"
-                            android:textColorHint="#9CA3AF"
+                            android:textColor="@color/text_title"
+                            android:textColorHint="@color/marimo_text_hint_alt"
                             android:layout_marginBottom="4dp"
                             android:focusable="false"
                             android:focusableInTouchMode="false"
@@ -712,8 +712,8 @@
                             android:background="@drawable/edittext_outline_grey"
                             android:hint="@string/all_marimos"
                             android:padding="14dp"
-                            android:textColor="#111827"
-                            android:textColorHint="#9CA3AF"
+                            android:textColor="@color/text_title"
+                            android:textColorHint="@color/marimo_text_hint_alt"
                             android:layout_marginBottom="12dp"
                             android:focusable="false"
                             android:focusableInTouchMode="false"
@@ -728,8 +728,8 @@
                             android:background="@drawable/edittext_outline_grey"
                             android:hint="@string/overdue_only"
                             android:padding="14dp"
-                            android:textColor="#111827"
-                            android:textColorHint="#9CA3AF"
+                            android:textColor="@color/text_title"
+                            android:textColorHint="@color/marimo_text_hint_alt"
                             android:layout_marginBottom="12dp"
                             android:focusable="false"
                             android:focusableInTouchMode="false"
@@ -744,8 +744,8 @@
                             android:background="@drawable/edittext_outline_grey"
                             android:hint="@string/due_soon_only"
                             android:padding="14dp"
-                            android:textColor="#111827"
-                            android:textColorHint="#9CA3AF"
+                            android:textColor="@color/text_title"
+                            android:textColorHint="@color/marimo_text_hint_alt"
                             android:layout_marginBottom="12dp"
                             android:focusable="false"
                             android:focusableInTouchMode="false"
@@ -760,8 +760,8 @@
                             android:background="@drawable/edittext_outline_grey"
                             android:hint="@string/up_to_date_only"
                             android:padding="14dp"
-                            android:textColor="#111827"
-                            android:textColorHint="#9CA3AF"
+                            android:textColor="@color/text_title"
+                            android:textColorHint="@color/marimo_text_hint_alt"
                             android:layout_marginBottom="4dp"
                             android:focusable="false"
                             android:focusableInTouchMode="false"
@@ -798,8 +798,8 @@
                             android:background="@drawable/edittext_outline_grey"
                             android:hint="@string/sort_by_status_overdue_first"
                             android:padding="14dp"
-                            android:textColor="#111827"
-                            android:textColorHint="#9CA3AF"
+                            android:textColor="@color/text_title"
+                            android:textColorHint="@color/marimo_text_hint_alt"
                             android:layout_marginBottom="12dp"
                             android:focusable="false"
                             android:focusableInTouchMode="false"
@@ -814,8 +814,8 @@
                             android:background="@drawable/edittext_outline_grey"
                             android:hint="@string/sorted_by_name_a_z"
                             android:padding="14dp"
-                            android:textColor="#111827"
-                            android:textColorHint="#9CA3AF"
+                            android:textColor="@color/text_title"
+                            android:textColorHint="@color/marimo_text_hint_alt"
                             android:layout_marginBottom="12dp"
                             android:focusable="false"
                             android:focusableInTouchMode="false"
@@ -830,8 +830,8 @@
                             android:background="@drawable/edittext_outline_grey"
                             android:hint="@string/sort_by_last_changed_newest_first"
                             android:padding="14dp"
-                            android:textColor="#111827"
-                            android:textColorHint="#9CA3AF"
+                            android:textColor="@color/text_title"
+                            android:textColorHint="@color/marimo_text_hint_alt"
                             android:layout_marginBottom="12dp"
                             android:focusable="false"
                             android:focusableInTouchMode="false"
@@ -871,7 +871,7 @@
                             android:layout_height="30dp"
                             android:layout_marginEnd="10dp"
                             android:src="@drawable/ic_stats"
-                            app:tint="#0B6E4F"
+                            app:tint="@color/marimo_text_primary"
                             android:contentDescription="@string/img" />
 
                         <TextView
@@ -916,8 +916,8 @@
                             android:background="@drawable/edittext_outline_grey"
                             android:hint="@string/last_sixth_month"
                             android:padding="14dp"
-                            android:textColor="#111827"
-                            android:textColorHint="#9CA3AF"
+                            android:textColor="@color/text_title"
+                            android:textColorHint="@color/marimo_text_hint_alt"
                             android:layout_marginBottom="12dp"
                             android:focusable="false"
                             android:focusableInTouchMode="false"
@@ -932,8 +932,8 @@
                             android:background="@drawable/edittext_outline_grey"
                             android:hint="@string/last_year"
                             android:padding="14dp"
-                            android:textColor="#111827"
-                            android:textColorHint="#9CA3AF"
+                            android:textColor="@color/text_title"
+                            android:textColorHint="@color/marimo_text_hint_alt"
                             android:layout_marginBottom="4dp"
                             android:focusable="false"
                             android:focusableInTouchMode="false"

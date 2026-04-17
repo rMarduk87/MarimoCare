@@ -9,9 +9,9 @@
     android:layout_margin="12dp"
     app:cardCornerRadius="18dp"
     app:cardElevation="4dp"
-    app:strokeColor="#D8F5E0"
+    app:strokeColor="@color/light_green"
     app:strokeWidth="1dp"
-    android:backgroundTint="#F7FFFB">
+    android:backgroundTint="@color/marimo_bg_light">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -33,7 +33,7 @@
 
                 <ImageView
                     android:src="@drawable/ic_hearth"
-                    app:tint="#00A676"
+                    app:tint="@color/marimo_graph_accent"
                     android:contentDescription="@string/img"
                     android:layout_width="22dp"
                     android:layout_height="22dp"/>
@@ -43,7 +43,7 @@
                     android:text="@string/individual_health_score"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:textColor="#000"
+                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </LinearLayout>

@@ -38,7 +38,7 @@
     <TextView
         android:layout_marginTop="8dp"
         android:text="@string/last_changed_to_fix"
-        android:textColor="#666"
+        android:textColor="@color/marimo_text_dim"
         android:textSize="14sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -61,8 +61,8 @@
         <Button
             android:id="@+id/btnCancel"
             android:text="@string/cancel"
-            android:backgroundTint="#EEEEEE"
-            android:textColor="#000"
+            android:backgroundTint="@color/marimo_bg_gray"
+            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
