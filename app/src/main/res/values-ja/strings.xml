@@ -277,6 +277,7 @@
     <string name="whatsapp_is_not_installed_on_this_device">このデバイスにはWhatsAppがインストールされていません。</string>
     <string name="clear_all">すべてクリア</string>
     <string name="form_cleared">フォームがクリアされました</string>
+    <string name="feedback_balloon">ここをクリックするとフィードバック画面が開きます。アプリの改善に関する提案を送信したり、Marimoコミュニティに参加したりできます。</string>
     <string-array name="marimo_frequencies">
         <item>7日ごと（週ごと）</item>
         <item>10日ごと</item>

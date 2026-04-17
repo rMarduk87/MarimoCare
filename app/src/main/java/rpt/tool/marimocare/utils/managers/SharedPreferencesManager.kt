@@ -93,4 +93,9 @@ object SharedPreferencesManager {
     var showBallonNewStats: Boolean
         get() = sharedPreferences.getBoolean(AppUtils.SHOW_BALLON_NEW_STATS, true)
         set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_BALLON_NEW_STATS, value) }
+
+    var showBallonFeedback: Boolean
+        get() = sharedPreferences.getBoolean(AppUtils.SHOW_BALLON_FEEDBACK, true)
+        set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_BALLON_FEEDBACK, value)}
+
 }

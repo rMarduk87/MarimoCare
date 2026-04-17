@@ -278,6 +278,7 @@
     <string name="whatsapp_is_not_installed_on_this_device">WhatsApp non è installato su questo dispositivo.</string>
     <string name="clear_all">Cancella tutto</string>
     <string name="form_cleared">Modulo cancellato</string>
+    <string name="feedback_balloon">Cliccando qui si aprirà la schermata del feedback dove potrai inviare suggerimenti per migliorare l\'app e unirti alla comunity dei Marimo</string>
     <string-array name="marimo_frequencies">
         <item>Ogni 7 giorni (settimanale)</item>
         <item>Ogni 10 giorni</item>
