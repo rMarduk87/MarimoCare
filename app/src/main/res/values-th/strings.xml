@@ -274,8 +274,8 @@
     <string name="check_out_marimo_care">ลองใช้ Marimo Care สิ! %1$s</string>
     <string name="unable_to_open_link">ไม่สามารถเปิดลิงก์ได้</string>
     <string name="whatsapp_is_not_installed_on_this_device">ไม่ได้ติดตั้ง WhatsApp ในอุปกรณ์นี้</string>
-    <string name="clear_all">Clear all</string>
-    <string name="form_cleared">Form cleared</string>
+    <string name="clear_all">ล้างข้อมูลทั้งหมด</string>
+    <string name="form_cleared">แบบฟอร์มถูกล้างแล้ว</string>
     <string-array name="marimo_frequencies">
         <item>ทุก 7 วัน (รายสัปดาห์)</item>
         <item>ทุก 10 วัน</item>

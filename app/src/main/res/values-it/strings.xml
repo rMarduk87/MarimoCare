@@ -276,8 +276,8 @@
     <string name="check_out_marimo_care">Scopri Marimo Care! %1$s</string>
     <string name="unable_to_open_link">Impossibile aprire il link.</string>
     <string name="whatsapp_is_not_installed_on_this_device">WhatsApp non è installato su questo dispositivo.</string>
-    <string name="clear_all">Clear all</string>
-    <string name="form_cleared">Form cleared</string>
+    <string name="clear_all">Cancella tutto</string>
+    <string name="form_cleared">Modulo cancellato</string>
     <string-array name="marimo_frequencies">
         <item>Ogni 7 giorni (settimanale)</item>
         <item>Ogni 10 giorni</item>
