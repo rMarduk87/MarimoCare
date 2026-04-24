@@ -279,6 +279,11 @@
     <string name="clear_all">Alle löschen</string>
     <string name="form_cleared">Formular gelöscht</string>
     <string name="feedback_balloon">Durch Klicken hier öffnet sich der Feedback-Bildschirm, auf dem Sie Verbesserungsvorschläge für die App einreichen und der Marimo-Community beitreten können.</string>
+    <string name="achievement">Erfolge</string>
+    <string name="achievement_intro_title">Erfolge</string>
+    <string name="achievement_intro_message">In dieser Version wurden die zu erreichenden Ziele hinzugefügt. Möchten Sie den Fortschritt berechnen oder lieber von vorne beginnen?</string>
+    <string name="calculate">Berechnen</string>
+    <string name="restart">Neustart</string>
     <string-array name="marimo_frequencies">
         <item>Alle 7 Tage (wöchentlich)</item>
         <item>Alle 10 Tage</item>

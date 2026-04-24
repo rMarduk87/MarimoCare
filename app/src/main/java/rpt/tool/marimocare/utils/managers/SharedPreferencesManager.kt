@@ -98,4 +98,8 @@ object SharedPreferencesManager {
         get() = sharedPreferences.getBoolean(AppUtils.SHOW_BALLON_FEEDBACK, true)
         set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_BALLON_FEEDBACK, value)}
 
+    var showAchievement: Boolean
+        get() = sharedPreferences.getBoolean(AppUtils.SHOW_ACHIEVEMENTS_DIALOG, false)
+        set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_ACHIEVEMENTS_DIALOG, value)}
+
 }

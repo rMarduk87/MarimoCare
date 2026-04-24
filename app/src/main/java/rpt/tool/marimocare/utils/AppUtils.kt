@@ -275,6 +275,7 @@ class AppUtils {
         const val SHOW_NEW_LOG_CHANGE_WATER : String = "show_new_log_change_water"
         const val SHOW_BALLON_NEW_STATS : String = "show_ballon-new_stats"
         const val SHOW_BALLON_FEEDBACK : String = "show_ballon-feedback"
+        const val SHOW_ACHIEVEMENTS_DIALOG : String = "show_achievements_dialog"
 
 
 

@@ -279,6 +279,11 @@
     <string name="clear_all">모두 지우기</string>
     <string name="form_cleared">폼이 지워졌습니다</string>
     <string name="feedback_balloon">여기를 클릭하면 앱 개선을 위한 제안을 제출하고 마리모 커뮤니티에 참여할 수 있는 피드백 화면이 열립니다.</string>
+    <string name="achievement">업적</string>
+    <string name="achievement_intro_title">업적</string>
+    <string name="achievement_intro_message">이 버전에는 달성해야 할 목표가 추가되었습니다. 진행 상황을 계산하시겠습니까, 아니면 처음부터 시작하시겠습니까?</string>
+    <string name="calculate">계산하다</string>
+    <string name="restart">다시 시작</string>
     <string-array name="marimo_frequencies">
         <item>매 7일(주간)</item>
         <item>매 10일</item>

@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat
 import rpt.tool.marimocare.BaseFragment
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentSettingsBinding
+import rpt.tool.marimocare.ui.feedback.FeedbackFragmentDirections
 import rpt.tool.marimocare.ui.marimo.addoredit.AddOrEditMarimoFragmentDirections
 import rpt.tool.marimocare.ui.stats.StatsFragmentDirections
 import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
@@ -91,6 +92,18 @@ class SettingsFragment :
                                 .actionSettingsFragmentToAddOrEditFragment()
                         )
                     }
+                ),
+                HeaderButtonConfig(
+                    button = binding.include1.btnAchievementAHeader,
+                    iconRes = R.drawable.ic_coccard,
+                    colorRes = R.color.marimo_add_icon,
+                    backgroundRes = R.drawable.bg_button_white,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.achievement),
+                    onClick = { safeNavController?.safeNavigate(
+                        SettingsFragmentDirections
+                            .actionSettingsFragmentToAchievementFragment()
+                    ) }
                 ),
                 HeaderButtonConfig(
                     button = binding.include1.btnOpenSettings,

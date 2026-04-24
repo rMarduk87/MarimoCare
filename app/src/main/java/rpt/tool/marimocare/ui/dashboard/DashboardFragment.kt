@@ -62,6 +62,8 @@ import rpt.tool.marimocare.utils.data.appmodels.MarimoToFix
 import rpt.tool.marimocare.utils.data.appmodels.MarimoUpdate
 import rpt.tool.marimocare.utils.managers.HealthManager
 import rpt.tool.marimocare.utils.managers.RepositoryManager
+import rpt.tool.marimocare.utils.view.HeaderButtonConfig
+import rpt.tool.marimocare.utils.view.HeaderHelper
 import rpt.tool.marimocare.utils.view.adapters.MarimoToFixAdapter
 import rpt.tool.marimocare.utils.view.adapters.MarimoUpdateAdapter
 import rpt.tool.marimocare.utils.view.copyUriToInternalFile
@@ -100,14 +102,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         itemAdapter = ItemAdapter()
         fastAdapter = FastAdapter.with(itemAdapter)
 
-        binding.include1.btnDashboardHeader.enable(false)
-        binding.include1.btnAddMarimoHeader.setOnClickListener { addNewMarimo() }
-        binding.include1.btnOpenSettings.setOnClickListener {
-            safeNavController?.safeNavigate(DashboardFragmentDirections.
-            actionDashboardFragmentToSettingsFragment()) }
-        binding.include1.btnOpenStats.setOnClickListener {
-            safeNavController?.safeNavigate(DashboardFragmentDirections
-                .actionDashboardFragmentToStatsFragment()) }
+        setupHeaderButtons()
 
         binding.cardCounterTotal.background = ContextCompat.getDrawable(requireContext(),
             R.drawable.bg_card_marimo_status_t)
@@ -320,11 +315,83 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                 }
             }
         }
+
+        if (!SharedPreferencesManager.showAchievement) {
+            openAchievementIntroDialog()
+        }
     }
 
     private fun addNewMarimo() {
         safeNavController?.safeNavigate(DashboardFragmentDirections.
         actionDashboardFragmentToAddOrEditFragment()
+        )
+    }
+
+    private fun setupHeaderButtons() {
+        HeaderHelper.setupHeaderButtons(
+            requireContext(),
+            listOf(
+                HeaderButtonConfig(
+                    button = binding.include1.btnDashboardHeader,
+                    iconRes = R.drawable.ic_dashboard,
+                    colorRes = R.color.marimo_item_green,
+                    backgroundRes = R.drawable.bg_button_light_green,
+                    enabled = false,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.dashboard)
+                ),
+                HeaderButtonConfig(
+                    button = binding.include1.btnAddMarimoHeader,
+                    iconRes = R.drawable.ic_add,
+                    colorRes = R.color.marimo_add_icon,
+                    backgroundRes = R.drawable.bg_button_white,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.add_marimo),
+                    onClick = { addNewMarimo() }
+                ),
+                HeaderButtonConfig(
+                    button = binding.include1.btnAchievementAHeader,
+                    iconRes = R.drawable.ic_coccard,
+                    colorRes = R.color.marimo_add_icon,
+                    backgroundRes = R.drawable.bg_button_white,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.achievement),
+                    onClick = {
+                        safeNavController?.safeNavigate(
+                            DashboardFragmentDirections
+                                .actionDashboardFragmentToAchievementFragment()
+                        )
+                    }
+                ),
+                HeaderButtonConfig(
+                    button = binding.include1.btnOpenSettings,
+                    iconRes = R.drawable.ic_settings,
+                    colorRes = R.color.marimo_add_icon,
+                    backgroundRes = R.drawable.bg_button_white,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.settings),
+                    onClick = {
+                        safeNavController?.safeNavigate(
+                            DashboardFragmentDirections
+                                .actionDashboardFragmentToSettingsFragment()
+                        )
+                    }
+                ),
+                HeaderButtonConfig(
+                    button = binding.include1.btnOpenStats,
+                    iconRes = R.drawable.ic_stats,
+                    colorRes = R.color.marimo_add_icon,
+                    backgroundRes = R.drawable.bg_button_white,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.stats),
+                    onClick = {
+                        safeNavController?.safeNavigate(
+                            DashboardFragmentDirections
+                                .actionDashboardFragmentToStatsFragment()
+                        )
+                    }
+                )
+            )
         )
     }
 
@@ -926,6 +993,29 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                 }
             }
         }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun openAchievementIntroDialog() {
+        val view = layoutInflater.inflate(R.layout.dialog_achievement_intro, null)
+        val dialog = AlertDialog.Builder(requireContext())
+            .setView(view)
+            .setCancelable(false)
+            .create()
+
+        view.findViewById<Button>(R.id.btnCalculate).setOnClickListener {
+            SharedPreferencesManager.showAchievement = //true
+                    false
+            dialog.dismiss()
+        }
+
+        view.findViewById<Button>(R.id.btnRestart).setOnClickListener {
+            SharedPreferencesManager.showAchievement = //true
+                false
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 
     private fun setupCompactFilters() {

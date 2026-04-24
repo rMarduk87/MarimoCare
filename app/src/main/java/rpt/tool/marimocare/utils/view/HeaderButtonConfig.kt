@@ -21,23 +21,31 @@ object HeaderHelper {
     fun setupHeaderButtons(context: Context, configs: List<HeaderButtonConfig>) {
         configs.forEach { config ->
             config.button.apply {
-                background = ContextCompat.getDrawable(context, config.backgroundRes)
-                setCompoundDrawablesWithIntrinsicBounds(0, config.iconRes,
-                    0, 0)
-                DrawableCompat.setTint(compoundDrawables[1],
-                    ContextCompat.getColor(context, config.colorRes))
-                isEnabled = config.enabled
-                if(config.isTablet){
+                if (config.isTablet) {
                     text = config.text
                     setTextColor(ContextCompat.getColor(context, config.colorRes))
                     background = ContextCompat.getDrawable(context, config.backgroundRes)
-                    setCompoundDrawablesWithIntrinsicBounds(config.iconRes, 0,
-                        0, 0)
-                    DrawableCompat.setTint(compoundDrawables[0],
-                        ContextCompat.getColor(context, config.colorRes))
-                    isEnabled = config.enabled
+                    setCompoundDrawablesWithIntrinsicBounds(config.iconRes, 0, 0, 0)
+                    val drawable = compoundDrawables[0]
+                    if (drawable != null) {
+                        DrawableCompat.setTint(
+                            drawable,
+                            ContextCompat.getColor(context, config.colorRes)
+                        )
+                    }
+                } else {
+                    text = ""
+                    background = null
+                    setCompoundDrawablesWithIntrinsicBounds(0, config.iconRes, 0, 0)
+                    val drawable = compoundDrawables[1]
+                    if (drawable != null) {
+                        DrawableCompat.setTint(
+                            drawable,
+                            ContextCompat.getColor(context, config.colorRes)
+                        )
+                    }
                 }
-
+                isEnabled = config.enabled
                 config.onClick?.let { setOnClickListener { it() } }
             }
         }

@@ -279,6 +279,11 @@
     <string name="clear_all">Cancella tutto</string>
     <string name="form_cleared">Modulo cancellato</string>
     <string name="feedback_balloon">Cliccando qui si aprirà la schermata del feedback dove potrai inviare suggerimenti per migliorare l\'app e unirti alla comunity dei Marimo</string>
+    <string name="achievement">Obiettivi</string>
+    <string name="achievement_intro_title">Obiettivi</string>
+    <string name="achievement_intro_message">In questa versione sono stati aggiunti gli obiettivi da raggiungere, vuoi calcolare il progresso o preferisci iniziare da zero?</string>
+    <string name="calculate">Calcola</string>
+    <string name="restart">Ricomincia</string>
     <string-array name="marimo_frequencies">
         <item>Ogni 7 giorni (settimanale)</item>
         <item>Ogni 10 giorni</item>

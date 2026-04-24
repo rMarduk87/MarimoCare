@@ -277,6 +277,11 @@
     <string name="clear_all">ล้างข้อมูลทั้งหมด</string>
     <string name="form_cleared">แบบฟอร์มถูกล้างแล้ว</string>
     <string name="feedback_balloon">การคลิกที่นี่จะเปิดหน้าจอแสดงความคิดเห็น ซึ่งคุณสามารถส่งคำแนะนำเพื่อปรับปรุงแอปและเข้าร่วมชุมชน Marimo ได้</string>
+    <string name="achievement">ความสำเร็จ</string>
+    <string name="achievement_intro_title">ความสำเร็จ</string>
+    <string name="achievement_intro_message">ในเวอร์ชันนี้ได้เพิ่มวัตถุประสงค์ที่ต้องบรรลุแล้ว คุณต้องการคำนวณความคืบหน้าหรือต้องการเริ่มใหม่ตั้งแต่ต้น?</string>
+    <string name="calculate">คำนวณ</string>
+    <string name="restart">เริ่มใหม่</string>
     <string-array name="marimo_frequencies">
         <item>ทุก 7 วัน (รายสัปดาห์)</item>
         <item>ทุก 10 วัน</item>

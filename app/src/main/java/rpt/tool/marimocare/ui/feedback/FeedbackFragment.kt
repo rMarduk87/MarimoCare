@@ -151,6 +151,18 @@ class FeedbackFragment :
                             .actionFeedbackFragmentToAddOrEditFragment()) }
                 ),
                 HeaderButtonConfig(
+                    button = binding.include1.btnAchievementAHeader,
+                    iconRes = R.drawable.ic_star,
+                    colorRes = R.color.marimo_add_icon,
+                    backgroundRes = R.drawable.bg_button_white,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.achievement),
+                    onClick = { safeNavController?.safeNavigate(
+                        FeedbackFragmentDirections
+                            .actionFeedbackFragmentToAchievementFragment()
+                    ) }
+                ),
+                HeaderButtonConfig(
                     button = binding.include1.btnOpenSettings,
                     iconRes = R.drawable.ic_settings,
                     colorRes = R.color.marimo_add_icon,

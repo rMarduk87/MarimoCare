@@ -278,6 +278,11 @@ Please note: the final date retrieved will be the same as the app release date, 
     <string name="clear_all">Clear all</string>
     <string name="form_cleared">Form cleared</string>
     <string name="feedback_balloon">Clicking here will open the feedback screen where you can submit suggestions to improve the app and join the Marimo community.</string>
+    <string name="achievement">Achievement</string>
+    <string name="achievement_intro_title">Achievements</string>
+    <string name="achievement_intro_message">In this version the objectives to be achieved have been added, do you want to calculate the progress or do you prefer to start from scratch?</string>
+    <string name="calculate">Calculate</string>
+    <string name="restart">Restart</string>
     <string-array name="marimo_frequencies">
         <item>Every 7 days (Weekly)</item>
         <item>Every 10 days</item>

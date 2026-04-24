@@ -50,6 +50,7 @@ import rpt.tool.marimocare.BaseFragment
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentStatsBinding
 import rpt.tool.marimocare.databinding.StatsMarimoBinding
+import rpt.tool.marimocare.ui.feedback.FeedbackFragmentDirections
 import rpt.tool.marimocare.ui.marimo.addoredit.AddOrEditMarimoFragmentDirections
 import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.AppUtils.Companion.toMarimoItems
@@ -89,7 +90,6 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
         super.onViewCreated(view, savedInstanceState)
 
         setupHeaderButtons()
-        setupNavigation()
         setupTopStats()
         setupBottomStats()
         setUpBottomTabs()
@@ -175,6 +175,18 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
                             .actionStatsFragmentToAddOrEditFragment()) }
                 ),
                 HeaderButtonConfig(
+                    button = binding.include1.btnAchievementAHeader,
+                    iconRes = R.drawable.ic_coccard,
+                    colorRes = R.color.marimo_add_icon,
+                    backgroundRes = R.drawable.bg_button_white,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.achievement),
+                    onClick = { safeNavController?.safeNavigate(
+                        StatsFragmentDirections
+                            .actionStatsFragmentToAchievementFragment()
+                    ) }
+                ),
+                HeaderButtonConfig(
                     button = binding.include1.btnOpenSettings,
                     iconRes = R.drawable.ic_settings,
                     colorRes = R.color.marimo_add_icon,
@@ -196,17 +208,6 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
                 )
             )
         )
-    }
-
-    private fun setupNavigation() {
-        binding.include1.apply {
-            btnDashboardHeader.setOnClickListener { safeNavController?.safeNavigate(
-                StatsFragmentDirections.actionStatsFragmentToDashboardFragment()) }
-            btnAddMarimoHeader.setOnClickListener { safeNavController?.safeNavigate(
-                StatsFragmentDirections.actionStatsFragmentToAddOrEditFragment()) }
-            btnOpenSettings.setOnClickListener { safeNavController?.safeNavigate(
-                StatsFragmentDirections.actionStatsFragmentToSettingsFragment()) }
-        }
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

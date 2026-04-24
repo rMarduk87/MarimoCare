@@ -278,6 +278,11 @@
     <string name="clear_all">すべてクリア</string>
     <string name="form_cleared">フォームがクリアされました</string>
     <string name="feedback_balloon">ここをクリックするとフィードバック画面が開きます。アプリの改善に関する提案を送信したり、Marimoコミュニティに参加したりできます。</string>
+    <string name="achievement">実績</string>
+    <string name="achievement_intro_title">実績</string>
+    <string name="achievement_intro_message">このバージョンでは達成すべき目標が追加されました。進捗を計算しますか、それとも最初からやり直しますか？</string>
+    <string name="calculate">計算する</string>
+    <string name="restart">再起動</string>
     <string-array name="marimo_frequencies">
         <item>7日ごと（週ごと）</item>
         <item>10日ごと</item>

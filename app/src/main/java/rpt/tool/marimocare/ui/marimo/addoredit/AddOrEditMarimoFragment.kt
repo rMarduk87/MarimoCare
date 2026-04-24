@@ -47,6 +47,7 @@ import kotlinx.coroutines.withContext
 import rpt.tool.marimocare.BaseFragment
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentAddOrEditBinding
+import rpt.tool.marimocare.ui.feedback.FeedbackFragmentDirections
 import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.balloon.newMarimo.MarimoAddNewInfoBalloonFactory
 import rpt.tool.marimocare.utils.balloon.photo.MarimoPhotoInfoBalloonFactory
@@ -106,13 +107,12 @@ class AddOrEditMarimoFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        marimoCode = args.MarimoCode
         frequencies = resources.getStringArray(R.array.marimo_frequencies).toList()
 
         setupHeaderButtons()
         setupSpinner(frequencies)
         setupDatePicker()
-
-        marimoCode = args.MarimoCode
 
         qrCodeBtnEnabled = marimoCode != 0
 
@@ -175,12 +175,24 @@ class AddOrEditMarimoFragment :
                     iconRes = R.drawable.ic_add,
                     colorRes = R.color.marimo_item_green,
                     backgroundRes = R.drawable.bg_button_light_green,
-                    enabled = true,
+                    enabled = marimoCode != 0,
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.add_marimo),
                     onClick = {
                         clearAll()
                     }
+                ),
+                HeaderButtonConfig(
+                    button = binding.include1.btnAchievementAHeader,
+                    iconRes = R.drawable.ic_coccard,
+                    colorRes = R.color.marimo_add_icon,
+                    backgroundRes = R.drawable.bg_button_white,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.achievement),
+                    onClick = { safeNavController?.safeNavigate(
+                        AddOrEditMarimoFragmentDirections.
+                        actionAddOrEditFragmentToAchievementFragment()
+                    ) }
                 ),
                 HeaderButtonConfig(
                     button = binding.include1.btnOpenSettings,

@@ -39,6 +39,7 @@ import kotlinx.coroutines.withContext
 import rpt.tool.marimocare.BaseFragment
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentMarimoDetailsBinding
+import rpt.tool.marimocare.ui.feedback.FeedbackFragmentDirections
 import rpt.tool.marimocare.ui.marimo.addoredit.AddOrEditMarimoFragmentDirections
 import rpt.tool.marimocare.utils.AlertDataUtils
 import rpt.tool.marimocare.utils.AppUtils
@@ -125,6 +126,18 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
                                 .actionMarimoDetailFragmentToAddOrEditFragment()
                         )
                     }
+                ),
+                HeaderButtonConfig(
+                    button = binding.include.btnAchievementAHeader,
+                    iconRes = R.drawable.ic_coccard,
+                    colorRes = R.color.marimo_add_icon,
+                    backgroundRes = R.drawable.bg_button_white,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.achievement),
+                    onClick = { safeNavController?.safeNavigate(
+                        MarimoDetailsFragmentDirections.
+                        actionMarimoDetailFragmentToAchievementFragment()
+                    ) }
                 ),
                 HeaderButtonConfig(
                     button = binding.include.btnOpenSettings,

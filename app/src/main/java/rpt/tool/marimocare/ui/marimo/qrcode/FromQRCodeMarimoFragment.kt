@@ -17,6 +17,7 @@ import kotlinx.coroutines.withContext
 import rpt.tool.marimocare.BaseFragment
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentFromQrCodeBinding
+import rpt.tool.marimocare.ui.feedback.FeedbackFragmentDirections
 import rpt.tool.marimocare.utils.AlertDataUtils
 import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
@@ -46,6 +47,11 @@ class FromQRCodeMarimoFragment :
 
         initializeCard(code!!.toInt())
 
+        binding.include1.appLogo.setOnClickListener {
+            safeNavController?.safeNavigate(
+                FromQRCodeMarimoFragmentDirections.Companion.actionFromQRCodeMarimoFragmentToDashboardFragment()
+            )
+        }
     }
 
     private fun setupHeaderButtons()
@@ -79,6 +85,18 @@ class FromQRCodeMarimoFragment :
                                 .actionFromQRCodeMarimoFragmentToAddOrEditFragment()
                         )
                     }
+                ),
+                HeaderButtonConfig(
+                    button = binding.include1.btnAchievementAHeader,
+                    iconRes = R.drawable.ic_coccard,
+                    colorRes = R.color.marimo_add_icon,
+                    backgroundRes = R.drawable.bg_button_white,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.achievement),
+                    onClick = { safeNavController?.safeNavigate(
+                        FromQRCodeMarimoFragmentDirections
+                            .actionFromQRCodeMarimoFragmentToAchievementFragment()
+                    ) }
                 ),
                 HeaderButtonConfig(
                     button = binding.include1.btnOpenSettings,

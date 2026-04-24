@@ -277,6 +277,11 @@
     <string name="clear_all">Borrar todo</string>
     <string name="form_cleared">Formulario borrado</string>
     <string name="feedback_balloon">Al hacer clic aquí, se abrirá la pantalla de comentarios donde podrá enviar sugerencias para mejorar la aplicación y unirse a la comunidad de Marimo.</string>
+    <string name="achievement">Logros</string>
+    <string name="achievement_intro_title">Logros</string>
+    <string name="achievement_intro_message">En esta versión se han añadido los objetivos a alcanzar, ¿quieres calcular el progreso o prefieres empezar de cero?</string>
+    <string name="calculate">Calcular</string>
+    <string name="restart">Reiniciar</string>
     <string-array name="marimo_frequencies">
         <item>Cada 7 días (semanal)</item>
         <item>Cada 10 días</item>
