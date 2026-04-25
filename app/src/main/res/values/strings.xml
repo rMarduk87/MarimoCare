@@ -283,6 +283,163 @@ Please note: the final date retrieved will be the same as the app release date, 
     <string name="achievement_intro_message">In this version the objectives to be achieved have been added, do you want to calculate the progress or do you prefer to start from scratch?</string>
     <string name="calculate">Calculate</string>
     <string name="restart">Restart</string>
+    <string name="earned_26">Earned (26)</string>
+    <string name="_50_badges">/ 50 badges</string>
+    <string name="_26">26</string>
+    <string name="achievement_subtitle">Earn badges by caring for your marimos</string>
+    <string name="recalculate">Recalculate</string>
+    <string name="reset_all">Reset All</string>
+    <string name="ach_1" translatable="false">🗿</string>
+    <string name="ach_2" translatable="false">📊</string>
+    <string name="ach_3" translatable="false">📋</string>
+    <string name="ach_4" translatable="false">🌗</string>
+    <string name="ach_5" translatable="false">🎊</string>
+    <string name="ach_6" translatable="false">🌊</string>
+    <string name="ach_7" translatable="false">📅</string>
+    <string name="ach_8" translatable="false">📆</string>
+    <string name="ach_9" translatable="false">🌱</string>
+    <string name="ach_10" translatable="false">⭐</string>
+    <string name="ach_11" translatable="false">🎖️</string>
+    <string name="ach_12" translatable="false">🦅</string>
+    <string name="ach_13" translatable="false">🏅</string>
+    <string name="ach_14" translatable="false">🎯</string>
+    <string name="ach_15" translatable="false">🌟</string>
+    <string name="ach_16" translatable="false">📸</string>
+    <string name="ach_17" translatable="false">🤳</string>
+    <string name="ach_18" translatable="false">🖼️</string>
+    <string name="ach_19" translatable="false">📝</string>
+    <string name="ach_20" translatable="false">📔</string>
+    <string name="ach_21" translatable="false">📖</string>
+    <string name="ach_22" translatable="false">✅</string>
+    <string name="ach_23" translatable="false">🎳</string>
+    <string name="ach_24" translatable="false">⏰</string>
+    <string name="ach_25" translatable="false">🏷️</string>
+    <string name="ach_26" translatable="false">✏️</string>
+    <string name="ach_27" translatable="false">🖼️</string>
+    <string name="ach_28" translatable="false">🌅</string>
+    <string name="ach_29" translatable="false">🗒️</string>
+    <string name="ach_30" translatable="false">🐦</string>
+    <string name="ach_31" translatable="false">⚡</string>
+    <string name="ach_32" translatable="false">🦉</string>
+    <string name="ach_33" translatable="false">🎛️</string>
+    <string name="ach_34" translatable="false">💬</string>
+    <string name="ach_35" translatable="false">⚙️</string>
+    <string name="ach_36" translatable="false">👴</string>
+    <string name="ach_37" translatable="false">🌿</string>
+    <string name="ach_38" translatable="false">👫</string>
+    <string name="ach_39" translatable="false">🎶</string>
+    <string name="ach_40" translatable="false">🫙</string>
+    <string name="ach_41" translatable="false">🏆</string>
+    <string name="ach_42" translatable="false">🪖</string>
+    <string name="ach_43" translatable="false">👑</string>
+    <string name="ach_44" translatable="false">💧</string>
+    <string name="ach_45" translatable="false">🚿</string>
+    <string name="ach_46" translatable="false">🔄</string>
+    <string name="ach_47" translatable="false">💪</string>
+    <string name="ach_48" translatable="false">🧙</string>
+    <string name="ach_49" translatable="false">💯</string>
+    <string name="ach_50" translatable="false">🎖️</string>
+    <string name="locked_24">Locked (24)</string>
+    <string name="ach_desc_1">Added your very first marimo to the collection.</string>
+    <string name="ach_desc_2">You have 2 marimos — they have company now!</string>
+    <string name="ach_desc_3">3 marimos in your collection.</string>
+    <string name="ach_desc_4">You\'re growing a collection — 5 marimos added!</string>
+    <string name="ach_desc_5">Wow, 10 marimos! You really love them.</string>
+    <string name="ach_desc_6">20 marimos strong!</string>
+    <string name="ach_desc_7">50 marimos. You\'re running an empire.</string>
+    <string name="ach_desc_8">Logged your first water change. The journey begins!</string>
+    <string name="ach_desc_9">5 water changes logged.</string>
+    <string name="ach_desc_10">Logged 10 water changes total.</string>
+    <string name="ach_desc_11">25 water changes logged. You\'re building a habit!</string>
+    <string name="ach_desc_12">50 water changes logged. You\'re a pro!</string>
+    <string name="ach_desc_13">100 water changes! Absolutely amazing.</string>
+    <string name="ach_desc_14">200 water changes logged. Legendary.</string>
+    <string name="ach_desc_15">500 water changes. You are the ultimate marimo caretaker.</string>
+    <string name="ach_desc_16">A whole week of marimo care!</string>
+    <string name="ach_desc_17">Kept up with water changes for a whole month.</string>
+    <string name="ach_desc_18">Three months of dedicated marimo care!</string>
+    <string name="ach_desc_19">Six months of consistent care. You\'re a legend.</string>
+    <string name="ach_desc_20">A full year of marimo care. Incredible dedication!</string>
+    <string name="ach_desc_21">Two full years of marimo care. Truly extraordinary.</string>
+    <string name="ach_desc_22">Marked your first special milestone water change.</string>
+    <string name="ach_desc_23">Marked 5 special milestone water changes.</string>
+    <string name="ach_desc_24">10 milestone water changes logged!</string>
+    <string name="ach_desc_25">Uploaded a photo during a water change log.</string>
+    <string name="ach_desc_26">Uploaded photos in 5 different water change logs.</string>
+    <string name="ach_desc_27">20 water change logs with photos. A true marimo album!</string>
+    <string name="ach_desc_28">Added notes to 5 different water changes.</string>
+    <string name="ach_desc_29">Added notes to 20 water changes.</string>
+    <string name="ach_desc_30">Added notes to 50 water changes. A true historian.</string>
+    <string name="ach_desc_31">All your marimos are up to date — none overdue right now!</string>
+    <string name="ach_desc_32">Logged 5 water changes that were on time (not overdue).</string>
+    <string name="ach_desc_33">20 on-time water changes. Like clockwork!</string>
+    <string name="ach_desc_34">Gave your marimo a name (not just \'Marimo\').</string>
+    <string name="ach_desc_35">Named 3 marimos with unique names.</string>
+    <string name="ach_desc_36">Added a profile photo to one of your marimos.</string>
+    <string name="ach_desc_37">Added profile photos to 5 marimos.</string>
+    <string name="ach_desc_38">Added notes to one of your marimos.</string>
+    <string name="ach_desc_39">Logged a water change more than 2 days before it was due.</string>
+    <string name="ach_desc_40">Logged 3 water changes in the same day.</string>
+    <string name="ach_desc_41">Logged 10 water changes that were overdue (you still did it!).</string>
+    <string name="ach_desc_42">Own marimos with 3 different water change frequencies.</string>
+    <string name="ach_desc_43">Submitted feedback to help improve the app.</string>
+    <string name="ach_desc_44">Customized your dashboard settings.</string>
+    <string name="ach_desc_45">One of your marimos has been in your care for over 6 months.</string>
+    <string name="ach_desc_46">One of your marimos has been in your care for over a year.</string>
+    <string name="ach_desc_47">Visited the Statistics page.</string>
+    <string name="ach_desc_48">Added notes to 5 of your marimos.</string>
+    <string name="ach_desc_49">Earned 25 achievements. You\'re halfway to the full set!</string>
+    <string name="ach_desc_50">Earned all 50 achievements. You are a true Marimo Master!</string>
+    <string name="ach_tit_1">First Marimo</string>
+    <string name="ach_tit_2">Dynamic Duo</string>
+    <string name="ach_tit_3">Trio</string>
+    <string name="ach_tit_4">Collector</string>
+    <string name="ach_tit_5">Marimo Hoarder</string>
+    <string name="ach_tit_6">Marimo Army</string>
+    <string name="ach_tit_7">Marimo Empire</string>
+    <string name="ach_tit_8">First Drop</string>
+    <string name="ach_tit_9">Getting Started</string>
+    <string name="ach_tit_10">Consistent Caretaker</string>
+    <string name="ach_tit_11">Dedicated</string>
+    <string name="ach_tit_12">Water Wizard</string>
+    <string name="ach_tit_13">Century of Care</string>
+    <string name="ach_tit_14">Bicentennial</string>
+    <string name="ach_tit_15">Water Master</string>
+    <string name="ach_tit_16">One Week In</string>
+    <string name="ach_tit_17">One Month of Care</string>
+    <string name="ach_tit_18">Three Months Strong</string>
+    <string name="ach_tit_19">Half-Year Hero</string>
+    <string name="ach_tit_20">Annual Champion</string>
+    <string name="ach_tit_21">Two-Year Veteran</string>
+    <string name="ach_tit_22">Milestone Marker</string>
+    <string name="ach_tit_23">Milestone Hunter</string>
+    <string name="ach_tit_24">Milestone Master</string>
+    <string name="ach_tit_25">Photo Keeper</string>
+    <string name="ach_tit_26">Photographer</string>
+    <string name="ach_tit_27">Photo Album</string>
+    <string name="ach_tit_28">Notes Taker</string>
+    <string name="ach_tit_29">Journal Keeper</string>
+    <string name="ach_tit_30">Chronicler</string>
+    <string name="ach_tit_31">Perfect Record</string>
+    <string name="ach_tit_32">On a Roll</string>
+    <string name="ach_tit_33">Clockwork</string>
+    <string name="ach_tit_34">Name Giver</string>
+    <string name="ach_tit_35">Creative Namer</string>
+    <string name="ach_tit_36">Profile Pic</string>
+    <string name="ach_tit_37">Photogenic Collection</string>
+    <string name="ach_tit_38">Marimo Biographer</string>
+    <string name="ach_tit_39">Early Bird</string>
+    <string name="ach_tit_40">Speedy Changer</string>
+    <string name="ach_tit_41">Night Owl</string>
+    <string name="ach_tit_42">Mix Master</string>
+    <string name="ach_tit_43">Feedback Giver</string>
+    <string name="ach_tit_44">Settings Explorer</string>
+    <string name="ach_tit_45">Senior Marimo</string>
+    <string name="ach_tit_46">Ancient One</string>
+    <string name="ach_tit_47">Stats Nerd</string>
+    <string name="ach_tit_48">Marimo Biographer</string>
+    <string name="ach_tit_49">Halfway There</string>
+    <string name="ach_tit_50">Achievement Hunter</string>
     <string-array name="marimo_frequencies">
         <item>Every 7 days (Weekly)</item>
         <item>Every 10 days</item>

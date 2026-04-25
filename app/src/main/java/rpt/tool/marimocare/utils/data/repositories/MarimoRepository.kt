@@ -1,16 +1,21 @@
 package rpt.tool.marimocare.utils.data.repositories
 
+import android.content.Context
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
 import rpt.tool.marimocare.utils.AppUtils
+import rpt.tool.marimocare.utils.data.appmodels.Achievement
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.data.appmodels.MarimoChange
 import rpt.tool.marimocare.utils.data.appmodels.MarimoHealthScore
 import rpt.tool.marimocare.utils.data.appmodels.MarimoHealthScoreStats
 import rpt.tool.marimocare.utils.data.appmodels.MarimoQR
 import rpt.tool.marimocare.utils.data.database.dao.MarimoDao
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import kotlin.Int
 import kotlin.collections.map
 
 class MarimoRepository(
@@ -185,4 +190,37 @@ class MarimoRepository(
     val marimos: LiveData<List<Marimo>> =
         marimoDao.getMarimos().map { it.map { it.map() } }
 
+    fun addAchievementToTable(context: Context, resource:Int){
+        val achievementList = mutableListOf<Achievement>()
+
+        val inputStream = context.resources.openRawResource(resource)
+        val reader = BufferedReader(InputStreamReader(inputStream))
+
+        reader.useLines { lines ->
+            val righeSenzaIntestazione = lines.drop(1)
+
+            righeSenzaIntestazione.forEach { riga ->
+                val colonne = riga.split(",")
+
+                if (colonne.size >= 3) {
+                    val newAchievement = Achievement(
+                        id = colonne[0].trim().toInt(),
+                        titleID = colonne[1].trim().toInt(),
+                        descriptionValue = colonne[2].trim().toInt(),
+                        imageId= colonne[3].trim().toInt(),
+                        backgroundColor = colonne[4].trim(),
+                        category = colonne[5].trim(),
+                        sortOrder = colonne[6].trim().toInt(),
+                        earned = colonne[7].trim() == "True",
+                        date = colonne[8].trim()
+                    )
+                    achievementList.add(newAchievement)
+                }
+            }
+        }
+
+        if (achievementList.isNotEmpty()) {
+            marimoDao.insertAchievements(achievementList.map { it.toDBModel() })
+        }
+    }
 }

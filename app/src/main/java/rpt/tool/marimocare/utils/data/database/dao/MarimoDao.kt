@@ -3,6 +3,7 @@ package rpt.tool.marimocare.utils.data.database.dao
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import rpt.tool.marimocare.utils.data.appmodels.MarimoHealthScoreStats
+import rpt.tool.marimocare.utils.data.database.models.AchievementModel
 import rpt.tool.marimocare.utils.data.database.models.MarimoChangeModel
 import rpt.tool.marimocare.utils.data.database.models.MarimoHealthScoreModel
 import rpt.tool.marimocare.utils.data.database.models.MarimoModel
@@ -165,5 +166,7 @@ interface MarimoDao {
     @Query("SELECT * FROM marimo_health_score where marimo_code =:marimoCode order by date desc")
     fun getAllHealth(marimoCode: Int): List<MarimoHealthScoreModel>
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAchievements(achievements: List<AchievementModel>)
 
 }

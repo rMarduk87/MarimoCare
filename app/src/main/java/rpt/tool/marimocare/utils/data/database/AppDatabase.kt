@@ -12,14 +12,16 @@ import rpt.tool.marimocare.utils.data.database.models.*
         MarimoModel::class,
         MarimoChangeModel::class,
         MarimoQRModel::class,
-        MarimoHealthScoreModel::class
+        MarimoHealthScoreModel::class,
+        AchievementModel::class
     ],
-    version = 4,
+    version = 5,
     exportSchema = true,
     autoMigrations = [
         AutoMigration(from = 1, to = 2),
         AutoMigration(from = 2, to = 3),
         AutoMigration(from = 3, to = 4),
+        AutoMigration(from = 4, to = 5),
     ]
 )
 
