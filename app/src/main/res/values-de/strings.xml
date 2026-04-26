@@ -285,7 +285,8 @@
     <string name="calculate">Berechnen</string>
     <string name="restart">Neustart</string>
     <string name="earned_26">Earned (26)</string>
-    <string name="_50_badges">/ 50 badges</string>
+    <string name="earned_label">Verdient</string>
+    <string name="_50_badges">/ %1$d Abzeichen</string>
     <string name="_26">26</string>
     <string name="achievement_subtitle">Verdiene Abzeichen, indem du dich um deine Marimos kümmerst</string>
     <string name="recalculate">Neu berechnen</string>
@@ -315,7 +316,7 @@
     <string name="ach_desc_22">Deinen ersten besonderen Meilenstein-Wasserwechsel markiert.</string>
     <string name="ach_desc_23">5 besondere Meilenstein-Wasserwechsel markiert.</string>
     <string name="ach_desc_24">10 Meilenstein-Wasserwechsel protokolliert!</string>
-    <string name="ach_desc_25">Ein Foto während eines Wasserwechsel-Protokolls hochgeladen.</string>
+    <string name="ach_desc_25">Ein foto während eines Wasserwechsel-Protokolls hochgeladen.</string>
     <string name="ach_desc_26">Fotos in 5 verschiedenen Wasserwechsel-Protokollen hochgeladen.</string>
     <string name="ach_desc_27">20 Wasserwechsel-Protokolle mit Fotos. Ein wahres Marimo-Album!</string>
     <string name="ach_desc_28">Notizen zu 5 verschiedenen Wasserwechseln hinzugefügt.</string>

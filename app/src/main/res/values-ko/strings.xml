@@ -285,7 +285,8 @@
     <string name="calculate">계산하다</string>
     <string name="restart">다시 시작</string>
     <string name="earned_26">Earned (26)</string>
-    <string name="_50_badges">/ 50 badges</string>
+    <string name="earned_label">획득함</string>
+    <string name="_50_badges">/ %1$d 배지</string>
     <string name="_26">26</string>
     <string name="achievement_subtitle">마리모를 돌보고 배지를 획득하세요</string>
     <string name="recalculate">재계산</string>

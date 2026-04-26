@@ -122,4 +122,6 @@
     <color name="marimo_circle_mask_soon">#fef3c7</color>
     <color name="marimo_arrow_gray">#808080</color>
     <color name="marimo_bg_mint_selected">#E3F9F1</color>
+    <color name="achievement_not_earned_stroke">#e5e7eb</color>
+    <color name="achievement_not_earned_bg">#f9fafb</color>
 </resources>

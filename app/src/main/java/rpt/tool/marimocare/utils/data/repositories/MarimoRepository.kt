@@ -13,6 +13,7 @@ import rpt.tool.marimocare.utils.data.appmodels.MarimoHealthScore
 import rpt.tool.marimocare.utils.data.appmodels.MarimoHealthScoreStats
 import rpt.tool.marimocare.utils.data.appmodels.MarimoQR
 import rpt.tool.marimocare.utils.data.database.dao.MarimoDao
+import rpt.tool.marimocare.utils.managers.RepositoryManager
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import kotlin.Int
@@ -190,11 +191,25 @@ class MarimoRepository(
     val marimos: LiveData<List<Marimo>> =
         marimoDao.getMarimos().map { it.map { it.map() } }
 
-    fun addAchievementToTable(context: Context, resource:Int){
+    fun getEarnedAchievements(): List<Achievement> {
+        return marimoDao.getEarnedAchievements().map { it.map() }
+    }
+
+    fun getLockedAchievements(): List<Achievement> {
+        return marimoDao.getLockedAchievements().map { it.map() }
+    }
+
+    fun resetAllAchievements() {
+        marimoDao.resetAllAchievements()
+    }
+
+    fun addAchievementToTable(context: Context, resource: Int) {
         val achievementList = mutableListOf<Achievement>()
 
         val inputStream = context.resources.openRawResource(resource)
         val reader = BufferedReader(InputStreamReader(inputStream))
+
+        val packageName = context.packageName
 
         reader.useLines { lines ->
             val righeSenzaIntestazione = lines.drop(1)
@@ -202,17 +217,30 @@ class MarimoRepository(
             righeSenzaIntestazione.forEach { riga ->
                 val colonne = riga.split(",")
 
-                if (colonne.size >= 3) {
+                if (colonne.size >= 9) {
+
+                    val rawTitle = colonne[1].trim().removePrefix("R.string.")
+                    val rawDesc = colonne[2].trim().removePrefix("R.string.")
+                    val rawImg = colonne[4].trim().removePrefix("R.string.")
+
+                    val titleResId = context.resources.getIdentifier(rawTitle,
+                        "string", packageName)
+                    val descResId = context.resources.getIdentifier(rawDesc,
+                        "string", packageName)
+                    val imgResId = context.resources.getIdentifier(rawImg,
+                        "string", packageName)
+
+
                     val newAchievement = Achievement(
                         id = colonne[0].trim().toInt(),
-                        titleID = colonne[1].trim().toInt(),
-                        descriptionValue = colonne[2].trim().toInt(),
-                        imageId= colonne[3].trim().toInt(),
-                        backgroundColor = colonne[4].trim(),
-                        category = colonne[5].trim(),
-                        sortOrder = colonne[6].trim().toInt(),
-                        earned = colonne[7].trim() == "True",
-                        date = colonne[8].trim()
+                        titleID = titleResId,
+                        descriptionValue = descResId,
+                        imageId = imgResId,
+                        backgroundColor = colonne[5].trim(),
+                        category = colonne[3].trim(),
+                        sortOrder = colonne[8].trim().toInt(),
+                        earned = colonne[6].trim().equals("True", ignoreCase = true),
+                        date = colonne[7].trim()
                     )
                     achievementList.add(newAchievement)
                 }
@@ -222,5 +250,9 @@ class MarimoRepository(
         if (achievementList.isNotEmpty()) {
             marimoDao.insertAchievements(achievementList.map { it.toDBModel() })
         }
+    }
+
+    fun earnAchievement(id:Int, date: String) {
+        marimoDao.earnAchievement(id, date)
     }
 }

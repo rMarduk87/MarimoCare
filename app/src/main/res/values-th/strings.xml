@@ -283,7 +283,8 @@
     <string name="calculate">คำนวณ</string>
     <string name="restart">เริ่มใหม่</string>
     <string name="earned_26">Earned (26)</string>
-    <string name="_50_badges">/ 50 badges</string>
+    <string name="earned_label">ได้รับแล้ว</string>
+    <string name="_50_badges">/ %1$d เหรียญตรา</string>
     <string name="_26">26</string>
     <string name="achievement_subtitle">รับเหรียญตราโดยการดูแลมาริโมะของคุณ</string>
     <string name="recalculate">คำนวณใหม่</string>

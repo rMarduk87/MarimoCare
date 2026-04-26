@@ -53,7 +53,18 @@
             android:textStyle="bold"
             app:layout_constraintBaseline_toBaselineOf="@id/tvTitle"
             app:layout_constraintStart_toEndOf="@id/tvTitle"
-            android:text="Earned" />
+            android:text="@string/earned_label" />
+
+        <TextView
+            android:id="@+id/tvEarnedDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:textColor="#38A169"
+            android:textSize="12sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/tvEarned"
+            app:layout_constraintStart_toEndOf="@id/tvEarned"
+            tools:text="25/11/2025" />
 
         <TextView
             android:id="@+id/tvDescription"

@@ -285,7 +285,8 @@
     <string name="calculate">Calcola</string>
     <string name="restart">Ricomincia</string>
     <string name="earned_26">Earned (26)</string>
-    <string name="_50_badges">/ 50 badges</string>
+    <string name="earned_label">Ottenuto</string>
+    <string name="_50_badges">/ %1$d obiettivi</string>
     <string name="_26">26</string>
     <string name="achievement_subtitle">Guadagna distintivi prendendoti cura dei tuoi marimo</string>
     <string name="recalculate">Ricalcola</string>

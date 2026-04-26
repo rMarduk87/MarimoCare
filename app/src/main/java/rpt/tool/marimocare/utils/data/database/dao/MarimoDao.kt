@@ -169,4 +169,20 @@ interface MarimoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAchievements(achievements: List<AchievementModel>)
 
+    @Transaction
+    @Query("SELECT * FROM achievement WHERE earned = 1 ORDER BY `order` ASC")
+    fun getEarnedAchievements(): List<AchievementModel>
+
+    @Transaction
+    @Query("SELECT * FROM achievement WHERE earned = 0 ORDER BY `order` ASC")
+    fun getLockedAchievements(): List<AchievementModel>
+
+    @Transaction
+    @Query("UPDATE achievement SET earned = 0, acquired_date = NULL")
+    fun resetAllAchievements()
+
+    @Transaction
+    @Query("UPDATE achievement SET earned = 1, acquired_date = :date where id = :id")
+    fun earnAchievement(id: Int, date: String)
+
 }

@@ -2,6 +2,8 @@ package rpt.tool.marimocare.utils.view.adapters
 
 import android.annotation.SuppressLint
 import android.graphics.Color
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,9 +15,11 @@ import rpt.tool.marimocare.R
 import rpt.tool.marimocare.utils.data.appmodels.Achievement
 import androidx.core.graphics.toColorInt
 
+import android.graphics.drawable.GradientDrawable
+import androidx.core.graphics.ColorUtils
+
 class AchievementAdapter(
-    private var achievements: List<
-            Achievement>
+    private var achievements: List<Achievement>
 ) : RecyclerView.Adapter<AchievementAdapter.AchievementViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AchievementViewHolder {
@@ -42,6 +46,7 @@ class AchievementAdapter(
         private val tvIcon: TextView = itemView.findViewById(R.id.tvIcon)
         private val tvTitle: TextView = itemView.findViewById(R.id.tvTitle)
         private val tvEarned: TextView = itemView.findViewById(R.id.tvEarned)
+        private val tvEarnedDate: TextView = itemView.findViewById(R.id.tvEarnedDate)
         private val tvDescription: TextView = itemView.findViewById(R.id.tvDescription)
         private val tvProgressLabel: TextView = itemView.findViewById(R.id.tvProgressLabel)
         private val tvPercentage: TextView = itemView.findViewById(R.id.tvPercentage)
@@ -54,29 +59,59 @@ class AchievementAdapter(
             tvDescription.text = context.getString(achievement.descriptionValue)
             tvIcon.text = context.getString(achievement.imageId)
 
+            val iconBackground = tvIcon.background as? GradientDrawable
+            val strokeWidth = (2 * context.resources.displayMetrics.density).toInt()
+
             if (achievement.earned) {
                 itemView.alpha = 1.0f
 
-                try {
-                    cardView.setCardBackgroundColor(achievement.backgroundColor.toColorInt())
-                } catch (e: IllegalArgumentException) {
-                    cardView.setCardBackgroundColor(Color.WHITE)
+                val baseColor = try {
+                    achievement.backgroundColor.toColorInt()
+                } catch (e: Exception) {
+                    Color.GRAY
                 }
 
-                cardView.strokeColor = "#A5D6A7".toColorInt()
+                tvIcon.paint.colorFilter = null
+
+                val hsl = FloatArray(3)
+                ColorUtils.colorToHSL(baseColor, hsl)
+                hsl[2] = 0.95f
+                val lightColor = ColorUtils.HSLToColor(hsl)
+
+                cardView.setCardBackgroundColor(lightColor)
+                cardView.strokeColor = baseColor
+
+                iconBackground?.setColor(Color.WHITE)
+                iconBackground?.setStroke(strokeWidth, baseColor)
+
+                tvEarned.setTextColor(baseColor)
+                tvEarnedDate.setTextColor(baseColor)
+                tvEarnedDate.text = achievement.date ?: ""
 
                 tvEarned.visibility = View.VISIBLE
+                tvEarnedDate.visibility = if (achievement.date.isNullOrEmpty()) View.GONE
+                else View.VISIBLE
                 progressBar.progress = 100
                 tvPercentage.text = "100%"
                 tvProgressLabel.text = "1 / 1 marimo"
 
             } else {
-                itemView.alpha = 0.5f
+                itemView.alpha = 0.6f
 
-                cardView.setCardBackgroundColor("#F3F4F6".toColorInt()) // Grigio chiarissimo
-                cardView.strokeColor = "#D1D5DB".toColorInt() // Bordo grigio
+                val bgColor = context.getColor(R.color.achievement_not_earned_bg)
+                val strokeColor = context.getColor(R.color.achievement_not_earned_stroke)
+
+                cardView.setCardBackgroundColor(bgColor)
+                cardView.strokeColor = strokeColor
+
+                iconBackground?.setColor(Color.WHITE)
+                iconBackground?.setStroke(strokeWidth, strokeColor)
+
+                tvIcon.paint.colorFilter = PorterDuffColorFilter(strokeColor,
+                    PorterDuff.Mode.SRC_IN)
 
                 tvEarned.visibility = View.GONE
+                tvEarnedDate.visibility = View.GONE
                 progressBar.progress = 0
                 tvPercentage.text = "0%"
                 tvProgressLabel.text = "0 / 1 marimo"

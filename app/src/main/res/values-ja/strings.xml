@@ -284,7 +284,8 @@
     <string name="calculate">計算する</string>
     <string name="restart">再起動</string>
     <string name="earned_26">Earned (26)</string>
-    <string name="_50_badges">/ 50 badges</string>
+    <string name="earned_label">獲得済み</string>
+    <string name="_50_badges">/ %1$d バッジ</string>
     <string name="_26">26</string>
     <string name="achievement_subtitle">マリモの世話をしてバッジを獲得しましょう</string>
     <string name="recalculate">再計算</string>

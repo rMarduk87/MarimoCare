@@ -284,7 +284,8 @@ Please note: the final date retrieved will be the same as the app release date, 
     <string name="calculate">Calculate</string>
     <string name="restart">Restart</string>
     <string name="earned_26">Earned (26)</string>
-    <string name="_50_badges">/ 50 badges</string>
+    <string name="earned_label">Earned</string>
+    <string name="_50_badges">/ %1$d badges</string>
     <string name="_26">26</string>
     <string name="achievement_subtitle">Earn badges by caring for your marimos</string>
     <string name="recalculate">Recalculate</string>

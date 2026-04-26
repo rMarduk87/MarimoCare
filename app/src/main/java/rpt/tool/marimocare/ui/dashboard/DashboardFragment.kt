@@ -316,7 +316,12 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             }
         }
 
-        if (!SharedPreferencesManager.showAchievement) {
+        if (SharedPreferencesManager.showAchievement) {
+            SharedPreferencesManager.showAchievement = false
+            viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+                RepositoryManager.marimoRepository.addAchievementToTable(
+                    requireContext(),R.raw.achievement)
+            }
             openAchievementIntroDialog()
         }
     }
