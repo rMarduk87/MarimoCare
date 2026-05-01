@@ -1,0 +1,467 @@
+<resources>
+    <string name="app_name">Marimo Care</string>
+    <string name="marimo_care_dashboard">🌿 Tableau de bord Marimo Care</string>
+    <string name="keep_track_of_your_marimo">Suivez vos boules de mousse marimo et ne manquez plus jamais un changement d\'eau !</string>
+    <string name="marimo_tip_title_1">💡 Conseil Marimo : Température idéale</string>
+    <string name="marimo_tip_title_2">💡 Conseil Marimo : Roulement doux</string>
+    <string name="marimo_tip_title_3">💡 Conseil Marimo : L\'eau propre est essentielle</string>
+    <string name="marimo_tip_title_4">💡 Conseil Marimo : Vie en faible luminosité</string>
+    <string name="marimo_tip_title_5">💡 Conseil Marimo : De l\'espace pour bouger</string>
+    <string name="marimo_tip_title_6">💡 Conseil Marimo : Surveillez les bulles</string>
+    <string name="marimo_tip_title_7">💡 Conseil Marimo : Changements saisonniers</string>
+    <string name="marimo_tip_title_8">💡 Conseil Marimo : Croissance lente</string>
+    <string name="marimo_tip_title_9">💡 Conseil Marimo : Division et partage</string>
+    <string name="marimo_tip_title_10">💡 Conseil Marimo : Mouvement de l\'eau</string>
+    <string name="marimo_tip_body_1">Gardez les marimos dans de l\'eau fraîche (15–25°C). Évitez la lumière directe du soleil et les endroits chauds.</string>
+    <string name="marimo_tip_body_2">Pressez et roulez doucement votre marimo pour conserver sa forme ronde.</string>
+    <string name="marimo_tip_body_3">Utilisez de l\'eau filtrée ou distillée. L\'eau chlorée peut nuire aux marimos.</string>
+    <string name="marimo_tip_body_4">Les marimos préfèrent la lumière indirecte. Trop de soleil les fait brunir.</string>
+    <string name="marimo_tip_body_5">Ne surchargez pas les récipients. Chaque marimo a besoin d\'espace pour bouger librement.</string>
+    <string name="marimo_tip_body_6">Les marimos en bonne santé font de minuscules bulles d\'oxygène - c\'est un excellent signe !</string>
+    <string name="marimo_tip_body_7">En hiver, les marimos poussent plus lentement et ont besoin de changements d\'eau moins fréquents.</string>
+    <string name="marimo_tip_body_8">Les marimos ne poussent que de 5 mm par an. La patience est de mise avec ces amis !</string>
+    <string name="marimo_tip_body_9">Les grands marimos peuvent être doucement séparés en plus petits pour être partagés.</string>
+    <string name="marimo_tip_body_10">Remuez l\'eau de temps en temps pour aider les marimos à bouger et à rester en bonne santé.</string>
+    <string name="total">Total</string>
+    <string name="_3">3</string>
+    <string name="overdue">En retard</string>
+    <string name="due_soon">Pour bientôt</string>
+    <string name="_0">0</string>
+    <string name="your_marimos">Vos Marimos</string>
+    <string name="add_marimo">Nouveau Marimo</string>
+    <string name="mochi">Mochi</string>
+    <string name="changes_every_14_days">Changements tous les 14 jours</string>
+    <string name="_295_days_overdue">295 jours de retard</string>
+    <string name="last_changed_dec_15_2024">Dernier changement : 15 déc. 2024</string>
+    <string name="next_change_dec_29_2024">Prochain changement : 29 déc. 2024</string>
+    <string name="my_first_marimo_very_round_and_bouncy">Mon premier marimo ! Très rond et rebondissant.</string>
+    <string name="water_changed">Changer</string>
+    <string name="edit">Modifier</string>
+    <string name="img">Img</string>
+    <string name="water_change_tracker">Suivi des changements d\'eau</string>
+    <string name="dashboard">Tableau de bord</string>
+    <string name="changes_every_days">Changements tous les %1$d jours</string>
+    <string name="no_notes">Aucune note</string>
+    <string name="days_left">jours restants</string>
+    <string name="no_data">Aucun Marimo trouvé</string>
+    <string name="_12_days_left">12 jours restants</string>
+    <string name="last_changed">Dernier changement</string>
+    <string name="oct_15_2025">15 oct. 2025</string>
+    <string name="next_change">Prochain changement</string>
+    <string name="oct_29_2025">29 oct. 2025</string>
+    <string name="notes">Notes</string>
+    <string name="bottom">Gardez vos amis marimo heureux et en bonne santé ! 🌱</string>
+    <string name="loading_your_little_friends">Chargement de vos petits amis…</string>
+    <string name="days_overdue">jours de retard</string>
+    <string name="due_in">Prévu</string>
+    <string name="days">jours</string>
+    <string name="add_new_marimo">Ajouter un nouveau Marimo</string>
+    <string name="add_a_new_marimo_friend_to_track">Ajouter un nouvel ami marimo à suivre</string>
+    <string name="marimo_name">Nom du Marimo *</string>
+    <string name="e_g_mochi_bubbles_green_bean">ex. Mochi, Bulles, Haricot Vert…</string>
+    <string name="last_water_change">Dernier changement d\'eau *</string>
+    <string name="october_30th_2025">30-10-2025</string>
+    <string name="change_frequency">Fréquence de changement *</string>
+    <string name="notes_optional">Notes (Optionnel)</string>
+    <string name="observations">Toute instruction d\'entretien spéciale ou observation…</string>
+    <string name="cancel">Annuler</string>
+    <string name="btn_add_marimo">Ajouter le Marimo</string>
+    <string name="every_14_days_bi_weekly">Tous les 14 jours (Bi-hebdomadaire)</string>
+    <string name="please_fill_all_the_fields">Veuillez remplir tous les champs</string>
+    <string name="attention">Attention : un Marimo est en retard !</string>
+    <string name="overdue_marimo">Urgent : Changement d\'eau nécessaire pour :\n%1$s</string>
+    <string name="settings">Paramètres</string>
+    <string name="stats">Stats</string>
+    <string name="marimo_care_settings">⚙️ Paramètres Marimo Care</string>
+    <string name="customize_your_marimo_care_experience">Personnalisez votre expérience Marimo Care</string>
+    <string name="btn_save">Enregistrer les modifications</string>
+    <string name="dashboard_card_style">Style de carte du tableau de bord</string>
+    <string name="choose_how_you_want_your_marimo_statistics_cards_to_appear_on_the_dashboard">Choisissez comment vous souhaitez que vos cartes\nde statistiques marimo apparaissent sur le tableau de bord</string>
+    <string name="default_style">Style par défaut</string>
+    <string name="clean_cards_with_icons_and_subtle_backgrounds">Cartes épurées avec icônes et arrière-plans subtils</string>
+    <string name="colored_style">Style coloré</string>
+    <string name="bold_colored_backgrounds_without_icons">Arrière-plans colorés audacieux sans icônes</string>
+    <string name="option_correctly_updated">Option correctement mise à jour</string>
+    <string name="update">Enregistrer les modifications</string>
+    <string name="updated_ok">mis à jour correctement</string>
+    <string name="new_marimo_added">Nouveau Marimo ajouté</string>
+    <string name="automatic_notification">Notification automatique 🤖</string>
+    <string name="filters">\t\tFiltre :</string>
+    <string name="all">Tous</string>
+    <string name="overdue_f">En retard</string>
+    <string name="soon_f">Pour bientôt</string>
+    <string name="upToDate">À jour</string>
+    <string name="water_change_today">Hé, aujourd\'hui vous devez changer l\'eau de certains Marimos</string>
+    <string name="soon_marimo">Il y a des Marimos sur le point de changer leur eau :\n%1$s</string>
+    <string name="today_marimo_list">Liste des Marimos dont il faut changer l\'eau aujourd\'hui :\n%1$s</string>
+    <string name="tips_auto_scroll_speed">Vitesse de défilement des conseils</string>
+    <string name="choose_how_quickly_the_marimo_care_tips_automatically_rotate">Choisissez la vitesse à laquelle les conseils d\'entretien\nmarimo tournent automatiquement</string>
+    <string name="very_fast_5_seconds">Très rapide (5 secondes)</string>
+    <string name="fast_10_seconds">Rapide (10 secondes)</string>
+    <string name="normal_15_seconds">Normal (15 secondes)</string>
+    <string name="slow_20_seconds">Lent (20 secondes)</string>
+    <string name="very_slow_25_seconds">Très lent (25 secondes)</string>
+    <string name="sort">\t\tTrier par :</string>
+    <string name="add">+ Ajouter</string>
+    <string name="plus">+</string>
+    <string name="in">Dans</string>
+    <string name="due_soon_">Prévu</string>
+    <string name="dashboard_filters_amp_sorting"><![CDATA[Filtres & Tri du tableau de bord]]></string>
+    <string name="customize_how_marimos_are_filtered_and_sorted_on_the_dashboard">Personnalisez la façon dont les marimos sont filtrés\net triés sur le tableau de bord</string>
+    <string name="display_controls">Afficher les contrôles</string>
+    <string name="show_filters_and_sort_controls">Afficher les filtres et les contrôles de tri</string>
+    <string name="hide_filters_and_sort_controls">Masquer les filtres et les contrôles de tri</string>
+    <string name="default_filter">Filtre par défaut</string>
+    <string name="all_marimos">Tous les Marimos</string>
+    <string name="overdue_only">En retard uniquement</string>
+    <string name="due_soon_only">Pour bientôt uniquement</string>
+    <string name="up_to_date_only">À jour uniquement</string>
+    <string name="default_sort_order">Ordre de tri par défaut</string>
+    <string name="sort_by_status_overdue_first">Par statut (En retard d\'abord)</string>
+    <string name="sorted_by_name_a_z">Par nom (A-Z)</string>
+    <string name="sort_by_last_changed_newest_first">Par dernier changement (Plus récent d\'abord)</string>
+    <string name="stats_sub_title">Analyses avancées et informations sur votre collection de marimos</string>
+    <string name="marimo_care_stats">Statistiques Marimo</string>
+    <string name="average_frequency">Fréquence moyenne</string>
+    <string name="_10_3">10.3</string>
+    <string name="_days">jours</string>
+    <string name="across_all_marimos">Sur tous les marimos</string>
+    <string name="total_water_changed">Total des changements d\'eau</string>
+    <string name="since_tracking_began">Depuis le début du suivi</string>
+    <string name="most_frequent">Le plus fréquent</string>
+    <string name="last_frequent">Le moins fréquent</string>
+    <string name="every">"Tous les "</string>
+    <string name="different">Marimo différent</string>
+    <string name="every_14_days">Tous les 14 jours</string>
+    <string name="oct_30">30 oct.</string>
+    <string name="most_low_maintenance_marimos">Marimos nécessitant le moins d\'entretien</string>
+    <string name="these_marimos_require_water_changes_every_14_days">Ces marimos nécessitent des changements d\'eau tous les 14 jours</string>
+    <string name="most_attention_needed_marimos">Marimos nécessitant le plus d\'attention</string>
+    <string name="these_marimos_require_water_changes_every">"Ces marimos nécessitent des changements d\'eau tous les "</string>
+    <string name="__days">" jours :"</string>
+    <string name="water_change_trend">Tendance des changements d\'eau</string>
+    <string name="actual_water_changes_over_the_last_6_months">Changements d\'eau réels au cours des 6 derniers mois</string>
+    <string name="change_frequency_distribution">Répartition des fréquences de changement</string>
+    <string name="how_often_you_change_water_for_your_marimos">À quelle fréquence vous changez l\'eau de vos marimos (en jours)</string>
+    <string name="there_are_no_statistics_yet">Il n\'y a pas encore de statistiques</string>
+    <string name="marimo_name_stats">Nom du Marimo</string>
+    <string name="change_frequency_stats">Fréquence de changement</string>
+    <string name="soon_marimo_one">%1$s est sur le point de changer son eau</string>
+    <string name="are_you_sure_you_want_to_delete_this_marimo_this_action_cannot_be_undone">"Êtes-vous sûr de vouloir supprimer ce marimo ? Cette action est irréversible. "</string>
+    <string name="delete">"Supprimer "</string>
+    <string name="delete_marimo_kuju">Supprimer le Marimo Kuju ?</string>
+    <string name="generate">Générer un code QR</string>
+    <string name="marimo_qr_code">Code QR Marimo</string>
+    <string name="print_this_code_temp">Imprimez ce code, vous pourrez le scanner plus tard pour voir rapidement l\'état de Bulles et enregistrer un changement d\'eau.</string>
+    <string name="qr_code_for_marimo">"Imprimez ce code, vous pourrez le scanner plus tard pour voir rapidement l\'état de "</string>
+    <string name="qr_code_you_can_scan_it_later">" et enregistrer un changement d\'eau."</string>
+    <string name="manage_qr">Gérer le QR</string>
+    <string name="what">Que voulez-vous faire ?</string>
+    <string name="share_qr">Partager le QR</string>
+    <string name="qr_saved">QR enregistré dans la galerie</string>
+    <string name="save_error">Erreur d\'enregistrement</string>
+    <string name="marimo_qr_dashboard">🌿 Gérer le Marimo depuis le code QR</string>
+    <string name="_6">6</string>
+    <string name="_1">1</string>
+    <string name="_4">4</string>
+    <string name="photo">Pour faciliter la reconnaissance de votre Marimo, vous pouvez ajouter une photo ou en prendre une nouvelle en cliquant ici.</string>
+    <string name="take_photo">Prendre une photo</string>
+    <string name="choose_from_gallery">Choisir une image dans la galerie</string>
+    <string name="photo_save_error">Erreur lors de l\'enregistrement de la photo</string>
+    <string name="modify_marimo">Modifier votre marimo</string>
+    <string name="edit_marimo">Modifier</string>
+    <string name="add_new">Vous pouvez maintenant continuer à modifier ou ajouter un nouveau marimo en cliquant ici (ou choisir toute autre action)</string>
+    <string name="photo_act">Choisissez ce qu\'il faut faire</string>
+    <string name="active_reminders">Rappels actifs (1)</string>
+    <string name="active_reminders_text">Rappels actifs</string>
+    <string name="select_marimos_to_update">Sélectionnez les Marimos à mettre à jour</string>
+    <string name="select_which_marimos_have_had_their_water_changed">Sélectionnez les marimos dont l\'eau a été changée</string>
+    <string name="update_1_marimo">Mettre à jour 1 Marimo</string>
+    <string name="is_adapter">est à</string>
+    <string name="days_overdue_adapter">jours de retard !</string>
+    <string name="last_changed_adapter">Dernier changement :</string>
+    <string name="update_dialog">Mettre à jour</string>
+    <string name="water_change_info">Depuis la barre d\'alerte, vous pouvez choisir quels marimos mettre à jour en les sélectionnant dans la liste, il suffit de cliquer ici</string>
+    <string name="log_water_change">Enregistrer le changement d\'eau</string>
+    <string name="log_notes_optional">Notes (Optionnel)</string>
+    <string name="how_is_your_marimo_looking_any_observations">Comment va votre marimo ?\nDes observations ?</string>
+    <string name="upload_image_optional">Télécharger une image (Optionnel)</string>
+    <string name="click_to_upload_image">Cliquez pour télécharger une image</string>
+    <string name="mark_as_milestone_special_moment">Marquer comme étape importante (moment spécial)</string>
+    <string name="save_log">Enregistrer le journal</string>
+    <string name="average_health_score">Score de santé moyen</string>
+    <string name="update_all_marimo">Tout mettre à jour</string>
+    <string name="last_changed_to_fix">Sélectionnez la date à laquelle vous avez reçu votre Marimo pour calculer au mieux les changements d\'eau précédents.\nRemarque : la date finale récupérée sera la même que la date de sortie de l\'application, 25-11-2025.</string>
+    <string name="marimos_to_update">Mettre à jour les changements d\'eau pour les Stats</string>
+    <string name="day_of_acquisition">Date d\'inscription *</string>
+    <string name="trends">Tendances</string>
+    <string name="health_scores">Scores de santé</string>
+    <string name="compare">Comparer</string>
+    <string name="individual_health_score">Scores de santé individuels</string>
+    <string name="_21th_marimo">21e Marimo</string>
+    <string name="complete_care_history_and_profile">Historique complet d\'entretien et profil</string>
+    <string name="out_of_19">sur 19</string>
+    <string name="nov_25_2025">25 nov. 2025</string>
+    <string name="dec_16_2025">16 déc. 2025</string>
+    <string name="current_health_score">Score de santé actuel</string>
+    <string name="_19">19</string>
+    <string name="health_score_history">Historique du score de santé</string>
+    <string name="health_track">Suivez la santé de votre marimo sur 10 jours</string>
+    <string name="frequency">Fréquence</string>
+    <string name="_21d">21j</string>
+    <string name="total_changes">Changements totaux</string>
+    <string name="_2">2</string>
+    <string name="_21_days">21 jours</string>
+    <string name="milestones">Étapes importantes</string>
+    <string name="quick_actions">Actions rapides</string>
+    <string name="wow">Ouah</string>
+    <string name="milestone">Étape</string>
+    <string name="health_98">Santé : 98</string>
+    <string name="february_13_2026">13 février 2026</string>
+    <string name="damn_i_change_it">Mince je le change</string>
+    <string name="health_96">Santé : 96</string>
+    <string name="yeah">Ouais</string>
+    <string name="star">🌟</string>
+    <string name="care_timeline">Chronologie des soins</string>
+    <string name="visual_history">Historique visuel de tous les changements d\'eau et étapes</string>
+    <string name="out_of_100">sur 100</string>
+    <string name="waters">Changement d\'eau</string>
+    <string name="marimo_notes">Notes du Marimo</string>
+    <string name="_97_100">97/100</string>
+    <string name="_5">5</string>
+    <string name="days_tracked">Jours suivis</string>
+    <string name="_102">102</string>
+    <string name="compare_marimos">Comparer les Marimos</string>
+    <string name="select_marimos_above_to_compare_their_statistics">Sélectionnez les marimos ci-dessus pour comparer leurs statistiques</string>
+    <string name="performance_comparison">Comparaison des performances</string>
+    <string name="detailed_comparison">Comparaison détaillée</string>
+    <string name="empty">-</string>
+    <string name="new_change_log">Dans cette nouvelle boîte de dialogue, vous pouvez ajouter une note sur le changement d\'eau, prendre ou télécharger une photo souvenir, et…\nMarquer ce moment comme spécial !</string>
+    <string name="d">j</string>
+    <string name="today">aujourd\'hui</string>
+    <string name="new_stats">De nouvelles statistiques ont été ajoutées, regroupées par sujet.\nListe de la santé de tous les marimos, et statistiques comparatives.</string>
+    <string name="stats_period">Statistiques – Période de tendance des changements d\'eau</string>
+    <string name="default_time_range_shown_in_the_water_change_trend_chart">Plage horaire par défaut affichée dans le graphique de tendance</string>
+    <string name="last_sixth_month">6 derniers mois</string>
+    <string name="last_year">Année dernière</string>
+    <string name="actual_water_changes_over_the_last_12_months">Changements d\'eau réels au cours de la dernière année</string>
+    <string name="feedback">Commentaires</string>
+    <string name="help_us_improve_marimo_care_choose_a_topic_and_send_us_your_thoughts_ideas_or_bug_reports">Aidez-nous à améliorer Marimo Care ! Choisissez un sujet et envoyez-nous vos réflexions, idées ou rapports de bogues.</string>
+    <string name="_1_choose_a_topic">1. Choisissez un sujet</string>
+    <string name="what_would_you_like_to_give_feedback_about">Sur quoi aimeriez-vous donner votre avis ?</string>
+    <string name="bug_report">Rapport de bogue</string>
+    <string name="_2_write_your_message">2. Rédigez votre message</string>
+    <string name="describe_your_idea_issue_or_suggestion_here">Décrivez votre idée, problème ou suggestion ici…</string>
+    <string name="send_feedback">Envoyer les commentaires</string>
+    <string name="join_the_marimo_community">Rejoignez la communauté Marimo</string>
+    <string name="reddit">Reddit</string>
+    <string name="whatsapp">WhatsApp</string>
+    <string name="instagram">Instagram</string>
+    <string name="share_your_feedback">Partagez vos commentaires</string>
+    <string name="feature_request">Demande de fonctionnalité</string>
+    <string name="ui_design">Interface / Design</string>
+    <string name="new_content">Nouveau contenu</string>
+    <string name="general_feedback">Commentaire général</string>
+    <string name="other">Autre</string>
+    <string name="please_select_at_least_one_topic_and_write_a_message">Veuillez sélectionner au moins un sujet et rédiger un message.</string>
+    <string name="marimo_care_feedback">Commentaire Marimo Care : %1$s</string>
+    <string name="riccardo_pezzolati_gmail_com">riccardo.pezzolati@gmail.com</string>
+    <string name="choose_email_client">Choisissez un client de messagerie…</string>
+    <string name="no_email_app_found_on_your_device">Aucune application de messagerie trouvée sur votre appareil.</string>
+    <string name="https_www_reddit_com_r_marimo">https://www.reddit.com/r/Marimo/</string>
+    <string name="https_www_instagram_com_explore_tags_marimo">https://www.instagram.com/explore/tags/marimo/</string>
+    <string name="https_play_google_com_store_apps_details_id_rpt_tool_marimocare">https://play.google.com/store/apps/details?id=rpt.tool.marimocare</string>
+    <string name="check_out_marimo_care">Découvrez Marimo Care ! %1$s</string>
+    <string name="unable_to_open_link">Impossible d\'ouvrir le lien.</string>
+    <string name="whatsapp_is_not_installed_on_this_device">WhatsApp n\'est pas installé sur cet appareil.</string>
+    <string name="clear_all">Tout effacer</string>
+    <string name="form_cleared">Formulaire effacé</string>
+    <string name="feedback_balloon">Cliquer ici ouvrira l\'écran de commentaires où vous pourrez soumettre des suggestions pour améliorer l\'application et rejoindre la communauté Marimo.</string>
+    <string name="achievement">Succès</string>
+    <string name="achievement_intro_title">Succès</string>
+    <string name="achievement_intro_message">Dans cette version, les objectifs à atteindre ont été ajoutés. Voulez-vous calculer les progrès ou préférez-vous repartir de zéro ?</string>
+    <string name="calculate">Calculer</string>
+    <string name="restart">Recommencer</string>
+    <string name="earned_26">Obtenus (26)</string>
+    <string name="earned_label">Obtenus</string>
+    <string name="_50_badges">/ %1$d badges</string>
+    <string name="_26">26</string>
+    <string name="achievement_subtitle">Gagnez des badges en prenant soin de vos marimos</string>
+    <string name="recalculate">Recalculer</string>
+    <string name="reset_all">Tout réinitialiser</string>
+    <string name="ach_1" translatable="false">🗿</string>
+    <string name="ach_2" translatable="false">📊</string>
+    <string name="ach_3" translatable="false">📋</string>
+    <string name="ach_4" translatable="false">🌗</string>
+    <string name="ach_5" translatable="false">🎊</string>
+    <string name="ach_6" translatable="false">🌊</string>
+    <string name="ach_7" translatable="false">📅</string>
+    <string name="ach_8" translatable="false">📆</string>
+    <string name="ach_9" translatable="false">🌱</string>
+    <string name="ach_10" translatable="false">⭐</string>
+    <string name="ach_11" translatable="false">🎖️</string>
+    <string name="ach_12" translatable="false">🦅</string>
+    <string name="ach_13" translatable="false">🏅</string>
+    <string name="ach_14" translatable="false">🎯</string>
+    <string name="ach_15" translatable="false">🌟</string>
+    <string name="ach_16" translatable="false">📸</string>
+    <string name="ach_17" translatable="false">🤳</string>
+    <string name="ach_18" translatable="false">🖼️</string>
+    <string name="ach_19" translatable="false">📝</string>
+    <string name="ach_20" translatable="false">📔</string>
+    <string name="ach_21" translatable="false">📖</string>
+    <string name="ach_22" translatable="false">✅</string>
+    <string name="ach_23" translatable="false">🎳</string>
+    <string name="ach_24" translatable="false">⏰</string>
+    <string name="ach_25" translatable="false">🏷️</string>
+    <string name="ach_26" translatable="false">✏️</string>
+    <string name="ach_27" translatable="false">🖼️</string>
+    <string name="ach_28" translatable="false">🌅</string>
+    <string name="ach_29" translatable="false">🗒️</string>
+    <string name="ach_30" translatable="false">🐦</string>
+    <string name="ach_31" translatable="false">⚡</string>
+    <string name="ach_32" translatable="false">🦉</string>
+    <string name="ach_33" translatable="false">🎛️</string>
+    <string name="ach_34" translatable="false">💬</string>
+    <string name="ach_35" translatable="false">⚙️</string>
+    <string name="ach_36" translatable="false">👴</string>
+    <string name="ach_37" translatable="false">🌿</string>
+    <string name="ach_38" translatable="false">👫</string>
+    <string name="ach_39" translatable="false">🎶</string>
+    <string name="ach_40" translatable="false">🫙</string>
+    <string name="ach_41" translatable="false">🏆</string>
+    <string name="ach_42" translatable="false">🪖</string>
+    <string name="ach_43" translatable="false">👑</string>
+    <string name="ach_44" translatable="false">💧</string>
+    <string name="ach_45" translatable="false">🚿</string>
+    <string name="ach_46" translatable="false">🔄</string>
+    <string name="ach_47" translatable="false">💪</string>
+    <string name="ach_48" translatable="false">🧙</string>
+    <string name="ach_49" translatable="false">💯</string>
+    <string name="ach_50" translatable="false">🎖️</string>
+    <string name="locked_24">Verrouillés (24)</string>
+    <string name="ach_desc_1">Vous avez ajouté votre tout premier marimo à la collection.</string>
+    <string name="ach_desc_2">Vous avez 2 marimos — ils ont de la compagnie maintenant !</string>
+    <string name="ach_desc_3">3 marimos dans votre collection.</string>
+    <string name="ach_desc_4">Vous agrandissez la collection — 5 marimos ajoutés !</string>
+    <string name="ach_desc_5">Ouah, 10 marimos ! Vous les aimez vraiment.</string>
+    <string name="ach_desc_6">Une armée de 20 marimos !</string>
+    <string name="ach_desc_7">50 marimos. Vous dirigez un empire.</string>
+    <string name="ach_desc_8">Vous avez enregistré votre premier changement d\'eau. L\'aventure commence !</string>
+    <string name="ach_desc_9">5 changements d\'eau enregistrés.</string>
+    <string name="ach_desc_10">10 changements d\'eau enregistrés au total.</string>
+    <string name="ach_desc_11">25 changements d\'eau enregistrés. Vous prenez une habitude !</string>
+    <string name="ach_desc_12">50 changements d\'eau enregistrés. Vous êtes un pro !</string>
+    <string name="ach_desc_13">100 changements d\'eau ! Absolument incroyable.</string>
+    <string name="ach_desc_14">200 changements d\'eau enregistrés. Légendaire.</string>
+    <string name="ach_desc_15">500 changements d\'eau. Vous êtes le gardien ultime de marimos.</string>
+    <string name="ach_desc_16">Une semaine entière de soins pour marimos !</string>
+    <string name="ach_desc_17">Vous avez maintenu les changements d\'eau pendant un mois entier.</string>
+    <string name="ach_desc_18">Trois mois de soins dévoués aux marimos !</string>
+    <string name="ach_desc_19">Six mois de soins constants. Vous êtes une légende.</string>
+    <string name="ach_desc_20">Une année complète de soins pour marimos. Un dévouement incroyable !</string>
+    <string name="ach_desc_21">Deux années complètes de soins. Vraiment extraordinaire.</string>
+    <string name="ach_desc_22">Vous avez marqué votre premier changement d\'eau d\'étape importante.</string>
+    <string name="ach_desc_23">Vous avez marqué 5 changements d\'eau d\'étape importante.</string>
+    <string name="ach_desc_24">10 changements d\'eau d\'étape enregistrés !</string>
+    <string name="ach_desc_25">Photo téléchargée lors d\'un enregistrement de changement d\'eau.</string>
+    <string name="ach_desc_26">Photos téléchargées dans 5 enregistrements de changements d\'eau différents.</string>
+    <string name="ach_desc_27">20 enregistrements de changements d\'eau avec photos. Un vrai album marimo !</string>
+    <string name="ach_desc_28">Notes ajoutées à 5 changements d\'eau différents.</string>
+    <string name="ach_desc_29">Notes ajoutées à 20 changements d\'eau.</string>
+    <string name="ach_desc_30">Notes ajoutées à 50 changements d\'eau. Un véritable historien.</string>
+    <string name="ach_desc_31">Tous vos marimos sont à jour — aucun retard en ce moment !</string>
+    <string name="ach_desc_32">Vous avez enregistré 5 changements d\'eau à temps (pas en retard).</string>
+    <string name="ach_desc_33">20 changements d\'eau à l\'heure. Réglé comme une horloge !</string>
+    <string name="ach_desc_34">Vous avez donné un nom à votre marimo (pas seulement \'Marimo\').</string>
+    <string name="ach_desc_35">Vous avez nommé 3 marimos avec des noms uniques.</string>
+    <string name="ach_desc_36">Vous avez ajouté une photo de profil à l\'un de vos marimos.</string>
+    <string name="ach_desc_37">Photos de profil ajoutées à 5 marimos.</string>
+    <string name="ach_desc_38">Vous avez ajouté des notes à l\'un de vos marimos.</string>
+    <string name="ach_desc_39">Vous avez enregistré un changement d\'eau plus de 2 jours avant la date prévue.</string>
+    <string name="ach_desc_40">Vous avez enregistré 3 changements d\'eau le même jour.</string>
+    <string name="ach_desc_41">Vous avez enregistré 10 changements d\'eau en retard (mais vous l\'avez fait !).</string>
+    <string name="ach_desc_42">Vous possédez des marimos avec 3 fréquences de changement d\'eau différentes.</string>
+    <string name="ach_desc_43">Vous avez soumis des commentaires pour aider à améliorer l\'application.</string>
+    <string name="ach_desc_44">Vous avez personnalisé les paramètres de votre tableau de bord.</string>
+    <string name="ach_desc_45">L\'un de vos marimos est sous vos soins depuis plus de 6 mois.</string>
+    <string name="ach_desc_46">L\'un de vos marimos est sous vos soins depuis plus d\'un an.</string>
+    <string name="ach_desc_47">Vous avez visité la page des Statistiques.</string>
+    <string name="ach_desc_48">Vous avez ajouté des notes à 5 de vos marimos.</string>
+    <string name="ach_desc_49">Vous avez obtenu 25 succès. Vous êtes à la moitié de la collection complète !</string>
+    <string name="ach_desc_50">Vous avez obtenu les 50 succès. Vous êtes un véritable Maître Marimo !</string>
+    <string name="ach_tit_1">Premier Marimo</string>
+    <string name="ach_tit_2">Duo Dynamique</string>
+    <string name="ach_tit_3">Trio</string>
+    <string name="ach_tit_4">Collectionneur</string>
+    <string name="ach_tit_5">Accumulateur de Marimo</string>
+    <string name="ach_tit_6">Armée Marimo</string>
+    <string name="ach_tit_7">Empire Marimo</string>
+    <string name="ach_tit_8">Première Goutte</string>
+    <string name="ach_tit_9">Pour Commencer</string>
+    <string name="ach_tit_10">Gardien Régulier</string>
+    <string name="ach_tit_11">Dévoué</string>
+    <string name="ach_tit_12">Sorcier de l\'Eau</string>
+    <string name="ach_tit_13">Un Siècle de Soins</string>
+    <string name="ach_tit_14">Bicentenaire</string>
+    <string name="ach_tit_15">Maître de l\'Eau</string>
+    <string name="ach_tit_16">Une Semaine</string>
+    <string name="ach_tit_17">Un Mois de Soins</string>
+    <string name="ach_tit_18">Trois Mois Solides</string>
+    <string name="ach_tit_19">Héros du Semestre</string>
+    <string name="ach_tit_20">Champion Annuel</string>
+    <string name="ach_tit_21">Vétéran de Deux Ans</string>
+    <string name="ach_tit_22">Marqueur d\'Étape</string>
+    <string name="ach_tit_23">Chasseur d\'Étapes</string>
+    <string name="ach_tit_24">Maître des Étapes</string>
+    <string name="ach_tit_25">Gardien de Photos</string>
+    <string name="ach_tit_26">Photographe</string>
+    <string name="ach_tit_27">Album Photo</string>
+    <string name="ach_tit_28">Preneur de Notes</string>
+    <string name="ach_tit_29">Gardien de Journal</string>
+    <string name="ach_tit_30">Chroniqueur</string>
+    <string name="ach_tit_31">Dossier Parfait</string>
+    <string name="ach_tit_32">Sur une Lancée</string>
+    <string name="ach_tit_33">Mécanique</string>
+    <string name="ach_tit_34">Donneur de Nom</string>
+    <string name="ach_tit_35">Nommeur Créatif</string>
+    <string name="ach_tit_36">Photo de Profil</string>
+    <string name="ach_tit_37">Collection Photogénique</string>
+    <string name="ach_tit_38">Biographe de Marimo</string>
+    <string name="ach_tit_39">Lève-tôt</string>
+    <string name="ach_tit_40">Changeur Rapide</string>
+    <string name="ach_tit_41">Oiseau de Nuit</string>
+    <string name="ach_tit_42">Mix Master</string>
+    <string name="ach_tit_43">Donneur d\'Avis</string>
+    <string name="ach_tit_44">Explorateur de Paramètres</string>
+    <string name="ach_tit_45">Marimo Senior</string>
+    <string name="ach_tit_46">L\'Ancien</string>
+    <string name="ach_tit_47">Nerd des Stats</string>
+    <string name="ach_tit_48">Biographe de Marimo</string>
+    <string name="ach_tit_49">À Mi-chemin</string>
+    <string name="ach_tit_50">Chasseur de Succès</string>
+    <string-array name="marimo_frequencies">
+        <item>Tous les 7 jours (Hebdomadaire)</item>
+        <item>Tous les 10 jours</item>
+        <item>Tous les 14 jours (Bi-hebdomadaire)</item>
+        <item>Tous les 21 jours</item>
+        <item>Tous les 30 jours (Mensuel)</item>
+    </string-array>
+    <string-array name="marimo_sorting">
+        <item>Statut</item>
+        <item>Nom</item>
+        <item>Dernier changement</item>
+    </string-array>
+    <string-array name="marimo_frequencies_changes">
+        <item>7</item>
+        <item>10</item>
+        <item>14</item>
+        <item>21</item>
+        <item>30</item>
+    </string-array>
+    <string-array name="marimo_qr_actions">
+        <item>Imprimer QR</item>
+        <item>Envoyer QR</item>
+        <item>Enregistrer QR</item>
+    </string-array>
+</resources>

@@ -1,0 +1,467 @@
+<resources>
+    <string name="app_name">Marimo Care</string>
+    <string name="marimo_care_dashboard">🌿 لوحة تحكم Marimo Care</string>
+    <string name="keep_track_of_your_marimo">تتبع كرات طحالب ماريمو الخاصة بك ولا تفوت تغيير الماء مرة أخرى!</string>
+    <string name="marimo_tip_title_1">💡 نصيحة ماريمو: درجة الحرارة المثالية</string>
+    <string name="marimo_tip_title_2">💡 نصيحة ماريمو: دحرجة لطيفة</string>
+    <string name="marimo_tip_title_3">💡 نصيحة ماريمو: الماء النظيف هو المفتاح</string>
+    <string name="marimo_tip_title_4">💡 نصيحة ماريمو: العيش في إضاءة منخفضة</string>
+    <string name="marimo_tip_title_5">💡 نصيحة ماريمو: مساحة للتحرك</string>
+    <string name="marimo_tip_title_6">💡 نصيحة ماريمو: راقب الفقاعات</string>
+    <string name="marimo_tip_title_7">💡 نصيحة ماريمو: التغيرات الموسمية</string>
+    <string name="marimo_tip_title_8">💡 نصيحة ماريمو: نمو بطيء</string>
+    <string name="marimo_tip_title_9">💡 نصيحة ماريمو: التقسيم والمشاركة</string>
+    <string name="marimo_tip_title_10">💡 نصيحة ماريمو: حركة الماء</string>
+    <string name="marimo_tip_body_1">احفظ الماريمو في ماء بارد (15-25 درجة مئوية). تجنب أشعة الشمس المباشرة والأماكن الدافئة.</string>
+    <string name="marimo_tip_body_2">اضغط على الماريمو ودحرجه برفق للحفاظ على شكله الدائري.</string>
+    <string name="marimo_tip_body_3">استخدم ماءً مفلتراً أو مقطراً. الماء المكلور يمكن أن يضر الماريمو.</string>
+    <string name="marimo_tip_body_4">يفضل الماريمو الضوء غير المباشر. الكثير من الشمس يجعله بنياً.</string>
+    <string name="marimo_tip_body_5">لا تزدحم الحاويات. يحتاج كل ماريمو إلى مساحة للتحرك بحرية.</string>
+    <string name="marimo_tip_body_6">تصنع كرات الماريمو الصحية فقاعات أكسجين صغيرة - هذه علامة رائعة!</string>
+    <string name="marimo_tip_body_7">في الشتاء، ينمو الماريمو بشكل أبطأ ويحتاج إلى تغيير الماء بشكل أقل.</string>
+    <string name="marimo_tip_body_8">ينمو الماريمو بمقدار 5 مم فقط في السنة. الصبر هو المفتاح مع هؤلاء الأصدقاء!</string>
+    <string name="marimo_tip_body_9">يمكن تقسيم كرات الماريمو الكبيرة برفق إلى كرات أصغر لمشاركتها.</string>
+    <string name="marimo_tip_body_10">حرك الماء من حين لآخر لمساعدة الماريمو على التحرك والبقاء بصحة جيدة.</string>
+    <string name="total">المجموع</string>
+    <string name="_3">3</string>
+    <string name="overdue">متأخر</string>
+    <string name="due_soon">مستحق قريباً</string>
+    <string name="_0">0</string>
+    <string name="your_marimos">الماريمو الخاص بك</string>
+    <string name="add_marimo">ماريمو جديد</string>
+    <string name="mochi">موتشي</string>
+    <string name="changes_every_14_days">يتغير كل 14 يوماً</string>
+    <string name="_295_days_overdue">متأخر 295 يوماً</string>
+    <string name="last_changed_dec_15_2024">آخر تغيير: 15 ديسمبر 2024</string>
+    <string name="next_change_dec_29_2024">التغيير القادم: 29 ديسمبر 2024</string>
+    <string name="my_first_marimo_very_round_and_bouncy">أول ماريمو لي! دائري جداً ونطاط.</string>
+    <string name="water_changed">تغيير</string>
+    <string name="edit">تعديل</string>
+    <string name="img">صورة</string>
+    <string name="water_change_tracker">متتبع تغيير الماء</string>
+    <string name="dashboard">لوحة التحكم</string>
+    <string name="changes_every_days">يتغير كل %1$d أيام</string>
+    <string name="no_notes">لا توجد ملاحظات</string>
+    <string name="days_left">أيام متبقية</string>
+    <string name="no_data">لم يتم العثور على ماريمو</string>
+    <string name="_12_days_left">12 يوماً متبقياً</string>
+    <string name="last_changed">آخر تغيير</string>
+    <string name="oct_15_2025">15 أكتوبر 2025</string>
+    <string name="next_change">التغيير القادم</string>
+    <string name="oct_29_2025">29 أكتوبر 2025</string>
+    <string name="notes">ملاحظات</string>
+    <string name="bottom">حافظ على أصدقاء الماريمو سعداء وبصحة جيدة! 🌱</string>
+    <string name="loading_your_little_friends">جاري تحميل أصدقائك الصغار…</string>
+    <string name="days_overdue">أيام متأخرة</string>
+    <string name="due_in">مستحق</string>
+    <string name="days">أيام</string>
+    <string name="add_new_marimo">إضافة ماريمو جديد</string>
+    <string name="add_a_new_marimo_friend_to_track">أضف صديق ماريمو جديد لتتبعه</string>
+    <string name="marimo_name">اسم الماريمو *</string>
+    <string name="e_g_mochi_bubbles_green_bean">مثال: موتشي، فقاعات، الفاصوليا الخضراء…</string>
+    <string name="last_water_change">آخر تغيير للماء *</string>
+    <string name="october_30th_2025">30-10-2025</string>
+    <string name="change_frequency">وتيرة التغيير *</string>
+    <string name="notes_optional">ملاحظات (اختياري)</string>
+    <string name="observations">أي تعليمات عناية خاصة أو ملاحظات…</string>
+    <string name="cancel">إلغاء</string>
+    <string name="btn_add_marimo">إضافة ماريمو</string>
+    <string name="every_14_days_bi_weekly">كل 14 يوماً (كل أسبوعين)</string>
+    <string name="please_fill_all_the_fields">يرجى ملء جميع الحقول</string>
+    <string name="attention">تنبيه: ماريمو متأخر!</string>
+    <string name="overdue_marimo">عاجل: مطلوب تغيير الماء لـ:\n%1$s</string>
+    <string name="settings">الإعدادات</string>
+    <string name="stats">إحصائيات</string>
+    <string name="marimo_care_settings">⚙️ إعدادات Marimo Care</string>
+    <string name="customize_your_marimo_care_experience">خصص تجربة Marimo Care الخاصة بك</string>
+    <string name="btn_save">حفظ التغييرات</string>
+    <string name="dashboard_card_style">نمط بطاقة لوحة التحكم</string>
+    <string name="choose_how_you_want_your_marimo_statistics_cards_to_appear_on_the_dashboard">اختر كيف تريد أن تظهر بطاقات\nإحصائيات الماريمو على لوحة التحكم</string>
+    <string name="default_style">النمط الافتراضي</string>
+    <string name="clean_cards_with_icons_and_subtle_backgrounds">بطاقات نظيفة مع أيقونات وخلفيات دقيقة</string>
+    <string name="colored_style">النمط الملون</string>
+    <string name="bold_colored_backgrounds_without_icons">خلفيات ملونة جريئة بدون أيقونات</string>
+    <string name="option_correctly_updated">تم تحديث الخيار بنجاح</string>
+    <string name="update">حفظ التغييرات</string>
+    <string name="updated_ok">تم التحديث بنجاح</string>
+    <string name="new_marimo_added">تمت إضافة ماريمو جديد</string>
+    <string name="automatic_notification">إشعار تلقائي 🤖</string>
+    <string name="filters">\t\tتصفية:</string>
+    <string name="all">الكل</string>
+    <string name="overdue_f">متأخر</string>
+    <string name="soon_f">مستحق قريباً</string>
+    <string name="upToDate">محدث</string>
+    <string name="water_change_today">مرحباً، اليوم يجب عليك تغيير الماء لبعض الماريمو</string>
+    <string name="soon_marimo">هناك بعض الماريمو على وشك تغيير مائها:\n%1$s</string>
+    <string name="today_marimo_list">قائمة الماريمو لتغيير الماء اليوم:\n%1$s</string>
+    <string name="tips_auto_scroll_speed">سرعة التمرير التلقائي للنصائح</string>
+    <string name="choose_how_quickly_the_marimo_care_tips_automatically_rotate">اختر مدى سرعة دوران نصائح العناية بالماريمو\nتلقائياً</string>
+    <string name="very_fast_5_seconds">سريع جداً (5 ثوانٍ)</string>
+    <string name="fast_10_seconds">سريع (10 ثوانٍ)</string>
+    <string name="normal_15_seconds">عادي (15 ثانية)</string>
+    <string name="slow_20_seconds">بطيء (20 ثانية)</string>
+    <string name="very_slow_25_seconds">بطيء جداً (25 ثانية)</string>
+    <string name="sort">\t\tفرز حسب:</string>
+    <string name="add">+ إضافة</string>
+    <string name="plus">+</string>
+    <string name="in">في</string>
+    <string name="due_soon_">مستحق</string>
+    <string name="dashboard_filters_amp_sorting"><![CDATA[عوامل التصفية والفرز في لوحة التحكم]]></string>
+    <string name="customize_how_marimos_are_filtered_and_sorted_on_the_dashboard">تخصيص كيفية تصفية وفرز الماريمو\nعلى لوحة التحكم</string>
+    <string name="display_controls">عناصر التحكم في العرض</string>
+    <string name="show_filters_and_sort_controls">إظهار عوامل التصفية وعناصر التحكم في الفرز</string>
+    <string name="hide_filters_and_sort_controls">إخفاء عوامل التصفية وعناصر التحكم في الفرز</string>
+    <string name="default_filter">المرشح الافتراضي</string>
+    <string name="all_marimos">كل الماريمو</string>
+    <string name="overdue_only">المتأخر فقط</string>
+    <string name="due_soon_only">المستحق قريباً فقط</string>
+    <string name="up_to_date_only">المحدث فقط</string>
+    <string name="default_sort_order">ترتيب الفرز الافتراضي</string>
+    <string name="sort_by_status_overdue_first">حسب الحالة (المتأخر أولاً)</string>
+    <string name="sorted_by_name_a_z">حسب الاسم (أ-ي)</string>
+    <string name="sort_by_last_changed_newest_first">حسب آخر تغيير (الأحدث أولاً)</string>
+    <string name="stats_sub_title">تحليلات متقدمة ورؤى لمجموعة الماريمو الخاصة بك</string>
+    <string name="marimo_care_stats">إحصائيات الماريمو</string>
+    <string name="average_frequency">متوسط الوتيرة</string>
+    <string name="_10_3">10.3</string>
+    <string name="_days">أيام</string>
+    <string name="across_all_marimos">عبر جميع الماريمو</string>
+    <string name="total_water_changed">إجمالي تغييرات الماء</string>
+    <string name="since_tracking_began">منذ بدء التتبع</string>
+    <string name="most_frequent">الأكثر تواتراً</string>
+    <string name="last_frequent">الأقل تواتراً</string>
+    <string name="every">"كل "</string>
+    <string name="different">ماريمو مختلف</string>
+    <string name="every_14_days">كل 14 يوماً</string>
+    <string name="oct_30">30 أكتوبر</string>
+    <string name="most_low_maintenance_marimos">الماريمو الأقل صيانة</string>
+    <string name="these_marimos_require_water_changes_every_14_days">تتطلب هذه الماريمو تغيير الماء كل 14 يوماً</string>
+    <string name="most_attention_needed_marimos">الماريمو الأكثر حاجة للاهتمام</string>
+    <string name="these_marimos_require_water_changes_every">"تتطلب هذه الماريمو تغيير الماء كل "</string>
+    <string name="__days">" أيام:"</string>
+    <string name="water_change_trend">اتجاه تغيير الماء</string>
+    <string name="actual_water_changes_over_the_last_6_months">تغييرات الماء الفعلية خلال الأشهر الستة الماضية</string>
+    <string name="change_frequency_distribution">توزيع وتيرة التغيير</string>
+    <string name="how_often_you_change_water_for_your_marimos">كم مرة تقوم بتغيير الماء للماريمو بالأيام</string>
+    <string name="there_are_no_statistics_yet">لا توجد إحصائيات بعد</string>
+    <string name="marimo_name_stats">اسم الماريمو</string>
+    <string name="change_frequency_stats">وتيرة التغيير</string>
+    <string name="soon_marimo_one">%1$s على وشك تغيير مائه</string>
+    <string name="are_you_sure_you_want_to_delete_this_marimo_this_action_cannot_be_undone">"هل أنت متأكد أنك تريد حذف هذا الماريمو؟ لا يمكن التراجع عن هذا الإجراء. "</string>
+    <string name="delete">"حذف "</string>
+    <string name="delete_marimo_kuju">حذف الماريمو Kuju؟</string>
+    <string name="generate">إنشاء رمز QR</string>
+    <string name="marimo_qr_code">رمز QR للماريمو</string>
+    <string name="print_this_code_temp">اطبع هذا الرمز، يمكنك مسحه ضوئياً لاحقاً لعرض حالة فقاعات بسرعة وتسجيل تغيير الماء.</string>
+    <string name="qr_code_for_marimo">"اطبع هذا الرمز، يمكنك مسحه ضوئياً لاحقاً لعرض حالة "</string>
+    <string name="qr_code_you_can_scan_it_later">" بسرعة وتسجيل تغيير الماء."</string>
+    <string name="manage_qr">إدارة QR</string>
+    <string name="what">ماذا تريد أن تفعل؟</string>
+    <string name="share_qr">مشاركة QR</string>
+    <string name="qr_saved">تم حفظ QR في المعرض</string>
+    <string name="save_error">خطأ في الحفظ</string>
+    <string name="marimo_qr_dashboard">🌿 إدارة الماريمو من رمز QR</string>
+    <string name="_6">6</string>
+    <string name="_1">1</string>
+    <string name="_4">4</string>
+    <string name="photo">لتسهيل التعرف على الماريمو الخاص بك، يمكنك إضافة صورة أو التقاط صورة جديدة بالنقر هنا.</string>
+    <string name="take_photo">التقاط صورة</string>
+    <string name="choose_from_gallery">اختر صورة من المعرض</string>
+    <string name="photo_save_error">خطأ في حفظ الصورة</string>
+    <string name="modify_marimo">تعديل الماريمو الخاص بك</string>
+    <string name="edit_marimo">تعديل</string>
+    <string name="add_new">الآن يمكنك متابعة التعديل أو إضافة ماريمو جديد بالنقر هنا (أو اختيار أي إجراء آخر)</string>
+    <string name="photo_act">اختر ماذا تفعل</string>
+    <string name="active_reminders">التذكيرات النشطة (1)</string>
+    <string name="active_reminders_text">التذكيرات النشطة</string>
+    <string name="select_marimos_to_update">حدد الماريمو للتحديث</string>
+    <string name="select_which_marimos_have_had_their_water_changed">حدد الماريمو الذي تم تغيير مائه</string>
+    <string name="update_1_marimo">تحديث 1 ماريمو</string>
+    <string name="is_adapter">متأخر</string>
+    <string name="days_overdue_adapter">أيام!</string>
+    <string name="last_changed_adapter">آخر تغيير:</string>
+    <string name="update_dialog">تحديث</string>
+    <string name="water_change_info">من شريط التنبيهات يمكنك اختيار الماريمو الذي تريد تحديثه بتحديده من القائمة، فقط انقر هنا</string>
+    <string name="log_water_change">تسجيل تغيير الماء</string>
+    <string name="log_notes_optional">ملاحظات (اختياري)</string>
+    <string name="how_is_your_marimo_looking_any_observations">كيف يبدو الماريمو الخاص بك؟\nأي ملاحظات؟</string>
+    <string name="upload_image_optional">تحميل صورة (اختياري)</string>
+    <string name="click_to_upload_image">انقر لتحميل الصورة</string>
+    <string name="mark_as_milestone_special_moment">وضع علامة كحدث هام (لحظة خاصة)</string>
+    <string name="save_log">حفظ السجل</string>
+    <string name="average_health_score">متوسط درجة الصحة</string>
+    <string name="update_all_marimo">تحديث الكل</string>
+    <string name="last_changed_to_fix">حدد تاريخ استلام الماريمو لحساب التغييرات السابقة للماء بشكل أفضل.\nيرجى الملاحظة: سيكون التاريخ النهائي المسترد هو نفسه تاريخ إصدار التطبيق، 25-11-2025.</string>
+    <string name="marimos_to_update">تحديث تغييرات الماء للإحصائيات</string>
+    <string name="day_of_acquisition">تاريخ التسجيل *</string>
+    <string name="trends">الاتجاهات</string>
+    <string name="health_scores">درجات الصحة</string>
+    <string name="compare">مقارنة</string>
+    <string name="individual_health_score">درجات الصحة الفردية</string>
+    <string name="_21th_marimo">الماريمو الـ 21</string>
+    <string name="complete_care_history_and_profile">تاريخ العناية الكامل والملف الشخصي</string>
+    <string name="out_of_19">من أصل 19</string>
+    <string name="nov_25_2025">25 نوفمبر 2025</string>
+    <string name="dec_16_2025">16 ديسمبر 2025</string>
+    <string name="current_health_score">درجة الصحة الحالية</string>
+    <string name="_19">19</string>
+    <string name="health_score_history">سجل درجات الصحة</string>
+    <string name="health_track">تتبع صحة الماريمو الخاص بك على مدار 10 أيام</string>
+    <string name="frequency">الوتيرة</string>
+    <string name="_21d">21 يوماً</string>
+    <string name="total_changes">إجمالي التغييرات</string>
+    <string name="_2">2</string>
+    <string name="_21_days">21 يوماً</string>
+    <string name="milestones">الأحداث الهامة</string>
+    <string name="quick_actions">إجراءات سريعة</string>
+    <string name="wow">واو</string>
+    <string name="milestone">حدث هام</string>
+    <string name="health_98">الصحة: 98</string>
+    <string name="february_13_2026">13 فبراير 2026</string>
+    <string name="damn_i_change_it">تباً لقد غيرته</string>
+    <string name="health_96">الصحة: 96</string>
+    <string name="yeah">نعم</string>
+    <string name="star">🌟</string>
+    <string name="care_timeline">الجدول الزمني للعناية</string>
+    <string name="visual_history">سجل مرئي لجميع تغييرات الماء والأحداث الهامة</string>
+    <string name="out_of_100">من أصل 100</string>
+    <string name="waters">تغيير الماء</string>
+    <string name="marimo_notes">ملاحظات الماريمو</string>
+    <string name="_97_100">97/100</string>
+    <string name="_5">5</string>
+    <string name="days_tracked">أيام التتبع</string>
+    <string name="_102">102</string>
+    <string name="compare_marimos">مقارنة الماريمو</string>
+    <string name="select_marimos_above_to_compare_their_statistics">حدد الماريمو أعلاه لمقارنة إحصائياتها</string>
+    <string name="performance_comparison">مقارنة الأداء</string>
+    <string name="detailed_comparison">مقارنة مفصلة</string>
+    <string name="empty">-</string>
+    <string name="new_change_log">في مربع الحوار الجديد هذا، يمكنك إضافة ملاحظة حول تغيير الماء، أو التقاط أو تحميل صورة تذكارية، و…\nوضع علامة على اللحظة كحدث خاص!</string>
+    <string name="d">يوم</string>
+    <string name="today">اليوم</string>
+    <string name="new_stats">تمت إضافة إحصائيات جديدة، مجمعة حسب الموضوع.\nقائمة بصحة جميع الماريمو، وإحصائيات المقارنة.</string>
+    <string name="stats_period">الإحصائيات – فترة اتجاه تغيير الماء</string>
+    <string name="default_time_range_shown_in_the_water_change_trend_chart">النطاق الزمني الافتراضي المعروض في مخطط اتجاه تغيير الماء</string>
+    <string name="last_sixth_month">آخر 6 أشهر</string>
+    <string name="last_year">العام الماضي</string>
+    <string name="actual_water_changes_over_the_last_12_months">تغييرات الماء الفعلية خلال العام الماضي</string>
+    <string name="feedback">ملاحظات</string>
+    <string name="help_us_improve_marimo_care_choose_a_topic_and_send_us_your_thoughts_ideas_or_bug_reports">ساعدنا في تحسين Marimo Care! اختر موضوعاً وأرسل إلينا أفكارك أو ملاحظاتك أو تقارير الأخطاء.</string>
+    <string name="_1_choose_a_topic">1. اختر موضوعاً</string>
+    <string name="what_would_you_like_to_give_feedback_about">ما الذي تود تقديم ملاحظات بشأنه؟</string>
+    <string name="bug_report">تقرير خطأ</string>
+    <string name="_2_write_your_message">2. اكتب رسالتك</string>
+    <string name="describe_your_idea_issue_or_suggestion_here">صِف فكرتك أو مشكلتك أو اقتراحك هنا…</string>
+    <string name="send_feedback">إرسال الملاحظات</string>
+    <string name="join_the_marimo_community">انضم إلى مجتمع الماريمو</string>
+    <string name="reddit">Reddit</string>
+    <string name="whatsapp">WhatsApp</string>
+    <string name="instagram">Instagram</string>
+    <string name="share_your_feedback">شارك ملاحظاتك</string>
+    <string name="feature_request">طلب ميزة</string>
+    <string name="ui_design">واجهة المستخدم / التصميم</string>
+    <string name="new_content">محتوى جديد</string>
+    <string name="general_feedback">ملاحظات عامة</string>
+    <string name="other">أخرى</string>
+    <string name="please_select_at_least_one_topic_and_write_a_message">يرجى تحديد موضوع واحد على الأقل وكتابة رسالة.</string>
+    <string name="marimo_care_feedback">ملاحظات Marimo Care: %1$s</string>
+    <string name="riccardo_pezzolati_gmail_com">riccardo.pezzolati@gmail.com</string>
+    <string name="choose_email_client">اختر عميل البريد الإلكتروني…</string>
+    <string name="no_email_app_found_on_your_device">لم يتم العثور على تطبيق بريد إلكتروني على جهازك.</string>
+    <string name="https_www_reddit_com_r_marimo">https://www.reddit.com/r/Marimo/</string>
+    <string name="https_www_instagram_com_explore_tags_marimo">https://www.instagram.com/explore/tags/marimo/</string>
+    <string name="https_play_google_com_store_apps_details_id_rpt_tool_marimocare">https://play.google.com/store/apps/details?id=rpt.tool.marimocare</string>
+    <string name="check_out_marimo_care">تحقق من Marimo Care! %1$s</string>
+    <string name="unable_to_open_link">غير قادر على فتح الرابط.</string>
+    <string name="whatsapp_is_not_installed_on_this_device">تطبيق WhatsApp غير مثبت على هذا الجهاز.</string>
+    <string name="clear_all">مسح الكل</string>
+    <string name="form_cleared">تم مسح النموذج</string>
+    <string name="feedback_balloon">سيؤدي النقر هنا إلى فتح شاشة الملاحظات حيث يمكنك إرسال اقتراحات لتحسين التطبيق والانضمام إلى مجتمع الماريمو.</string>
+    <string name="achievement">إنجاز</string>
+    <string name="achievement_intro_title">الإنجازات</string>
+    <string name="achievement_intro_message">في هذا الإصدار تمت إضافة الأهداف المراد تحقيقها، هل تريد حساب التقدم أم تفضل البدء من الصفر؟</string>
+    <string name="calculate">حساب</string>
+    <string name="restart">إعادة التشغيل</string>
+    <string name="earned_26">تم الحصول عليها (26)</string>
+    <string name="earned_label">مكتسب</string>
+    <string name="_50_badges">/ %1$d شارات</string>
+    <string name="_26">26</string>
+    <string name="achievement_subtitle">اربح شارات من خلال العناية بالماريمو الخاص بك</string>
+    <string name="recalculate">إعادة حساب</string>
+    <string name="reset_all">إعادة ضبط الكل</string>
+    <string name="ach_1" translatable="false">🗿</string>
+    <string name="ach_2" translatable="false">📊</string>
+    <string name="ach_3" translatable="false">📋</string>
+    <string name="ach_4" translatable="false">🌗</string>
+    <string name="ach_5" translatable="false">🎊</string>
+    <string name="ach_6" translatable="false">🌊</string>
+    <string name="ach_7" translatable="false">📅</string>
+    <string name="ach_8" translatable="false">📆</string>
+    <string name="ach_9" translatable="false">🌱</string>
+    <string name="ach_10" translatable="false">⭐</string>
+    <string name="ach_11" translatable="false">🎖️</string>
+    <string name="ach_12" translatable="false">🦅</string>
+    <string name="ach_13" translatable="false">🏅</string>
+    <string name="ach_14" translatable="false">🎯</string>
+    <string name="ach_15" translatable="false">🌟</string>
+    <string name="ach_16" translatable="false">📸</string>
+    <string name="ach_17" translatable="false">🤳</string>
+    <string name="ach_18" translatable="false">🖼️</string>
+    <string name="ach_19" translatable="false">📝</string>
+    <string name="ach_20" translatable="false">📔</string>
+    <string name="ach_21" translatable="false">📖</string>
+    <string name="ach_22" translatable="false">✅</string>
+    <string name="ach_23" translatable="false">🎳</string>
+    <string name="ach_24" translatable="false">⏰</string>
+    <string name="ach_25" translatable="false">🏷️</string>
+    <string name="ach_26" translatable="false">✏️</string>
+    <string name="ach_27" translatable="false">🖼️</string>
+    <string name="ach_28" translatable="false">🌅</string>
+    <string name="ach_29" translatable="false">🗒️</string>
+    <string name="ach_30" translatable="false">🐦</string>
+    <string name="ach_31" translatable="false">⚡</string>
+    <string name="ach_32" translatable="false">🦉</string>
+    <string name="ach_33" translatable="false">🎛️</string>
+    <string name="ach_34" translatable="false">💬</string>
+    <string name="ach_35" translatable="false">⚙️</string>
+    <string name="ach_36" translatable="false">👴</string>
+    <string name="ach_37" translatable="false">🌿</string>
+    <string name="ach_38" translatable="false">👫</string>
+    <string name="ach_39" translatable="false">🎶</string>
+    <string name="ach_40" translatable="false">🫙</string>
+    <string name="ach_41" translatable="false">🏆</string>
+    <string name="ach_42" translatable="false">🪖</string>
+    <string name="ach_43" translatable="false">👑</string>
+    <string name="ach_44" translatable="false">💧</string>
+    <string name="ach_45" translatable="false">🚿</string>
+    <string name="ach_46" translatable="false">🔄</string>
+    <string name="ach_47" translatable="false">💪</string>
+    <string name="ach_48" translatable="false">🧙</string>
+    <string name="ach_49" translatable="false">💯</string>
+    <string name="ach_50" translatable="false">🎖️</string>
+    <string name="locked_24">مقفلة (24)</string>
+    <string name="ach_desc_1">تمت إضافة أول ماريمو لك على الإطلاق إلى المجموعة.</string>
+    <string name="ach_desc_2">لديك 2 ماريمو — لديهم صحبة الآن!</string>
+    <string name="ach_desc_3">3 ماريمو في مجموعتك.</string>
+    <string name="ach_desc_4">أنت تنمي مجموعة — تمت إضافة 5 ماريمو!</string>
+    <string name="ach_desc_5">واو، 10 ماريمو! أنت حقاً تحبهم.</string>
+    <string name="ach_desc_6">جيش من 20 ماريمو!</string>
+    <string name="ach_desc_7">50 ماريمو. أنت تدير إمبراطورية.</string>
+    <string name="ach_desc_8">سجلت أول تغيير للماء. تبدأ الرحلة!</string>
+    <string name="ach_desc_9">تم تسجيل 5 تغييرات للماء.</string>
+    <string name="ach_desc_10">تم تسجيل 10 تغييرات للماء إجمالاً.</string>
+    <string name="ach_desc_11">تم تسجيل 25 تغيير للماء. أنت تبني عادة!</string>
+    <string name="ach_desc_12">تم تسجيل 50 تغيير للماء. أنت محترف!</string>
+    <string name="ach_desc_13">100 تغيير للماء! مذهل تماماً.</string>
+    <string name="ach_desc_14">تم تسجيل 200 تغيير للماء. أسطوري.</string>
+    <string name="ach_desc_15">500 تغيير للماء. أنت الراعي الأسمى للماريمو.</string>
+    <string name="ach_desc_16">أسبوع كامل من العناية بالماريمو!</string>
+    <string name="ach_desc_17">واصلت تغييرات الماء لشهر كامل.</string>
+    <string name="ach_desc_18">ثلاثة أشهر من العناية المخلصة للماريمو!</string>
+    <string name="ach_desc_19">ستة أشهر من العناية المستمرة. أنت أسطورة.</string>
+    <string name="ach_desc_20">عام كامل من العناية بالماريمو. تفانٍ لا يصدق!</string>
+    <string name="ach_desc_21">عامان كاملان من العناية بالماريمو. استثنائي حقاً.</string>
+    <string name="ach_desc_22">سجلت أول تغيير ماء كحدث هام وخاص.</string>
+    <string name="ach_desc_23">سجلت 5 تغييرات ماء كأحداث هامة.</string>
+    <string name="ach_desc_24">تم تسجيل 10 تغييرات ماء هامة!</string>
+    <string name="ach_desc_25">تم تحميل صورة أثناء سجل تغيير الماء.</string>
+    <string name="ach_desc_26">تم تحميل صور في 5 سجلات تغيير ماء مختلفة.</string>
+    <string name="ach_desc_27">20 سجل تغيير ماء بالصور. ألبوم ماريمو حقيقي!</string>
+    <string name="ach_desc_28">تمت إضافة ملاحظات إلى 5 تغييرات ماء مختلفة.</string>
+    <string name="ach_desc_29">تمت إضافة ملاحظات إلى 20 تغيير ماء.</string>
+    <string name="ach_desc_30">تمت إضافة ملاحظات إلى 50 تغيير ماء. مؤرخ حقيقي.</string>
+    <string name="ach_desc_31">جميع الماريمو الخاصة بك محدثة — لا يوجد متأخر الآن!</string>
+    <string name="ach_desc_32">تم تسجيل 5 تغييرات ماء في الوقت المحدد (غير متأخرة).</string>
+    <string name="ach_desc_33">20 تغيير ماء في الوقت المحدد. مثل الساعة!</string>
+    <string name="ach_desc_34">أعطيت الماريمو الخاص بك اسماً (ليس فقط \'ماريمو\').</string>
+    <string name="ach_desc_35">قمت بتسمية 3 ماريمو بأسماء فريدة.</string>
+    <string name="ach_desc_36">تمت إضافة صورة ملف شخصي لأحد الماريمو.</string>
+    <string name="ach_desc_37">تمت إضافة صور ملف شخصي لـ 5 ماريمو.</string>
+    <string name="ach_desc_38">تمت إضافة ملاحظات لأحد الماريمو الخاص بك.</string>
+    <string name="ach_desc_39">سجلت تغيير ماء قبل أكثر من يومين من استحقاقه.</string>
+    <string name="ach_desc_40">تم تسجيل 3 تغييرات ماء في نفس اليوم.</string>
+    <string name="ach_desc_41">تم تسجيل 10 تغييرات ماء متأخرة (لا زلت قمت بها!).</string>
+    <string name="ach_desc_42">تمتلك ماريمو بـ 3 وتيرات مختلفة لتغيير الماء.</string>
+    <string name="ach_desc_43">تم إرسال ملاحظات للمساعدة في تحسين التطبيق.</string>
+    <string name="ach_desc_44">قمت بتخصيص إعدادات لوحة التحكم الخاصة بك.</string>
+    <string name="ach_desc_45">أحد الماريمو تحت رعايتك لأكثر من 6 أشهر.</string>
+    <string name="ach_desc_46">أحد الماريمو تحت رعايتك لأكثر من عام.</string>
+    <string name="ach_desc_47">قمت بزيارة صفحة الإحصائيات.</string>
+    <string name="ach_desc_48">تمت إضافة ملاحظات لـ 5 من الماريمو الخاصة بك.</string>
+    <string name="ach_desc_49">حصلت على 25 إنجازاً. أنت في منتصف الطريق إلى المجموعة الكاملة!</string>
+    <string name="ach_desc_50">حصلت على جميع الإنجازات الـ 50. أنت سيد ماريمو حقيقي!</string>
+    <string name="ach_tit_1">أول ماريمو</string>
+    <string name="ach_tit_2">ثنائي ديناميكي</string>
+    <string name="ach_tit_3">ثلاثي</string>
+    <string name="ach_tit_4">جامع</string>
+    <string name="ach_tit_5">مكتنز الماريمو</string>
+    <string name="ach_tit_6">جيش الماريمو</string>
+    <string name="ach_tit_7">إمبراطورية الماريمو</string>
+    <string name="ach_tit_8">القطرة الأولى</string>
+    <string name="ach_tit_9">البداية</string>
+    <string name="ach_tit_10">راعي مستمر</string>
+    <string name="ach_tit_11">مخلص</string>
+    <string name="ach_tit_12">ساحر الماء</string>
+    <string name="ach_tit_13">قرن من العناية</string>
+    <string name="ach_tit_14">مئويتان</string>
+    <string name="ach_tit_15">سيد الماء</string>
+    <string name="ach_tit_16">أسبوع واحد</string>
+    <string name="ach_tit_17">شهر من العناية</string>
+    <string name="ach_tit_18">ثلاثة أشهر قوية</string>
+    <string name="ach_tit_19">بطل نصف العام</string>
+    <string name="ach_tit_20">بطل سنوي</string>
+    <string name="ach_tit_21">محارب لعامين</string>
+    <string name="ach_tit_22">صانع الأحداث</string>
+    <string name="ach_tit_23">صياد الأحداث</string>
+    <string name="ach_tit_24">سيد الأحداث</string>
+    <string name="ach_tit_25">حافظ الصور</string>
+    <string name="ach_tit_26">مصور</string>
+    <string name="ach_tit_27">ألبوم الصور</string>
+    <string name="ach_tit_28">مدون الملاحظات</string>
+    <string name="ach_tit_29">حارس اليوميات</string>
+    <string name="ach_tit_30">المؤرخ</string>
+    <string name="ach_tit_31">سجل مثالي</string>
+    <string name="ach_tit_32">على لفة</string>
+    <string name="ach_tit_33">مثل الساعة</string>
+    <string name="ach_tit_34">مانح الأسماء</string>
+    <string name="ach_tit_35">مسمي مبدع</string>
+    <string name="ach_tit_36">صورة الملف الشخصي</string>
+    <string name="ach_tit_37">مجموعة جذابة</string>
+    <string name="ach_tit_38">كاتب سيرة الماريمو</string>
+    <string name="ach_tit_39">الطائر المبكر</string>
+    <string name="ach_tit_40">مغير سريع</string>
+    <string name="ach_tit_41">بومة الليل</string>
+    <string name="ach_tit_42">سيد المزيج</string>
+    <string name="ach_tit_43">مقدم الملاحظات</string>
+    <string name="ach_tit_44">مستكشف الإعدادات</string>
+    <string name="ach_tit_45">ماريمو كبير</string>
+    <string name="ach_tit_46">القديم</string>
+    <string name="ach_tit_47">مهووس بالإحصائيات</string>
+    <string name="ach_tit_48">كاتب سيرة الماريمو</string>
+    <string name="ach_tit_49">في منتصف الطريق</string>
+    <string name="ach_tit_50">صياد الإنجازات</string>
+    <string-array name="marimo_frequencies">
+        <item>كل 7 أيام (أسبوعياً)</item>
+        <item>كل 10 أيام</item>
+        <item>كل 14 يوماً (كل أسبوعين)</item>
+        <item>كل 21 يوماً</item>
+        <item>كل 30 يوماً (شهرياً)</item>
+    </string-array>
+    <string-array name="marimo_sorting">
+        <item>الحالة</item>
+        <item>الاسم</item>
+        <item>آخر تغيير</item>
+    </string-array>
+    <string-array name="marimo_frequencies_changes">
+        <item>7</item>
+        <item>10</item>
+        <item>14</item>
+        <item>21</item>
+        <item>30</item>
+    </string-array>
+    <string-array name="marimo_qr_actions">
+        <item>طباعة QR</item>
+        <item>إرسال QR</item>
+        <item>حفظ QR</item>
+    </string-array>
+</resources>
