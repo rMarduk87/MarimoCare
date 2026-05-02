@@ -3,6 +3,7 @@ package rpt.tool.marimocare.utils.data.database.dao
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import rpt.tool.marimocare.utils.data.appmodels.MarimoHealthScoreStats
+import rpt.tool.marimocare.utils.data.database.models.AchievementDetailModel
 import rpt.tool.marimocare.utils.data.database.models.AchievementModel
 import rpt.tool.marimocare.utils.data.database.models.MarimoChangeModel
 import rpt.tool.marimocare.utils.data.database.models.MarimoHealthScoreModel
@@ -185,4 +186,14 @@ interface MarimoDao {
     @Query("UPDATE achievement SET earned = 1, acquired_date = :date where id = :id")
     fun earnAchievement(id: Int, date: String)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAchievementDetails(details: List<AchievementDetailModel>)
+
+    @Transaction
+    @Query("SELECT * FROM achievement_details WHERE achievement_id = :achievementId")
+    fun getAchievementDetails(achievementId: Int): List<AchievementDetailModel>
+
+    @Transaction
+    @Query("DELETE FROM achievement_details")
+    fun clearAchievementDetails()
 }

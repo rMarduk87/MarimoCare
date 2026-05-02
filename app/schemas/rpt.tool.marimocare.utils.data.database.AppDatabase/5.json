@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 5,
-    "identityHash": "e729e2d0b68388b45571f199083570b0",
+    "identityHash": "2e39fb3ae062d3bf40bbc24970eae2de",
     "entities": [
       {
         "tableName": "marimo",
@@ -236,11 +236,77 @@
             "id"
           ]
         }
+      },
+      {
+        "tableName": "achievement_details",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `achievement_id` INTEGER NOT NULL, `desc` TEXT NOT NULL, `type` INTEGER NOT NULL, `type_desc` TEXT NOT NULL, `unit` INTEGER NOT NULL, `unit_desc` TEXT NOT NULL, `current` INTEGER NOT NULL, `target` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "achievement",
+            "columnName": "achievement_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "desc",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "typeDescription",
+            "columnName": "type_desc",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "unit",
+            "columnName": "unit",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "unitDescription",
+            "columnName": "unit_desc",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "current",
+            "columnName": "current",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "target",
+            "columnName": "target",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        }
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e729e2d0b68388b45571f199083570b0')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2e39fb3ae062d3bf40bbc24970eae2de')"
     ]
   }
 }

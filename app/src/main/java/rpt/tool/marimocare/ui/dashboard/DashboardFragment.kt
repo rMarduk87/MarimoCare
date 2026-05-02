@@ -43,7 +43,6 @@ import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 import rpt.tool.marimocare.utils.navigation.safeNavController
 import rpt.tool.marimocare.utils.navigation.safeNavigate
 import rpt.tool.marimocare.utils.view.adapters.CustomSpinnerAdapter
-import rpt.tool.marimocare.utils.view.enable
 import rpt.tool.marimocare.utils.view.gone
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.MarimoItem
 import rpt.tool.marimocare.utils.view.viewpager.tips.TipsPagerAdapter
@@ -55,6 +54,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.skydoves.balloon.BalloonAlign
 import com.skydoves.balloon.balloon
 import rpt.tool.marimocare.utils.AppUtils
+import rpt.tool.marimocare.utils.balloon.achievement.AchievementBalloonFactory
 import rpt.tool.marimocare.utils.balloon.feedback.FeedbackBalloonFactory
 import rpt.tool.marimocare.utils.balloon.waterchange.DialogChangeWaterBalloonFactory
 import rpt.tool.marimocare.utils.balloon.waterchange.WaterChangeInfoBalloonFactory
@@ -70,7 +70,6 @@ import rpt.tool.marimocare.utils.view.copyUriToInternalFile
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.DeleteMarimoEventHook
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.ShowMarimoDetailsEventHook
 import java.io.File
-import java.io.FileOutputStream
 
 class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     FragmentDashboardBinding::inflate) {
@@ -86,6 +85,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     private val marimoUpdateBalloon by balloon<WaterChangeInfoBalloonFactory>()
     private val newDialogChangeWaterBalloon by balloon<DialogChangeWaterBalloonFactory>()
     private val feedBackBalloon by balloon<FeedbackBalloonFactory>()
+    private val achievementBalloon by balloon<AchievementBalloonFactory>()
     private var imagePath: String? = null
     private var tempImageUri: Uri? = null
 
@@ -316,13 +316,28 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             }
         }
 
-        if (SharedPreferencesManager.showAchievement) {
+        if (SharedPreferencesManager.showAchievement && (viewModel.allMarimos.value?.size ?: 0) > 0 ) {
             SharedPreferencesManager.showAchievement = false
             viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
                 RepositoryManager.marimoRepository.addAchievementToTable(
-                    requireContext(),R.raw.achievement)
+                    requireContext(),R.raw.achievement,
+                    R.raw.achievement_detail)
             }
             openAchievementIntroDialog()
+        }
+        else{
+            binding.include1.btnAchievementAHeader.post {
+                feedBackBalloon.showAlign(
+                    align = BalloonAlign.BOTTOM,
+                    mainAnchor = binding.include1.btnAchievementAHeader
+                )
+                SharedPreferencesManager.showAchievement = false
+                viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+                    RepositoryManager.marimoRepository.addAchievementToTable(
+                        requireContext(),R.raw.achievement,
+                        R.raw.achievement_detail)
+                }
+            }
         }
     }
 

@@ -10,7 +10,7 @@ plugins {
 
 android {
     namespace 'rpt.tool.marimocare'
-    compileSdk 36
+    compileSdk 37
 
     defaultConfig {
         applicationId "rpt.tool.marimocare"
@@ -46,6 +46,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = '11'
+        freeCompilerArgs = ['-XXLanguage:+PropertyParamAnnotationDefaultTargetMode']
     }
     buildFeatures {
         viewBinding true

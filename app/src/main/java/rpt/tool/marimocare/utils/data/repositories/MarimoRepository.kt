@@ -7,13 +7,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
 import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.data.appmodels.Achievement
+import rpt.tool.marimocare.utils.data.appmodels.AchievementDetail
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.data.appmodels.MarimoChange
 import rpt.tool.marimocare.utils.data.appmodels.MarimoHealthScore
 import rpt.tool.marimocare.utils.data.appmodels.MarimoHealthScoreStats
 import rpt.tool.marimocare.utils.data.appmodels.MarimoQR
+import rpt.tool.marimocare.utils.data.database.enums.AchievementType
+import rpt.tool.marimocare.utils.data.database.enums.UnitType
 import rpt.tool.marimocare.utils.data.database.dao.MarimoDao
-import rpt.tool.marimocare.utils.managers.RepositoryManager
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import kotlin.Int
@@ -203,52 +205,74 @@ class MarimoRepository(
         marimoDao.resetAllAchievements()
     }
 
-    fun addAchievementToTable(context: Context, resource: Int) {
+    fun addAchievementToTable(context: Context, resource: Int, resourceDetail: Int) {
         val achievementList = mutableListOf<Achievement>()
-
-        val inputStream = context.resources.openRawResource(resource)
-        val reader = BufferedReader(InputStreamReader(inputStream))
+        val detailList = mutableListOf<AchievementDetail>()
 
         val packageName = context.packageName
 
-        reader.useLines { lines ->
-            val righeSenzaIntestazione = lines.drop(1)
+        // Parse Achievements
+        context.resources.openRawResource(resource).use { inputStream ->
+            val reader = BufferedReader(InputStreamReader(inputStream))
+            reader.useLines { lines ->
+                lines.drop(1).forEach { riga ->
+                    val colonne = riga.split(",")
+                    if (colonne.size >= 9) {
+                        val rawTitle = colonne[1].trim().removePrefix("R.string.")
+                        val rawDesc = colonne[2].trim().removePrefix("R.string.")
+                        val rawImg = colonne[4].trim().removePrefix("R.string.")
 
-            righeSenzaIntestazione.forEach { riga ->
-                val colonne = riga.split(",")
+                        val titleResId = context.resources.getIdentifier(rawTitle,
+                            "string", packageName)
+                        val descResId = context.resources.getIdentifier(rawDesc,
+                            "string", packageName)
+                        val imgResId = context.resources.getIdentifier(rawImg,
+                            "string", packageName)
 
-                if (colonne.size >= 9) {
+                        val newAchievement = Achievement(
+                            id = colonne[0].trim().toInt(),
+                            titleID = titleResId,
+                            descriptionValue = descResId,
+                            imageId = imgResId,
+                            backgroundColor = colonne[5].trim(),
+                            category = colonne[3].trim(),
+                            sortOrder = colonne[8].trim().toInt(),
+                            earned = colonne[6].trim().equals("True", ignoreCase = true),
+                            date = colonne[7].trim().takeIf { it.isNotEmpty() && it != "NULL" }
+                        )
+                        achievementList.add(newAchievement)
+                    }
+                }
+            }
+        }
 
-                    val rawTitle = colonne[1].trim().removePrefix("R.string.")
-                    val rawDesc = colonne[2].trim().removePrefix("R.string.")
-                    val rawImg = colonne[4].trim().removePrefix("R.string.")
-
-                    val titleResId = context.resources.getIdentifier(rawTitle,
-                        "string", packageName)
-                    val descResId = context.resources.getIdentifier(rawDesc,
-                        "string", packageName)
-                    val imgResId = context.resources.getIdentifier(rawImg,
-                        "string", packageName)
-
-
-                    val newAchievement = Achievement(
-                        id = colonne[0].trim().toInt(),
-                        titleID = titleResId,
-                        descriptionValue = descResId,
-                        imageId = imgResId,
-                        backgroundColor = colonne[5].trim(),
-                        category = colonne[3].trim(),
-                        sortOrder = colonne[8].trim().toInt(),
-                        earned = colonne[6].trim().equals("True", ignoreCase = true),
-                        date = colonne[7].trim()
-                    )
-                    achievementList.add(newAchievement)
+        // Parse Achievement Details
+        context.resources.openRawResource(resourceDetail).use { inputStream ->
+            val reader = BufferedReader(InputStreamReader(inputStream))
+            reader.useLines { lines ->
+                lines.drop(1).forEach { riga ->
+                    val colonne = riga.split(",")
+                    if (colonne.size >= 7) {
+                        val newDetail = AchievementDetail(
+                            id = colonne[0].trim().toInt(),
+                            achievement = colonne[0].trim().toInt(),
+                            description = colonne[1].trim(),
+                            type = AchievementType.fromId(colonne[2].trim().toInt()),
+                            unit = UnitType.fromId(colonne[3].trim().toInt()),
+                            current = colonne[4].trim().toInt(),
+                            target = colonne[5].trim().toInt()
+                        )
+                        detailList.add(newDetail)
+                    }
                 }
             }
         }
 
         if (achievementList.isNotEmpty()) {
             marimoDao.insertAchievements(achievementList.map { it.toDBModel() })
+        }
+        if (detailList.isNotEmpty()) {
+            marimoDao.insertAchievementDetails(detailList.map { it.toDBModel() })
         }
     }
 

@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Marimo Care</string>
-    <string name="marimo_care_dashboard">🌿 マリモケアダッシュボード</string>
+    <string name="marimo_care_dashboard">Marimo Care Dashboard</string>
     <string name="keep_track_of_your_marimo">マリモの状態を把握して、水換えを忘れないようにしましょう！</string>
     <string name="marimo_tip_title_1">💡 マリモのヒント：最適な水温</string>
     <string name="marimo_tip_title_2">💡 マリモのヒント：優しく転がす</string>
@@ -104,7 +104,7 @@
     <string name="sort">\t\t並べ替え:</string>
     <string name="add">+ 追加</string>
     <string name="plus">+</string>
-    <string name="in">In</string>
+    <string name="in">あと</string>
     <string name="due_soon_">期限切れ</string>
     <string name="dashboard_filters_amp_sorting"><![CDATA[ダッシュボードのフィルターと並べ替え]]></string>
     <string name="customize_how_marimos_are_filtered_and_sorted_on_the_dashboard">マリモのフィルターと並べ替え方法をカスタマイズするダッシュボード上で</string>
@@ -177,7 +177,7 @@
     <string name="select_marimos_to_update">更新するマリモを選択してください</string>
     <string name="select_which_marimos_have_had_their_water_changed">水換え済みのマリモを選択してください</string>
     <string name="update_1_marimo">マリモ1個を更新</string>
-    <string name="is_adapter">is</string>
+    <string name="is_adapter">は</string>
     <string name="days_overdue_adapter">期限を過ぎています！</string>
     <string name="last_changed_adapter">最終更新日時：</string>
     <string name="update_dialog">更新</string>
@@ -238,8 +238,8 @@
     <string name="detailed_comparison">詳細比較</string>
     <string name="empty">-</string>
     <string name="new_change_log">この新しいダイアログでは、水換えに関するメモを追加したり、記念写真を撮影またはアップロードしたり、…\n特別な瞬間としてマークすることができます！</string>
-    <string name="d">d</string>
-    <string name="today">today</string>
+    <string name="d">日</string>
+    <string name="today">今日</string>
     <string name="new_stats">トピック別にグループ化された新しい統計情報が追加されました。\nすべてのマリモの健康状態と統計情報の比較リスト。</string>
     <string name="stats_period">統計情報 – 水位変化傾向期間</string>
     <string name="default_time_range_shown_in_the_water_change_trend_chart">水位変化傾向チャートに表示されるデフォルトの期間</string>
@@ -283,7 +283,7 @@
     <string name="achievement_intro_message">このバージョンでは達成すべき目標が追加されました。進捗を計算しますか、それとも最初からやり直しますか？</string>
     <string name="calculate">計算する</string>
     <string name="restart">再起動</string>
-    <string name="earned_26">Earned (26)</string>
+    <string name="earned_26">獲得済み (26)</string>
     <string name="earned_label">獲得済み</string>
     <string name="_50_badges">/ %1$d バッジ</string>
     <string name="_26">26</string>
@@ -391,6 +391,85 @@
     <string name="ach_tit_48">マリモ伝記作家</string>
     <string name="ach_tit_49">折り返し地点</string>
     <string name="ach_tit_50">アチーブメントハンター</string>
+
+    <string name="ach_type_marimo">マリモ</string>
+    <string name="ach_type_marimos">マリモ</string>
+    <string name="ach_type_waterchange">水換え</string>
+    <string name="ach_type_daysofcare">飼育日数</string>
+    <string name="ach_type_monthsofcare">飼育月数</string>
+    <string name="ach_type_milestone">マイルストーン</string>
+    <string name="ach_type_photo">写真</string>
+    <string name="ach_type_note">ノート</string>
+    <string name="ach_type_name">名前</string>
+    <string name="ach_type_marimowithphoto">写真付きマリモ</string>
+    <string name="ach_type_logs">ログ</string>
+
+    <string name="unit_type_marimo">マリモ</string>
+    <string name="unit_type_marimos">マリモ</string>
+    <string name="unit_type_logs">ログ</string>
+    <string name="unit_type_milestones">マイルストーン</string>
+    <string name="unit_type_photo">写真</string>
+    <string name="unit_type_notedlogs">メモ付きログ</string>
+    <string name="unit_type_months">月</string>
+    <string name="unit_type_days">日</string>
+    <string name="unit_type_uniquelynamed">ユニークな名前</string>
+    <string name="unit_type_withphoto">写真付き</string>
+    <string name="achievement_balloon">マリモを追加したり、お世話をしたりすることで、実績を解除できるようになります。このボタンを押すと確認できます</string>
+    <string name="unit_type_water">水換え</string>
+    <string name="unit_type_marimonamed">名前付きマリモ</string>
+    <string name="unit_type_notewrite">ノート作成</string>
+    <string name="ach_des_1">まずはマリモを1つ追加してみましょう！</string>
+    <string name="ach_des_2">2つ目のマリモを追加しましょう。仲間がいると喜びます！</string>
+    <string name="ach_des_3">3つ集めて、賑やかにしましょう！</string>
+    <string name="ach_des_4">マリモを5つまで増やしてみましょう。</string>
+    <string name="ach_des_5">コレクションを10個に倍増させましょう！</string>
+    <string name="ach_des_6">マリモ軍団（20個）を目指しましょう。</string>
+    <string name="ach_des_7">50個のマリモ。まさにマリモ帝国です。</string>
+    <string name="ach_des_8">いずれかのマリモの水換えを行いましょう。</string>
+    <string name="ach_des_9">水換えを合計5回行いましょう。その調子です！</string>
+    <string name="ach_des_10">ログを合計10回記録しましょう。習慣になってきましたね。</string>
+    <string name="ach_des_11">ログを25回記録しましょう。継続は力なり！</string>
+    <string name="ach_des_12">水換えを50回記録しましょう。あなたはプロの飼育員です！</string>
+    <string name="ach_des_13">100回の水換え！素晴らしい献身です。</string>
+    <string name="ach_des_14">ログを200回記録しましょう。伝説級の飼育員です！</string>
+    <string name="ach_des_15">ログを500回記録しましょう。究極のマリモマスターです。</string>
+    <string name="ach_des_16">1週間マリモのお世話を続けましょう。</string>
+    <string name="ach_des_17">1ヶ月間、定期的にお世話を続けましょう！</string>
+    <string name="ach_des_18">3ヶ月間の継続的なお世話が必要です。</string>
+    <string name="ach_des_19">半年間マリモのお世話を続けました！</string>
+    <string name="ach_des_20">まる1年間の献身的なお世話。信じられません！</string>
+    <string name="ach_des_21">2年間マリモのお世話を続けました！</string>
+    <string name="ach_des_22">水換えをマイルストーンとして記録しましょう！</string>
+    <string name="ach_des_23">水換えを5回マイルストーンとして記録しましょう。</string>
+    <string name="ach_des_24">マイルストーンログを10回記録。あなたはコレクターです！</string>
+    <string name="ach_des_25">水換えのログに写真をアップロードしましょう。</string>
+    <string name="ach_des_26">写真付きのログを5回記録しましょう。</string>
+    <string name="ach_des_27">写真付きログ20回。本物のアルバムですね！</string>
+    <string name="ach_des_28">5回の水換えログにメモを残しましょう。</string>
+    <string name="ach_des_29">メモ付きログ20回。本物の飼育日誌です！</string>
+    <string name="ach_des_30">メモ付きログ50回。あなたは歴史家です！</string>
+    <string name="ach_des_31">現在、期限を過ぎているマリモがいない状態にしましょう。</string>
+    <string name="ach_des_32">期限内に水換えを5回行いましょう。</string>
+    <string name="ach_des_33">期限内のログ20回。時計のように正確です！</string>
+    <string name="ach_des_34">マリモにクリエイティブな名前を付けましょう！</string>
+    <string name="ach_des_35">3つのマリモにそれぞれユニークな名前を付けましょう。</string>
+    <string name="ach_des_36">マリモにプロフィール写真を追加しましょう。</string>
+    <string name="ach_des_37">5つのマリモにプロフィール写真を設定しましょう！</string>
+    <string name="ach_des_38">マリモのプロフィールにメモを書きましょう。</string>
+    <string name="ach_des_39">期限の2日以上前に水換えを行いましょう。</string>
+    <string name="ach_des_40">1日に3回の水換えを記録しましょう！</string>
+    <string name="ach_des_41">期限を過ぎた水換えを10回記録（それでもやり遂げました！）。</string>
+    <string name="ach_des_42">3つの異なる水換え頻度を設定しましょう。</string>
+    <string name="ach_des_43">フィードバックページを訪問して送信しましょう！</string>
+    <string name="ach_des_44">設定をカスタマイズして保存しましょう。</string>
+    <string name="ach_des_45">1つのマリモを6ヶ月間飼育しましょう！</string>
+    <string name="ach_des_46">飼育期間が1年を超えるマリモがいます！</string>
+    <string name="ach_des_47">統計ページをチェックしましょう！</string>
+    <string name="ach_des_48">5つのマリモにメモを書きましょう。</string>
+    <string name="ach_des_49">実績を25個獲得して、半分を達成しましょう。</string>
+    <string name="ach_des_50">すべての実績を獲得する。それが究極の目標です！</string>
+
+
     <string-array name="marimo_frequencies">
         <item>7日ごと（週ごと）</item>
         <item>10日ごと</item>
