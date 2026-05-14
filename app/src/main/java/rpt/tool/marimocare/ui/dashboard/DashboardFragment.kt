@@ -325,7 +325,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             }
             openAchievementIntroDialog()
         }
-        else{
+        else if(SharedPreferencesManager.showAchievement){
             binding.include1.btnAchievementAHeader.post {
                 feedBackBalloon.showAlign(
                     align = BalloonAlign.BOTTOM,

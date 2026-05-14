@@ -21,6 +21,8 @@ import java.io.InputStreamReader
 import kotlin.Int
 import kotlin.collections.map
 
+private fun String.cleanValue(): String = this.trim().removeSurrounding("\"")
+
 class MarimoRepository(
     private val marimoDao: MarimoDao
 ) {
@@ -218,9 +220,9 @@ class MarimoRepository(
                 lines.drop(1).forEach { riga ->
                     val colonne = riga.split(",")
                     if (colonne.size >= 9) {
-                        val rawTitle = colonne[1].trim().removePrefix("R.string.")
-                        val rawDesc = colonne[2].trim().removePrefix("R.string.")
-                        val rawImg = colonne[4].trim().removePrefix("R.string.")
+                        val rawTitle = colonne[1].cleanValue().removePrefix("R.string.")
+                        val rawDesc = colonne[2].cleanValue().removePrefix("R.string.")
+                        val rawImg = colonne[4].cleanValue().removePrefix("R.string.")
 
                         val titleResId = context.resources.getIdentifier(rawTitle,
                             "string", packageName)
@@ -230,15 +232,15 @@ class MarimoRepository(
                             "string", packageName)
 
                         val newAchievement = Achievement(
-                            id = colonne[0].trim().toInt(),
+                            id = colonne[0].cleanValue().toIntOrNull() ?: 0,
                             titleID = titleResId,
                             descriptionValue = descResId,
                             imageId = imgResId,
-                            backgroundColor = colonne[5].trim(),
-                            category = colonne[3].trim(),
-                            sortOrder = colonne[8].trim().toInt(),
-                            earned = colonne[6].trim().equals("True", ignoreCase = true),
-                            date = colonne[7].trim().takeIf { it.isNotEmpty() && it != "NULL" }
+                            backgroundColor = colonne[5].cleanValue(),
+                            category = colonne[3].cleanValue(),
+                            sortOrder = colonne[8].cleanValue().toIntOrNull() ?: 0,
+                            earned = colonne[6].cleanValue().equals("True", ignoreCase = true),
+                            date = colonne[7].cleanValue().takeIf { it.isNotEmpty() && it != "NULL" }
                         )
                         achievementList.add(newAchievement)
                     }
@@ -254,13 +256,13 @@ class MarimoRepository(
                     val colonne = riga.split(",")
                     if (colonne.size >= 7) {
                         val newDetail = AchievementDetail(
-                            id = colonne[0].trim().toInt(),
-                            achievement = colonne[0].trim().toInt(),
-                            description = colonne[1].trim(),
-                            type = AchievementType.fromId(colonne[2].trim().toInt()),
-                            unit = UnitType.fromId(colonne[3].trim().toInt()),
-                            current = colonne[4].trim().toInt(),
-                            target = colonne[5].trim().toInt()
+                            id = colonne[0].cleanValue().toIntOrNull() ?: 0,
+                            achievement = colonne[0].cleanValue().toIntOrNull() ?: 0,
+                            description = colonne[1].cleanValue(),
+                            type = AchievementType.fromId(colonne[2].cleanValue().toIntOrNull() ?: 0),
+                            unit = UnitType.fromId(colonne[4].cleanValue().toIntOrNull() ?: 0),
+                            current = colonne[6].cleanValue().toIntOrNull() ?: 0,
+                            target = colonne[7].cleanValue().toIntOrNull() ?: 0
                         )
                         detailList.add(newDetail)
                     }
