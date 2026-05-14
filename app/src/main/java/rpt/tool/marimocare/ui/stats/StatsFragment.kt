@@ -58,6 +58,7 @@ import rpt.tool.marimocare.utils.balloon.stats.NewStatsBalloonFactory
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.data.appmodels.MarimoChange
 import rpt.tool.marimocare.utils.data.appmodels.MarimoDetailUi
+import rpt.tool.marimocare.utils.managers.AchievementManager
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 import rpt.tool.marimocare.utils.navigation.safeNavController
@@ -84,6 +85,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
     private val viewModel: StatsViewModel by navGraphViewModels(R.id.main_nav_graph)
 
     private val newStatsBalloon by balloon<NewStatsBalloonFactory>()
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -116,6 +118,9 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
             }
 
         }
+
+        AchievementManager.recalculateAll(true,
+            mapOf("visited_stats" to true))
     }
 
     fun scrollToTabLayoutAndShowBalloon(

@@ -12,6 +12,7 @@ import java.io.Serializable
 @Keep
 data class Achievement(
     val id: Int,
+    val code: String,
     val titleID: Int,
     val descriptionValue: Int,
     val imageId: Int,

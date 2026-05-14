@@ -11,6 +11,7 @@ import androidx.work.NetworkType
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import com.google.firebase.crashlytics.FirebaseCrashlytics
+import rpt.tool.marimocare.utils.workers.AchievementWorker
 import rpt.tool.marimocare.utils.notification.AlertWorker
 import rpt.tool.marimocare.utils.notification.NotificationHelper
 import rpt.tool.marimocare.utils.notification.NotifyWorker
@@ -54,6 +55,25 @@ class MarimoCareApplication : Application() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             MidnightHealthWorker.scheduleNext(this)
         }
+
+        scheduleAchievementWorker(this)
+    }
+
+    private fun scheduleAchievementWorker(context: Context) {
+        val request = PeriodicWorkRequestBuilder<AchievementWorker>(6,
+            TimeUnit.HOURS)
+            .setConstraints(
+                Constraints.Builder()
+                    .setRequiredNetworkType(NetworkType.NOT_REQUIRED)
+                    .build()
+            )
+            .build()
+
+        WorkManager.getInstance(context).enqueueUniquePeriodicWork(
+            "AchievementWorker",
+            ExistingPeriodicWorkPolicy.UPDATE,
+            request
+        )
     }
 
     private fun scheduleAlertWorker(context: Context) {

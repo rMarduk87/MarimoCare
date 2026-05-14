@@ -35,6 +35,9 @@ import com.google.android.material.textfield.TextInputEditText
 import androidx.core.net.toUri
 import com.skydoves.balloon.Balloon
 import com.skydoves.balloon.BalloonAlign
+import rpt.tool.marimocare.utils.managers.AchievementManager
+import java.time.LocalDate
+import java.time.temporal.ChronoUnit
 import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 
 class ChangeWaterEventHook(
@@ -197,6 +200,21 @@ class ChangeWaterEventHook(
                 if (marimo != null) {
 
                     val lastChanged = AppUtils.getCurrentDate()
+                    var earlyBird = false
+
+                    if (marimo.nextChange.isNotBlank()) {
+                        try {
+                            val nextChangeDate = LocalDate.parse(marimo.nextChange)
+                            val today = LocalDate.now()
+                            val daysUntilDeadline = ChronoUnit.DAYS.between(today,
+                                nextChangeDate)
+                            if (daysUntilDeadline >= 2) {
+                                earlyBird = true
+                            }
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                        }
+                    }
 
                     RepositoryManager.marimoRepository.updateWaterMarimo(
                         lastChanged,
@@ -213,9 +231,51 @@ class ChangeWaterEventHook(
 
                     RepositoryManager.marimoRepository.updateHealthScore(
                         item.marimo.code,
-                        lastChanged,100)
+                        lastChanged,
+                        100
+                    )
 
                     AlertDataUtils.recalc(context)
+
+                    // Calculate overdue log count for Night Owl achievement
+                    val allMarimos = RepositoryManager.marimoRepository.getAllSync()
+                    val allChanges = RepositoryManager.marimoRepository.getAllChanges()
+                    var overdueTotalCount = 0
+
+                    allMarimos.forEach { m ->
+                        val mChanges = allChanges.filter { it.coderMarimo == m.code.toString() }
+                            .filter { !it.waterChangeData.isNullOrBlank() }
+                            .sortedBy { it.waterChangeData }
+
+                        var lastDate: LocalDate? = m.registrationDate?.let {
+                            try { LocalDate.parse(it) } catch (e: Exception) { null }
+                        }
+
+                        mChanges.forEach { change ->
+                            try {
+                                val changeDate = LocalDate.parse(change.waterChangeData)
+                                if (lastDate != null) {
+                                    val daysSince = ChronoUnit.DAYS.between(
+                                        lastDate, changeDate)
+                                    if (daysSince > m.changeFrequencyDays) {
+                                        overdueTotalCount++
+                                    }
+                                }
+                                lastDate = changeDate
+                            } catch (e: Exception) {
+                                e.printStackTrace()
+                            }
+                        }
+                    }
+
+                    val meta = mutableMapOf<String, Any>()
+                    if (earlyBird) meta["earned_early_bird"] = true
+                    if (overdueTotalCount >= 10) meta["overdue_log_count"] = true
+
+                    AchievementManager.recalculateAll(
+                        showDialogEarned = true,
+                        userMeta = meta
+                    )
 
                     RepositoryManager.marimoRepository
                         .getMarimo(item.marimo.code)

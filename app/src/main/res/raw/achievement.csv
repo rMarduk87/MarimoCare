@@ -1,51 +1,51 @@
-id,title,description,category,image,color,earned,acquired_date,order
-1,R.string.ach_tit_1,R.string.ach_desc_1,Collection,R.string.ach_1,#f59e0b,False,,46
-2,R.string.ach_tit_2,R.string.ach_desc_2,Collection,R.string.ach_2,#3b82f6,False,,47
-3,R.string.ach_tit_3,R.string.ach_desc_3,Collection,R.string.ach_3,#64748b,False,,48
-4,R.string.ach_tit_4,R.string.ach_desc_4,Collection,R.string.ach_4,#a855f7,False,,49
-5,R.string.ach_tit_5,R.string.ach_desc_5,Collection,R.string.ach_5,#ffd700,False,,50
-6,R.string.ach_tit_6,R.string.ach_desc_6,Collection,R.string.ach_6,#3b82f6,False,,15
-7,R.string.ach_tit_7,R.string.ach_desc_7,Collection,R.string.ach_7,#84cc16,False,,16
-8,R.string.ach_tit_8,R.string.ach_desc_8,Water Changes,R.string.ach_8,#a855f7,False,,17
-9,R.string.ach_tit_9,R.string.ach_desc_9,Water Changes,R.string.ach_9,#22c55e,False,,18
-10,R.string.ach_tit_10,R.string.ach_desc_10,Water Changes,R.string.ach_10,#f97316,False,,19
-11,R.string.ach_tit_11,R.string.ach_desc_11,Water Changes,R.string.ach_11,#ffd700,False,,20
-12,R.string.ach_tit_12,R.string.ach_desc_12,Water Changes,R.string.ach_12,#f59e0b,False,,21
-13,R.string.ach_tit_13,R.string.ach_desc_13,Water Changes,R.string.ach_13,#f59e0b,False,,22
-14,R.string.ach_tit_14,R.string.ach_desc_14,Water Changes,R.string.ach_14,#f97316,False,,23
-15,R.string.ach_tit_15,R.string.ach_desc_15,Water Changes,R.string.ach_15,#eab308,False,,24
-16,R.string.ach_tit_16,R.string.ach_desc_16,Care Duration,R.string.ach_16,#f43f5e,False,,25
-17,R.string.ach_tit_17,R.string.ach_desc_17,Care Duration,R.string.ach_17,#ec4899,False,,26
-18,R.string.ach_tit_18,R.string.ach_desc_18,Care Duration,R.string.ach_18,#f43f5e,False,,27
-19,R.string.ach_tit_19,R.string.ach_desc_19,Care Duration,R.string.ach_19,#64748b,False,,28
-20,R.string.ach_tit_20,R.string.ach_desc_20,Care Duration,R.string.ach_20,#6366f1,False,,29
-21,R.string.ach_tit_21,R.string.ach_desc_21,Care Duration,R.string.ach_21,#a855f7,False,,30
-22,R.string.ach_tit_22,R.string.ach_desc_22,Milestones,R.string.ach_22,#84cc16,False,,31
-23,R.string.ach_tit_23,R.string.ach_desc_23,Milestones,R.string.ach_23,#22c55e,False,,32
-24,R.string.ach_tit_24,R.string.ach_desc_24,Milestones,R.string.ach_24,#14b8a6,False,,33
-25,R.string.ach_tit_25,R.string.ach_desc_25,Photos,R.string.ach_25,#f43f5e,False,,34
-26,R.string.ach_tit_26,R.string.ach_desc_26,Photos,R.string.ach_26,#ec4899,False,,35
-27,R.string.ach_tit_27,R.string.ach_desc_27,Photos,R.string.ach_27,#06b6d4,False,,36
-28,R.string.ach_tit_28,R.string.ach_desc_28,Notes,R.string.ach_28,#f97316,False,,37
-29,R.string.ach_tit_29,R.string.ach_desc_29,Notes,R.string.ach_29,#64748b,False,,38
-30,R.string.ach_tit_30,R.string.ach_desc_30,Notes,R.string.ach_30,#0ea5e9,False,,39
-31,R.string.ach_tit_31,R.string.ach_desc_31,Perfect Record,R.string.ach_31,#eab308,False,,40
-32,R.string.ach_tit_32,R.string.ach_desc_32,Perfect Record,R.string.ach_32,#6366f1,False,,41
-33,R.string.ach_tit_33,R.string.ach_desc_33,Perfect Record,R.string.ach_33,#14b8a6,False,,42
-34,R.string.ach_tit_34,R.string.ach_desc_34,Naming,R.string.ach_34,#3b82f6,False,,43
-35,R.string.ach_tit_35,R.string.ach_desc_35,Naming,R.string.ach_35,#64748b,False,,44
-36,R.string.ach_tit_36,R.string.ach_desc_36,Profile Images,R.string.ach_36,#22c55e,False,,45
-37,R.string.ach_tit_37,R.string.ach_desc_37,Profile Images,R.string.ach_37,#10b981,False,,1
-38,R.string.ach_tit_38,R.string.ach_desc_38,Notes,R.string.ach_38,#14b8a6,False,,2
-39,R.string.ach_tit_39,R.string.ach_desc_39,Fun,R.string.ach_39,#06b6d4,False,,3
-40,R.string.ach_tit_40,R.string.ach_desc_40,Fun,R.string.ach_40,#14b8a6,False,,4
-41,R.string.ach_tit_41,R.string.ach_desc_41,Fun,R.string.ach_41,#eab308,False,,5
-42,R.string.ach_tit_42,R.string.ach_desc_42,Diversity,R.string.ach_42,#22c55e,False,,6
-43,R.string.ach_tit_43,R.string.ach_desc_43,Engagement,R.string.ach_43,#ffd700,False,,7
-44,R.string.ach_tit_44,R.string.ach_desc_44,Engagement,R.string.ach_44,#3b82f6,False,,8
-45,R.string.ach_tit_45,R.string.ach_desc_45,Longevity,R.string.ach_45,#0ea5e9,False,,9
-46,R.string.ach_tit_46,R.string.ach_desc_46,Longevity,R.string.ach_46,#06b6d4,False,,10
-47,R.string.ach_tit_47,R.string.ach_desc_47,Engagement,R.string.ach_47,#3b82f6,False,,11
-48,R.string.ach_tit_48,R.string.ach_desc_48,Notes,R.string.ach_48,#6366f1,False,,12
-49,R.string.ach_tit_49,R.string.ach_desc_49,Meta,R.string.ach_49,#ec4899,False,,13
-50,R.string.ach_tit_50,R.string.ach_desc_50,Meta,R.string.ach_50,#a855f7,False,,14
+id,code,title,description,category,image,color,earned,acquired_date,order
+1,first_marimo,R.string.ach_tit_1,R.string.ach_desc_1,Collection,R.string.ach_1,#f59e0b,False,,46
+2,duo,R.string.ach_tit_2,R.string.ach_desc_2,Collection,R.string.ach_2,#3b82f6,False,,47
+3,trio,R.string.ach_tit_3,R.string.ach_desc_3,Collection,R.string.ach_3,#64748b,False,,48
+4,collector,R.string.ach_tit_4,R.string.ach_desc_4,Collection,R.string.ach_4,#a855f7,False,,49
+5,marimo_hoarder,R.string.ach_tit_5,R.string.ach_desc_5,Collection,R.string.ach_5,#ffd700,False,,50
+6,marimo_army,R.string.ach_tit_6,R.string.ach_desc_6,Collection,R.string.ach_6,#3b82f6,False,,15
+7,marimo_empire,R.string.ach_tit_7,R.string.ach_desc_7,Collection,R.string.ach_7,#84cc16,False,,16
+8,first_water_change,R.string.ach_tit_8,R.string.ach_desc_8,Water Changes,R.string.ach_8,#a855f7,False,,17
+9,consistent_5,R.string.ach_tit_9,R.string.ach_desc_9,Water Changes,R.string.ach_9,#22c55e,False,,18
+10,consistent_10,R.string.ach_tit_10,R.string.ach_desc_10,Water Changes,R.string.ach_10,#f97316,False,,19
+11,consistent_25,R.string.ach_tit_11,R.string.ach_desc_11,Water Changes,R.string.ach_11,#ffd700,False,,20
+12,consistent_50,R.string.ach_tit_12,R.string.ach_desc_12,Water Changes,R.string.ach_12,#f59e0b,False,,21
+13,consistent_100,R.string.ach_tit_13,R.string.ach_desc_13,Water Changes,R.string.ach_13,#f59e0b,False,,22
+14,consistent_200,R.string.ach_tit_14,R.string.ach_desc_14,Water Changes,R.string.ach_14,#f97316,False,,23
+15,consistent_500,R.string.ach_tit_15,R.string.ach_desc_15,Water Changes,R.string.ach_15,#eab308,False,,24
+16,one_week_care,R.string.ach_tit_16,R.string.ach_desc_16,Care Duration,R.string.ach_16,#f43f5e,False,,25
+17,one_month_care,R.string.ach_tit_17,R.string.ach_desc_17,Care Duration,R.string.ach_17,#ec4899,False,,26
+18,three_months_care,R.string.ach_tit_18,R.string.ach_desc_18,Care Duration,R.string.ach_18,#f43f5e,False,,27
+19,six_months_care,R.string.ach_tit_19,R.string.ach_desc_19,Care Duration,R.string.ach_19,#64748b,False,,28
+20,one_year_care,R.string.ach_tit_20,R.string.ach_desc_20,Care Duration,R.string.ach_20,#6366f1,False,,29
+21,two_years_care,R.string.ach_tit_21,R.string.ach_desc_21,Care Duration,R.string.ach_21,#a855f7,False,,30
+22,milestone_marker,R.string.ach_tit_22,R.string.ach_desc_22,Milestones,R.string.ach_22,#84cc16,False,,31
+23,five_milestones,R.string.ach_tit_23,R.string.ach_desc_23,Milestones,R.string.ach_23,#22c55e,False,,32
+24,ten_milestones,R.string.ach_tit_24,R.string.ach_desc_24,Milestones,R.string.ach_24,#14b8a6,False,,33
+25,photo_keeper,R.string.ach_tit_25,R.string.ach_desc_25,Photos,R.string.ach_25,#f43f5e,False,,34
+26,photographer,R.string.ach_tit_26,R.string.ach_desc_26,Photos,R.string.ach_26,#ec4899,False,,35
+27,photo_album,R.string.ach_tit_27,R.string.ach_desc_27,Photos,R.string.ach_27,#06b6d4,False,,36
+28,notes_taker,R.string.ach_tit_28,R.string.ach_desc_28,Notes,R.string.ach_28,#f97316,False,,37
+29,journal_keeper,R.string.ach_tit_29,R.string.ach_desc_29,Notes,R.string.ach_29,#64748b,False,,38
+30,chronicler,R.string.ach_tit_30,R.string.ach_desc_30,Notes,R.string.ach_30,#0ea5e9,False,,39
+31,on_time_streak_5,R.string.ach_tit_31,R.string.ach_desc_31,Perfect Record,R.string.ach_31,#eab308,False,,40
+32,on_time_streak_20,R.string.ach_tit_32,R.string.ach_desc_32,Perfect Record,R.string.ach_32,#6366f1,False,,41
+33,never_overdue,R.string.ach_tit_33,R.string.ach_desc_33,Perfect Record,R.string.ach_33,#14b8a6,False,,42
+34,named_marimo,R.string.ach_tit_34,R.string.ach_desc_34,Naming,R.string.ach_34,#3b82f6,False,,43
+35,creative_namer,R.string.ach_tit_35,R.string.ach_desc_35,Naming,R.string.ach_35,#64748b,False,,44
+36,profile_pic,R.string.ach_tit_36,R.string.ach_desc_36,Profile Images,R.string.ach_36,#22c55e,False,,45
+37,photogenic_collection,R.string.ach_tit_37,R.string.ach_desc_37,Profile Images,R.string.ach_37,#10b981,False,,1
+38,marimo_biographer_5,R.string.ach_tit_38,R.string.ach_desc_38,Notes,R.string.ach_38,#14b8a6,False,,2
+39,early_bird,R.string.ach_tit_39,R.string.ach_desc_39,Fun,R.string.ach_39,#06b6d4,False,,3
+40,speedy,R.string.ach_tit_40,R.string.ach_desc_40,Fun,R.string.ach_40,#14b8a6,False,,4
+41,night_owl,R.string.ach_tit_41,R.string.ach_desc_41,Fun,R.string.ach_41,#eab308,False,,5
+42,varied_frequency,R.string.ach_tit_42,R.string.ach_desc_42,Diversity,R.string.ach_42,#22c55e,False,,6
+43,feedback_giver,R.string.ach_tit_43,R.string.ach_desc_43,Engagement,R.string.ach_43,#ffd700,False,,7
+44,settings_explorer,R.string.ach_tit_44,R.string.ach_desc_44,Engagement,R.string.ach_44,#3b82f6,False,,8
+45,senior_marimo,R.string.ach_tit_45,R.string.ach_desc_45,Longevity,R.string.ach_45,#0ea5e9,False,,9
+46,ancient_marimo,R.string.ach_tit_46,R.string.ach_desc_46,Longevity,R.string.ach_46,#06b6d4,False,,10
+47,stats_viewer,R.string.ach_tit_47,R.string.ach_desc_47,Engagement,R.string.ach_47,#3b82f6,False,,11
+48,marimo_notes,R.string.ach_tit_48,R.string.ach_desc_48,Notes,R.string.ach_48,#6366f1,False,,12
+49,halfway_there,R.string.ach_tit_49,R.string.ach_desc_49,Meta,R.string.ach_49,#ec4899,False,,13
+50,achievement_hunter,R.string.ach_tit_50,R.string.ach_desc_50,Meta,R.string.ach_50,#a855f7,False,,14

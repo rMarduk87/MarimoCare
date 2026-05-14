@@ -14,7 +14,6 @@ import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentAchievementBinding
 import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.managers.AchievementManager
-import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.tool.marimocare.utils.navigation.safeNavController
 import rpt.tool.marimocare.utils.navigation.safeNavigate
 import rpt.tool.marimocare.utils.view.HeaderButtonConfig
@@ -44,10 +43,10 @@ class AchievementFragment :
         viewModel.loadAchievements()
 
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-            AchievementManager.earnAchievement(1, AppUtils.getCurrentDate())
-            AchievementManager.earnAchievement(3, AppUtils.getCurrentDate())
-            AchievementManager.earnAchievement(5, AppUtils.getCurrentDate())
-            AchievementManager.earnAchievement(7, AppUtils.getCurrentDate())
+            AchievementManager.earnAchievement(1, AppUtils.getCurrentDate(), true)
+            AchievementManager.earnAchievement(3, AppUtils.getCurrentDate(), true)
+            AchievementManager.earnAchievement(5, AppUtils.getCurrentDate(), true)
+            AchievementManager.earnAchievement(7, AppUtils.getCurrentDate(), true)
         }
 
 

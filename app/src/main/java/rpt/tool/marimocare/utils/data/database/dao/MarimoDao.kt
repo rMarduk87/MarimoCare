@@ -9,6 +9,7 @@ import rpt.tool.marimocare.utils.data.database.models.MarimoChangeModel
 import rpt.tool.marimocare.utils.data.database.models.MarimoHealthScoreModel
 import rpt.tool.marimocare.utils.data.database.models.MarimoModel
 import rpt.tool.marimocare.utils.data.database.models.MarimoQRModel
+import rpt.tool.marimocare.utils.data.database.models.complex.AchievementWithDetailModel
 
 @Dao
 interface MarimoDao {
@@ -196,4 +197,16 @@ interface MarimoDao {
     @Transaction
     @Query("DELETE FROM achievement_details")
     fun clearAchievementDetails()
+
+    @Transaction
+    @Query("SELECT * FROM achievement ORDER BY `order` ASC")
+    fun getAllAchievement() : List<AchievementWithDetailModel>
+
+    @Transaction
+    @Query("UPDATE achievement_details set `current` = :current where achievement_id =:id")
+    fun updateAchievementDetail(id: Int, current: Int)
+
+    @Transaction
+    @Query("SELECT * FROM achievement_details where achievement_id =:id ")
+    fun getAchievementDetail(id: Int): AchievementDetailModel
 }

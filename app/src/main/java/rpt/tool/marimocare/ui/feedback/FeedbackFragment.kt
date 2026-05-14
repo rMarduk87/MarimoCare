@@ -18,6 +18,7 @@ import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
+import rpt.tool.marimocare.utils.managers.AchievementManager
 
 class FeedbackFragment :
     BaseFragment<FragmentFeedbackBinding>(FragmentFeedbackBinding::inflate) {
@@ -75,6 +76,9 @@ class FeedbackFragment :
             val emailSubject =
                 getString(R.string.marimo_care_feedback, selectedTopics.joinToString(", "))
             sendEmail(emailSubject, messageText)
+
+            AchievementManager.recalculateAll(true,
+                mapOf("submitted_feedback" to true))
         }
 
         binding.btnReddit.setOnClickListener {

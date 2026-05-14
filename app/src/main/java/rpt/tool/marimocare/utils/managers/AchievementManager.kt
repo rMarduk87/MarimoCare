@@ -1,17 +1,233 @@
 package rpt.tool.marimocare.utils.managers
 
+import android.app.AlertDialog
+import android.os.Build
+import android.os.Handler
+import android.os.Looper
+import android.view.LayoutInflater
+import android.widget.Button
+import android.widget.TextView
+import androidx.annotation.RequiresApi
+import rpt.tool.marimocare.MarimoCareApplication
+import rpt.tool.marimocare.R
+import rpt.tool.marimocare.utils.AppUtils
+import rpt.tool.marimocare.utils.data.appmodels.AchievementComplex
+import rpt.tool.marimocare.utils.data.appmodels.Marimo
+import rpt.tool.marimocare.utils.data.appmodels.MarimoChange
+import java.time.LocalDate
+import java.time.temporal.ChronoUnit
+
 class AchievementManager {
     companion object {
-        fun recalculateAll() {
-            TODO("Not yet implemented")
+        @RequiresApi(Build.VERSION_CODES.O)
+        fun recalculateAll(showDialogEarned: Boolean = false,
+                           userMeta: Map<String, Any> = emptyMap()) {
+            val achievement = RepositoryManager.marimoRepository.getAllAchievement()
+            val marimos = RepositoryManager.marimoRepository.getAllSync()
+            val waterChanges = RepositoryManager.marimoRepository.getAllChanges()
+            calculateAchievement(achievement, marimos, waterChanges, showDialogEarned,
+                userMeta)
+        }
+
+        @RequiresApi(Build.VERSION_CODES.O)
+        private fun calculateAchievement(
+            achievements: List<AchievementComplex>,
+            marimos: List<Marimo>,
+            waterChanges: List<MarimoChange>,
+            showDialogEarned: Boolean,
+            userMeta: Map<String, Any> = emptyMap()
+        ) {
+            // --- Statistiche di Base ---
+            val milestoneCount = waterChanges.count { it.isMilestone }
+            val photoCount = waterChanges.count { !it.waterChangeImage.isNullOrEmpty() }
+            val notedLogs = waterChanges.count { !it.waterChangesLog.isNullOrBlank() }
+            val months = AppUtils.getMonthsOfCare(waterChanges)
+            val days = AppUtils.getDaysOfCare(waterChanges)
+            val uniquelyNamed = marimos.count {
+                it.name.isNotBlank() && it.name.lowercase() != "marimo"
+            }
+            val withPhoto = marimos.count { !it.photo.isNullOrEmpty() }
+            val freqs = marimos.map { it.changeFrequencyDays }.toSet().size
+            val marimosWithNotes = marimos.count { !it.notes.isNullOrBlank() }
+
+            val maxMonthsOfOwnership = marimos.mapNotNull { m ->
+                m.registrationDate?.let { dateStr ->
+                    // Date già in formato yyyy-MM-dd, parse diretto
+                    ChronoUnit.MONTHS.between(LocalDate.parse(dateStr),
+                        LocalDate.now()).toInt()
+                }
+            }.maxOrNull() ?: 0
+
+            // --- Statistiche Complesse ---
+
+            // Speedy: Almeno 3 log di cambio acqua nello stesso giorno
+            // Raggruppiamo direttamente per data
+            val logsByDay = waterChanges.groupBy { it.waterChangeData }
+            val speedyEarned = logsByDay.values.any { it.size >= 3 }
+
+            // Never Overdue: Controlla che nessun marimo sia in ritardo
+            val allUpToDate = marimos.isNotEmpty() && marimos.all { m ->
+                val lastChange = m.lastChanged // Assicurati che questo sia il nome corretto
+                val frequency = m.changeFrequencyDays
+                if (lastChange.isNullOrBlank() || frequency <= 0) {
+                    false
+                } else {
+                    // Date già in formato yyyy-MM-dd, parse diretto
+                    val daysAgo = ChronoUnit.DAYS.between(
+                        LocalDate.parse(lastChange),
+                        LocalDate.now())
+                    daysAgo <= frequency
+                }
+            }
+
+            // Calcolo preventivo degli achievement guadagnati (Utile per i Meta-Achievement)
+            val totalEarnedCount = achievements.count { it.earned }
+
+            achievements.forEach { achievement ->
+                val current: Int? = when (achievement.code) {
+                    // Collection
+                    "first_marimo" -> minOf(marimos.size, 1)
+                    "duo" -> minOf(marimos.size, 2)
+                    "trio" -> minOf(marimos.size, 3)
+                    "collector" -> minOf(marimos.size, 5)
+                    "marimo_hoarder" -> minOf(marimos.size, 10)
+                    "marimo_army" -> minOf(marimos.size, 20)
+                    "marimo_empire" -> minOf(marimos.size, 50)
+
+                    // Water changes
+                    "first_water_change" -> minOf(waterChanges.size, 1)
+                    "consistent_5" -> minOf(waterChanges.size, 5)
+                    "consistent_10" -> minOf(waterChanges.size, 10)
+                    "consistent_25" -> minOf(waterChanges.size, 25)
+                    "consistent_50" -> minOf(waterChanges.size, 50)
+                    "consistent_100" -> minOf(waterChanges.size, 100)
+                    "consistent_200" -> minOf(waterChanges.size, 200)
+                    "consistent_500" -> minOf(waterChanges.size, 500)
+
+                    // Care duration
+                    "one_week_care" -> minOf(days, 7)
+                    "one_month_care" -> minOf(months, 1)
+                    "three_months_care" -> minOf(months, 3)
+                    "six_months_care" -> minOf(months, 6)
+                    "one_year_care" -> minOf(months, 12)
+                    "two_years_care" -> minOf(months, 24)
+
+                    // Milestones
+                    "milestone_marker" -> minOf(milestoneCount, 1)
+                    "five_milestones" -> minOf(milestoneCount, 5)
+                    "ten_milestones" -> minOf(milestoneCount, 10)
+
+                    // Photos on logs
+                    "photo_keeper" -> minOf(photoCount, 1)
+                    "photographer" -> minOf(photoCount, 5)
+                    "photo_album" -> minOf(photoCount, 20)
+
+                    // Notes on logs
+                    "notes_taker" -> minOf(notedLogs, 5)
+                    "journal_keeper" -> minOf(notedLogs, 20)
+                    "chronicler" -> minOf(notedLogs, 50)
+
+                    // Named marimos
+                    "named_marimo" -> minOf(uniquelyNamed, 1)
+                    "creative_namer" -> minOf(uniquelyNamed, 3)
+
+                    // Profile pics
+                    "profile_pic" -> minOf(withPhoto, 1)
+                    "photogenic_collection" -> minOf(withPhoto, 5)
+
+                    // Varied frequency
+                    "varied_frequency" -> minOf(freqs, 3)
+
+                    // Marimo longevity
+                    "senior_marimo" -> minOf(maxMonthsOfOwnership, 6)
+                    "ancient_marimo" -> minOf(maxMonthsOfOwnership, 12)
+
+                    // Notes on marimos
+                    "marimo_biographer_5" -> minOf(marimosWithNotes, 5)
+                    "marimo_notes" -> if (marimosWithNotes > 0) 1 else 0
+
+                    // Binary & Streaks (Approssimati al numero totale di log, come da logica JS)
+                    "on_time_streak_5" -> minOf(waterChanges.size, 5)
+                    "on_time_streak_20" -> minOf(waterChanges.size, 20)
+                    "never_overdue" -> if (allUpToDate) 1 else 0
+                    "speedy" -> if (speedyEarned) 1 else 0
+
+                    // Engagement / User Meta Flags
+                    "early_bird" -> if (userMeta["earned_early_bird"] == true) 1 else 0
+                    "night_owl" -> if (userMeta["overdue_log_count"] == true) 1 else 0
+                    "feedback_giver" -> if (userMeta["submitted_feedback"] == true) 1 else 0
+                    "settings_explorer" -> if (userMeta["customized_settings"] == true) 1 else 0
+                    "stats_viewer" -> if (userMeta["visited_stats"] == true) 1 else 0
+
+                    // Meta achievements
+                    "halfway_there" -> minOf(totalEarnedCount, 25)
+                    "achievement_hunter" -> minOf(totalEarnedCount, 49)
+
+                    else -> null
+                }
+
+                if (current != null) {
+                    updateProgressForAchievement(achievement.id, current, showDialogEarned)
+                }
+            }
         }
 
         fun deleteAllAchievement() {
             RepositoryManager.marimoRepository.resetAllAchievements()
         }
 
-        fun earnAchievement(id:Int, date: String) {
+        fun earnAchievement(id: Int, date: String, showDialogEarned: Boolean) {
             RepositoryManager.marimoRepository.earnAchievement(id, date)
+            if (showDialogEarned) {
+                showAchievementEarnedDialog(id)
+            }
+        }
+
+        @RequiresApi(Build.VERSION_CODES.O)
+        fun updateProgressForAchievement(id: Int, current: Int, showDialogEarned: Boolean) {
+            val earned = RepositoryManager.marimoRepository.updateAchievementDetail(id, current)
+            if (earned) {
+                earnAchievement(id, AppUtils.getCurrentDate(), showDialogEarned)
+            }
+        }
+
+        private fun showAchievementEarnedDialog(id: Int) {
+            val achievement = RepositoryManager.marimoRepository.getAllAchievement().find { it.id == id }
+
+            achievement?.let { ach ->
+                Handler(Looper.getMainLooper()).post {
+                    try {
+                        val context = MarimoCareApplication.instance
+                        val inflater = LayoutInflater.from(context)
+                        val view = inflater.inflate(R.layout.dialog_achievement_earned,
+                            null)
+
+                        val title = view.findViewById<TextView>(R.id.txtAchievementTitle)
+                        val icon = view.findViewById<TextView>(R.id.txtAchievementIcon)
+                        val desc = view.findViewById<TextView>(R.id.txtAchievementDesc)
+                        val btnOk = view.findViewById<Button>(R.id.btnOk)
+
+                        title.text = context.getString(ach.titleID)
+                        desc.text = context.getString(ach.descriptionValue)
+                        icon.text = context.getString(ach.imageId)
+
+                        val dialog = AlertDialog.Builder(context)
+                            .setView(view)
+                            .setCancelable(true)
+                            .create()
+
+                        dialog.window?.setType(if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) 
+                            android.view.WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY 
+                            else android.view.WindowManager.LayoutParams.TYPE_PHONE)
+
+                        btnOk.setOnClickListener { dialog.dismiss() }
+
+                        dialog.show()
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                }
+            }
         }
     }
 }

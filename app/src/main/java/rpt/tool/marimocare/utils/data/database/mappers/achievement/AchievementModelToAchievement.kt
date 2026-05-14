@@ -10,6 +10,7 @@ class AchievementModelToAchievement : ModelMapper<AchievementModel, Achievement>
     override fun map(source: AchievementModel): Achievement {
         return Achievement(
             id = source.id,
+            code = source.code,
             titleID = source.titleId,
             descriptionValue = source.descriptionValue,
             imageId = source.imageId,

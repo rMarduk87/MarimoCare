@@ -1,9 +1,11 @@
 package rpt.tool.marimocare.ui.settings
 
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import rpt.tool.marimocare.BaseFragment
 import rpt.tool.marimocare.R
@@ -11,6 +13,7 @@ import rpt.tool.marimocare.databinding.FragmentSettingsBinding
 import rpt.tool.marimocare.ui.feedback.FeedbackFragmentDirections
 import rpt.tool.marimocare.ui.marimo.addoredit.AddOrEditMarimoFragmentDirections
 import rpt.tool.marimocare.ui.stats.StatsFragmentDirections
+import rpt.tool.marimocare.utils.managers.AchievementManager
 import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 import rpt.tool.marimocare.utils.navigation.safeNavController
 import rpt.tool.marimocare.utils.navigation.safeNavigate
@@ -35,6 +38,7 @@ class SettingsFragment :
 
     private val statsPeriodViews: MutableMap<Int, TextView> = mutableMapOf()
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -361,6 +365,7 @@ class SettingsFragment :
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun setupSaveCancelListeners() {
         binding.btnSave.setOnClickListener {
             SharedPreferencesManager.coloredIsSelected = coloredOptionSelected
@@ -374,6 +379,8 @@ class SettingsFragment :
                 getString(R.string.option_correctly_updated),
                 Toast.LENGTH_SHORT
             ).show()
+            AchievementManager.recalculateAll(true,
+                mapOf("customized_settings" to true))
         }
 
         binding.btnCancel.setOnClickListener {

@@ -15,6 +15,8 @@ class AchievementModel(
     @PrimaryKey
     @ColumnInfo(name = "id")
     val id: Int,
+    @ColumnInfo(name = "code")
+    val code: String,
     @ColumnInfo(name = "title")
     val titleId: Int,
     @ColumnInfo(name = "description")

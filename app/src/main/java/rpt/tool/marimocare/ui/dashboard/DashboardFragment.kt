@@ -60,6 +60,7 @@ import rpt.tool.marimocare.utils.balloon.waterchange.DialogChangeWaterBalloonFac
 import rpt.tool.marimocare.utils.balloon.waterchange.WaterChangeInfoBalloonFactory
 import rpt.tool.marimocare.utils.data.appmodels.MarimoToFix
 import rpt.tool.marimocare.utils.data.appmodels.MarimoUpdate
+import rpt.tool.marimocare.utils.managers.AchievementManager
 import rpt.tool.marimocare.utils.managers.HealthManager
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.tool.marimocare.utils.view.HeaderButtonConfig
@@ -1024,14 +1025,15 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             .create()
 
         view.findViewById<Button>(R.id.btnCalculate).setOnClickListener {
-            SharedPreferencesManager.showAchievement = //true
-                    false
+            SharedPreferencesManager.showAchievement = false
+            viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+                AchievementManager.recalculateAll()
+            }
             dialog.dismiss()
         }
 
         view.findViewById<Button>(R.id.btnRestart).setOnClickListener {
-            SharedPreferencesManager.showAchievement = //true
-                false
+            SharedPreferencesManager.showAchievement = false
             dialog.dismiss()
         }
 

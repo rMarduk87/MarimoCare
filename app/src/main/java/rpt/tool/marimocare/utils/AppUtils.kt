@@ -7,6 +7,7 @@ import android.util.Base64
 import androidx.annotation.RequiresApi
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
+import rpt.tool.marimocare.utils.data.appmodels.MarimoChange
 import rpt.tool.marimocare.utils.view.recyclerview.items.frequency.MarimoFrequencyItem
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -252,6 +253,41 @@ class AppUtils {
 
             return ChronoUnit.DAYS.between(current, next).toInt()
 
+        }
+
+        @RequiresApi(Build.VERSION_CODES.O)
+        fun getMonthsOfCare(logs: List<MarimoChange>): Int {
+            if (logs.isEmpty()) return 0
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+            val dates = logs.mapNotNull {
+                it.waterChangeData?.let { dateStr ->
+                    try {
+                        LocalDate.parse(dateStr, formatter)
+                    } catch (e: Exception) {
+                        null
+                    }
+                }
+            }.sorted()
+            if (dates.isEmpty()) return 0
+            return ChronoUnit.MONTHS.between(dates[0],
+                LocalDate.now()).toInt()
+        }
+
+        @RequiresApi(Build.VERSION_CODES.O)
+        fun getDaysOfCare(logs: List<MarimoChange>): Int {
+            if (logs.isEmpty()) return 0
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+            val dates = logs.mapNotNull {
+                it.waterChangeData?.let { dateStr ->
+                    try {
+                        LocalDate.parse(dateStr, formatter)
+                    } catch (e: Exception) {
+                        null
+                    }
+                }
+            }.sorted()
+            if (dates.isEmpty()) return 0
+            return ChronoUnit.DAYS.between(dates[0], LocalDate.now()).toInt()
         }
 
         const val USERS_SHARED_PREF : String = "user_pref"

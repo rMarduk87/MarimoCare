@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
 import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.data.appmodels.Achievement
+import rpt.tool.marimocare.utils.data.appmodels.AchievementComplex
 import rpt.tool.marimocare.utils.data.appmodels.AchievementDetail
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.data.appmodels.MarimoChange
@@ -220,9 +221,9 @@ class MarimoRepository(
                 lines.drop(1).forEach { riga ->
                     val colonne = riga.split(",")
                     if (colonne.size >= 9) {
-                        val rawTitle = colonne[1].cleanValue().removePrefix("R.string.")
-                        val rawDesc = colonne[2].cleanValue().removePrefix("R.string.")
-                        val rawImg = colonne[4].cleanValue().removePrefix("R.string.")
+                        val rawTitle = colonne[2].cleanValue().removePrefix("R.string.")
+                        val rawDesc = colonne[3].cleanValue().removePrefix("R.string.")
+                        val rawImg = colonne[5].cleanValue().removePrefix("R.string.")
 
                         val titleResId = context.resources.getIdentifier(rawTitle,
                             "string", packageName)
@@ -233,14 +234,15 @@ class MarimoRepository(
 
                         val newAchievement = Achievement(
                             id = colonne[0].cleanValue().toIntOrNull() ?: 0,
+                            code = colonne[1],
                             titleID = titleResId,
                             descriptionValue = descResId,
                             imageId = imgResId,
-                            backgroundColor = colonne[5].cleanValue(),
-                            category = colonne[3].cleanValue(),
-                            sortOrder = colonne[8].cleanValue().toIntOrNull() ?: 0,
-                            earned = colonne[6].cleanValue().equals("True", ignoreCase = true),
-                            date = colonne[7].cleanValue().takeIf { it.isNotEmpty() && it != "NULL" }
+                            backgroundColor = colonne[6].cleanValue(),
+                            category = colonne[4].cleanValue(),
+                            sortOrder = colonne[9].cleanValue().toIntOrNull() ?: 0,
+                            earned = colonne[8].cleanValue().equals("True", ignoreCase = true),
+                            date = colonne[8].cleanValue().takeIf { it.isNotEmpty() && it != "NULL" }
                         )
                         achievementList.add(newAchievement)
                     }
@@ -280,5 +282,15 @@ class MarimoRepository(
 
     fun earnAchievement(id:Int, date: String) {
         marimoDao.earnAchievement(id, date)
+    }
+
+    fun getAllAchievement() : List<AchievementComplex> {
+        return marimoDao.getAllAchievement().map(){it.map()}
+    }
+
+    fun updateAchievementDetail(id: Int, current: Int): Boolean {
+        marimoDao.updateAchievementDetail(id,current)
+        val detail = marimoDao.getAchievementDetail(id).toAppModel<AchievementDetail>()
+        return detail.current == detail.target
     }
 }

@@ -541,4 +541,6 @@ Please note: the final date retrieved will be the same as the app release date, 
         <item>Send QR</item>
         <item>Save QR</item>
     </string-array>
+    <string name="achievement_earned">Achievement Earned!</string>
+    <string name="great">Great!</string>
 </resources>
