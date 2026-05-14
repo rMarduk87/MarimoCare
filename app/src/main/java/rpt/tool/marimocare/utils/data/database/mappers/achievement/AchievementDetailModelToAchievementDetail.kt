@@ -15,7 +15,9 @@ class AchievementDetailModelToAchievementDetail : ModelMapper<AchievementDetailM
             achievement = source.achievement,
             description = source.description,
             type = AchievementType.fromId(source.type),
+            typeDescription = source.typeDescription,
             unit = UnitType.fromId(source.unit),
+            unitDescription = source.unitDescription,
             current = source.current,
             target = source.target
         )

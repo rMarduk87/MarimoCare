@@ -21,15 +21,18 @@ import rpt.tool.marimocare.utils.view.HeaderHelper
 import rpt.tool.marimocare.utils.view.adapters.AchievementAdapter
 
 class AchievementFragment :
-    BaseFragment<FragmentAchievementBinding>(FragmentAchievementBinding::inflate) {
+    BaseFragment<FragmentAchievementBinding>(FragmentAchievementBinding::inflate),
+    AchievementManager.AchievementListener {
 
-    private val viewModel: AchievementViewModel by navGraphViewModels(R.id.main_nav_graph)
+    private val viewModel: AchievementViewModel by
+    navGraphViewModels(R.id.main_nav_graph)
     private lateinit var earnedAdapter: AchievementAdapter
     private lateinit var blockedAdapter: AchievementAdapter
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        AchievementManager.setListener(this)
         setupHeaderButtons()
 
         binding.include1.appLogo.setOnClickListener {
@@ -42,17 +45,10 @@ class AchievementFragment :
         setupDataForAchievement()
         viewModel.loadAchievements()
 
-        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-            AchievementManager.earnAchievement(1, AppUtils.getCurrentDate(), true)
-            AchievementManager.earnAchievement(3, AppUtils.getCurrentDate(), true)
-            AchievementManager.earnAchievement(5, AppUtils.getCurrentDate(), true)
-            AchievementManager.earnAchievement(7, AppUtils.getCurrentDate(), true)
-        }
-
-
         binding.recalculateBtn.setOnClickListener {
             viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-                AchievementManager.recalculateAll()
+                AchievementManager.recalculateAll(showDialogEarned = false,
+                    context = requireContext())
             }
         }
 
@@ -61,6 +57,19 @@ class AchievementFragment :
                 AchievementManager.deleteAllAchievement()
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        AchievementManager.setListener(null)
+    }
+
+    override fun onAchievementEarned(id: Int) {
+        // Achievement earned dialog is already shown by AchievementManager
+    }
+
+    override fun onDataChanged() {
+        viewModel.loadAchievements()
     }
 
     private fun setupHeaderButtons()

@@ -17,7 +17,9 @@ data class AchievementDetail(
     val achievement: Int,
     val description: String,
     val type: AchievementType,
+    val typeDescription: String,
     val unit: UnitType,
+    val unitDescription: String,
     val current: Int,
     val target: Int
 ) : AppModel(), Serializable {

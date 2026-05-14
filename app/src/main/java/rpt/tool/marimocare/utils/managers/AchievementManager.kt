@@ -1,6 +1,8 @@
 package rpt.tool.marimocare.utils.managers
 
+import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
@@ -18,19 +20,34 @@ import java.time.LocalDate
 import java.time.temporal.ChronoUnit
 
 class AchievementManager {
+    interface AchievementListener {
+        fun onAchievementEarned(id: Int)
+        fun onDataChanged()
+    }
+
     companion object {
+        private var listener: AchievementListener? = null
+
+        fun setListener(listener: AchievementListener?) {
+            this.listener = listener
+        }
+
         @RequiresApi(Build.VERSION_CODES.O)
         fun recalculateAll(showDialogEarned: Boolean = false,
-                           userMeta: Map<String, Any> = emptyMap()) {
+                           userMeta: Map<String, Any> = emptyMap(),
+                           context: Context = MarimoCareApplication.instance) {
             val achievement = RepositoryManager.marimoRepository.getAllAchievement()
             val marimos = RepositoryManager.marimoRepository.getAllSync()
             val waterChanges = RepositoryManager.marimoRepository.getAllChanges()
-            calculateAchievement(achievement, marimos, waterChanges, showDialogEarned,
+            calculateAchievement(context, achievement, marimos, waterChanges,
+                showDialogEarned,
                 userMeta)
+            listener?.onDataChanged()
         }
 
         @RequiresApi(Build.VERSION_CODES.O)
         private fun calculateAchievement(
+            context: Context,
             achievements: List<AchievementComplex>,
             marimos: List<Marimo>,
             waterChanges: List<MarimoChange>,
@@ -84,6 +101,8 @@ class AchievementManager {
             val totalEarnedCount = achievements.count { it.earned }
 
             achievements.forEach { achievement ->
+                if (achievement.earned) return@forEach
+
                 val current: Int? = when (achievement.code) {
                     // Collection
                     "first_marimo" -> minOf(marimos.size, 1)
@@ -153,11 +172,11 @@ class AchievementManager {
                     "speedy" -> if (speedyEarned) 1 else 0
 
                     // Engagement / User Meta Flags
-                    "early_bird" -> if (userMeta["earned_early_bird"] == true) 1 else 0
-                    "night_owl" -> if (userMeta["overdue_log_count"] == true) 1 else 0
-                    "feedback_giver" -> if (userMeta["submitted_feedback"] == true) 1 else 0
-                    "settings_explorer" -> if (userMeta["customized_settings"] == true) 1 else 0
-                    "stats_viewer" -> if (userMeta["visited_stats"] == true) 1 else 0
+                    "early_bird" -> if (userMeta["earned_early_bird"] == true) 1 else null
+                    "night_owl" -> if (userMeta["overdue_log_count"] == true) 1 else null
+                    "feedback_giver" -> if (userMeta["submitted_feedback"] == true) 1 else null
+                    "settings_explorer" -> if (userMeta["customized_settings"] == true) 1 else null
+                    "stats_viewer" -> if (userMeta["visited_stats"] == true) 1 else null
 
                     // Meta achievements
                     "halfway_there" -> minOf(totalEarnedCount, 25)
@@ -167,37 +186,48 @@ class AchievementManager {
                 }
 
                 if (current != null) {
-                    updateProgressForAchievement(achievement.id, current, showDialogEarned)
+                    updateProgressForAchievement(achievement.id, current, showDialogEarned, context)
                 }
             }
         }
 
         fun deleteAllAchievement() {
             RepositoryManager.marimoRepository.resetAllAchievements()
+            listener?.onDataChanged()
         }
 
-        fun earnAchievement(id: Int, date: String, showDialogEarned: Boolean) {
+        fun earnAchievement(id: Int, date: String, showDialogEarned: Boolean,
+                            context: Context = MarimoCareApplication.instance) {
             RepositoryManager.marimoRepository.earnAchievement(id, date)
             if (showDialogEarned) {
-                showAchievementEarnedDialog(id)
+                showAchievementEarnedDialog(context, id)
             }
+            listener?.onAchievementEarned(id)
+            listener?.onDataChanged()
         }
 
         @RequiresApi(Build.VERSION_CODES.O)
-        fun updateProgressForAchievement(id: Int, current: Int, showDialogEarned: Boolean) {
+        fun updateProgressForAchievement(id: Int, current: Int, showDialogEarned: Boolean,
+                                         context: Context = MarimoCareApplication.instance) {
             val earned = RepositoryManager.marimoRepository.updateAchievementDetail(id, current)
             if (earned) {
-                earnAchievement(id, AppUtils.getCurrentDate(), showDialogEarned)
+                earnAchievement(id, AppUtils.getCurrentDate(), showDialogEarned, context)
+            } else {
+                listener?.onDataChanged()
             }
         }
 
-        private fun showAchievementEarnedDialog(id: Int) {
-            val achievement = RepositoryManager.marimoRepository.getAllAchievement().find { it.id == id }
+        private fun showAchievementEarnedDialog(context: Context, id: Int) {
+            val achievement = RepositoryManager.marimoRepository.getAllAchievement().find {
+                it.id == id }
 
             achievement?.let { ach ->
                 Handler(Looper.getMainLooper()).post {
                     try {
-                        val context = MarimoCareApplication.instance
+                        if (context !is Activity || context.isFinishing || context.isDestroyed) {
+                            return@post
+                        }
+
                         val inflater = LayoutInflater.from(context)
                         val view = inflater.inflate(R.layout.dialog_achievement_earned,
                             null)
@@ -215,10 +245,6 @@ class AchievementManager {
                             .setView(view)
                             .setCancelable(true)
                             .create()
-
-                        dialog.window?.setType(if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) 
-                            android.view.WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY 
-                            else android.view.WindowManager.LayoutParams.TYPE_PHONE)
 
                         btnOk.setOnClickListener { dialog.dismiss() }
 

@@ -18,6 +18,9 @@ import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import rpt.tool.marimocare.utils.managers.AchievementManager
 
 class FeedbackFragment :
@@ -77,8 +80,11 @@ class FeedbackFragment :
                 getString(R.string.marimo_care_feedback, selectedTopics.joinToString(", "))
             sendEmail(emailSubject, messageText)
 
-            AchievementManager.recalculateAll(true,
-                mapOf("submitted_feedback" to true))
+            val context = requireContext()
+            viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+                AchievementManager.recalculateAll(true,
+                    mapOf("submitted_feedback" to true), context)
+            }
         }
 
         binding.btnReddit.setOnClickListener {
@@ -156,7 +162,7 @@ class FeedbackFragment :
                 ),
                 HeaderButtonConfig(
                     button = binding.include1.btnAchievementAHeader,
-                    iconRes = R.drawable.ic_star,
+                    iconRes = R.drawable.ic_coccard,
                     colorRes = R.color.marimo_add_icon,
                     backgroundRes = R.drawable.bg_button_white,
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,

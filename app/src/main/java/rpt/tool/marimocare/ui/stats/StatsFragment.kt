@@ -119,8 +119,11 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
 
         }
 
-        AchievementManager.recalculateAll(true,
-            mapOf("visited_stats" to true))
+        val context = requireContext()
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+            AchievementManager.recalculateAll(true,
+                mapOf("visited_stats" to true), context)
+        }
     }
 
     fun scrollToTabLayoutAndShowBalloon(

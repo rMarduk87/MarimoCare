@@ -328,7 +328,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         }
         else if(SharedPreferencesManager.showAchievement){
             binding.include1.btnAchievementAHeader.post {
-                feedBackBalloon.showAlign(
+                achievementBalloon.showAlign(
                     align = BalloonAlign.BOTTOM,
                     mainAnchor = binding.include1.btnAchievementAHeader
                 )
@@ -815,7 +815,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun updateMarimos(list: List<MarimoUpdate>) {
-
+        val context = requireContext()
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
 
             list.forEach {
@@ -825,6 +825,8 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                     RepositoryManager.marimoRepository.updateWaterMarimo(lastChanged, it.id)
                 }
             }
+
+            AchievementManager.recalculateAll(true, context = context)
 
             AlertDataUtils.recalc(requireContext())
             
@@ -963,6 +965,8 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
             AlertDataUtils.recalc(requireContext())
 
+            AchievementManager.recalculateAll(true, context = requireContext())
+
             withContext(Dispatchers.Main) {
                 updateAlertsUI()
                 applyFilterAndSort()
@@ -973,21 +977,19 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun forceHealthCheck() {
-
+        val context = requireContext()
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-
             val today = AppUtils.getCurrentDate()
             val marimos = RepositoryManager.marimoRepository.getAllSync()
 
             var needUpdate = false
 
             marimos.forEach { marimo ->
-
                 val exists =
                     RepositoryManager.marimoRepository.getSpecificHealth(
                         marimo.code, today)
 
-                if (exists==0) {
+                if (exists == 0) {
                     needUpdate = true
                 }
             }
@@ -996,6 +998,8 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                 HealthManager()
                     .calculateAndInsertHealthRobust(today)
             }
+
+            AchievementManager.recalculateAll(true, context = context)
         }
     }
 
@@ -1024,10 +1028,11 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             .setCancelable(false)
             .create()
 
+        val context = requireContext()
         view.findViewById<Button>(R.id.btnCalculate).setOnClickListener {
             SharedPreferencesManager.showAchievement = false
             viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-                AchievementManager.recalculateAll()
+                AchievementManager.recalculateAll(context = context)
             }
             dialog.dismiss()
         }

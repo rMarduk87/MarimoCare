@@ -7,16 +7,16 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import rpt.tool.marimocare.utils.data.appmodels.Achievement
+import rpt.tool.marimocare.utils.data.appmodels.AchievementComplex
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 
 class AchievementViewModel : ViewModel() {
 
-    private val _earnedAchievements = MutableLiveData<List<Achievement>>()
-    val earnedAchievements: LiveData<List<Achievement>> = _earnedAchievements
+    private val _earnedAchievements = MutableLiveData<List<AchievementComplex>>()
+    val earnedAchievements: LiveData<List<AchievementComplex>> = _earnedAchievements
 
-    private val _lockedAchievements = MutableLiveData<List<Achievement>>()
-    val lockedAchievements: LiveData<List<Achievement>> = _lockedAchievements
+    private val _lockedAchievements = MutableLiveData<List<AchievementComplex>>()
+    val lockedAchievements: LiveData<List<AchievementComplex>> = _lockedAchievements
 
     fun loadAchievements() {
         viewModelScope.launch(Dispatchers.IO) {

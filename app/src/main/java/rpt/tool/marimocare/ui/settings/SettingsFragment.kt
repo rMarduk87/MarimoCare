@@ -7,6 +7,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import rpt.tool.marimocare.BaseFragment
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentSettingsBinding
@@ -379,8 +382,11 @@ class SettingsFragment :
                 getString(R.string.option_correctly_updated),
                 Toast.LENGTH_SHORT
             ).show()
-            AchievementManager.recalculateAll(true,
-                mapOf("customized_settings" to true))
+            val context = requireContext()
+            viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+                AchievementManager.recalculateAll(true,
+                    mapOf("customized_settings" to true), context)
+            }
         }
 
         binding.btnCancel.setOnClickListener {

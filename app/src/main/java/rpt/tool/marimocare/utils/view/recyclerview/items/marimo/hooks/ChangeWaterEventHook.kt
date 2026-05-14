@@ -274,7 +274,8 @@ class ChangeWaterEventHook(
 
                     AchievementManager.recalculateAll(
                         showDialogEarned = true,
-                        userMeta = meta
+                        userMeta = meta,
+                        context = context
                     )
 
                     RepositoryManager.marimoRepository

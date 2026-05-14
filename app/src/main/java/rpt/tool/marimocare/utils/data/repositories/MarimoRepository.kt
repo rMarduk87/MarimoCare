@@ -196,12 +196,12 @@ class MarimoRepository(
     val marimos: LiveData<List<Marimo>> =
         marimoDao.getMarimos().map { it.map { it.map() } }
 
-    fun getEarnedAchievements(): List<Achievement> {
-        return marimoDao.getEarnedAchievements().map { it.map() }
+    fun getEarnedAchievements(): List<AchievementComplex> {
+        return marimoDao.getEarnedAchievementsWithDetail().map { it.map() }
     }
 
-    fun getLockedAchievements(): List<Achievement> {
-        return marimoDao.getLockedAchievements().map { it.map() }
+    fun getLockedAchievements(): List<AchievementComplex> {
+        return marimoDao.getLockedAchievementsWithDetail().map { it.map() }
     }
 
     fun resetAllAchievements() {
@@ -256,13 +256,15 @@ class MarimoRepository(
             reader.useLines { lines ->
                 lines.drop(1).forEach { riga ->
                     val colonne = riga.split(",")
-                    if (colonne.size >= 7) {
+                    if (colonne.size >= 8) {
                         val newDetail = AchievementDetail(
                             id = colonne[0].cleanValue().toIntOrNull() ?: 0,
                             achievement = colonne[0].cleanValue().toIntOrNull() ?: 0,
                             description = colonne[1].cleanValue(),
                             type = AchievementType.fromId(colonne[2].cleanValue().toIntOrNull() ?: 0),
+                            typeDescription = colonne[3].cleanValue(),
                             unit = UnitType.fromId(colonne[4].cleanValue().toIntOrNull() ?: 0),
+                            unitDescription = colonne[5].cleanValue(),
                             current = colonne[6].cleanValue().toIntOrNull() ?: 0,
                             target = colonne[7].cleanValue().toIntOrNull() ?: 0
                         )

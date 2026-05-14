@@ -180,6 +180,14 @@ interface MarimoDao {
     fun getLockedAchievements(): List<AchievementModel>
 
     @Transaction
+    @Query("SELECT * FROM achievement WHERE earned = 1 ORDER BY `order` ASC")
+    fun getEarnedAchievementsWithDetail(): List<AchievementWithDetailModel>
+
+    @Transaction
+    @Query("SELECT * FROM achievement WHERE earned = 0 ORDER BY `order` ASC")
+    fun getLockedAchievementsWithDetail(): List<AchievementWithDetailModel>
+
+    @Transaction
     @Query("UPDATE achievement SET earned = 0, acquired_date = NULL")
     fun resetAllAchievements()
 

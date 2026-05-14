@@ -52,6 +52,7 @@ import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.balloon.newMarimo.MarimoAddNewInfoBalloonFactory
 import rpt.tool.marimocare.utils.balloon.photo.MarimoPhotoInfoBalloonFactory
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
+import rpt.tool.marimocare.utils.managers.AchievementManager
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 import rpt.tool.marimocare.utils.navigation.safeNavController
@@ -324,6 +325,7 @@ class AddOrEditMarimoFragment :
             return
         }
 
+        val context = requireContext()
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
             if(marimo != null) {
                 RepositoryManager.marimoRepository.updateMarimo(
@@ -331,6 +333,8 @@ class AddOrEditMarimoFragment :
                     name,
                     lastWater, notes, freq,marimoPhotoPath, registrationDate
                 )
+
+                AchievementManager.recalculateAll(true, context = context)
 
                 withContext(Dispatchers.Main) {
                     Toast.makeText(
@@ -369,6 +373,8 @@ class AddOrEditMarimoFragment :
                         AppUtils.calculateHealth(it,
                             lastWater))
                 }
+
+                AchievementManager.recalculateAll(true, context = context)
 
                 withContext(Dispatchers.Main) {
                     Toast.makeText(

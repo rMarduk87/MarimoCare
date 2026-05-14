@@ -12,14 +12,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import rpt.tool.marimocare.R
-import rpt.tool.marimocare.utils.data.appmodels.Achievement
+import rpt.tool.marimocare.utils.data.appmodels.AchievementComplex
 import androidx.core.graphics.toColorInt
 
 import android.graphics.drawable.GradientDrawable
 import androidx.core.graphics.ColorUtils
 
 class AchievementAdapter(
-    private var achievements: List<Achievement>
+    private var achievements: List<AchievementComplex>
 ) : RecyclerView.Adapter<AchievementAdapter.AchievementViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AchievementViewHolder {
@@ -35,7 +35,7 @@ class AchievementAdapter(
     override fun getItemCount(): Int = achievements.size
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateData(newAchievements: List<Achievement>) {
+    fun updateData(newAchievements: List<AchievementComplex>) {
         this.achievements = newAchievements
         notifyDataSetChanged()
     }
@@ -52,12 +52,17 @@ class AchievementAdapter(
         private val tvPercentage: TextView = itemView.findViewById(R.id.tvPercentage)
         private val progressBar: ProgressBar = itemView.findViewById(R.id.progressBar)
 
-        fun bind(achievement: Achievement) {
+        fun bind(achievement: AchievementComplex) {
             val context = itemView.context
 
             tvTitle.text = context.getString(achievement.titleID)
             tvDescription.text = context.getString(achievement.descriptionValue)
             tvIcon.text = context.getString(achievement.imageId)
+
+            val detail = achievement.detail
+            val current = detail.current
+            val target = detail.target
+            val progress = if (target > 0) (current.toFloat() / target.toFloat() * 100).toInt() else 0
 
             val iconBackground = tvIcon.background as? GradientDrawable
             val strokeWidth = (2 * context.resources.displayMetrics.density).toInt()
@@ -93,7 +98,7 @@ class AchievementAdapter(
                 else View.VISIBLE
                 progressBar.progress = 100
                 tvPercentage.text = "100%"
-                tvProgressLabel.text = "1 / 1 marimo"
+                tvProgressLabel.text = "$target / $target ${detail.typeDescription}"
 
             } else {
                 itemView.alpha = 0.6f
@@ -112,9 +117,9 @@ class AchievementAdapter(
 
                 tvEarned.visibility = View.GONE
                 tvEarnedDate.visibility = View.GONE
-                progressBar.progress = 0
-                tvPercentage.text = "0%"
-                tvProgressLabel.text = "0 / 1 marimo"
+                progressBar.progress = progress
+                tvPercentage.text = "$progress%"
+                tvProgressLabel.text = "$current / $target ${detail.typeDescription}"
             }
         }
     }

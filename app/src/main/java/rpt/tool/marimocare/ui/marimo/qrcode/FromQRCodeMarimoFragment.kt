@@ -22,6 +22,7 @@ import rpt.tool.marimocare.utils.AlertDataUtils
 import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.data.enums.MarimoStatus
+import rpt.tool.marimocare.utils.managers.AchievementManager
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.tool.marimocare.utils.navigation.safeNavController
 import rpt.tool.marimocare.utils.navigation.safeNavigate
@@ -206,11 +207,14 @@ class FromQRCodeMarimoFragment :
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun waterChange(marimo: Marimo?) {
+        val context = requireContext()
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
 
             val marimo = RepositoryManager.marimoRepository.getMarimo(marimo!!.code)
             val lastChanged = AppUtils.Companion.getCurrentDate()
             RepositoryManager.marimoRepository.updateWaterMarimo(lastChanged, marimo!!.code)
+
+            AchievementManager.recalculateAll(true, context = context)
 
             val updated = RepositoryManager.marimoRepository.getMarimo(
                 marimo.code)
@@ -279,12 +283,15 @@ class FromQRCodeMarimoFragment :
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun deleteMarimo(item: Marimo?) {
+        val context = requireContext()
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
 
             val marimo = RepositoryManager.marimoRepository.getMarimo(item!!.code)
             if (marimo != null) {
 
                 RepositoryManager.marimoRepository.deleteMarimo(item.code)
+
+                AchievementManager.recalculateAll(true, context = context)
 
                 withContext(Dispatchers.IO) {
                     AlertDataUtils.recalc(requireContext())
