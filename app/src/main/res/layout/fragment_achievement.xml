@@ -139,7 +139,6 @@
                     <ImageView
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        app:tint="@color/marimo_light_yellow"
                         android:src="@drawable/ic_trophy"
                         android:layout_marginBottom="2dp"
                         android:contentDescription="@string/achievement"/>

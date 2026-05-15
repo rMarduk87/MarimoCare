@@ -14,7 +14,7 @@ import rpt.tool.marimocare.utils.data.database.models.*
         MarimoQRModel::class,
         MarimoHealthScoreModel::class,
         AchievementModel::class,
-        AchievementDetailModel::class
+            AchievementDetailModel::class,
     ],
     version = 5,
     exportSchema = true,

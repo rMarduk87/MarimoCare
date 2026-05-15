@@ -97,8 +97,17 @@ class AchievementAdapter(
                 tvEarnedDate.visibility = if (achievement.date.isNullOrEmpty()) View.GONE
                 else View.VISIBLE
                 progressBar.progress = 100
-                tvPercentage.text = "100%"
-                tvProgressLabel.text = "$target / $target ${detail.typeDescription}"
+                tvPercentage.text = context.getString(R.string._100)
+                tvProgressLabel.text = buildString {
+                                       append(target)
+                                       append(" / ")
+                                       append(target)
+                                       append(" ")
+                                       append(
+                                           context.getString(
+                                   detail.typeDescription)
+                                      )
+               }
 
             } else {
                 itemView.alpha = 0.6f
@@ -118,8 +127,17 @@ class AchievementAdapter(
                 tvEarned.visibility = View.GONE
                 tvEarnedDate.visibility = View.GONE
                 progressBar.progress = progress
-                tvPercentage.text = "$progress%"
-                tvProgressLabel.text = "$current / $target ${detail.typeDescription}"
+                tvPercentage.text = buildString {
+                    append(progress.toString())
+                    append("%")
+                }
+                tvProgressLabel.text = buildString {
+                                           append(current)
+                                           append(" / ")
+                                           append(target)
+                                           append(" ")
+                                           append(context.getString(detail.typeDescription))
+               }
             }
         }
     }

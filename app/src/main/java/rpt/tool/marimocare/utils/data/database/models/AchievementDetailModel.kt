@@ -20,11 +20,11 @@ class AchievementDetailModel(
     @ColumnInfo(name = "type")
     val type: Int,
     @ColumnInfo(name = "type_desc")
-    val typeDescription: String,
+    val typeDescription: Int,
     @ColumnInfo(name = "unit")
     val unit: Int,
     @ColumnInfo(name = "unit_desc")
-    val unitDescription: String,
+    val unitDescription: Int,
     @ColumnInfo(name = "current")
     val current: Int,
     @ColumnInfo(name = "target")

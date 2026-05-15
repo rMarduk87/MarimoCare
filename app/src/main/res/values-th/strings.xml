@@ -289,6 +289,56 @@
     <string name="achievement_subtitle">รับเหรียญตราโดยการดูแลมาริโมะของคุณ</string>
     <string name="recalculate">คำนวณใหม่</string>
     <string name="reset_all">รีเซ็ตทั้งหมด</string>
+    <string name="ach_1" translatable="false">🗿</string>
+    <string name="ach_2" translatable="false">📊</string>
+    <string name="ach_3" translatable="false">📋</string>
+    <string name="ach_4" translatable="false">🌗</string>
+    <string name="ach_5" translatable="false">🎊</string>
+    <string name="ach_6" translatable="false">🌊</string>
+    <string name="ach_7" translatable="false">📅</string>
+    <string name="ach_8" translatable="false">📆</string>
+    <string name="ach_9" translatable="false">🌱</string>
+    <string name="ach_10" translatable="false">⭐</string>
+    <string name="ach_11" translatable="false">🎖️</string>
+    <string name="ach_12" translatable="false">🦅</string>
+    <string name="ach_13" translatable="false">🏅</string>
+    <string name="ach_14" translatable="false">🎯</string>
+    <string name="ach_15" translatable="false">🌟</string>
+    <string name="ach_16" translatable="false">📸</string>
+    <string name="ach_17" translatable="false">🤳</string>
+    <string name="ach_18" translatable="false">🖼️</string>
+    <string name="ach_19" translatable="false">📝</string>
+    <string name="ach_20" translatable="false">📔</string>
+    <string name="ach_21" translatable="false">📖</string>
+    <string name="ach_22" translatable="false">✅</string>
+    <string name="ach_23" translatable="false">🎳</string>
+    <string name="ach_24" translatable="false">⏰</string>
+    <string name="ach_25" translatable="false">🏷️</string>
+    <string name="ach_26" translatable="false">✏️</string>
+    <string name="ach_27" translatable="false">🖼️</string>
+    <string name="ach_28" translatable="false">🌅</string>
+    <string name="ach_29" translatable="false">🗒️</string>
+    <string name="ach_30" translatable="false">🐦</string>
+    <string name="ach_31" translatable="false">⚡</string>
+    <string name="ach_32" translatable="false">🦉</string>
+    <string name="ach_33" translatable="false">🎛️</string>
+    <string name="ach_34" translatable="false">💬</string>
+    <string name="ach_35" translatable="false">⚙️</string>
+    <string name="ach_36" translatable="false">👴</string>
+    <string name="ach_37" translatable="false">🌿</string>
+    <string name="ach_38" translatable="false">👫</string>
+    <string name="ach_39" translatable="false">🎶</string>
+    <string name="ach_40" translatable="false">🫙</string>
+    <string name="ach_41" translatable="false">🏆</string>
+    <string name="ach_42" translatable="false">🪖</string>
+    <string name="ach_43" translatable="false">👑</string>
+    <string name="ach_44" translatable="false">💧</string>
+    <string name="ach_45" translatable="false">🚿</string>
+    <string name="ach_46" translatable="false">🔄</string>
+    <string name="ach_47" translatable="false">💪</string>
+    <string name="ach_48" translatable="false">🧙</string>
+    <string name="ach_49" translatable="false">💯</string>
+    <string name="ach_50" translatable="false">🎖️</string>
     <string name="locked_24">ล็อคอยู่ (24)</string>
     <string name="ach_desc_1">เพิ่มมาริโมะก้อนแรกของคุณในคอลเล็กชัน</string>
     <string name="ach_desc_2">คุณมีมาริโมะ 2 ก้อน — ตอนนี้พวกมันมีเพื่อนแล้ว!</string>
@@ -467,6 +517,7 @@
     <string name="ach_des_48">เขียนโน้ตให้กับมาริโมะ 5 ตัว</string>
     <string name="ach_des_49">บรรลุ 25 ความสำเร็จเพื่อถึงครึ่งทาง</string>
     <string name="ach_des_50">บรรลุทุกความสำเร็จ — เป้าหมายสูงสุด!</string>
+    <string name="_100">100%</string>
 
     <string-array name="marimo_frequencies">
         <item>ทุก 7 วัน (รายสัปดาห์)</item>
@@ -492,4 +543,6 @@
         <item>ส่ง QR</item>
         <item>บันทึก QR</item>
     </string-array>
+    <string name="achievement_earned">ได้รับความสำเร็จแล้ว!</string>
+    <string name="great">เยี่ยมยอด!</string>
 </resources>

@@ -542,4 +542,7 @@
         <item>Отправить QR</item>
         <item>Сохранить QR</item>
     </string-array>
+    <string name="achievement_earned">Достижение получено!</string>
+    <string name="great">Отлично!</string>
+    <string name="_100">100%</string>
 </resources>

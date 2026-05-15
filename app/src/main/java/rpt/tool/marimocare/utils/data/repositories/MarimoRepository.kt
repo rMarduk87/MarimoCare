@@ -223,18 +223,20 @@ class MarimoRepository(
                     if (colonne.size >= 9) {
                         val rawTitle = colonne[2].cleanValue().removePrefix("R.string.")
                         val rawDesc = colonne[3].cleanValue().removePrefix("R.string.")
-                        val rawImg = colonne[5].cleanValue().removePrefix("R.string.")
+                        val rawImg = colonne[5].cleanValue()
+                        val imgResName = rawImg.removePrefix("R.string.").removePrefix("R.drawable.")
+                        val imgResType = if (rawImg.startsWith("R.drawable.")) "drawable" else "string"
 
                         val titleResId = context.resources.getIdentifier(rawTitle,
                             "string", packageName)
                         val descResId = context.resources.getIdentifier(rawDesc,
                             "string", packageName)
-                        val imgResId = context.resources.getIdentifier(rawImg,
-                            "string", packageName)
+                        val imgResId = context.resources.getIdentifier(imgResName,
+                            imgResType, packageName)
 
                         val newAchievement = Achievement(
                             id = colonne[0].cleanValue().toIntOrNull() ?: 0,
-                            code = colonne[1],
+                            code = colonne[1].cleanValue(),
                             titleID = titleResId,
                             descriptionValue = descResId,
                             imageId = imgResId,
@@ -257,14 +259,22 @@ class MarimoRepository(
                 lines.drop(1).forEach { riga ->
                     val colonne = riga.split(",")
                     if (colonne.size >= 8) {
+                        val rawTypeDesc = colonne[3].cleanValue().removePrefix("R.string.")
+                        val rawUnitDesc = colonne[5].cleanValue().removePrefix("R.string.")
+
+                        val typeDescResId = context.resources.getIdentifier(rawTypeDesc,
+                            "string", packageName)
+                        val unitDescResId = context.resources.getIdentifier(rawUnitDesc,
+                            "string", packageName)
+
                         val newDetail = AchievementDetail(
                             id = colonne[0].cleanValue().toIntOrNull() ?: 0,
                             achievement = colonne[0].cleanValue().toIntOrNull() ?: 0,
                             description = colonne[1].cleanValue(),
                             type = AchievementType.fromId(colonne[2].cleanValue().toIntOrNull() ?: 0),
-                            typeDescription = colonne[3].cleanValue(),
+                            typeDescription = typeDescResId,
                             unit = UnitType.fromId(colonne[4].cleanValue().toIntOrNull() ?: 0),
-                            unitDescription = colonne[5].cleanValue(),
+                            unitDescription = unitDescResId,
                             current = colonne[6].cleanValue().toIntOrNull() ?: 0,
                             target = colonne[7].cleanValue().toIntOrNull() ?: 0
                         )

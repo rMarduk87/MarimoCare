@@ -36,6 +36,8 @@ class AchievementManager {
         fun recalculateAll(showDialogEarned: Boolean = false,
                            userMeta: Map<String, Any> = emptyMap(),
                            context: Context = MarimoCareApplication.instance) {
+            if (SharedPreferencesManager.showAchievement) return
+
             val achievement = RepositoryManager.marimoRepository.getAllAchievement()
             val marimos = RepositoryManager.marimoRepository.getAllSync()
             val waterChanges = RepositoryManager.marimoRepository.getAllChanges()

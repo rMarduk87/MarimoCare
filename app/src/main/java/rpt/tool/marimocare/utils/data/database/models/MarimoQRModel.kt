@@ -19,7 +19,7 @@ class MarimoQRModel(
     @ColumnInfo(name = "marimo_qr_code")
     val marimoQRCode: String,
     @ColumnInfo(name = "validity")
-    val validity: Boolean
+    val validity: Int
 ) : DbModel() {
 
     init {

@@ -517,6 +517,7 @@
     <string name="ach_des_48">اكتب ملاحظات لـ 5 ماريمو.</string>
     <string name="ach_des_49">احصل على 25 إنجازاً لتصل إلى منتصف الطريق.</string>
     <string name="ach_des_50">احصل على كل إنجاز — الهدف النهائي!</string>
+    <string name="_100">100%</string>
 
     <string-array name="marimo_frequencies">
         <item>كل 7 أيام (أسبوعياً)</item>
@@ -542,4 +543,6 @@
         <item>إرسال QR</item>
         <item>حفظ QR</item>
     </string-array>
+    <string name="achievement_earned">تم اكتساب الإنجاز!</string>
+    <string name="great">عظيم!</string>
 </resources>

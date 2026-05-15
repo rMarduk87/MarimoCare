@@ -542,4 +542,7 @@
         <item>Enviar QR</item>
         <item>Guardar QR</item>
     </string-array>
+    <string name="achievement_earned">¡Logro obtenido!</string>
+    <string name="great">¡Genial!</string>
+    <string name="_100">100%</string>
 </resources>

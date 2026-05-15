@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 5,
-    "identityHash": "5d03e4708d27a36cb87abd19fc3efb7b",
+    "identityHash": "83bc85beba3a74ea0441d9a63380cc39",
     "entities": [
       {
         "tableName": "marimo",
@@ -245,7 +245,7 @@
       },
       {
         "tableName": "achievement_details",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `achievement_id` INTEGER NOT NULL, `desc` TEXT NOT NULL, `type` INTEGER NOT NULL, `type_desc` TEXT NOT NULL, `unit` INTEGER NOT NULL, `unit_desc` TEXT NOT NULL, `current` INTEGER NOT NULL, `target` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `achievement_id` INTEGER NOT NULL, `desc` TEXT NOT NULL, `type` INTEGER NOT NULL, `type_desc` INTEGER NOT NULL, `unit` INTEGER NOT NULL, `unit_desc` INTEGER NOT NULL, `current` INTEGER NOT NULL, `target` INTEGER NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -274,7 +274,7 @@
           {
             "fieldPath": "typeDescription",
             "columnName": "type_desc",
-            "affinity": "TEXT",
+            "affinity": "INTEGER",
             "notNull": true
           },
           {
@@ -286,7 +286,7 @@
           {
             "fieldPath": "unitDescription",
             "columnName": "unit_desc",
-            "affinity": "TEXT",
+            "affinity": "INTEGER",
             "notNull": true
           },
           {
@@ -312,7 +312,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5d03e4708d27a36cb87abd19fc3efb7b')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '83bc85beba3a74ea0441d9a63380cc39')"
     ]
   }
 }

@@ -58,6 +58,7 @@ import rpt.tool.marimocare.utils.balloon.achievement.AchievementBalloonFactory
 import rpt.tool.marimocare.utils.balloon.feedback.FeedbackBalloonFactory
 import rpt.tool.marimocare.utils.balloon.waterchange.DialogChangeWaterBalloonFactory
 import rpt.tool.marimocare.utils.balloon.waterchange.WaterChangeInfoBalloonFactory
+import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.data.appmodels.MarimoToFix
 import rpt.tool.marimocare.utils.data.appmodels.MarimoUpdate
 import rpt.tool.marimocare.utils.managers.AchievementManager
@@ -89,6 +90,8 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     private val achievementBalloon by balloon<AchievementBalloonFactory>()
     private var imagePath: String? = null
     private var tempImageUri: Uri? = null
+    private var isAchievementDialogOpen = false
+    private var isFeedbackShowing = false
 
     private val REQUEST_CAMERA = 1001
     private val REQUEST_GALLERY = 1002
@@ -306,37 +309,51 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         }
 
         if (SharedPreferencesManager.showBallonFeedback) {
+            isFeedbackShowing = true
             binding.btnOpenFeedbackDashboard.post {
                 if (isAdded) {
+                    feedBackBalloon.setOnBalloonDismissListener {
+                        isFeedbackShowing = false
+                        viewModel.allMarimos.value?.let { handleAchievementLogic(it) }
+                    }
                     feedBackBalloon.showAlign(
                         align = BalloonAlign.BOTTOM,
                         mainAnchor = binding.btnOpenFeedbackDashboard
                     )
                     SharedPreferencesManager.showBallonFeedback = false
+                } else {
+                    isFeedbackShowing = false
                 }
             }
         }
 
-        if (SharedPreferencesManager.showAchievement && (viewModel.allMarimos.value?.size ?: 0) > 0 ) {
-            SharedPreferencesManager.showAchievement = false
-            viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-                RepositoryManager.marimoRepository.addAchievementToTable(
-                    requireContext(),R.raw.achievement,
-                    R.raw.achievement_detail)
+        viewModel.allMarimos.observe(viewLifecycleOwner) { marimos ->
+            if (!isFeedbackShowing) {
+                handleAchievementLogic(marimos)
             }
-            openAchievementIntroDialog()
         }
-        else if(SharedPreferencesManager.showAchievement){
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun handleAchievementLogic(marimos: List<Marimo>) {
+        if (!SharedPreferencesManager.showAchievement) return
+
+        SharedPreferencesManager.showAchievement = false
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+            RepositoryManager.marimoRepository.addAchievementToTable(
+                requireContext(), R.raw.achievement,
+                R.raw.achievement_detail
+            )
+        }
+        if (marimos.isNotEmpty()) {
+            openAchievementIntroDialog()
+        } else {
             binding.include1.btnAchievementAHeader.post {
-                achievementBalloon.showAlign(
-                    align = BalloonAlign.BOTTOM,
-                    mainAnchor = binding.include1.btnAchievementAHeader
-                )
-                SharedPreferencesManager.showAchievement = false
-                viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-                    RepositoryManager.marimoRepository.addAchievementToTable(
-                        requireContext(),R.raw.achievement,
-                        R.raw.achievement_detail)
+                if (isAdded && !isFeedbackShowing) {
+                    achievementBalloon.showAlign(
+                        align = BalloonAlign.BOTTOM,
+                        mainAnchor = binding.include1.btnAchievementAHeader
+                    )
                 }
             }
         }
@@ -1022,6 +1039,8 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun openAchievementIntroDialog() {
+        if (isAchievementDialogOpen) return
+        isAchievementDialogOpen = true
         val view = layoutInflater.inflate(R.layout.dialog_achievement_intro, null)
         val dialog = AlertDialog.Builder(requireContext())
             .setView(view)
@@ -1039,7 +1058,14 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
         view.findViewById<Button>(R.id.btnRestart).setOnClickListener {
             SharedPreferencesManager.showAchievement = false
+            viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+                AchievementManager.deleteAllAchievement()
+            }
             dialog.dismiss()
+        }
+
+        dialog.setOnDismissListener {
+            isAchievementDialogOpen = false
         }
 
         dialog.show()
