@@ -282,6 +282,13 @@
     <string name="achievement_intro_message">Dans cette version, les objectifs à atteindre ont été ajoutés. Voulez-vous calculer les progrès ou préférez-vous repartir de zéro ?</string>
     <string name="calculate">Calculer</string>
     <string name="restart">Recommencer</string>
+    <string name="achievement_unlocked_title">Système de succès déverrouillé !</string>
+    <string name="achievement_unlocked_message">Vous avez déjà des marimos et un historique de soins. Souhaitez-vous que nous vérifiions vos données passées pour vous attribuer les badges déjà gagnés, ou préférez-vous repartir de zéro aujourd\'hui ?</string>
+    <string name="calculate_retroactively">Calculer rétroactivement</string>
+    <string name="calculate_retroactively_desc">Attribue des badges en fonction de tout votre historique — les changements d\'eau passés et les données des marimos seront comptabilisés.</string>
+    <string name="start_from_scratch">Repartir de zéro</string>
+    <string name="start_from_scratch_desc">Ne gagnez des badges qu\'à partir de maintenant. L\'activité passée ne comptera pas.</string>
+    <string name="new_achievements_unlocked_balloon">Nouveaux succès déverrouillés, cliquez ici pour les découvrir</string>
     <string name="earned_26">Obtenus (26)</string>
     <string name="earned_label">Obtenus</string>
     <string name="_50_badges">/ %1$d badges</string>

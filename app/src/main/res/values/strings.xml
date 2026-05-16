@@ -281,8 +281,15 @@ Please note: the final date retrieved will be the same as the app release date, 
     <string name="achievement">Achievement</string>
     <string name="achievement_intro_title">Achievements</string>
     <string name="achievement_intro_message">In this version the objectives to be achieved have been added, do you want to calculate the progress or do you prefer to start from scratch?</string>
+    <string name="achievement_unlocked_title">Achievement System Unlocked!</string>
+    <string name="achievement_unlocked_message">You already have marimos and care history. Would you like us to check your past data and award any badges you\'ve already earned, or start fresh from today?</string>
+    <string name="calculate_retroactively">Calculate Retroactively</string>
+    <string name="calculate_retroactively_desc">Award badges based on your full care history — past water changes and marimo data count.</string>
+    <string name="start_from_scratch">Start from Scratch</string>
+    <string name="start_from_scratch_desc">Only earn badges going forward. Past activity won\'t count.</string>
     <string name="calculate">Calculate</string>
     <string name="restart">Restart</string>
+    <string name="new_achievements_unlocked_balloon">New achievements unlocked, click here and go discover them</string>
     <string name="earned_26">Earned (26)</string>
     <string name="earned_label">Earned</string>
     <string name="_50_badges">/ %1$d badges</string>

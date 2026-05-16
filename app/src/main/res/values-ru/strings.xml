@@ -282,6 +282,13 @@
     <string name="achievement_intro_message">В этой версии добавлены цели, которых нужно достичь. Хотите рассчитать прогресс или предпочитаете начать с нуля?</string>
     <string name="calculate">Рассчитать</string>
     <string name="restart">Перезапустить</string>
+    <string name="achievement_unlocked_title">Система достижений разблокирована!</string>
+    <string name="achievement_unlocked_message">У вас уже есть маримо и история ухода. Хотите, чтобы мы проверили ваши прошлые данные и выдали значки, которые вы уже заработали, или начнете с чистого листа сегодня?</string>
+    <string name="calculate_retroactively">Рассчитать ретроспективно</string>
+    <string name="calculate_retroactively_desc">Выдавать значки на основе всей истории ухода — прошлые замены воды и данные маримо будут учтены.</string>
+    <string name="start_from_scratch">Начать с нуля</string>
+    <string name="start_from_scratch_desc">Получать значки только с этого момента. Прошлые действия не будут учитываться.</string>
+    <string name="new_achievements_unlocked_balloon">Разблокированы новые достижения, нажмите здесь, чтобы узнать больше.</string>
     <string name="earned_26">Получено (26)</string>
     <string name="earned_label">Получено</string>
     <string name="_50_badges">/ %1$d значков</string>

@@ -55,6 +55,7 @@ import com.skydoves.balloon.BalloonAlign
 import com.skydoves.balloon.balloon
 import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.balloon.achievement.AchievementBalloonFactory
+import rpt.tool.marimocare.utils.balloon.achievement.AchievementUnlockedBalloonFactory
 import rpt.tool.marimocare.utils.balloon.feedback.FeedbackBalloonFactory
 import rpt.tool.marimocare.utils.balloon.waterchange.DialogChangeWaterBalloonFactory
 import rpt.tool.marimocare.utils.balloon.waterchange.WaterChangeInfoBalloonFactory
@@ -88,6 +89,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     private val newDialogChangeWaterBalloon by balloon<DialogChangeWaterBalloonFactory>()
     private val feedBackBalloon by balloon<FeedbackBalloonFactory>()
     private val achievementBalloon by balloon<AchievementBalloonFactory>()
+    private val achievementUnlockedBalloon by balloon<AchievementUnlockedBalloonFactory>()
     private var imagePath: String? = null
     private var tempImageUri: Uri? = null
     private var isAchievementDialogOpen = false
@@ -1047,20 +1049,36 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             .setCancelable(false)
             .create()
 
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
         val context = requireContext()
-        view.findViewById<Button>(R.id.btnCalculate).setOnClickListener {
+        view.findViewById<View>(R.id.btnCalculate).setOnClickListener {
             SharedPreferencesManager.showAchievement = false
             viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
                 AchievementManager.recalculateAll(context = context)
             }
             dialog.dismiss()
+            achievementUnlockedBalloon.setOnBalloonClickListener {
+                safeNavController?.safeNavigate(
+                    DashboardFragmentDirections
+                        .actionDashboardFragmentToAchievementFragment()
+                )
+            }
+            achievementUnlockedBalloon.showAlign(
+                align = BalloonAlign.BOTTOM,
+                mainAnchor = binding.include1.btnAchievementAHeader
+            )
         }
 
-        view.findViewById<Button>(R.id.btnRestart).setOnClickListener {
+        view.findViewById<View>(R.id.btnRestart).setOnClickListener {
             SharedPreferencesManager.showAchievement = false
             viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
                 AchievementManager.deleteAllAchievement()
             }
+            dialog.dismiss()
+        }
+
+        view.findViewById<View>(R.id.btnClose).setOnClickListener {
             dialog.dismiss()
         }
 

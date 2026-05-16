@@ -282,6 +282,13 @@
     <string name="achievement_intro_message">ในเวอร์ชันนี้ได้เพิ่มวัตถุประสงค์ที่ต้องบรรลุแล้ว คุณต้องการคำนวณความคืบหน้าหรือต้องการเริ่มใหม่ตั้งแต่ต้น?</string>
     <string name="calculate">คำนวณ</string>
     <string name="restart">เริ่มใหม่</string>
+    <string name="achievement_unlocked_title">ปลดล็อกระบบความสำเร็จแล้ว!</string>
+    <string name="achievement_unlocked_message">คุณมีมาริโมะและประวัติการดูแลอยู่แล้ว คุณต้องการให้เราตรวจสอบข้อมูลในอดีตและมอบเข็มกลัดที่คุณได้รับไปแล้ว หรือจะเริ่มใหม่ตั้งแต่วันนี้?</string>
+    <string name="calculate_retroactively">คำนวณย้อนหลัง</string>
+    <string name="calculate_retroactively_desc">มอบเข็มกลัดตามประวัติการดูแลทั้งหมด — การเปลี่ยนน้ำและข้อมูลมาริโมะในอดีตจะถูกนำมานับด้วย</string>
+    <string name="start_from_scratch">เริ่มต้นใหม่</string>
+    <string name="start_from_scratch_desc">รับเข็มกลัดนับจากนี้เป็นต้นไปเท่านั้น กิจกรรมในอดีตจะไม่ถูกนำมานับ</string>
+    <string name="new_achievements_unlocked_balloon">ปลดล็อกความสำเร็จใหม่แล้ว คลิกที่นี่เพื่อไปดูเลย</string>
     <string name="earned_26">ได้รับแล้ว (26)</string>
     <string name="earned_label">ได้รับแล้ว</string>
     <string name="_50_badges">/ %1$d เหรียญตรา</string>

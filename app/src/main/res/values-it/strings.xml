@@ -284,6 +284,13 @@
     <string name="achievement_intro_message">In questa versione sono stati aggiunti gli obiettivi da raggiungere, vuoi calcolare il progresso o preferisci iniziare da zero?</string>
     <string name="calculate">Calcola</string>
     <string name="restart">Ricomincia</string>
+    <string name="achievement_unlocked_title">Sistema di obiettivi sbloccato!</string>
+    <string name="achievement_unlocked_message">Hai già dei marimo e una cronologia di cure. Vuoi che controlliamo i tuoi dati passati e ti assegniamo i distintivi che hai già guadagnato, o preferisci ricominciare da oggi?</string>
+    <string name="calculate_retroactively">Calcola retroattivamente</string>
+    <string name="calculate_retroactively_desc">Assegna i distintivi in base alla tua cronologia completa — i cambi d\'acqua passati e i dati dei marimo verranno conteggiati.</string>
+    <string name="start_from_scratch">Ricomincia da zero</string>
+    <string name="start_from_scratch_desc">Guadagna distintivi solo da oggi in poi. L\'attività passata non verrà conteggiata.</string>
+    <string name="new_achievements_unlocked_balloon">Nuovi obiettivi sbloccati, clicca qui per scoprirli</string>
     <string name="earned_26">Ottenuti (26)</string>
     <string name="earned_label">Ottenuto</string>
     <string name="_50_badges">/ %1$d obiettivi</string>

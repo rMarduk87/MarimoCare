@@ -282,6 +282,13 @@
     <string name="achievement_intro_message">في هذا الإصدار تمت إضافة الأهداف المراد تحقيقها، هل تريد حساب التقدم أم تفضل البدء من الصفر؟</string>
     <string name="calculate">حساب</string>
     <string name="restart">إعادة التشغيل</string>
+    <string name="achievement_unlocked_title">تم فتح نظام الإنجازات!</string>
+    <string name="achievement_unlocked_message">لديك بالفعل ماريمو وسجل عناية. هل تريد منا التحقق من بياناتك السابقة ومنحك أي أوسمة حصلت عليها بالفعل، أم البدء من جديد اليوم؟</string>
+    <string name="calculate_retroactively">الحساب بأثر رجعي</string>
+    <string name="calculate_retroactively_desc">منح الأوسمة بناءً على سجل العناية الكامل الخاص بك — سيتم احتساب تغييرات المياه السابقة وبيانات الماريمو.</string>
+    <string name="start_from_scratch">البدء من الصفر</string>
+    <string name="start_from_scratch_desc">كسب الأوسمة من الآن فصاعدًا فقط. لن يتم احتساب النشاط السابق.</string>
+    <string name="new_achievements_unlocked_balloon">تم فتح إنجازات جديدة، انقر هنا واكتشفها</string>
     <string name="earned_26">تم الحصول عليها (26)</string>
     <string name="earned_label">مكتسب</string>
     <string name="_50_badges">/ %1$d شارات</string>

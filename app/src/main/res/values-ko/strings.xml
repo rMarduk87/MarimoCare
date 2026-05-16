@@ -284,6 +284,13 @@
     <string name="achievement_intro_message">이 버전에는 달성해야 할 목표가 추가되었습니다. 진행 상황을 계산하시겠습니까, 아니면 처음부터 시작하시겠습니까?</string>
     <string name="calculate">계산하다</string>
     <string name="restart">다시 시작</string>
+    <string name="achievement_unlocked_title">업적 시스템이 해제되었습니다!</string>
+    <string name="achievement_unlocked_message">이미 마리모와 관리 기록이 있습니다. 과거 데이터를 확인하여 이미 획득한 배지를 지급받으시겠습니까, 아니면 오늘부터 새로 시작하시겠습니까?</string>
+    <string name="calculate_retroactively">소급 계산</string>
+    <string name="calculate_retroactively_desc">전체 관리 기록(과거 물 갈아주기 및 마리모 데이터)을 바탕으로 배지를 지급합니다.</string>
+    <string name="start_from_scratch">처음부터 시작</string>
+    <string name="start_from_scratch_desc">앞으로의 활동에 대해서만 배지를 획득합니다. 과거 활동은 포함되지 않습니다.</string>
+    <string name="new_achievements_unlocked_balloon">새로운 업적이 해제되었습니다. 여기를 클릭하여 확인하세요.</string>
     <string name="earned_26">획득함 (26)</string>
     <string name="earned_label">획득함</string>
     <string name="_50_badges">/ %1$d 배지</string>

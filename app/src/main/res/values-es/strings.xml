@@ -282,6 +282,13 @@
     <string name="achievement_intro_message">En esta versión se han añadido los objetivos a alcanzar, ¿quieres calcular el progreso o prefieres empezar de cero?</string>
     <string name="calculate">Calcular</string>
     <string name="restart">Reiniciar</string>
+    <string name="achievement_unlocked_title">¡Sistema de logros desbloqueado!</string>
+    <string name="achievement_unlocked_message">Ya tienes marimos e historial de cuidados. ¿Te gustaría que revisemos tus datos pasados y te otorguemos las insignias que ya has ganado, o prefieres empezar de cero desde hoy?</string>
+    <string name="calculate_retroactively">Calcular retroactivamente</string>
+    <string name="calculate_retroactively_desc">Otorga insignias basadas en tu historial completo de cuidados — se contarán los cambios de agua pasados y los datos de los marimos.</string>
+    <string name="start_from_scratch">Empezar de cero</string>
+    <string name="start_from_scratch_desc">Solo gana insignias a partir de ahora. La actividad pasada no contará.</string>
+    <string name="new_achievements_unlocked_balloon">Nuevos logros desbloqueados, haz clic aquí para descubrirlos</string>
     <string name="earned_26">Obtenido (26)</string>
     <string name="earned_label">Obtenido</string>
     <string name="_50_badges">/ %1$d insignias</string>
