@@ -315,5 +315,9 @@ class AppUtils {
 
 
 
+        fun dpToPx(dp: Int): Int {
+            return (dp * android.content.res.Resources.getSystem().displayMetrics.density).toInt()
+        }
+
     }
 }

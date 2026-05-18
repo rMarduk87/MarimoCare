@@ -18,6 +18,8 @@ import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.data.appmodels.MarimoChange
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
+import androidx.core.graphics.drawable.toDrawable
+import androidx.core.graphics.toColorInt
 
 class AchievementManager {
     interface AchievementListener {
@@ -56,7 +58,7 @@ class AchievementManager {
             showDialogEarned: Boolean,
             userMeta: Map<String, Any> = emptyMap()
         ) {
-            // --- Statistiche di Base ---
+
             val milestoneCount = waterChanges.count { it.isMilestone }
             val photoCount = waterChanges.count { !it.waterChangeImage.isNullOrEmpty() }
             val notedLogs = waterChanges.count { !it.waterChangesLog.isNullOrBlank() }
@@ -71,27 +73,20 @@ class AchievementManager {
 
             val maxMonthsOfOwnership = marimos.mapNotNull { m ->
                 m.registrationDate?.let { dateStr ->
-                    // Date già in formato yyyy-MM-dd, parse diretto
                     ChronoUnit.MONTHS.between(LocalDate.parse(dateStr),
                         LocalDate.now()).toInt()
                 }
             }.maxOrNull() ?: 0
 
-            // --- Statistiche Complesse ---
-
-            // Speedy: Almeno 3 log di cambio acqua nello stesso giorno
-            // Raggruppiamo direttamente per data
             val logsByDay = waterChanges.groupBy { it.waterChangeData }
             val speedyEarned = logsByDay.values.any { it.size >= 3 }
 
-            // Never Overdue: Controlla che nessun marimo sia in ritardo
             val allUpToDate = marimos.isNotEmpty() && marimos.all { m ->
-                val lastChange = m.lastChanged // Assicurati che questo sia il nome corretto
+                val lastChange = m.lastChanged
                 val frequency = m.changeFrequencyDays
                 if (lastChange.isNullOrBlank() || frequency <= 0) {
                     false
                 } else {
-                    // Date già in formato yyyy-MM-dd, parse diretto
                     val daysAgo = ChronoUnit.DAYS.between(
                         LocalDate.parse(lastChange),
                         LocalDate.now())
@@ -99,14 +94,13 @@ class AchievementManager {
                 }
             }
 
-            // Calcolo preventivo degli achievement guadagnati (Utile per i Meta-Achievement)
             val totalEarnedCount = achievements.count { it.earned }
 
             achievements.forEach { achievement ->
                 if (achievement.earned) return@forEach
 
                 val current: Int? = when (achievement.code) {
-                    // Collection
+
                     "first_marimo" -> minOf(marimos.size, 1)
                     "duo" -> minOf(marimos.size, 2)
                     "trio" -> minOf(marimos.size, 3)
@@ -115,7 +109,6 @@ class AchievementManager {
                     "marimo_army" -> minOf(marimos.size, 20)
                     "marimo_empire" -> minOf(marimos.size, 50)
 
-                    // Water changes
                     "first_water_change" -> minOf(waterChanges.size, 1)
                     "consistent_5" -> minOf(waterChanges.size, 5)
                     "consistent_10" -> minOf(waterChanges.size, 10)
@@ -125,7 +118,6 @@ class AchievementManager {
                     "consistent_200" -> minOf(waterChanges.size, 200)
                     "consistent_500" -> minOf(waterChanges.size, 500)
 
-                    // Care duration
                     "one_week_care" -> minOf(days, 7)
                     "one_month_care" -> minOf(months, 1)
                     "three_months_care" -> minOf(months, 3)
@@ -133,54 +125,43 @@ class AchievementManager {
                     "one_year_care" -> minOf(months, 12)
                     "two_years_care" -> minOf(months, 24)
 
-                    // Milestones
                     "milestone_marker" -> minOf(milestoneCount, 1)
                     "five_milestones" -> minOf(milestoneCount, 5)
                     "ten_milestones" -> minOf(milestoneCount, 10)
 
-                    // Photos on logs
                     "photo_keeper" -> minOf(photoCount, 1)
                     "photographer" -> minOf(photoCount, 5)
                     "photo_album" -> minOf(photoCount, 20)
 
-                    // Notes on logs
                     "notes_taker" -> minOf(notedLogs, 5)
                     "journal_keeper" -> minOf(notedLogs, 20)
                     "chronicler" -> minOf(notedLogs, 50)
 
-                    // Named marimos
                     "named_marimo" -> minOf(uniquelyNamed, 1)
                     "creative_namer" -> minOf(uniquelyNamed, 3)
 
-                    // Profile pics
                     "profile_pic" -> minOf(withPhoto, 1)
                     "photogenic_collection" -> minOf(withPhoto, 5)
 
-                    // Varied frequency
                     "varied_frequency" -> minOf(freqs, 3)
 
-                    // Marimo longevity
                     "senior_marimo" -> minOf(maxMonthsOfOwnership, 6)
                     "ancient_marimo" -> minOf(maxMonthsOfOwnership, 12)
 
-                    // Notes on marimos
                     "marimo_biographer_5" -> minOf(marimosWithNotes, 5)
                     "marimo_notes" -> if (marimosWithNotes > 0) 1 else 0
 
-                    // Binary & Streaks (Approssimati al numero totale di log, come da logica JS)
                     "on_time_streak_5" -> minOf(waterChanges.size, 5)
                     "on_time_streak_20" -> minOf(waterChanges.size, 20)
                     "never_overdue" -> if (allUpToDate) 1 else 0
                     "speedy" -> if (speedyEarned) 1 else 0
 
-                    // Engagement / User Meta Flags
                     "early_bird" -> if (userMeta["earned_early_bird"] == true) 1 else null
                     "night_owl" -> if (userMeta["overdue_log_count"] == true) 1 else null
                     "feedback_giver" -> if (userMeta["submitted_feedback"] == true) 1 else null
                     "settings_explorer" -> if (userMeta["customized_settings"] == true) 1 else null
                     "stats_viewer" -> if (userMeta["visited_stats"] == true) 1 else null
 
-                    // Meta achievements
                     "halfway_there" -> minOf(totalEarnedCount, 25)
                     "achievement_hunter" -> minOf(totalEarnedCount, 49)
 
@@ -238,19 +219,54 @@ class AchievementManager {
                         val icon = view.findViewById<TextView>(R.id.txtAchievementIcon)
                         val desc = view.findViewById<TextView>(R.id.txtAchievementDesc)
                         val btnOk = view.findViewById<Button>(R.id.btnOk)
+                        val btnClose = view.findViewById<android.widget.ImageView>(R.id.btnClose)
+                        val iconContainer = view.findViewById<android.view.View>(R.id.iconContainer)
+                        val txtUnlocked = view.findViewById<TextView>(R.id.txtUnlocked)
+                        val rootLayout = view.findViewById<android.view.View>(R.id.root_layout)
 
                         title.text = context.getString(ach.titleID)
                         desc.text = context.getString(ach.descriptionValue)
                         icon.text = context.getString(ach.imageId)
 
-                        val dialog = AlertDialog.Builder(context)
+                        try {
+                            val color = ach.backgroundColor.toColorInt()
+                            txtUnlocked.setTextColor(color)
+
+                        val rootBg = rootLayout.background?.mutate() as?
+                                android.graphics.drawable.GradientDrawable
+                        rootBg?.setStroke(AppUtils.dpToPx(1), color)
+
+                        val iconBg = iconContainer.background?.mutate() as?
+                                android.graphics.drawable.GradientDrawable
+                        iconBg?.setStroke(AppUtils.dpToPx(2), color)
+
+                        val btnBg = btnOk.background?.mutate() as?
+                                android.graphics.drawable.GradientDrawable
+                        btnBg?.setStroke(AppUtils.dpToPx(1), color)
+                        btnOk.setTextColor(color)
+
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                        }
+
+                        val dialog = AlertDialog.Builder(context,
+                            R.style.CustomDialogTheme)
                             .setView(view)
                             .setCancelable(true)
                             .create()
 
+
+                        dialog.window?.setBackgroundDrawable(
+                            android.graphics.Color.TRANSPARENT.toDrawable())
+
                         btnOk.setOnClickListener { dialog.dismiss() }
+                        btnClose.setOnClickListener { dialog.dismiss() }
 
                         dialog.show()
+
+                        val width = AppUtils.dpToPx(340)
+                        dialog.window?.setLayout(width, android.view.ViewGroup
+                            .LayoutParams.WRAP_CONTENT)
                     } catch (e: Exception) {
                         e.printStackTrace()
                     }

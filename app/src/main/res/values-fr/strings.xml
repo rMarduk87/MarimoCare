@@ -552,4 +552,5 @@
     <string name="achievement_earned">Succès obtenu !</string>
     <string name="great">Génial !</string>
     <string name="_100">100%</string>
+    <string name="achievement_unlocked">Succès déverrouillé !</string>
 </resources>

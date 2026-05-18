@@ -552,4 +552,5 @@
     </string-array>
     <string name="achievement_earned">تم اكتساب الإنجاز!</string>
     <string name="great">عظيم!</string>
+    <string name="achievement_unlocked">تم فتح الإنجاز!</string>
 </resources>

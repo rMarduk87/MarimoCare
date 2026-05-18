@@ -554,4 +554,5 @@
     </string-array>
     <string name="achievement_earned">업적 달성!</string>
     <string name="great">훌륭합니다!</string>
+    <string name="achievement_unlocked">업적 달성!</string>
 </resources>

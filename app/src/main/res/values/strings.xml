@@ -551,4 +551,5 @@ Please note: the final date retrieved will be the same as the app release date, 
     <string name="achievement_earned">Achievement Earned!</string>
     <string name="great">Great!</string>
     <string name="_100">100%</string>
+    <string name="achievement_unlocked">Achievement Unlocked!</string>
 </resources>

@@ -554,4 +554,5 @@
     </string-array>
     <string name="achievement_earned">実績獲得！</string>
     <string name="great">素晴らしい！</string>
+    <string name="achievement_unlocked">実績解除！</string>
 </resources>

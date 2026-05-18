@@ -554,4 +554,5 @@
     <string name="achievement_earned">Obiettivo Ottenuto!</string>
     <string name="great">Ottimo!</string>
     <string name="_100">100%</string>
+    <string name="achievement_unlocked">Obiettivo sbloccato!</string>
 </resources>

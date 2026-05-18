@@ -552,4 +552,5 @@
     </string-array>
     <string name="achievement_earned">ได้รับความสำเร็จแล้ว!</string>
     <string name="great">เยี่ยมยอด!</string>
+    <string name="achievement_unlocked">ปลดล็อกความสำเร็จแล้ว!</string>
 </resources>
