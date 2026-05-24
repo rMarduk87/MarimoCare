@@ -11,6 +11,7 @@ import rpt.tool.marimocare.utils.data.appmodels.MarimoHealthScore
 import rpt.tool.marimocare.utils.data.appmodels.MarimoHealthScoreStats
 import rpt.tool.marimocare.utils.data.appmodels.MarimoQR
 import rpt.tool.marimocare.utils.data.database.dao.MarimoDao
+import rpt.tool.marimocare.utils.managers.RepositoryManager
 import kotlin.collections.map
 
 class MarimoRepository(
@@ -121,6 +122,7 @@ class MarimoRepository(
 
     fun deleteMarimo(code: Int) {
         marimoDao.delete(code)
+        RepositoryManager.potDecorationRepository.deleteDecorationsForMarimo(code)
     }
 
     fun addMarimoQR(marimoCode: Int, qrCodeToStore: String) {

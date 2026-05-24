@@ -57,6 +57,7 @@ import com.skydoves.balloon.balloon
 import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.balloon.feedback.FeedbackBalloonFactory
 import rpt.tool.marimocare.utils.balloon.waterchange.DialogChangeWaterBalloonFactory
+import rpt.tool.marimocare.utils.balloon.settings.SettingsBalloonFactory
 import rpt.tool.marimocare.utils.balloon.waterchange.WaterChangeInfoBalloonFactory
 import rpt.tool.marimocare.utils.data.appmodels.MarimoToFix
 import rpt.tool.marimocare.utils.data.appmodels.MarimoUpdate
@@ -68,7 +69,6 @@ import rpt.tool.marimocare.utils.view.copyUriToInternalFile
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.DeleteMarimoEventHook
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.ShowMarimoDetailsEventHook
 import java.io.File
-import java.io.FileOutputStream
 
 class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     FragmentDashboardBinding::inflate) {
@@ -84,6 +84,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     private val marimoUpdateBalloon by balloon<WaterChangeInfoBalloonFactory>()
     private val newDialogChangeWaterBalloon by balloon<DialogChangeWaterBalloonFactory>()
     private val feedBackBalloon by balloon<FeedbackBalloonFactory>()
+    private val settingsBalloon by balloon<SettingsBalloonFactory>()
     private var imagePath: String? = null
     private var tempImageUri: Uri? = null
 
@@ -320,6 +321,18 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                 }
             }
         }
+
+        if (SharedPreferencesManager.showNewSettingsBalloon) {
+            binding.include1.btnOpenSettings.post {
+                if (isAdded) {
+                    settingsBalloon.showAlign(
+                        align = BalloonAlign.BOTTOM,
+                        mainAnchor = binding.include1.btnOpenSettings
+                    )
+                    SharedPreferencesManager.showNewSettingsBalloon = false
+                }
+            }
+        }
     }
 
     private fun addNewMarimo() {
@@ -399,11 +412,15 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
     private fun updateAlertsUI() {
 
-        val hasOverdue = SharedPreferencesManager.showAlertOverdue
-        val hasSoon = SharedPreferencesManager.showAlertSoon
+        val userPrefOverdue = SharedPreferencesManager.showAlertOverdue
+        val userPrefSoon = SharedPreferencesManager.showAlertSoon
+        val userPrefToday = SharedPreferencesManager.showAlertToday
 
         val overdueText = SharedPreferencesManager.alertOverdue
         val soonText = SharedPreferencesManager.alertSoon
+
+        val hasOverdue = userPrefOverdue && overdueText.isNotEmpty()
+        val hasSoon = (userPrefSoon || userPrefToday) && soonText.isNotEmpty()
 
         val overDueCounter = SharedPreferencesManager.alertOverdueCounter
 
@@ -420,22 +437,26 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                 append(overDueCounter)
                 append(")")
             }
+        } else {
+            binding.alertCardRed.visibility = View.GONE
         }
 
-        if (!hasOverdue && hasSoon || (hasOverdue && hasSoon)) {
+        if (hasSoon) {
             binding.alertCardOrange.visibility = View.VISIBLE
             binding.alertCardOrange.setCardBackgroundColor(
                 ContextCompat.getColor(requireContext(), R.color.marimo_light_orange)
             )
             binding.alertTextOrange.text = soonText
+        } else {
+            binding.alertCardOrange.visibility = View.GONE
         }
 
         if (!hasOverdue && !hasSoon) {
-            binding.alertCardRed.visibility = View.GONE
-            binding.alertCardOrange.visibility = View.GONE
             binding.alertCounterLayout.visibility = View.GONE
         }
     }
+
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun manageFilters() {

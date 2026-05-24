@@ -946,6 +946,120 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/container_notifications"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:padding="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal"
+                        android:paddingStart="15dp"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginEnd="10dp"
+                            android:src="@drawable/ic_alert_bell"
+                            app:tint="@color/marimo_text_primary"
+                            android:contentDescription="@string/img" />
+
+                        <TextView
+                            android:id="@+id/txtTitleNotifications"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/notification_settings"
+                            android:textColor="@color/marimo_black"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:paddingBottom="4dp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/txtSubtitleNotifications"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/choose_which_notifications_you_want_to_receive"
+                        android:textColor="@color/marimo_dark"
+                        android:textSize="14sp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:paddingBottom="16dp" />
+
+                    <LinearLayout
+                        android:id="@+id/notifications"
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:padding="16dp"
+                        android:layout_marginBottom="16dp">
+
+                        <EditText
+                            android:id="@+id/inputTodayAlert"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="@drawable/edittext_outline_grey"
+                            android:hint="@string/today_marimo_alert"
+                            android:padding="14dp"
+                            android:textColor="@color/text_title"
+                            android:textColorHint="@color/marimo_text_hint_alt"
+                            android:layout_marginBottom="12dp"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:cursorVisible="false"
+                            android:clickable="true"
+                            android:inputType="none" />
+
+                        <EditText
+                            android:id="@+id/inputDueSoonAlert"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="@drawable/edittext_outline_grey"
+                            android:hint="@string/due_soon_alert"
+                            android:padding="14dp"
+                            android:textColor="@color/text_title"
+                            android:textColorHint="@color/marimo_text_hint_alt"
+                            android:layout_marginBottom="12dp"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:cursorVisible="false"
+                            android:clickable="true"
+                            android:inputType="none" />
+
+                        <EditText
+                            android:id="@+id/inputOverdueAlert"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="@drawable/edittext_outline_grey"
+                            android:hint="@string/overdue_marimo_alert"
+                            android:padding="14dp"
+                            android:textColor="@color/text_title"
+                            android:textColorHint="@color/marimo_text_hint_alt"
+                            android:layout_marginBottom="12dp"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:cursorVisible="false"
+                            android:clickable="true"
+                            android:inputType="none" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
             <!-- Pulsanti -->
             <LinearLayout
                 style="?android:attr/buttonBarStyle"

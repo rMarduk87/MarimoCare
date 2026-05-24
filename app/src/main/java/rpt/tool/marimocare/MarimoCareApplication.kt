@@ -78,17 +78,8 @@ class MarimoCareApplication : Application() {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun scheduleDailyNotify(context: Context) {
 
-        val now = LocalTime.now()
-        val target = LocalTime.of(9, 0)
-
-        val initialDelay = if (now.isAfter(target))
-            Duration.between(now, target.plusHours(24))
-        else
-            Duration.between(now, target)
-
-        val request = PeriodicWorkRequestBuilder<NotifyWorker>(24,
+        val request = PeriodicWorkRequestBuilder<NotifyWorker>(1,
             TimeUnit.HOURS)
-            .setInitialDelay(initialDelay)
             .build()
 
         WorkManager.getInstance(context).enqueueUniquePeriodicWork(

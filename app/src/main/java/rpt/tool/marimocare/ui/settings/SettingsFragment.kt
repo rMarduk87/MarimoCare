@@ -27,6 +27,10 @@ class SettingsFragment :
 
     private var statPeriodSelected = 0
 
+    private var showAlertToday = true
+    private var showAlertSoon = true
+    private var showAlertOverdue = true
+
     private val speedViews: MutableMap<Int, TextView> = mutableMapOf()
     private val filterViews: MutableMap<Int, TextView> = mutableMapOf()
     private val sortedViews: MutableMap<Int, TextView> = mutableMapOf()
@@ -52,6 +56,8 @@ class SettingsFragment :
         setupFilterAndSortListeners()
         setupStatPeriodSelection()
         setupStatPeriodListeners()
+        setupNotificationSelection()
+        setupNotificationListeners()
         setupSaveCancelListeners()
 
         binding.include1.appLogo.setOnClickListener {
@@ -124,6 +130,7 @@ class SettingsFragment :
             containerSpeed.setBackgroundResource(R.drawable.bg_card_settings)
             containerOrderAndFilters.setBackgroundResource(R.drawable.bg_card_settings)
             containerStatsPeriod.setBackgroundResource(R.drawable.bg_card_settings)
+            containerNotifications.setBackgroundResource(R.drawable.bg_card_settings)
         }
     }
 
@@ -348,6 +355,48 @@ class SettingsFragment :
         }
     }
 
+    private fun setupNotificationSelection() {
+        showAlertToday = SharedPreferencesManager.showAlertToday
+        showAlertSoon = SharedPreferencesManager.showAlertSoon
+        showAlertOverdue = SharedPreferencesManager.showAlertOverdue
+
+        updateNotificationSelection()
+    }
+
+    private fun setupNotificationListeners() {
+        binding.inputTodayAlert.setOnClickListener {
+            showAlertToday = !showAlertToday
+            updateNotificationSelection()
+        }
+        binding.inputDueSoonAlert.setOnClickListener {
+            showAlertSoon = !showAlertSoon
+            updateNotificationSelection()
+        }
+        binding.inputOverdueAlert.setOnClickListener {
+            showAlertOverdue = !showAlertOverdue
+            updateNotificationSelection()
+        }
+    }
+
+    private fun updateNotificationSelection() {
+        binding.inputTodayAlert.let { updateNotificationView(it, showAlertToday) }
+        binding.inputDueSoonAlert.let { updateNotificationView(it, showAlertSoon) }
+        binding.inputOverdueAlert.let { updateNotificationView(it, showAlertOverdue) }
+    }
+
+    private fun updateNotificationView(view: TextView, selected: Boolean) {
+        view.setBackgroundResource(
+            if (selected) R.drawable.edittext_outline_selected
+            else R.drawable.edittext_outline_grey
+        )
+
+        val checkIcon = if (selected)
+            ContextCompat.getDrawable(requireContext(), R.drawable.ic_check)
+        else null
+
+        view.setCompoundDrawablesWithIntrinsicBounds(null, null, checkIcon, null)
+    }
+
     private fun setupSaveCancelListeners() {
         binding.btnSave.setOnClickListener {
             SharedPreferencesManager.coloredIsSelected = coloredOptionSelected
@@ -356,6 +405,9 @@ class SettingsFragment :
             SharedPreferencesManager.marimoFilter = filterSelected
             SharedPreferencesManager.marimoSorting = sortingSelected
             SharedPreferencesManager.statPeriod = statPeriodSelected
+            SharedPreferencesManager.showAlertToday = showAlertToday
+            SharedPreferencesManager.showAlertSoon = showAlertSoon
+            SharedPreferencesManager.showAlertOverdue = showAlertOverdue
             Toast.makeText(
                 requireContext(),
                 getString(R.string.option_correctly_updated),
@@ -370,8 +422,14 @@ class SettingsFragment :
             filterSelected = SharedPreferencesManager.marimoFilter
             sortingSelected = SharedPreferencesManager.marimoSorting
             statPeriodSelected = SharedPreferencesManager.statPeriod
+            showAlertToday = SharedPreferencesManager.showAlertToday
+            showAlertSoon = SharedPreferencesManager.showAlertSoon
+            showAlertOverdue = SharedPreferencesManager.showAlertOverdue
             updateDashboardSelection()
             updateSpeedTipsSelection()
+            updateFilterAndSortSelection()
+            updateStatPeriodSelection()
+            updateNotificationSelection()
         }
     }
 }
