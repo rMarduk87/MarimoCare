@@ -1,7 +1,9 @@
 package rpt.tool.marimocare.utils.view.adapters.decoration
 
+import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
@@ -9,6 +11,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.BaseAdapter
+import android.widget.GridView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.ItemPotDecorationBinding
@@ -22,6 +27,7 @@ class PotDecorationAdapter(
 ) : RecyclerView.Adapter<PotDecorationAdapter.ViewHolder>() {
 
     private val decorationTypes = context.resources.getStringArray(R.array.decoration_types).toList()
+    private val colorList = context.resources.getStringArray(R.array.decoration_colors).toList()
 
     inner class ViewHolder(val binding: ItemPotDecorationBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -53,18 +59,28 @@ class PotDecorationAdapter(
         // Setup inputs
         binding.inputDecName.setText(item.name)
         binding.inputDecColour.setText(item.colour)
+        binding.inputDecColour.isFocusable = false
+        binding.inputDecColour.isFocusableInTouchMode = false
+        binding.inputDecColour.isClickable = true
         binding.inputDecDimensions.setText(item.dimensions)
         binding.inputDecMaterial.setText(item.material)
         binding.inputDecNotes.setText(item.notes)
 
         updateColorPreview(binding, item.colour)
 
+        val onColorClick = View.OnClickListener {
+            showColorPicker { selectedColor ->
+                item.colour = selectedColor
+                binding.inputDecColour.setText(selectedColor)
+                updateColorPreview(binding, selectedColor)
+            }
+        }
+
+        binding.colorPreview.setOnClickListener(onColorClick)
+        binding.inputDecColour.setOnClickListener(onColorClick)
+
         // Listeners for changes
         binding.inputDecName.addTextChangedListener(SimpleTextWatcher { item.name = it })
-        binding.inputDecColour.addTextChangedListener(SimpleTextWatcher {
-            item.colour = it
-            updateColorPreview(binding, it)
-        })
         binding.inputDecDimensions.addTextChangedListener(SimpleTextWatcher { item.dimensions = it })
         binding.inputDecMaterial.addTextChangedListener(SimpleTextWatcher { item.material = it })
         binding.inputDecNotes.addTextChangedListener(SimpleTextWatcher { item.notes = it })
@@ -89,10 +105,56 @@ class PotDecorationAdapter(
 
     private fun updateColorPreview(binding: ItemPotDecorationBinding, colour: String) {
         try {
-            binding.colorPreview.setBackgroundColor(Color.parseColor(colour))
+            val drawable = binding.colorPreview.background as? GradientDrawable ?: GradientDrawable()
+            drawable.setColor(Color.parseColor(colour))
+            drawable.setStroke(2, ContextCompat.getColor(context, R.color.marimo_milestone_bg))
+            drawable.cornerRadius = 8f
+            binding.colorPreview.background = drawable
         } catch (e: Exception) {
             binding.colorPreview.setBackgroundColor(Color.LTGRAY)
         }
+    }
+
+    private fun showColorPicker(onColorSelected: (String) -> Unit) {
+        val gridView = GridView(context).apply {
+            numColumns = 5
+            columnWidth = GridView.AUTO_FIT
+            verticalSpacing = 20
+            horizontalSpacing = 20
+            setPadding(40, 40, 40, 40)
+            stretchMode = GridView.STRETCH_COLUMN_WIDTH
+            adapter = object : BaseAdapter() {
+                override fun getCount(): Int = colorList.size
+                override fun getItem(position: Int): Any = colorList[position]
+                override fun getItemId(position: Int): Long = position.toLong()
+                override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+                    val view = convertView ?: View(context).apply {
+                        layoutParams = ViewGroup.LayoutParams(100, 100)
+                    }
+                    val color = colorList[position]
+                    val drawable = GradientDrawable().apply {
+                        shape = GradientDrawable.OVAL
+                        setColor(Color.parseColor(color))
+                        setStroke(2, Color.LTGRAY)
+                    }
+                    view.background = drawable
+                    return view
+                }
+            }
+        }
+
+        val dialog = AlertDialog.Builder(context)
+            .setTitle(context.getString(R.string.colour))
+            .setView(gridView)
+            .setNegativeButton(context.getString(R.string.cancel), null)
+            .create()
+
+        gridView.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
+            onColorSelected(colorList[position])
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 
     override fun getItemCount(): Int = decorations.size

@@ -302,4 +302,44 @@
         <item>QRコードを送信</item>
         <item>QRコードを保存</item>
     </string-array>
+    <string name="notification_settings">通知設定</string>
+    <string name="choose_which_notifications_you_want_to_receive">受け取りたい通知を選択してください</string>
+    <string name="due_soon_alert">期限間近アラート</string>
+    <string name="overdue_marimo_alert">期限切れアラート</string>
+    <string name="today_marimo_alert">当日の水換えアラート</string>
+    <string name="new_settings_balloon_text">新しい通知設定が追加されました！どのアラートを受け取るか選択できるようになりました。</string>
+
+    <!-- Pot Decorations -->
+    <string name="pot_decorations_optional">ポットの装飾 (任意)</string>
+    <string name="no_decorations_yet">装飾はまだ追加されていません。</string>
+    <string name="add_decoration">+ 装飾を追加</string>
+    <string name="decoration_n">装飾 %1$d</string>
+    <string name="name">名前</string>
+    <string name="type">タイプ</string>
+    <string name="colour">色</string>
+    <string name="dimensions">寸法</string>
+    <string name="material">素材</string>
+    <string name="e_g_blue_pebble">例: 青い小石</string>
+    <string name="select_type">タイプを選択…</string>
+    <string name="e_g_cobalt_blue">例: コバルトブルー</string>
+    <string name="e_g_2cm_x_1cm">例: 2cm x 1cm</string>
+    <string name="e_g_natural_quartz">例: 天然石英</string>
+    <string name="any_extra_details">その他の詳細…</string>
+
+    <string-array name="decoration_types">
+        <item>タイプを選択…</item>
+        <item>小石</item>
+        <item>岩</item>
+        <item>石</item>
+        <item>砂</item>
+        <item>砂利</item>
+        <item>貝殻</item>
+        <item>流木</item>
+        <item>クリスタル</item>
+        <item>ガラス玉</item>
+        <item>大理石</item>
+        <item>フィギュア</item>
+        <item>水生植物</item>
+        <item>その他</item>
+    </string-array>
 </resources>

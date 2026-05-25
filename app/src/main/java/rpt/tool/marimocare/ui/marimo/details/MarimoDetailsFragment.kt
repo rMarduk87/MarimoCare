@@ -19,6 +19,7 @@ import android.widget.CheckBox
 import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.graphics.toColorInt
@@ -272,9 +273,9 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
         }
 
         val dataSet = LineDataSet(entries, "Health Score").apply {
-            color = "#00A676".toColorInt()
+            color = ContextCompat.getColor(requireContext(), R.color.marimo_graph_accent)
             lineWidth = 3f
-            setCircleColor("#00A676".toColorInt())
+            setCircleColor(ContextCompat.getColor(requireContext(), R.color.marimo_graph_accent))
             circleRadius = 5f
             setDrawCircleHole(false)
             setDrawValues(false)
@@ -296,7 +297,7 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
                 granularity = 1f
                 isGranularityEnabled = true
                 valueFormatter = IndexAxisValueFormatter(xAxisLabels)
-                textColor = "#6D6D6D".toColorInt()
+                textColor = ContextCompat.getColor(requireContext(), R.color.marimo_text_medium_gray)
             }
 
             axisLeft.apply {
@@ -304,8 +305,8 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
                 axisMaximum = 100f
                 granularity = 20f
                 setDrawAxisLine(false)
-                gridColor = "#E0E0E0".toColorInt()
-                textColor = "#6D6D6D".toColorInt()
+                gridColor = ContextCompat.getColor(requireContext(), R.color.marimo_milestone_bg)
+                textColor = ContextCompat.getColor(requireContext(), R.color.marimo_text_medium_gray)
             }
 
             axisRight.isEnabled = false

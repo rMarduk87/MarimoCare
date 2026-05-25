@@ -335,8 +335,10 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
     private fun showMarimoDialog(marimos: List<Marimo>, isMost: Boolean) {
         val items = marimos.toMarimoItems(
             requireContext(),
-            if (isMost) "#9538ea" else "#E47A1F",
-            if (isMost) "#fbf3fc" else "#FFF7EC",
+            if (isMost) ContextCompat.getColor(requireContext(), R.color.marimo_violet) 
+            else ContextCompat.getColor(requireContext(), R.color.marimo_text_orange),
+            if (isMost) ContextCompat.getColor(requireContext(), R.color.marimo_pale_violet) 
+            else ContextCompat.getColor(requireContext(), R.color.marimo_pale_orange),
             isMost
         )
 
@@ -349,7 +351,8 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
 
         val title = dialog.findViewById<TextView>(R.id.txtDialogTitle)
         val icon = dialog.findViewById<ImageView>(R.id.icon)
-        title.setTextColor(if (isMost) "#9538ea".toColorInt() else "#E47A1F".toColorInt())
+        title.setTextColor(if (isMost) ContextCompat.getColor(requireContext(), R.color.marimo_violet) 
+        else ContextCompat.getColor(requireContext(), R.color.marimo_text_orange))
         title.text = if (isMost) getString(R.string.most_attention_needed_marimos) else
             getString(R.string.most_low_maintenance_marimos)
         icon.imageTintList = requireContext().getColorStateList(if
@@ -426,10 +429,10 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
 
     private fun setupWaterTrendChart(chart: LineChart, entries: List<Entry>, labels: List<String>) {
         val dataSet = LineDataSet(entries, "").apply {
-            color = "#00A676".toColorInt()
+            color = ContextCompat.getColor(requireContext(), R.color.marimo_graph_accent)
             lineWidth = 3f
             setDrawCircles(true)
-            setCircleColor("#00A676".toColorInt())
+            setCircleColor(ContextCompat.getColor(requireContext(), R.color.marimo_graph_accent))
             circleRadius = 5f
             setDrawCircleHole(false)
             setDrawFilled(false)
@@ -443,7 +446,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
             legend.isEnabled = false
             axisRight.isEnabled = false
             axisLeft.textColor = Color.DKGRAY
-            axisLeft.gridColor = "#E0E0E0".toColorInt()
+            axisLeft.gridColor = ContextCompat.getColor(requireContext(), R.color.marimo_milestone_bg)
 
             xAxis.apply {
                 position = XAxis.XAxisPosition.BOTTOM
@@ -473,7 +476,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
     private fun setupFrequencyChart(chart: BarChart, values: List<Float>) {
         val entries = values.mapIndexed { index, value -> BarEntry(index.toFloat(), value) }
         val dataSet = BarDataSet(entries, "").apply {
-            color = "#00C389".toColorInt()
+            color = ContextCompat.getColor(requireContext(), R.color.marimo_bright_mint)
             valueTextSize = 0f
         }
 
@@ -485,7 +488,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
 
             axisLeft.apply {
                 textColor = Color.DKGRAY
-                gridColor = "#E0E0E0".toColorInt()
+                gridColor = ContextCompat.getColor(requireContext(), R.color.marimo_milestone_bg)
                 axisMinimum = 0f
                 axisMaximum = (values.maxOrNull()?.plus(1f) ?: 5f)
             }

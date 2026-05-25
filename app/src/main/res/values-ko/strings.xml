@@ -303,4 +303,44 @@
         <item>QR 전송</item>
         <item>QR 저장</item>
     </string-array>
+    <string name="notification_settings">알림 설정</string>
+    <string name="choose_which_notifications_you_want_to_receive">받고 싶은 알림을 선택하세요</string>
+    <string name="due_soon_alert">마감 임박 알림</string>
+    <string name="overdue_marimo_alert">기간 만료 알림</string>
+    <string name="today_marimo_alert">오늘 물 갈아주기 알림</string>
+    <string name="new_settings_balloon_text">새로운 알림 설정이 추가되었습니다! 이제 어떤 알림을 받을지 선택할 수 있습니다.</string>
+
+    <!-- Pot Decorations -->
+    <string name="pot_decorations_optional">화분 장식 (선택 사항)</string>
+    <string name="no_decorations_yet">아직 추가된 장식이 없습니다.</string>
+    <string name="add_decoration">+ 장식 추가</string>
+    <string name="decoration_n">장식 %1$d</string>
+    <string name="name">이름</string>
+    <string name="type">유형</string>
+    <string name="colour">색상</string>
+    <string name="dimensions">크기</string>
+    <string name="material">재질</string>
+    <string name="e_g_blue_pebble">예: 파란색 조약돌</string>
+    <string name="select_type">유형 선택…</string>
+    <string name="e_g_cobalt_blue">예: 코발트 블루</string>
+    <string name="e_g_2cm_x_1cm">예: 2cm x 1cm</string>
+    <string name="e_g_natural_quartz">예: 천연 석영</string>
+    <string name="any_extra_details">기타 세부 정보…</string>
+
+    <string-array name="decoration_types">
+        <item>유형 선택…</item>
+        <item>조약돌</item>
+        <item>바위</item>
+        <item>돌</item>
+        <item>모래</item>
+        <item>자갈</item>
+        <item>조개껍데기</item>
+        <item>유목</item>
+        <item>크리스탈</item>
+        <item>유리 보석</item>
+        <item>대리석</item>
+        <item>피규어</item>
+        <item>수생 식물</item>
+        <item>기타</item>
+    </string-array>
 </resources>

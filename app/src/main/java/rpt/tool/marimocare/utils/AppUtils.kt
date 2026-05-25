@@ -80,8 +80,8 @@ class AppUtils {
 
         fun List<Marimo>.toMarimoItems(
             context: Context,
-            color1: String,
-            color2: String,
+            color1: Int,
+            color2: Int,
             bool: Boolean = false
         ): List<MarimoFrequencyItem> {
             return this.map { marimo ->
@@ -94,8 +94,8 @@ class AppUtils {
                 val lastChangedText = marimo.lastChanged ?: "—"
                 val notesText = marimo.notes ?: "No notes"
 
-                val color = color1.toColorInt()
-                val background = color2.toColorInt()
+                val color = color1
+                val background = color2
 
                 MarimoFrequencyItem(
                     name = marimo.name,

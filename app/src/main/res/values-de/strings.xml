@@ -303,4 +303,44 @@
         <item>QR-Code senden</item>
         <item>QR-Code speichern</item>
     </string-array>
+    <string name="notification_settings">Benachrichtigungseinstellungen</string>
+    <string name="choose_which_notifications_you_want_to_receive">Wählen Sie aus, welche Benachrichtigungen Sie erhalten möchten</string>
+    <string name="due_soon_alert">Warnung: Demnächst fällig</string>
+    <string name="overdue_marimo_alert">Warnung: Überfällig</string>
+    <string name="today_marimo_alert">Warnung: Heute Wasser wechseln</string>
+    <string name="new_settings_balloon_text">Neue Benachrichtigungseinstellungen wurden hinzugefügt! Sie können nun auswählen, welche Warnungen Sie erhalten möchten.</string>
+
+    <!-- Pot Decorations -->
+    <string name="pot_decorations_optional">Topfdekorationen (Optional)</string>
+    <string name="no_decorations_yet">Noch keine Dekorationen hinzugefügt.</string>
+    <string name="add_decoration">+ Dekoration hinzufügen</string>
+    <string name="decoration_n">Dekoration %1$d</string>
+    <string name="name">Name</string>
+    <string name="type">Typ</string>
+    <string name="colour">Farbe</string>
+    <string name="dimensions">Abmessungen</string>
+    <string name="material">Material</string>
+    <string name="e_g_blue_pebble">z.B. Blauer Kiesel</string>
+    <string name="select_type">Typ auswählen…</string>
+    <string name="e_g_cobalt_blue">z.B. Kobaltblau</string>
+    <string name="e_g_2cm_x_1cm">z.B. 2cm x 1cm</string>
+    <string name="e_g_natural_quartz">z.B. Naturquarz</string>
+    <string name="any_extra_details">Weitere Details…</string>
+
+    <string-array name="decoration_types">
+        <item>Typ auswählen…</item>
+        <item>Kieselstein</item>
+        <item>Fels</item>
+        <item>Stein</item>
+        <item>Sand</item>
+        <item>Gies</item>
+        <item>Muschel</item>
+        <item>Treibholz</item>
+        <item>Kristall</item>
+        <item>Glasstein</item>
+        <item>Marmor</item>
+        <item>Figur</item>
+        <item>Wasserpflanze</item>
+        <item>Andere</item>
+    </string-array>
 </resources>

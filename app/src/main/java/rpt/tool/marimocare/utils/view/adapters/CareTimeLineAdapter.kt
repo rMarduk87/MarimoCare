@@ -10,7 +10,6 @@ import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.ItemWaterMilestoneBinding
 import rpt.tool.marimocare.utils.data.appmodels.MarimoChange
 import java.io.File
-import androidx.core.graphics.toColorInt
 
 class CareTimeLineAdapter(
     private val items: List<MarimoChange>
@@ -53,7 +52,7 @@ class CareTimeLineAdapter(
 
                 timelineIconContainer.backgroundTintList =
                     ContextCompat.getColorStateList(root.context, R.color.marimo_orange)
-                        ?: android.content.res.ColorStateList.valueOf("#FFF9C4".toColorInt())
+                        ?: android.content.res.ColorStateList.valueOf(ContextCompat.getColor(root.context, R.color.marimo_bg_warning))
 
                 val timelineIcon =
                     timelineIconContainer.getChildAt(0) as
@@ -61,7 +60,7 @@ class CareTimeLineAdapter(
 
                 timelineIcon.setImageResource(R.drawable.ic_star_outline)
                 timelineIcon.imageTintList =
-                    android.content.res.ColorStateList.valueOf("#FBC02D".toColorInt())
+                    android.content.res.ColorStateList.valueOf(ContextCompat.getColor(root.context, R.color.marimo_tint_warning))
 
                 cardIcon.visibility = View.VISIBLE
                 cardIcon.setText(R.string.star)
@@ -76,7 +75,7 @@ class CareTimeLineAdapter(
                     ContextCompat.getDrawable(root.context, R.drawable.bg_badge_green)
 
                 timelineIconContainer.backgroundTintList =
-                    android.content.res.ColorStateList.valueOf("#D2FAE5".toColorInt())
+                    android.content.res.ColorStateList.valueOf(ContextCompat.getColor(root.context, R.color.marimo_item_board))
 
                 val timelineIcon =
                     timelineIconContainer.getChildAt(0) as
@@ -84,7 +83,7 @@ class CareTimeLineAdapter(
 
                 timelineIcon.setImageResource(R.drawable.ic_water_drop_green)
                 timelineIcon.imageTintList =
-                    android.content.res.ColorStateList.valueOf("#1EA65F".toColorInt())
+                    android.content.res.ColorStateList.valueOf(ContextCompat.getColor(root.context, R.color.green))
 
                 cardIcon.visibility = View.INVISIBLE
             }

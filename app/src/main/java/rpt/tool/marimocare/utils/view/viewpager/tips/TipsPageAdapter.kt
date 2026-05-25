@@ -4,8 +4,9 @@ import android.util.TypedValue
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import androidx.core.graphics.toColorInt
+import rpt.tool.marimocare.R
 
 class TipsPagerAdapter(
     private val tips: List<String>
@@ -15,7 +16,7 @@ class TipsPagerAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TipViewHolder {
         val tv = TextView(parent.context).apply {
-            setTextColor("#0B6E4F".toColorInt())
+            setTextColor(ContextCompat.getColor(parent.context, R.color.marimo_text_primary))
             setTextSize(TypedValue.COMPLEX_UNIT_SP, 14f)
             layoutParams = ViewGroup.MarginLayoutParams(MATCH_PARENT, MATCH_PARENT).apply {
                 marginStart = (36 * resources.displayMetrics.density).toInt()
