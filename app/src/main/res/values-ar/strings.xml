@@ -447,7 +447,9 @@
     <string name="ach_tit_48">كاتب سيرة الماريمو</string>
     <string name="ach_tit_49">في منتصف الطريق</string>
     <string name="ach_tit_50">صياد الإنجازات</string>
-
+    <string name="ach_tit_51">Interior Touch</string>
+    <string name="ach_tit_52">Decorator</string>
+    <string name="ach_tit_53">Interior Designer</string>
     <string name="ach_type_marimo">ماريمو</string>
     <string name="ach_type_marimos">ماريمو</string>
     <string name="ach_type_waterchange">تغيير الماء</string>

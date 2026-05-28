@@ -2,13 +2,13 @@ package rpt.tool.marimocare.utils.data.database
 
 import android.content.Context
 import androidx.room.*
+import androidx.room.migration.Migration
 import rpt.tool.marimocare.utils.data.database.DatabaseHelper.Companion.databaseName
 import rpt.tool.marimocare.utils.data.database.automigration.Migration5To6
 import rpt.tool.marimocare.utils.data.database.dao.*
 import rpt.tool.marimocare.utils.data.database.dao.decoration.PotDecorationDao
 import rpt.tool.marimocare.utils.data.database.models.*
 import rpt.tool.marimocare.utils.data.database.models.decoration.PotDecorationModel
-
 
 @Database(
     entities = [
@@ -27,18 +27,14 @@ import rpt.tool.marimocare.utils.data.database.models.decoration.PotDecorationMo
         AutoMigration(from = 2, to = 3),
         AutoMigration(from = 3, to = 4),
         AutoMigration(from = 4, to = 5),
-        AutoMigration(from = 5, to = 6, spec = Migration5To6::class),
     ],
 )
-
 abstract class AppDatabase : RoomDatabase() {
     abstract fun marimoDao(): MarimoDao
     abstract fun potDecorationDao(): PotDecorationDao
 
     companion object {
-
-        // Singleton prevents multiple instances of database opening at the
-        // same time.
+        // Singleton prevents multiple instances of database opening at the same time.
         @Volatile
         private var instance: AppDatabase? = null
 
@@ -51,6 +47,8 @@ abstract class AppDatabase : RoomDatabase() {
             AppDatabase::class.java,
             databaseName,
         )
+            // Usa il nuovo oggetto isolato Migration5To6
+            .addMigrations(Migration5To6)
             .build()
     }
 }

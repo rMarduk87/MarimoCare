@@ -347,6 +347,9 @@ Please note: the final date retrieved will be the same as the app release date, 
     <string name="ach_48" translatable="false">🧙</string>
     <string name="ach_49" translatable="false">💯</string>
     <string name="ach_50" translatable="false">🎖️</string>
+    <string name="ach_51" translatable="false">🪨</string>
+    <string name="ach_52" translatable="false">🎨</string>
+    <string name="ach_53" translatable="false">🏺</string>
     <string name="locked_24">Locked (24)</string>
     <string name="ach_desc_1">Added your very first marimo to the collection.</string>
     <string name="ach_desc_2">You have 2 marimos — they have company now!</string>
@@ -398,6 +401,9 @@ Please note: the final date retrieved will be the same as the app release date, 
     <string name="ach_desc_48">Added notes to 5 of your marimos.</string>
     <string name="ach_desc_49">Earned 25 achievements. You\'re halfway to the full set!</string>
     <string name="ach_desc_50">Earned all 50 achievements. You are a true Marimo Master!</string>
+    <string name="ach_desc_51">Added your first decoration to a marimo\'s pot.</string>
+    <string name="ach_desc_52">Adorned 3 different marimo pots with decorations.</string>
+    <string name="ach_desc_53">Added 10 or more decorations across your collection.</string>
     <string name="ach_tit_1">First Marimo</string>
     <string name="ach_tit_2">Dynamic Duo</string>
     <string name="ach_tit_3">Trio</string>
@@ -448,6 +454,9 @@ Please note: the final date retrieved will be the same as the app release date, 
     <string name="ach_tit_48">Marimo Biographer</string>
     <string name="ach_tit_49">Halfway There</string>
     <string name="ach_tit_50">Achievement Hunter</string>
+    <string name="ach_tit_51">Interior Touch</string>
+    <string name="ach_tit_52">Decorator</string>
+    <string name="ach_tit_53">Interior Designer</string>
     <string name="ach_type_marimo">marimo</string>
     <string name="ach_type_marimos">marimos</string>
     <string name="ach_type_waterchange">water change</string>

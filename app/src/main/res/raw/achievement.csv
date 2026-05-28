@@ -49,3 +49,6 @@ id,code,title,description,category,image,color,earned,acquired_date,order
 48,marimo_notes,R.string.ach_tit_48,R.string.ach_desc_48,Notes,R.string.ach_48,#6366f1,False,,12
 49,halfway_there,R.string.ach_tit_49,R.string.ach_desc_49,Meta,R.string.ach_49,#ec4899,False,,13
 50,achievement_hunter,R.string.ach_tit_50,R.string.ach_desc_50,Meta,R.string.ach_50,#a855f7,False,,14
+51,first_decoration,R.string.ach_tit_51,R.string.ach_desc_51,Meta,R.string.ach_51,#009688,False,,14
+52,decorator,R.string.ach_tit_52,R.string.ach_desc_52,Meta,R.string.ach_52,#EF9A9A,False,,14
+53,interior_designer,R.string.ach_tit_53,R.string.ach_desc_53,Meta,R.string.ach_53,#F59E0B,False,,14

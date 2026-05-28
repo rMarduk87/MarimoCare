@@ -10,6 +10,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.graphics.PorterDuff
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -32,6 +33,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.core.graphics.drawable.toDrawable
+import androidx.core.graphics.toColorInt
 import androidx.core.net.toUri
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
@@ -44,22 +46,24 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import rpt.com.base.BaseFragment
+import rpt.com.base.navigation.safeNavController
+import rpt.com.base.navigation.safeNavigate
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentAddOrEditBinding
+import rpt.tool.marimocare.ui.feedback.FeedbackFragmentDirections
 import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.balloon.newMarimo.MarimoAddNewInfoBalloonFactory
 import rpt.tool.marimocare.utils.balloon.photo.MarimoPhotoInfoBalloonFactory
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.data.appmodels.decoration.PotDecoration
+import rpt.tool.marimocare.utils.managers.AchievementManager
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
-import rpt.com.base.navigation.safeNavController
-import rpt.com.base.navigation.safeNavigate
 import rpt.tool.marimocare.utils.view.HeaderButtonConfig
 import rpt.tool.marimocare.utils.view.HeaderHelper
-import rpt.tool.marimocare.utils.view.adapters.decoration.PotDecorationAdapter
 import rpt.tool.marimocare.utils.view.adapters.CustomSpinnerAdapter
 import rpt.tool.marimocare.utils.view.adapters.ImagePrintAdapter
+import rpt.tool.marimocare.utils.view.adapters.decoration.PotDecorationAdapter
 import rpt.tool.marimocare.utils.view.copyUriToInternalFile
 import rpt.tool.marimocare.utils.view.loadMarimoImage
 import java.io.File
@@ -98,11 +102,9 @@ class AddOrEditMarimoFragment :
         intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri)
         intent.addFlags(
             Intent.FLAG_GRANT_WRITE_URI_PERMISSION or
-                Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                    Intent.FLAG_GRANT_READ_URI_PERMISSION)
         startActivityForResult(intent, REQUEST_CAMERA)
     }
-
-
 
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("ClickableViewAccessibility", "SimpleDateFormat", "NotifyDataSetChanged")
@@ -110,13 +112,12 @@ class AddOrEditMarimoFragment :
         super.onViewCreated(view, savedInstanceState)
 
         frequencies = resources.getStringArray(R.array.marimo_frequencies).toList()
+        marimoCode = args.MarimoCode
 
         setupHeaderButtons()
         setupDecorationsRecyclerView()
         setupSpinner(frequencies)
         setupDatePicker()
-
-        marimoCode = args.MarimoCode
 
         if (marimoCode != 0) {
             viewLifecycleOwner.lifecycleScope.launch {
@@ -220,11 +221,25 @@ class AddOrEditMarimoFragment :
                     iconRes = R.drawable.ic_add,
                     colorRes = R.color.marimo_item_green,
                     backgroundRes = R.drawable.bg_button_light_green,
-                    enabled = true,
+                    enabled = marimoCode != 0,
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.add_marimo),
                     onClick = {
                         clearAll()
+                    }
+                ),
+                HeaderButtonConfig(
+                    button = binding.include1.btnAchievementAHeader,
+                    iconRes = R.drawable.ic_coccard,
+                    colorRes = R.color.marimo_add_icon,
+                    backgroundRes = R.drawable.bg_button_white,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.achievement),
+                    onClick = {
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                            AddOrEditMarimoFragmentDirections.
+                            actionAddOrEditFragmentToAchievementFragment()
+                        )
                     }
                 ),
                 HeaderButtonConfig(
@@ -267,7 +282,7 @@ class AddOrEditMarimoFragment :
         spinner.adapter = adapter
         spinner.setPopupBackgroundDrawable(
             ContextCompat.getDrawable(requireContext(),
-            R.drawable.spinner_dropdown_background))
+                R.drawable.spinner_dropdown_background))
 
         val rotateUp = AnimationUtils.loadAnimation(requireContext(),
             R.anim.rotate_up)
@@ -357,6 +372,7 @@ class AddOrEditMarimoFragment :
             return
         }
 
+        val context = requireContext()
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
             if(marimo != null) {
                 RepositoryManager.marimoRepository.updateMarimo(
@@ -365,6 +381,8 @@ class AddOrEditMarimoFragment :
                     lastWater, notes, freq,marimoPhotoPath, registrationDate
                 )
                 RepositoryManager.potDecorationRepository.saveDecorations(marimo.code, decorationList)
+
+                AchievementManager.recalculateAll(true, context = context)
 
                 withContext(Dispatchers.Main) {
                     Toast.makeText(
@@ -405,6 +423,8 @@ class AddOrEditMarimoFragment :
                         AppUtils.calculateHealth(it,
                             lastWater))
                 }
+
+                AchievementManager.recalculateAll(true, context = context)
 
                 withContext(Dispatchers.Main) {
                     Toast.makeText(
@@ -574,7 +594,7 @@ class AddOrEditMarimoFragment :
                     put(MediaStore.Images.Media.MIME_TYPE, mimeType)
                     put(
                         MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES +
-                            "/MarimoCare")
+                                "/MarimoCare")
                     put(MediaStore.Images.Media.IS_PENDING, 1)
                 }
 
