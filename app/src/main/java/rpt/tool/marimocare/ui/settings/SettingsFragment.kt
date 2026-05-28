@@ -5,19 +5,19 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import rpt.tool.marimocare.BaseFragment
+import rpt.com.base.BaseFragment
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentSettingsBinding
 import rpt.tool.marimocare.ui.marimo.addoredit.AddOrEditMarimoFragmentDirections
 import rpt.tool.marimocare.ui.stats.StatsFragmentDirections
 import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
-import rpt.tool.marimocare.utils.navigation.safeNavController
-import rpt.tool.marimocare.utils.navigation.safeNavigate
+import rpt.com.base.navigation.safeNavController
+import rpt.com.base.navigation.safeNavigate
 import rpt.tool.marimocare.utils.view.HeaderButtonConfig
 import rpt.tool.marimocare.utils.view.HeaderHelper
 
 class SettingsFragment :
-    BaseFragment<FragmentSettingsBinding>(FragmentSettingsBinding::inflate) {
+    BaseFragment<FragmentSettingsBinding>(FragmentSettingsBinding::inflate, true) {
 
     private var coloredOptionSelected = false
     private var tipsAutoScrollSped = 15
@@ -61,7 +61,7 @@ class SettingsFragment :
         setupSaveCancelListeners()
 
         binding.include1.appLogo.setOnClickListener {
-            safeNavController?.safeNavigate(
+            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                 SettingsFragmentDirections.actionSettingsFragmentToDashboardFragment()
             )
         }
@@ -79,7 +79,7 @@ class SettingsFragment :
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.dashboard),
                     onClick = {
-                        safeNavController?.safeNavigate(
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                             SettingsFragmentDirections.actionSettingsFragmentToDashboardFragment()
                         )
                     }
@@ -92,7 +92,7 @@ class SettingsFragment :
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.add_marimo),
                     onClick = {
-                        safeNavController?.safeNavigate(
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                             SettingsFragmentDirections
                                 .actionSettingsFragmentToAddOrEditFragment()
                         )
@@ -115,7 +115,7 @@ class SettingsFragment :
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.stats),
                     onClick = {
-                        safeNavController?.safeNavigate(
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                             SettingsFragmentDirections
                                 .actionSettingsFragmentToStatsFragment())
                     }

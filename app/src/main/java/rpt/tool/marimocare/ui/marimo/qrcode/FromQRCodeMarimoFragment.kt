@@ -14,7 +14,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import rpt.tool.marimocare.BaseFragment
+import rpt.com.base.BaseFragment
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentFromQrCodeBinding
 import rpt.tool.marimocare.utils.AlertDataUtils
@@ -22,13 +22,13 @@ import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.data.enums.MarimoStatus
 import rpt.tool.marimocare.utils.managers.RepositoryManager
-import rpt.tool.marimocare.utils.navigation.safeNavController
-import rpt.tool.marimocare.utils.navigation.safeNavigate
+import rpt.com.base.navigation.safeNavController
+import rpt.com.base.navigation.safeNavigate
 import rpt.tool.marimocare.utils.view.HeaderButtonConfig
 import rpt.tool.marimocare.utils.view.HeaderHelper
 
 class FromQRCodeMarimoFragment :
-    BaseFragment<FragmentFromQrCodeBinding>(FragmentFromQrCodeBinding::inflate) {
+    BaseFragment<FragmentFromQrCodeBinding>(FragmentFromQrCodeBinding::inflate, true) {
 
     private var marimo: Marimo? = null
     private var code: String? = null
@@ -61,7 +61,7 @@ class FromQRCodeMarimoFragment :
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.dashboard),
                     onClick = {
-                        safeNavController?.safeNavigate(
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                             FromQRCodeMarimoFragmentDirections.Companion.actionFromQRCodeMarimoFragmentToDashboardFragment()
                         )
                     }
@@ -74,7 +74,7 @@ class FromQRCodeMarimoFragment :
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.add_marimo),
                     onClick = {
-                        safeNavController?.safeNavigate(
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                             FromQRCodeMarimoFragmentDirections.Companion
                                 .actionFromQRCodeMarimoFragmentToAddOrEditFragment()
                         )
@@ -88,7 +88,7 @@ class FromQRCodeMarimoFragment :
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.settings),
                     onClick = {
-                        safeNavController?.safeNavigate(
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                             FromQRCodeMarimoFragmentDirections.Companion
                                 .actionFromQRCodeMarimoFragmentToSettingsFragment()
                         )
@@ -102,7 +102,7 @@ class FromQRCodeMarimoFragment :
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.stats),
                     onClick = {
-                        safeNavController?.safeNavigate(
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                             FromQRCodeMarimoFragmentDirections.Companion
                                 .actionFromQRCodeMarimoFragmentToStatsFragment()
                         )
@@ -207,7 +207,7 @@ class FromQRCodeMarimoFragment :
 
 
     private fun editMarimo(marimo: Marimo?) {
-        safeNavController?.safeNavigate(
+        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
             FromQRCodeMarimoFragmentDirections.Companion
                 .actionFromQRCodeMarimoFragmentToAddOrEditFragment(marimo!!.code)
         )

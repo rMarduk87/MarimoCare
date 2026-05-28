@@ -4,7 +4,6 @@ import android.app.Application
 import android.content.Context
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.work.Constraints
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.NetworkType
@@ -16,8 +15,6 @@ import rpt.tool.marimocare.utils.notification.NotificationHelper
 import rpt.tool.marimocare.utils.notification.NotifyWorker
 import rpt.tool.marimocare.utils.workers.MidnightHealthWorker
 import timber.log.Timber
-import java.time.Duration
-import java.time.LocalTime
 import java.util.concurrent.TimeUnit
 
 class MarimoCareApplication : Application() {

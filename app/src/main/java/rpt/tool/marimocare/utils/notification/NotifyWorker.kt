@@ -8,7 +8,7 @@ import androidx.work.WorkerParameters
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.utils.AlertDataUtils
 import rpt.tool.marimocare.utils.AppUtils
-import rpt.tool.marimocare.utils.log.d
+import rpt.com.base.log.d
 import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 import java.time.LocalTime
 

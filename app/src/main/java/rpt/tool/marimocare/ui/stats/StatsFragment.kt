@@ -46,7 +46,7 @@ import com.skydoves.balloon.balloon
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import rpt.tool.marimocare.BaseFragment
+import rpt.com.base.BaseFragment
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentStatsBinding
 import rpt.tool.marimocare.databinding.StatsMarimoBinding
@@ -59,8 +59,8 @@ import rpt.tool.marimocare.utils.data.appmodels.MarimoChange
 import rpt.tool.marimocare.utils.data.appmodels.MarimoDetailUi
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
-import rpt.tool.marimocare.utils.navigation.safeNavController
-import rpt.tool.marimocare.utils.navigation.safeNavigate
+import rpt.com.base.navigation.safeNavController
+import rpt.com.base.navigation.safeNavigate
 import rpt.tool.marimocare.utils.view.HeaderButtonConfig
 import rpt.tool.marimocare.utils.view.HeaderHelper
 import rpt.tool.marimocare.utils.view.StatsCardConfig
@@ -74,7 +74,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.getValue
 
-class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::inflate) {
+class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::inflate,true) {
 
     private lateinit var adapter: HealthMarimoAdapter
     private lateinit var chipAdapter: MarimoChipAdapter
@@ -97,7 +97,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
         setUpCompareStats()
 
         binding.include1.appLogo.setOnClickListener {
-            safeNavController?.safeNavigate(
+            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                 StatsFragmentDirections
                     .actionStatsFragmentToDashboardFragment())
         }
@@ -159,7 +159,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
                     backgroundRes = R.drawable.bg_button_white,
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.dashboard),
-                    onClick = { safeNavController?.safeNavigate(
+                    onClick = { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                         StatsFragmentDirections
                             .actionStatsFragmentToDashboardFragment()) }
                 ),
@@ -170,7 +170,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
                     backgroundRes = R.drawable.bg_button_white,
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.add_marimo),
-                    onClick = { safeNavController?.safeNavigate(
+                    onClick = { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                         StatsFragmentDirections
                             .actionStatsFragmentToAddOrEditFragment()) }
                 ),
@@ -181,7 +181,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
                     backgroundRes = R.drawable.bg_button_white,
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.settings),
-                    onClick = { safeNavController?.safeNavigate(
+                    onClick = { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                         StatsFragmentDirections
                             .actionStatsFragmentToSettingsFragment()) }
                 ),
@@ -200,11 +200,11 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
 
     private fun setupNavigation() {
         binding.include1.apply {
-            btnDashboardHeader.setOnClickListener { safeNavController?.safeNavigate(
+            btnDashboardHeader.setOnClickListener { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                 StatsFragmentDirections.actionStatsFragmentToDashboardFragment()) }
-            btnAddMarimoHeader.setOnClickListener { safeNavController?.safeNavigate(
+            btnAddMarimoHeader.setOnClickListener { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                 StatsFragmentDirections.actionStatsFragmentToAddOrEditFragment()) }
-            btnOpenSettings.setOnClickListener { safeNavController?.safeNavigate(
+            btnOpenSettings.setOnClickListener { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                 StatsFragmentDirections.actionStatsFragmentToSettingsFragment()) }
         }
     }

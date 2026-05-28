@@ -45,7 +45,7 @@ import com.skydoves.balloon.balloon
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import rpt.tool.marimocare.BaseFragment
+import rpt.com.base.BaseFragment
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentAddOrEditBinding
 import rpt.tool.marimocare.utils.AppUtils
@@ -55,8 +55,8 @@ import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.data.appmodels.decoration.PotDecoration
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
-import rpt.tool.marimocare.utils.navigation.safeNavController
-import rpt.tool.marimocare.utils.navigation.safeNavigate
+import rpt.com.base.navigation.safeNavController
+import rpt.com.base.navigation.safeNavigate
 import rpt.tool.marimocare.utils.view.HeaderButtonConfig
 import rpt.tool.marimocare.utils.view.HeaderHelper
 import rpt.tool.marimocare.utils.view.adapters.decoration.PotDecorationAdapter
@@ -71,7 +71,7 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 
 class AddOrEditMarimoFragment :
-    BaseFragment<FragmentAddOrEditBinding>(FragmentAddOrEditBinding::inflate) {
+    BaseFragment<FragmentAddOrEditBinding>(FragmentAddOrEditBinding::inflate, true) {
 
     private var photoFile: File? = null
     private lateinit var frequencies: List<String>
@@ -163,7 +163,7 @@ class AddOrEditMarimoFragment :
         }
 
         binding.include1.appLogo.setOnClickListener {
-            safeNavController?.safeNavigate(
+            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                 AddOrEditMarimoFragmentDirections.Companion
                     .actionAddOrEditFragmentToDashboardFragment()
             )
@@ -211,7 +211,7 @@ class AddOrEditMarimoFragment :
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.dashboard),
                     onClick = {
-                        safeNavController?.safeNavigate(
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                             AddOrEditMarimoFragmentDirections.Companion
                                 .actionAddOrEditFragmentToDashboardFragment()
                         )
@@ -237,7 +237,7 @@ class AddOrEditMarimoFragment :
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.settings),
                     onClick = {
-                        safeNavController?.safeNavigate(
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                             AddOrEditMarimoFragmentDirections.Companion
                                 .actionAddOrEditFragmentToSettingsFragment()
                         )
@@ -251,7 +251,7 @@ class AddOrEditMarimoFragment :
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.stats),
                     onClick = {
-                        safeNavController?.safeNavigate(
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                             AddOrEditMarimoFragmentDirections.Companion
                                 .actionAddOrEditFragmentToStatsFragment()
                         )

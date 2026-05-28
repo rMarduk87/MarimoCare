@@ -37,7 +37,7 @@ import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import rpt.tool.marimocare.BaseFragment
+import rpt.com.base.BaseFragment
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentMarimoDetailsBinding
 import rpt.tool.marimocare.ui.marimo.addoredit.AddOrEditMarimoFragmentDirections
@@ -47,8 +47,8 @@ import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.data.appmodels.MarimoChange
 import rpt.tool.marimocare.utils.data.appmodels.MarimoHealthScore
 import rpt.tool.marimocare.utils.managers.RepositoryManager
-import rpt.tool.marimocare.utils.navigation.safeNavController
-import rpt.tool.marimocare.utils.navigation.safeNavigate
+import rpt.com.base.navigation.safeNavController
+import rpt.com.base.navigation.safeNavigate
 import rpt.tool.marimocare.utils.view.HeaderButtonConfig
 import rpt.tool.marimocare.utils.view.HeaderHelper
 import rpt.tool.marimocare.utils.view.adapters.CareTimeLineAdapter
@@ -65,7 +65,7 @@ import java.util.Locale
 import kotlin.getValue
 
 class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
-    FragmentMarimoDetailsBinding::inflate) {
+    FragmentMarimoDetailsBinding::inflate, true) {
 
     private var marimoCode: Int = 0
     private val args: MarimoDetailsFragmentArgs by navArgs()
@@ -87,7 +87,7 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
         addDataToMarimo(marimoCode)
 
         binding.include.appLogo.setOnClickListener {
-            safeNavController?.safeNavigate(
+            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                 MarimoDetailsFragmentDirections
                     .actionMarimoDetailFragmentToDashboardFragment()
             )
@@ -106,7 +106,7 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.dashboard),
                     onClick = {
-                        safeNavController?.safeNavigate(
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                             MarimoDetailsFragmentDirections
                                 .actionMarimoDetailFragmentToDashboardFragment()
                         )
@@ -121,7 +121,7 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.add_marimo),
                     onClick = {
-                        safeNavController?.safeNavigate(
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                             MarimoDetailsFragmentDirections
                                 .actionMarimoDetailFragmentToAddOrEditFragment()
                         )
@@ -135,7 +135,7 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.settings),
                     onClick = {
-                        safeNavController?.safeNavigate(
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                             MarimoDetailsFragmentDirections
                                 .actionMarimoDetailFragmentToSettingsFragment()
                         )
@@ -149,7 +149,7 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.stats),
                     onClick = {
-                        safeNavController?.safeNavigate(
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                             MarimoDetailsFragmentDirections
                                 .actionMarimoDetailFragmentToStatsFragment()
                         )
