@@ -67,7 +67,7 @@ class AchievementAdapter(
             val iconBackground = tvIcon.background as? GradientDrawable
             val strokeWidth = (2 * context.resources.displayMetrics.density).toInt()
 
-            if (achievement.earned) {
+            if (achievement.earned == 1) {
                 itemView.alpha = 1.0f
 
                 val baseColor = try {

@@ -12,7 +12,7 @@ data class AchievementComplex(
     val backgroundColor: String,
     val category: String,
     val sortOrder: Int,
-    val earned: Boolean,
+    val earned: Int,
     val date: String?,
     val detail: AchievementDetail
 )

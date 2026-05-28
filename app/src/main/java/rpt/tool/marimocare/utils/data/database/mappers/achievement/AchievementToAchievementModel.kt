@@ -17,7 +17,7 @@ class AchievementToAchievementModel : ModelMapper<Achievement, AchievementModel>
             backgroundColor = source.backgroundColor,
             category = source.category,
             sortOrder = source.sortOrder,
-            earned = source.earned,
+            earned = if (source.earned) 1 else 0,
             date = source.date
         )
     }

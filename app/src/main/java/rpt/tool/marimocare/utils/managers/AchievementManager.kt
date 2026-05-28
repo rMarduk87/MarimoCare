@@ -94,10 +94,10 @@ class AchievementManager {
                 }
             }
 
-            val totalEarnedCount = achievements.count { it.earned }
+            val totalEarnedCount = achievements.count { it.earned==1 }
 
             achievements.forEach { achievement ->
-                if (achievement.earned) return@forEach
+                if (achievement.earned == 1) return@forEach
 
                 val current: Int? = when (achievement.code) {
 

@@ -29,8 +29,8 @@ class AchievementModel(
     val category: String,
     @ColumnInfo(name = "order")
     val sortOrder: Int,
-    @ColumnInfo(name = "earned", defaultValue = "false")
-    val earned: Boolean,
+    @ColumnInfo(name = "earned", defaultValue = "0")
+    val earned: Int,
     @ColumnInfo(name = "acquired_date")
     val date: String?,
 ) : DbModel() {
