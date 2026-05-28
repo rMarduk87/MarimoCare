@@ -3,7 +3,7 @@
     <!-- Sfondo giorno selezionato -->
     <item android:state_selected="true">
         <shape android:shape="oval">
-            <solid android:color="#000000" />
+            <solid android:color="@color/black" />
         </shape>
     </item>
 

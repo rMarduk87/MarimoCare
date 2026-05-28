@@ -302,4 +302,68 @@ Please note: the final date retrieved will be the same as the app release date, 
         <item>Send QR</item>
         <item>Save QR</item>
     </string-array>
+    <string name="notification_settings">Notification Settings</string>
+    <string name="choose_which_notifications_you_want_to_receive">Choose which notifications you want to receive</string>
+    <string name="due_soon_alert">Due soon alert</string>
+    <string name="overdue_marimo_alert">Overdue Marimo alert</string>
+    <string name="today_marimo_alert">Today change water alert</string>
+    <string name="new_settings_balloon_text">New notification settings have been added! You can now choose which alerts to receive.</string>
+
+    <!-- Pot Decorations -->
+    <string name="pot_decorations_optional">Pot Decorations (Optional)</string>
+    <string name="no_decorations_yet">No decorations added yet.</string>
+    <string name="add_decoration">+ Add Decoration</string>
+    <string name="decoration_n">Decoration %1$d</string>
+    <string name="name">Name</string>
+    <string name="type">Type</string>
+    <string name="colour">Colour</string>
+    <string name="dimensions">Dimensions</string>
+    <string name="material">Material</string>
+    <string name="e_g_blue_pebble">e.g. Blue pebble</string>
+    <string name="select_type">Select type…</string>
+    <string name="e_g_cobalt_blue">e.g. Cobalt blue</string>
+    <string name="e_g_2cm_x_1cm">e.g. 2cm x 1cm</string>
+    <string name="e_g_natural_quartz">e.g. Natural quartz</string>
+    <string name="any_extra_details">Any extra details…</string>
+
+    <string-array name="decoration_types">
+        <item>Select type…</item>
+        <item>Pebble</item>
+        <item>Rock</item>
+        <item>Stone</item>
+        <item>Sand</item>
+        <item>Gravel</item>
+        <item>Shell</item>
+        <item>Driftwood</item>
+        <item>Crystal</item>
+        <item>Glass gem</item>
+        <item>Marble</item>
+        <item>Figurine</item>
+        <item>Aquatic plant</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="decoration_colors">
+        <item>#F44336</item>
+        <item>#E91E63</item>
+        <item>#9C27B0</item>
+        <item>#673AB7</item>
+        <item>#3F51B5</item>
+        <item>#2196F3</item>
+        <item>#03A9F4</item>
+        <item>#00BCD4</item>
+        <item>#009688</item>
+        <item>#4CAF50</item>
+        <item>#8BC34A</item>
+        <item>#CDDC39</item>
+        <item>#FFEB3B</item>
+        <item>#FFC107</item>
+        <item>#FF9800</item>
+        <item>#FF5722</item>
+        <item>#795548</item>
+        <item>#9E9E9E</item>
+        <item>#607D8B</item>
+        <item>#000000</item>
+        <item>#FFFFFF</item>
+    </string-array>
 </resources>
