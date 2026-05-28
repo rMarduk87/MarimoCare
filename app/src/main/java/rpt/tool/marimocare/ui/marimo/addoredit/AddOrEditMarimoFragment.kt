@@ -10,7 +10,6 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
-import android.graphics.PorterDuff
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -33,10 +32,10 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.core.graphics.drawable.toDrawable
-import androidx.core.graphics.toColorInt
 import androidx.core.net.toUri
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.github.chrisbanes.photoview.PhotoView
 import com.skydoves.balloon.BalloonAlign
@@ -44,21 +43,21 @@ import com.skydoves.balloon.balloon
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import rpt.tool.marimocare.BaseFragment
+import rpt.com.base.BaseFragment
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentAddOrEditBinding
-import rpt.tool.marimocare.ui.feedback.FeedbackFragmentDirections
 import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.balloon.newMarimo.MarimoAddNewInfoBalloonFactory
 import rpt.tool.marimocare.utils.balloon.photo.MarimoPhotoInfoBalloonFactory
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
-import rpt.tool.marimocare.utils.managers.AchievementManager
+import rpt.tool.marimocare.utils.data.appmodels.decoration.PotDecoration
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
-import rpt.tool.marimocare.utils.navigation.safeNavController
-import rpt.tool.marimocare.utils.navigation.safeNavigate
+import rpt.com.base.navigation.safeNavController
+import rpt.com.base.navigation.safeNavigate
 import rpt.tool.marimocare.utils.view.HeaderButtonConfig
 import rpt.tool.marimocare.utils.view.HeaderHelper
+import rpt.tool.marimocare.utils.view.adapters.decoration.PotDecorationAdapter
 import rpt.tool.marimocare.utils.view.adapters.CustomSpinnerAdapter
 import rpt.tool.marimocare.utils.view.adapters.ImagePrintAdapter
 import rpt.tool.marimocare.utils.view.copyUriToInternalFile
@@ -70,7 +69,7 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 
 class AddOrEditMarimoFragment :
-    BaseFragment<FragmentAddOrEditBinding>(FragmentAddOrEditBinding::inflate) {
+    BaseFragment<FragmentAddOrEditBinding>(FragmentAddOrEditBinding::inflate, true) {
 
     private var photoFile: File? = null
     private lateinit var frequencies: List<String>
@@ -83,6 +82,8 @@ class AddOrEditMarimoFragment :
     private val marimoAddNewBalloon by balloon<MarimoAddNewInfoBalloonFactory>()
     private var photoUri: Uri? = null
     private var marimoPhotoPath: String? = null
+    private var decorationList = mutableListOf<PotDecoration>()
+    private lateinit var decorationAdapter: PotDecorationAdapter
     private val REQUEST_CAMERA = 1001
     private val REQUEST_GALLERY = 1002
 
@@ -104,16 +105,30 @@ class AddOrEditMarimoFragment :
 
 
     @RequiresApi(Build.VERSION_CODES.O)
-    @SuppressLint("ClickableViewAccessibility", "SimpleDateFormat")
+    @SuppressLint("ClickableViewAccessibility", "SimpleDateFormat", "NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        marimoCode = args.MarimoCode
         frequencies = resources.getStringArray(R.array.marimo_frequencies).toList()
 
         setupHeaderButtons()
+        setupDecorationsRecyclerView()
         setupSpinner(frequencies)
         setupDatePicker()
+
+        marimoCode = args.MarimoCode
+
+        if (marimoCode != 0) {
+            viewLifecycleOwner.lifecycleScope.launch {
+                val decorations = withContext(Dispatchers.IO) {
+                    RepositoryManager.potDecorationRepository.getDecorationsForMarimo(marimoCode)
+                }
+                decorationList.clear()
+                decorationList.addAll(decorations)
+                decorationAdapter.notifyDataSetChanged()
+                updateDecorationsVisibility()
+            }
+        }
 
         qrCodeBtnEnabled = marimoCode != 0
 
@@ -146,11 +161,40 @@ class AddOrEditMarimoFragment :
         }
 
         binding.include1.appLogo.setOnClickListener {
-            safeNavController?.safeNavigate(
+            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                 AddOrEditMarimoFragmentDirections.Companion
                     .actionAddOrEditFragmentToDashboardFragment()
             )
         }
+    }
+
+    private fun setupDecorationsRecyclerView() {
+        decorationAdapter = PotDecorationAdapter(requireContext(),
+            decorationList) { position ->
+            decorationList.removeAt(position)
+            decorationAdapter.notifyItemRemoved(position)
+            decorationAdapter.notifyItemRangeChanged(position,
+                decorationList.size)
+            updateDecorationsVisibility()
+        }
+
+        binding.recyclerDecorations.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = decorationAdapter
+        }
+
+        binding.btnAddDecoration.setOnClickListener {
+            decorationList.add(PotDecoration())
+            decorationAdapter.notifyItemInserted(decorationList.size - 1)
+            updateDecorationsVisibility()
+        }
+
+        updateDecorationsVisibility()
+    }
+
+    private fun updateDecorationsVisibility() {
+        binding.noDecorationsLabel.visibility = if (decorationList.isEmpty())
+            View.VISIBLE else View.GONE
     }
 
     private fun setupHeaderButtons() {
@@ -165,7 +209,7 @@ class AddOrEditMarimoFragment :
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.dashboard),
                     onClick = {
-                        safeNavController?.safeNavigate(
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                             AddOrEditMarimoFragmentDirections.Companion
                                 .actionAddOrEditFragmentToDashboardFragment()
                         )
@@ -176,24 +220,12 @@ class AddOrEditMarimoFragment :
                     iconRes = R.drawable.ic_add,
                     colorRes = R.color.marimo_item_green,
                     backgroundRes = R.drawable.bg_button_light_green,
-                    enabled = marimoCode != 0,
+                    enabled = true,
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.add_marimo),
                     onClick = {
                         clearAll()
                     }
-                ),
-                HeaderButtonConfig(
-                    button = binding.include1.btnAchievementAHeader,
-                    iconRes = R.drawable.ic_coccard,
-                    colorRes = R.color.marimo_add_icon,
-                    backgroundRes = R.drawable.bg_button_white,
-                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
-                    text = requireContext().getString(R.string.achievement),
-                    onClick = { safeNavController?.safeNavigate(
-                        AddOrEditMarimoFragmentDirections.
-                        actionAddOrEditFragmentToAchievementFragment()
-                    ) }
                 ),
                 HeaderButtonConfig(
                     button = binding.include1.btnOpenSettings,
@@ -203,7 +235,7 @@ class AddOrEditMarimoFragment :
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.settings),
                     onClick = {
-                        safeNavController?.safeNavigate(
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                             AddOrEditMarimoFragmentDirections.Companion
                                 .actionAddOrEditFragmentToSettingsFragment()
                         )
@@ -217,7 +249,7 @@ class AddOrEditMarimoFragment :
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.stats),
                     onClick = {
-                        safeNavController?.safeNavigate(
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                             AddOrEditMarimoFragmentDirections.Companion
                                 .actionAddOrEditFragmentToStatsFragment()
                         )
@@ -325,7 +357,6 @@ class AddOrEditMarimoFragment :
             return
         }
 
-        val context = requireContext()
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
             if(marimo != null) {
                 RepositoryManager.marimoRepository.updateMarimo(
@@ -333,8 +364,7 @@ class AddOrEditMarimoFragment :
                     name,
                     lastWater, notes, freq,marimoPhotoPath, registrationDate
                 )
-
-                AchievementManager.recalculateAll(true, context = context)
+                RepositoryManager.potDecorationRepository.saveDecorations(marimo.code, decorationList)
 
                 withContext(Dispatchers.Main) {
                     Toast.makeText(
@@ -361,6 +391,8 @@ class AddOrEditMarimoFragment :
                 val id = RepositoryManager.marimoRepository.addMarimo(name,
                     lastWater, notes, freq,marimoPhotoPath, registrationDate)
 
+                RepositoryManager.potDecorationRepository.saveDecorations(id, decorationList)
+
                 RepositoryManager.marimoRepository.addWaterChanges(id, lastWater,
                     null,null)
 
@@ -373,8 +405,6 @@ class AddOrEditMarimoFragment :
                         AppUtils.calculateHealth(it,
                             lastWater))
                 }
-
-                AchievementManager.recalculateAll(true, context = context)
 
                 withContext(Dispatchers.Main) {
                     Toast.makeText(
@@ -392,6 +422,7 @@ class AddOrEditMarimoFragment :
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun clearAll() {
         binding.inputName.text.clear()
         binding.inputDate.text.clear()
@@ -400,6 +431,9 @@ class AddOrEditMarimoFragment :
         binding.marimoSpinnerLayout.customSpinner.setSelection(0)
         binding.marimoPicture.loadMarimoImage(null)
         marimoPhotoPath = ""
+        decorationList.clear()
+        decorationAdapter.notifyDataSetChanged()
+        updateDecorationsVisibility()
         binding.title.text = getString(R.string.add_new_marimo)
         binding.subtitle.text = getString(R.string.add_a_new_marimo_friend_to_track)
     }
@@ -427,7 +461,8 @@ class AddOrEditMarimoFragment :
                     }
 
                     setupActionButtons(marimo)
-                    binding.marimoPicture.loadMarimoImage(marimo?.photo?.let { File(it) })
+                    binding.marimoPicture.loadMarimoImage(marimo?.photo?.let
+                    { File(it) })
 
                     binding.title.text = buildString {
                         append(getString(R.string.edit_marimo))
@@ -504,7 +539,8 @@ class AddOrEditMarimoFragment :
     }
 
     private fun printQr(qrCode: Bitmap) {
-        val printManager = requireContext().getSystemService(Context.PRINT_SERVICE) as PrintManager
+        val printManager = requireContext().getSystemService(Context.PRINT_SERVICE) as
+                PrintManager
         val jobName = "${getString(R.string.app_name)} QR"
 
         val printAdapter = ImagePrintAdapter(requireContext(), qrCode)
@@ -586,7 +622,8 @@ class AddOrEditMarimoFragment :
 
     private fun showPhotoPreview(file: File) {
         val dialog = Dialog(
-            requireContext(), android.R.style.Theme_Black_NoTitleBar_Fullscreen
+            requireContext(), android.R.style
+                .Theme_Black_NoTitleBar_Fullscreen
         )
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(R.layout.dialog_marimo_photo_preview)

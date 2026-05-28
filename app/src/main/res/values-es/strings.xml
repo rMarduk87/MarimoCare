@@ -589,7 +589,6 @@
         <item>Planta acuática</item>
         <item>Otro</item>
     </string-array>
-</resources>
     <string name="achievement_earned">¡Logro obtenido!</string>
     <string name="great">¡Genial!</string>
     <string name="_100">100%</string>

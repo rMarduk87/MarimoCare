@@ -135,7 +135,7 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
                     backgroundRes = R.drawable.bg_button_white,
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.achievement),
-                    onClick = { safeNavController?.safeNavigate(
+                    onClick = { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                         MarimoDetailsFragmentDirections.
                         actionMarimoDetailFragmentToAchievementFragment()
                     ) }

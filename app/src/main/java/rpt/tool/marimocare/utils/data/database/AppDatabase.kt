@@ -15,9 +15,7 @@ import rpt.tool.marimocare.utils.data.database.models.decoration.PotDecorationMo
         MarimoChangeModel::class,
         MarimoQRModel::class,
         MarimoHealthScoreModel::class,
-        PotDecorationModel::class
-    ],
-    version = 5,
+        PotDecorationModel::class,
         AchievementModel::class,
         AchievementDetailModel::class,
     ],

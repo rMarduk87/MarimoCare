@@ -71,6 +71,7 @@ import rpt.tool.marimocare.utils.view.HeaderHelper
 import rpt.tool.marimocare.utils.view.adapters.MarimoToFixAdapter
 import rpt.tool.marimocare.utils.view.adapters.MarimoUpdateAdapter
 import rpt.tool.marimocare.utils.view.copyUriToInternalFile
+import rpt.tool.marimocare.utils.view.enable
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.DeleteMarimoEventHook
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.ShowMarimoDetailsEventHook
 import java.io.File
@@ -95,8 +96,6 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     private var isBalloonShowing = false
     private val achievementBalloon by balloon<AchievementBalloonFactory>()
     private val achievementUnlockedBalloon by balloon<AchievementUnlockedBalloonFactory>()
-    private var imagePath: String? = null
-    private var tempImageUri: Uri? = null
     private var isAchievementDialogOpen = false
     private var isFeedbackShowing = false
 
@@ -404,7 +403,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.achievement),
                     onClick = {
-                        safeNavController?.safeNavigate(
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                             DashboardFragmentDirections
                                 .actionDashboardFragmentToAchievementFragment()
                         )
@@ -418,7 +417,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.settings),
                     onClick = {
-                        safeNavController?.safeNavigate(
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                             DashboardFragmentDirections
                                 .actionDashboardFragmentToSettingsFragment()
                         )
@@ -432,7 +431,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.stats),
                     onClick = {
-                        safeNavController?.safeNavigate(
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                             DashboardFragmentDirections
                                 .actionDashboardFragmentToStatsFragment()
                         )
@@ -1074,7 +1073,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             }
             dialog.dismiss()
             achievementUnlockedBalloon.setOnBalloonClickListener {
-                safeNavController?.safeNavigate(
+                safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                     DashboardFragmentDirections
                         .actionDashboardFragmentToAchievementFragment()
                 )

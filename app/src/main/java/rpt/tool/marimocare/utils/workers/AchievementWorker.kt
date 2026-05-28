@@ -5,7 +5,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.work.Worker
 import androidx.work.WorkerParameters
-import rpt.tool.marimocare.utils.log.d
+import rpt.com.base.log.d
 import rpt.tool.marimocare.utils.managers.AchievementManager
 
 class AchievementWorker(appContext: Context, params: WorkerParameters) :

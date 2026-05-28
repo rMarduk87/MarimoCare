@@ -23,7 +23,9 @@ import kotlinx.coroutines.launch
 import rpt.tool.marimocare.utils.managers.AchievementManager
 
 class FeedbackFragment :
-    BaseFragment<FragmentFeedbackBinding>(FragmentFeedbackBinding::inflate, true) {
+    BaseFragment<FragmentFeedbackBinding>({ inflater, parent, attach ->
+        FragmentFeedbackBinding.inflate(inflater, parent, attach)
+    }, true) {
 
     private val selectedTopics = mutableSetOf<String>()
 
@@ -166,7 +168,7 @@ class FeedbackFragment :
                     backgroundRes = R.drawable.bg_button_white,
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.achievement),
-                    onClick = { safeNavController?.safeNavigate(
+                    onClick = { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                         FeedbackFragmentDirections
                             .actionFeedbackFragmentToAchievementFragment()
                     ) }

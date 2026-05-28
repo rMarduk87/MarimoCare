@@ -9,19 +9,21 @@ import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import rpt.tool.marimocare.BaseFragment
+import rpt.com.base.BaseFragment
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentAchievementBinding
 import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.managers.AchievementManager
-import rpt.tool.marimocare.utils.navigation.safeNavController
-import rpt.tool.marimocare.utils.navigation.safeNavigate
+import rpt.com.base.navigation.safeNavController
+import rpt.com.base.navigation.safeNavigate
 import rpt.tool.marimocare.utils.view.HeaderButtonConfig
 import rpt.tool.marimocare.utils.view.HeaderHelper
 import rpt.tool.marimocare.utils.view.adapters.AchievementAdapter
 
 class AchievementFragment :
-    BaseFragment<FragmentAchievementBinding>(FragmentAchievementBinding::inflate),
+    BaseFragment<FragmentAchievementBinding>({ inflater, parent, attach ->
+        FragmentAchievementBinding.inflate(inflater, parent, attach)
+    }, true),
     AchievementManager.AchievementListener {
 
     private val viewModel: AchievementViewModel by
@@ -36,7 +38,7 @@ class AchievementFragment :
         setupHeaderButtons()
 
         binding.include1.appLogo.setOnClickListener {
-            safeNavController?.safeNavigate(
+            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                 AchievementFragmentDirections
                     .actionAchievementFragmentToDashboardFragment()
             )
@@ -85,7 +87,7 @@ class AchievementFragment :
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.dashboard),
                     onClick = {
-                        safeNavController?.safeNavigate(
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                             AchievementFragmentDirections
                                 .actionAchievementFragmentToDashboardFragment()
                         )
@@ -99,7 +101,7 @@ class AchievementFragment :
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.add_marimo),
                     onClick = {
-                        safeNavController?.safeNavigate(
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                             AchievementFragmentDirections
                                 .actionAchievementFragmentToAddOrEditFragment()
                         )
@@ -122,7 +124,7 @@ class AchievementFragment :
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.settings),
                     onClick = {
-                        safeNavController?.safeNavigate(
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                             AchievementFragmentDirections
                                 .actionAchievementFragmentToSettingsFragment()
                         )
@@ -136,7 +138,7 @@ class AchievementFragment :
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.stats),
                     onClick = {
-                        safeNavController?.safeNavigate(
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                             AchievementFragmentDirections
                                 .actionAchievementFragmentToStatsFragment()
                         )
