@@ -551,6 +551,47 @@
         <item>Invia QR</item>
         <item>Salva QR</item>
     </string-array>
+    <string name="notification_settings">Impostazioni notifiche</string>
+    <string name="choose_which_notifications_you_want_to_receive">Scegli quali notifiche desideri ricevere</string>
+    <string name="due_soon_alert">Avviso in scadenza</string>
+    <string name="overdue_marimo_alert">Avviso ritardo</string>
+    <string name="today_marimo_alert">Avviso cambio oggi</string>
+    <string name="new_settings_balloon_text">Sono state aggiunte nuove impostazioni per le notifiche! Ora puoi scegliere quali avvisi ricevere.</string>
+
+    <!-- Pot Decorations -->
+    <string name="pot_decorations_optional">Decorazioni vaso (facoltative)</string>
+    <string name="no_decorations_yet">Nessuna decorazione ancora aggiunta.</string>
+    <string name="add_decoration">+ Aggiungi decorazione</string>
+    <string name="decoration_n">Decorazione %1$d</string>
+    <string name="name">Nome</string>
+    <string name="type">Tipo</string>
+    <string name="colour">Colore</string>
+    <string name="dimensions">Dimensioni</string>
+    <string name="material">Materiale</string>
+    <string name="e_g_blue_pebble">es. Sassolino blu</string>
+    <string name="select_type">Seleziona tipo…</string>
+    <string name="e_g_cobalt_blue">es. Blu cobalto</string>
+    <string name="e_g_2cm_x_1cm">es. 2cm x 1cm</string>
+    <string name="e_g_natural_quartz">es. Quarzo naturale</string>
+    <string name="any_extra_details">Eventuali dettagli extra…</string>
+
+    <string-array name="decoration_types">
+        <item>Seleziona tipo…</item>
+        <item>Sassolino</item>
+        <item>Roccia</item>
+        <item>Pietra</item>
+        <item>Sabbia</item>
+        <item>Ghiaia</item>
+        <item>Conchiglia</item>
+        <item>Legno</item>
+        <item>Cristallo</item>
+        <item>Gemma di vetro</item>
+        <item>Marmo</item>
+        <item>Statuina</item>
+        <item>Pianta acquatica</item>
+        <item>Altro</item>
+    </string-array>
+</resources>
     <string name="achievement_earned">Obiettivo Ottenuto!</string>
     <string name="great">Ottimo!</string>
     <string name="_100">100%</string>

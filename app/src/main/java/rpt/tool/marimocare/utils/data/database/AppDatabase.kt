@@ -4,7 +4,9 @@ import android.content.Context
 import androidx.room.*
 import rpt.tool.marimocare.utils.data.database.DatabaseHelper.Companion.databaseName
 import rpt.tool.marimocare.utils.data.database.dao.*
+import rpt.tool.marimocare.utils.data.database.dao.decoration.PotDecorationDao
 import rpt.tool.marimocare.utils.data.database.models.*
+import rpt.tool.marimocare.utils.data.database.models.decoration.PotDecorationModel
 
 
 @Database(
@@ -13,6 +15,9 @@ import rpt.tool.marimocare.utils.data.database.models.*
         MarimoChangeModel::class,
         MarimoQRModel::class,
         MarimoHealthScoreModel::class,
+        PotDecorationModel::class
+    ],
+    version = 5,
         AchievementModel::class,
         AchievementDetailModel::class,
     ],
@@ -29,6 +34,7 @@ import rpt.tool.marimocare.utils.data.database.models.*
 
 abstract class AppDatabase : RoomDatabase() {
     abstract fun marimoDao(): MarimoDao
+    abstract fun potDecorationDao(): PotDecorationDao
 
 
     companion object {

@@ -94,6 +94,49 @@
     <color name="marimo_text_hint_alt">#9CA3AF</color>
     <color name="marimo_dialog_overlay">#CC000000</color>
     <color name="marimo_bg_light_yellow">#FFF9E6</color>
+    <color name="marimo_emerald">#10B981</color>
+    <color name="marimo_off_white">#f7f7f6</color>
+    <color name="marimo_blue_primary">#3B82F6</color>
+    <color name="marimo_purple_accent">#8B5CF6</color>
+    <color name="marimo_mint_white">#F7FFFD</color>
+    <color name="marimo_transparent_black">#66000000</color>
+    <color name="marimo_amber">#F59E0B</color>
+    <color name="marimo_yellow_accent">#f3b919</color>
+    <color name="marimo_pale_green">#f8fcf3</color>
+    <color name="marimo_mint_tint">#F4FFF8</color>
+    <color name="marimo_gray_border">#D0D5DD</color>
+    <color name="marimo_light_red">#e0403f</color>
+    <color name="marimo_silver">#CCCCCC</color>
+    <color name="marimo_snow">#f9fafb</color>
+    <color name="marimo_slate_gray">#4B5563</color>
+    <color name="marimo_bright_red">#EF4444</color>
+    <color name="android_green">#3DDC84</color>
+    <color name="white_33">#33FFFFFF</color>
+    <color name="marimo_bright_mint">#00C389</color>
+    <color name="marimo_teal_accent">#00BFA6</color>
+    <color name="marimo_pale_violet">#fbf3fc</color>
+    <color name="marimo_pale_orange">#FFF7EC</color>
+
+    <!-- Decoration Colors -->
+    <color name="decoration_red">#F44336</color>
+    <color name="decoration_pink">#E91E63</color>
+    <color name="decoration_purple">#9C27B0</color>
+    <color name="decoration_deep_purple">#673AB7</color>
+    <color name="decoration_indigo">#3F51B5</color>
+    <color name="decoration_blue">#2196F3</color>
+    <color name="decoration_light_blue">#03A9F4</color>
+    <color name="decoration_cyan">#00BCD4</color>
+    <color name="decoration_teal">#009688</color>
+    <color name="decoration_green">#4CAF50</color>
+    <color name="decoration_light_green">#8BC34A</color>
+    <color name="decoration_lime">#CDDC39</color>
+    <color name="decoration_yellow">#FFEB3B</color>
+    <color name="decoration_amber">#FFC107</color>
+    <color name="decoration_orange">#FF9800</color>
+    <color name="decoration_deep_orange">#FF5722</color>
+    <color name="decoration_brown">#795548</color>
+    <color name="decoration_gray">#9E9E9E</color>
+    <color name="decoration_blue_gray">#607D8B</color>
 
     <!-- Additional Hardcoded Colors -->
     <color name="achievement_stroke">#A5D6A7</color>

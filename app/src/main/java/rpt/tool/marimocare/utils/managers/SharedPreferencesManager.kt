@@ -18,11 +18,11 @@ object SharedPreferencesManager {
     private val sharedPreferences by lazy { createSharedPreferences() }
 
     var showAlertOverdue: Boolean
-        get() = sharedPreferences.getBoolean(AppUtils.SHOW_ALERT_OVERDUE, false)
+        get() = sharedPreferences.getBoolean(AppUtils.SHOW_ALERT_OVERDUE, true)
         set(value) = sharedPreferences.edit { putBoolean(AppUtils.SHOW_ALERT_OVERDUE, value) }
 
     var showAlertSoon: Boolean
-        get() = sharedPreferences.getBoolean(AppUtils.SHOW_ALERT_SOON, false)
+        get() = sharedPreferences.getBoolean(AppUtils.SHOW_ALERT_SOON, true)
         set(value) = sharedPreferences.edit { putBoolean(AppUtils.SHOW_ALERT_SOON, value) }
 
     var alertOverdue: String
@@ -98,6 +98,21 @@ object SharedPreferencesManager {
         get() = sharedPreferences.getBoolean(AppUtils.SHOW_BALLON_FEEDBACK, true)
         set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_BALLON_FEEDBACK, value)}
 
+    var showAlertToday: Boolean
+        get() = sharedPreferences.getBoolean(AppUtils.SHOW_ALERT_TODAY, true)
+        set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_ALERT_TODAY, value) }
+
+    var alertToday: String
+        get() = sharedPreferences.getString(AppUtils.ALERT_TODAY, "") ?: ""
+        set(value) = sharedPreferences.edit { putString(AppUtils.ALERT_TODAY, value) }
+
+    var lastDailyNotificationDate: String
+        get() = sharedPreferences.getString(AppUtils.LAST_DAILY_NOTIFICATION_DATE, "") ?: ""
+        set(value) = sharedPreferences.edit { putString(AppUtils.LAST_DAILY_NOTIFICATION_DATE, value) }
+
+    var showNewSettingsBalloon: Boolean
+        get() = sharedPreferences.getBoolean(AppUtils.SHOW_NEW_SETTINGS_BALLOON, true)
+        set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_NEW_SETTINGS_BALLOON, value) }
     var showAchievement: Boolean
         get() = sharedPreferences.getBoolean(AppUtils.SHOW_ACHIEVEMENTS_DIALOG, true)
         set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_ACHIEVEMENTS_DIALOG, value)}

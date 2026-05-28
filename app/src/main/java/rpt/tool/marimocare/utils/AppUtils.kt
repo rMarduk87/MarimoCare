@@ -81,8 +81,8 @@ class AppUtils {
 
         fun List<Marimo>.toMarimoItems(
             context: Context,
-            color1: String,
-            color2: String,
+            color1: Int,
+            color2: Int,
             bool: Boolean = false
         ): List<MarimoFrequencyItem> {
             return this.map { marimo ->
@@ -95,8 +95,8 @@ class AppUtils {
                 val lastChangedText = marimo.lastChanged ?: "—"
                 val notesText = marimo.notes ?: "No notes"
 
-                val color = color1.toColorInt()
-                val background = color2.toColorInt()
+                val color = color1
+                val background = color2
 
                 MarimoFrequencyItem(
                     name = marimo.name,
@@ -311,6 +311,10 @@ class AppUtils {
         const val SHOW_NEW_LOG_CHANGE_WATER : String = "show_new_log_change_water"
         const val SHOW_BALLON_NEW_STATS : String = "show_ballon-new_stats"
         const val SHOW_BALLON_FEEDBACK : String = "show_ballon-feedback"
+        const val SHOW_ALERT_TODAY : String = "showAlertToday"
+        const val ALERT_TODAY : String = "alertToday"
+        const val LAST_DAILY_NOTIFICATION_DATE : String = "last_daily_notification_date"
+        const val SHOW_NEW_SETTINGS_BALLOON : String = "show_new_settings_balloon"
         const val SHOW_ACHIEVEMENTS_DIALOG : String = "show_achievements_dialog"
 
 

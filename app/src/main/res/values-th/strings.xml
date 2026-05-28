@@ -550,7 +550,44 @@
         <item>ส่ง QR</item>
         <item>บันทึก QR</item>
     </string-array>
-    <string name="achievement_earned">ได้รับความสำเร็จแล้ว!</string>
-    <string name="great">เยี่ยมยอด!</string>
-    <string name="achievement_unlocked">ปลดล็อกความสำเร็จแล้ว!</string>
+    <string name="notification_settings">การตั้งค่าการแจ้งเตือน</string>
+    <string name="choose_which_notifications_you_want_to_receive">เลือกการแจ้งเตือนที่คุณต้องการรับ</string>
+    <string name="due_soon_alert">แจ้งเตือนเมื่อใกล้ครบกำหนด</string>
+    <string name="overdue_marimo_alert">แจ้งเตือนเมื่อเกินกำหนด</string>
+    <string name="today_marimo_alert">แจ้งเตือนเมื่อถึงกำหนดเปลี่ยนน้ำวันนี้</string>
+    <string name="new_settings_balloon_text">เพิ่มการตั้งค่าการแจ้งเตือนใหม่แล้ว! ตอนนี้คุณสามารถเลือกได้ว่าจะรับการแจ้งเตือนใด</string>
+
+    <!-- Pot Decorations -->
+    <string name="pot_decorations_optional">ของตกแต่งกระถาง (ไม่บังคับ)</string>
+    <string name="no_decorations_yet">ยังไม่ได้เพิ่มของตกแต่ง</string>
+    <string name="add_decoration">+ เพิ่มของตกแต่ง</string>
+    <string name="decoration_n">ของตกแต่ง %1$d</string>
+    <string name="name">ชื่อ</string>
+    <string name="type">ประเภท</string>
+    <string name="colour">สี</string>
+    <string name="dimensions">ขนาด</string>
+    <string name="material">วัสดุ</string>
+    <string name="e_g_blue_pebble">เช่น กรวดสีน้ำเงิน</string>
+    <string name="select_type">เลือกประเภท…</string>
+    <string name="e_g_cobalt_blue">เช่น สีน้ำเงินโคบอลต์</string>
+    <string name="e_g_2cm_x_1cm">เช่น 2 ซม. x 1 ซม.</string>
+    <string name="e_g_natural_quartz">เช่น ควอตซ์ธรรมชาติ</string>
+    <string name="any_extra_details">รายละเอียดเพิ่มเติม…</string>
+
+    <string-array name="decoration_types">
+        <item>เลือกประเภท…</item>
+        <item>กรวด</item>
+        <item>โขดหิน</item>
+        <item>หิน</item>
+        <item>ทราย</item>
+        <item>หินกรวด</item>
+        <item>เปลือกหอย</item>
+        <item>ขอนไม้</item>
+        <item>คริสตัล</item>
+        <item>ลูกแก้ว</item>
+        <item>หินอ่อน</item>
+        <item>ตุ๊กตา</item>
+        <item>ไม้น้ำ</item>
+        <item>อื่นๆ</item>
+    </string-array>
 </resources>

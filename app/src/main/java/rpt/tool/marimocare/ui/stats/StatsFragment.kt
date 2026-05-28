@@ -46,7 +46,7 @@ import com.skydoves.balloon.balloon
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import rpt.tool.marimocare.BaseFragment
+import rpt.com.base.BaseFragment
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentStatsBinding
 import rpt.tool.marimocare.databinding.StatsMarimoBinding
@@ -61,8 +61,8 @@ import rpt.tool.marimocare.utils.data.appmodels.MarimoDetailUi
 import rpt.tool.marimocare.utils.managers.AchievementManager
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
-import rpt.tool.marimocare.utils.navigation.safeNavController
-import rpt.tool.marimocare.utils.navigation.safeNavigate
+import rpt.com.base.navigation.safeNavController
+import rpt.com.base.navigation.safeNavigate
 import rpt.tool.marimocare.utils.view.HeaderButtonConfig
 import rpt.tool.marimocare.utils.view.HeaderHelper
 import rpt.tool.marimocare.utils.view.StatsCardConfig
@@ -76,7 +76,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.getValue
 
-class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::inflate) {
+class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::inflate,true) {
 
     private lateinit var adapter: HealthMarimoAdapter
     private lateinit var chipAdapter: MarimoChipAdapter
@@ -99,7 +99,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
         setUpCompareStats()
 
         binding.include1.appLogo.setOnClickListener {
-            safeNavController?.safeNavigate(
+            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                 StatsFragmentDirections
                     .actionStatsFragmentToDashboardFragment())
         }
@@ -167,7 +167,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
                     backgroundRes = R.drawable.bg_button_white,
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.dashboard),
-                    onClick = { safeNavController?.safeNavigate(
+                    onClick = { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                         StatsFragmentDirections
                             .actionStatsFragmentToDashboardFragment()) }
                 ),
@@ -178,7 +178,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
                     backgroundRes = R.drawable.bg_button_white,
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.add_marimo),
-                    onClick = { safeNavController?.safeNavigate(
+                    onClick = { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                         StatsFragmentDirections
                             .actionStatsFragmentToAddOrEditFragment()) }
                 ),
@@ -201,7 +201,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
                     backgroundRes = R.drawable.bg_button_white,
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.settings),
-                    onClick = { safeNavController?.safeNavigate(
+                    onClick = { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                         StatsFragmentDirections
                             .actionStatsFragmentToSettingsFragment()) }
                 ),
@@ -216,6 +216,17 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
                 )
             )
         )
+    }
+
+    private fun setupNavigation() {
+        binding.include1.apply {
+            btnDashboardHeader.setOnClickListener { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                StatsFragmentDirections.actionStatsFragmentToDashboardFragment()) }
+            btnAddMarimoHeader.setOnClickListener { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                StatsFragmentDirections.actionStatsFragmentToAddOrEditFragment()) }
+            btnOpenSettings.setOnClickListener { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                StatsFragmentDirections.actionStatsFragmentToSettingsFragment()) }
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -344,8 +355,10 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
     private fun showMarimoDialog(marimos: List<Marimo>, isMost: Boolean) {
         val items = marimos.toMarimoItems(
             requireContext(),
-            if (isMost) "#9538ea" else "#E47A1F",
-            if (isMost) "#fbf3fc" else "#FFF7EC",
+            if (isMost) ContextCompat.getColor(requireContext(), R.color.marimo_violet) 
+            else ContextCompat.getColor(requireContext(), R.color.marimo_text_orange),
+            if (isMost) ContextCompat.getColor(requireContext(), R.color.marimo_pale_violet) 
+            else ContextCompat.getColor(requireContext(), R.color.marimo_pale_orange),
             isMost
         )
 
@@ -358,7 +371,8 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
 
         val title = dialog.findViewById<TextView>(R.id.txtDialogTitle)
         val icon = dialog.findViewById<ImageView>(R.id.icon)
-        title.setTextColor(if (isMost) "#9538ea".toColorInt() else "#E47A1F".toColorInt())
+        title.setTextColor(if (isMost) ContextCompat.getColor(requireContext(), R.color.marimo_violet) 
+        else ContextCompat.getColor(requireContext(), R.color.marimo_text_orange))
         title.text = if (isMost) getString(R.string.most_attention_needed_marimos) else
             getString(R.string.most_low_maintenance_marimos)
         icon.imageTintList = requireContext().getColorStateList(if
@@ -435,10 +449,10 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
 
     private fun setupWaterTrendChart(chart: LineChart, entries: List<Entry>, labels: List<String>) {
         val dataSet = LineDataSet(entries, "").apply {
-            color = "#00A676".toColorInt()
+            color = ContextCompat.getColor(requireContext(), R.color.marimo_graph_accent)
             lineWidth = 3f
             setDrawCircles(true)
-            setCircleColor("#00A676".toColorInt())
+            setCircleColor(ContextCompat.getColor(requireContext(), R.color.marimo_graph_accent))
             circleRadius = 5f
             setDrawCircleHole(false)
             setDrawFilled(false)
@@ -452,7 +466,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
             legend.isEnabled = false
             axisRight.isEnabled = false
             axisLeft.textColor = Color.DKGRAY
-            axisLeft.gridColor = "#E0E0E0".toColorInt()
+            axisLeft.gridColor = ContextCompat.getColor(requireContext(), R.color.marimo_milestone_bg)
 
             xAxis.apply {
                 position = XAxis.XAxisPosition.BOTTOM
@@ -482,7 +496,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
     private fun setupFrequencyChart(chart: BarChart, values: List<Float>) {
         val entries = values.mapIndexed { index, value -> BarEntry(index.toFloat(), value) }
         val dataSet = BarDataSet(entries, "").apply {
-            color = "#00C389".toColorInt()
+            color = ContextCompat.getColor(requireContext(), R.color.marimo_bright_mint)
             valueTextSize = 0f
         }
 
@@ -494,7 +508,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
 
             axisLeft.apply {
                 textColor = Color.DKGRAY
-                gridColor = "#E0E0E0".toColorInt()
+                gridColor = ContextCompat.getColor(requireContext(), R.color.marimo_milestone_bg)
                 axisMinimum = 0f
                 axisMaximum = (values.maxOrNull()?.plus(1f) ?: 5f)
             }

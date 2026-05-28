@@ -17,6 +17,7 @@ import rpt.tool.marimocare.utils.data.appmodels.MarimoQR
 import rpt.tool.marimocare.utils.data.database.enums.AchievementType
 import rpt.tool.marimocare.utils.data.database.enums.UnitType
 import rpt.tool.marimocare.utils.data.database.dao.MarimoDao
+import rpt.tool.marimocare.utils.managers.RepositoryManager
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import kotlin.Int
@@ -132,6 +133,7 @@ class MarimoRepository(
 
     fun deleteMarimo(code: Int) {
         marimoDao.delete(code)
+        RepositoryManager.potDecorationRepository.deleteDecorationsForMarimo(code)
     }
 
     fun addMarimoQR(marimoCode: Int, qrCodeToStore: String) {

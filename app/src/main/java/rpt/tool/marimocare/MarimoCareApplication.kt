@@ -4,7 +4,6 @@ import android.app.Application
 import android.content.Context
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.work.Constraints
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.NetworkType
@@ -17,8 +16,6 @@ import rpt.tool.marimocare.utils.notification.NotificationHelper
 import rpt.tool.marimocare.utils.notification.NotifyWorker
 import rpt.tool.marimocare.utils.workers.MidnightHealthWorker
 import timber.log.Timber
-import java.time.Duration
-import java.time.LocalTime
 import java.util.concurrent.TimeUnit
 
 class MarimoCareApplication : Application() {
@@ -98,17 +95,8 @@ class MarimoCareApplication : Application() {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun scheduleDailyNotify(context: Context) {
 
-        val now = LocalTime.now()
-        val target = LocalTime.of(9, 0)
-
-        val initialDelay = if (now.isAfter(target))
-            Duration.between(now, target.plusHours(24))
-        else
-            Duration.between(now, target)
-
-        val request = PeriodicWorkRequestBuilder<NotifyWorker>(24,
+        val request = PeriodicWorkRequestBuilder<NotifyWorker>(1,
             TimeUnit.HOURS)
-            .setInitialDelay(initialDelay)
             .build()
 
         WorkManager.getInstance(context).enqueueUniquePeriodicWork(

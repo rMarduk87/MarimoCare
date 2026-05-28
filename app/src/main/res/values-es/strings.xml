@@ -549,6 +549,47 @@
         <item>Enviar QR</item>
         <item>Guardar QR</item>
     </string-array>
+    <string name="notification_settings">Ajustes de notificaciones</string>
+    <string name="choose_which_notifications_you_want_to_receive">Elige qué notificaciones quieres recibir</string>
+    <string name="due_soon_alert">Aviso de vencimiento cercano</string>
+    <string name="overdue_marimo_alert">Aviso de retraso</string>
+    <string name="today_marimo_alert">Aviso de cambio hoy</string>
+    <string name="new_settings_balloon_text">¡Se han añadido nuevos ajustes de notificación! Ahora puedes elegir qué avisos recibir.</string>
+
+    <!-- Pot Decorations -->
+    <string name="pot_decorations_optional">Decoraciones de la maceta (opcional)</string>
+    <string name="no_decorations_yet">Aún no se han añadido decoraciones.</string>
+    <string name="add_decoration">+ Añadir decoración</string>
+    <string name="decoration_n">Decoración %1$d</string>
+    <string name="name">Nombre</string>
+    <string name="type">Tipo</string>
+    <string name="colour">Color</string>
+    <string name="dimensions">Dimensiones</string>
+    <string name="material">Material</string>
+    <string name="e_g_blue_pebble">p. ej., Guijarro azul</string>
+    <string name="select_type">Seleccionar tipo…</string>
+    <string name="e_g_cobalt_blue">p. ej., Azul cobalto</string>
+    <string name="e_g_2cm_x_1cm">p. ej., 2 cm x 1 cm</string>
+    <string name="e_g_natural_quartz">p. ej., Cuarzo natural</string>
+    <string name="any_extra_details">Cualquier detalle adicional…</string>
+
+    <string-array name="decoration_types">
+        <item>Seleccionar tipo…</item>
+        <item>Guijarro</item>
+        <item>Roca</item>
+        <item>Piedra</item>
+        <item>Arena</item>
+        <item>Grava</item>
+        <item>Concha</item>
+        <item>Madera flotante</item>
+        <item>Cristal</item>
+        <item>Gema de vidrio</item>
+        <item>Mármol</item>
+        <item>Figura</item>
+        <item>Planta acuática</item>
+        <item>Otro</item>
+    </string-array>
+</resources>
     <string name="achievement_earned">¡Logro obtenido!</string>
     <string name="great">¡Genial!</string>
     <string name="_100">100%</string>

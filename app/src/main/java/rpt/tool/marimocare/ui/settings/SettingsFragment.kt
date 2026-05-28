@@ -7,6 +7,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
+import rpt.com.base.BaseFragment
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -18,13 +19,13 @@ import rpt.tool.marimocare.ui.marimo.addoredit.AddOrEditMarimoFragmentDirections
 import rpt.tool.marimocare.ui.stats.StatsFragmentDirections
 import rpt.tool.marimocare.utils.managers.AchievementManager
 import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
-import rpt.tool.marimocare.utils.navigation.safeNavController
-import rpt.tool.marimocare.utils.navigation.safeNavigate
+import rpt.com.base.navigation.safeNavController
+import rpt.com.base.navigation.safeNavigate
 import rpt.tool.marimocare.utils.view.HeaderButtonConfig
 import rpt.tool.marimocare.utils.view.HeaderHelper
 
 class SettingsFragment :
-    BaseFragment<FragmentSettingsBinding>(FragmentSettingsBinding::inflate) {
+    BaseFragment<FragmentSettingsBinding>(FragmentSettingsBinding::inflate, true) {
 
     private var coloredOptionSelected = false
     private var tipsAutoScrollSped = 15
@@ -33,6 +34,10 @@ class SettingsFragment :
     private var sortingSelected = 0
 
     private var statPeriodSelected = 0
+
+    private var showAlertToday = true
+    private var showAlertSoon = true
+    private var showAlertOverdue = true
 
     private val speedViews: MutableMap<Int, TextView> = mutableMapOf()
     private val filterViews: MutableMap<Int, TextView> = mutableMapOf()
@@ -60,10 +65,12 @@ class SettingsFragment :
         setupFilterAndSortListeners()
         setupStatPeriodSelection()
         setupStatPeriodListeners()
+        setupNotificationSelection()
+        setupNotificationListeners()
         setupSaveCancelListeners()
 
         binding.include1.appLogo.setOnClickListener {
-            safeNavController?.safeNavigate(
+            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                 SettingsFragmentDirections.actionSettingsFragmentToDashboardFragment()
             )
         }
@@ -81,7 +88,7 @@ class SettingsFragment :
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.dashboard),
                     onClick = {
-                        safeNavController?.safeNavigate(
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                             SettingsFragmentDirections.actionSettingsFragmentToDashboardFragment()
                         )
                     }
@@ -94,7 +101,7 @@ class SettingsFragment :
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.add_marimo),
                     onClick = {
-                        safeNavController?.safeNavigate(
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                             SettingsFragmentDirections
                                 .actionSettingsFragmentToAddOrEditFragment()
                         )
@@ -129,7 +136,7 @@ class SettingsFragment :
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.stats),
                     onClick = {
-                        safeNavController?.safeNavigate(
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                             SettingsFragmentDirections
                                 .actionSettingsFragmentToStatsFragment())
                     }
@@ -144,6 +151,7 @@ class SettingsFragment :
             containerSpeed.setBackgroundResource(R.drawable.bg_card_settings)
             containerOrderAndFilters.setBackgroundResource(R.drawable.bg_card_settings)
             containerStatsPeriod.setBackgroundResource(R.drawable.bg_card_settings)
+            containerNotifications.setBackgroundResource(R.drawable.bg_card_settings)
         }
     }
 
@@ -368,7 +376,48 @@ class SettingsFragment :
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
+    private fun setupNotificationSelection() {
+        showAlertToday = SharedPreferencesManager.showAlertToday
+        showAlertSoon = SharedPreferencesManager.showAlertSoon
+        showAlertOverdue = SharedPreferencesManager.showAlertOverdue
+
+        updateNotificationSelection()
+    }
+
+    private fun setupNotificationListeners() {
+        binding.inputTodayAlert.setOnClickListener {
+            showAlertToday = !showAlertToday
+            updateNotificationSelection()
+        }
+        binding.inputDueSoonAlert.setOnClickListener {
+            showAlertSoon = !showAlertSoon
+            updateNotificationSelection()
+        }
+        binding.inputOverdueAlert.setOnClickListener {
+            showAlertOverdue = !showAlertOverdue
+            updateNotificationSelection()
+        }
+    }
+
+    private fun updateNotificationSelection() {
+        binding.inputTodayAlert.let { updateNotificationView(it, showAlertToday) }
+        binding.inputDueSoonAlert.let { updateNotificationView(it, showAlertSoon) }
+        binding.inputOverdueAlert.let { updateNotificationView(it, showAlertOverdue) }
+    }
+
+    private fun updateNotificationView(view: TextView, selected: Boolean) {
+        view.setBackgroundResource(
+            if (selected) R.drawable.edittext_outline_selected
+            else R.drawable.edittext_outline_grey
+        )
+
+        val checkIcon = if (selected)
+            ContextCompat.getDrawable(requireContext(), R.drawable.ic_check)
+        else null
+
+        view.setCompoundDrawablesWithIntrinsicBounds(null, null, checkIcon, null)
+    }
+
     private fun setupSaveCancelListeners() {
         binding.btnSave.setOnClickListener {
             SharedPreferencesManager.coloredIsSelected = coloredOptionSelected
@@ -377,6 +426,9 @@ class SettingsFragment :
             SharedPreferencesManager.marimoFilter = filterSelected
             SharedPreferencesManager.marimoSorting = sortingSelected
             SharedPreferencesManager.statPeriod = statPeriodSelected
+            SharedPreferencesManager.showAlertToday = showAlertToday
+            SharedPreferencesManager.showAlertSoon = showAlertSoon
+            SharedPreferencesManager.showAlertOverdue = showAlertOverdue
             Toast.makeText(
                 requireContext(),
                 getString(R.string.option_correctly_updated),
@@ -396,8 +448,14 @@ class SettingsFragment :
             filterSelected = SharedPreferencesManager.marimoFilter
             sortingSelected = SharedPreferencesManager.marimoSorting
             statPeriodSelected = SharedPreferencesManager.statPeriod
+            showAlertToday = SharedPreferencesManager.showAlertToday
+            showAlertSoon = SharedPreferencesManager.showAlertSoon
+            showAlertOverdue = SharedPreferencesManager.showAlertOverdue
             updateDashboardSelection()
             updateSpeedTipsSelection()
+            updateFilterAndSortSelection()
+            updateStatPeriodSelection()
+            updateNotificationSelection()
         }
     }
 }

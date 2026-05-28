@@ -55,13 +55,13 @@ object AlertDataUtils {
     @RequiresApi(Build.VERSION_CODES.O)
     fun recalc(context: Context) {
         val marimosLate = getMarimosLate()
+        val marimosToday = getMarimosToNotifyToday()
         val marimosSoon = getMarimosDueSoon(1)
 
-        SharedPreferencesManager.showAlertOverdue = marimosLate.isNotEmpty()
-        SharedPreferencesManager.showAlertSoon = marimosSoon.isNotEmpty()
+        val combinedSoon = marimosToday + marimosSoon
 
         val overdueNames = marimosLate.joinToString(", ") { it.name }
-        val soonNames = marimosSoon.joinToString(", ") { it.name }
+        val soonNames = combinedSoon.joinToString(", ") { it.name }
 
         SharedPreferencesManager.alertOverdueCounter = marimosLate.size
 
@@ -71,8 +71,8 @@ object AlertDataUtils {
             else ""
 
         SharedPreferencesManager.alertSoon =
-            if (marimosSoon.isNotEmpty())
-                if(marimosSoon.size == 1)
+            if (combinedSoon.isNotEmpty())
+                if(combinedSoon.size == 1)
                     context.getString(R.string.soon_marimo_one, soonNames)
                 else context.getString(R.string.soon_marimo, soonNames)
             else ""

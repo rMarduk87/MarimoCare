@@ -1,17 +1,16 @@
 package rpt.tool.marimocare.ui.feedback
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import rpt.tool.marimocare.BaseFragment
+import rpt.com.base.BaseFragment
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentFeedbackBinding
-import rpt.tool.marimocare.utils.navigation.safeNavController
-import rpt.tool.marimocare.utils.navigation.safeNavigate
+import rpt.com.base.navigation.safeNavController
+import rpt.com.base.navigation.safeNavigate
 import rpt.tool.marimocare.utils.view.HeaderButtonConfig
 import rpt.tool.marimocare.utils.view.HeaderHelper
 import androidx.core.net.toUri
@@ -24,7 +23,7 @@ import kotlinx.coroutines.launch
 import rpt.tool.marimocare.utils.managers.AchievementManager
 
 class FeedbackFragment :
-    BaseFragment<FragmentFeedbackBinding>(FragmentFeedbackBinding::inflate) {
+    BaseFragment<FragmentFeedbackBinding>(FragmentFeedbackBinding::inflate, true) {
 
     private val selectedTopics = mutableSetOf<String>()
 
@@ -36,7 +35,7 @@ class FeedbackFragment :
         setupHeaderButtons()
 
         binding.include1.appLogo.setOnClickListener {
-            safeNavController?.safeNavigate(
+            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                 FeedbackFragmentDirections
                     .actionFeedbackFragmentToDashboardFragment())
         }
@@ -144,7 +143,7 @@ class FeedbackFragment :
                     backgroundRes = R.drawable.bg_button_white,
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.dashboard),
-                    onClick = { safeNavController?.safeNavigate(
+                    onClick = { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                         FeedbackFragmentDirections.
                         actionFeedbackFragmentToDashboardFragment()
                     ) }
@@ -156,7 +155,7 @@ class FeedbackFragment :
                     backgroundRes = R.drawable.bg_button_white,
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.add_marimo),
-                    onClick = { safeNavController?.safeNavigate(
+                    onClick = { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                         FeedbackFragmentDirections
                             .actionFeedbackFragmentToAddOrEditFragment()) }
                 ),
@@ -179,7 +178,7 @@ class FeedbackFragment :
                     backgroundRes = R.drawable.bg_button_white,
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.settings),
-                    onClick = { safeNavController?.safeNavigate(
+                    onClick = { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                         FeedbackFragmentDirections
                             .actionFeedbackFragmentToSettingsFragment()) }
                 ),
@@ -190,7 +189,7 @@ class FeedbackFragment :
                     backgroundRes = R.drawable.bg_button_white,
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.stats),
-                    onClick = { safeNavController?.safeNavigate(
+                    onClick = { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                         FeedbackFragmentDirections
                             .actionFeedbackFragmentToStatsFragment()) }
                 )

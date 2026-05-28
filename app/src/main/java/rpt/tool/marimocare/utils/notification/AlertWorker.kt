@@ -9,7 +9,7 @@ import rpt.tool.marimocare.utils.AlertDataUtils
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 import java.time.LocalDate
 import rpt.tool.marimocare.R
-import rpt.tool.marimocare.utils.log.d
+import rpt.com.base.log.d
 import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 
 class AlertWorker(appContext: Context, params: WorkerParameters) :

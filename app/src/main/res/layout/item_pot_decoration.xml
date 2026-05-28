@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:orientation="vertical"
+    android:background="@drawable/edittext_outline"
+    android:padding="12dp">
+
+    <RelativeLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:id="@+id/decorationTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/text_title"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            tools:text="Decoration 1" />
+
+        <ImageButton
+            android:id="@+id/btnDelete"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_toStartOf="@id/btnExpandCollapse"
+            android:layout_marginEnd="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_delete"
+            app:tint="@color/marimo_red"
+            android:contentDescription="@string/delete" />
+
+        <ImageButton
+            android:id="@+id/btnExpandCollapse"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_arrow_down"
+            app:tint="@color/marimo_text_cool_gray"
+            android:contentDescription="@string/img" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/expandableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/marimo_item_edit_board"
+            android:layout_marginBottom="12dp"/>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="3">
+
+            <!-- Name -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name"
+                    android:textColor="@color/marimo_text_cool_gray"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/inputDecName"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:background="@drawable/edittext_outline"
+                    android:hint="@string/e_g_blue_pebble"
+                    android:padding="8dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_title"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="8dp"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <!-- Type -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/type"
+                    android:textColor="@color/marimo_text_cool_gray"
+                    android:textSize="12sp" />
+
+                <include
+                    android:id="@+id/typeSpinnerLayout"
+                    layout="@layout/spinner_with_arrow"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="8dp"/>
+            </LinearLayout>
+
+            <!-- Colour -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/colour"
+                    android:textColor="@color/marimo_text_cool_gray"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <View
+                        android:id="@+id/colorPreview"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:background="@color/marimo_text_cool_gray"
+                        android:layout_marginEnd="8dp"/>
+
+                    <EditText
+                        android:id="@+id/inputDecColour"
+                        android:layout_width="match_parent"
+                        android:layout_height="38dp"
+                        android:background="@drawable/edittext_outline"
+                        android:hint="@string/e_g_cobalt_blue"
+                        android:padding="8dp"
+                        android:textSize="14sp"
+                        android:textColor="@color/text_title"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="8dp"
+                        android:inputType="text" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Dimensions -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dimensions"
+                    android:textColor="@color/marimo_text_cool_gray"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/inputDecDimensions"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:background="@drawable/edittext_outline"
+                    android:hint="@string/e_g_2cm_x_1cm"
+                    android:padding="8dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_title"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="8dp"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <!-- Material -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/material"
+                    android:textColor="@color/marimo_text_cool_gray"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/inputDecMaterial"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:background="@drawable/edittext_outline"
+                    android:hint="@string/e_g_natural_quartz"
+                    android:padding="8dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_title"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="8dp"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <!-- Notes -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/notes"
+                    android:textColor="@color/marimo_text_cool_gray"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/inputDecNotes"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:background="@drawable/edittext_outline"
+                    android:hint="@string/any_extra_details"
+                    android:padding="8dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_title"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="8dp"
+                    android:inputType="text" />
+            </LinearLayout>
+
+        </GridLayout>
+
+    </LinearLayout>
+</LinearLayout>
