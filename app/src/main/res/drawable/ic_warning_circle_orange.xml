@@ -7,7 +7,7 @@
     <!-- Cerchio outline -->
     <path
         android:fillColor="@android:color/transparent"
-        android:strokeColor="#E1A500"
+        android:strokeColor="@color/marimo_orange"
         android:strokeWidth="1"
         android:pathData="M12,2
                           A10,10 0 1,1 11.99,2" />
@@ -15,7 +15,7 @@
     <!-- Punto esclamativo verticale -->
     <path
         android:fillColor="@android:color/transparent"
-        android:strokeColor="#E1A500"
+        android:strokeColor="@color/marimo_orange"
         android:strokeWidth="1"
         android:strokeLineCap="round"
         android:pathData="M12,7.5 v6"/>
@@ -23,7 +23,7 @@
     <!-- Punto esclamativo (pallino) -->
     <path
         android:fillColor="@android:color/transparent"
-        android:strokeColor="#E1A500"
+        android:strokeColor="@color/marimo_orange"
         android:strokeWidth="1"
         android:pathData="M12,16.5 a1,1 0 1,0 0.01,0"/>
 </vector>

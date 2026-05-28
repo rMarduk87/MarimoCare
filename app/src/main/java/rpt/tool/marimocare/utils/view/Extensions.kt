@@ -28,7 +28,6 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.widget.ImageView
-import androidx.core.graphics.toColorInt
 import com.bumptech.glide.Glide
 import com.google.android.material.card.MaterialCardView
 import rpt.tool.marimocare.R
@@ -121,21 +120,21 @@ fun ImageView.loadMarimoImage(file: File?) {
             .into(this)
     } else {
         this.setImageResource(R.drawable.ic_water_drop_white)
-        this.setColorFilter("#00BFA6".toColorInt(), PorterDuff.Mode.SRC_IN)
+        this.setColorFilter(ContextCompat.getColor(this.context, R.color.marimo_teal_accent), PorterDuff.Mode.SRC_IN)
     }
 }
 
-fun getHealthColorHex(health: Int): String {
+fun getHealthColorRes(health: Int): Int {
     return when {
-        health == 100 -> "#2E7D32"
-        health in 40..70 -> "#c9bb3a"
-        health in 1..19 -> "#F57C00"
-        health <= 0 -> "#C62828"
-        else -> "#4CAF50"
+        health == 100 -> R.color.health100
+        health in 40..70 -> R.color.health4070
+        health in 1..19 -> R.color.health119
+        health <= 0 -> R.color.health_red
+        else -> R.color.health_normal
     }
 }
 
-fun Int.getHealthColor(): Int = getHealthColorHex(this).toColorInt()
+fun Int.getHealthColor(context: Context): Int = ContextCompat.getColor(context, getHealthColorRes(this))
 
 fun getHealthTextColorRes(health: Int): Int {
     return if (health in 40..70) R.color.marimo_dark
@@ -143,11 +142,11 @@ fun getHealthTextColorRes(health: Int): Int {
 }
 
 fun View.applyHealthColor(health: Int) {
-    this.backgroundTintList = ColorStateList.valueOf(health.getHealthColor())
+    this.backgroundTintList = ColorStateList.valueOf(health.getHealthColor(this.context))
 }
 
 fun MaterialCardView.applyHealthStroke(health: Int) {
-    this.strokeColor = health.getHealthColor()
+    this.strokeColor = health.getHealthColor(this.context)
 }
 
 fun TextView.applyHealthTextColor(health: Int) {

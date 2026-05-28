@@ -7,6 +7,6 @@
 
     <!-- Freccia verso l'alto -->
     <path
-        android:fillColor="#FF000000"
+        android:fillColor="@color/black"
         android:pathData="M5,17h14v2H5v-2zM12,3l-5,5h3v6h4V8h3l-5,-5z"/>
 </vector>

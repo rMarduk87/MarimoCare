@@ -155,6 +155,48 @@
                         android:id="@+id/marimoSpinnerLayout"
                         layout="@layout/spinner_with_arrow" />
 
+                    <TextView
+                        android:id="@+id/txtPotDecorations"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pot_decorations_optional"
+                        android:textColor="@color/marimo_text_cool_gray"
+                        android:textSize="14sp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/noDecorationsLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/no_decorations_yet"
+                        android:textColor="@color/marimo_text_hint_alt"
+                        android:textSize="14sp"
+                        android:textStyle="italic"
+                        android:layout_marginBottom="8dp"
+                        android:visibility="visible" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerDecorations"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+                        android:layout_marginBottom="8dp"
+                        tools:listitem="@layout/item_pot_decoration"
+                        tools:itemCount="1"/>
+
+                    <Button
+                        android:id="@+id/btnAddDecoration"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:text="@string/add_decoration"
+                        android:textAllCaps="false"
+                        android:textColor="@color/marimo_item_green"
+                        app:backgroundTint="@null"
+                        android:background="@drawable/edittext_outline"
+                        android:layout_marginBottom="10dp"/>
+
                     <!-- Note -->
                     <TextView
                         android:layout_width="match_parent"
