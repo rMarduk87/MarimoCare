@@ -7,6 +7,7 @@ import android.app.Dialog
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
@@ -33,6 +34,9 @@ import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.PieDataSet
+import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.data.RadarData
 import com.github.mikephil.charting.data.RadarDataSet
 import com.github.mikephil.charting.data.RadarEntry
@@ -76,7 +80,8 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.getValue
 
-class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::inflate,true) {
+class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::inflate,
+    true) {
 
     private lateinit var adapter: HealthMarimoAdapter
     private lateinit var chipAdapter: MarimoChipAdapter
@@ -97,6 +102,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
         setUpBottomTabs()
         setUpHealthScore()
         setUpCompareStats()
+        setUpPotDecorationStats()
 
         binding.include1.appLogo.setOnClickListener {
             safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
@@ -167,7 +173,8 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
                     backgroundRes = R.drawable.bg_button_white,
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.dashboard),
-                    onClick = { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                    onClick = { safeNavController(
+                        R.id.main_activity_nav_host_fragment)?.safeNavigate(
                         StatsFragmentDirections
                             .actionStatsFragmentToDashboardFragment()) }
                 ),
@@ -178,7 +185,8 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
                     backgroundRes = R.drawable.bg_button_white,
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.add_marimo),
-                    onClick = { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                    onClick = { safeNavController(
+                        R.id.main_activity_nav_host_fragment)?.safeNavigate(
                         StatsFragmentDirections
                             .actionStatsFragmentToAddOrEditFragment()) }
                 ),
@@ -189,7 +197,8 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
                     backgroundRes = R.drawable.bg_button_white,
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.achievement),
-                    onClick = { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                    onClick = { safeNavController(
+                        R.id.main_activity_nav_host_fragment)?.safeNavigate(
                         StatsFragmentDirections
                             .actionStatsFragmentToAchievementFragment()
                     ) }
@@ -201,7 +210,8 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
                     backgroundRes = R.drawable.bg_button_white,
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.settings),
-                    onClick = { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                    onClick = { safeNavController(
+                        R.id.main_activity_nav_host_fragment)?.safeNavigate(
                         StatsFragmentDirections
                             .actionStatsFragmentToSettingsFragment()) }
                 ),
@@ -216,17 +226,6 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
                 )
             )
         )
-    }
-
-    private fun setupNavigation() {
-        binding.include1.apply {
-            btnDashboardHeader.setOnClickListener { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
-                StatsFragmentDirections.actionStatsFragmentToDashboardFragment()) }
-            btnAddMarimoHeader.setOnClickListener { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
-                StatsFragmentDirections.actionStatsFragmentToAddOrEditFragment()) }
-            btnOpenSettings.setOnClickListener { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
-                StatsFragmentDirections.actionStatsFragmentToSettingsFragment()) }
-        }
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -355,9 +354,12 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
     private fun showMarimoDialog(marimos: List<Marimo>, isMost: Boolean) {
         val items = marimos.toMarimoItems(
             requireContext(),
-            if (isMost) ContextCompat.getColor(requireContext(), R.color.marimo_violet) 
-            else ContextCompat.getColor(requireContext(), R.color.marimo_text_orange),
-            if (isMost) ContextCompat.getColor(requireContext(), R.color.marimo_pale_violet) 
+            if (isMost) ContextCompat.getColor(requireContext(),
+                R.color.marimo_violet)
+            else ContextCompat.getColor(requireContext(),
+                R.color.marimo_text_orange),
+            if (isMost) ContextCompat.getColor(requireContext(),
+                R.color.marimo_pale_violet)
             else ContextCompat.getColor(requireContext(), R.color.marimo_pale_orange),
             isMost
         )
@@ -371,7 +373,8 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
 
         val title = dialog.findViewById<TextView>(R.id.txtDialogTitle)
         val icon = dialog.findViewById<ImageView>(R.id.icon)
-        title.setTextColor(if (isMost) ContextCompat.getColor(requireContext(), R.color.marimo_violet) 
+        title.setTextColor(if (isMost) ContextCompat.getColor(
+            requireContext(), R.color.marimo_violet)
         else ContextCompat.getColor(requireContext(), R.color.marimo_text_orange))
         title.text = if (isMost) getString(R.string.most_attention_needed_marimos) else
             getString(R.string.most_low_maintenance_marimos)
@@ -405,7 +408,8 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
                 getString(R.string.actual_water_changes_over_the_last_12_months)
             }
             binding.includeDI.waterTrendText.text = subTitle
-            val lastXMonths = if (SharedPreferencesManager.statPeriod == 0) AppUtils.getMonthLabels(6)
+            val lastXMonths = if (SharedPreferencesManager.statPeriod == 0)
+                AppUtils.getMonthLabels(6)
             else AppUtils.getMonthLabels(12)
 
 
@@ -449,10 +453,12 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
 
     private fun setupWaterTrendChart(chart: LineChart, entries: List<Entry>, labels: List<String>) {
         val dataSet = LineDataSet(entries, "").apply {
-            color = ContextCompat.getColor(requireContext(), R.color.marimo_graph_accent)
+            color = ContextCompat.getColor(requireContext(),
+                R.color.marimo_graph_accent)
             lineWidth = 3f
             setDrawCircles(true)
-            setCircleColor(ContextCompat.getColor(requireContext(), R.color.marimo_graph_accent))
+            setCircleColor(ContextCompat.getColor(requireContext(),
+                R.color.marimo_graph_accent))
             circleRadius = 5f
             setDrawCircleHole(false)
             setDrawFilled(false)
@@ -466,7 +472,8 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
             legend.isEnabled = false
             axisRight.isEnabled = false
             axisLeft.textColor = Color.DKGRAY
-            axisLeft.gridColor = ContextCompat.getColor(requireContext(), R.color.marimo_milestone_bg)
+            axisLeft.gridColor = ContextCompat.getColor(requireContext(),
+                R.color.marimo_milestone_bg)
 
             xAxis.apply {
                 position = XAxis.XAxisPosition.BOTTOM
@@ -547,16 +554,25 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
                         binding.tabContentTrends.visibility = View.VISIBLE
                         binding.tabContentHealth.visibility = View.GONE
                         binding.tabContentCompare.visibility = View.GONE
+                        binding.tabContentDecorations.visibility = View.GONE
                     }
                     1 -> {
                         binding.tabContentTrends.visibility = View.GONE
                         binding.tabContentHealth.visibility = View.VISIBLE
                         binding.tabContentCompare.visibility = View.GONE
+                        binding.tabContentDecorations.visibility = View.GONE
                     }
                     2 -> {
                         binding.tabContentTrends.visibility = View.GONE
                         binding.tabContentHealth.visibility = View.GONE
                         binding.tabContentCompare.visibility = View.VISIBLE
+                        binding.tabContentDecorations.visibility = View.GONE
+                    }
+                    3 -> {
+                        binding.tabContentTrends.visibility = View.GONE
+                        binding.tabContentHealth.visibility = View.GONE
+                        binding.tabContentCompare.visibility = View.GONE
+                        binding.tabContentDecorations.visibility = View.VISIBLE
                     }
                 }
 
@@ -655,13 +671,13 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
 
     private fun updateUiState(detailsList: List<MarimoDetailUi>) {
         if (detailsList.isEmpty()) {
-            binding.includeMC!!.layoutEmptyState.visibility = View.VISIBLE
-            binding.includeMC!!.layoutDataState.visibility = View.GONE
+            binding.includeMC.layoutEmptyState.visibility = View.VISIBLE
+            binding.includeMC.layoutDataState.visibility = View.GONE
 
-            binding.includeMC!!.radarChart.clear()
+            binding.includeMC.radarChart.clear()
         } else {
-            binding.includeMC!!.layoutEmptyState.visibility = View.GONE
-            binding.includeMC!!.layoutDataState.visibility = View.VISIBLE
+            binding.includeMC.layoutEmptyState.visibility = View.GONE
+            binding.includeMC.layoutDataState.visibility = View.VISIBLE
 
             detailAdapter.submitList(detailsList)
 
@@ -670,7 +686,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
     }
 
     private fun setupRadarChart() {
-        val chart = binding.includeMC!!.radarChart
+        val chart = binding.includeMC.radarChart
 
         chart.description.isEnabled = false
         chart.webLineWidth = 1f
@@ -698,7 +714,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
     }
 
     private fun updateChartData(detailsList: List<MarimoDetailUi>) {
-        val chart = binding.includeMC!!.radarChart
+        val chart = binding.includeMC.radarChart
 
         val entries = ArrayList<RadarEntry>()
         val labels = ArrayList<String>()
@@ -727,5 +743,93 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
 
         chart.data = data
         chart.invalidate()
+    }
+
+    private fun setUpPotDecorationStats() {
+        viewModel.allPotDecorations.observe(viewLifecycleOwner) { potLists ->
+            if (potLists == null) return@observe
+
+            val totalCount = potLists.size
+            binding.includePD.tvTotalPots.text = buildString {
+                append(totalCount)
+                append(" ")
+                append(getString(R.string._total))
+            }
+
+            if (totalCount == 0) {
+                binding.includePD.potPieChart.clear()
+                binding.includePD.legendContainer.removeAllViews()
+                return@observe
+            }
+
+            val groupedPots = potLists.groupingBy { it.name }.eachCount()
+
+            val entries = ArrayList<PieEntry>()
+            val colors = ArrayList<Int>()
+
+            val palette =
+                requireContext().resources.getStringArray(R.array.decoration_colors).toList()
+
+            binding.includePD.legendContainer.removeAllViews()
+            var colorIndex = 0
+
+            for ((name, count) in groupedPots) {
+                entries.add(PieEntry(count.toFloat(), name))
+
+                val currentColor = palette[colorIndex % palette.size]
+                colors.add(currentColor.toColorInt())
+
+                val percentage = ((count.toFloat() / totalCount) * 100).toInt()
+                addCustomLegendRow(name, count, percentage, currentColor.toColorInt())
+
+                colorIndex++
+            }
+
+            val dataSet = PieDataSet(entries, "")
+            dataSet.colors = colors
+            dataSet.sliceSpace = 4f
+            dataSet.selectionShift = 0f
+            dataSet.setDrawValues(false)
+
+            val data = PieData(dataSet)
+            binding.includePD.potPieChart.apply {
+                this.data = data
+                description.isEnabled = false
+                legend.isEnabled = false
+
+                isDrawHoleEnabled = true
+                setHoleColor(Color.TRANSPARENT)
+                holeRadius = 65f
+                transparentCircleRadius = 65f
+                setDrawEntryLabels(false)
+
+                setExtraOffsets(0f, 0f, 0f, 0f)
+
+                animateY(1000)
+                invalidate()
+            }
+        }
+    }
+
+    private fun addCustomLegendRow(name: String, count: Int, percentage: Int, colorInt: Int) {
+        val inflater = LayoutInflater.from(requireContext())
+        val legendView = inflater.inflate(R.layout.item_custom_legend,
+            binding.includePD.legendContainer, false)
+
+        val colorDot = legendView.findViewById<View>(R.id.legend_color_dot)
+        val tvName = legendView.findViewById<TextView>(R.id.legend_name)
+        val tvCount = legendView.findViewById<TextView>(R.id.legend_count)
+        val tvPercentage = legendView.findViewById<TextView>(R.id.legend_percentage)
+
+        colorDot.background.setTint(colorInt)
+
+        tvName.text = name
+        tvCount.text = count.toString()
+        tvPercentage.text = buildString {
+            append(percentage)
+            append("%")
+        }
+
+        binding.includePD.legendContainer.addView(legendView)
     }
 }

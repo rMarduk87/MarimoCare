@@ -398,6 +398,9 @@
     <string name="ach_desc_48">5匹のマリモにメモを追加しました。</string>
     <string name="ach_desc_49">実績を25個獲得しました。コンプリートまであと半分！</string>
     <string name="ach_desc_50">全50個の実績を獲得しました。あなたは真のマリモマスターです！</string>
+    <string name="ach_desc_51">まりもの容器に最初のデコレーションを追加しました。</string>
+    <string name="ach_desc_52">3つの異なるまりもの容器をデコレーションで飾りました。</string>
+    <string name="ach_desc_53">コレクション全体で10個以上のデコレーションを追加しました。</string>
     <string name="ach_tit_1">初めてのマリモ</string>
     <string name="ach_tit_2">ダイナミックデュオ</string>
     <string name="ach_tit_3">トリオ</string>
@@ -448,9 +451,9 @@
     <string name="ach_tit_48">マリモ伝記作家</string>
     <string name="ach_tit_49">折り返し地点</string>
     <string name="ach_tit_50">アチーブメントハンター</string>
-    <string name="ach_tit_51">Interior Touch</string>
-    <string name="ach_tit_52">Decorator</string>
-    <string name="ach_tit_53">Interior Designer</string>
+    <string name="ach_tit_51">インテリアタッチ</string>
+    <string name="ach_tit_52">デコレーター</string>
+    <string name="ach_tit_53">インテリアデザイナー</string>
 
     <string name="ach_type_marimo">マリモ</string>
     <string name="ach_type_marimos">マリモ</string>
@@ -528,6 +531,9 @@
     <string name="ach_des_48">5つのマリモにメモを書きましょう。</string>
     <string name="ach_des_49">実績を25個獲得して、半分を達成しましょう。</string>
     <string name="ach_des_50">すべての実績を獲得する。それが究極の目標です！</string>
+    <string name="ach_des_51">追加または編集フォームから、まりもの容器に少なくとも1つのデコレーション（小石、岩、クリスタルなど）を追加してください。</string>
+    <string name="ach_des_52">コレクション内の3つの異なるまりもに少なくとも1つのデコレーションを追加してください。</string>
+    <string name="ach_des_53">コレクション全体の合計数が10に達するまで、まりもにデコレーションを追加してください。</string>
     <string name="_100">100%</string>
 
 
@@ -598,4 +604,7 @@
     <string name="achievement_earned">実績獲得！</string>
     <string name="great">素晴らしい！</string>
     <string name="achievement_unlocked">実績解除！</string>
+    <string name="decorations">装飾品</string>
+    <string name="pot_decorations">Pot Decorations</string>
+    <string name="_total">total</string>
 </resources>

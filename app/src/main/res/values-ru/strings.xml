@@ -397,6 +397,9 @@
     <string name="ach_desc_48">Добавлены заметки к 5 вашим маримо.</string>
     <string name="ach_desc_49">Получено 25 достижений. Вы на полпути к полному набору!</string>
     <string name="ach_desc_50">Получены все 50 достижений. Вы — настоящий Мастер Маримо!</string>
+    <string name="ach_desc_51">Вы добавили свое первое украшение в аквариум маримо.</string>
+    <string name="ach_desc_52">Вы украсили 3 разных аквариума маримо.</string>
+    <string name="ach_desc_53">Вы добавили 10 или более украшений в своей коллекции.</string>
     <string name="ach_tit_1">Первый Маримо</string>
     <string name="ach_tit_2">Динамичный Дуэт</string>
     <string name="ach_tit_3">Трио</string>
@@ -447,9 +450,9 @@
     <string name="ach_tit_48">Биограф Маримо</string>
     <string name="ach_tit_49">На Полпути</string>
     <string name="ach_tit_50">Охотник за Достижениями</string>
-    <string name="ach_tit_51">Interior Touch</string>
-    <string name="ach_tit_52">Decorator</string>
-    <string name="ach_tit_53">Interior Designer</string>
+    <string name="ach_tit_51">Штрих в интерьере</string>
+    <string name="ach_tit_52">Декоратор</string>
+    <string name="ach_tit_53">Дизайнер интерьера</string>
 
     <string name="ach_type_marimo">маримо</string>
     <string name="ach_type_marimos">маримо</string>
@@ -527,6 +530,9 @@
     <string name="ach_des_48">Пишите заметки для 5 маримо.</string>
     <string name="ach_des_49">Заработайте 25 достижений, чтобы пройти полпути.</string>
     <string name="ach_des_50">Заработайте каждое достижение — конечная цель!</string>
+    <string name="ach_des_51">Добавьте хотя бы одно украшение (гальку, камень, кристалл и т. д.) в аквариум любого маримо через форму добавления или редактирования.</string>
+    <string name="ach_des_52">Добавьте хотя бы одно украшение 3 разным маримо в вашей коллекции.</string>
+    <string name="ach_des_53">Добавляйте украшения своим маримо, пока их общее количество во всей коллекции не достигнет 10.</string>
 
     <string-array name="marimo_frequencies">
         <item>Каждые 7 дней (Раз в неделю)</item>
@@ -556,4 +562,44 @@
     <string name="great">Отлично!</string>
     <string name="_100">100%</string>
     <string name="achievement_unlocked">Достижение разблокировано!</string>
+    <string name="notification_settings">Настройки уведомлений</string>
+    <string name="choose_which_notifications_you_want_to_receive">Выберите уведомления, которые хотите получать</string>
+    <string name="due_soon_alert">Напоминание о скорой замене</string>
+    <string name="overdue_marimo_alert">Уведомление о просрочке</string>
+    <string name="today_marimo_alert">Напоминание о замене сегодня</string>
+    <string name="new_settings_balloon_text">Добавлены новые настройки уведомлений! Теперь вы можете сами выбирать, какие оповещения получать.</string>
+    <string name="pot_decorations_optional">Украшения для аквариума (опционально)</string>
+    <string name="no_decorations_yet">Украшения пока не добавлены.</string>
+    <string name="add_decoration">+ Добавить украшение</string>
+    <string name="decoration_n">Украшение %1$d</string>
+    <string name="name">Название</string>
+    <string name="type">Тип</string>
+    <string name="colour">Цвет</string>
+    <string name="dimensions">Размеры</string>
+    <string name="material">Материал</string>
+    <string name="e_g_blue_pebble">напр. Синяя галька</string>
+    <string name="select_type">Выберите тип…</string>
+    <string name="e_g_cobalt_blue">напр. Синий кобальт</string>
+    <string name="e_g_2cm_x_1cm">напр. 2 см x 1 см</string>
+    <string name="e_g_natural_quartz">напр. Натуральный кварц</string>
+    <string name="any_extra_details">Дополнительные детали…</string>
+    <string name="decorations">Украшения</string>
+    <string name="pot_decorations">Pot Decorations</string>
+    <string name="_total">total</string>
+    <string-array name="decoration_types">
+        <item>Выберите тип…</item>
+        <item>Галька</item>
+        <item>Камень</item>
+        <item>Минерал</item>
+        <item>Песок</item>
+        <item>Гравий</item>
+        <item>Ракушка</item>
+        <item>Коряга</item>
+        <item>Кристалл</item>
+        <item>Стеклянный камешек</item>
+        <item>Мрамор</item>
+        <item>Фигурка</item>
+        <item>Водное растение</item>
+        <item>Другое</item>
+    </string-array>
 </resources>

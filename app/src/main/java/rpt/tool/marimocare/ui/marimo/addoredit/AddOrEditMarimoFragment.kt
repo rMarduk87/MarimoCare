@@ -55,7 +55,7 @@ import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.balloon.newMarimo.MarimoAddNewInfoBalloonFactory
 import rpt.tool.marimocare.utils.balloon.photo.MarimoPhotoInfoBalloonFactory
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
-import rpt.tool.marimocare.utils.data.appmodels.decoration.PotDecoration
+import rpt.tool.marimocare.utils.data.appmodels.PotDecoration
 import rpt.tool.marimocare.utils.managers.AchievementManager
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
@@ -63,7 +63,7 @@ import rpt.tool.marimocare.utils.view.HeaderButtonConfig
 import rpt.tool.marimocare.utils.view.HeaderHelper
 import rpt.tool.marimocare.utils.view.adapters.CustomSpinnerAdapter
 import rpt.tool.marimocare.utils.view.adapters.ImagePrintAdapter
-import rpt.tool.marimocare.utils.view.adapters.decoration.PotDecorationAdapter
+import rpt.tool.marimocare.utils.view.adapters.PotDecorationAdapter
 import rpt.tool.marimocare.utils.view.copyUriToInternalFile
 import rpt.tool.marimocare.utils.view.loadMarimoImage
 import java.io.File

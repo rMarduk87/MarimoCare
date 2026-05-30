@@ -284,6 +284,9 @@
     <string name="restart">เริ่มใหม่</string>
     <string name="achievement_unlocked_title">ปลดล็อกระบบความสำเร็จแล้ว!</string>
     <string name="achievement_unlocked_message">คุณมีมาริโมะและประวัติการดูแลอยู่แล้ว คุณต้องการให้เราตรวจสอบข้อมูลในอดีตและมอบเข็มกลัดที่คุณได้รับไปแล้ว หรือจะเริ่มใหม่ตั้งแต่วันนี้?</string>
+    <string name="achievement_unlocked">ปลดล็อกความสำเร็จแล้ว!</string>
+    <string name="achievement_earned">ได้รับความสำเร็จแล้ว!</string>
+    <string name="great">เยี่ยมมาก!</string>
     <string name="calculate_retroactively">คำนวณย้อนหลัง</string>
     <string name="calculate_retroactively_desc">มอบเข็มกลัดตามประวัติการดูแลทั้งหมด — การเปลี่ยนน้ำและข้อมูลมาริโมะในอดีตจะถูกนำมานับด้วย</string>
     <string name="start_from_scratch">เริ่มต้นใหม่</string>
@@ -397,6 +400,9 @@
     <string name="ach_desc_48">เพิ่มบันทึกให้มาริโมะของคุณ 5 ก้อน</string>
     <string name="ach_desc_49">ได้รับความสำเร็จ 25 รายการ มาได้ครึ่งทางแล้ว!</string>
     <string name="ach_desc_50">ได้รับความสำเร็จครบทั้ง 50 รายการ คุณคือปรมาจารย์มาริโมะตัวจริง!</string>
+    <string name="ach_desc_51">เพิ่มของตกแต่งชิ้นแรกของคุณลงในโหลมาริโมะ</string>
+    <string name="ach_desc_52">ตกแต่งโหลมาริโมะ 3 ใบที่แตกต่างกันด้วยของตกแต่ง</string>
+    <string name="ach_desc_53">เพิ่มของตกแต่ง 10 ชิ้นขึ้นไปในคอลเลกชันของคุณ</string>
     <string name="ach_tit_1">มาริโมะก้อนแรก</string>
     <string name="ach_tit_2">คู่หูดูโอ</string>
     <string name="ach_tit_3">สามสหาย</string>
@@ -447,9 +453,9 @@
     <string name="ach_tit_48">นักเขียนชีวประวัติมาริโมะ</string>
     <string name="ach_tit_49">มาได้ครึ่งทาง</string>
     <string name="ach_tit_50">นักล่าความสำเร็จ</string>
-    <string name="ach_tit_51">Interior Touch</string>
-    <string name="ach_tit_52">Decorator</string>
-    <string name="ach_tit_53">Interior Designer</string>
+    <string name="ach_tit_51">สัมผัสภายใน</string>
+    <string name="ach_tit_52">นักตกแต่ง</string>
+    <string name="ach_tit_53">มัณฑนากร</string>
 
     <string name="ach_type_marimo">มาริโมะ</string>
     <string name="ach_type_marimos">มาริโมะ</string>
@@ -527,6 +533,9 @@
     <string name="ach_des_48">เขียนโน้ตให้กับมาริโมะ 5 ตัว</string>
     <string name="ach_des_49">บรรลุ 25 ความสำเร็จเพื่อถึงครึ่งทาง</string>
     <string name="ach_des_50">บรรลุทุกความสำเร็จ — เป้าหมายสูงสุด!</string>
+    <string name="ach_des_51">เพิ่มของตกแต่งอย่างน้อยหนึ่งชิ้น (กรวด หิน คริสตัล ฯลฯ) ลงในโหลมาริโมะผ่านแบบฟอร์มเพิ่มหรือแก้ไข</string>
+    <string name="ach_des_52">เพิ่มของตกแต่งอย่างน้อยหนึ่งชิ้นให้กับมาริโมะ 3 ตัวที่แตกต่างกันในคอลเลกชันของคุณ</string>
+    <string name="ach_des_53">เพิ่มของตกแต่งให้กับมาริโมะของคุณจนกว่าจำนวนรวมในคอลเลกชันทั้งหมดจะถึง 10</string>
     <string name="_100">100%</string>
 
     <string-array name="marimo_frequencies">
@@ -576,6 +585,9 @@
     <string name="e_g_2cm_x_1cm">เช่น 2 ซม. x 1 ซม.</string>
     <string name="e_g_natural_quartz">เช่น ควอตซ์ธรรมชาติ</string>
     <string name="any_extra_details">รายละเอียดเพิ่มเติม…</string>
+    <string name="decorations">การตกแต่ง</string>
+    <string name="pot_decorations">Pot Decorations</string>
+    <string name="_total">total</string>
 
     <string-array name="decoration_types">
         <item>เลือกประเภท…</item>

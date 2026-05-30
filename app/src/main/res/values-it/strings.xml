@@ -399,6 +399,9 @@
     <string name="ach_desc_48">Aggiunte note a 5 dei tuoi marimo.</string>
     <string name="ach_desc_49">Guadagnati 25 obiettivi. Sei a metà della serie completa!</string>
     <string name="ach_desc_50">Guadagnati tutti i 50 obiettivi. Sei un vero Maestro di Marimo!</string>
+    <string name="ach_desc_51">Aggiunta la tua prima decorazione al vaso di un marimo.</string>
+    <string name="ach_desc_52">Adornato 3 diversi vasi di marimo con decorazioni.</string>
+    <string name="ach_desc_53">Aggiunte 10 o più decorazioni in tutta la tua collezione.</string>
     <string name="ach_tit_1">Primo Marimo</string>
     <string name="ach_tit_2">Duo Dinamico</string>
     <string name="ach_tit_3">Trio</string>
@@ -449,8 +452,8 @@
     <string name="ach_tit_48">Biografo di Marimo</string>
     <string name="ach_tit_49">A Metà Strada</string>
     <string name="ach_tit_50">Cacciatore di Obiettivi</string>
-    <string name="ach_tit_51">Interior Touch</string>
-    <string name="ach_tit_52">Decorator</string>
+    <string name="ach_tit_51">Tocco d\'interni</string>
+    <string name="ach_tit_52">Decoratore</string>
     <string name="ach_tit_53">Interior Designer</string>
 
     <string name="ach_type_marimo">marimo</string>
@@ -529,6 +532,9 @@
     <string name="ach_des_48">Scrivi note su 5 marimo.</string>
     <string name="ach_des_49">Ottieni 25 obiettivi per raggiungere la metà.</string>
     <string name="ach_des_50">Ottieni ogni singolo obiettivo — l\'obiettivo finale!</string>
+    <string name="ach_des_51">Aggiungi almeno una decorazione (ghiaia, roccia, cristallo, ecc.) al vaso di qualsiasi marimo tramite il modulo Aggiungi o Modifica.</string>
+    <string name="ach_des_52">Aggiungi almeno una decorazione a 3 diversi marimo nella tua collezione.</string>
+    <string name="ach_des_53">Aggiungi decorazioni ai tuoi marimo fino a quando il conteggio totale in tutta la tua collezione raggiunge 10.</string>
 
     <string-array name="marimo_frequencies">
         <item>Ogni 7 giorni (settimanale)</item>
@@ -594,8 +600,25 @@
         <item>Pianta acquatica</item>
         <item>Altro</item>
     </string-array>
+    <string-array name="decoration_color_names">
+        <item>Rosso</item>
+        <item>Arancione</item>
+        <item>Giallo</item>
+        <item>Verde</item>
+        <item>Ciano</item>
+        <item>Blu</item>
+        <item>Viola</item>
+        <item>Magenta</item>
+        <item>Marrone</item>
+        <item>Bianco</item>
+        <item>Grigio</item>
+        <item>Nero</item>
+    </string-array>
     <string name="achievement_earned">Obiettivo Ottenuto!</string>
     <string name="great">Ottimo!</string>
     <string name="_100">100%</string>
     <string name="achievement_unlocked">Obiettivo sbloccato!</string>
+    <string name="decorations">Decorazioni</string>
+    <string name="pot_decorations">Pot Decorations</string>
+    <string name="_total">total</string>
 </resources>

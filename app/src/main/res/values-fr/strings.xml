@@ -397,6 +397,9 @@
     <string name="ach_desc_48">Vous avez ajouté des notes à 5 de vos marimos.</string>
     <string name="ach_desc_49">Vous avez obtenu 25 succès. Vous êtes à la moitié de la collection complète !</string>
     <string name="ach_desc_50">Vous avez obtenu les 50 succès. Vous êtes un véritable Maître Marimo !</string>
+    <string name="ach_desc_51">Ajout de votre première décoration au pot d\'un marimo.</string>
+    <string name="ach_desc_52">3 pots de marimo différents ornés de décorations.</string>
+    <string name="ach_desc_53">10 décorations ou plus ajoutées dans toute votre collection.</string>
     <string name="ach_tit_1">Premier Marimo</string>
     <string name="ach_tit_2">Duo Dynamique</string>
     <string name="ach_tit_3">Trio</string>
@@ -447,9 +450,9 @@
     <string name="ach_tit_48">Biographe de Marimo</string>
     <string name="ach_tit_49">À Mi-chemin</string>
     <string name="ach_tit_50">Chasseur de Succès</string>
-    <string name="ach_tit_51">Interior Touch</string>
-    <string name="ach_tit_52">Decorator</string>
-    <string name="ach_tit_53">Interior Designer</string>
+    <string name="ach_tit_51">Touche d\'intérieur</string>
+    <string name="ach_tit_52">Décorateur</string>
+    <string name="ach_tit_53">Architecte d\'intérieur</string>
 
     <string name="ach_type_marimo">marimo</string>
     <string name="ach_type_marimos">marimos</string>
@@ -527,6 +530,9 @@
     <string name="ach_des_48">Écrivez des notes sur 5 marimos.</string>
     <string name="ach_des_49">Obtenez 25 succès pour atteindre la mi-parcours.</string>
     <string name="ach_des_50">Obtenez chaque succès — l\'objectif ultime !</string>
+    <string name="ach_des_51">Ajoutez au moins une décoration (galet, roche, cristal, etc.) au pot de n\'importe quel marimo via le formulaire Ajouter ou Modifier.</string>
+    <string name="ach_des_52">Ajoutez au moins une décoration à 3 marimos différents de votre collection.</string>
+    <string name="ach_des_53">Ajoutez des décorations à vos marimos jusqu\'à ce que le nombre total dans toute votre collection atteigne 10.</string>
 
     <string-array name="marimo_frequencies">
         <item>Tous les 7 jours (Hebdomadaire)</item>
@@ -556,4 +562,58 @@
     <string name="great">Génial !</string>
     <string name="_100">100%</string>
     <string name="achievement_unlocked">Succès déverrouillé !</string>
+    <string name="notification_settings">Paramètres de notification</string>
+    <string name="choose_which_notifications_you_want_to_receive">Choisissez les notifications que vous souhaitez recevoir</string>
+    <string name="due_soon_alert">Alerte de rappel imminent</string>
+    <string name="overdue_marimo_alert">Alerte Marimo en retard</string>
+    <string name="today_marimo_alert">Alerte de changement d\'eau aujourd\'hui</string>
+    <string name="new_settings_balloon_text">De nouveaux paramètres de notification ont été ajoutés ! Vous pouvez maintenant choisir les alertes à recevoir.</string>
+    <string name="pot_decorations_optional">Décorations du pot (facultatif)</string>
+    <string name="no_decorations_yet">Aucune décoration ajoutée pour le moment.</string>
+    <string name="add_decoration">+ Ajouter une décoration</string>
+    <string name="decoration_n">Décoration %1$d</string>
+    <string name="name">Nom</string>
+    <string name="type">Type</string>
+    <string name="colour">Couleur</string>
+    <string name="dimensions">Dimensions</string>
+    <string name="material">Matériau</string>
+    <string name="e_g_blue_pebble">ex: Galet bleu</string>
+    <string name="select_type">Sélectionner le type…</string>
+    <string name="e_g_cobalt_blue">ex: Bleu cobalt</string>
+    <string name="e_g_2cm_x_1cm">ex: 2cm x 1cm</string>
+    <string name="e_g_natural_quartz">ex: Quartz naturel</string>
+    <string name="any_extra_details">Détails supplémentaires…</string>
+    <string name="decorations">Décorations</string>
+    <string name="pot_decorations">Pot Decorations</string>
+    <string name="_total">total</string>
+    <string-array name="decoration_types">
+        <item>Sélectionner le type…</item>
+        <item>Galet</item>
+        <item>Roche</item>
+        <item>Pierre</item>
+        <item>Sable</item>
+        <item>Gravier</item>
+        <item>Coquillage</item>
+        <item>Bois flotté</item>
+        <item>Cristal</item>
+        <item>Gemme de verre</item>
+        <item>Marbre</item>
+        <item>Figurine</item>
+        <item>Plante aquatique</item>
+        <item>Autre</item>
+    </string-array>
+    <string-array name="decoration_color_names">
+        <item>Rouge</item>
+        <item>Orange</item>
+        <item>Jaune</item>
+        <item>Vert</item>
+        <item>Cyan</item>
+        <item>Bleu</item>
+        <item>Violet</item>
+        <item>Magenta</item>
+        <item>Brun</item>
+        <item>Blanc</item>
+        <item>Gris</item>
+        <item>Noir</item>
+    </string-array>
 </resources>

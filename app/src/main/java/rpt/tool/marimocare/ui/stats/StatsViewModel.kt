@@ -14,11 +14,15 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.data.appmodels.MarimoDetailUi
+import rpt.tool.marimocare.utils.data.appmodels.PotDecoration
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 
 class StatsViewModel : ViewModel() {
 
     val allMarimos: LiveData<List<Marimo>> = RepositoryManager.marimoRepository.marimos
+
+    val allPotDecorations: LiveData<List<PotDecoration>> =
+        RepositoryManager.potDecorationRepository.allPotDecorations
 
     private val _comparisonDetails = MutableStateFlow<List<MarimoDetailUi>>(emptyList())
     val comparisonDetails: StateFlow<List<MarimoDetailUi>> = _comparisonDetails.asStateFlow()

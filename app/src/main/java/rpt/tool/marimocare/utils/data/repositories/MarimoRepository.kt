@@ -14,6 +14,7 @@ import rpt.tool.marimocare.utils.data.appmodels.MarimoChange
 import rpt.tool.marimocare.utils.data.appmodels.MarimoHealthScore
 import rpt.tool.marimocare.utils.data.appmodels.MarimoHealthScoreStats
 import rpt.tool.marimocare.utils.data.appmodels.MarimoQR
+import rpt.tool.marimocare.utils.data.appmodels.PotDecoration
 import rpt.tool.marimocare.utils.data.database.enums.AchievementType
 import rpt.tool.marimocare.utils.data.database.enums.UnitType
 import rpt.tool.marimocare.utils.data.database.dao.MarimoDao
@@ -307,4 +308,5 @@ class MarimoRepository(
         val detail = marimoDao.getAchievementDetail(id).toAppModel<AchievementDetail>()
         return detail.current == detail.target
     }
+
 }

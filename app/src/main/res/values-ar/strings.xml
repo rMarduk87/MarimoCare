@@ -397,6 +397,9 @@
     <string name="ach_desc_48">تمت إضافة ملاحظات لـ 5 من الماريمو الخاصة بك.</string>
     <string name="ach_desc_49">حصلت على 25 إنجازاً. أنت في منتصف الطريق إلى المجموعة الكاملة!</string>
     <string name="ach_desc_50">حصلت على جميع الإنجازات الـ 50. أنت سيد ماريمو حقيقي!</string>
+    <string name="ach_desc_51">أضفت أول زينة لك إلى حوض الماريمو.</string>
+    <string name="ach_desc_52">زيّنت 3 أحواض ماريمو مختلفة بالزينة.</string>
+    <string name="ach_desc_53">أضفت 10 زينة أو أكثر عبر مجموعتك.</string>
     <string name="ach_tit_1">أول ماريمو</string>
     <string name="ach_tit_2">ثنائي ديناميكي</string>
     <string name="ach_tit_3">ثلاثي</string>
@@ -447,9 +450,9 @@
     <string name="ach_tit_48">كاتب سيرة الماريمو</string>
     <string name="ach_tit_49">في منتصف الطريق</string>
     <string name="ach_tit_50">صياد الإنجازات</string>
-    <string name="ach_tit_51">Interior Touch</string>
-    <string name="ach_tit_52">Decorator</string>
-    <string name="ach_tit_53">Interior Designer</string>
+    <string name="ach_tit_51">لمسة داخلية</string>
+    <string name="ach_tit_52">مُزيّن</string>
+    <string name="ach_tit_53">مصمم ديكور</string>
     <string name="ach_type_marimo">ماريمو</string>
     <string name="ach_type_marimos">ماريمو</string>
     <string name="ach_type_waterchange">تغيير الماء</string>
@@ -526,6 +529,9 @@
     <string name="ach_des_48">اكتب ملاحظات لـ 5 ماريمو.</string>
     <string name="ach_des_49">احصل على 25 إنجازاً لتصل إلى منتصف الطريق.</string>
     <string name="ach_des_50">احصل على كل إنجاز — الهدف النهائي!</string>
+    <string name="ach_des_51">أضف زينة واحدة على الأقل (حصاة، صخرة، كريستال، إلخ) إلى حوض أي ماريمو عبر نموذج الإضافة أو التعديل.</string>
+    <string name="ach_des_52">أضف زينة واحدة على الأقل لـ 3 ماريمو مختلفة في مجموعتك.</string>
+    <string name="ach_des_53">أضف الزينة إلى الماريمو الخاص بك حتى يصل العدد الإجمالي عبر مجموعتك بالكامل إلى 10.</string>
     <string name="_100">100%</string>
 
     <string-array name="marimo_frequencies">
@@ -555,4 +561,58 @@
     <string name="achievement_earned">تم اكتساب الإنجاز!</string>
     <string name="great">عظيم!</string>
     <string name="achievement_unlocked">تم فتح الإنجاز!</string>
+    <string name="notification_settings">إعدادات الإشعارات</string>
+    <string name="choose_which_notifications_you_want_to_receive">اختر الإشعارات التي تريد استلامها</string>
+    <string name="due_soon_alert">تنبيه بقرب الموعد</string>
+    <string name="overdue_marimo_alert">تنبيه بتأخر الموعد</string>
+    <string name="today_marimo_alert">تنبيه بتغيير الماء اليوم</string>
+    <string name="new_settings_balloon_text">تمت إضافة إعدادات إشعارات جديدة! يمكنك الآن اختيار التنبيهات التي تريد استلامها.</string>
+    <string name="pot_decorations_optional">زينة الحوض (اختياري)</string>
+    <string name="no_decorations_yet">لم تتم إضافة أي زينة بعد.</string>
+    <string name="add_decoration">+ إضافة زينة</string>
+    <string name="decoration_n">زينة %1$d</string>
+    <string name="name">الاسم</string>
+    <string name="type">النوع</string>
+    <string name="colour">اللون</string>
+    <string name="dimensions">الأبعاد</string>
+    <string name="material">المادة</string>
+    <string name="e_g_blue_pebble">مثلاً: حصاة زرقاء</string>
+    <string name="select_type">اختر النوع...</string>
+    <string name="e_g_cobalt_blue">مثلاً: أزرق كوبالتي</string>
+    <string name="e_g_2cm_x_1cm">مثلاً: 2 سم × 1 سم</string>
+    <string name="e_g_natural_quartz">مثلاً: كوارتز طبيعي</string>
+    <string name="any_extra_details">أي تفاصيل إضافية...</string>
+    <string name="decorations">الزينة</string>
+    <string name="pot_decorations">Pot Decorations</string>
+    <string name="_total">total</string>
+    <string-array name="decoration_types">
+        <item>اختر النوع...</item>
+        <item>حصاة</item>
+        <item>صخرة</item>
+        <item>حجر</item>
+        <item>رمل</item>
+        <item>حصى</item>
+        <item>صدفة</item>
+        <item>خشب طافي</item>
+        <item>كريستال</item>
+        <item>جوهرة زجاجية</item>
+        <item>رخام</item>
+        <item>تمثال صغير</item>
+        <item>نبات مائي</item>
+        <item>أخرى</item>
+    </string-array>
+    <string-array name="decoration_color_names">
+        <item>الأحمر</item>
+        <item>البرتقالي</item>
+        <item>الأصفر</item>
+        <item>الأخضر</item>
+        <item>السماوي</item>
+        <item>الأزرق</item>
+        <item>الأرجواني</item>
+        <item>الماجنتا</item>
+        <item>البني</item>
+        <item>الأبيض</item>
+        <item>الرمادي</item>
+        <item>الأسود</item>
+    </string-array>
 </resources>

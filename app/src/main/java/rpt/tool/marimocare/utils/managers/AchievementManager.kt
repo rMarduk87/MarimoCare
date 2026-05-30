@@ -20,6 +20,7 @@ import java.time.LocalDate
 import java.time.temporal.ChronoUnit
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.graphics.toColorInt
+import rpt.tool.marimocare.utils.data.appmodels.PotDecoration
 
 class AchievementManager {
     interface AchievementListener {
@@ -43,9 +44,10 @@ class AchievementManager {
             val achievement = RepositoryManager.marimoRepository.getAllAchievement()
             val marimos = RepositoryManager.marimoRepository.getAllSync()
             val waterChanges = RepositoryManager.marimoRepository.getAllChanges()
+            val allDecorations = RepositoryManager.potDecorationRepository.getAllDecorations()
             calculateAchievement(context, achievement, marimos, waterChanges,
                 showDialogEarned,
-                userMeta)
+                userMeta,allDecorations)
             listener?.onDataChanged()
         }
 
@@ -56,7 +58,8 @@ class AchievementManager {
             marimos: List<Marimo>,
             waterChanges: List<MarimoChange>,
             showDialogEarned: Boolean,
-            userMeta: Map<String, Any> = emptyMap()
+            userMeta: Map<String, Any> = emptyMap(),
+            allDecorations: List<PotDecoration>
         ) {
 
             val milestoneCount = waterChanges.count { it.isMilestone }
@@ -93,6 +96,10 @@ class AchievementManager {
                     daysAgo <= frequency
                 }
             }
+
+            val potDecorationCount = allDecorations.count()
+
+            val marimosWithPot = allDecorations.groupBy { it.marimoCode }.keys
 
             val totalEarnedCount = achievements.count { it.earned==1 }
 
@@ -164,6 +171,11 @@ class AchievementManager {
 
                     "halfway_there" -> minOf(totalEarnedCount, 25)
                     "achievement_hunter" -> minOf(totalEarnedCount, 49)
+
+                    "first_decoration"-> minOf(potDecorationCount, 1)
+                    "decorator"-> minOf(marimosWithPot.size,3)
+                    "interior_designer"-> minOf(potDecorationCount, 10)
+
 
                     else -> null
                 }

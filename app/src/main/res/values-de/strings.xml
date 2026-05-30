@@ -399,6 +399,9 @@
     <string name="ach_desc_48">Notizen zu 5 deiner Marimos hinzugefügt.</string>
     <string name="ach_desc_49">25 Erfolge verdient. Du bist auf halbem Weg zum vollen Set!</string>
     <string name="ach_desc_50">Alle 50 Erfolge verdient. Du bist ein wahrer Marimo-Meister!</string>
+    <string name="ach_desc_51">Deine erste Dekoration zum Topf eines Marimos hinzugefügt.</string>
+    <string name="ach_desc_52">3 verschiedene Marimo-Töpfe mit Dekorationen geschmückt.</string>
+    <string name="ach_desc_53">10 oder mehr Dekorationen in deiner gesamten Sammlung hinzugefügt.</string>
     <string name="ach_tit_1">Erstes Marimo</string>
     <string name="ach_tit_2">Dynamisches Duo</string>
     <string name="ach_tit_3">Trio</string>
@@ -449,9 +452,9 @@
     <string name="ach_tit_48">Marimo-Biograf</string>
     <string name="ach_tit_49">Halbzeit</string>
     <string name="ach_tit_50">Erfolgs-Jäger</string>
-    <string name="ach_tit_51">Interior Touch</string>
-    <string name="ach_tit_52">Decorator</string>
-    <string name="ach_tit_53">Interior Designer</string>
+    <string name="ach_tit_51">Inneneinrichtung</string>
+    <string name="ach_tit_52">Dekorateur</string>
+    <string name="ach_tit_53">Innenarchitekt</string>
 
     <string name="ach_type_marimo">Marimo</string>
     <string name="ach_type_marimos">Marimos</string>
@@ -529,6 +532,9 @@
     <string name="ach_des_48">Schreibe Notizen zu 5 Marimos.</string>
     <string name="ach_des_49">Verdiene 25 Erfolge, um die Hälfte zu erreichen.</string>
     <string name="ach_des_50">Verdiene jeden einzelnen Erfolg – das ultimative Ziel!</string>
+    <string name="ach_des_51">Füge mindestens eine Dekoration (Kiesel, Stein, Kristall usw.) zum Topf eines Marimos über das Hinzufügen- oder Bearbeiten-Formular hinzu.</string>
+    <string name="ach_des_52">Füge mindestens eine Dekoration zu 3 verschiedenen Marimos in deiner Sammlung hinzu.</string>
+    <string name="ach_des_53">Füge Dekorationen zu deinen Marimos hinzu, bis die Gesamtzahl in deiner gesamten Sammlung 10 erreicht.</string>
 
     <string-array name="marimo_frequencies">
         <item>Alle 7 Tage (wöchentlich)</item>
@@ -584,7 +590,7 @@
         <item>Fels</item>
         <item>Stein</item>
         <item>Sand</item>
-        <item>Gies</item>
+        <item>Kies</item>
         <item>Muschel</item>
         <item>Treibholz</item>
         <item>Kristall</item>
@@ -598,4 +604,21 @@
     <string name="great">Großartig!</string>
     <string name="_100">100%</string>
     <string name="achievement_unlocked">Erfolg freigeschaltet!</string>
+    <string name="decorations">Dekorationen</string>
+    <string name="pot_decorations">Pot Decorations</string>
+    <string name="_total">total</string>
+    <string-array name="decoration_color_names">
+        <item>Rot</item>
+        <item>Orange</item>
+        <item>Gelb</item>
+        <item>Grün</item>
+        <item>Cyan</item>
+        <item>Blau</item>
+        <item>Lila</item>
+        <item>Magenta</item>
+        <item>Braun</item>
+        <item>Weiß</item>
+        <item>Grau</item>
+        <item>Schwarz</item>
+    </string-array>
 </resources>

@@ -3,13 +3,13 @@ id,code,title,description,category,image,color,earned,acquired_date,order
 2,duo,R.string.ach_tit_2,R.string.ach_desc_2,Collection,R.string.ach_2,#3b82f6,False,,47
 3,trio,R.string.ach_tit_3,R.string.ach_desc_3,Collection,R.string.ach_3,#64748b,False,,48
 4,collector,R.string.ach_tit_4,R.string.ach_desc_4,Collection,R.string.ach_4,#a855f7,False,,49
-5,marimo_hoarder,R.string.ach_tit_5,R.string.ach_desc_5,Collection,R.string.ach_5,#ffd700,False,,50
+5,marimo_hoarder,R.string.ach_tit_5,R.string.ach_desc_5,Collection,R.string.ach_5,#f97316,False,,50
 6,marimo_army,R.string.ach_tit_6,R.string.ach_desc_6,Collection,R.string.ach_6,#3b82f6,False,,15
 7,marimo_empire,R.string.ach_tit_7,R.string.ach_desc_7,Collection,R.string.ach_7,#84cc16,False,,16
 8,first_water_change,R.string.ach_tit_8,R.string.ach_desc_8,Water Changes,R.string.ach_8,#a855f7,False,,17
 9,consistent_5,R.string.ach_tit_9,R.string.ach_desc_9,Water Changes,R.string.ach_9,#22c55e,False,,18
 10,consistent_10,R.string.ach_tit_10,R.string.ach_desc_10,Water Changes,R.string.ach_10,#f97316,False,,19
-11,consistent_25,R.string.ach_tit_11,R.string.ach_desc_11,Water Changes,R.string.ach_11,#ffd700,False,,20
+11,consistent_25,R.string.ach_tit_11,R.string.ach_desc_11,Water Changes,R.string.ach_11,#f97316,False,,20
 12,consistent_50,R.string.ach_tit_12,R.string.ach_desc_12,Water Changes,R.string.ach_12,#f59e0b,False,,21
 13,consistent_100,R.string.ach_tit_13,R.string.ach_desc_13,Water Changes,R.string.ach_13,#f59e0b,False,,22
 14,consistent_200,R.string.ach_tit_14,R.string.ach_desc_14,Water Changes,R.string.ach_14,#f97316,False,,23
@@ -41,7 +41,7 @@ id,code,title,description,category,image,color,earned,acquired_date,order
 40,speedy,R.string.ach_tit_40,R.string.ach_desc_40,Fun,R.string.ach_40,#14b8a6,False,,4
 41,night_owl,R.string.ach_tit_41,R.string.ach_desc_41,Fun,R.string.ach_41,#eab308,False,,5
 42,varied_frequency,R.string.ach_tit_42,R.string.ach_desc_42,Diversity,R.string.ach_42,#22c55e,False,,6
-43,feedback_giver,R.string.ach_tit_43,R.string.ach_desc_43,Engagement,R.string.ach_43,#ffd700,False,,7
+43,feedback_giver,R.string.ach_tit_43,R.string.ach_desc_43,Engagement,R.string.ach_43,#f97316,False,,7
 44,settings_explorer,R.string.ach_tit_44,R.string.ach_desc_44,Engagement,R.string.ach_44,#3b82f6,False,,8
 45,senior_marimo,R.string.ach_tit_45,R.string.ach_desc_45,Longevity,R.string.ach_45,#0ea5e9,False,,9
 46,ancient_marimo,R.string.ach_tit_46,R.string.ach_desc_46,Longevity,R.string.ach_46,#06b6d4,False,,10
