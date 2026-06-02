@@ -27,11 +27,11 @@ object SharedPreferencesManager {
 
     var alertOverdue: String
         get() = sharedPreferences.getString(AppUtils.ALERT_OVERDUE, "") ?: ""
-        set(value) = sharedPreferences.edit { putString(AppUtils.ALERT_OVERDUE, value) }
+        set(value) = sharedPreferences.edit(commit = true) { putString(AppUtils.ALERT_OVERDUE, value) }
 
     var alertSoon: String
         get() = sharedPreferences.getString(AppUtils.ALERT_SOON, "") ?: ""
-        set(value) = sharedPreferences.edit { putString(AppUtils.ALERT_SOON, value) }
+        set(value) = sharedPreferences.edit(commit = true) { putString(AppUtils.ALERT_SOON, value) }
 
     var coloredIsSelected: Boolean
         get() = sharedPreferences.getBoolean(AppUtils.COLORED_IS_SELECTED, false)
@@ -71,7 +71,7 @@ object SharedPreferencesManager {
 
     var alertOverdueCounter: Int
         get() = sharedPreferences.getInt(AppUtils.MARIMO_OVERDUE_COUNTER, 0)
-        set(value) = sharedPreferences.edit() { putInt(AppUtils.MARIMO_OVERDUE_COUNTER, value) }
+        set(value) = sharedPreferences.edit(commit = true) { putInt(AppUtils.MARIMO_OVERDUE_COUNTER, value) }
 
     var fixWaterChanges: Boolean
         get() = sharedPreferences.getBoolean(AppUtils.FIX, true)
@@ -94,6 +94,10 @@ object SharedPreferencesManager {
         get() = sharedPreferences.getBoolean(AppUtils.SHOW_BALLON_NEW_STATS, true)
         set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_BALLON_NEW_STATS, value) }
 
+    var showBallonNewPotStats: Boolean
+        get() = sharedPreferences.getBoolean(AppUtils.SHOW_BALLON_NEW_POT_STATS, true)
+        set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_BALLON_NEW_POT_STATS, value) }
+
     var showBallonFeedback: Boolean
         get() = sharedPreferences.getBoolean(AppUtils.SHOW_BALLON_FEEDBACK, true)
         set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_BALLON_FEEDBACK, value)}
@@ -104,7 +108,7 @@ object SharedPreferencesManager {
 
     var alertToday: String
         get() = sharedPreferences.getString(AppUtils.ALERT_TODAY, "") ?: ""
-        set(value) = sharedPreferences.edit { putString(AppUtils.ALERT_TODAY, value) }
+        set(value) = sharedPreferences.edit(commit = true) { putString(AppUtils.ALERT_TODAY, value) }
 
     var lastDailyNotificationDate: String
         get() = sharedPreferences.getString(AppUtils.LAST_DAILY_NOTIFICATION_DATE, "") ?: ""

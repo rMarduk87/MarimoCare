@@ -583,8 +583,9 @@
     <string name="e_g_natural_quartz">مثلاً: كوارتز طبيعي</string>
     <string name="any_extra_details">أي تفاصيل إضافية...</string>
     <string name="decorations">الزينة</string>
-    <string name="pot_decorations">Pot Decorations</string>
-    <string name="_total">total</string>
+    <string name="pot_decorations">زينة الحوض</string>
+    <string name="_total">إجمالي</string>
+    <string name="new_stats_2">تم إضافة إحصائية جديدة تتعلق بزينة أحواض الماريمو الخاصة بك</string>
     <string-array name="decoration_types">
         <item>اختر النوع...</item>
         <item>حصاة</item>
@@ -602,17 +603,117 @@
         <item>أخرى</item>
     </string-array>
     <string-array name="decoration_color_names">
-        <item>الأحمر</item>
-        <item>البرتقالي</item>
-        <item>الأصفر</item>
-        <item>الأخضر</item>
-        <item>السماوي</item>
-        <item>الأزرق</item>
-        <item>الأرجواني</item>
-        <item>الماجنتا</item>
-        <item>البني</item>
-        <item>الأبيض</item>
-        <item>الرمادي</item>
-        <item>الأسود</item>
+        <!-- Greyscale Names -->
+        <item>لا شيء</item>
+        <item>أبيض</item>
+        <item>رمادي 50</item>
+        <item>رمادي 100</item>
+        <item>رمادي 200</item>
+        <item>رمادي 300</item>
+        <item>رمادي 400</item>
+        <item>رمادي 500</item>
+        <item>رمادي 600</item>
+        <item>رمادي 700</item>
+        <item>أسود</item>
+        <!-- Grid Names -->
+        <item>أزرق 900</item>
+        <item>نيلي 900</item>
+        <item>أرجواني 900</item>
+        <item>وردي 900</item>
+        <item>أحمر 900</item>
+        <item>برتقالي داكن 900</item>
+        <item>برتقالي 900</item>
+        <item>كهرماني 900</item>
+        <item>أصفر 900</item>
+        <item>ليموني 900</item>
+        <item>أخضر 900</item>
+        <item>أزرق 800</item>
+        <item>نيلي 800</item>
+        <item>أرجواني 800</item>
+        <item>وردي 800</item>
+        <item>أحمر 800</item>
+        <item>برتقالي داكن 800</item>
+        <item>برتقالي 800</item>
+        <item>كهرماني 800</item>
+        <item>أصفر 800</item>
+        <item>ليموني 800</item>
+        <item>أخضر 800</item>
+        <item>أزرق 700</item>
+        <item>نيلي 700</item>
+        <item>أرجواني 700</item>
+        <item>وردي 700</item>
+        <item>أحمر 700</item>
+        <item>برتقالي داكن 700</item>
+        <item>برتقالي 700</item>
+        <item>كهرماني 700</item>
+        <item>أصفر 700</item>
+        <item>ليموني 700</item>
+        <item>أخضر 700</item>
+        <item>أزرق 600</item>
+        <item>نيلي 600</item>
+        <item>أرجواني 600</item>
+        <item>وردي 600</item>
+        <item>أحمر 600</item>
+        <item>برتقالي داكن 600</item>
+        <item>برتقالي 600</item>
+        <item>كهرماني 600</item>
+        <item>أصفر 600</item>
+        <item>ليموني 600</item>
+        <item>أخضر 600</item>
+        <item>أزرق 500</item>
+        <item>نيلي 500</item>
+        <item>أرجواني 500</item>
+        <item>وردي 500</item>
+        <item>أحمر 500</item>
+        <item>برتقالي داكن 500</item>
+        <item>برتقالي 500</item>
+        <item>كهرماني 500</item>
+        <item>أصفر 500</item>
+        <item>ليموني 500</item>
+        <item>أخضر 500</item>
+        <item>أزرق 400</item>
+        <item>نيلي 400</item>
+        <item>أرجواني 400</item>
+        <item>وردي 400</item>
+        <item>أحمر 400</item>
+        <item>برتقالي داكن 400</item>
+        <item>برتقالي 400</item>
+        <item>كهرماني 400</item>
+        <item>أصفر 400</item>
+        <item>ليموني 400</item>
+        <item>أخضر 400</item>
+        <item>أزرق 300</item>
+        <item>نيلي 300</item>
+        <item>أرجواني 300</item>
+        <item>وردي 300</item>
+        <item>أحمر 300</item>
+        <item>برتقالي داكن 300</item>
+        <item>برتقالي 300</item>
+        <item>كهرماني 300</item>
+        <item>أصفر 300</item>
+        <item>ليموني 300</item>
+        <item>أخضر 300</item>
+        <item>أزرق 200</item>
+        <item>نيلي 200</item>
+        <item>أرجواني 200</item>
+        <item>وردي 200</item>
+        <item>أحمر 200</item>
+        <item>برتقالي داكن 200</item>
+        <item>برتقالي 200</item>
+        <item>كهرماني 200</item>
+        <item>أصفر 200</item>
+        <item>ليموني 200</item>
+        <item>أخضر 200</item>
+        <item>أزرق 100</item>
+        <item>نيلي 100</item>
+        <item>أرجواني 100</item>
+        <item>وردي 100</item>
+        <item>أحمر 100</item>
+        <item>برتقالي داكن 100</item>
+        <item>برتقالي 100</item>
+        <item>كهرماني 100</item>
+        <item>أصفر 100</item>
+        <item>ليموني 100</item>
+        <item>أخضر 100</item>
     </string-array>
 </resources>

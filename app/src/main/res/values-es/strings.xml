@@ -603,20 +603,121 @@
     <string name="_100">100%</string>
     <string name="achievement_unlocked">¡Logro desbloqueado!</string>
     <string name="decorations">Decoraciones</string>
-    <string name="pot_decorations">Pot Decorations</string>
+    <string name="pot_decorations">Decoraciones de la maceta</string>
     <string name="_total">total</string>
+    <string name="new_stats_2">Nueva estadística añadida, sobre las decoraciones de las macetas de tus Marimos</string>
     <string-array name="decoration_color_names">
-        <item>Rojo</item>
-        <item>Naranja</item>
-        <item>Amarillo</item>
-        <item>Verde</item>
-        <item>Cian</item>
-        <item>Azul</item>
-        <item>Púrpura</item>
-        <item>Magenta</item>
-        <item>Marrón</item>
+        <!-- Greyscale Names -->
+        <item>Ninguno</item>
         <item>Blanco</item>
-        <item>Gris</item>
+        <item>Gris 50</item>
+        <item>Gris 100</item>
+        <item>Gris 200</item>
+        <item>Gris 300</item>
+        <item>Gris 400</item>
+        <item>Gris 500</item>
+        <item>Gris 600</item>
+        <item>Gris 700</item>
         <item>Negro</item>
+        <!-- Grid Names -->
+        <item>Azul 900</item>
+        <item>Índigo 900</item>
+        <item>Púrpura 900</item>
+        <item>Rosa 900</item>
+        <item>Rojo 900</item>
+        <item>Naranja oscuro 900</item>
+        <item>Naranja 900</item>
+        <item>Ámbar 900</item>
+        <item>Amarillo 900</item>
+        <item>Lima 900</item>
+        <item>Verde 900</item>
+        <item>Azul 800</item>
+        <item>Índigo 800</item>
+        <item>Púrpura 800</item>
+        <item>Rosa 800</item>
+        <item>Rojo 800</item>
+        <item>Naranja oscuro 800</item>
+        <item>Naranja 800</item>
+        <item>Ámbar 800</item>
+        <item>Amarillo 800</item>
+        <item>Lima 800</item>
+        <item>Verde 800</item>
+        <item>Azul 700</item>
+        <item>Índigo 700</item>
+        <item>Púrpura 700</item>
+        <item>Rosa 700</item>
+        <item>Rojo 700</item>
+        <item>Naranja oscuro 700</item>
+        <item>Naranja 700</item>
+        <item>Ámbar 700</item>
+        <item>Amarillo 700</item>
+        <item>Lima 700</item>
+        <item>Verde 700</item>
+        <item>Azul 600</item>
+        <item>Índigo 600</item>
+        <item>Púrpura 600</item>
+        <item>Rosa 600</item>
+        <item>Rojo 600</item>
+        <item>Naranja oscuro 600</item>
+        <item>Naranja 600</item>
+        <item>Ámbar 600</item>
+        <item>Amarillo 600</item>
+        <item>Lima 600</item>
+        <item>Verde 600</item>
+        <item>Azul 500</item>
+        <item>Índigo 500</item>
+        <item>Púrpura 500</item>
+        <item>Rosa 500</item>
+        <item>Rojo 500</item>
+        <item>Naranja oscuro 500</item>
+        <item>Naranja 500</item>
+        <item>Ámbar 500</item>
+        <item>Amarillo 500</item>
+        <item>Lima 500</item>
+        <item>Verde 500</item>
+        <item>Azul 400</item>
+        <item>Índigo 400</item>
+        <item>Púrpura 400</item>
+        <item>Rosa 400</item>
+        <item>Rojo 400</item>
+        <item>Naranja oscuro 400</item>
+        <item>Naranja 400</item>
+        <item>Ámbar 400</item>
+        <item>Amarillo 400</item>
+        <item>Lima 400</item>
+        <item>Verde 400</item>
+        <item>Azul 300</item>
+        <item>Índigo 300</item>
+        <item>Púrpura 300</item>
+        <item>Rosa 300</item>
+        <item>Rojo 300</item>
+        <item>Naranja oscuro 300</item>
+        <item>Naranja 300</item>
+        <item>Ámbar 300</item>
+        <item>Amarillo 300</item>
+        <item>Lima 300</item>
+        <item>Verde 300</item>
+        <item>Azul 200</item>
+        <item>Índigo 200</item>
+        <item>Púrpura 200</item>
+        <item>Rosa 200</item>
+        <item>Rojo 200</item>
+        <item>Naranja oscuro 200</item>
+        <item>Naranja 200</item>
+        <item>Ámbar 200</item>
+        <item>Amarillo 200</item>
+        <item>Lima 200</item>
+        <item>Verde 200</item>
+        <item>Azul 100</item>
+        <item>Índigo 100</item>
+        <item>Púrpura 100</item>
+        <item>Rosa 100</item>
+        <item>Rojo 100</item>
+        <item>Naranja oscuro 100</item>
+        <item>Naranja 100</item>
+        <item>Ámbar 100</item>
+        <item>Amarillo 100</item>
+        <item>Lima 100</item>
+        <item>Verde 100</item>
     </string-array>
 </resources>

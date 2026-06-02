@@ -602,33 +602,241 @@ Please note: the final date retrieved will be the same as the app release date, 
     </string-array>
 
     <string-array name="decoration_colors" translatable="false">
-        <item>#FF3B30</item>
-        <item>#FF9500</item>
-        <item>#FFCC00</item>
-        <item>#28CD41</item>
-        <item>#5AC8FA</item>
-        <item>#007AFF</item>
-        <item>#5856D6</item>
-        <item>#AF52DE</item>
-        <item>#A2845E</item>
+        <!-- Greyscale Row -->
+        <item>#00000000</item>
         <item>#FFFFFF</item>
-        <item>#8E8E93</item>
+        <item>#F5F5F5</item>
+        <item>#EEEEEE</item>
+        <item>#E0E0E0</item>
+        <item>#BDBDBD</item>
+        <item>#9E9E9E</item>
+        <item>#757575</item>
+        <item>#616161</item>
+        <item>#424242</item>
         <item>#000000</item>
+        <!-- Row 1 (900) -->
+        <item>#0D47A1</item>
+        <item>#1A237E</item>
+        <item>#4A148C</item>
+        <item>#880E4F</item>
+        <item>#B71C1C</item>
+        <item>#BF360C</item>
+        <item>#E65100</item>
+        <item>#FF6F00</item>
+        <item>#F57F17</item>
+        <item>#827717</item>
+        <item>#1B5E20</item>
+        <!-- Row 2 (800) -->
+        <item>#1565C0</item>
+        <item>#283593</item>
+        <item>#6A1B9A</item>
+        <item>#AD1457</item>
+        <item>#C62828</item>
+        <item>#D84315</item>
+        <item>#EF6C00</item>
+        <item>#FF8F00</item>
+        <item>#F9A825</item>
+        <item>#9E9D24</item>
+        <item>#2E7D32</item>
+        <!-- Row 3 (700) -->
+        <item>#1976D2</item>
+        <item>#303F9F</item>
+        <item>#7B1FA2</item>
+        <item>#C2185B</item>
+        <item>#D32F2F</item>
+        <item>#E64A19</item>
+        <item>#F57C00</item>
+        <item>#FFA000</item>
+        <item>#FBC02D</item>
+        <item>#AFB42B</item>
+        <item>#388E3C</item>
+        <!-- Row 4 (600) -->
+        <item>#1E88E5</item>
+        <item>#3949AB</item>
+        <item>#8E24AA</item>
+        <item>#D81B60</item>
+        <item>#E53935</item>
+        <item>#F4511E</item>
+        <item>#FB8C00</item>
+        <item>#FFB300</item>
+        <item>#FDD835</item>
+        <item>#C0CA33</item>
+        <item>#43A047</item>
+        <!-- Row 5 (500) -->
+        <item>#2196F3</item>
+        <item>#3F51B5</item>
+        <item>#9C27B0</item>
+        <item>#E91E63</item>
+        <item>#F44336</item>
+        <item>#FF5722</item>
+        <item>#FF9800</item>
+        <item>#FFC107</item>
+        <item>#FFEB3B</item>
+        <item>#CDDC39</item>
+        <item>#4CAF50</item>
+        <!-- Row 6 (400) -->
+        <item>#42A5F5</item>
+        <item>#5C6BC0</item>
+        <item>#AB47BC</item>
+        <item>#EC407A</item>
+        <item>#EF5350</item>
+        <item>#FF7043</item>
+        <item>#FFA726</item>
+        <item>#FFCA28</item>
+        <item>#FFEE58</item>
+        <item>#D4E157</item>
+        <item>#66BB6A</item>
+        <!-- Row 7 (300) -->
+        <item>#64B5F6</item>
+        <item>#7986CB</item>
+        <item>#BA68C8</item>
+        <item>#F06292</item>
+        <item>#E57373</item>
+        <item>#FF8A65</item>
+        <item>#FFB74D</item>
+        <item>#FFD54F</item>
+        <item>#FFF176</item>
+        <item>#DCE775</item>
+        <item>#81C784</item>
+        <!-- Row 8 (200) -->
+        <item>#90CAF9</item>
+        <item>#9FA8DA</item>
+        <item>#CE93D8</item>
+        <item>#F48FB1</item>
+        <item>#EF9A9A</item>
+        <item>#FFAB91</item>
+        <item>#FFCC80</item>
+        <item>#FFE082</item>
+        <item>#FFF59D</item>
+        <item>#E6EE9C</item>
+        <item>#A5D6A7</item>
+        <!-- Row 9 (100) -->
+        <item>#BBDEFB</item>
+        <item>#C5CAE9</item>
+        <item>#E1BEE7</item>
+        <item>#F8BBD0</item>
+        <item>#FFCDD2</item>
+        <item>#FFCCBC</item>
+        <item>#FFE0B2</item>
+        <item>#FFECB3</item>
+        <item>#FFF9C4</item>
+        <item>#F0F4C3</item>
+        <item>#C8E6C9</item>
     </string-array>
 
     <string-array name="decoration_color_names">
-        <item>Red</item>
-        <item>Orange</item>
-        <item>Yellow</item>
-        <item>Green</item>
-        <item>Cyan</item>
-        <item>Blue</item>
-        <item>Purple</item>
-        <item>Magenta</item>
-        <item>Brown</item>
+        <!-- Greyscale Names -->
+        <item>None</item>
         <item>White</item>
-        <item>Grey</item>
+        <item>Grey 50</item>
+        <item>Grey 100</item>
+        <item>Grey 200</item>
+        <item>Grey 300</item>
+        <item>Grey 400</item>
+        <item>Grey 500</item>
+        <item>Grey 600</item>
+        <item>Grey 700</item>
         <item>Black</item>
+        <!-- Grid Names -->
+        <item>Blue 900</item>
+        <item>Indigo 900</item>
+        <item>Purple 900</item>
+        <item>Pink 900</item>
+        <item>Red 900</item>
+        <item>Deep Orange 900</item>
+        <item>Orange 900</item>
+        <item>Amber 900</item>
+        <item>Yellow 900</item>
+        <item>Lime 900</item>
+        <item>Green 900</item>
+        <item>Blue 800</item>
+        <item>Indigo 800</item>
+        <item>Purple 800</item>
+        <item>Pink 800</item>
+        <item>Red 800</item>
+        <item>Deep Orange 800</item>
+        <item>Orange 800</item>
+        <item>Amber 800</item>
+        <item>Yellow 800</item>
+        <item>Lime 800</item>
+        <item>Green 800</item>
+        <item>Blue 700</item>
+        <item>Indigo 700</item>
+        <item>Purple 700</item>
+        <item>Pink 700</item>
+        <item>Red 700</item>
+        <item>Deep Orange 700</item>
+        <item>Orange 700</item>
+        <item>Amber 700</item>
+        <item>Yellow 700</item>
+        <item>Lime 700</item>
+        <item>Green 700</item>
+        <item>Blue 600</item>
+        <item>Indigo 600</item>
+        <item>Purple 600</item>
+        <item>Pink 600</item>
+        <item>Red 600</item>
+        <item>Deep Orange 600</item>
+        <item>Orange 600</item>
+        <item>Amber 600</item>
+        <item>Yellow 600</item>
+        <item>Lime 600</item>
+        <item>Green 600</item>
+        <item>Blue 500</item>
+        <item>Indigo 500</item>
+        <item>Purple 500</item>
+        <item>Pink 500</item>
+        <item>Red 500</item>
+        <item>Deep Orange 500</item>
+        <item>Orange 500</item>
+        <item>Amber 500</item>
+        <item>Yellow 500</item>
+        <item>Lime 500</item>
+        <item>Green 500</item>
+        <item>Blue 400</item>
+        <item>Indigo 400</item>
+        <item>Purple 400</item>
+        <item>Pink 400</item>
+        <item>Red 400</item>
+        <item>Deep Orange 400</item>
+        <item>Orange 400</item>
+        <item>Amber 400</item>
+        <item>Yellow 400</item>
+        <item>Lime 400</item>
+        <item>Green 400</item>
+        <item>Blue 300</item>
+        <item>Indigo 300</item>
+        <item>Purple 300</item>
+        <item>Pink 300</item>
+        <item>Red 300</item>
+        <item>Deep Orange 300</item>
+        <item>Orange 300</item>
+        <item>Amber 300</item>
+        <item>Yellow 300</item>
+        <item>Lime 300</item>
+        <item>Green 300</item>
+        <item>Blue 200</item>
+        <item>Indigo 200</item>
+        <item>Purple 200</item>
+        <item>Pink 200</item>
+        <item>Red 200</item>
+        <item>Deep Orange 200</item>
+        <item>Orange 200</item>
+        <item>Amber 200</item>
+        <item>Yellow 200</item>
+        <item>Lime 200</item>
+        <item>Green 200</item>
+        <item>Blue 100</item>
+        <item>Indigo 100</item>
+        <item>Purple 100</item>
+        <item>Pink 100</item>
+        <item>Red 100</item>
+        <item>Deep Orange 100</item>
+        <item>Orange 100</item>
+        <item>Amber 100</item>
+        <item>Yellow 100</item>
+        <item>Lime 100</item>
+        <item>Green 100</item>
     </string-array>
     <string name="achievement_earned">Achievement Earned!</string>
     <string name="great">Great!</string>
@@ -637,4 +845,5 @@ Please note: the final date retrieved will be the same as the app release date, 
     <string name="decorations">Decorations</string>
     <string name="pot_decorations">Pot Decorations</string>
     <string name="_total">total</string>
+    <string name="new_stats_2">New statistic added, regarding the decorations of your Marimo\'s vases/jars</string>
 </resources>

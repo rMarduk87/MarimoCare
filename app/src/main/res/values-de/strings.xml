@@ -605,20 +605,121 @@
     <string name="_100">100%</string>
     <string name="achievement_unlocked">Erfolg freigeschaltet!</string>
     <string name="decorations">Dekorationen</string>
-    <string name="pot_decorations">Pot Decorations</string>
-    <string name="_total">total</string>
+    <string name="pot_decorations">Topfdekorationen</string>
+    <string name="_total">gesamt</string>
+    <string name="new_stats_2">Neue Statistik hinzugefügt, über die Dekorationen der Gefäße deiner Marimos</string>
     <string-array name="decoration_color_names">
-        <item>Rot</item>
-        <item>Orange</item>
-        <item>Gelb</item>
-        <item>Grün</item>
-        <item>Cyan</item>
-        <item>Blau</item>
-        <item>Lila</item>
-        <item>Magenta</item>
-        <item>Braun</item>
+        <!-- Greyscale Names -->
+        <item>Keiner</item>
         <item>Weiß</item>
-        <item>Grau</item>
+        <item>Grau 50</item>
+        <item>Grau 100</item>
+        <item>Grau 200</item>
+        <item>Grau 300</item>
+        <item>Grau 400</item>
+        <item>Grau 500</item>
+        <item>Grau 600</item>
+        <item>Grau 700</item>
         <item>Schwarz</item>
+        <!-- Grid Names -->
+        <item>Blau 900</item>
+        <item>Indigo 900</item>
+        <item>Lila 900</item>
+        <item>Rosa 900</item>
+        <item>Rot 900</item>
+        <item>Dunkelorange 900</item>
+        <item>Orange 900</item>
+        <item>Bernstein 900</item>
+        <item>Gelb 900</item>
+        <item>Limette 900</item>
+        <item>Grün 900</item>
+        <item>Blau 800</item>
+        <item>Indigo 800</item>
+        <item>Lila 800</item>
+        <item>Rosa 800</item>
+        <item>Rot 800</item>
+        <item>Dunkelorange 800</item>
+        <item>Orange 800</item>
+        <item>Bernstein 800</item>
+        <item>Gelb 800</item>
+        <item>Limette 800</item>
+        <item>Grün 800</item>
+        <item>Blau 700</item>
+        <item>Indigo 700</item>
+        <item>Lila 700</item>
+        <item>Rosa 700</item>
+        <item>Rot 700</item>
+        <item>Dunkelorange 700</item>
+        <item>Orange 700</item>
+        <item>Bernstein 700</item>
+        <item>Gelb 700</item>
+        <item>Limette 700</item>
+        <item>Grün 700</item>
+        <item>Blau 600</item>
+        <item>Indigo 600</item>
+        <item>Lila 600</item>
+        <item>Rosa 600</item>
+        <item>Rot 600</item>
+        <item>Dunkelorange 600</item>
+        <item>Orange 600</item>
+        <item>Bernstein 600</item>
+        <item>Gelb 600</item>
+        <item>Limette 600</item>
+        <item>Grün 600</item>
+        <item>Blau 500</item>
+        <item>Indigo 500</item>
+        <item>Lila 500</item>
+        <item>Rosa 500</item>
+        <item>Rot 500</item>
+        <item>Dunkelorange 500</item>
+        <item>Orange 500</item>
+        <item>Bernstein 500</item>
+        <item>Gelb 500</item>
+        <item>Limette 500</item>
+        <item>Grün 500</item>
+        <item>Blau 400</item>
+        <item>Indigo 400</item>
+        <item>Lila 400</item>
+        <item>Rosa 400</item>
+        <item>Rot 400</item>
+        <item>Dunkelorange 400</item>
+        <item>Orange 400</item>
+        <item>Bernstein 400</item>
+        <item>Gelb 400</item>
+        <item>Limette 400</item>
+        <item>Grün 400</item>
+        <item>Blau 300</item>
+        <item>Indigo 300</item>
+        <item>Lila 300</item>
+        <item>Rosa 300</item>
+        <item>Rot 300</item>
+        <item>Dunkelorange 300</item>
+        <item>Orange 300</item>
+        <item>Bernstein 300</item>
+        <item>Gelb 300</item>
+        <item>Limette 300</item>
+        <item>Grün 300</item>
+        <item>Blau 200</item>
+        <item>Indigo 200</item>
+        <item>Lila 200</item>
+        <item>Rosa 200</item>
+        <item>Rot 200</item>
+        <item>Dunkelorange 200</item>
+        <item>Orange 200</item>
+        <item>Bernstein 200</item>
+        <item>Gelb 200</item>
+        <item>Limette 200</item>
+        <item>Grün 200</item>
+        <item>Blau 100</item>
+        <item>Indigo 100</item>
+        <item>Lila 100</item>
+        <item>Rosa 100</item>
+        <item>Rot 100</item>
+        <item>Dunkelorange 100</item>
+        <item>Orange 100</item>
+        <item>Bernstein 100</item>
+        <item>Gelb 100</item>
+        <item>Limette 100</item>
+        <item>Grün 100</item>
     </string-array>
 </resources>

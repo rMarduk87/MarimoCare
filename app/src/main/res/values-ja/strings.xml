@@ -601,10 +601,125 @@
         <item>水生植物</item>
         <item>その他</item>
     </string-array>
+    <string-array name="decoration_color_names">
+        <!-- Greyscale Names -->
+        <item>なし</item>
+        <item>白</item>
+        <item>グレー 50</item>
+        <item>グレー 100</item>
+        <item>グレー 200</item>
+        <item>グレー 300</item>
+        <item>グレー 400</item>
+        <item>グレー 500</item>
+        <item>グレー 600</item>
+        <item>グレー 700</item>
+        <item>黒</item>
+        <!-- Grid Names -->
+        <item>青 900</item>
+        <item>インディゴ 900</item>
+        <item>紫 900</item>
+        <item>ピンク 900</item>
+        <item>赤 900</item>
+        <item>ディープオレンジ 900</item>
+        <item>オレンジ 900</item>
+        <item>アンバー 900</item>
+        <item>黄 900</item>
+        <item>ライム 900</item>
+        <item>緑 900</item>
+        <item>青 800</item>
+        <item>インディゴ 800</item>
+        <item>紫 800</item>
+        <item>ピンク 800</item>
+        <item>赤 800</item>
+        <item>ディープオレンジ 800</item>
+        <item>オレンジ 800</item>
+        <item>アンバー 800</item>
+        <item>黄 800</item>
+        <item>ライム 800</item>
+        <item>緑 800</item>
+        <item>青 700</item>
+        <item>インディゴ 700</item>
+        <item>紫 700</item>
+        <item>ピンク 700</item>
+        <item>赤 700</item>
+        <item>ディープオレンジ 700</item>
+        <item>オレンジ 700</item>
+        <item>アンバー 700</item>
+        <item>黄 700</item>
+        <item>ライム 700</item>
+        <item>緑 700</item>
+        <item>青 600</item>
+        <item>インディゴ 600</item>
+        <item>紫 600</item>
+        <item>ピンク 600</item>
+        <item>赤 600</item>
+        <item>ディープオレンジ 600</item>
+        <item>オレンジ 600</item>
+        <item>アンバー 600</item>
+        <item>黄 600</item>
+        <item>ライム 600</item>
+        <item>緑 600</item>
+        <item>青 500</item>
+        <item>インディゴ 500</item>
+        <item>紫 500</item>
+        <item>ピンク 500</item>
+        <item>赤 500</item>
+        <item>ディープオレンジ 500</item>
+        <item>オレンジ 500</item>
+        <item>アンバー 500</item>
+        <item>黄 500</item>
+        <item>ライム 500</item>
+        <item>緑 500</item>
+        <item>青 400</item>
+        <item>インディゴ 400</item>
+        <item>紫 400</item>
+        <item>ピンク 400</item>
+        <item>赤 400</item>
+        <item>ディープオレンジ 400</item>
+        <item>オレンジ 400</item>
+        <item>アンバー 400</item>
+        <item>黄 400</item>
+        <item>ライム 400</item>
+        <item>緑 400</item>
+        <item>青 300</item>
+        <item>インディゴ 300</item>
+        <item>紫 300</item>
+        <item>ピンク 300</item>
+        <item>赤 300</item>
+        <item>ディープオレンジ 300</item>
+        <item>オレンジ 300</item>
+        <item>アンバー 300</item>
+        <item>黄 300</item>
+        <item>ライム 300</item>
+        <item>緑 300</item>
+        <item>青 200</item>
+        <item>インディゴ 200</item>
+        <item>紫 200</item>
+        <item>ピンク 200</item>
+        <item>赤 200</item>
+        <item>ディープオレンジ 200</item>
+        <item>オレンジ 200</item>
+        <item>アンバー 200</item>
+        <item>黄 200</item>
+        <item>ライム 200</item>
+        <item>緑 200</item>
+        <item>青 100</item>
+        <item>インディゴ 100</item>
+        <item>紫 100</item>
+        <item>ピンク 100</item>
+        <item>赤 100</item>
+        <item>ディープオレンジ 100</item>
+        <item>オレンジ 100</item>
+        <item>アンバー 100</item>
+        <item>黄 100</item>
+        <item>ライム 100</item>
+        <item>緑 100</item>
+    </string-array>
     <string name="achievement_earned">実績獲得！</string>
     <string name="great">素晴らしい！</string>
     <string name="achievement_unlocked">実績解除！</string>
     <string name="decorations">装飾品</string>
-    <string name="pot_decorations">Pot Decorations</string>
-    <string name="_total">total</string>
+    <string name="pot_decorations">ポットの装飾</string>
+    <string name="_total">合計</string>
+    <string name="new_stats_2">新しい統計が追加されました。マリモの器の装飾に関するものです</string>
 </resources>

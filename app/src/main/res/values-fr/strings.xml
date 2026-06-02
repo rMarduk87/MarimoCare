@@ -584,8 +584,9 @@
     <string name="e_g_natural_quartz">ex: Quartz naturel</string>
     <string name="any_extra_details">Détails supplémentaires…</string>
     <string name="decorations">Décorations</string>
-    <string name="pot_decorations">Pot Decorations</string>
+    <string name="pot_decorations">Décorations du pot</string>
     <string name="_total">total</string>
+    <string name="new_stats_2">Nouvelle statistique ajoutée, concernant les décorations des pots de vos Marimos</string>
     <string-array name="decoration_types">
         <item>Sélectionner le type…</item>
         <item>Galet</item>
@@ -603,17 +604,117 @@
         <item>Autre</item>
     </string-array>
     <string-array name="decoration_color_names">
-        <item>Rouge</item>
-        <item>Orange</item>
-        <item>Jaune</item>
-        <item>Vert</item>
-        <item>Cyan</item>
-        <item>Bleu</item>
-        <item>Violet</item>
-        <item>Magenta</item>
-        <item>Brun</item>
+        <!-- Greyscale Names -->
+        <item>Aucun</item>
         <item>Blanc</item>
-        <item>Gris</item>
+        <item>Gris 50</item>
+        <item>Gris 100</item>
+        <item>Gris 200</item>
+        <item>Gris 300</item>
+        <item>Gris 400</item>
+        <item>Gris 500</item>
+        <item>Gris 600</item>
+        <item>Gris 700</item>
         <item>Noir</item>
+        <!-- Grid Names -->
+        <item>Bleu 900</item>
+        <item>Indigo 900</item>
+        <item>Violet 900</item>
+        <item>Rose 900</item>
+        <item>Rouge 900</item>
+        <item>Orange foncé 900</item>
+        <item>Orange 900</item>
+        <item>Ambre 900</item>
+        <item>Jaune 900</item>
+        <item>Citron vert 900</item>
+        <item>Vert 900</item>
+        <item>Bleu 800</item>
+        <item>Indigo 800</item>
+        <item>Violet 800</item>
+        <item>Rose 800</item>
+        <item>Rouge 800</item>
+        <item>Orange foncé 800</item>
+        <item>Orange 800</item>
+        <item>Ambre 800</item>
+        <item>Jaune 800</item>
+        <item>Citron vert 800</item>
+        <item>Vert 800</item>
+        <item>Bleu 700</item>
+        <item>Indigo 700</item>
+        <item>Violet 700</item>
+        <item>Rose 700</item>
+        <item>Rouge 700</item>
+        <item>Orange foncé 700</item>
+        <item>Orange 700</item>
+        <item>Ambre 700</item>
+        <item>Jaune 700</item>
+        <item>Citron vert 700</item>
+        <item>Vert 700</item>
+        <item>Bleu 600</item>
+        <item>Indigo 600</item>
+        <item>Violet 600</item>
+        <item>Rose 600</item>
+        <item>Rouge 600</item>
+        <item>Orange foncé 600</item>
+        <item>Orange 600</item>
+        <item>Ambre 600</item>
+        <item>Jaune 600</item>
+        <item>Citron vert 600</item>
+        <item>Vert 600</item>
+        <item>Bleu 500</item>
+        <item>Indigo 500</item>
+        <item>Violet 500</item>
+        <item>Rose 500</item>
+        <item>Rouge 500</item>
+        <item>Orange foncé 500</item>
+        <item>Orange 500</item>
+        <item>Ambre 500</item>
+        <item>Jaune 500</item>
+        <item>Citron vert 500</item>
+        <item>Vert 500</item>
+        <item>Bleu 400</item>
+        <item>Indigo 400</item>
+        <item>Violet 400</item>
+        <item>Rose 400</item>
+        <item>Rouge 400</item>
+        <item>Orange foncé 400</item>
+        <item>Orange 400</item>
+        <item>Ambre 400</item>
+        <item>Jaune 400</item>
+        <item>Citron vert 400</item>
+        <item>Vert 400</item>
+        <item>Bleu 300</item>
+        <item>Indigo 300</item>
+        <item>Violet 300</item>
+        <item>Rose 300</item>
+        <item>Rouge 300</item>
+        <item>Orange foncé 300</item>
+        <item>Orange 300</item>
+        <item>Ambre 300</item>
+        <item>Jaune 300</item>
+        <item>Citron vert 300</item>
+        <item>Vert 300</item>
+        <item>Bleu 200</item>
+        <item>Indigo 200</item>
+        <item>Violet 200</item>
+        <item>Rose 200</item>
+        <item>Rouge 200</item>
+        <item>Orange foncé 200</item>
+        <item>Orange 200</item>
+        <item>Ambre 200</item>
+        <item>Jaune 200</item>
+        <item>Citron vert 200</item>
+        <item>Vert 200</item>
+        <item>Bleu 100</item>
+        <item>Indigo 100</item>
+        <item>Violet 100</item>
+        <item>Rose 100</item>
+        <item>Rouge 100</item>
+        <item>Orange foncé 100</item>
+        <item>Orange 100</item>
+        <item>Ambre 100</item>
+        <item>Jaune 100</item>
+        <item>Citron vert 100</item>
+        <item>Vert 100</item>
     </string-array>
 </resources>

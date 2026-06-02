@@ -601,24 +601,125 @@
         <item>Altro</item>
     </string-array>
     <string-array name="decoration_color_names">
-        <item>Rosso</item>
-        <item>Arancione</item>
-        <item>Giallo</item>
-        <item>Verde</item>
-        <item>Ciano</item>
-        <item>Blu</item>
-        <item>Viola</item>
-        <item>Magenta</item>
-        <item>Marrone</item>
+        <!-- Greyscale Names -->
+        <item>Nessuno</item>
         <item>Bianco</item>
-        <item>Grigio</item>
+        <item>Grigio 50</item>
+        <item>Grigio 100</item>
+        <item>Grigio 200</item>
+        <item>Grigio 300</item>
+        <item>Grigio 400</item>
+        <item>Grigio 500</item>
+        <item>Grigio 600</item>
+        <item>Grigio 700</item>
         <item>Nero</item>
+        <!-- Grid Names -->
+        <item>Blu 900</item>
+        <item>Indaco 900</item>
+        <item>Viola 900</item>
+        <item>Rosa 900</item>
+        <item>Rosso 900</item>
+        <item>Arancione scuro 900</item>
+        <item>Arancione 900</item>
+        <item>Ambra 900</item>
+        <item>Giallo 900</item>
+        <item>Lime 900</item>
+        <item>Verde 900</item>
+        <item>Blu 800</item>
+        <item>Indaco 800</item>
+        <item>Viola 800</item>
+        <item>Rosa 800</item>
+        <item>Rosso 800</item>
+        <item>Arancione scuro 800</item>
+        <item>Arancione 800</item>
+        <item>Ambra 800</item>
+        <item>Giallo 800</item>
+        <item>Lime 800</item>
+        <item>Verde 800</item>
+        <item>Blu 700</item>
+        <item>Indaco 700</item>
+        <item>Viola 700</item>
+        <item>Rosa 700</item>
+        <item>Rosso 700</item>
+        <item>Arancione scuro 700</item>
+        <item>Arancione 700</item>
+        <item>Ambra 700</item>
+        <item>Giallo 700</item>
+        <item>Lime 700</item>
+        <item>Verde 700</item>
+        <item>Blu 600</item>
+        <item>Indaco 600</item>
+        <item>Viola 600</item>
+        <item>Rosa 600</item>
+        <item>Rosso 600</item>
+        <item>Arancione scuro 600</item>
+        <item>Arancione 600</item>
+        <item>Ambra 600</item>
+        <item>Giallo 600</item>
+        <item>Lime 600</item>
+        <item>Verde 600</item>
+        <item>Blu 500</item>
+        <item>Indaco 500</item>
+        <item>Viola 500</item>
+        <item>Rosa 500</item>
+        <item>Rosso 500</item>
+        <item>Arancione scuro 500</item>
+        <item>Arancione 500</item>
+        <item>Ambra 500</item>
+        <item>Giallo 500</item>
+        <item>Lime 500</item>
+        <item>Verde 500</item>
+        <item>Blu 400</item>
+        <item>Indaco 400</item>
+        <item>Viola 400</item>
+        <item>Rosa 400</item>
+        <item>Rosso 400</item>
+        <item>Arancione scuro 400</item>
+        <item>Arancione 400</item>
+        <item>Ambra 400</item>
+        <item>Giallo 400</item>
+        <item>Lime 400</item>
+        <item>Verde 400</item>
+        <item>Blu 300</item>
+        <item>Indaco 300</item>
+        <item>Viola 300</item>
+        <item>Rosa 300</item>
+        <item>Rosso 300</item>
+        <item>Arancione scuro 300</item>
+        <item>Arancione 300</item>
+        <item>Ambra 300</item>
+        <item>Giallo 300</item>
+        <item>Lime 300</item>
+        <item>Verde 300</item>
+        <item>Blu 200</item>
+        <item>Indaco 200</item>
+        <item>Viola 200</item>
+        <item>Rosa 200</item>
+        <item>Rosso 200</item>
+        <item>Arancione scuro 200</item>
+        <item>Arancione 200</item>
+        <item>Ambra 200</item>
+        <item>Giallo 200</item>
+        <item>Lime 200</item>
+        <item>Verde 200</item>
+        <item>Blu 100</item>
+        <item>Indaco 100</item>
+        <item>Viola 100</item>
+        <item>Rosa 100</item>
+        <item>Rosso 100</item>
+        <item>Arancione scuro 100</item>
+        <item>Arancione 100</item>
+        <item>Ambra 100</item>
+        <item>Giallo 100</item>
+        <item>Lime 100</item>
+        <item>Verde 100</item>
     </string-array>
     <string name="achievement_earned">Obiettivo Ottenuto!</string>
     <string name="great">Ottimo!</string>
     <string name="_100">100%</string>
     <string name="achievement_unlocked">Obiettivo sbloccato!</string>
     <string name="decorations">Decorazioni</string>
-    <string name="pot_decorations">Pot Decorations</string>
-    <string name="_total">total</string>
+    <string name="pot_decorations">Decorazioni vaso</string>
+    <string name="_total">totale</string>
+    <string name="new_stats_2">Nuova statistica aggiunta, riguarda le decorazioni dei vasi dei tuoi Marimo</string>
 </resources>

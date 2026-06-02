@@ -203,11 +203,11 @@ class PotDecorationAdapter(
 
     private fun showColorPicker(onColorSelected: (String, String) -> Unit) {
         val gridView = GridView(context).apply {
-            numColumns = 5
+            numColumns = 11
             columnWidth = GridView.AUTO_FIT
-            verticalSpacing = 20
-            horizontalSpacing = 20
-            setPadding(40, 40, 40, 40)
+            verticalSpacing = 10
+            horizontalSpacing = 10
+            setPadding(20, 20, 20, 20)
             stretchMode = GridView.STRETCH_COLUMN_WIDTH
             adapter = object : BaseAdapter() {
                 override fun getCount(): Int = colorList.size
@@ -215,13 +215,13 @@ class PotDecorationAdapter(
                 override fun getItemId(position: Int): Long = position.toLong()
                 override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
                     val view = convertView ?: View(context).apply {
-                        layoutParams = ViewGroup.LayoutParams(100, 100)
+                        layoutParams = ViewGroup.LayoutParams(50, 50)
                     }
                     val color = colorList[position]
                     val drawable = GradientDrawable().apply {
                         shape = GradientDrawable.OVAL
                         setColor(Color.parseColor(color))
-                        setStroke(2, Color.LTGRAY)
+                        setStroke(1, Color.LTGRAY)
                     }
                     view.background = drawable
                     return view

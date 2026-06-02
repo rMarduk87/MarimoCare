@@ -339,6 +339,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             if (!isFeedbackShowing) {
                 handleAchievementLogic(marimos)
             }
+            updateAlertsUI()
         }
     }
 
@@ -511,48 +512,55 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     }
 
     private fun updateAlertsUI() {
-
-        val userPrefOverdue = SharedPreferencesManager.showAlertOverdue
-        val userPrefSoon = SharedPreferencesManager.showAlertSoon
-        val userPrefToday = SharedPreferencesManager.showAlertToday
-
-        val overdueText = SharedPreferencesManager.alertOverdue
-        val soonText = SharedPreferencesManager.alertSoon
-
-        val hasOverdue = userPrefOverdue && overdueText.isNotEmpty()
-        val hasSoon = (userPrefSoon || userPrefToday) && soonText.isNotEmpty()
-
-        val overDueCounter = SharedPreferencesManager.alertOverdueCounter
-
-        if (hasOverdue) {
-            binding.alertCardRed.visibility = View.VISIBLE
-            binding.alertCounterLayout.visibility = View.VISIBLE
-            binding.alertCardRed.setCardBackgroundColor(
-                ContextCompat.getColor(requireContext(), R.color.marimo_pink)
-            )
-            binding.alertTextRed.text = overdueText
-            binding.alertCounter.text = buildString {
-                append(getString(R.string.active_reminders_text))
-                append(" (")
-                append(overDueCounter)
-                append(")")
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
+            withContext(Dispatchers.IO) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    AlertDataUtils.recalc(requireContext())
+                }
             }
-        } else {
-            binding.alertCardRed.visibility = View.GONE
-        }
 
-        if (hasSoon) {
-            binding.alertCardOrange.visibility = View.VISIBLE
-            binding.alertCardOrange.setCardBackgroundColor(
-                ContextCompat.getColor(requireContext(), R.color.marimo_light_orange)
-            )
-            binding.alertTextOrange.text = soonText
-        } else {
-            binding.alertCardOrange.visibility = View.GONE
-        }
+            val userPrefOverdue = SharedPreferencesManager.showAlertOverdue
+            val userPrefSoon = SharedPreferencesManager.showAlertSoon
+            val userPrefToday = SharedPreferencesManager.showAlertToday
 
-        if (!hasOverdue && !hasSoon) {
-            binding.alertCounterLayout.visibility = View.GONE
+            val overdueText = SharedPreferencesManager.alertOverdue
+            val soonText = SharedPreferencesManager.alertSoon
+
+            val hasOverdue = userPrefOverdue && overdueText.isNotEmpty()
+            val hasSoon = (userPrefSoon || userPrefToday) && soonText.isNotEmpty()
+
+            val overDueCounter = SharedPreferencesManager.alertOverdueCounter
+
+            if (hasOverdue) {
+                binding.alertCardRed.visibility = View.VISIBLE
+                binding.alertCounterLayout.visibility = View.VISIBLE
+                binding.alertCardRed.setCardBackgroundColor(
+                    ContextCompat.getColor(requireContext(), R.color.marimo_pink)
+                )
+                binding.alertTextRed.text = overdueText
+                binding.alertCounter.text = buildString {
+                    append(getString(R.string.active_reminders_text))
+                    append(" (")
+                    append(overDueCounter)
+                    append(")")
+                }
+            } else {
+                binding.alertCardRed.visibility = View.GONE
+            }
+
+            if (hasSoon) {
+                binding.alertCardOrange.visibility = View.VISIBLE
+                binding.alertCardOrange.setCardBackgroundColor(
+                    ContextCompat.getColor(requireContext(), R.color.marimo_light_orange)
+                )
+                binding.alertTextOrange.text = soonText
+            } else {
+                binding.alertCardOrange.visibility = View.GONE
+            }
+
+            if (!hasOverdue && !hasSoon) {
+                binding.alertCounterLayout.visibility = View.GONE
+            }
         }
     }
 

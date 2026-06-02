@@ -67,6 +67,7 @@ import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 import rpt.com.base.navigation.safeNavController
 import rpt.com.base.navigation.safeNavigate
+import rpt.tool.marimocare.utils.balloon.stats.NewStatsPieBalloonFactory
 import rpt.tool.marimocare.utils.view.HeaderButtonConfig
 import rpt.tool.marimocare.utils.view.HeaderHelper
 import rpt.tool.marimocare.utils.view.StatsCardConfig
@@ -90,6 +91,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
     private val viewModel: StatsViewModel by navGraphViewModels(R.id.main_nav_graph)
 
     private val newStatsBalloon by balloon<NewStatsBalloonFactory>()
+    private val newStatsPieBalloon by balloon<NewStatsPieBalloonFactory>()
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -120,10 +122,25 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
                     mainAnchor = binding.tabLayout as View,
                     subAnchorList = listOf(binding.tabLayout as View)
                 )
+            }
+        }
+
+        if(SharedPreferencesManager.showBallonNewPotStats){
+            SharedPreferencesManager.showBallonNewPotStats = false
+
+            scrollToTabLayoutAndShowBalloon(binding.scrollView, binding.tabLayout) {
+
+                newStatsPieBalloon.showAlign(
+                    align = BalloonAlign.BOTTOM,
+                    mainAnchor = binding.tabLayout as View,
+                    subAnchorList = listOf(binding.tabLayout as View)
+                )
 
             }
 
         }
+
+
 
         val context = requireContext()
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
@@ -769,6 +786,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
 
             val palette =
                 requireContext().resources.getStringArray(R.array.decoration_colors).toList()
+                    .drop(11)
 
             binding.includePD.legendContainer.removeAllViews()
             var colorIndex = 0

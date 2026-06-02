@@ -586,8 +586,9 @@
     <string name="e_g_natural_quartz">เช่น ควอตซ์ธรรมชาติ</string>
     <string name="any_extra_details">รายละเอียดเพิ่มเติม…</string>
     <string name="decorations">การตกแต่ง</string>
-    <string name="pot_decorations">Pot Decorations</string>
-    <string name="_total">total</string>
+    <string name="pot_decorations">ของตกแต่งกระถาง</string>
+    <string name="_total">ทั้งหมด</string>
+    <string name="new_stats_2">เพิ่มสถิติใหม่เกี่ยวกับการตกแต่งกระถางมาริโมะของคุณ</string>
 
     <string-array name="decoration_types">
         <item>เลือกประเภท…</item>
@@ -604,5 +605,119 @@
         <item>ตุ๊กตา</item>
         <item>ไม้น้ำ</item>
         <item>อื่นๆ</item>
+    </string-array>
+    <string-array name="decoration_color_names">
+        <!-- Greyscale Names -->
+        <item>ไม่มี</item>
+        <item>ขาว</item>
+        <item>เทา 50</item>
+        <item>เทา 100</item>
+        <item>เทา 200</item>
+        <item>เทา 300</item>
+        <item>เทา 400</item>
+        <item>เทา 500</item>
+        <item>เทา 600</item>
+        <item>เทา 700</item>
+        <item>ดำ</item>
+        <!-- Grid Names -->
+        <item>ฟ้า 900</item>
+        <item>คราม 900</item>
+        <item>ม่วง 900</item>
+        <item>ชมพู 900</item>
+        <item>แดง 900</item>
+        <item>ส้มเข้ม 900</item>
+        <item>ส้ม 900</item>
+        <item>อำพัน 900</item>
+        <item>เหลือง 900</item>
+        <item>มะนาว 900</item>
+        <item>เขียว 900</item>
+        <item>ฟ้า 800</item>
+        <item>คราม 800</item>
+        <item>ม่วง 800</item>
+        <item>ชมพู 800</item>
+        <item>แดง 800</item>
+        <item>ส้มเข้ม 800</item>
+        <item>ส้ม 800</item>
+        <item>อำพัน 800</item>
+        <item>เหลือง 800</item>
+        <item>มะนาว 800</item>
+        <item>เขียว 800</item>
+        <item>ฟ้า 700</item>
+        <item>คราม 700</item>
+        <item>ม่วง 700</item>
+        <item>ชมพู 700</item>
+        <item>แดง 700</item>
+        <item>ส้มเข้ม 700</item>
+        <item>ส้ม 700</item>
+        <item>อำพัน 700</item>
+        <item>เหลือง 700</item>
+        <item>มะนาว 700</item>
+        <item>เขียว 700</item>
+        <item>ฟ้า 600</item>
+        <item>คราม 600</item>
+        <item>ม่วง 600</item>
+        <item>ชมพู 600</item>
+        <item>แดง 600</item>
+        <item>ส้มเข้ม 600</item>
+        <item>ส้ม 600</item>
+        <item>อำพัน 600</item>
+        <item>เหลือง 600</item>
+        <item>มะนาว 600</item>
+        <item>เขียว 600</item>
+        <item>ฟ้า 500</item>
+        <item>คราม 500</item>
+        <item>ม่วง 500</item>
+        <item>ชมพู 500</item>
+        <item>แดง 500</item>
+        <item>ส้มเข้ม 500</item>
+        <item>ส้ม 500</item>
+        <item>อำพัน 500</item>
+        <item>เหลือง 500</item>
+        <item>มะนาว 500</item>
+        <item>เขียว 500</item>
+        <item>ฟ้า 400</item>
+        <item>คราม 400</item>
+        <item>ม่วง 400</item>
+        <item>ชมพู 400</item>
+        <item>แดง 400</item>
+        <item>ส้มเข้ม 400</item>
+        <item>ส้ม 400</item>
+        <item>อำพัน 400</item>
+        <item>เหลือง 400</item>
+        <item>มะนาว 400</item>
+        <item>เขียว 400</item>
+        <item>ฟ้า 300</item>
+        <item>คราม 300</item>
+        <item>ม่วง 300</item>
+        <item>ชมพู 300</item>
+        <item>แดง 300</item>
+        <item>ส้มเข้ม 300</item>
+        <item>ส้ม 300</item>
+        <item>อำพัน 300</item>
+        <item>เหลือง 300</item>
+        <item>มะนาว 300</item>
+        <item>เขียว 300</item>
+        <item>ฟ้า 200</item>
+        <item>คราม 200</item>
+        <item>ม่วง 200</item>
+        <item>ชมพู 200</item>
+        <item>แดง 200</item>
+        <item>ส้มเข้ม 200</item>
+        <item>ส้ม 200</item>
+        <item>อำพัน 200</item>
+        <item>เหลือง 200</item>
+        <item>มะนาว 200</item>
+        <item>เขียว 200</item>
+        <item>ฟ้า 100</item>
+        <item>คราม 100</item>
+        <item>ม่วง 100</item>
+        <item>ชมพู 100</item>
+        <item>แดง 100</item>
+        <item>ส้มเข้ม 100</item>
+        <item>ส้ม 100</item>
+        <item>อำพัน 100</item>
+        <item>เหลือง 100</item>
+        <item>มะนาว 100</item>
+        <item>เขียว 100</item>
     </string-array>
 </resources>

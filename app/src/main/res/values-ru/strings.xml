@@ -584,8 +584,9 @@
     <string name="e_g_natural_quartz">напр. Натуральный кварц</string>
     <string name="any_extra_details">Дополнительные детали…</string>
     <string name="decorations">Украшения</string>
-    <string name="pot_decorations">Pot Decorations</string>
-    <string name="_total">total</string>
+    <string name="pot_decorations">Украшения для аквариума</string>
+    <string name="_total">всего</string>
+    <string name="new_stats_2">Добавлена новая статистика по украшениям в аквариумах ваших маримо</string>
     <string-array name="decoration_types">
         <item>Выберите тип…</item>
         <item>Галька</item>
@@ -601,5 +602,119 @@
         <item>Фигурка</item>
         <item>Водное растение</item>
         <item>Другое</item>
+    </string-array>
+    <string-array name="decoration_color_names">
+        <!-- Greyscale Names -->
+        <item>Нет</item>
+        <item>Белый</item>
+        <item>Серый 50</item>
+        <item>Серый 100</item>
+        <item>Серый 200</item>
+        <item>Серый 300</item>
+        <item>Серый 400</item>
+        <item>Серый 500</item>
+        <item>Серый 600</item>
+        <item>Серый 700</item>
+        <item>Черный</item>
+        <!-- Grid Names -->
+        <item>Синий 900</item>
+        <item>Индиго 900</item>
+        <item>Пурпурный 900</item>
+        <item>Розовый 900</item>
+        <item>Красный 900</item>
+        <item>Темно-оранжевый 900</item>
+        <item>Оранжевый 900</item>
+        <item>Янтарный 900</item>
+        <item>Желтый 900</item>
+        <item>Лаймовый 900</item>
+        <item>Зеленый 900</item>
+        <item>Синий 800</item>
+        <item>Индиго 800</item>
+        <item>Пурпурный 800</item>
+        <item>Розовый 800</item>
+        <item>Красный 800</item>
+        <item>Темно-оранжевый 800</item>
+        <item>Оранжевый 800</item>
+        <item>Янтарный 800</item>
+        <item>Желтый 800</item>
+        <item>Лаймовый 800</item>
+        <item>Зеленый 800</item>
+        <item>Синий 700</item>
+        <item>Индиго 700</item>
+        <item>Пурпурный 700</item>
+        <item>Розовый 700</item>
+        <item>Красный 700</item>
+        <item>Темно-оранжевый 700</item>
+        <item>Оранжевый 700</item>
+        <item>Янтарный 700</item>
+        <item>Желтый 700</item>
+        <item>Лаймовый 700</item>
+        <item>Зеленый 700</item>
+        <item>Синий 600</item>
+        <item>Индиго 600</item>
+        <item>Пурпурный 600</item>
+        <item>Розовый 600</item>
+        <item>Красный 600</item>
+        <item>Темно-оранжевый 600</item>
+        <item>Оранжевый 600</item>
+        <item>Янтарный 600</item>
+        <item>Желтый 600</item>
+        <item>Лаймовый 600</item>
+        <item>Зеленый 600</item>
+        <item>Синий 500</item>
+        <item>Индиго 500</item>
+        <item>Пурпурный 500</item>
+        <item>Розовый 500</item>
+        <item>Красный 500</item>
+        <item>Темно-оранжевый 500</item>
+        <item>Оранжевый 500</item>
+        <item>Янтарный 500</item>
+        <item>Желтый 500</item>
+        <item>Лаймовый 500</item>
+        <item>Зеленый 500</item>
+        <item>Синий 400</item>
+        <item>Индиго 400</item>
+        <item>Пурпурный 400</item>
+        <item>Розовый 400</item>
+        <item>Красный 400</item>
+        <item>Темно-оранжевый 400</item>
+        <item>Оранжевый 400</item>
+        <item>Янтарный 400</item>
+        <item>Желтый 400</item>
+        <item>Лаймовый 400</item>
+        <item>Зеленый 400</item>
+        <item>Синий 300</item>
+        <item>Индиго 300</item>
+        <item>Пурпурный 300</item>
+        <item>Розовый 300</item>
+        <item>Красный 300</item>
+        <item>Темно-оранжевый 300</item>
+        <item>Оранжевый 300</item>
+        <item>Янтарный 300</item>
+        <item>Желтый 300</item>
+        <item>Лаймовый 300</item>
+        <item>Зеленый 300</item>
+        <item>Синий 200</item>
+        <item>Индиго 200</item>
+        <item>Пурпурный 200</item>
+        <item>Розовый 200</item>
+        <item>Красный 200</item>
+        <item>Темно-оранжевый 200</item>
+        <item>Оранжевый 200</item>
+        <item>Янтарный 200</item>
+        <item>Желтый 200</item>
+        <item>Лаймовый 200</item>
+        <item>Зеленый 200</item>
+        <item>Синий 100</item>
+        <item>Индиго 100</item>
+        <item>Пурпурный 100</item>
+        <item>Розовый 100</item>
+        <item>Красный 100</item>
+        <item>Темно-оранжевый 100</item>
+        <item>Оранжевый 100</item>
+        <item>Янтарный 100</item>
+        <item>Желтый 100</item>
+        <item>Лаймовый 100</item>
+        <item>Зеленый 100</item>
     </string-array>
 </resources>

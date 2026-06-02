@@ -601,10 +601,125 @@
         <item>수생 식물</item>
         <item>기타</item>
     </string-array>
+    <string-array name="decoration_color_names">
+        <!-- Greyscale Names -->
+        <item>없음</item>
+        <item>흰색</item>
+        <item>회색 50</item>
+        <item>회색 100</item>
+        <item>회색 200</item>
+        <item>회색 300</item>
+        <item>회색 400</item>
+        <item>회색 500</item>
+        <item>회색 600</item>
+        <item>회색 700</item>
+        <item>검정색</item>
+        <!-- Grid Names -->
+        <item>파란색 900</item>
+        <item>인디고 900</item>
+        <item>보라색 900</item>
+        <item>분홍색 900</item>
+        <item>빨간색 900</item>
+        <item>짙은 주황색 900</item>
+        <item>주황색 900</item>
+        <item>호박색 900</item>
+        <item>노란색 900</item>
+        <item>라임색 900</item>
+        <item>초록색 900</item>
+        <item>파란색 800</item>
+        <item>인디고 800</item>
+        <item>보라색 800</item>
+        <item>분홍색 800</item>
+        <item>빨간색 800</item>
+        <item>짙은 주황색 800</item>
+        <item>주황색 800</item>
+        <item>호박색 800</item>
+        <item>노란색 800</item>
+        <item>라임색 800</item>
+        <item>초록색 800</item>
+        <item>파란색 700</item>
+        <item>인디고 700</item>
+        <item>보라색 700</item>
+        <item>분홍색 700</item>
+        <item>빨간색 700</item>
+        <item>짙은 주황색 700</item>
+        <item>주황색 700</item>
+        <item>호박색 700</item>
+        <item>노란색 700</item>
+        <item>라임색 700</item>
+        <item>초록색 700</item>
+        <item>파란색 600</item>
+        <item>인디고 600</item>
+        <item>보라색 600</item>
+        <item>분홍색 600</item>
+        <item>빨간색 600</item>
+        <item>짙은 주황색 600</item>
+        <item>주황색 600</item>
+        <item>호박색 600</item>
+        <item>노란색 600</item>
+        <item>라임색 600</item>
+        <item>초록색 600</item>
+        <item>파란색 500</item>
+        <item>인디고 500</item>
+        <item>보라색 500</item>
+        <item>분홍색 500</item>
+        <item>빨간색 500</item>
+        <item>짙은 주황색 500</item>
+        <item>주황색 500</item>
+        <item>호박색 500</item>
+        <item>노란색 500</item>
+        <item>라임색 500</item>
+        <item>초록색 500</item>
+        <item>파란색 400</item>
+        <item>인디고 400</item>
+        <item>보라색 400</item>
+        <item>분홍색 400</item>
+        <item>빨간색 400</item>
+        <item>짙은 주황색 400</item>
+        <item>주황색 400</item>
+        <item>호박색 400</item>
+        <item>노란색 400</item>
+        <item>라임색 400</item>
+        <item>초록색 400</item>
+        <item>파란색 300</item>
+        <item>인디고 300</item>
+        <item>보라색 300</item>
+        <item>분홍색 300</item>
+        <item>빨간색 300</item>
+        <item>짙은 주황색 300</item>
+        <item>주황색 300</item>
+        <item>호박색 300</item>
+        <item>노란색 300</item>
+        <item>라임색 300</item>
+        <item>초록색 300</item>
+        <item>파란색 200</item>
+        <item>인디고 200</item>
+        <item>보라색 200</item>
+        <item>분홍색 200</item>
+        <item>빨간색 200</item>
+        <item>짙은 주황색 200</item>
+        <item>주황색 200</item>
+        <item>호박색 200</item>
+        <item>노란색 200</item>
+        <item>라임색 200</item>
+        <item>초록색 200</item>
+        <item>파란색 100</item>
+        <item>인디고 100</item>
+        <item>보라색 100</item>
+        <item>분홍색 100</item>
+        <item>빨간색 100</item>
+        <item>짙은 주황색 100</item>
+        <item>주황색 100</item>
+        <item>호박색 100</item>
+        <item>노란색 100</item>
+        <item>라임색 100</item>
+        <item>초록색 100</item>
+    </string-array>
     <string name="achievement_earned">업적 달성!</string>
     <string name="great">훌륭합니다!</string>
     <string name="achievement_unlocked">업적 달성!</string>
     <string name="decorations">장식물</string>
-    <string name="pot_decorations">Pot Decorations</string>
-    <string name="_total">total</string>
+    <string name="pot_decorations">화분 장식</string>
+    <string name="_total">총</string>
+    <string name="new_stats_2">새로운 통계가 추가되었습니다. 마리모 그릇 장식에 관한 내용입니다</string>
 </resources>

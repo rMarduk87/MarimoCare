@@ -310,6 +310,7 @@ class AppUtils {
         const val LAST_HEALTH_EXECUTION_DATE : String = "last_health_execution_date"
         const val SHOW_NEW_LOG_CHANGE_WATER : String = "show_new_log_change_water"
         const val SHOW_BALLON_NEW_STATS : String = "show_ballon-new_stats"
+        const val SHOW_BALLON_NEW_POT_STATS : String = "show_ballon-new_pot_stats"
         const val SHOW_BALLON_FEEDBACK : String = "show_ballon-feedback"
         const val SHOW_ALERT_TODAY : String = "showAlertToday"
         const val ALERT_TODAY : String = "alertToday"
