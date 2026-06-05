@@ -3,10 +3,13 @@ package rpt.tool.marimocare.utils.data.database.dao
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import rpt.tool.marimocare.utils.data.appmodels.MarimoHealthScoreStats
+import rpt.tool.marimocare.utils.data.database.models.AchievementDetailModel
+import rpt.tool.marimocare.utils.data.database.models.AchievementModel
 import rpt.tool.marimocare.utils.data.database.models.MarimoChangeModel
 import rpt.tool.marimocare.utils.data.database.models.MarimoHealthScoreModel
 import rpt.tool.marimocare.utils.data.database.models.MarimoModel
 import rpt.tool.marimocare.utils.data.database.models.MarimoQRModel
+import rpt.tool.marimocare.utils.data.database.models.complex.AchievementWithDetailModel
 
 @Dao
 interface MarimoDao {
@@ -165,5 +168,53 @@ interface MarimoDao {
     @Query("SELECT * FROM marimo_health_score where marimo_code =:marimoCode order by date desc")
     fun getAllHealth(marimoCode: Int): List<MarimoHealthScoreModel>
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAchievements(achievements: List<AchievementModel>)
 
+    @Transaction
+    @Query("SELECT * FROM achievement WHERE earned = 1 ORDER BY `order` ASC")
+    fun getEarnedAchievements(): List<AchievementModel>
+
+    @Transaction
+    @Query("SELECT * FROM achievement WHERE earned = 0 ORDER BY `order` ASC")
+    fun getLockedAchievements(): List<AchievementModel>
+
+    @Transaction
+    @Query("SELECT * FROM achievement WHERE earned = 1 ORDER BY `order` ASC")
+    fun getEarnedAchievementsWithDetail(): List<AchievementWithDetailModel>
+
+    @Transaction
+    @Query("SELECT * FROM achievement WHERE earned = 0 ORDER BY `order` ASC")
+    fun getLockedAchievementsWithDetail(): List<AchievementWithDetailModel>
+
+    @Transaction
+    @Query("UPDATE achievement SET earned = 0, acquired_date = NULL")
+    fun resetAllAchievements()
+
+    @Transaction
+    @Query("UPDATE achievement SET earned = 1, acquired_date = :date where id = :id")
+    fun earnAchievement(id: Int, date: String)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAchievementDetails(details: List<AchievementDetailModel>)
+
+    @Transaction
+    @Query("SELECT * FROM achievement_details WHERE achievement_id = :achievementId")
+    fun getAchievementDetails(achievementId: Int): List<AchievementDetailModel>
+
+    @Transaction
+    @Query("DELETE FROM achievement_details")
+    fun clearAchievementDetails()
+
+    @Transaction
+    @Query("SELECT * FROM achievement ORDER BY `order` ASC")
+    fun getAllAchievement() : List<AchievementWithDetailModel>
+
+    @Transaction
+    @Query("UPDATE achievement_details set `current` = :current where achievement_id =:id")
+    fun updateAchievementDetail(id: Int, current: Int)
+
+    @Transaction
+    @Query("SELECT * FROM achievement_details where achievement_id =:id ")
+    fun getAchievementDetail(id: Int): AchievementDetailModel
 }

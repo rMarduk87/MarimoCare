@@ -26,6 +26,9 @@ object StatsHelper {
                 tvValue.text = config.stringValue
                 tvUnit.text = config.unitText
                 icon.setImageResource(config.iconRes)
+                icon.imageTintList = android.content.res.ColorStateList.valueOf(
+                    ContextCompat.getColor(requireContext, config.colorText)
+                )
                 tvValue.setTextColor(
                     ContextCompat.getColor(requireContext, config.colorText))
                 tvUnit.setTextColor(

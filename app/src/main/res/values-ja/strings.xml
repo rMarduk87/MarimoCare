@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Marimo Care</string>
-    <string name="marimo_care_dashboard">🌿 マリモケアダッシュボード</string>
+    <string name="marimo_care_dashboard">Marimo Care Dashboard</string>
     <string name="keep_track_of_your_marimo">マリモの状態を把握して、水換えを忘れないようにしましょう！</string>
     <string name="marimo_tip_title_1">💡 マリモのヒント：最適な水温</string>
     <string name="marimo_tip_title_2">💡 マリモのヒント：優しく転がす</string>
@@ -104,7 +104,7 @@
     <string name="sort">\t\t並べ替え:</string>
     <string name="add">+ 追加</string>
     <string name="plus">+</string>
-    <string name="in">In</string>
+    <string name="in">あと</string>
     <string name="due_soon_">期限切れ</string>
     <string name="dashboard_filters_amp_sorting"><![CDATA[ダッシュボードのフィルターと並べ替え]]></string>
     <string name="customize_how_marimos_are_filtered_and_sorted_on_the_dashboard">マリモのフィルターと並べ替え方法をカスタマイズするダッシュボード上で</string>
@@ -177,7 +177,7 @@
     <string name="select_marimos_to_update">更新するマリモを選択してください</string>
     <string name="select_which_marimos_have_had_their_water_changed">水換え済みのマリモを選択してください</string>
     <string name="update_1_marimo">マリモ1個を更新</string>
-    <string name="is_adapter">is</string>
+    <string name="is_adapter">は</string>
     <string name="days_overdue_adapter">期限を過ぎています！</string>
     <string name="last_changed_adapter">最終更新日時：</string>
     <string name="update_dialog">更新</string>
@@ -238,8 +238,8 @@
     <string name="detailed_comparison">詳細比較</string>
     <string name="empty">-</string>
     <string name="new_change_log">この新しいダイアログでは、水換えに関するメモを追加したり、記念写真を撮影またはアップロードしたり、…\n特別な瞬間としてマークすることができます！</string>
-    <string name="d">d</string>
-    <string name="today">today</string>
+    <string name="d">日</string>
+    <string name="today">今日</string>
     <string name="new_stats">トピック別にグループ化された新しい統計情報が追加されました。\nすべてのマリモの健康状態と統計情報の比較リスト。</string>
     <string name="stats_period">統計情報 – 水位変化傾向期間</string>
     <string name="default_time_range_shown_in_the_water_change_trend_chart">水位変化傾向チャートに表示されるデフォルトの期間</string>
@@ -278,6 +278,265 @@
     <string name="clear_all">すべてクリア</string>
     <string name="form_cleared">フォームがクリアされました</string>
     <string name="feedback_balloon">ここをクリックするとフィードバック画面が開きます。アプリの改善に関する提案を送信したり、Marimoコミュニティに参加したりできます。</string>
+    <string name="achievement">実績</string>
+    <string name="achievement_intro_title">実績</string>
+    <string name="achievement_intro_message">このバージョンでは達成すべき目標が追加されました。進捗を計算しますか、それとも最初からやり直しますか？</string>
+    <string name="calculate">計算する</string>
+    <string name="restart">再起動</string>
+    <string name="achievement_unlocked_title">アチーブメントシステムがアンロックされました！</string>
+    <string name="achievement_unlocked_message">すでにマリモとケア履歴があります。過去のデータを確認して、すでに獲得したバッジを付与しますか？それとも今日から新しく始めますか？</string>
+    <string name="calculate_retroactively">過去に遡って計算する</string>
+    <string name="calculate_retroactively_desc">すべてのケア履歴（過去の水換えやマリモのデータ）に基づいてバッジを付与します。</string>
+    <string name="start_from_scratch">最初から始める</string>
+    <string name="start_from_scratch_desc">今後のみバッジを獲得します。過去のアクティビティはカウントされません。</string>
+    <string name="new_achievements_unlocked_balloon">新しいアチーブメントがアンロックされました。ここをクリックして確認しましょう。</string>
+    <string name="earned_26">獲得済み (26)</string>
+    <string name="earned_label">獲得済み</string>
+    <string name="_50_badges">/ %1$d バッジ</string>
+    <string name="_26">26</string>
+    <string name="achievement_subtitle">マリモの世話をしてバッジを獲得しましょう</string>
+    <string name="recalculate">再計算</string>
+    <string name="reset_all">すべてリセット</string>
+    <string name="ach_1" translatable="false">🗿</string>
+    <string name="ach_2" translatable="false">📊</string>
+    <string name="ach_3" translatable="false">📋</string>
+    <string name="ach_4" translatable="false">🌗</string>
+    <string name="ach_5" translatable="false">🎊</string>
+    <string name="ach_6" translatable="false">🌊</string>
+    <string name="ach_7" translatable="false">📅</string>
+    <string name="ach_8" translatable="false">📆</string>
+    <string name="ach_9" translatable="false">🌱</string>
+    <string name="ach_10" translatable="false">⭐</string>
+    <string name="ach_11" translatable="false">🎖️</string>
+    <string name="ach_12" translatable="false">🦅</string>
+    <string name="ach_13" translatable="false">🏅</string>
+    <string name="ach_14" translatable="false">🎯</string>
+    <string name="ach_15" translatable="false">🌟</string>
+    <string name="ach_16" translatable="false">📸</string>
+    <string name="ach_17" translatable="false">🤳</string>
+    <string name="ach_18" translatable="false">🖼️</string>
+    <string name="ach_19" translatable="false">📝</string>
+    <string name="ach_20" translatable="false">📔</string>
+    <string name="ach_21" translatable="false">📖</string>
+    <string name="ach_22" translatable="false">✅</string>
+    <string name="ach_23" translatable="false">🎳</string>
+    <string name="ach_24" translatable="false">⏰</string>
+    <string name="ach_25" translatable="false">🏷️</string>
+    <string name="ach_26" translatable="false">✏️</string>
+    <string name="ach_27" translatable="false">🖼️</string>
+    <string name="ach_28" translatable="false">🌅</string>
+    <string name="ach_29" translatable="false">🗒️</string>
+    <string name="ach_30" translatable="false">🐦</string>
+    <string name="ach_31" translatable="false">⚡</string>
+    <string name="ach_32" translatable="false">🦉</string>
+    <string name="ach_33" translatable="false">🎛️</string>
+    <string name="ach_34" translatable="false">💬</string>
+    <string name="ach_35" translatable="false">⚙️</string>
+    <string name="ach_36" translatable="false">👴</string>
+    <string name="ach_37" translatable="false">🌿</string>
+    <string name="ach_38" translatable="false">👫</string>
+    <string name="ach_39" translatable="false">🎶</string>
+    <string name="ach_40" translatable="false">🫙</string>
+    <string name="ach_41" translatable="false">🏆</string>
+    <string name="ach_42" translatable="false">🪖</string>
+    <string name="ach_43" translatable="false">👑</string>
+    <string name="ach_44" translatable="false">💧</string>
+    <string name="ach_45" translatable="false">🚿</string>
+    <string name="ach_46" translatable="false">🔄</string>
+    <string name="ach_47" translatable="false">💪</string>
+    <string name="ach_48" translatable="false">🧙</string>
+    <string name="ach_49" translatable="false">💯</string>
+    <string name="ach_50" translatable="false">🎖️</string>
+    <string name="locked_24">ロック中 (24)</string>
+    <string name="ach_desc_1">初めてのマリモをコレクションに追加しました。</string>
+    <string name="ach_desc_2">マリモが2匹になりました — 仲間ができましたね！</string>
+    <string name="ach_desc_3">コレクションに3匹のマリモがいます。</string>
+    <string name="ach_desc_4">コレクションが成長しています — マリモが5匹追加されました！</string>
+    <string name="ach_desc_5">わあ、10匹のマリモ！本当に愛していますね。</string>
+    <string name="ach_desc_6">マリモ20匹達成！</string>
+    <string name="ach_desc_7">マリモ50匹。もはや帝国を築いています。</string>
+    <string name="ach_desc_8">初めての水換えを記録しました。旅の始まりです！</string>
+    <string name="ach_desc_9">5回の水換えを記録しました。</string>
+    <string name="ach_desc_10">合計10回の水換えを記録しました。</string>
+    <string name="ach_desc_11">25回の水換えを記録しました。習慣になってきましたね！</string>
+    <string name="ach_desc_12">50回の水換えを記録しました。あなたはプロです！</string>
+    <string name="ach_desc_13">100回の水換え！素晴らしいです。</string>
+    <string name="ach_desc_14">200回の水換えを記録。伝説級です。</string>
+    <string name="ach_desc_15">500回の水換え。究極のマリモ管理人です。</string>
+    <string name="ach_desc_16">丸一週間のマリモのお世話！</string>
+    <string name="ach_desc_17">一ヶ月間、水換えを欠かさず続けました。</string>
+    <string name="ach_desc_18">三ヶ月間の献身的なマリモのお世話！</string>
+    <string name="ach_desc_19">半年間の継続的なお世話。あなたはレジェンドです。</string>
+    <string name="ach_desc_20">丸一年のマリモのお世話。信じられないほどの献身です！</string>
+    <string name="ach_desc_21">二年間ずっとマリモのお世話。本当に並外れています。</string>
+    <string name="ach_desc_22">初めての特別なマイルストーン水換えを記録しました。</string>
+    <string name="ach_desc_23">5回の特別なマイルストーン水換えを記録しました。</string>
+    <string name="ach_desc_24">10回のマイルストーン水換えを記録！</string>
+    <string name="ach_desc_25">水換え記録中に写真をアップロードしました。</string>
+    <string name="ach_desc_26">5つの異なる水換え記録で写真をアップロードしました。</string>
+    <string name="ach_desc_27">写真付きの水換え記録が20回。まさにマリモアルバム！</string>
+    <string name="ach_desc_28">5つの異なる水換えにメモを追加しました。</string>
+    <string name="ach_desc_29">20回の水換えにメモを追加しました。</string>
+    <string name="ach_desc_30">50回の水換えにメモを追加。まさに歴史家です。</string>
+    <string name="ach_desc_31">すべてのマリモが最新の状態です — 期限切れはありません！</string>
+    <string name="ach_desc_32">期限内（遅延なし）の水換えを5回記録しました。</string>
+    <string name="ach_desc_33">20回の期限内の水換え。時計のようです！</string>
+    <string name="ach_desc_34">マリモに名前を付けました（ただの「マリモ」ではありません）。</string>
+    <string name="ach_desc_35">3匹のマリモにユニークな名前を付けました。</string>
+    <string name="ach_desc_36">マリモの一匹にプロフィール写真を追加しました。</string>
+    <string name="ach_desc_37">5匹のマリモにプロフィール写真を追加しました。</string>
+    <string name="ach_desc_38">マリモの一匹にメモを追加しました。</string>
+    <string name="ach_desc_39">期限の2日以上前に水換えを記録しました。</string>
+    <string name="ach_desc_40">同じ日に3回の水換えを記録しました。</string>
+    <string name="ach_desc_41">期限が切れていた水換えを10回記録しました（それでもやり遂げました！）。</string>
+    <string name="ach_desc_42">3つの異なる水換え頻度のマリモを所有しています。</string>
+    <string name="ach_desc_43">アプリ改善のためのフィードバックを送信しました。</string>
+    <string name="ach_desc_44">ダッシュボード設定をカスタマイズしました。</string>
+    <string name="ach_desc_45">一匹のマリモをお世話して半年以上が経過しました。</string>
+    <string name="ach_desc_46">一匹のマリモをお世話して一年以上が経過しました。</string>
+    <string name="ach_desc_47">統計ページを訪問しました。</string>
+    <string name="ach_desc_48">5匹のマリモにメモを追加しました。</string>
+    <string name="ach_desc_49">実績を25個獲得しました。コンプリートまであと半分！</string>
+    <string name="ach_desc_50">全50個の実績を獲得しました。あなたは真のマリモマスターです！</string>
+    <string name="ach_desc_51">まりもの容器に最初のデコレーションを追加しました。</string>
+    <string name="ach_desc_52">3つの異なるまりもの容器をデコレーションで飾りました。</string>
+    <string name="ach_desc_53">コレクション全体で10個以上のデコレーションを追加しました。</string>
+    <string name="ach_tit_1">初めてのマリモ</string>
+    <string name="ach_tit_2">ダイナミックデュオ</string>
+    <string name="ach_tit_3">トリオ</string>
+    <string name="ach_tit_4">コレクター</string>
+    <string name="ach_tit_5">マリモ愛好家</string>
+    <string name="ach_tit_6">マリモ軍団</string>
+    <string name="ach_tit_7">マリモ帝国</string>
+    <string name="ach_tit_8">最初の一滴</string>
+    <string name="ach_tit_9">はじめの一歩</string>
+    <string name="ach_tit_10">継続的な守護者</string>
+    <string name="ach_tit_11">献身的</string>
+    <string name="ach_tit_12">ウォーターウィザード</string>
+    <string name="ach_tit_13">100回のケア</string>
+    <string name="ach_tit_14">200回記念</string>
+    <string name="ach_tit_15">ウォーターマスター</string>
+    <string name="ach_tit_16">一週間達成</string>
+    <string name="ach_tit_17">一ヶ月のケア</string>
+    <string name="ach_tit_18">三ヶ月継続</string>
+    <string name="ach_tit_19">半年記念ヒーロー</string>
+    <string name="ach_tit_20">年間チャンピオン</string>
+    <string name="ach_tit_21">二年目のベテラン</string>
+    <string name="ach_tit_22">節目を刻む者</string>
+    <string name="ach_tit_23">節目ハンター</string>
+    <string name="ach_tit_24">節目マスター</string>
+    <string name="ach_tit_25">写真キーパー</string>
+    <string name="ach_tit_26">フォトグラファー</string>
+    <string name="ach_tit_27">フォトアルバム</string>
+    <string name="ach_tit_28">メモ取り名人</string>
+    <string name="ach_tit_29">日記の番人</string>
+    <string name="ach_tit_30">年代記作者</string>
+    <string name="ach_tit_31">完璧な記録</string>
+    <string name="ach_tit_32">波に乗る</string>
+    <string name="ach_tit_33">正確無比</string>
+    <string name="ach_tit_34">名付け親</string>
+    <string name="ach_tit_35">クリエイティブな命名</string>
+    <string name="ach_tit_36">プロフィール写真</string>
+    <string name="ach_tit_37">フォトジェニック・コレクション</string>
+    <string name="ach_tit_38">マリモ伝記作家</string>
+    <string name="ach_tit_39">早起き鳥</string>
+    <string name="ach_tit_40">迅速な交換</string>
+    <string name="ach_tit_41">夜型人間</string>
+    <string name="ach_tit_42">ミックスマスター</string>
+    <string name="ach_tit_43">フィードバック提供者</string>
+    <string name="ach_tit_44">設定エクスプローラー</string>
+    <string name="ach_tit_45">シニアマリモ</string>
+    <string name="ach_tit_46">古老</string>
+    <string name="ach_tit_47">統計マニア</string>
+    <string name="ach_tit_48">マリモ伝記作家</string>
+    <string name="ach_tit_49">折り返し地点</string>
+    <string name="ach_tit_50">アチーブメントハンター</string>
+    <string name="ach_tit_51">インテリアタッチ</string>
+    <string name="ach_tit_52">デコレーター</string>
+    <string name="ach_tit_53">インテリアデザイナー</string>
+
+    <string name="ach_type_marimo">マリモ</string>
+    <string name="ach_type_marimos">マリモ</string>
+    <string name="ach_type_waterchange">水換え</string>
+    <string name="ach_type_daysofcare">飼育日数</string>
+    <string name="ach_type_monthsofcare">飼育月数</string>
+    <string name="ach_type_milestone">マイルストーン</string>
+    <string name="ach_type_photo">写真</string>
+    <string name="ach_type_note">ノート</string>
+    <string name="ach_type_name">名前</string>
+    <string name="ach_type_marimowithphoto">写真付きマリモ</string>
+    <string name="ach_type_logs">ログ</string>
+
+    <string name="unit_type_marimo">マリモ</string>
+    <string name="unit_type_marimos">マリモ</string>
+    <string name="unit_type_logs">ログ</string>
+    <string name="unit_type_milestones">マイルストーン</string>
+    <string name="unit_type_photo">写真</string>
+    <string name="unit_type_notedlogs">メモ付きログ</string>
+    <string name="unit_type_months">月</string>
+    <string name="unit_type_days">日</string>
+    <string name="unit_type_uniquelynamed">ユニークな名前</string>
+    <string name="unit_type_withphoto">写真付き</string>
+    <string name="achievement_balloon">マリモを追加したり、お世話をしたりすることで、実績を解除できるようになります。このボタンを押すと確認できます</string>
+    <string name="unit_type_water">水換え</string>
+    <string name="unit_type_marimonamed">名前付きマリモ</string>
+    <string name="unit_type_notewrite">ノート作成</string>
+    <string name="ach_des_1">まずはマリモを1つ追加してみましょう！</string>
+    <string name="ach_des_2">2つ目のマリモを追加しましょう。仲間がいると喜びます！</string>
+    <string name="ach_des_3">3つ集めて、賑やかにしましょう！</string>
+    <string name="ach_des_4">マリモを5つまで増やしてみましょう。</string>
+    <string name="ach_des_5">コレクションを10個に倍増させましょう！</string>
+    <string name="ach_des_6">マリモ軍団（20個）を目指しましょう。</string>
+    <string name="ach_des_7">50個のマリモ。まさにマリモ帝国です。</string>
+    <string name="ach_des_8">いずれかのマリモの水換えを行いましょう。</string>
+    <string name="ach_des_9">水換えを合計5回行いましょう。その調子です！</string>
+    <string name="ach_des_10">ログを合計10回記録しましょう。習慣になってきましたね。</string>
+    <string name="ach_des_11">ログを25回記録しましょう。継続は力なり！</string>
+    <string name="ach_des_12">水換えを50回記録しましょう。あなたはプロの飼育員です！</string>
+    <string name="ach_des_13">100回の水換え！素晴らしい献身です。</string>
+    <string name="ach_des_14">ログを200回記録しましょう。伝説級の飼育員です！</string>
+    <string name="ach_des_15">ログを500回記録しましょう。究極のマリモマスターです。</string>
+    <string name="ach_des_16">1週間マリモのお世話を続けましょう。</string>
+    <string name="ach_des_17">1ヶ月間、定期的にお世話を続けましょう！</string>
+    <string name="ach_des_18">3ヶ月間の継続的なお世話が必要です。</string>
+    <string name="ach_des_19">半年間マリモのお世話を続けました！</string>
+    <string name="ach_des_20">まる1年間の献身的なお世話。信じられません！</string>
+    <string name="ach_des_21">2年間マリモのお世話を続けました！</string>
+    <string name="ach_des_22">水換えをマイルストーンとして記録しましょう！</string>
+    <string name="ach_des_23">水換えを5回マイルストーンとして記録しましょう。</string>
+    <string name="ach_des_24">マイルストーンログを10回記録。あなたはコレクターです！</string>
+    <string name="ach_des_25">水換えのログに写真をアップロードしましょう。</string>
+    <string name="ach_des_26">写真付きのログを5回記録しましょう。</string>
+    <string name="ach_des_27">写真付きログ20回。本物のアルバムですね！</string>
+    <string name="ach_des_28">5回の水換えログにメモを残しましょう。</string>
+    <string name="ach_des_29">メモ付きログ20回。本物の飼育日誌です！</string>
+    <string name="ach_des_30">メモ付きログ50回。あなたは歴史家です！</string>
+    <string name="ach_des_31">現在、期限を過ぎているマリモがいない状態にしましょう。</string>
+    <string name="ach_des_32">期限内に水換えを5回行いましょう。</string>
+    <string name="ach_des_33">期限内のログ20回。時計のように正確です！</string>
+    <string name="ach_des_34">マリモにクリエイティブな名前を付けましょう！</string>
+    <string name="ach_des_35">3つのマリモにそれぞれユニークな名前を付けましょう。</string>
+    <string name="ach_des_36">マリモにプロフィール写真を追加しましょう。</string>
+    <string name="ach_des_37">5つのマリモにプロフィール写真を設定しましょう！</string>
+    <string name="ach_des_38">マリモのプロフィールにメモを書きましょう。</string>
+    <string name="ach_des_39">期限の2日以上前に水換えを行いましょう。</string>
+    <string name="ach_des_40">1日に3回の水換えを記録しましょう！</string>
+    <string name="ach_des_41">期限を過ぎた水換えを10回記録（それでもやり遂げました！）。</string>
+    <string name="ach_des_42">3つの異なる水換え頻度を設定しましょう。</string>
+    <string name="ach_des_43">フィードバックページを訪問して送信しましょう！</string>
+    <string name="ach_des_44">設定をカスタマイズして保存しましょう。</string>
+    <string name="ach_des_45">1つのマリモを6ヶ月間飼育しましょう！</string>
+    <string name="ach_des_46">飼育期間が1年を超えるマリモがいます！</string>
+    <string name="ach_des_47">統計ページをチェックしましょう！</string>
+    <string name="ach_des_48">5つのマリモにメモを書きましょう。</string>
+    <string name="ach_des_49">実績を25個獲得して、半分を達成しましょう。</string>
+    <string name="ach_des_50">すべての実績を獲得する。それが究極の目標です！</string>
+    <string name="ach_des_51">追加または編集フォームから、まりもの容器に少なくとも1つのデコレーション（小石、岩、クリスタルなど）を追加してください。</string>
+    <string name="ach_des_52">コレクション内の3つの異なるまりもに少なくとも1つのデコレーションを追加してください。</string>
+    <string name="ach_des_53">コレクション全体の合計数が10に達するまで、まりもにデコレーションを追加してください。</string>
+    <string name="_100">100%</string>
+
+
     <string-array name="marimo_frequencies">
         <item>7日ごと（週ごと）</item>
         <item>10日ごと</item>
@@ -342,4 +601,125 @@
         <item>水生植物</item>
         <item>その他</item>
     </string-array>
+    <string-array name="decoration_color_names">
+        <!-- Greyscale Names -->
+        <item>なし</item>
+        <item>白</item>
+        <item>グレー 50</item>
+        <item>グレー 100</item>
+        <item>グレー 200</item>
+        <item>グレー 300</item>
+        <item>グレー 400</item>
+        <item>グレー 500</item>
+        <item>グレー 600</item>
+        <item>グレー 700</item>
+        <item>黒</item>
+        <!-- Grid Names -->
+        <item>青 900</item>
+        <item>インディゴ 900</item>
+        <item>紫 900</item>
+        <item>ピンク 900</item>
+        <item>赤 900</item>
+        <item>ディープオレンジ 900</item>
+        <item>オレンジ 900</item>
+        <item>アンバー 900</item>
+        <item>黄 900</item>
+        <item>ライム 900</item>
+        <item>緑 900</item>
+        <item>青 800</item>
+        <item>インディゴ 800</item>
+        <item>紫 800</item>
+        <item>ピンク 800</item>
+        <item>赤 800</item>
+        <item>ディープオレンジ 800</item>
+        <item>オレンジ 800</item>
+        <item>アンバー 800</item>
+        <item>黄 800</item>
+        <item>ライム 800</item>
+        <item>緑 800</item>
+        <item>青 700</item>
+        <item>インディゴ 700</item>
+        <item>紫 700</item>
+        <item>ピンク 700</item>
+        <item>赤 700</item>
+        <item>ディープオレンジ 700</item>
+        <item>オレンジ 700</item>
+        <item>アンバー 700</item>
+        <item>黄 700</item>
+        <item>ライム 700</item>
+        <item>緑 700</item>
+        <item>青 600</item>
+        <item>インディゴ 600</item>
+        <item>紫 600</item>
+        <item>ピンク 600</item>
+        <item>赤 600</item>
+        <item>ディープオレンジ 600</item>
+        <item>オレンジ 600</item>
+        <item>アンバー 600</item>
+        <item>黄 600</item>
+        <item>ライム 600</item>
+        <item>緑 600</item>
+        <item>青 500</item>
+        <item>インディゴ 500</item>
+        <item>紫 500</item>
+        <item>ピンク 500</item>
+        <item>赤 500</item>
+        <item>ディープオレンジ 500</item>
+        <item>オレンジ 500</item>
+        <item>アンバー 500</item>
+        <item>黄 500</item>
+        <item>ライム 500</item>
+        <item>緑 500</item>
+        <item>青 400</item>
+        <item>インディゴ 400</item>
+        <item>紫 400</item>
+        <item>ピンク 400</item>
+        <item>赤 400</item>
+        <item>ディープオレンジ 400</item>
+        <item>オレンジ 400</item>
+        <item>アンバー 400</item>
+        <item>黄 400</item>
+        <item>ライム 400</item>
+        <item>緑 400</item>
+        <item>青 300</item>
+        <item>インディゴ 300</item>
+        <item>紫 300</item>
+        <item>ピンク 300</item>
+        <item>赤 300</item>
+        <item>ディープオレンジ 300</item>
+        <item>オレンジ 300</item>
+        <item>アンバー 300</item>
+        <item>黄 300</item>
+        <item>ライム 300</item>
+        <item>緑 300</item>
+        <item>青 200</item>
+        <item>インディゴ 200</item>
+        <item>紫 200</item>
+        <item>ピンク 200</item>
+        <item>赤 200</item>
+        <item>ディープオレンジ 200</item>
+        <item>オレンジ 200</item>
+        <item>アンバー 200</item>
+        <item>黄 200</item>
+        <item>ライム 200</item>
+        <item>緑 200</item>
+        <item>青 100</item>
+        <item>インディゴ 100</item>
+        <item>紫 100</item>
+        <item>ピンク 100</item>
+        <item>赤 100</item>
+        <item>ディープオレンジ 100</item>
+        <item>オレンジ 100</item>
+        <item>アンバー 100</item>
+        <item>黄 100</item>
+        <item>ライム 100</item>
+        <item>緑 100</item>
+    </string-array>
+    <string name="achievement_earned">実績獲得！</string>
+    <string name="great">素晴らしい！</string>
+    <string name="achievement_unlocked">実績解除！</string>
+    <string name="decorations">装飾品</string>
+    <string name="pot_decorations">ポットの装飾</string>
+    <string name="_total">合計</string>
+    <string name="new_stats_2">新しい統計が追加されました。マリモの器の装飾に関するものです</string>
 </resources>

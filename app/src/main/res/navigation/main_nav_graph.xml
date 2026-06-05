@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_feedbackFragment"
             app:destination="@id/feedbackFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_achievementFragment"
+            app:destination="@id/achievementFragment" />
     </fragment>
     <fragment
         android:id="@+id/addOrEditFragment"
@@ -50,6 +53,9 @@
             android:name="MarimoCode"
             app:argType="integer"
             android:defaultValue="0" />
+        <action
+            android:id="@+id/action_addOrEditFragment_to_achievementFragment"
+            app:destination="@id/achievementFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -66,6 +72,9 @@
         <action
             android:id="@+id/action_settingsFragment_to_statsFragment"
             app:destination="@id/statsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_achievementFragment"
+            app:destination="@id/achievementFragment" />
 
     </fragment>
     <fragment
@@ -87,6 +96,9 @@
         <action
             android:id="@+id/action_statsFragment_to_addOrEditFragment"
             app:destination="@id/addOrEditFragment" />
+        <action
+            android:id="@+id/action_statsFragment_to_achievementFragment"
+            app:destination="@id/achievementFragment" />
 
     </fragment>
     <fragment
@@ -108,7 +120,9 @@
         <action
             android:id="@+id/action_feedbackFragment_to_statsFragment"
             app:destination="@id/statsFragment" />
-
+        <action
+            android:id="@+id/action_feedbackFragment_to_achievementFragment"
+            app:destination="@id/achievementFragment" />
     </fragment>
     <fragment
         android:id="@+id/fromQRCodeMarimoFragment"
@@ -136,6 +150,10 @@
             android:name="name"
             app:argType="string" />
 
+        <action
+            android:id="@+id/action_fromQRCodeMarimoFragment_to_achievementFragment"
+            app:destination="@id/achievementFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/marimoDetailFragment"
@@ -162,5 +180,29 @@
             app:argType="integer"
             android:defaultValue="0" />
 
+        <action
+            android:id="@+id/action_marimoDetailFragment_to_achievementFragment"
+            app:destination="@id/achievementFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/achievementFragment"
+        android:name="rpt.tool.marimocare.ui.achievement.AchievementFragment"
+        tools:layout="@layout/fragment_achievement"
+        android:label="AchievementFragment">
+
+        <action
+            android:id="@+id/action_achievementFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+
+        <action
+            android:id="@+id/action_achievementFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_achievementFragment_to_addOrEditFragment"
+            app:destination="@id/addOrEditFragment" />
+        <action
+            android:id="@+id/action_achievementFragment_to_statsFragment"
+            app:destination="@id/statsFragment" />
     </fragment>
 </navigation>

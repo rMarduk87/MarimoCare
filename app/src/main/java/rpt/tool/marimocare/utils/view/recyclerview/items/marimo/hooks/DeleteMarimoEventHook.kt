@@ -19,6 +19,7 @@ import kotlinx.coroutines.withContext
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.ItemMarimoBinding
 import rpt.tool.marimocare.utils.AlertDataUtils
+import rpt.tool.marimocare.utils.managers.AchievementManager
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.tool.marimocare.utils.view.getFastAdapterItemViewBinding
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.MarimoItem
@@ -96,6 +97,8 @@ class DeleteMarimoEventHook(
             if (marimo != null) {
 
                 RepositoryManager.marimoRepository.deleteMarimo(item.marimo.code)
+
+                AchievementManager.recalculateAll(true, context = context)
 
                 withContext(Dispatchers.IO) {
                     AlertDataUtils.recalc(context)

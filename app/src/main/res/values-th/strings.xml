@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Marimo Care</string>
-    <string name="marimo_care_dashboard">🌿 แดชบอร์ด Marimo Care</string>
+    <string name="marimo_care_dashboard">Marimo Care Dashboard</string>
     <string name="keep_track_of_your_marimo">ติดตามมาริโมะของคุณและไม่พลาดการเปลี่ยนน้ำอีกต่อไป!</string>
     <string name="marimo_tip_title_1">💡 เคล็ดลับมาริโมะ: อุณหภูมิที่เหมาะสม</string>
     <string name="marimo_tip_title_2">💡 เคล็ดลับมาริโมะ: กลิ้งอย่างเบามือ</string>
@@ -277,6 +277,267 @@
     <string name="clear_all">ล้างข้อมูลทั้งหมด</string>
     <string name="form_cleared">แบบฟอร์มถูกล้างแล้ว</string>
     <string name="feedback_balloon">การคลิกที่นี่จะเปิดหน้าจอแสดงความคิดเห็น ซึ่งคุณสามารถส่งคำแนะนำเพื่อปรับปรุงแอปและเข้าร่วมชุมชน Marimo ได้</string>
+    <string name="achievement">ความสำเร็จ</string>
+    <string name="achievement_intro_title">ความสำเร็จ</string>
+    <string name="achievement_intro_message">ในเวอร์ชันนี้ได้เพิ่มวัตถุประสงค์ที่ต้องบรรลุแล้ว คุณต้องการคำนวณความคืบหน้าหรือต้องการเริ่มใหม่ตั้งแต่ต้น?</string>
+    <string name="calculate">คำนวณ</string>
+    <string name="restart">เริ่มใหม่</string>
+    <string name="achievement_unlocked_title">ปลดล็อกระบบความสำเร็จแล้ว!</string>
+    <string name="achievement_unlocked_message">คุณมีมาริโมะและประวัติการดูแลอยู่แล้ว คุณต้องการให้เราตรวจสอบข้อมูลในอดีตและมอบเข็มกลัดที่คุณได้รับไปแล้ว หรือจะเริ่มใหม่ตั้งแต่วันนี้?</string>
+    <string name="achievement_unlocked">ปลดล็อกความสำเร็จแล้ว!</string>
+    <string name="achievement_earned">ได้รับความสำเร็จแล้ว!</string>
+    <string name="great">เยี่ยมมาก!</string>
+    <string name="calculate_retroactively">คำนวณย้อนหลัง</string>
+    <string name="calculate_retroactively_desc">มอบเข็มกลัดตามประวัติการดูแลทั้งหมด — การเปลี่ยนน้ำและข้อมูลมาริโมะในอดีตจะถูกนำมานับด้วย</string>
+    <string name="start_from_scratch">เริ่มต้นใหม่</string>
+    <string name="start_from_scratch_desc">รับเข็มกลัดนับจากนี้เป็นต้นไปเท่านั้น กิจกรรมในอดีตจะไม่ถูกนำมานับ</string>
+    <string name="new_achievements_unlocked_balloon">ปลดล็อกความสำเร็จใหม่แล้ว คลิกที่นี่เพื่อไปดูเลย</string>
+    <string name="earned_26">ได้รับแล้ว (26)</string>
+    <string name="earned_label">ได้รับแล้ว</string>
+    <string name="_50_badges">/ %1$d เหรียญตรา</string>
+    <string name="_26">26</string>
+    <string name="achievement_subtitle">รับเหรียญตราโดยการดูแลมาริโมะของคุณ</string>
+    <string name="recalculate">คำนวณใหม่</string>
+    <string name="reset_all">รีเซ็ตทั้งหมด</string>
+    <string name="ach_1" translatable="false">🗿</string>
+    <string name="ach_2" translatable="false">📊</string>
+    <string name="ach_3" translatable="false">📋</string>
+    <string name="ach_4" translatable="false">🌗</string>
+    <string name="ach_5" translatable="false">🎊</string>
+    <string name="ach_6" translatable="false">🌊</string>
+    <string name="ach_7" translatable="false">📅</string>
+    <string name="ach_8" translatable="false">📆</string>
+    <string name="ach_9" translatable="false">🌱</string>
+    <string name="ach_10" translatable="false">⭐</string>
+    <string name="ach_11" translatable="false">🎖️</string>
+    <string name="ach_12" translatable="false">🦅</string>
+    <string name="ach_13" translatable="false">🏅</string>
+    <string name="ach_14" translatable="false">🎯</string>
+    <string name="ach_15" translatable="false">🌟</string>
+    <string name="ach_16" translatable="false">📸</string>
+    <string name="ach_17" translatable="false">🤳</string>
+    <string name="ach_18" translatable="false">🖼️</string>
+    <string name="ach_19" translatable="false">📝</string>
+    <string name="ach_20" translatable="false">📔</string>
+    <string name="ach_21" translatable="false">📖</string>
+    <string name="ach_22" translatable="false">✅</string>
+    <string name="ach_23" translatable="false">🎳</string>
+    <string name="ach_24" translatable="false">⏰</string>
+    <string name="ach_25" translatable="false">🏷️</string>
+    <string name="ach_26" translatable="false">✏️</string>
+    <string name="ach_27" translatable="false">🖼️</string>
+    <string name="ach_28" translatable="false">🌅</string>
+    <string name="ach_29" translatable="false">🗒️</string>
+    <string name="ach_30" translatable="false">🐦</string>
+    <string name="ach_31" translatable="false">⚡</string>
+    <string name="ach_32" translatable="false">🦉</string>
+    <string name="ach_33" translatable="false">🎛️</string>
+    <string name="ach_34" translatable="false">💬</string>
+    <string name="ach_35" translatable="false">⚙️</string>
+    <string name="ach_36" translatable="false">👴</string>
+    <string name="ach_37" translatable="false">🌿</string>
+    <string name="ach_38" translatable="false">👫</string>
+    <string name="ach_39" translatable="false">🎶</string>
+    <string name="ach_40" translatable="false">🫙</string>
+    <string name="ach_41" translatable="false">🏆</string>
+    <string name="ach_42" translatable="false">🪖</string>
+    <string name="ach_43" translatable="false">👑</string>
+    <string name="ach_44" translatable="false">💧</string>
+    <string name="ach_45" translatable="false">🚿</string>
+    <string name="ach_46" translatable="false">🔄</string>
+    <string name="ach_47" translatable="false">💪</string>
+    <string name="ach_48" translatable="false">🧙</string>
+    <string name="ach_49" translatable="false">💯</string>
+    <string name="ach_50" translatable="false">🎖️</string>
+    <string name="locked_24">ล็อคอยู่ (24)</string>
+    <string name="ach_desc_1">เพิ่มมาริโมะก้อนแรกของคุณในคอลเล็กชัน</string>
+    <string name="ach_desc_2">คุณมีมาริโมะ 2 ก้อน — ตอนนี้พวกมันมีเพื่อนแล้ว!</string>
+    <string name="ach_desc_3">มีมาริโมะ 3 ก้อนในคอลเล็กชันของคุณ</string>
+    <string name="ach_desc_4">คอลเล็กชันกำลังเติบโต — เพิ่มมาริโมะครบ 5 ก้อนแล้ว!</string>
+    <string name="ach_desc_5">ว้าว มาริโมะ 10 ก้อน! คุณรักพวกมันจริงๆ</string>
+    <string name="ach_desc_6">มาริโมะ 20 ก้อนแล้ว!</string>
+    <string name="ach_desc_7">มาริโมะ 50 ก้อน คุณกำลังสร้างอาณาจักร</string>
+    <string name="ach_desc_8">บันทึกการเปลี่ยนน้ำครั้งแรก การเดินทางได้เริ่มต้นขึ้นแล้ว!</string>
+    <string name="ach_desc_9">บันทึกการเปลี่ยนน้ำครบ 5 ครั้ง</string>
+    <string name="ach_desc_10">บันทึกการเปลี่ยนน้ำทั้งหมด 10 ครั้ง</string>
+    <string name="ach_desc_11">บันทึกการเปลี่ยนน้ำ 25 ครั้ง คุณกำลังสร้างนิสัยที่ดี!</string>
+    <string name="ach_desc_12">บันทึกการเปลี่ยนน้ำ 50 ครั้ง คุณคือมือโปร!</string>
+    <string name="ach_desc_13">เปลี่ยนน้ำครบ 100 ครั้ง! น่าทึ่งที่สุด</string>
+    <string name="ach_desc_14">บันทึกการเปลี่ยนน้ำครบ 200 ครั้ง ระดับตำนาน</string>
+    <string name="ach_desc_15">เปลี่ยนน้ำ 500 ครั้ง คุณคือสุดยอดผู้ดูแลมาริโมะ</string>
+    <string name="ach_desc_16">ดูแลมาริโมะครบหนึ่งสัปดาห์เต็ม!</string>
+    <string name="ach_desc_17">เปลี่ยนน้ำตรงเวลาตลอดทั้งเดือน</string>
+    <string name="ach_desc_18">ดูแลมาริโมะอย่างต่อเนื่องครบสามเดือน!</string>
+    <string name="ach_desc_19">ดูแลอย่างสม่ำเสมอครบหกเดือน คุณคือตำนาน</string>
+    <string name="ach_desc_20">ดูแลมาริโมะครบหนึ่งปีเต็ม ช่างเป็นความทุ่มเทที่ยอดเยี่ยม!</string>
+    <string name="ach_desc_21">ดูแลมาริโมะครบสองปีเต็ม พิเศษสุดๆ จริงๆ</string>
+    <string name="ach_desc_22">บันทึกเหตุการณ์สำคัญพิเศษในการเปลี่ยนน้ำครั้งแรก</string>
+    <string name="ach_desc_23">บันทึกเหตุการณ์สำคัญพิเศษในการเปลี่ยนน้ำครบ 5 ครั้ง</string>
+    <string name="ach_desc_24">บันทึกเหตุการณ์สำคัญในการเปลี่ยนน้ำครบ 10 ครั้ง!</string>
+    <string name="ach_desc_25">อัปโหลดรูปภาพระหว่างการบันทึกการเปลี่ยนน้ำ</string>
+    <string name="ach_desc_26">อัปโหลดรูปภาพในการบันทึกการเปลี่ยนน้ำที่แตกต่างกัน 5 ครั้ง</string>
+    <string name="ach_desc_27">บันทึกการเปลี่ยนน้ำพร้อมรูปภาพ 20 ครั้ง อัลบั้มมาริโมะที่แท้จริง!</string>
+    <string name="ach_desc_28">เพิ่มบันทึกในการเปลี่ยนน้ำที่แตกต่างกัน 5 ครั้ง</string>
+    <string name="ach_desc_29">เพิ่มบันทึกในการเปลี่ยนน้ำ 20 ครั้ง</string>
+    <string name="ach_desc_30">เพิ่มบันทึกในการเปลี่ยนน้ำ 50 ครั้ง นักบันทึกประวัติศาสตร์ตัวจริง</string>
+    <string name="ach_desc_31">มาริโมะทั้งหมดของคุณเป็นปัจจุบัน — ไม่มีก้อนไหนเกินกำหนดในตอนนี้!</string>
+    <string name="ach_desc_32">บันทึกการเปลี่ยนน้ำ 5 ครั้งที่ตรงเวลา (ไม่เกินกำหนด)</string>
+    <string name="ach_desc_33">เปลี่ยนน้ำตรงเวลา 20 ครั้ง สม่ำเสมอดั่งเข็มนาฬิกา!</string>
+    <string name="ach_desc_34">ตั้งชื่อให้มาริโมะของคุณ (ไม่ใช่แค่คำว่า \'มาริโมะ\')</string>
+    <string name="ach_desc_35">ตั้งชื่อที่ไม่ซ้ำกันให้กับมาริโมะ 3 ก้อน</string>
+    <string name="ach_desc_36">เพิ่มรูปโปรไฟล์ให้มาริโมะของคุณ</string>
+    <string name="ach_desc_37">เพิ่มรูปโปรไฟล์ให้มาริโมะครบ 5 ก้อน</string>
+    <string name="ach_desc_38">เพิ่มบันทึกให้มาริโมะของคุณ</string>
+    <string name="ach_desc_39">บันทึกการเปลี่ยนน้ำก่อนกำหนดมากกว่า 2 วัน</string>
+    <string name="ach_desc_40">บันทึกการเปลี่ยนน้ำ 3 ครั้งในวันเดียวกัน</string>
+    <string name="ach_desc_41">บันทึกการเปลี่ยนน้ำ 10 ครั้งที่เกินกำหนด (แต่คุณก็ยังทำมันสำเร็จ!)</string>
+    <string name="ach_desc_42">เป็นเจ้าของมาริโมะที่มีความถี่ในการเปลี่ยนน้ำ 3 แบบที่แตกต่างกัน</string>
+    <string name="ach_desc_43">ส่งข้อเสนอแนะเพื่อช่วยปรับปรุงแอป</string>
+    <string name="ach_desc_44">ปรับแต่งการตั้งค่าแดชบอร์ดของคุณ</string>
+    <string name="ach_desc_45">มาริโมะก้อนหนึ่งอยู่ในความดูแลของคุณมานานกว่า 6 เดือน</string>
+    <string name="ach_desc_46">มาริโมะก้อนหนึ่งอยู่ในความดูแลของคุณมานานกว่าหนึ่งปี</string>
+    <string name="ach_desc_47">เข้าชมหน้าสถิติ</string>
+    <string name="ach_desc_48">เพิ่มบันทึกให้มาริโมะของคุณ 5 ก้อน</string>
+    <string name="ach_desc_49">ได้รับความสำเร็จ 25 รายการ มาได้ครึ่งทางแล้ว!</string>
+    <string name="ach_desc_50">ได้รับความสำเร็จครบทั้ง 50 รายการ คุณคือปรมาจารย์มาริโมะตัวจริง!</string>
+    <string name="ach_desc_51">เพิ่มของตกแต่งชิ้นแรกของคุณลงในโหลมาริโมะ</string>
+    <string name="ach_desc_52">ตกแต่งโหลมาริโมะ 3 ใบที่แตกต่างกันด้วยของตกแต่ง</string>
+    <string name="ach_desc_53">เพิ่มของตกแต่ง 10 ชิ้นขึ้นไปในคอลเลกชันของคุณ</string>
+    <string name="ach_tit_1">มาริโมะก้อนแรก</string>
+    <string name="ach_tit_2">คู่หูดูโอ</string>
+    <string name="ach_tit_3">สามสหาย</string>
+    <string name="ach_tit_4">นักสะสม</string>
+    <string name="ach_tit_5">นักสะสมมาริโมะตัวยง</string>
+    <string name="ach_tit_6">กองทัพมาริโมะ</string>
+    <string name="ach_tit_7">อาณาจักรมาริโมะ</string>
+    <string name="ach_tit_8">หยดแรก</string>
+    <string name="ach_tit_9">เริ่มต้นกันเลย</string>
+    <string name="ach_tit_10">ผู้ดูแลที่สม่ำเสมอ</string>
+    <string name="ach_tit_11">ผู้ทุ่มเท</string>
+    <string name="ach_tit_12">พ่อมดแห่งสายน้ำ</string>
+    <string name="ach_tit_13">ศตวรรษแห่งการดูแล</string>
+    <string name="ach_tit_14">สองร้อยปี</string>
+    <string name="ach_tit_15">ปรมาจารย์แห่งสายน้ำ</string>
+    <string name="ach_tit_16">หนึ่งสัปดาห์ผ่านไป</string>
+    <string name="ach_tit_17">ดูแลครบหนึ่งเดือน</string>
+    <string name="ach_tit_18">สามเดือนที่แข็งแกร่ง</string>
+    <string name="ach_tit_19">ฮีโร่ครึ่งปี</string>
+    <string name="ach_tit_20">แชมป์ประจำปี</string>
+    <string name="ach_tit_21">ผู้ดูแลรุ่นใหญ่สองปี</string>
+    <string name="ach_tit_22">ผู้บันทึกเหตุการณ์สำคัญ</string>
+    <string name="ach_tit_23">นักล่าเหตุการณ์สำคัญ</string>
+    <string name="ach_tit_24">ปรมาจารย์เหตุการณ์สำคัญ</string>
+    <string name="ach_tit_25">ผู้เก็บภาพความจำ</string>
+    <string name="ach_tit_26">ช่างภาพ</string>
+    <string name="ach_tit_27">อัลบั้มรูป</string>
+    <string name="ach_tit_28">นักจดบันทึก</string>
+    <string name="ach_tit_29">ผู้รักษาบันทึกประจำวัน</string>
+    <string name="ach_tit_30">นักจดพงศาวดาร</string>
+    <string name="ach_tit_31">สถิติที่สมบูรณ์แบบ</string>
+    <string name="ach_tit_32">กำลังมือขึ้น</string>
+    <string name="ach_tit_33">เที่ยงตรงดั่งเครื่องจักร</string>
+    <string name="ach_tit_34">ผู้ตั้งชื่อ</string>
+    <string name="ach_tit_35">นักตั้งชื่อที่สร้างสรรค์</string>
+    <string name="ach_tit_36">รูปโปรไฟล์</string>
+    <string name="ach_tit_37">คอลเล็กชันที่ถ่ายรูปสวย</string>
+    <string name="ach_tit_38">นักเขียนชีวประวัติมาริโมะ</string>
+    <string name="ach_tit_39">นกตื่นเช้า</string>
+    <string name="ach_tit_40">นักเปลี่ยนน้ำความเร็วสูง</string>
+    <string name="ach_tit_41">นกฮูกกลางคืน</string>
+    <string name="ach_tit_42">มิกซ์มาสเตอร์</string>
+    <string name="ach_tit_43">ผู้ให้คำแนะนำ</string>
+    <string name="ach_tit_44">นักสำรวจการตั้งค่า</string>
+    <string name="ach_tit_45">มาริโมะรุ่นใหญ่</string>
+    <string name="ach_tit_46">ผู้อาวุโส</string>
+    <string name="ach_tit_47">เซียนสถิติ</string>
+    <string name="ach_tit_48">นักเขียนชีวประวัติมาริโมะ</string>
+    <string name="ach_tit_49">มาได้ครึ่งทาง</string>
+    <string name="ach_tit_50">นักล่าความสำเร็จ</string>
+    <string name="ach_tit_51">สัมผัสภายใน</string>
+    <string name="ach_tit_52">นักตกแต่ง</string>
+    <string name="ach_tit_53">มัณฑนากร</string>
+
+    <string name="ach_type_marimo">มาริโมะ</string>
+    <string name="ach_type_marimos">มาริโมะ</string>
+    <string name="ach_type_waterchange">การเปลี่ยนน้ำ</string>
+    <string name="ach_type_daysofcare">วันที่ดูแล</string>
+    <string name="ach_type_monthsofcare">เดือนที่ดูแล</string>
+    <string name="ach_type_milestone">เหตุการณ์สำคัญ</string>
+    <string name="ach_type_photo">รูปภาพ</string>
+    <string name="ach_type_note">บันทึก</string>
+    <string name="ach_type_name">ชื่อ</string>
+    <string name="ach_type_marimowithphoto">มาริโมะพร้อมรูปภาพ</string>
+    <string name="ach_type_logs">บันทึก</string>
+
+    <string name="unit_type_marimo">มาริโมะ</string>
+    <string name="unit_type_marimos">มาริโมะ</string>
+    <string name="unit_type_logs">บันทึก</string>
+    <string name="unit_type_milestones">เหตุการณ์สำคัญ</string>
+    <string name="unit_type_photo">รูปภาพ</string>
+    <string name="unit_type_notedlogs">บันทึกที่มีโน้ต</string>
+    <string name="unit_type_months">เดือน</string>
+    <string name="unit_type_days">วัน</string>
+    <string name="unit_type_uniquelynamed">ตั้งชื่อไม่ซ้ำกัน</string>
+    <string name="unit_type_withphoto">พร้อมรูปภาพ</string>
+    <string name="achievement_balloon">เมื่อคุณเพิ่มมาริโมะ ดูแลพวกมัน ฯลฯ คุณจะสามารถปลดล็อกความสำเร็จได้ ซึ่งดูได้โดยการกดที่ปุ่มนี้</string>
+    <string name="unit_type_water">การเปลี่ยนน้ำ</string>
+    <string name="unit_type_marimonamed">มาริโมะที่ตั้งชื่อแล้ว</string>
+    <string name="unit_type_notewrite">โน้ตที่เขียนแล้ว</string>
+    <string name="ach_des_1">เพียงเพิ่มมาริโมะหนึ่งตัวเพื่อเริ่มต้น!</string>
+    <string name="ach_des_2">เพิ่มมาริโมะตัวที่สอง — พวกเขาชอบมีเพื่อน!</string>
+    <string name="ach_des_3">สามตัวเริ่มเยอะแล้ว — สะสมเพิ่มอีกตัวสิ!</string>
+    <string name="ach_des_4">เพิ่มไปเรื่อยๆ จนถึง 5 ตัว</string>
+    <string name="ach_des_5">เพิ่มคอลเลกชันของคุณเป็นสองเท่าคือ 10 ตัว!</string>
+    <string name="ach_des_6">คุณต้องการมาริโมะ 20 ตัวเพื่อสร้างกองทัพ</string>
+    <string name="ach_des_7">มาริโมะ 50 ตัว — คอลเลกชันขั้นสุดยอด</string>
+    <string name="ach_des_8">เปลี่ยนน้ำให้กับมาริโมะตัวใดก็ได้ของคุณ</string>
+    <string name="ach_des_9">เปลี่ยนน้ำรวม 5 ครั้ง — พยายามต่อไป!</string>
+    <string name="ach_des_10">บันทึกรวม 10 ครั้ง — คุณเริ่มสร้างนิสัยแล้ว</string>
+    <string name="ach_des_11">บันทึก 25 ครั้ง — ความทุ่มเทคือกุญแจสำคัญ!</string>
+    <string name="ach_des_12">เปลี่ยนน้ำ 50 ครั้ง — คุณคือมือโปรตัวจริง!</string>
+    <string name="ach_des_13">ศตวรรษแห่งการดูแล — บันทึกต่อไปนะ!</string>
+    <string name="ach_des_14">บันทึก 200 ครั้ง — ผู้ดูแลในตำนาน!</string>
+    <string name="ach_des_15">บันทึก 500 ครั้ง — ผู้ดูแลขั้นสุดยอด</string>
+    <string name="ach_des_16">ดูแลมาริโมะของคุณเป็นเวลา 7 วัน</string>
+    <string name="ach_des_17">ดูแลอย่างสม่ำเสมอเป็นเวลาหนึ่งเดือน!</string>
+    <string name="ach_des_18">ต้องการความทุ่มเทเป็นเวลาสามเดือน</string>
+    <string name="ach_des_19">ดูแลมาริโมะมาครึ่งปีแล้ว!</string>
+    <string name="ach_des_20">ทุ่มเทตลอดทั้งปี — เหลือเชื่อมาก!</string>
+    <string name="ach_des_21">ดูแลมาริโมะมาครบสองปีเต็มแล้ว!</string>
+    <string name="ach_des_22">ทำเครื่องหมายการเปลี่ยนน้ำครั้งใดก็ได้เป็นเหตุการณ์สำคัญ!</string>
+    <string name="ach_des_23">ทำเครื่องหมายการเปลี่ยนน้ำ 5 ครั้งเป็นเหตุการณ์สำคัญ</string>
+    <string name="ach_des_24">บันทึกเหตุการณ์สำคัญ 10 ครั้ง — คุณคือนักสะสม!</string>
+    <string name="ach_des_25">อัปโหลดรูปภาพระหว่างการบันทึกการเปลี่ยนน้ำ</string>
+    <string name="ach_des_26">ต้องการบันทึกที่มีรูปภาพ 5 ครั้ง</string>
+    <string name="ach_des_27">บันทึกที่มีรูปภาพ 20 ครั้ง — อัลบั้มที่แท้จริง!</string>
+    <string name="ach_des_28">เขียนโน้ตในการบันทึกการเปลี่ยนน้ำ 5 ครั้ง</string>
+    <string name="ach_des_29">บันทึกที่มีโน้ต 20 ครั้ง — ไดอารี่ที่แท้จริง!</string>
+    <string name="ach_des_30">บันทึกที่มีโน้ต 50 ครั้ง — คุณคือนักประวัติศาสตร์!</string>
+    <string name="ach_des_31">ตรวจสอบให้แน่ใจว่าไม่มีมาริโมะตัวใดที่เกินกำหนดเปลี่ยนน้ำในตอนนี้</string>
+    <string name="ach_des_32">บันทึกการเปลี่ยนน้ำ 5 ครั้งเพื่อให้ผ่านเกณฑ์</string>
+    <string name="ach_des_33">บันทึกตรงเวลา 20 ครั้ง — ตรงเผงเหมือนนาฬิกา!</string>
+    <string name="ach_des_34">ตั้งชื่อมาริโมะของคุณให้สร้างสรรค์!</string>
+    <string name="ach_des_35">ตั้งชื่อมาริโมะ 3 ตัวให้ไม่ซ้ำกัน</string>
+    <string name="ach_des_36">เพิ่มรูปโปรไฟล์ให้กับมาริโมะตัวใดก็ได้</string>
+    <string name="ach_des_37">ให้รูปโปรไฟล์กับมาริโมะ 5 ตัว!</string>
+    <string name="ach_des_38">เขียนโน้ตในโปรไฟล์ของมาริโมะตัวใดก็ได้</string>
+    <string name="ach_des_39">เปลี่ยนน้ำก่อนกำหนดมากกว่า 2 วัน</string>
+    <string name="ach_des_40">บันทึกการเปลี่ยนน้ำ 3 ครั้งในวันเดียว!</string>
+    <string name="ach_des_41">บันทึกการเปลี่ยนน้ำที่เกินกำหนด 10 ครั้ง (คุณก็ยังทำมัน!)</string>
+    <string name="ach_des_42">ตั้งความถี่การเปลี่ยนน้ำที่แตกต่างกัน 3 แบบ</string>
+    <string name="ach_des_43">ไปที่หน้าคำติชมและส่งความเห็นของคุณ!</string>
+    <string name="ach_des_44">ปรับแต่งการตั้งค่าของคุณและบันทึก</string>
+    <string name="ach_des_45">ดูแลมาริโมะเป็นเวลา 6 เดือน!</string>
+    <string name="ach_des_46">มาริโมะที่มีอายุมากกว่า 1 ปีในการดูแลของคุณ!</string>
+    <string name="ach_des_47">เพียงเข้าไปที่หน้าสถิติ!</string>
+    <string name="ach_des_48">เขียนโน้ตให้กับมาริโมะ 5 ตัว</string>
+    <string name="ach_des_49">บรรลุ 25 ความสำเร็จเพื่อถึงครึ่งทาง</string>
+    <string name="ach_des_50">บรรลุทุกความสำเร็จ — เป้าหมายสูงสุด!</string>
+    <string name="ach_des_51">เพิ่มของตกแต่งอย่างน้อยหนึ่งชิ้น (กรวด หิน คริสตัล ฯลฯ) ลงในโหลมาริโมะผ่านแบบฟอร์มเพิ่มหรือแก้ไข</string>
+    <string name="ach_des_52">เพิ่มของตกแต่งอย่างน้อยหนึ่งชิ้นให้กับมาริโมะ 3 ตัวที่แตกต่างกันในคอลเลกชันของคุณ</string>
+    <string name="ach_des_53">เพิ่มของตกแต่งให้กับมาริโมะของคุณจนกว่าจำนวนรวมในคอลเลกชันทั้งหมดจะถึง 10</string>
+    <string name="_100">100%</string>
+
     <string-array name="marimo_frequencies">
         <item>ทุก 7 วัน (รายสัปดาห์)</item>
         <item>ทุก 10 วัน</item>
@@ -324,6 +585,10 @@
     <string name="e_g_2cm_x_1cm">เช่น 2 ซม. x 1 ซม.</string>
     <string name="e_g_natural_quartz">เช่น ควอตซ์ธรรมชาติ</string>
     <string name="any_extra_details">รายละเอียดเพิ่มเติม…</string>
+    <string name="decorations">การตกแต่ง</string>
+    <string name="pot_decorations">ของตกแต่งกระถาง</string>
+    <string name="_total">ทั้งหมด</string>
+    <string name="new_stats_2">เพิ่มสถิติใหม่เกี่ยวกับการตกแต่งกระถางมาริโมะของคุณ</string>
 
     <string-array name="decoration_types">
         <item>เลือกประเภท…</item>
@@ -340,5 +605,119 @@
         <item>ตุ๊กตา</item>
         <item>ไม้น้ำ</item>
         <item>อื่นๆ</item>
+    </string-array>
+    <string-array name="decoration_color_names">
+        <!-- Greyscale Names -->
+        <item>ไม่มี</item>
+        <item>ขาว</item>
+        <item>เทา 50</item>
+        <item>เทา 100</item>
+        <item>เทา 200</item>
+        <item>เทา 300</item>
+        <item>เทา 400</item>
+        <item>เทา 500</item>
+        <item>เทา 600</item>
+        <item>เทา 700</item>
+        <item>ดำ</item>
+        <!-- Grid Names -->
+        <item>ฟ้า 900</item>
+        <item>คราม 900</item>
+        <item>ม่วง 900</item>
+        <item>ชมพู 900</item>
+        <item>แดง 900</item>
+        <item>ส้มเข้ม 900</item>
+        <item>ส้ม 900</item>
+        <item>อำพัน 900</item>
+        <item>เหลือง 900</item>
+        <item>มะนาว 900</item>
+        <item>เขียว 900</item>
+        <item>ฟ้า 800</item>
+        <item>คราม 800</item>
+        <item>ม่วง 800</item>
+        <item>ชมพู 800</item>
+        <item>แดง 800</item>
+        <item>ส้มเข้ม 800</item>
+        <item>ส้ม 800</item>
+        <item>อำพัน 800</item>
+        <item>เหลือง 800</item>
+        <item>มะนาว 800</item>
+        <item>เขียว 800</item>
+        <item>ฟ้า 700</item>
+        <item>คราม 700</item>
+        <item>ม่วง 700</item>
+        <item>ชมพู 700</item>
+        <item>แดง 700</item>
+        <item>ส้มเข้ม 700</item>
+        <item>ส้ม 700</item>
+        <item>อำพัน 700</item>
+        <item>เหลือง 700</item>
+        <item>มะนาว 700</item>
+        <item>เขียว 700</item>
+        <item>ฟ้า 600</item>
+        <item>คราม 600</item>
+        <item>ม่วง 600</item>
+        <item>ชมพู 600</item>
+        <item>แดง 600</item>
+        <item>ส้มเข้ม 600</item>
+        <item>ส้ม 600</item>
+        <item>อำพัน 600</item>
+        <item>เหลือง 600</item>
+        <item>มะนาว 600</item>
+        <item>เขียว 600</item>
+        <item>ฟ้า 500</item>
+        <item>คราม 500</item>
+        <item>ม่วง 500</item>
+        <item>ชมพู 500</item>
+        <item>แดง 500</item>
+        <item>ส้มเข้ม 500</item>
+        <item>ส้ม 500</item>
+        <item>อำพัน 500</item>
+        <item>เหลือง 500</item>
+        <item>มะนาว 500</item>
+        <item>เขียว 500</item>
+        <item>ฟ้า 400</item>
+        <item>คราม 400</item>
+        <item>ม่วง 400</item>
+        <item>ชมพู 400</item>
+        <item>แดง 400</item>
+        <item>ส้มเข้ม 400</item>
+        <item>ส้ม 400</item>
+        <item>อำพัน 400</item>
+        <item>เหลือง 400</item>
+        <item>มะนาว 400</item>
+        <item>เขียว 400</item>
+        <item>ฟ้า 300</item>
+        <item>คราม 300</item>
+        <item>ม่วง 300</item>
+        <item>ชมพู 300</item>
+        <item>แดง 300</item>
+        <item>ส้มเข้ม 300</item>
+        <item>ส้ม 300</item>
+        <item>อำพัน 300</item>
+        <item>เหลือง 300</item>
+        <item>มะนาว 300</item>
+        <item>เขียว 300</item>
+        <item>ฟ้า 200</item>
+        <item>คราม 200</item>
+        <item>ม่วง 200</item>
+        <item>ชมพู 200</item>
+        <item>แดง 200</item>
+        <item>ส้มเข้ม 200</item>
+        <item>ส้ม 200</item>
+        <item>อำพัน 200</item>
+        <item>เหลือง 200</item>
+        <item>มะนาว 200</item>
+        <item>เขียว 200</item>
+        <item>ฟ้า 100</item>
+        <item>คราม 100</item>
+        <item>ม่วง 100</item>
+        <item>ชมพู 100</item>
+        <item>แดง 100</item>
+        <item>ส้มเข้ม 100</item>
+        <item>ส้ม 100</item>
+        <item>อำพัน 100</item>
+        <item>เหลือง 100</item>
+        <item>มะนาว 100</item>
+        <item>เขียว 100</item>
     </string-array>
 </resources>

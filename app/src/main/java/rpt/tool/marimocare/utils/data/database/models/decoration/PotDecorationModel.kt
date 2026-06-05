@@ -7,6 +7,8 @@ import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
 import rpt.tool.marimocare.utils.data.DbModel
+import rpt.tool.marimocare.utils.data.database.mappers.addMapper
+import rpt.tool.marimocare.utils.data.database.mappers.decoration.PotDecorationModelToPotDecoration
 import rpt.tool.marimocare.utils.data.database.models.MarimoModel
 
 @Keep
@@ -17,7 +19,7 @@ import rpt.tool.marimocare.utils.data.database.models.MarimoModel
             entity = MarimoModel::class,
             parentColumns = ["code"],
             childColumns = ["marimo_code"],
-            onDelete = ForeignKey.CASCADE
+            onDelete = ForeignKey.CASCADE,
         )
     ],
     indices = [Index(value = ["marimo_code"])]
@@ -40,4 +42,8 @@ data class PotDecorationModel(
     val material: String,
     @ColumnInfo(name = "notes")
     val notes: String
-) : DbModel()
+) : DbModel() {
+    init {
+        addMapper(PotDecorationModelToPotDecoration())
+    }
+}

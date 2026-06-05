@@ -187,7 +187,6 @@
 
                     <Button
                         android:id="@+id/btnAddDecoration"
-                        style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:text="@string/add_decoration"

@@ -23,6 +23,7 @@
     <color name="marimo_pink">#fef2f2</color>
     <color name="marimo_red">#D9534F</color>
     <color name="marimo_light_yellow">#fef3c7</color>
+    <color name="marimo_light_melon">#f7ae10</color>
     <color name="marimo_orange">#E1A500</color>
     <color name="marimo_light_orange">#fff7ed</color>
     <color name="marimo_dark">#000000</color>
@@ -136,4 +137,35 @@
     <color name="decoration_brown">#795548</color>
     <color name="decoration_gray">#9E9E9E</color>
     <color name="decoration_blue_gray">#607D8B</color>
+
+    <!-- Additional Hardcoded Colors -->
+    <color name="achievement_stroke">#A5D6A7</color>
+    <color name="achievement_stroke_red">#EF9A9A</color>
+    <color name="achievement_stroke_green">#C8E6C9</color>
+    <color name="achievement_progress_track">#F3F4F6</color>
+    <color name="achievement_text_dark">#374151</color>
+    <color name="achievement_text_gray">#6B7280</color>
+    <color name="achievement_text_hint">#9CA3AF</color>
+    <color name="achievement_text_title">#111827</color>
+    <color name="achievement_green">#2E7D32</color>
+    <color name="achievement_red">#D32F2F</color>
+    <color name="achievement_accent">#10B981</color>
+    <color name="marimo_gray_666">#666666</color>
+    <color name="marimo_button_green_bg">#E8F5E9</color>
+    <color name="marimo_button_green_stroke">#81C784</color>
+    <color name="marimo_card_red_bg">#f7f7f6</color>
+    <color name="marimo_gray_6B7280">#6B7280</color>
+    <color name="marimo_warning_orange">#E1A500</color>
+    <color name="marimo_warning_red">#e0403f</color>
+    <color name="marimo_upload_dash">#D0D5DD</color>
+    <color name="marimo_progress_track">#E0E0E0</color>
+    <color name="marimo_button_white_pressed">#DDDDDD</color>
+    <color name="marimo_button_white_stroke">#CCCCCC</color>
+    <color name="marimo_notes_box_bg">#f9fafb</color>
+    <color name="marimo_input_bg">#F4FFF8</color>
+    <color name="marimo_circle_mask_soon">#fef3c7</color>
+    <color name="marimo_arrow_gray">#808080</color>
+    <color name="marimo_bg_mint_selected">#E3F9F1</color>
+    <color name="achievement_not_earned_stroke">#e5e7eb</color>
+    <color name="achievement_not_earned_bg">#f9fafb</color>
 </resources>

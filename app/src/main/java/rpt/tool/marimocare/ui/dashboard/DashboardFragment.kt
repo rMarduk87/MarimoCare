@@ -42,7 +42,6 @@ import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 import rpt.com.base.navigation.safeNavController
 import rpt.com.base.navigation.safeNavigate
 import rpt.tool.marimocare.utils.view.adapters.CustomSpinnerAdapter
-import rpt.tool.marimocare.utils.view.enable
 import rpt.tool.marimocare.utils.view.gone
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.MarimoItem
 import rpt.tool.marimocare.utils.view.viewpager.tips.TipsPagerAdapter
@@ -55,17 +54,24 @@ import com.skydoves.balloon.BalloonAlign
 import com.skydoves.balloon.balloon
 import rpt.com.base.BaseFragment
 import rpt.tool.marimocare.utils.AppUtils
+import rpt.tool.marimocare.utils.balloon.achievement.AchievementBalloonFactory
+import rpt.tool.marimocare.utils.balloon.achievement.AchievementUnlockedBalloonFactory
 import rpt.tool.marimocare.utils.balloon.feedback.FeedbackBalloonFactory
 import rpt.tool.marimocare.utils.balloon.waterchange.DialogChangeWaterBalloonFactory
 import rpt.tool.marimocare.utils.balloon.settings.SettingsBalloonFactory
 import rpt.tool.marimocare.utils.balloon.waterchange.WaterChangeInfoBalloonFactory
+import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.data.appmodels.MarimoToFix
 import rpt.tool.marimocare.utils.data.appmodels.MarimoUpdate
+import rpt.tool.marimocare.utils.managers.AchievementManager
 import rpt.tool.marimocare.utils.managers.HealthManager
 import rpt.tool.marimocare.utils.managers.RepositoryManager
+import rpt.tool.marimocare.utils.view.HeaderButtonConfig
+import rpt.tool.marimocare.utils.view.HeaderHelper
 import rpt.tool.marimocare.utils.view.adapters.MarimoToFixAdapter
 import rpt.tool.marimocare.utils.view.adapters.MarimoUpdateAdapter
 import rpt.tool.marimocare.utils.view.copyUriToInternalFile
+import rpt.tool.marimocare.utils.view.enable
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.DeleteMarimoEventHook
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.ShowMarimoDetailsEventHook
 import java.io.File
@@ -88,6 +94,10 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     private var imagePath: String? = null
     private var tempImageUri: Uri? = null
     private var isBalloonShowing = false
+    private val achievementBalloon by balloon<AchievementBalloonFactory>()
+    private val achievementUnlockedBalloon by balloon<AchievementUnlockedBalloonFactory>()
+    private var isAchievementDialogOpen = false
+    private var isFeedbackShowing = false
 
     private val REQUEST_CAMERA = 1001
     private val REQUEST_GALLERY = 1002
@@ -110,6 +120,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         binding.include1.btnOpenStats.setOnClickListener {
             safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(DashboardFragmentDirections
                 .actionDashboardFragmentToStatsFragment()) }
+        setupHeaderButtons()
 
         binding.cardCounterTotal.background = ContextCompat.getDrawable(requireContext(),
             R.drawable.bg_card_marimo_status_t)
@@ -305,11 +316,129 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         }
 
         checkAndShowBalloons()
+        if (SharedPreferencesManager.showBallonFeedback) {
+            isFeedbackShowing = true
+            binding.btnOpenFeedbackDashboard.post {
+                if (isAdded) {
+                    feedBackBalloon.setOnBalloonDismissListener {
+                        isFeedbackShowing = false
+                        viewModel.allMarimos.value?.let { handleAchievementLogic(it) }
+                    }
+                    feedBackBalloon.showAlign(
+                        align = BalloonAlign.BOTTOM,
+                        mainAnchor = binding.btnOpenFeedbackDashboard
+                    )
+                    SharedPreferencesManager.showBallonFeedback = false
+                } else {
+                    isFeedbackShowing = false
+                }
+            }
+        }
+
+        viewModel.allMarimos.observe(viewLifecycleOwner) { marimos ->
+            if (!isFeedbackShowing) {
+                handleAchievementLogic(marimos)
+            }
+            updateAlertsUI()
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun handleAchievementLogic(marimos: List<Marimo>) {
+        if (!SharedPreferencesManager.showAchievement) return
+
+        SharedPreferencesManager.showAchievement = false
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+            RepositoryManager.marimoRepository.addAchievementToTable(
+                requireContext(), R.raw.achievement,
+                R.raw.achievement_detail
+            )
+        }
+        if (marimos.isNotEmpty()) {
+            openAchievementIntroDialog()
+        } else {
+            binding.include1.btnAchievementAHeader.post {
+                if (isAdded && !isFeedbackShowing) {
+                    achievementBalloon.showAlign(
+                        align = BalloonAlign.BOTTOM,
+                        mainAnchor = binding.include1.btnAchievementAHeader
+                    )
+                }
+            }
+        }
     }
 
     private fun addNewMarimo() {
         safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(DashboardFragmentDirections.
         actionDashboardFragmentToAddOrEditFragment()
+        )
+    }
+
+    private fun setupHeaderButtons() {
+        HeaderHelper.setupHeaderButtons(
+            requireContext(),
+            listOf(
+                HeaderButtonConfig(
+                    button = binding.include1.btnDashboardHeader,
+                    iconRes = R.drawable.ic_dashboard,
+                    colorRes = R.color.marimo_item_green,
+                    backgroundRes = R.drawable.bg_button_light_green,
+                    enabled = false,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.dashboard)
+                ),
+                HeaderButtonConfig(
+                    button = binding.include1.btnAddMarimoHeader,
+                    iconRes = R.drawable.ic_add,
+                    colorRes = R.color.marimo_add_icon,
+                    backgroundRes = R.drawable.bg_button_white,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.add_marimo),
+                    onClick = { addNewMarimo() }
+                ),
+                HeaderButtonConfig(
+                    button = binding.include1.btnAchievementAHeader,
+                    iconRes = R.drawable.ic_coccard,
+                    colorRes = R.color.marimo_add_icon,
+                    backgroundRes = R.drawable.bg_button_white,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.achievement),
+                    onClick = {
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                            DashboardFragmentDirections
+                                .actionDashboardFragmentToAchievementFragment()
+                        )
+                    }
+                ),
+                HeaderButtonConfig(
+                    button = binding.include1.btnOpenSettings,
+                    iconRes = R.drawable.ic_settings,
+                    colorRes = R.color.marimo_add_icon,
+                    backgroundRes = R.drawable.bg_button_white,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.settings),
+                    onClick = {
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                            DashboardFragmentDirections
+                                .actionDashboardFragmentToSettingsFragment()
+                        )
+                    }
+                ),
+                HeaderButtonConfig(
+                    button = binding.include1.btnOpenStats,
+                    iconRes = R.drawable.ic_stats,
+                    colorRes = R.color.marimo_add_icon,
+                    backgroundRes = R.drawable.bg_button_white,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.stats),
+                    onClick = {
+                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                            DashboardFragmentDirections
+                                .actionDashboardFragmentToStatsFragment()
+                        )
+                    }
+                )
+            )
         )
     }
 
@@ -383,48 +512,55 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     }
 
     private fun updateAlertsUI() {
-
-        val userPrefOverdue = SharedPreferencesManager.showAlertOverdue
-        val userPrefSoon = SharedPreferencesManager.showAlertSoon
-        val userPrefToday = SharedPreferencesManager.showAlertToday
-
-        val overdueText = SharedPreferencesManager.alertOverdue
-        val soonText = SharedPreferencesManager.alertSoon
-
-        val hasOverdue = userPrefOverdue && overdueText.isNotEmpty()
-        val hasSoon = (userPrefSoon || userPrefToday) && soonText.isNotEmpty()
-
-        val overDueCounter = SharedPreferencesManager.alertOverdueCounter
-
-        if (hasOverdue) {
-            binding.alertCardRed.visibility = View.VISIBLE
-            binding.alertCounterLayout.visibility = View.VISIBLE
-            binding.alertCardRed.setCardBackgroundColor(
-                ContextCompat.getColor(requireContext(), R.color.marimo_pink)
-            )
-            binding.alertTextRed.text = overdueText
-            binding.alertCounter.text = buildString {
-                append(getString(R.string.active_reminders_text))
-                append(" (")
-                append(overDueCounter)
-                append(")")
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
+            withContext(Dispatchers.IO) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    AlertDataUtils.recalc(requireContext())
+                }
             }
-        } else {
-            binding.alertCardRed.visibility = View.GONE
-        }
 
-        if (hasSoon) {
-            binding.alertCardOrange.visibility = View.VISIBLE
-            binding.alertCardOrange.setCardBackgroundColor(
-                ContextCompat.getColor(requireContext(), R.color.marimo_light_orange)
-            )
-            binding.alertTextOrange.text = soonText
-        } else {
-            binding.alertCardOrange.visibility = View.GONE
-        }
+            val userPrefOverdue = SharedPreferencesManager.showAlertOverdue
+            val userPrefSoon = SharedPreferencesManager.showAlertSoon
+            val userPrefToday = SharedPreferencesManager.showAlertToday
 
-        if (!hasOverdue && !hasSoon) {
-            binding.alertCounterLayout.visibility = View.GONE
+            val overdueText = SharedPreferencesManager.alertOverdue
+            val soonText = SharedPreferencesManager.alertSoon
+
+            val hasOverdue = userPrefOverdue && overdueText.isNotEmpty()
+            val hasSoon = (userPrefSoon || userPrefToday) && soonText.isNotEmpty()
+
+            val overDueCounter = SharedPreferencesManager.alertOverdueCounter
+
+            if (hasOverdue) {
+                binding.alertCardRed.visibility = View.VISIBLE
+                binding.alertCounterLayout.visibility = View.VISIBLE
+                binding.alertCardRed.setCardBackgroundColor(
+                    ContextCompat.getColor(requireContext(), R.color.marimo_pink)
+                )
+                binding.alertTextRed.text = overdueText
+                binding.alertCounter.text = buildString {
+                    append(getString(R.string.active_reminders_text))
+                    append(" (")
+                    append(overDueCounter)
+                    append(")")
+                }
+            } else {
+                binding.alertCardRed.visibility = View.GONE
+            }
+
+            if (hasSoon) {
+                binding.alertCardOrange.visibility = View.VISIBLE
+                binding.alertCardOrange.setCardBackgroundColor(
+                    ContextCompat.getColor(requireContext(), R.color.marimo_light_orange)
+                )
+                binding.alertTextOrange.text = soonText
+            } else {
+                binding.alertCardOrange.visibility = View.GONE
+            }
+
+            if (!hasOverdue && !hasSoon) {
+                binding.alertCounterLayout.visibility = View.GONE
+            }
         }
     }
 
@@ -720,7 +856,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun updateMarimos(list: List<MarimoUpdate>) {
-
+        val context = requireContext()
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
 
             list.forEach {
@@ -730,6 +866,8 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                     RepositoryManager.marimoRepository.updateWaterMarimo(lastChanged, it.id)
                 }
             }
+
+            AchievementManager.recalculateAll(true, context = context)
 
             AlertDataUtils.recalc(requireContext())
             
@@ -868,6 +1006,8 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
             AlertDataUtils.recalc(requireContext())
 
+            AchievementManager.recalculateAll(true, context = requireContext())
+
             withContext(Dispatchers.Main) {
                 updateAlertsUI()
                 applyFilterAndSort()
@@ -878,21 +1018,19 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun forceHealthCheck() {
-
+        val context = requireContext()
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-
             val today = AppUtils.getCurrentDate()
             val marimos = RepositoryManager.marimoRepository.getAllSync()
 
             var needUpdate = false
 
             marimos.forEach { marimo ->
-
                 val exists =
                     RepositoryManager.marimoRepository.getSpecificHealth(
                         marimo.code, today)
 
-                if (exists==0) {
+                if (exists == 0) {
                     needUpdate = true
                 }
             }
@@ -901,6 +1039,8 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                 HealthManager()
                     .calculateAndInsertHealthRobust(today)
             }
+
+            AchievementManager.recalculateAll(true, context = context)
         }
     }
 
@@ -919,6 +1059,56 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                 }
             }
         }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun openAchievementIntroDialog() {
+        if (isAchievementDialogOpen) return
+        isAchievementDialogOpen = true
+        val view = layoutInflater.inflate(R.layout.dialog_achievement_intro, null)
+        val dialog = AlertDialog.Builder(requireContext())
+            .setView(view)
+            .setCancelable(false)
+            .create()
+
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        val context = requireContext()
+        view.findViewById<View>(R.id.btnCalculate).setOnClickListener {
+            SharedPreferencesManager.showAchievement = false
+            viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+                AchievementManager.recalculateAll(context = context)
+            }
+            dialog.dismiss()
+            achievementUnlockedBalloon.setOnBalloonClickListener {
+                safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                    DashboardFragmentDirections
+                        .actionDashboardFragmentToAchievementFragment()
+                )
+            }
+            achievementUnlockedBalloon.showAlign(
+                align = BalloonAlign.BOTTOM,
+                mainAnchor = binding.include1.btnAchievementAHeader
+            )
+        }
+
+        view.findViewById<View>(R.id.btnRestart).setOnClickListener {
+            SharedPreferencesManager.showAchievement = false
+            viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+                AchievementManager.deleteAllAchievement()
+            }
+            dialog.dismiss()
+        }
+
+        view.findViewById<View>(R.id.btnClose).setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.setOnDismissListener {
+            isAchievementDialogOpen = false
+        }
+
+        dialog.show()
     }
 
     private fun setupCompactFilters() {

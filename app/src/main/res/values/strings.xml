@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Marimo Care</string>
-    <string name="marimo_care_dashboard">🌿 Marimo Care Dashboard</string>
+    <string name="marimo_care_dashboard">Marimo Care Dashboard</string>
     <string name="keep_track_of_your_marimo">Keep track of your marimo moss balls and never miss a water change again!</string>
     <string name="marimo_tip_title_1">💡 Marimo Tip: Perfect Temperature</string>
     <string name="marimo_tip_title_2">💡 Marimo Tip: Gentle Rolling</string>
@@ -278,6 +278,264 @@ Please note: the final date retrieved will be the same as the app release date, 
     <string name="clear_all">Clear all</string>
     <string name="form_cleared">Form cleared</string>
     <string name="feedback_balloon">Clicking here will open the feedback screen where you can submit suggestions to improve the app and join the Marimo community.</string>
+    <string name="achievement">Achievement</string>
+    <string name="achievement_intro_title">Achievements</string>
+    <string name="achievement_intro_message">In this version the objectives to be achieved have been added, do you want to calculate the progress or do you prefer to start from scratch?</string>
+    <string name="achievement_unlocked_title">Achievement System Unlocked!</string>
+    <string name="achievement_unlocked_message">You already have marimos and care history. Would you like us to check your past data and award any badges you\'ve already earned, or start fresh from today?</string>
+    <string name="calculate_retroactively">Calculate Retroactively</string>
+    <string name="calculate_retroactively_desc">Award badges based on your full care history — past water changes and marimo data count.</string>
+    <string name="start_from_scratch">Start from Scratch</string>
+    <string name="start_from_scratch_desc">Only earn badges going forward. Past activity won\'t count.</string>
+    <string name="calculate">Calculate</string>
+    <string name="restart">Restart</string>
+    <string name="new_achievements_unlocked_balloon">New achievements unlocked, click here and go discover them</string>
+    <string name="earned_26">Earned (26)</string>
+    <string name="earned_label">Earned</string>
+    <string name="_50_badges">/ %1$d badges</string>
+    <string name="_26">26</string>
+    <string name="achievement_subtitle">Earn badges by caring for your marimos</string>
+    <string name="recalculate">Recalculate</string>
+    <string name="reset_all">Reset All</string>
+    <string name="ach_1" translatable="false">🗿</string>
+    <string name="ach_2" translatable="false">📊</string>
+    <string name="ach_3" translatable="false">📋</string>
+    <string name="ach_4" translatable="false">🌗</string>
+    <string name="ach_5" translatable="false">🎊</string>
+    <string name="ach_6" translatable="false">🌊</string>
+    <string name="ach_7" translatable="false">📅</string>
+    <string name="ach_8" translatable="false">📆</string>
+    <string name="ach_9" translatable="false">🌱</string>
+    <string name="ach_10" translatable="false">⭐</string>
+    <string name="ach_11" translatable="false">🎖️</string>
+    <string name="ach_12" translatable="false">🦅</string>
+    <string name="ach_13" translatable="false">🏅</string>
+    <string name="ach_14" translatable="false">🎯</string>
+    <string name="ach_15" translatable="false">🌟</string>
+    <string name="ach_16" translatable="false">📸</string>
+    <string name="ach_17" translatable="false">🤳</string>
+    <string name="ach_18" translatable="false">🖼️</string>
+    <string name="ach_19" translatable="false">📝</string>
+    <string name="ach_20" translatable="false">📔</string>
+    <string name="ach_21" translatable="false">📖</string>
+    <string name="ach_22" translatable="false">✅</string>
+    <string name="ach_23" translatable="false">🎳</string>
+    <string name="ach_24" translatable="false">⏰</string>
+    <string name="ach_25" translatable="false">🏷️</string>
+    <string name="ach_26" translatable="false">✏️</string>
+    <string name="ach_27" translatable="false">🖼️</string>
+    <string name="ach_28" translatable="false">🌅</string>
+    <string name="ach_29" translatable="false">🗒️</string>
+    <string name="ach_30" translatable="false">🐦</string>
+    <string name="ach_31" translatable="false">⚡</string>
+    <string name="ach_32" translatable="false">🦉</string>
+    <string name="ach_33" translatable="false">🎛️</string>
+    <string name="ach_34" translatable="false">💬</string>
+    <string name="ach_35" translatable="false">⚙️</string>
+    <string name="ach_36" translatable="false">👴</string>
+    <string name="ach_37" translatable="false">🌿</string>
+    <string name="ach_38" translatable="false">👫</string>
+    <string name="ach_39" translatable="false">🎶</string>
+    <string name="ach_40" translatable="false">🫙</string>
+    <string name="ach_41" translatable="false">🏆</string>
+    <string name="ach_42" translatable="false">🪖</string>
+    <string name="ach_43" translatable="false">👑</string>
+    <string name="ach_44" translatable="false">💧</string>
+    <string name="ach_45" translatable="false">🚿</string>
+    <string name="ach_46" translatable="false">🔄</string>
+    <string name="ach_47" translatable="false">💪</string>
+    <string name="ach_48" translatable="false">🧙</string>
+    <string name="ach_49" translatable="false">💯</string>
+    <string name="ach_50" translatable="false">🎖️</string>
+    <string name="ach_51" translatable="false">🪨</string>
+    <string name="ach_52" translatable="false">🎨</string>
+    <string name="ach_53" translatable="false">🏺</string>
+    <string name="locked_24">Locked (24)</string>
+    <string name="ach_desc_1">Added your very first marimo to the collection.</string>
+    <string name="ach_desc_2">You have 2 marimos — they have company now!</string>
+    <string name="ach_desc_3">3 marimos in your collection.</string>
+    <string name="ach_desc_4">You\'re growing a collection — 5 marimos added!</string>
+    <string name="ach_desc_5">Wow, 10 marimos! You really love them.</string>
+    <string name="ach_desc_6">20 marimos strong!</string>
+    <string name="ach_desc_7">50 marimos. You\'re running an empire.</string>
+    <string name="ach_desc_8">Logged your first water change. The journey begins!</string>
+    <string name="ach_desc_9">5 water changes logged.</string>
+    <string name="ach_desc_10">Logged 10 water changes total.</string>
+    <string name="ach_desc_11">25 water changes logged. You\'re building a habit!</string>
+    <string name="ach_desc_12">50 water changes logged. You\'re a pro!</string>
+    <string name="ach_desc_13">100 water changes! Absolutely amazing.</string>
+    <string name="ach_desc_14">200 water changes logged. Legendary.</string>
+    <string name="ach_desc_15">500 water changes. You are the ultimate marimo caretaker.</string>
+    <string name="ach_desc_16">A whole week of marimo care!</string>
+    <string name="ach_desc_17">Kept up with water changes for a whole month.</string>
+    <string name="ach_desc_18">Three months of dedicated marimo care!</string>
+    <string name="ach_desc_19">Six months of consistent care. You\'re a legend.</string>
+    <string name="ach_desc_20">A full year of marimo care. Incredible dedication!</string>
+    <string name="ach_desc_21">Two full years of marimo care. Truly extraordinary.</string>
+    <string name="ach_desc_22">Marked your first special milestone water change.</string>
+    <string name="ach_desc_23">Marked 5 special milestone water changes.</string>
+    <string name="ach_desc_24">10 milestone water changes logged!</string>
+    <string name="ach_desc_25">Uploaded a photo during a water change log.</string>
+    <string name="ach_desc_26">Uploaded photos in 5 different water change logs.</string>
+    <string name="ach_desc_27">20 water change logs with photos. A true marimo album!</string>
+    <string name="ach_desc_28">Added notes to 5 different water changes.</string>
+    <string name="ach_desc_29">Added notes to 20 water changes.</string>
+    <string name="ach_desc_30">Added notes to 50 water changes. A true historian.</string>
+    <string name="ach_desc_31">All your marimos are up to date — none overdue right now!</string>
+    <string name="ach_desc_32">Logged 5 water changes that were on time (not overdue).</string>
+    <string name="ach_desc_33">20 on-time water changes. Like clockwork!</string>
+    <string name="ach_desc_34">Gave your marimo a name (not just \'Marimo\').</string>
+    <string name="ach_desc_35">Named 3 marimos with unique names.</string>
+    <string name="ach_desc_36">Added a profile photo to one of your marimos.</string>
+    <string name="ach_desc_37">Added profile photos to 5 marimos.</string>
+    <string name="ach_desc_38">Added notes to one of your marimos.</string>
+    <string name="ach_desc_39">Logged a water change more than 2 days before it was due.</string>
+    <string name="ach_desc_40">Logged 3 water changes in the same day.</string>
+    <string name="ach_desc_41">Logged 10 water changes that were overdue (you still did it!).</string>
+    <string name="ach_desc_42">Own marimos with 3 different water change frequencies.</string>
+    <string name="ach_desc_43">Submitted feedback to help improve the app.</string>
+    <string name="ach_desc_44">Customized your dashboard settings.</string>
+    <string name="ach_desc_45">One of your marimos has been in your care for over 6 months.</string>
+    <string name="ach_desc_46">One of your marimos has been in your care for over a year.</string>
+    <string name="ach_desc_47">Visited the Statistics page.</string>
+    <string name="ach_desc_48">Added notes to 5 of your marimos.</string>
+    <string name="ach_desc_49">Earned 25 achievements. You\'re halfway to the full set!</string>
+    <string name="ach_desc_50">Earned all 50 achievements. You are a true Marimo Master!</string>
+    <string name="ach_desc_51">Added your first decoration to a marimo\'s pot.</string>
+    <string name="ach_desc_52">Adorned 3 different marimo pots with decorations.</string>
+    <string name="ach_desc_53">Added 10 or more decorations across your collection.</string>
+    <string name="ach_tit_1">First Marimo</string>
+    <string name="ach_tit_2">Dynamic Duo</string>
+    <string name="ach_tit_3">Trio</string>
+    <string name="ach_tit_4">Collector</string>
+    <string name="ach_tit_5">Marimo Hoarder</string>
+    <string name="ach_tit_6">Marimo Army</string>
+    <string name="ach_tit_7">Marimo Empire</string>
+    <string name="ach_tit_8">First Drop</string>
+    <string name="ach_tit_9">Getting Started</string>
+    <string name="ach_tit_10">Consistent Caretaker</string>
+    <string name="ach_tit_11">Dedicated</string>
+    <string name="ach_tit_12">Water Wizard</string>
+    <string name="ach_tit_13">Century of Care</string>
+    <string name="ach_tit_14">Bicentennial</string>
+    <string name="ach_tit_15">Water Master</string>
+    <string name="ach_tit_16">One Week In</string>
+    <string name="ach_tit_17">One Month of Care</string>
+    <string name="ach_tit_18">Three Months Strong</string>
+    <string name="ach_tit_19">Half-Year Hero</string>
+    <string name="ach_tit_20">Annual Champion</string>
+    <string name="ach_tit_21">Two-Year Veteran</string>
+    <string name="ach_tit_22">Milestone Marker</string>
+    <string name="ach_tit_23">Milestone Hunter</string>
+    <string name="ach_tit_24">Milestone Master</string>
+    <string name="ach_tit_25">Photo Keeper</string>
+    <string name="ach_tit_26">Photographer</string>
+    <string name="ach_tit_27">Photo Album</string>
+    <string name="ach_tit_28">Notes Taker</string>
+    <string name="ach_tit_29">Journal Keeper</string>
+    <string name="ach_tit_30">Chronicler</string>
+    <string name="ach_tit_31">Perfect Record</string>
+    <string name="ach_tit_32">On a Roll</string>
+    <string name="ach_tit_33">Clockwork</string>
+    <string name="ach_tit_34">Name Giver</string>
+    <string name="ach_tit_35">Creative Namer</string>
+    <string name="ach_tit_36">Profile Pic</string>
+    <string name="ach_tit_37">Photogenic Collection</string>
+    <string name="ach_tit_38">Marimo Biographer</string>
+    <string name="ach_tit_39">Early Bird</string>
+    <string name="ach_tit_40">Speedy Changer</string>
+    <string name="ach_tit_41">Night Owl</string>
+    <string name="ach_tit_42">Mix Master</string>
+    <string name="ach_tit_43">Feedback Giver</string>
+    <string name="ach_tit_44">Settings Explorer</string>
+    <string name="ach_tit_45">Senior Marimo</string>
+    <string name="ach_tit_46">Ancient One</string>
+    <string name="ach_tit_47">Stats Nerd</string>
+    <string name="ach_tit_48">Marimo Biographer</string>
+    <string name="ach_tit_49">Halfway There</string>
+    <string name="ach_tit_50">Achievement Hunter</string>
+    <string name="ach_tit_51">Interior Touch</string>
+    <string name="ach_tit_52">Decorator</string>
+    <string name="ach_tit_53">Interior Designer</string>
+    <string name="ach_type_marimo">marimo</string>
+    <string name="ach_type_marimos">marimos</string>
+    <string name="ach_type_waterchange">water change</string>
+    <string name="ach_type_daysofcare">days of care</string>
+    <string name="ach_type_monthsofcare">months of care</string>
+    <string name="ach_type_milestone">milestone</string>
+    <string name="ach_type_photo">photo</string>
+    <string name="ach_type_note">note</string>
+    <string name="ach_type_name">name</string>
+    <string name="ach_type_marimowithphoto">marimo with photo</string>
+    <string name="ach_type_logs">logs</string>
+    <string name="unit_type_marimo">marimo</string>
+    <string name="unit_type_marimos">marimos</string>
+    <string name="unit_type_logs">logs</string>
+    <string name="unit_type_milestones">milestones</string>
+    <string name="unit_type_photo">photo</string>
+    <string name="unit_type_notedlogs">noted logs</string>
+    <string name="unit_type_months">months</string>
+    <string name="unit_type_days">days</string>
+    <string name="unit_type_uniquelynamed">uniquely named</string>
+    <string name="unit_type_withphoto">with photo</string>
+    <string name="achievement_balloon">As you add Marimo, care for them, and more, you will unlock achievements! Press this button to see your progress.</string>
+    <string name="unit_type_water">water change</string>
+    <string name="unit_type_marimonamed">marimo named</string>
+    <string name="unit_type_notewrite">note write</string>
+    <string name="ach_des_1">Just add one marimo to get started!</string>
+    <string name="ach_des_2">Add a second marimo — they like company!</string>
+    <string name="ach_des_3">Three\'s a crowd — collect one more!</string>
+    <string name="ach_des_4">Keep adding until you reach 5 marimos.</string>
+    <string name="ach_des_5">Double your collection to 10!</string>
+    <string name="ach_des_6">You need 20 marimos for an army.</string>
+    <string name="ach_des_7">50 marimos — the ultimate collection.</string>
+    <string name="ach_des_8">Change the water on any of your marimos.</string>
+    <string name="ach_des_9">5 water changes total — keep it up!</string>
+    <string name="ach_des_10">10 logs total — you\'re building a habit.</string>
+    <string name="ach_des_11">25 logs — dedication is key!</string>
+    <string name="ach_des_12">50 changes — you\'re a real pro!</string>
+    <string name="ach_des_13">Century of care — keep logging!</string>
+    <string name="ach_des_14">200 logs — legendary caretaker!</string>
+    <string name="ach_des_15">500 logs — the ultimate caretaker.</string>
+    <string name="ach_des_16">Care for your marimos for 7 days.</string>
+    <string name="ach_des_17">One month of consistent care!</string>
+    <string name="ach_des_18">Three months of dedication needed.</string>
+    <string name="ach_des_19">Half a year of marimo care!</string>
+    <string name="ach_des_20">A full year of dedication — incredible!</string>
+    <string name="ach_des_21">Two full years of marimo care!</string>
+    <string name="ach_des_22">Mark any water change as a milestone!</string>
+    <string name="ach_des_23">Mark 5 water changes as milestones.</string>
+    <string name="ach_des_24">10 milestone logs — you\'re a collector!</string>
+    <string name="ach_des_25">Upload a photo during any water change log.</string>
+    <string name="ach_des_26">5 logs with photos needed.</string>
+    <string name="ach_des_27">20 photo logs — a true album!</string>
+    <string name="ach_des_28">Write notes on 5 water change logs.</string>
+    <string name="ach_des_29">20 logs with notes — a true journal!</string>
+    <string name="ach_des_30">50 notes logs — you\'re a historian!</string>
+    <string name="ach_des_31">Make sure no marimo is overdue right now.</string>
+    <string name="ach_des_32">Log 5 water changes to qualify.</string>
+    <string name="ach_des_33">20 on-time logs — like clockwork!</string>
+    <string name="ach_des_34">Name your marimo something creative!</string>
+    <string name="ach_des_35">Name 3 different marimos uniquely.</string>
+    <string name="ach_des_36">Add a profile photo to any marimo.</string>
+    <string name="ach_des_37">Give 5 marimos a profile photo!</string>
+    <string name="ach_des_38">Write a note on any marimo\'s profile.</string>
+    <string name="ach_des_39">Change water 2+ days before it\'s due.</string>
+    <string name="ach_des_40">Log 3 water changes in one day!</string>
+    <string name="ach_des_41">10 overdue logs — you still showed up!</string>
+    <string name="ach_des_42">Set 3 different water-change frequencies.</string>
+    <string name="ach_des_43">Visit the Feedback page and submit!</string>
+    <string name="ach_des_44">Customize your settings and save.</string>
+    <string name="ach_des_45">Keep a marimo for 6 months!</string>
+    <string name="ach_des_46">A marimo over 1 year old in your care!</string>
+    <string name="ach_des_47">Just visit the Statistics page!</string>
+    <string name="ach_des_48">Write notes on 5 marimos.</string>
+    <string name="ach_des_49">Earn 25 achievements to hit the halfway mark.</string>
+    <string name="ach_des_50">Earn every single achievement — the ultimate goal!</string>
+    <string name="ach_des_51">Add at least one decoration (pebble, rock, crystal, etc.) to any marimo\'s pot via the Add or Edit form.</string>
+    <string name="ach_des_52">Add at least one decoration to 3 different marimos in your collection.</string>
+    <string name="ach_des_53">Add decorations to your marimos until the total count across your entire collection reaches 10.</string>
+
     <string-array name="marimo_frequencies">
         <item>Every 7 days (Weekly)</item>
         <item>Every 10 days</item>
@@ -343,27 +601,249 @@ Please note: the final date retrieved will be the same as the app release date, 
         <item>Other</item>
     </string-array>
 
-    <string-array name="decoration_colors">
-        <item>#F44336</item>
-        <item>#E91E63</item>
-        <item>#9C27B0</item>
-        <item>#673AB7</item>
-        <item>#3F51B5</item>
-        <item>#2196F3</item>
-        <item>#03A9F4</item>
-        <item>#00BCD4</item>
-        <item>#009688</item>
-        <item>#4CAF50</item>
-        <item>#8BC34A</item>
-        <item>#CDDC39</item>
-        <item>#FFEB3B</item>
-        <item>#FFC107</item>
-        <item>#FF9800</item>
-        <item>#FF5722</item>
-        <item>#795548</item>
-        <item>#9E9E9E</item>
-        <item>#607D8B</item>
-        <item>#000000</item>
+    <string-array name="decoration_colors" translatable="false">
+        <!-- Greyscale Row -->
+        <item>#00000000</item>
         <item>#FFFFFF</item>
+        <item>#F5F5F5</item>
+        <item>#EEEEEE</item>
+        <item>#E0E0E0</item>
+        <item>#BDBDBD</item>
+        <item>#9E9E9E</item>
+        <item>#757575</item>
+        <item>#616161</item>
+        <item>#424242</item>
+        <item>#000000</item>
+        <!-- Row 1 (900) -->
+        <item>#0D47A1</item>
+        <item>#1A237E</item>
+        <item>#4A148C</item>
+        <item>#880E4F</item>
+        <item>#B71C1C</item>
+        <item>#BF360C</item>
+        <item>#E65100</item>
+        <item>#FF6F00</item>
+        <item>#F57F17</item>
+        <item>#827717</item>
+        <item>#1B5E20</item>
+        <!-- Row 2 (800) -->
+        <item>#1565C0</item>
+        <item>#283593</item>
+        <item>#6A1B9A</item>
+        <item>#AD1457</item>
+        <item>#C62828</item>
+        <item>#D84315</item>
+        <item>#EF6C00</item>
+        <item>#FF8F00</item>
+        <item>#F9A825</item>
+        <item>#9E9D24</item>
+        <item>#2E7D32</item>
+        <!-- Row 3 (700) -->
+        <item>#1976D2</item>
+        <item>#303F9F</item>
+        <item>#7B1FA2</item>
+        <item>#C2185B</item>
+        <item>#D32F2F</item>
+        <item>#E64A19</item>
+        <item>#F57C00</item>
+        <item>#FFA000</item>
+        <item>#FBC02D</item>
+        <item>#AFB42B</item>
+        <item>#388E3C</item>
+        <!-- Row 4 (600) -->
+        <item>#1E88E5</item>
+        <item>#3949AB</item>
+        <item>#8E24AA</item>
+        <item>#D81B60</item>
+        <item>#E53935</item>
+        <item>#F4511E</item>
+        <item>#FB8C00</item>
+        <item>#FFB300</item>
+        <item>#FDD835</item>
+        <item>#C0CA33</item>
+        <item>#43A047</item>
+        <!-- Row 5 (500) -->
+        <item>#2196F3</item>
+        <item>#3F51B5</item>
+        <item>#9C27B0</item>
+        <item>#E91E63</item>
+        <item>#F44336</item>
+        <item>#FF5722</item>
+        <item>#FF9800</item>
+        <item>#FFC107</item>
+        <item>#FFEB3B</item>
+        <item>#CDDC39</item>
+        <item>#4CAF50</item>
+        <!-- Row 6 (400) -->
+        <item>#42A5F5</item>
+        <item>#5C6BC0</item>
+        <item>#AB47BC</item>
+        <item>#EC407A</item>
+        <item>#EF5350</item>
+        <item>#FF7043</item>
+        <item>#FFA726</item>
+        <item>#FFCA28</item>
+        <item>#FFEE58</item>
+        <item>#D4E157</item>
+        <item>#66BB6A</item>
+        <!-- Row 7 (300) -->
+        <item>#64B5F6</item>
+        <item>#7986CB</item>
+        <item>#BA68C8</item>
+        <item>#F06292</item>
+        <item>#E57373</item>
+        <item>#FF8A65</item>
+        <item>#FFB74D</item>
+        <item>#FFD54F</item>
+        <item>#FFF176</item>
+        <item>#DCE775</item>
+        <item>#81C784</item>
+        <!-- Row 8 (200) -->
+        <item>#90CAF9</item>
+        <item>#9FA8DA</item>
+        <item>#CE93D8</item>
+        <item>#F48FB1</item>
+        <item>#EF9A9A</item>
+        <item>#FFAB91</item>
+        <item>#FFCC80</item>
+        <item>#FFE082</item>
+        <item>#FFF59D</item>
+        <item>#E6EE9C</item>
+        <item>#A5D6A7</item>
+        <!-- Row 9 (100) -->
+        <item>#BBDEFB</item>
+        <item>#C5CAE9</item>
+        <item>#E1BEE7</item>
+        <item>#F8BBD0</item>
+        <item>#FFCDD2</item>
+        <item>#FFCCBC</item>
+        <item>#FFE0B2</item>
+        <item>#FFECB3</item>
+        <item>#FFF9C4</item>
+        <item>#F0F4C3</item>
+        <item>#C8E6C9</item>
     </string-array>
+
+    <string-array name="decoration_color_names">
+        <!-- Greyscale Names -->
+        <item>None</item>
+        <item>White</item>
+        <item>Grey 50</item>
+        <item>Grey 100</item>
+        <item>Grey 200</item>
+        <item>Grey 300</item>
+        <item>Grey 400</item>
+        <item>Grey 500</item>
+        <item>Grey 600</item>
+        <item>Grey 700</item>
+        <item>Black</item>
+        <!-- Grid Names -->
+        <item>Blue 900</item>
+        <item>Indigo 900</item>
+        <item>Purple 900</item>
+        <item>Pink 900</item>
+        <item>Red 900</item>
+        <item>Deep Orange 900</item>
+        <item>Orange 900</item>
+        <item>Amber 900</item>
+        <item>Yellow 900</item>
+        <item>Lime 900</item>
+        <item>Green 900</item>
+        <item>Blue 800</item>
+        <item>Indigo 800</item>
+        <item>Purple 800</item>
+        <item>Pink 800</item>
+        <item>Red 800</item>
+        <item>Deep Orange 800</item>
+        <item>Orange 800</item>
+        <item>Amber 800</item>
+        <item>Yellow 800</item>
+        <item>Lime 800</item>
+        <item>Green 800</item>
+        <item>Blue 700</item>
+        <item>Indigo 700</item>
+        <item>Purple 700</item>
+        <item>Pink 700</item>
+        <item>Red 700</item>
+        <item>Deep Orange 700</item>
+        <item>Orange 700</item>
+        <item>Amber 700</item>
+        <item>Yellow 700</item>
+        <item>Lime 700</item>
+        <item>Green 700</item>
+        <item>Blue 600</item>
+        <item>Indigo 600</item>
+        <item>Purple 600</item>
+        <item>Pink 600</item>
+        <item>Red 600</item>
+        <item>Deep Orange 600</item>
+        <item>Orange 600</item>
+        <item>Amber 600</item>
+        <item>Yellow 600</item>
+        <item>Lime 600</item>
+        <item>Green 600</item>
+        <item>Blue 500</item>
+        <item>Indigo 500</item>
+        <item>Purple 500</item>
+        <item>Pink 500</item>
+        <item>Red 500</item>
+        <item>Deep Orange 500</item>
+        <item>Orange 500</item>
+        <item>Amber 500</item>
+        <item>Yellow 500</item>
+        <item>Lime 500</item>
+        <item>Green 500</item>
+        <item>Blue 400</item>
+        <item>Indigo 400</item>
+        <item>Purple 400</item>
+        <item>Pink 400</item>
+        <item>Red 400</item>
+        <item>Deep Orange 400</item>
+        <item>Orange 400</item>
+        <item>Amber 400</item>
+        <item>Yellow 400</item>
+        <item>Lime 400</item>
+        <item>Green 400</item>
+        <item>Blue 300</item>
+        <item>Indigo 300</item>
+        <item>Purple 300</item>
+        <item>Pink 300</item>
+        <item>Red 300</item>
+        <item>Deep Orange 300</item>
+        <item>Orange 300</item>
+        <item>Amber 300</item>
+        <item>Yellow 300</item>
+        <item>Lime 300</item>
+        <item>Green 300</item>
+        <item>Blue 200</item>
+        <item>Indigo 200</item>
+        <item>Purple 200</item>
+        <item>Pink 200</item>
+        <item>Red 200</item>
+        <item>Deep Orange 200</item>
+        <item>Orange 200</item>
+        <item>Amber 200</item>
+        <item>Yellow 200</item>
+        <item>Lime 200</item>
+        <item>Green 200</item>
+        <item>Blue 100</item>
+        <item>Indigo 100</item>
+        <item>Purple 100</item>
+        <item>Pink 100</item>
+        <item>Red 100</item>
+        <item>Deep Orange 100</item>
+        <item>Orange 100</item>
+        <item>Amber 100</item>
+        <item>Yellow 100</item>
+        <item>Lime 100</item>
+        <item>Green 100</item>
+    </string-array>
+    <string name="achievement_earned">Achievement Earned!</string>
+    <string name="great">Great!</string>
+    <string name="_100">100%</string>
+    <string name="achievement_unlocked">Achievement Unlocked!</string>
+    <string name="decorations">Decorations</string>
+    <string name="pot_decorations">Pot Decorations</string>
+    <string name="_total">total</string>
+    <string name="new_stats_2">New statistic added, regarding the decorations of your Marimo\'s vases/jars</string>
 </resources>

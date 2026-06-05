@@ -17,9 +17,15 @@ import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import rpt.tool.marimocare.utils.managers.AchievementManager
 
 class FeedbackFragment :
-    BaseFragment<FragmentFeedbackBinding>(FragmentFeedbackBinding::inflate, true) {
+    BaseFragment<FragmentFeedbackBinding>({ inflater, parent, attach ->
+        FragmentFeedbackBinding.inflate(inflater, parent, attach)
+    }, true) {
 
     private val selectedTopics = mutableSetOf<String>()
 
@@ -74,6 +80,12 @@ class FeedbackFragment :
             val emailSubject =
                 getString(R.string.marimo_care_feedback, selectedTopics.joinToString(", "))
             sendEmail(emailSubject, messageText)
+
+            val context = requireContext()
+            viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+                AchievementManager.recalculateAll(true,
+                    mapOf("submitted_feedback" to true), context)
+            }
         }
 
         binding.btnReddit.setOnClickListener {
@@ -148,6 +160,18 @@ class FeedbackFragment :
                     onClick = { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                         FeedbackFragmentDirections
                             .actionFeedbackFragmentToAddOrEditFragment()) }
+                ),
+                HeaderButtonConfig(
+                    button = binding.include1.btnAchievementAHeader,
+                    iconRes = R.drawable.ic_coccard,
+                    colorRes = R.color.marimo_add_icon,
+                    backgroundRes = R.drawable.bg_button_white,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.achievement),
+                    onClick = { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                        FeedbackFragmentDirections
+                            .actionFeedbackFragmentToAchievementFragment()
+                    ) }
                 ),
                 HeaderButtonConfig(
                     button = binding.include1.btnOpenSettings,

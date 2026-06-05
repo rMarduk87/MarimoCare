@@ -1,15 +1,19 @@
 package rpt.tool.marimocare.ui.settings
 
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import rpt.com.base.BaseFragment
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentSettingsBinding
-import rpt.tool.marimocare.ui.marimo.addoredit.AddOrEditMarimoFragmentDirections
-import rpt.tool.marimocare.ui.stats.StatsFragmentDirections
+import rpt.tool.marimocare.utils.managers.AchievementManager
 import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 import rpt.com.base.navigation.safeNavController
 import rpt.com.base.navigation.safeNavigate
@@ -38,6 +42,7 @@ class SettingsFragment :
 
     private val statsPeriodViews: MutableMap<Int, TextView> = mutableMapOf()
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -97,6 +102,18 @@ class SettingsFragment :
                                 .actionSettingsFragmentToAddOrEditFragment()
                         )
                     }
+                ),
+                HeaderButtonConfig(
+                    button = binding.include1.btnAchievementAHeader,
+                    iconRes = R.drawable.ic_coccard,
+                    colorRes = R.color.marimo_add_icon,
+                    backgroundRes = R.drawable.bg_button_white,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.achievement),
+                    onClick = { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                        SettingsFragmentDirections
+                            .actionSettingsFragmentToAchievementFragment()
+                    ) }
                 ),
                 HeaderButtonConfig(
                     button = binding.include1.btnOpenSettings,
@@ -397,6 +414,7 @@ class SettingsFragment :
         view.setCompoundDrawablesWithIntrinsicBounds(null, null, checkIcon, null)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun setupSaveCancelListeners() {
         binding.btnSave.setOnClickListener {
             SharedPreferencesManager.coloredIsSelected = coloredOptionSelected
@@ -413,6 +431,11 @@ class SettingsFragment :
                 getString(R.string.option_correctly_updated),
                 Toast.LENGTH_SHORT
             ).show()
+            val context = requireContext()
+            viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+                AchievementManager.recalculateAll(true,
+                    mapOf("customized_settings" to true), context)
+            }
         }
 
         binding.btnCancel.setOnClickListener {
