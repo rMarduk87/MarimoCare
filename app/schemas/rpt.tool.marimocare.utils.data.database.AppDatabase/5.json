@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 5,
-    "identityHash": "ca9a5847e34da8392b7a502caf17f130",
+    "identityHash": "83bc85beba3a74ea0441d9a63380cc39",
     "entities": [
       {
         "tableName": "marimo",
@@ -172,55 +172,133 @@
         }
       },
       {
-        "tableName": "pot_decoration",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` TEXT NOT NULL, `marimo_code` INTEGER NOT NULL, `name` TEXT NOT NULL, `type` TEXT NOT NULL, `colour` TEXT NOT NULL, `dimensions` TEXT NOT NULL, `material` TEXT NOT NULL, `notes` TEXT NOT NULL, PRIMARY KEY(`id`), FOREIGN KEY(`marimo_code`) REFERENCES `marimo`(`code`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "tableName": "achievement",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `code` TEXT NOT NULL, `title` INTEGER NOT NULL, `description` INTEGER NOT NULL, `image` INTEGER NOT NULL, `color` TEXT NOT NULL, `category` TEXT NOT NULL, `order` INTEGER NOT NULL, `earned` INTEGER NOT NULL DEFAULT false, `acquired_date` TEXT, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
             "columnName": "id",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "marimoCode",
-            "columnName": "marimo_code",
             "affinity": "INTEGER",
             "notNull": true
           },
           {
-            "fieldPath": "name",
-            "columnName": "name",
+            "fieldPath": "code",
+            "columnName": "code",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "titleId",
+            "columnName": "title",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "descriptionValue",
+            "columnName": "description",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "imageId",
+            "columnName": "image",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "backgroundColor",
+            "columnName": "color",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "category",
+            "columnName": "category",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sortOrder",
+            "columnName": "order",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "earned",
+            "columnName": "earned",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "false"
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "acquired_date",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        }
+      },
+      {
+        "tableName": "achievement_details",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `achievement_id` INTEGER NOT NULL, `desc` TEXT NOT NULL, `type` INTEGER NOT NULL, `type_desc` INTEGER NOT NULL, `unit` INTEGER NOT NULL, `unit_desc` INTEGER NOT NULL, `current` INTEGER NOT NULL, `target` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "achievement",
+            "columnName": "achievement_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "desc",
             "affinity": "TEXT",
             "notNull": true
           },
           {
             "fieldPath": "type",
             "columnName": "type",
-            "affinity": "TEXT",
+            "affinity": "INTEGER",
             "notNull": true
           },
           {
-            "fieldPath": "colour",
-            "columnName": "colour",
-            "affinity": "TEXT",
+            "fieldPath": "typeDescription",
+            "columnName": "type_desc",
+            "affinity": "INTEGER",
             "notNull": true
           },
           {
-            "fieldPath": "dimensions",
-            "columnName": "dimensions",
-            "affinity": "TEXT",
+            "fieldPath": "unit",
+            "columnName": "unit",
+            "affinity": "INTEGER",
             "notNull": true
           },
           {
-            "fieldPath": "material",
-            "columnName": "material",
-            "affinity": "TEXT",
+            "fieldPath": "unitDescription",
+            "columnName": "unit_desc",
+            "affinity": "INTEGER",
             "notNull": true
           },
           {
-            "fieldPath": "notes",
-            "columnName": "notes",
-            "affinity": "TEXT",
+            "fieldPath": "current",
+            "columnName": "current",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "target",
+            "columnName": "target",
+            "affinity": "INTEGER",
             "notNull": true
           }
         ],
@@ -229,36 +307,12 @@
           "columnNames": [
             "id"
           ]
-        },
-        "indices": [
-          {
-            "name": "index_pot_decoration_marimo_code",
-            "unique": false,
-            "columnNames": [
-              "marimo_code"
-            ],
-            "orders": [],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_pot_decoration_marimo_code` ON `${TABLE_NAME}` (`marimo_code`)"
-          }
-        ],
-        "foreignKeys": [
-          {
-            "table": "marimo",
-            "onDelete": "CASCADE",
-            "onUpdate": "NO ACTION",
-            "columns": [
-              "marimo_code"
-            ],
-            "referencedColumns": [
-              "code"
-            ]
-          }
-        ]
+        }
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'ca9a5847e34da8392b7a502caf17f130')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '83bc85beba3a74ea0441d9a63380cc39')"
     ]
   }
 }

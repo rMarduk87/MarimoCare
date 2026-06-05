@@ -7,6 +7,7 @@ import android.util.Base64
 import androidx.annotation.RequiresApi
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
+import rpt.tool.marimocare.utils.data.appmodels.MarimoChange
 import rpt.tool.marimocare.utils.view.recyclerview.items.frequency.MarimoFrequencyItem
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -254,6 +255,41 @@ class AppUtils {
 
         }
 
+        @RequiresApi(Build.VERSION_CODES.O)
+        fun getMonthsOfCare(logs: List<MarimoChange>): Int {
+            if (logs.isEmpty()) return 0
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+            val dates = logs.mapNotNull {
+                it.waterChangeData?.let { dateStr ->
+                    try {
+                        LocalDate.parse(dateStr, formatter)
+                    } catch (e: Exception) {
+                        null
+                    }
+                }
+            }.sorted()
+            if (dates.isEmpty()) return 0
+            return ChronoUnit.MONTHS.between(dates[0],
+                LocalDate.now()).toInt()
+        }
+
+        @RequiresApi(Build.VERSION_CODES.O)
+        fun getDaysOfCare(logs: List<MarimoChange>): Int {
+            if (logs.isEmpty()) return 0
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+            val dates = logs.mapNotNull {
+                it.waterChangeData?.let { dateStr ->
+                    try {
+                        LocalDate.parse(dateStr, formatter)
+                    } catch (e: Exception) {
+                        null
+                    }
+                }
+            }.sorted()
+            if (dates.isEmpty()) return 0
+            return ChronoUnit.DAYS.between(dates[0], LocalDate.now()).toInt()
+        }
+
         const val USERS_SHARED_PREF : String = "user_pref"
         const val SHOW_ALERT_OVERDUE : String = "showAlertOverdue"
         const val SHOW_ALERT_SOON: String = "showAlertSoon"
@@ -274,13 +310,19 @@ class AppUtils {
         const val LAST_HEALTH_EXECUTION_DATE : String = "last_health_execution_date"
         const val SHOW_NEW_LOG_CHANGE_WATER : String = "show_new_log_change_water"
         const val SHOW_BALLON_NEW_STATS : String = "show_ballon-new_stats"
+        const val SHOW_BALLON_NEW_POT_STATS : String = "show_ballon-new_pot_stats"
         const val SHOW_BALLON_FEEDBACK : String = "show_ballon-feedback"
         const val SHOW_ALERT_TODAY : String = "showAlertToday"
         const val ALERT_TODAY : String = "alertToday"
         const val LAST_DAILY_NOTIFICATION_DATE : String = "last_daily_notification_date"
         const val SHOW_NEW_SETTINGS_BALLOON : String = "show_new_settings_balloon"
+        const val SHOW_ACHIEVEMENTS_DIALOG : String = "show_achievements_dialog"
 
 
+
+        fun dpToPx(dp: Int): Int {
+            return (dp * android.content.res.Resources.getSystem().displayMetrics.density).toInt()
+        }
 
     }
 }

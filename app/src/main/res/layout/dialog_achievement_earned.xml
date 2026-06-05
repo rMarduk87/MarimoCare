@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_card_rounded"
+    android:padding="20dp">
+
+    <!-- Icona Chiudi -->
+    <ImageView
+        android:id="@+id/btnClose"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_close_24"
+        android:alpha="0.3"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/marimo_black" />
+
+    <!-- Cerchio con Icona Achievement -->
+    <FrameLayout
+        android:id="@+id/iconContainer"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@drawable/bg_icon_circle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/txtAchievementIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="32sp"
+            tools:text="🏆" />
+    </FrameLayout>
+
+    <!-- Testo "Achievement Unlocked!" -->
+    <TextView
+        android:id="@+id/txtUnlocked"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.05"
+        android:text="@string/achievement_unlocked"
+        android:textColor="@color/achievement_accent"
+        android:textSize="11sp"
+        android:textAllCaps="true"
+        app:layout_constraintEnd_toStartOf="@+id/btnClose"
+        app:layout_constraintStart_toEndOf="@+id/iconContainer"
+        app:layout_constraintTop_toTopOf="@+id/iconContainer"
+        app:layout_constraintBottom_toTopOf="@+id/txtAchievementTitle"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <!-- Titolo Achievement -->
+    <TextView
+        android:id="@+id/txtAchievementTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="sans-serif-black"
+        android:textColor="@color/achievement_text_title"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/btnClose"
+        app:layout_constraintStart_toStartOf="@+id/txtUnlocked"
+        app:layout_constraintTop_toBottomOf="@+id/txtUnlocked"
+        app:layout_constraintBottom_toBottomOf="@+id/iconContainer"
+        tools:text="Marimo Army" />
+
+    <!-- Descrizione Achievement -->
+    <TextView
+        android:id="@+id/txtAchievementDesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/achievement_text_gray"
+        android:textSize="14sp"
+        android:lineSpacingExtra="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iconContainer"
+        tools:text="Congratulations! You have grown your Marimo collection significantly. Keep it up!" />
+
+    <!-- Bottone OK -->
+    <Button
+        android:id="@+id/btnOk"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_button_green_outline"
+        app:backgroundTint="@null"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/great"
+        android:textAllCaps="true"
+        android:textColor="@color/achievement_green"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtAchievementDesc" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

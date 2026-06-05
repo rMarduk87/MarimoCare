@@ -17,10 +17,12 @@ import kotlinx.coroutines.withContext
 import rpt.com.base.BaseFragment
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentFromQrCodeBinding
+import rpt.tool.marimocare.ui.feedback.FeedbackFragmentDirections
 import rpt.tool.marimocare.utils.AlertDataUtils
 import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.data.enums.MarimoStatus
+import rpt.tool.marimocare.utils.managers.AchievementManager
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.com.base.navigation.safeNavController
 import rpt.com.base.navigation.safeNavigate
@@ -46,6 +48,11 @@ class FromQRCodeMarimoFragment :
 
         initializeCard(code!!.toInt())
 
+        binding.include1.appLogo.setOnClickListener {
+            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                FromQRCodeMarimoFragmentDirections.Companion.actionFromQRCodeMarimoFragmentToDashboardFragment()
+            )
+        }
     }
 
     private fun setupHeaderButtons()
@@ -79,6 +86,18 @@ class FromQRCodeMarimoFragment :
                                 .actionFromQRCodeMarimoFragmentToAddOrEditFragment()
                         )
                     }
+                ),
+                HeaderButtonConfig(
+                    button = binding.include1.btnAchievementAHeader,
+                    iconRes = R.drawable.ic_coccard,
+                    colorRes = R.color.marimo_add_icon,
+                    backgroundRes = R.drawable.bg_button_white,
+                    isTablet = resources.configuration.smallestScreenWidthDp >= 600,
+                    text = requireContext().getString(R.string.achievement),
+                    onClick = { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                        FromQRCodeMarimoFragmentDirections
+                            .actionFromQRCodeMarimoFragmentToAchievementFragment()
+                    ) }
                 ),
                 HeaderButtonConfig(
                     button = binding.include1.btnOpenSettings,
@@ -188,11 +207,14 @@ class FromQRCodeMarimoFragment :
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun waterChange(marimo: Marimo?) {
+        val context = requireContext()
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
 
             val marimo = RepositoryManager.marimoRepository.getMarimo(marimo!!.code)
             val lastChanged = AppUtils.Companion.getCurrentDate()
             RepositoryManager.marimoRepository.updateWaterMarimo(lastChanged, marimo!!.code)
+
+            AchievementManager.recalculateAll(true, context = context)
 
             val updated = RepositoryManager.marimoRepository.getMarimo(
                 marimo.code)
@@ -261,12 +283,15 @@ class FromQRCodeMarimoFragment :
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun deleteMarimo(item: Marimo?) {
+        val context = requireContext()
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
 
             val marimo = RepositoryManager.marimoRepository.getMarimo(item!!.code)
             if (marimo != null) {
 
                 RepositoryManager.marimoRepository.deleteMarimo(item.code)
+
+                AchievementManager.recalculateAll(true, context = context)
 
                 withContext(Dispatchers.IO) {
                     AlertDataUtils.recalc(requireContext())

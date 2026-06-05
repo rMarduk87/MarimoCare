@@ -1,0 +1,720 @@
+<resources>
+    <string name="app_name">Marimo Care</string>
+    <string name="marimo_care_dashboard">Marimo Care Dashboard</string>
+    <string name="keep_track_of_your_marimo">Следите за своими моховыми шариками маримо и больше никогда не пропускайте замену воды!</string>
+    <string name="marimo_tip_title_1">💡 Совет Маримо: Идеальная температура</string>
+    <string name="marimo_tip_title_2">💡 Совет Маримо: Бережное катание</string>
+    <string name="marimo_tip_title_3">💡 Совет Маримо: Чистая вода – это ключ</string>
+    <string name="marimo_tip_title_4">💡 Совет Маримо: Жизнь при слабом освещении</string>
+    <string name="marimo_tip_title_5">💡 Совет Маримо: Пространство для движения</string>
+    <string name="marimo_tip_title_6">💡 Совет Маримо: Следите за пузырьками</string>
+    <string name="marimo_tip_title_7">💡 Совет Маримо: Сезонные изменения</string>
+    <string name="marimo_tip_title_8">💡 Совет Маримо: Медленный рост</string>
+    <string name="marimo_tip_title_9">💡 Совет Маримо: Деление и обмен</string>
+    <string name="marimo_tip_title_10">💡 Совет Маримо: Движение воды</string>
+    <string name="marimo_tip_body_1">Держите маримо в прохладной воде (15–25°C). Избегайте прямых солнечных лучей и теплых мест.</string>
+    <string name="marimo_tip_body_2">Осторожно сжимайте и катайте маримо, чтобы сохранить его круглую форму.</string>
+    <string name="marimo_tip_body_3">Используйте фильтрованную или дистиллированную воду. Хлорированная вода может навредить маримо.</string>
+    <string name="marimo_tip_body_4">Маримо предпочитают непрямой свет. Из-за слишком большого количества солнца они становятся коричневыми.</string>
+    <string name="marimo_tip_body_5">Не переполняйте контейнеры. Каждому маримо нужно место для свободного перемещения.</string>
+    <string name="marimo_tip_body_6">Здоровые маримо образуют крошечные пузырьки кислорода — это отличный знак!</string>
+    <string name="marimo_tip_body_7">Зимой маримо растут медленнее и нуждаются в менее частой замене воды.</string>
+    <string name="marimo_tip_body_8">Маримо растут всего на 5 мм в год. Терпение — ключ к успеху с этими друзьями!</string>
+    <string name="marimo_tip_body_9">Крупные маримо можно аккуратно разделить на более мелкие, чтобы поделиться ими.</string>
+    <string name="marimo_tip_body_10">Периодически взбалтывайте воду, чтобы помочь маримо двигаться и оставаться здоровыми.</string>
+    <string name="total">Всего</string>
+    <string name="_3">3</string>
+    <string name="overdue">Просрочено</string>
+    <string name="due_soon">Скоро</string>
+    <string name="_0">0</string>
+    <string name="your_marimos">Ваши Маримо</string>
+    <string name="add_marimo">Новый Маримо</string>
+    <string name="mochi">Моти</string>
+    <string name="changes_every_14_days">Замена каждые 14 дней</string>
+    <string name="_295_days_overdue">295 дней просрочки</string>
+    <string name="last_changed_dec_15_2024">Последняя замена: 15 дек. 2024</string>
+    <string name="next_change_dec_29_2024">Следующая замена: 29 дек. 2024</string>
+    <string name="my_first_marimo_very_round_and_bouncy">Мой первый маримо! Очень круглый и упругий.</string>
+    <string name="water_changed">Заменить</string>
+    <string name="edit">Изменить</string>
+    <string name="img">Изоб</string>
+    <string name="water_change_tracker">Трекер замены воды</string>
+    <string name="dashboard">Дашборд</string>
+    <string name="changes_every_days">Замена каждые %1$d дн.</string>
+    <string name="no_notes">Нет заметок</string>
+    <string name="days_left">осталось дней</string>
+    <string name="no_data">Маримо не найдены</string>
+    <string name="_12_days_left">осталось 12 дней</string>
+    <string name="last_changed">Последняя замена</string>
+    <string name="oct_15_2025">15 окт. 2025</string>
+    <string name="next_change">Следующая замена</string>
+    <string name="oct_29_2025">29 окт. 2025</string>
+    <string name="notes">Заметки</string>
+    <string name="bottom">Пусть ваши друзья-маримо будут счастливы и здоровы! 🌱</string>
+    <string name="loading_your_little_friends">Загрузка ваших маленьких друзей…</string>
+    <string name="days_overdue">дней просрочки</string>
+    <string name="due_in">Срок</string>
+    <string name="days">дней</string>
+    <string name="add_new_marimo">Добавить нового Маримо</string>
+    <string name="add_a_new_marimo_friend_to_track">Добавьте нового друга-маримо для отслеживания</string>
+    <string name="marimo_name">Имя Маримо *</string>
+    <string name="e_g_mochi_bubbles_green_bean">например, Моти, Булька, Зеленая фасоль…</string>
+    <string name="last_water_change">Последняя замена воды *</string>
+    <string name="october_30th_2025">2025-10-30</string>
+    <string name="change_frequency">Частота замены *</string>
+    <string name="notes_optional">Заметки (необязательно)</string>
+    <string name="observations">Любые особые инструкции по уходу или наблюдения…</string>
+    <string name="cancel">Отмена</string>
+    <string name="btn_add_marimo">Добавить Маримо</string>
+    <string name="every_14_days_bi_weekly">Каждые 14 дней (Раз в две недели)</string>
+    <string name="please_fill_all_the_fields">Пожалуйста, заполните все поля</string>
+    <string name="attention">Внимание: Маримо опаздывает!</string>
+    <string name="overdue_marimo">Срочно: Требуется замена воды для:\n%1$s</string>
+    <string name="settings">Настройки</string>
+    <string name="stats">Статистика</string>
+    <string name="marimo_care_settings">⚙️ Настройки Marimo Care</string>
+    <string name="customize_your_marimo_care_experience">Настройте свой опыт использования Marimo Care</string>
+    <string name="btn_save">Сохранить изменения</string>
+    <string name="dashboard_card_style">Стиль карточек дашборда</string>
+    <string name="choose_how_you_want_your_marimo_statistics_cards_to_appear_on_the_dashboard">Выберите, как вы хотите, чтобы ваши карточки\nстатистики маримо отображались на дашборде</string>
+    <string name="default_style">Стиль по умолчанию</string>
+    <string name="clean_cards_with_icons_and_subtle_backgrounds">Чистые карточки с иконками и нежным фоном</string>
+    <string name="colored_style">Цветной стиль</string>
+    <string name="bold_colored_backgrounds_without_icons">Яркий цветной фон без иконок</string>
+    <string name="option_correctly_updated">Опция успешно обновлена</string>
+    <string name="update">Сохранить изменения</string>
+    <string name="updated_ok">успешно обновлено</string>
+    <string name="new_marimo_added">Добавлен новый Маримо</string>
+    <string name="automatic_notification">Автоматическое уведомление 🤖</string>
+    <string name="filters">\t\tФильтр:</string>
+    <string name="all">Все</string>
+    <string name="overdue_f">Просрочено</string>
+    <string name="soon_f">Скоро</string>
+    <string name="upToDate">В норме</string>
+    <string name="water_change_today">Эй, сегодня вам нужно поменять воду для некоторых Маримо</string>
+    <string name="soon_marimo">Некоторым Маримо скоро нужно будет поменять воду:\n%1$s</string>
+    <string name="today_marimo_list">Список Маримо для замены воды сегодня:\n%1$s</string>
+    <string name="tips_auto_scroll_speed">Скорость автопрокрутки советов</string>
+    <string name="choose_how_quickly_the_marimo_care_tips_automatically_rotate">Выберите, как быстро советы по уходу за маримо\nбудут автоматически меняться</string>
+    <string name="very_fast_5_seconds">Очень быстро (5 секунд)</string>
+    <string name="fast_10_seconds">Быстро (10 секунд)</string>
+    <string name="normal_15_seconds">Нормально (15 секунд)</string>
+    <string name="slow_20_seconds">Медленно (20 секунд)</string>
+    <string name="very_slow_25_seconds">Очень медленно (25 секунд)</string>
+    <string name="sort">\t\tСортировка:</string>
+    <string name="add">+ Добавить</string>
+    <string name="plus">+</string>
+    <string name="in">Через</string>
+    <string name="due_soon_">Срок</string>
+    <string name="dashboard_filters_amp_sorting"><![CDATA[Фильтры и сортировка дашборда]]></string>
+    <string name="customize_how_marimos_are_filtered_and_sorted_on_the_dashboard">Настройте, как маримо фильтруются\nи сортируются на дашборде</string>
+    <string name="display_controls">Элементы управления дисплеем</string>
+    <string name="show_filters_and_sort_controls">Показывать элементы управления фильтрами и сортировкой</string>
+    <string name="hide_filters_and_sort_controls">Скрыть элементы управления фильтрами и сортировкой</string>
+    <string name="default_filter">Фильтр по умолчанию</string>
+    <string name="all_marimos">Все Маримо</string>
+    <string name="overdue_only">Только просроченные</string>
+    <string name="due_soon_only">Только скорые</string>
+    <string name="up_to_date_only">Только в норме</string>
+    <string name="default_sort_order">Порядок сортировки по умолчанию</string>
+    <string name="sort_by_status_overdue_first">По статусу (сначала просроченные)</string>
+    <string name="sorted_by_name_a_z">По имени (А-Я)</string>
+    <string name="sort_by_last_changed_newest_first">По последней замене (сначала новые)</string>
+    <string name="stats_sub_title">Расширенная аналитика и данные по вашей коллекции маримо</string>
+    <string name="marimo_care_stats">Статистика Маримо</string>
+    <string name="average_frequency">Средняя частота</string>
+    <string name="_10_3">10.3</string>
+    <string name="_days">дней</string>
+    <string name="across_all_marimos">Среди всех маримо</string>
+    <string name="total_water_changed">Всего замен воды</string>
+    <string name="since_tracking_began">С начала отслеживания</string>
+    <string name="most_frequent">Самые частые</string>
+    <string name="last_frequent">Наименее частые</string>
+    <string name="every">"Каждые "</string>
+    <string name="different">Различные Маримо</string>
+    <string name="every_14_days">Каждые 14 дней</string>
+    <string name="oct_30">30 окт.</string>
+    <string name="most_low_maintenance_marimos">Самые неприхотливые маримо</string>
+    <string name="these_marimos_require_water_changes_every_14_days">Этим маримо требуется замена воды каждые 14 дней</string>
+    <string name="most_attention_needed_marimos">Маримо, требующие больше всего внимания</string>
+    <string name="these_marimos_require_water_changes_every">"Этим маримо требуется замена воды каждые "</string>
+    <string name="__days">" дней:"</string>
+    <string name="water_change_trend">Тенденция замены воды</string>
+    <string name="actual_water_changes_over_the_last_6_months">Фактические замены воды за последние 6 месяцев</string>
+    <string name="change_frequency_distribution">Распределение частоты замены</string>
+    <string name="how_often_you_change_water_for_your_marimos">Как часто вы меняете воду своим маримо (в днях)</string>
+    <string name="there_are_no_statistics_yet">Статистики пока нет</string>
+    <string name="marimo_name_stats">Имя Маримо</string>
+    <string name="change_frequency_stats">Частота замены</string>
+    <string name="soon_marimo_one">%1$s скоро нужно будет поменять воду</string>
+    <string name="are_you_sure_you_want_to_delete_this_marimo_this_action_cannot_be_undone">"Вы уверены, что хотите удалить этого маримо? Это действие нельзя отменить. "</string>
+    <string name="delete">"Удалить "</string>
+    <string name="delete_marimo_kuju">Удалить Маримо Kuju?</string>
+    <string name="generate">Сгенерировать QR-код</string>
+    <string name="marimo_qr_code">QR-код Маримо</string>
+    <string name="print_this_code_temp">Распечатайте этот код, вы сможете отсканировать его позже, чтобы быстро просмотреть статус Бульки и записать замену воды.</string>
+    <string name="qr_code_for_marimo">"Распечатайте этот код, вы сможете отсканировать его позже, чтобы быстро просмотреть статус "</string>
+    <string name="qr_code_you_can_scan_it_later">" и записать замену воды."</string>
+    <string name="manage_qr">Управление QR</string>
+    <string name="what">Что вы хотите сделать?</string>
+    <string name="share_qr">Поделиться QR</string>
+    <string name="qr_saved">QR сохранен в галерею</string>
+    <string name="save_error">Ошибка сохранения</string>
+    <string name="marimo_qr_dashboard">🌿 Управление Маримо с помощью QR-кода</string>
+    <string name="_6">6</string>
+    <string name="_1">1</string>
+    <string name="_4">4</string>
+    <string name="photo">Чтобы вам было легче узнавать вашего Маримо, вы можете добавить фото или сделать новое, нажав здесь.</string>
+    <string name="take_photo">Сделать фото</string>
+    <string name="choose_from_gallery">Выбрать изображение из галереи</string>
+    <string name="photo_save_error">Ошибка сохранения фото</string>
+    <string name="modify_marimo">Изменить вашего маримо</string>
+    <string name="edit_marimo">Изменить</string>
+    <string name="add_new">Теперь вы можете продолжить редактирование или добавить нового маримо, нажав здесь (или выбрав любое другое действие)</string>
+    <string name="photo_act">Выберите, что делать</string>
+    <string name="active_reminders">Активные напоминания (1)</string>
+    <string name="active_reminders_text">Активные напоминания</string>
+    <string name="select_marimos_to_update">Выберите Маримо для обновления</string>
+    <string name="select_which_marimos_have_had_their_water_changed">Выберите маримо, которым поменяли воду</string>
+    <string name="update_1_marimo">Обновить 1 Маримо</string>
+    <string name="is_adapter">просрочен на</string>
+    <string name="days_overdue_adapter">дней!</string>
+    <string name="last_changed_adapter">Последняя замена:</string>
+    <string name="update_dialog">Обновить</string>
+    <string name="water_change_info">На панели предупреждений вы можете выбрать, какие маримо обновить, выбрав их из списка, просто нажмите здесь</string>
+    <string name="log_water_change">Записать замену воды</string>
+    <string name="log_notes_optional">Заметки (необязательно)</string>
+    <string name="how_is_your_marimo_looking_any_observations">Как выглядит ваш маримо?\nЕсть наблюдения?</string>
+    <string name="upload_image_optional">Загрузить изображение (необязательно)</string>
+    <string name="click_to_upload_image">Нажмите, чтобы загрузить изображение</string>
+    <string name="mark_as_milestone_special_moment">Отметить как важный этап (особый момент)</string>
+    <string name="save_log">Сохранить запись</string>
+    <string name="average_health_score">Средний показатель здоровья</string>
+    <string name="update_all_marimo">Обновить все</string>
+    <string name="last_changed_to_fix">Выберите дату, когда вы получили своего Маримо, чтобы лучше рассчитать предыдущие замены воды.\nОбратите внимание: итоговая дата будет совпадать с датой выпуска приложения, 25.11.2025.</string>
+    <string name="marimos_to_update">Обновить замены воды для Статистики</string>
+    <string name="day_of_acquisition">Дата регистрации *</string>
+    <string name="trends">Тренды</string>
+    <string name="health_scores">Показатели здоровья</string>
+    <string name="compare">Сравнить</string>
+    <string name="individual_health_score">Индивидуальные показатели здоровья</string>
+    <string name="_21th_marimo">21-й Маримо</string>
+    <string name="complete_care_history_and_profile">Полная история ухода и профиль</string>
+    <string name="out_of_19">из 19</string>
+    <string name="nov_25_2025">25 ноя. 2025</string>
+    <string name="dec_16_2025">16 дек. 2025</string>
+    <string name="current_health_score">Текущий показатель здоровья</string>
+    <string name="_19">19</string>
+    <string name="health_score_history">История показателя здоровья</string>
+    <string name="health_track">Отслеживайте здоровье вашего маримо в течение 10 дней</string>
+    <string name="frequency">Частота</string>
+    <string name="_21d">21д</string>
+    <string name="total_changes">Всего замен</string>
+    <string name="_2">2</string>
+    <string name="_21_days">21 дней</string>
+    <string name="milestones">Важные этапы</string>
+    <string name="quick_actions">Быстрые действия</string>
+    <string name="wow">Вау</string>
+    <string name="milestone">Этап</string>
+    <string name="health_98">Здоровье: 98</string>
+    <string name="february_13_2026">13 февраля 2026</string>
+    <string name="damn_i_change_it">Блин, я поменял</string>
+    <string name="health_96">Здоровье: 96</string>
+    <string name="yeah">Ага</string>
+    <string name="star">🌟</string>
+    <string name="care_timeline">Шкала времени ухода</string>
+    <string name="visual_history">Визуальная история всех замен воды и важных этапов</string>
+    <string name="out_of_100">из 100</string>
+    <string name="waters">Замена воды</string>
+    <string name="marimo_notes">Заметки Маримо</string>
+    <string name="_97_100">97/100</string>
+    <string name="_5">5</string>
+    <string name="days_tracked">Дней отслеживания</string>
+    <string name="_102">102</string>
+    <string name="compare_marimos">Сравнить Маримо</string>
+    <string name="select_marimos_above_to_compare_their_statistics">Выберите маримо выше, чтобы сравнить их статистику</string>
+    <string name="performance_comparison">Сравнение производительности</string>
+    <string name="detailed_comparison">Подробное сравнение</string>
+    <string name="empty">-</string>
+    <string name="new_change_log">В этом новом диалоговом окне вы можете добавить заметку о замене воды, сделать или загрузить фото на память и…\nОтметить момент как особенный!</string>
+    <string name="d">д</string>
+    <string name="today">сегодня</string>
+    <string name="new_stats">Добавлена новая статистика, сгруппированная по темам.\nСписок здоровья всех маримо и сравнительная статистика.</string>
+    <string name="stats_period">Статистика – Период тенденции замены воды</string>
+    <string name="default_time_range_shown_in_the_water_change_trend_chart">Диапазон времени по умолчанию на графике тенденции</string>
+    <string name="last_sixth_month">Последние 6 месяцев</string>
+    <string name="last_year">Последний год</string>
+    <string name="actual_water_changes_over_the_last_12_months">Фактические замены воды за последний год</string>
+    <string name="feedback">Обратная связь</string>
+    <string name="help_us_improve_marimo_care_choose_a_topic_and_send_us_your_thoughts_ideas_or_bug_reports">Помогите нам улучшить Marimo Care! Выберите тему и отправьте нам свои мысли, идеи или сообщения об ошибках.</string>
+    <string name="_1_choose_a_topic">1. Выберите тему</string>
+    <string name="what_would_you_like_to_give_feedback_about">О чем бы вы хотели оставить отзыв?</string>
+    <string name="bug_report">Сообщение об ошибке</string>
+    <string name="_2_write_your_message">2. Напишите сообщение</string>
+    <string name="describe_your_idea_issue_or_suggestion_here">Опишите вашу идею, проблему или предложение здесь…</string>
+    <string name="send_feedback">Отправить отзыв</string>
+    <string name="join_the_marimo_community">Присоединяйтесь к сообществу Маримо</string>
+    <string name="reddit">Reddit</string>
+    <string name="whatsapp">WhatsApp</string>
+    <string name="instagram">Instagram</string>
+    <string name="share_your_feedback">Поделитесь своим отзывом</string>
+    <string name="feature_request">Запрос функции</string>
+    <string name="ui_design">Пользовательский интерфейс / Дизайн</string>
+    <string name="new_content">Новый контент</string>
+    <string name="general_feedback">Общий отзыв</string>
+    <string name="other">Другое</string>
+    <string name="please_select_at_least_one_topic_and_write_a_message">Пожалуйста, выберите хотя бы одну тему и напишите сообщение.</string>
+    <string name="marimo_care_feedback">Отзыв о Marimo Care: %1$s</string>
+    <string name="riccardo_pezzolati_gmail_com">riccardo.pezzolati@gmail.com</string>
+    <string name="choose_email_client">Выберите почтовый клиент…</string>
+    <string name="no_email_app_found_on_your_device">На вашем устройстве не найдено почтовое приложение.</string>
+    <string name="https_www_reddit_com_r_marimo">https://www.reddit.com/r/Marimo/</string>
+    <string name="https_www_instagram_com_explore_tags_marimo">https://www.instagram.com/explore/tags/marimo/</string>
+    <string name="https_play_google_com_store_apps_details_id_rpt_tool_marimocare">https://play.google.com/store/apps/details?id=rpt.tool.marimocare</string>
+    <string name="check_out_marimo_care">Оцените Marimo Care! %1$s</string>
+    <string name="unable_to_open_link">Невозможно открыть ссылку.</string>
+    <string name="whatsapp_is_not_installed_on_this_device">На этом устройстве не установлен WhatsApp.</string>
+    <string name="clear_all">Очистить все</string>
+    <string name="form_cleared">Форма очищена</string>
+    <string name="feedback_balloon">Нажатие здесь откроет экран обратной связи, где вы сможете оставить предложения по улучшению приложения и присоединиться к сообществу Маримо.</string>
+    <string name="achievement">Достижение</string>
+    <string name="achievement_intro_title">Достижения</string>
+    <string name="achievement_intro_message">В этой версии добавлены цели, которых нужно достичь. Хотите рассчитать прогресс или предпочитаете начать с нуля?</string>
+    <string name="calculate">Рассчитать</string>
+    <string name="restart">Перезапустить</string>
+    <string name="achievement_unlocked_title">Система достижений разблокирована!</string>
+    <string name="achievement_unlocked_message">У вас уже есть маримо и история ухода. Хотите, чтобы мы проверили ваши прошлые данные и выдали значки, которые вы уже заработали, или начнете с чистого листа сегодня?</string>
+    <string name="calculate_retroactively">Рассчитать ретроспективно</string>
+    <string name="calculate_retroactively_desc">Выдавать значки на основе всей истории ухода — прошлые замены воды и данные маримо будут учтены.</string>
+    <string name="start_from_scratch">Начать с нуля</string>
+    <string name="start_from_scratch_desc">Получать значки только с этого момента. Прошлые действия не будут учитываться.</string>
+    <string name="new_achievements_unlocked_balloon">Разблокированы новые достижения, нажмите здесь, чтобы узнать больше.</string>
+    <string name="earned_26">Получено (26)</string>
+    <string name="earned_label">Получено</string>
+    <string name="_50_badges">/ %1$d значков</string>
+    <string name="_26">26</string>
+    <string name="achievement_subtitle">Зарабатывайте значки, заботясь о своих маримо</string>
+    <string name="recalculate">Пересчитать</string>
+    <string name="reset_all">Сбросить все</string>
+    <string name="ach_1" translatable="false">🗿</string>
+    <string name="ach_2" translatable="false">📊</string>
+    <string name="ach_3" translatable="false">📋</string>
+    <string name="ach_4" translatable="false">🌗</string>
+    <string name="ach_5" translatable="false">🎊</string>
+    <string name="ach_6" translatable="false">🌊</string>
+    <string name="ach_7" translatable="false">📅</string>
+    <string name="ach_8" translatable="false">📆</string>
+    <string name="ach_9" translatable="false">🌱</string>
+    <string name="ach_10" translatable="false">⭐</string>
+    <string name="ach_11" translatable="false">🎖️</string>
+    <string name="ach_12" translatable="false">🦅</string>
+    <string name="ach_13" translatable="false">🏅</string>
+    <string name="ach_14" translatable="false">🎯</string>
+    <string name="ach_15" translatable="false">🌟</string>
+    <string name="ach_16" translatable="false">📸</string>
+    <string name="ach_17" translatable="false">🤳</string>
+    <string name="ach_18" translatable="false">🖼️</string>
+    <string name="ach_19" translatable="false">📝</string>
+    <string name="ach_20" translatable="false">📔</string>
+    <string name="ach_21" translatable="false">📖</string>
+    <string name="ach_22" translatable="false">✅</string>
+    <string name="ach_23" translatable="false">🎳</string>
+    <string name="ach_24" translatable="false">⏰</string>
+    <string name="ach_25" translatable="false">🏷️</string>
+    <string name="ach_26" translatable="false">✏️</string>
+    <string name="ach_27" translatable="false">🖼️</string>
+    <string name="ach_28" translatable="false">🌅</string>
+    <string name="ach_29" translatable="false">🗒️</string>
+    <string name="ach_30" translatable="false">🐦</string>
+    <string name="ach_31" translatable="false">⚡</string>
+    <string name="ach_32" translatable="false">🦉</string>
+    <string name="ach_33" translatable="false">🎛️</string>
+    <string name="ach_34" translatable="false">💬</string>
+    <string name="ach_35" translatable="false">⚙️</string>
+    <string name="ach_36" translatable="false">👴</string>
+    <string name="ach_37" translatable="false">🌿</string>
+    <string name="ach_38" translatable="false">👫</string>
+    <string name="ach_39" translatable="false">🎶</string>
+    <string name="ach_40" translatable="false">🫙</string>
+    <string name="ach_41" translatable="false">🏆</string>
+    <string name="ach_42" translatable="false">🪖</string>
+    <string name="ach_43" translatable="false">👑</string>
+    <string name="ach_44" translatable="false">💧</string>
+    <string name="ach_45" translatable="false">🚿</string>
+    <string name="ach_46" translatable="false">🔄</string>
+    <string name="ach_47" translatable="false">💪</string>
+    <string name="ach_48" translatable="false">🧙</string>
+    <string name="ach_49" translatable="false">💯</string>
+    <string name="ach_50" translatable="false">🎖️</string>
+    <string name="locked_24">Заблокировано (24)</string>
+    <string name="ach_desc_1">Добавлен самый первый маримо в коллекцию.</string>
+    <string name="ach_desc_2">У вас 2 маримо — теперь у них есть компания!</string>
+    <string name="ach_desc_3">3 маримо в вашей коллекции.</string>
+    <string name="ach_desc_4">Вы собираете коллекцию — добавлено 5 маримо!</string>
+    <string name="ach_desc_5">Вау, 10 маримо! Вы их действительно любите.</string>
+    <string name="ach_desc_6">Целая армия из 20 маримо!</string>
+    <string name="ach_desc_7">50 маримо. Вы управляете империей.</string>
+    <string name="ach_desc_8">Записана первая замена воды. Путешествие начинается!</string>
+    <string name="ach_desc_9">Записано 5 замен воды.</string>
+    <string name="ach_desc_10">Всего записано 10 замен воды.</string>
+    <string name="ach_desc_11">Записано 25 замен воды. Вы вырабатываете привычку!</string>
+    <string name="ach_desc_12">Записано 50 замен воды. Вы профессионал!</string>
+    <string name="ach_desc_13">100 замен воды! Абсолютно потрясающе.</string>
+    <string name="ach_desc_14">Записано 200 замен воды. Легендарно.</string>
+    <string name="ach_desc_15">500 замен воды. Вы — величайший опекун маримо.</string>
+    <string name="ach_desc_16">Целая неделя ухода за маримо!</string>
+    <string name="ach_desc_17">Успешная замена воды в течение целого месяца.</string>
+    <string name="ach_desc_18">Три месяца преданного ухода за маримо!</string>
+    <string name="ach_desc_19">Шесть месяцев постоянного ухода. Вы — легенда.</string>
+    <string name="ach_desc_20">Целый год ухода за маримо. Невероятная преданность!</string>
+    <string name="ach_desc_21">Два полных года ухода за маримо. Поистине выдающееся достижение.</string>
+    <string name="ach_desc_22">Отмечена первая важная замена воды (особый этап).</string>
+    <string name="ach_desc_23">Отмечено 5 важных замен воды.</string>
+    <string name="ach_desc_24">Записано 10 важных замен воды!</string>
+    <string name="ach_desc_25">Загружено фото во время записи о замене воды.</string>
+    <string name="ach_desc_26">Загружены фотографии в 5 различных записях о замене воды.</string>
+    <string name="ach_desc_27">20 записей о замене воды с фото. Настоящий альбом маримо!</string>
+    <string name="ach_desc_28">Добавлены заметки к 5 различным заменам воды.</string>
+    <string name="ach_desc_29">Добавлены заметки к 20 заменам воды.</string>
+    <string name="ach_desc_30">Добавлены заметки к 50 заменам воды. Настоящий историк.</string>
+    <string name="ach_desc_31">Все ваши маримо в норме — нет просроченных прямо сейчас!</string>
+    <string name="ach_desc_32">Записано 5 своевременных замен воды (без просрочек).</string>
+    <string name="ach_desc_33">20 своевременных замен воды. Как по часам!</string>
+    <string name="ach_desc_34">Дали вашему маримо имя (не просто \'Маримо\').</string>
+    <string name="ach_desc_35">Назвали 3 маримо уникальными именами.</string>
+    <string name="ach_desc_36">Добавлено фото профиля одному из ваших маримо.</string>
+    <string name="ach_desc_37">Добавлены фото профиля 5 маримо.</string>
+    <string name="ach_desc_38">Добавлены заметки к одному из ваших маримо.</string>
+    <string name="ach_desc_39">Записана замена воды более чем за 2 дня до срока.</string>
+    <string name="ach_desc_40">Записано 3 замены воды в один и тот же день.</string>
+    <string name="ach_desc_41">Записано 10 просроченных замен воды (вы все равно это сделали!).</string>
+    <string name="ach_desc_42">Владеете маримо с 3 различными частотами замены воды.</string>
+    <string name="ach_desc_43">Отправлен отзыв, чтобы помочь улучшить приложение.</string>
+    <string name="ach_desc_44">Настроены параметры вашего дашборда.</string>
+    <string name="ach_desc_45">Один из ваших маримо находится на вашем попечении более 6 месяцев.</string>
+    <string name="ach_desc_46">Один из ваших маримо находится на вашем попечении более года.</string>
+    <string name="ach_desc_47">Посещена страница Статистики.</string>
+    <string name="ach_desc_48">Добавлены заметки к 5 вашим маримо.</string>
+    <string name="ach_desc_49">Получено 25 достижений. Вы на полпути к полному набору!</string>
+    <string name="ach_desc_50">Получены все 50 достижений. Вы — настоящий Мастер Маримо!</string>
+    <string name="ach_desc_51">Вы добавили свое первое украшение в аквариум маримо.</string>
+    <string name="ach_desc_52">Вы украсили 3 разных аквариума маримо.</string>
+    <string name="ach_desc_53">Вы добавили 10 или более украшений в своей коллекции.</string>
+    <string name="ach_tit_1">Первый Маримо</string>
+    <string name="ach_tit_2">Динамичный Дуэт</string>
+    <string name="ach_tit_3">Трио</string>
+    <string name="ach_tit_4">Коллекционер</string>
+    <string name="ach_tit_5">Собиратель Маримо</string>
+    <string name="ach_tit_6">Армия Маримо</string>
+    <string name="ach_tit_7">Империя Маримо</string>
+    <string name="ach_tit_8">Первая Капля</string>
+    <string name="ach_tit_9">Начало</string>
+    <string name="ach_tit_10">Постоянный Опекун</string>
+    <string name="ach_tit_11">Преданный</string>
+    <string name="ach_tit_12">Водный Волшебник</string>
+    <string name="ach_tit_13">Сотня Забот</string>
+    <string name="ach_tit_14">Двести</string>
+    <string name="ach_tit_15">Мастер Воды</string>
+    <string name="ach_tit_16">Первая Неделя</string>
+    <string name="ach_tit_17">Месяц Ухода</string>
+    <string name="ach_tit_18">Три Месяца</string>
+    <string name="ach_tit_19">Герой Полугодия</string>
+    <string name="ach_tit_20">Ежегодный Чемпион</string>
+    <string name="ach_tit_21">Двухлетний Ветеран</string>
+    <string name="ach_tit_22">Важный Этап</string>
+    <string name="ach_tit_23">Охотник за Этапами</string>
+    <string name="ach_tit_24">Мастер Этапов</string>
+    <string name="ach_tit_25">Хранитель Фото</string>
+    <string name="ach_tit_26">Фотограф</string>
+    <string name="ach_tit_27">Фотоальбом</string>
+    <string name="ach_tit_28">Любитель Заметок</string>
+    <string name="ach_tit_29">Хранитель Журнала</string>
+    <string name="ach_tit_30">Летописец</string>
+    <string name="ach_tit_31">Идеальный Рекорд</string>
+    <string name="ach_tit_32">На Волне</string>
+    <string name="ach_tit_33">Как Часы</string>
+    <string name="ach_tit_34">Дающий Имя</string>
+    <string name="ach_tit_35">Креативное Имя</string>
+    <string name="ach_tit_36">Фото Профиля</string>
+    <string name="ach_tit_37">Фотогеничная Коллекция</string>
+    <string name="ach_tit_38">Биограф Маримо</string>
+    <string name="ach_tit_39">Ранняя Пташка</string>
+    <string name="ach_tit_40">Быстрый Заменщик</string>
+    <string name="ach_tit_41">Ночная Сова</string>
+    <string name="ach_tit_42">Микс-Мастер</string>
+    <string name="ach_tit_43">Полезный Отзыв</string>
+    <string name="ach_tit_44">Исследователь Настроек</string>
+    <string name="ach_tit_45">Старший Маримо</string>
+    <string name="ach_tit_46">Древний</string>
+    <string name="ach_tit_47">Любитель Статистики</string>
+    <string name="ach_tit_48">Биограф Маримо</string>
+    <string name="ach_tit_49">На Полпути</string>
+    <string name="ach_tit_50">Охотник за Достижениями</string>
+    <string name="ach_tit_51">Штрих в интерьере</string>
+    <string name="ach_tit_52">Декоратор</string>
+    <string name="ach_tit_53">Дизайнер интерьера</string>
+
+    <string name="ach_type_marimo">маримо</string>
+    <string name="ach_type_marimos">маримо</string>
+    <string name="ach_type_waterchange">замена воды</string>
+    <string name="ach_type_daysofcare">дни ухода</string>
+    <string name="ach_type_monthsofcare">месяцы ухода</string>
+    <string name="ach_type_milestone">достижение</string>
+    <string name="ach_type_photo">фото</string>
+    <string name="ach_type_note">заметка</string>
+    <string name="ach_type_name">имя</string>
+    <string name="ach_type_marimowithphoto">маримо с фото</string>
+    <string name="ach_type_logs">журналы</string>
+
+    <string name="unit_type_marimo">маримо</string>
+    <string name="unit_type_marimos">маримо</string>
+    <string name="unit_type_logs">журналы</string>
+    <string name="unit_type_milestones">достижения</string>
+    <string name="unit_type_photo">фото</string>
+    <string name="unit_type_notedlogs">записи с заметками</string>
+    <string name="unit_type_months">месяцы</string>
+    <string name="unit_type_days">дни</string>
+    <string name="unit_type_uniquelynamed">уникальное имя</string>
+    <string name="unit_type_withphoto">с фото</string>
+    <string name="achievement_balloon">По мере того как вы добавляете маримо, ухаживаете за ними и т. д., вы сможете открывать достижения, которые можно увидеть, нажав на эту кнопку</string>
+    <string name="unit_type_water">замена воды</string>
+    <string name="unit_type_marimonamed">названный маримо</string>
+    <string name="unit_type_notewrite">написанная заметка</string>
+    <string name="ach_des_1">Просто добавьте одного маримо, чтобы начать!</string>
+    <string name="ach_des_2">Добавьте второго маримо — они любят компанию!</string>
+    <string name="ach_des_3">Трое — это толпа, соберите еще одного!</string>
+    <string name="ach_des_4">Продолжайте добавлять, пока не наберете 5 маримо.</string>
+    <string name="ach_des_5">Удвойте свою коллекцию до 10!</string>
+    <string name="ach_des_6">Вам нужно 20 маримо для целой армии.</string>
+    <string name="ach_des_7">50 маримо — величайшая коллекция.</string>
+    <string name="ach_des_8">Поменяйте воду любому из ваших маримо.</string>
+    <string name="ach_des_9">Всего 5 замен воды — так держать!</string>
+    <string name="ach_des_10">Всего 10 записей — вы вырабатываете привычку.</string>
+    <string name="ach_des_11">25 записей — преданность делу имеет значение!</string>
+    <string name="ach_des_12">50 замен — вы настоящий профи!</string>
+    <string name="ach_des_13">Столетие заботы — продолжайте записывать!</string>
+    <string name="ach_des_14">200 записей — легендарный опекун!</string>
+    <string name="ach_des_15">500 записей — величайший опекун.</string>
+    <string name="ach_des_16">Ухаживайте за своими маримо в течение 7 дней.</string>
+    <string name="ach_des_17">Один месяц постоянного ухода!</string>
+    <string name="ach_des_18">Требуется три месяца преданности делу.</string>
+    <string name="ach_des_19">Полгода ухода за маримо!</string>
+    <string name="ach_des_20">Целый год преданности делу — невероятно!</string>
+    <string name="ach_des_21">Два полных года ухода за маримо!</string>
+    <string name="ach_des_22">Отметьте любую замену воды как важный этап!</string>
+    <string name="ach_des_23">Отметьте 5 замен воды как важные этапы.</string>
+    <string name="ach_des_24">10 записей об этапах — вы коллекционер!</string>
+    <string name="ach_des_25">Загрузите фото во время любой записи о замене воды.</string>
+    <string name="ach_des_26">Требуется 5 записей с фото.</string>
+    <string name="ach_des_27">20 записей с фото — настоящий альбом!</string>
+    <string name="ach_des_28">Пишите заметки в 5 записях о замене воды.</string>
+    <string name="ach_des_29">20 записей с заметками — настоящий дневник!</string>
+    <string name="ach_des_30">50 записей с заметками — вы историк!</string>
+    <string name="ach_des_31">Убедитесь, что ни один маримо не просрочен прямо сейчас.</string>
+    <string name="ach_des_32">Запишите 5 своевременных замен воды для квалификации.</string>
+    <string name="ach_des_33">20 своевременных записей — как по часам!</string>
+    <string name="ach_des_34">Дайте своему маримо креативное имя!</string>
+    <string name="ach_des_35">Назовите 3 разных маримо уникальными именами.</string>
+    <string name="ach_des_36">Добавьте фото профиля любому маримо.</string>
+    <string name="ach_des_37">Дайте 5 маримо фото профиля!</string>
+    <string name="ach_des_38">Напишите заметку в профиле любого маримо.</string>
+    <string name="ach_des_39">Меняйте воду более чем за 2 дня до срока.</string>
+    <string name="ach_des_40">Запишите 3 замены воды за один день!</string>
+    <string name="ach_des_41">10 просроченных записей — вы все равно это сделали!</string>
+    <string name="ach_des_42">Установите 3 различные частоты замены воды.</string>
+    <string name="ach_des_43">Посетите страницу обратной связи и отправьте отзыв!</string>
+    <string name="ach_des_44">Настройте свои параметры и сохраните.</string>
+    <string name="ach_des_45">Держите маримо в течение 6 месяцев!</string>
+    <string name="ach_des_46">Маримо старше 1 года под вашей опекой!</string>
+    <string name="ach_des_47">Просто посетите страницу Статистики!</string>
+    <string name="ach_des_48">Пишите заметки для 5 маримо.</string>
+    <string name="ach_des_49">Заработайте 25 достижений, чтобы пройти полпути.</string>
+    <string name="ach_des_50">Заработайте каждое достижение — конечная цель!</string>
+    <string name="ach_des_51">Добавьте хотя бы одно украшение (гальку, камень, кристалл и т. д.) в аквариум любого маримо через форму добавления или редактирования.</string>
+    <string name="ach_des_52">Добавьте хотя бы одно украшение 3 разным маримо в вашей коллекции.</string>
+    <string name="ach_des_53">Добавляйте украшения своим маримо, пока их общее количество во всей коллекции не достигнет 10.</string>
+
+    <string-array name="marimo_frequencies">
+        <item>Каждые 7 дней (Раз в неделю)</item>
+        <item>Каждые 10 дней</item>
+        <item>Каждые 14 дней (Раз в две недели)</item>
+        <item>Каждые 21 день</item>
+        <item>Каждые 30 дней (Раз в месяц)</item>
+    </string-array>
+    <string-array name="marimo_sorting">
+        <item>Статус</item>
+        <item>Имя</item>
+        <item>Последняя замена</item>
+    </string-array>
+    <string-array name="marimo_frequencies_changes">
+        <item>7</item>
+        <item>10</item>
+        <item>14</item>
+        <item>21</item>
+        <item>30</item>
+    </string-array>
+    <string-array name="marimo_qr_actions">
+        <item>Печать QR</item>
+        <item>Отправить QR</item>
+        <item>Сохранить QR</item>
+    </string-array>
+    <string name="achievement_earned">Достижение получено!</string>
+    <string name="great">Отлично!</string>
+    <string name="_100">100%</string>
+    <string name="achievement_unlocked">Достижение разблокировано!</string>
+    <string name="notification_settings">Настройки уведомлений</string>
+    <string name="choose_which_notifications_you_want_to_receive">Выберите уведомления, которые хотите получать</string>
+    <string name="due_soon_alert">Напоминание о скорой замене</string>
+    <string name="overdue_marimo_alert">Уведомление о просрочке</string>
+    <string name="today_marimo_alert">Напоминание о замене сегодня</string>
+    <string name="new_settings_balloon_text">Добавлены новые настройки уведомлений! Теперь вы можете сами выбирать, какие оповещения получать.</string>
+    <string name="pot_decorations_optional">Украшения для аквариума (опционально)</string>
+    <string name="no_decorations_yet">Украшения пока не добавлены.</string>
+    <string name="add_decoration">+ Добавить украшение</string>
+    <string name="decoration_n">Украшение %1$d</string>
+    <string name="name">Название</string>
+    <string name="type">Тип</string>
+    <string name="colour">Цвет</string>
+    <string name="dimensions">Размеры</string>
+    <string name="material">Материал</string>
+    <string name="e_g_blue_pebble">напр. Синяя галька</string>
+    <string name="select_type">Выберите тип…</string>
+    <string name="e_g_cobalt_blue">напр. Синий кобальт</string>
+    <string name="e_g_2cm_x_1cm">напр. 2 см x 1 см</string>
+    <string name="e_g_natural_quartz">напр. Натуральный кварц</string>
+    <string name="any_extra_details">Дополнительные детали…</string>
+    <string name="decorations">Украшения</string>
+    <string name="pot_decorations">Украшения для аквариума</string>
+    <string name="_total">всего</string>
+    <string name="new_stats_2">Добавлена новая статистика по украшениям в аквариумах ваших маримо</string>
+    <string-array name="decoration_types">
+        <item>Выберите тип…</item>
+        <item>Галька</item>
+        <item>Камень</item>
+        <item>Минерал</item>
+        <item>Песок</item>
+        <item>Гравий</item>
+        <item>Ракушка</item>
+        <item>Коряга</item>
+        <item>Кристалл</item>
+        <item>Стеклянный камешек</item>
+        <item>Мрамор</item>
+        <item>Фигурка</item>
+        <item>Водное растение</item>
+        <item>Другое</item>
+    </string-array>
+    <string-array name="decoration_color_names">
+        <!-- Greyscale Names -->
+        <item>Нет</item>
+        <item>Белый</item>
+        <item>Серый 50</item>
+        <item>Серый 100</item>
+        <item>Серый 200</item>
+        <item>Серый 300</item>
+        <item>Серый 400</item>
+        <item>Серый 500</item>
+        <item>Серый 600</item>
+        <item>Серый 700</item>
+        <item>Черный</item>
+        <!-- Grid Names -->
+        <item>Синий 900</item>
+        <item>Индиго 900</item>
+        <item>Пурпурный 900</item>
+        <item>Розовый 900</item>
+        <item>Красный 900</item>
+        <item>Темно-оранжевый 900</item>
+        <item>Оранжевый 900</item>
+        <item>Янтарный 900</item>
+        <item>Желтый 900</item>
+        <item>Лаймовый 900</item>
+        <item>Зеленый 900</item>
+        <item>Синий 800</item>
+        <item>Индиго 800</item>
+        <item>Пурпурный 800</item>
+        <item>Розовый 800</item>
+        <item>Красный 800</item>
+        <item>Темно-оранжевый 800</item>
+        <item>Оранжевый 800</item>
+        <item>Янтарный 800</item>
+        <item>Желтый 800</item>
+        <item>Лаймовый 800</item>
+        <item>Зеленый 800</item>
+        <item>Синий 700</item>
+        <item>Индиго 700</item>
+        <item>Пурпурный 700</item>
+        <item>Розовый 700</item>
+        <item>Красный 700</item>
+        <item>Темно-оранжевый 700</item>
+        <item>Оранжевый 700</item>
+        <item>Янтарный 700</item>
+        <item>Желтый 700</item>
+        <item>Лаймовый 700</item>
+        <item>Зеленый 700</item>
+        <item>Синий 600</item>
+        <item>Индиго 600</item>
+        <item>Пурпурный 600</item>
+        <item>Розовый 600</item>
+        <item>Красный 600</item>
+        <item>Темно-оранжевый 600</item>
+        <item>Оранжевый 600</item>
+        <item>Янтарный 600</item>
+        <item>Желтый 600</item>
+        <item>Лаймовый 600</item>
+        <item>Зеленый 600</item>
+        <item>Синий 500</item>
+        <item>Индиго 500</item>
+        <item>Пурпурный 500</item>
+        <item>Розовый 500</item>
+        <item>Красный 500</item>
+        <item>Темно-оранжевый 500</item>
+        <item>Оранжевый 500</item>
+        <item>Янтарный 500</item>
+        <item>Желтый 500</item>
+        <item>Лаймовый 500</item>
+        <item>Зеленый 500</item>
+        <item>Синий 400</item>
+        <item>Индиго 400</item>
+        <item>Пурпурный 400</item>
+        <item>Розовый 400</item>
+        <item>Красный 400</item>
+        <item>Темно-оранжевый 400</item>
+        <item>Оранжевый 400</item>
+        <item>Янтарный 400</item>
+        <item>Желтый 400</item>
+        <item>Лаймовый 400</item>
+        <item>Зеленый 400</item>
+        <item>Синий 300</item>
+        <item>Индиго 300</item>
+        <item>Пурпурный 300</item>
+        <item>Розовый 300</item>
+        <item>Красный 300</item>
+        <item>Темно-оранжевый 300</item>
+        <item>Оранжевый 300</item>
+        <item>Янтарный 300</item>
+        <item>Желтый 300</item>
+        <item>Лаймовый 300</item>
+        <item>Зеленый 300</item>
+        <item>Синий 200</item>
+        <item>Индиго 200</item>
+        <item>Пурпурный 200</item>
+        <item>Розовый 200</item>
+        <item>Красный 200</item>
+        <item>Темно-оранжевый 200</item>
+        <item>Оранжевый 200</item>
+        <item>Янтарный 200</item>
+        <item>Желтый 200</item>
+        <item>Лаймовый 200</item>
+        <item>Зеленый 200</item>
+        <item>Синий 100</item>
+        <item>Индиго 100</item>
+        <item>Пурпурный 100</item>
+        <item>Розовый 100</item>
+        <item>Красный 100</item>
+        <item>Темно-оранжевый 100</item>
+        <item>Оранжевый 100</item>
+        <item>Янтарный 100</item>
+        <item>Желтый 100</item>
+        <item>Лаймовый 100</item>
+        <item>Зеленый 100</item>
+    </string-array>
+</resources>

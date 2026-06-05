@@ -17,7 +17,7 @@ class MarimoQRModelToMarimoQR : ModelMapper<MarimoQRModel, MarimoQR> {
             code = source.code,
             marimoCode = source.marimoCode,
             qr = source.marimoQRCode,
-            validity = source.validity
+            validity = source.validity == 1
         )
     }
 }

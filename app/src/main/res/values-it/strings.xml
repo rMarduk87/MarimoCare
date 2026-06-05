@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Marimo Care</string>
-    <string name="marimo_care_dashboard">🌿 Dashboard di Marimo Care</string>
+    <string name="marimo_care_dashboard">Marimo Care Dashboard</string>
     <string name="keep_track_of_your_marimo">Tieni traccia delle tue palline di muschio marimo e non perdere mai più un cambio d\'acqua!</string>
     <string name="marimo_tip_title_1">💡 Consiglio Marimo: Temperatura perfetta</string>
     <string name="marimo_tip_title_2">💡 Consiglio Marimo: Rotolamento delicato</string>
@@ -104,7 +104,7 @@
     <string name="sort">\t\tOrdina per:</string>
     <string name="add">Nuovo</string>
     <string name="plus">+</string>
-    <string name="in">In</string>
+    <string name="in">Tra</string>
     <string name="due_soon_">Scadenza</string>
     <string name="dashboard_filters_amp_sorting"><![CDATA[Filtri e ordinamento della dashboard]]></string>
     <string name="customize_how_marimos_are_filtered_and_sorted_on_the_dashboard">Personalizza il modo in cui i marimo vengono filtrati\ne ordinati sulla dashboard</string>
@@ -154,7 +154,7 @@
     <string name="marimo_qr_code">Codice QR Marimo</string>
     <string name="print_this_code_temp">Stampa questo codice, puoi scansionarlo in seguito per visualizzare rapidamente lo stato di Bubbles e registrare un cambio d\'acqua.</string>
     <string name="qr_code_for_marimo">"Stampa questo codice, puoi scansionarlo in seguito per visualizzare rapidamente lo stato di "</string>
-    <string name="qr_code_you_can_scan_it_later">" e registrare un cambio d'acqua."</string>
+    <string name="qr_code_you_can_scan_it_later">" e registrare un cambio d\'acqua."</string>
     <string name="manage_qr">Gestisci QR</string>
     <string name="what">Cosa vuoi fare?</string>
     <string name="share_qr">Condividi QR</string>
@@ -279,6 +279,263 @@
     <string name="clear_all">Cancella tutto</string>
     <string name="form_cleared">Modulo cancellato</string>
     <string name="feedback_balloon">Cliccando qui si aprirà la schermata del feedback dove potrai inviare suggerimenti per migliorare l\'app e unirti alla comunity dei Marimo</string>
+    <string name="achievement">Obiettivi</string>
+    <string name="achievement_intro_title">Obiettivi</string>
+    <string name="achievement_intro_message">In questa versione sono stati aggiunti gli obiettivi da raggiungere, vuoi calcolare il progresso o preferisci iniziare da zero?</string>
+    <string name="calculate">Calcola</string>
+    <string name="restart">Ricomincia</string>
+    <string name="achievement_unlocked_title">Sistema di obiettivi sbloccato!</string>
+    <string name="achievement_unlocked_message">Hai già dei marimo e una cronologia di cure. Vuoi che controlliamo i tuoi dati passati e ti assegniamo i distintivi che hai già guadagnato, o preferisci ricominciare da oggi?</string>
+    <string name="calculate_retroactively">Calcola retroattivamente</string>
+    <string name="calculate_retroactively_desc">Assegna i distintivi in base alla tua cronologia completa — i cambi d\'acqua passati e i dati dei marimo verranno conteggiati.</string>
+    <string name="start_from_scratch">Ricomincia da zero</string>
+    <string name="start_from_scratch_desc">Guadagna distintivi solo da oggi in poi. L\'attività passata non verrà conteggiata.</string>
+    <string name="new_achievements_unlocked_balloon">Nuovi obiettivi sbloccati, clicca qui per scoprirli</string>
+    <string name="earned_26">Ottenuti (26)</string>
+    <string name="earned_label">Ottenuto</string>
+    <string name="_50_badges">/ %1$d obiettivi</string>
+    <string name="_26">26</string>
+    <string name="achievement_subtitle">Guadagna distintivi prendendoti cura dei tuoi marimo</string>
+    <string name="recalculate">Ricalcola</string>
+    <string name="reset_all">Resetta tutto</string>
+    <string name="ach_1" translatable="false">🗿</string>
+    <string name="ach_2" translatable="false">📊</string>
+    <string name="ach_3" translatable="false">📋</string>
+    <string name="ach_4" translatable="false">🌗</string>
+    <string name="ach_5" translatable="false">🎊</string>
+    <string name="ach_6" translatable="false">🌊</string>
+    <string name="ach_7" translatable="false">📅</string>
+    <string name="ach_8" translatable="false">📆</string>
+    <string name="ach_9" translatable="false">🌱</string>
+    <string name="ach_10" translatable="false">⭐</string>
+    <string name="ach_11" translatable="false">🎖️</string>
+    <string name="ach_12" translatable="false">🦅</string>
+    <string name="ach_13" translatable="false">🏅</string>
+    <string name="ach_14" translatable="false">🎯</string>
+    <string name="ach_15" translatable="false">🌟</string>
+    <string name="ach_16" translatable="false">📸</string>
+    <string name="ach_17" translatable="false">🤳</string>
+    <string name="ach_18" translatable="false">🖼️</string>
+    <string name="ach_19" translatable="false">📝</string>
+    <string name="ach_20" translatable="false">📔</string>
+    <string name="ach_21" translatable="false">📖</string>
+    <string name="ach_22" translatable="false">✅</string>
+    <string name="ach_23" translatable="false">🎳</string>
+    <string name="ach_24" translatable="false">⏰</string>
+    <string name="ach_25" translatable="false">🏷️</string>
+    <string name="ach_26" translatable="false">✏️</string>
+    <string name="ach_27" translatable="false">🖼️</string>
+    <string name="ach_28" translatable="false">🌅</string>
+    <string name="ach_29" translatable="false">🗒️</string>
+    <string name="ach_30" translatable="false">🐦</string>
+    <string name="ach_31" translatable="false">⚡</string>
+    <string name="ach_32" translatable="false">🦉</string>
+    <string name="ach_33" translatable="false">🎛️</string>
+    <string name="ach_34" translatable="false">💬</string>
+    <string name="ach_35" translatable="false">⚙️</string>
+    <string name="ach_36" translatable="false">👴</string>
+    <string name="ach_37" translatable="false">🌿</string>
+    <string name="ach_38" translatable="false">👫</string>
+    <string name="ach_39" translatable="false">🎶</string>
+    <string name="ach_40" translatable="false">🫙</string>
+    <string name="ach_41" translatable="false">🏆</string>
+    <string name="ach_42" translatable="false">🪖</string>
+    <string name="ach_43" translatable="false">👑</string>
+    <string name="ach_44" translatable="false">💧</string>
+    <string name="ach_45" translatable="false">🚿</string>
+    <string name="ach_46" translatable="false">🔄</string>
+    <string name="ach_47" translatable="false">💪</string>
+    <string name="ach_48" translatable="false">🧙</string>
+    <string name="ach_49" translatable="false">💯</string>
+    <string name="ach_50" translatable="false">🎖️</string>
+    <string name="locked_24">Bloccati (24)</string>
+    <string name="ach_desc_1">Aggiunto il tuo primo marimo alla collezione.</string>
+    <string name="ach_desc_2">Hai 2 marimo — ora hanno compagnia!</string>
+    <string name="ach_desc_3">3 marimo nella tua collezione.</string>
+    <string name="ach_desc_4">Stai facendo crescere la collezione — 5 marimo aggiunti!</string>
+    <string name="ach_desc_5">Wow, 10 marimo! Li ami davvero.</string>
+    <string name="ach_desc_6">20 marimo forti!</string>
+    <string name="ach_desc_7">50 marimo. Stai gestendo un impero.</string>
+    <string name="ach_desc_8">Registrato il tuo primo cambio d\'acqua. Il viaggio comincia!</string>
+    <string name="ach_desc_9">5 cambi d\'acqua registrati.</string>
+    <string name="ach_desc_10">Registrati 10 cambi d\'acqua in totale.</string>
+    <string name="ach_desc_11">25 cambi d\'acqua registrati. Stai creando un\'abitudine!</string>
+    <string name="ach_desc_12">50 cambi d\'acqua registrati. Sei un professionista!</string>
+    <string name="ach_desc_13">100 cambi d\'acqua! Assolutamente incredibile.</string>
+    <string name="ach_desc_14">200 cambi d\'acqua registrati. Leggendario.</string>
+    <string name="ach_desc_15">500 cambi d\'acqua. Sei l\'ultimo custode di marimo.</string>
+    <string name="ach_desc_16">Una intera settimana di cure marimo!</string>
+    <string name="ach_desc_17">Hai tenuto il passo con i cambi d\'acqua per un intero mese.</string>
+    <string name="ach_desc_18">Tre mesi di cure dedicate per i tuoi marimo!</string>
+    <string name="ach_desc_19">Sei mesi di cure costanti. Sei una leggenda.</string>
+    <string name="ach_desc_20">Un intero anno di cure marimo. Incredibile dedizione!</string>
+    <string name="ach_desc_21">Due anni interi di cure marimo. Veramente straordinario.</string>
+    <string name="ach_desc_22">Segnato il tuo primo traguardo speciale per il cambio d\'acqua.</string>
+    <string name="ach_desc_23">Segnati 5 traguardi speciali per il cambio d\'acqua.</string>
+    <string name="ach_desc_24">10 traguardi speciali per il cambio d\'acqua registrati!</string>
+    <string name="ach_desc_25">Caricata una foto durante la registrazione di un cambio d\'acqua.</string>
+    <string name="ach_desc_26">Caricate foto in 5 diverse registrazioni di cambio d\'acqua.</string>
+    <string name="ach_desc_27">20 registrazioni di cambio d\'acqua con foto. Un vero album di marimo!</string>
+    <string name="ach_desc_28">Aggiunte note a 5 diversi cambi d\'acqua.</string>
+    <string name="ach_desc_29">Aggiunte note a 20 cambi d\'acqua.</string>
+    <string name="ach_desc_30">Aggiunte note a 50 cambi d\'acqua. Un vero storico.</string>
+    <string name="ach_desc_31">Tutti i tuoi marimo sono aggiornati — nessuno in ritardo al momento!</string>
+    <string name="ach_desc_32">Registrati 5 cambi d\'acqua che erano in orario (non in ritardo).</string>
+    <string name="ach_desc_33">20 cambi d\'acqua puntuali. Come un orologio!</string>
+    <string name="ach_desc_34">Hai dato un nome al tuo marimo (non solo \'Marimo\').</string>
+    <string name="ach_desc_35">Nominati 3 marimo con nomi unici.</string>
+    <string name="ach_desc_36">Aggiunta una foto profilo a uno dei tuoi marimo.</string>
+    <string name="ach_desc_37">Aggiunte foto profilo a 5 marimo.</string>
+    <string name="ach_desc_38">Aggiunte note a uno dei tuoi marimo.</string>
+    <string name="ach_desc_39">Registrato un cambio d\'acqua più di 2 giorni prima della scadenza.</string>
+    <string name="ach_desc_40">Registrati 3 cambi d\'acqua nello stesso giorno.</string>
+    <string name="ach_desc_41">Registrati 10 cambi d\'acqua che erano in ritardo (lo hai fatto comunque!).</string>
+    <string name="ach_desc_42">Possiedi marimo con 3 diverse frequenze di cambio d\'acqua.</string>
+    <string name="ach_desc_43">Inviato un feedback per aiutare a migliorare l\'app.</string>
+    <string name="ach_desc_44">Personalizzate le impostazioni della tua dashboard.</string>
+    <string name="ach_desc_45">Uno dei tuoi marimo è nelle tue cure da oltre 6 mesi.</string>
+    <string name="ach_desc_46">Uno dei tuoi marimo è nelle tue cure da oltre un anno.</string>
+    <string name="ach_desc_47">Visitata la pagina delle Statistiche.</string>
+    <string name="ach_desc_48">Aggiunte note a 5 dei tuoi marimo.</string>
+    <string name="ach_desc_49">Guadagnati 25 obiettivi. Sei a metà della serie completa!</string>
+    <string name="ach_desc_50">Guadagnati tutti i 50 obiettivi. Sei un vero Maestro di Marimo!</string>
+    <string name="ach_desc_51">Aggiunta la tua prima decorazione al vaso di un marimo.</string>
+    <string name="ach_desc_52">Adornato 3 diversi vasi di marimo con decorazioni.</string>
+    <string name="ach_desc_53">Aggiunte 10 o più decorazioni in tutta la tua collezione.</string>
+    <string name="ach_tit_1">Primo Marimo</string>
+    <string name="ach_tit_2">Duo Dinamico</string>
+    <string name="ach_tit_3">Trio</string>
+    <string name="ach_tit_4">Collezionista</string>
+    <string name="ach_tit_5">Accumulatore di Marimo</string>
+    <string name="ach_tit_6">Esercito di Marimo</string>
+    <string name="ach_tit_7">Impero di Marimo</string>
+    <string name="ach_tit_8">Prima Goccia</string>
+    <string name="ach_tit_9">Per Iniziare</string>
+    <string name="ach_tit_10">Custode Costante</string>
+    <string name="ach_tit_11">Dedicato</string>
+    <string name="ach_tit_12">Mago dell\'Acqua</string>
+    <string name="ach_tit_13">Secolo di Cure</string>
+    <string name="ach_tit_14">Bicentenario</string>
+    <string name="ach_tit_15">Maestro dell\'Acqua</string>
+    <string name="ach_tit_16">Una Settimana</string>
+    <string name="ach_tit_17">Un Mese di Cure</string>
+    <string name="ach_tit_18">Tre Mesi Forti</string>
+    <string name="ach_tit_19">Eroe del Semestre</string>
+    <string name="ach_tit_20">Campione Annuale</string>
+    <string name="ach_tit_21">Veterano di Due Anni</string>
+    <string name="ach_tit_22">Segna Traguardi</string>
+    <string name="ach_tit_23">Cacciatore di Traguardi</string>
+    <string name="ach_tit_24">Maestro dei Traguardi</string>
+    <string name="ach_tit_25">Custode di Foto</string>
+    <string name="ach_tit_26">Fotografo</string>
+    <string name="ach_tit_27">Album Fotografico</string>
+    <string name="ach_tit_28">Prendi Appunti</string>
+    <string name="ach_tit_29">Custode del Diario</string>
+    <string name="ach_tit_30">Cronista</string>
+    <string name="ach_tit_31">Record Perfetto</string>
+    <string name="ach_tit_32">Sulla Cresta dell\'Onda</string>
+    <string name="ach_tit_33">Orologio Svizzero</string>
+    <string name="ach_tit_34">Creatore di Nomi</string>
+    <string name="ach_tit_35">Nome Creativo</string>
+    <string name="ach_tit_36">Foto Profilo</string>
+    <string name="ach_tit_37">Collezione Fotogenica</string>
+    <string name="ach_tit_38">Biografo di Marimo</string>
+    <string name="ach_tit_39">Mattiniero</string>
+    <string name="ach_tit_40">Cambio Rapido</string>
+    <string name="ach_tit_41">Gufo Notturno</string>
+    <string name="ach_tit_42">Maestro del Mix</string>
+    <string name="ach_tit_43">Donatore di Feedback</string>
+    <string name="ach_tit_44">Esploratore di Impostazioni</string>
+    <string name="ach_tit_45">Marimo Senior</string>
+    <string name="ach_tit_46">L\'Antico</string>
+    <string name="ach_tit_47">Nerd delle Statistiche</string>
+    <string name="ach_tit_48">Biografo di Marimo</string>
+    <string name="ach_tit_49">A Metà Strada</string>
+    <string name="ach_tit_50">Cacciatore di Obiettivi</string>
+    <string name="ach_tit_51">Tocco d\'interni</string>
+    <string name="ach_tit_52">Decoratore</string>
+    <string name="ach_tit_53">Interior Designer</string>
+
+    <string name="ach_type_marimo">marimo</string>
+    <string name="ach_type_marimos">marimo</string>
+    <string name="ach_type_waterchange">cambio d\'acqua</string>
+    <string name="ach_type_daysofcare">giorni di cura</string>
+    <string name="ach_type_monthsofcare">mesi di cura</string>
+    <string name="ach_type_milestone">traguardo</string>
+    <string name="ach_type_photo">foto</string>
+    <string name="ach_type_note">nota</string>
+    <string name="ach_type_name">nome</string>
+    <string name="ach_type_marimowithphoto">marimo con foto</string>
+    <string name="ach_type_logs">registri</string>
+
+    <string name="unit_type_marimo">marimo</string>
+    <string name="unit_type_marimos">marimo</string>
+    <string name="unit_type_logs">registri</string>
+    <string name="unit_type_milestones">traguardi</string>
+    <string name="unit_type_photo">foto</string>
+    <string name="unit_type_notedlogs">registri con note</string>
+    <string name="unit_type_months">mesi</string>
+    <string name="unit_type_days">giorni</string>
+    <string name="unit_type_uniquelynamed">nominati in modo unico</string>
+    <string name="unit_type_withphoto">con foto</string>
+    <string name="achievement_balloon">Man mano che aggiungi Marimo, te ne prendi cura ecc. ecc. potrai sbloccare obiettivi, visibili premendo su questo pulsante</string>
+    <string name="unit_type_water">cambio d\'acqua</string>
+    <string name="unit_type_marimonamed">marimo nominato</string>
+    <string name="unit_type_notewrite">nota scritta</string>
+    <string name="ach_des_1">Aggiungi un marimo per iniziare!</string>
+    <string name="ach_des_2">Aggiungi un secondo marimo — amano la compagnia!</string>
+    <string name="ach_des_3">Tre sono una folla — collezionane un altro!</string>
+    <string name="ach_des_4">Continua ad aggiungere fino a raggiungere 5 marimo.</string>
+    <string name="ach_des_5">Raddoppia la tua collezione a 10!</string>
+    <string name="ach_des_6">Hai bisogno di 20 marimo per un esercito.</string>
+    <string name="ach_des_7">50 marimo — la collezione definitiva.</string>
+    <string name="ach_des_8">Cambia l\'acqua a uno qualsiasi dei tuoi marimo.</string>
+    <string name="ach_des_9">5 cambi d\'acqua totali — continua così!</string>
+    <string name="ach_des_10">10 registri totali — stai creando un\'abitudine.</string>
+    <string name="ach_des_11">25 registri — la dedizione è la chiave!</string>
+    <string name="ach_des_12">50 cambi — sei un vero professionista!</string>
+    <string name="ach_des_13">Un secolo di cure — continua a registrare!</string>
+    <string name="ach_des_14">200 registri — custode leggendario!</string>
+    <string name="ach_des_15">500 registri — il custode definitivo.</string>
+    <string name="ach_des_16">Prenditi cura dei tuoi marimo per 7 giorni.</string>
+    <string name="ach_des_17">Un mese di cure costanti!</string>
+    <string name="ach_des_18">Tre mesi di dedizione richiesti.</string>
+    <string name="ach_des_19">Mezzo anno di cure per i marimo!</string>
+    <string name="ach_des_20">Un intero anno di dedizione — incredibile!</string>
+    <string name="ach_des_21">Due anni interi di cure per i marimo!</string>
+    <string name="ach_des_22">Segna un qualsiasi cambio d\'acqua come traguardo!</string>
+    <string name="ach_des_23">Segna 5 cambi d\'acqua come traguardi.</string>
+    <string name="ach_des_24">10 registri di traguardi — sei un collezionista!</string>
+    <string name="ach_des_25">Carica una foto durante un qualsiasi registro di cambio d\'acqua.</string>
+    <string name="ach_des_26">Richiesti 5 registri con foto.</string>
+    <string name="ach_des_27">20 registri con foto — un vero album!</string>
+    <string name="ach_des_28">Scrivi note su 5 registri di cambio d\'acqua.</string>
+    <string name="ach_des_29">20 registri con note — un vero diario!</string>
+    <string name="ach_des_30">50 registri di note — sei uno storico!</string>
+    <string name="ach_des_31">Assicurati che nessun marimo sia in ritardo in questo momento.</string>
+    <string name="ach_des_32">Registra 5 cambi d\'acqua per qualificarti.</string>
+    <string name="ach_des_33">20 registri puntuali — come un orologio!</string>
+    <string name="ach_des_34">Dai al tuo marimo un nome creativo!</string>
+    <string name="ach_des_35">Dai un nome unico a 3 marimo diversi.</string>
+    <string name="ach_des_36">Aggiungi una foto profilo a qualsiasi marimo.</string>
+    <string name="ach_des_37">Dai a 5 marimo una foto profilo!</string>
+    <string name="ach_des_38">Scrivi una nota sul profilo di qualsiasi marimo.</string>
+    <string name="ach_des_39">Cambia l\'acqua 2+ giorni prima della scadenza.</string>
+    <string name="ach_des_40">Registra 3 cambi d\'acqua in un giorno!</string>
+    <string name="ach_des_41">10 registri in ritardo — ti sei comunque presentato!</string>
+    <string name="ach_des_42">Imposta 3 diverse frequenze di cambio d\'acqua.</string>
+    <string name="ach_des_43">Visita la pagina Feedback e invialo!</string>
+    <string name="ach_des_44">Personalizza le tue impostazioni e salva.</string>
+    <string name="ach_des_45">Tieni un marimo per 6 mesi!</string>
+    <string name="ach_des_46">Un marimo di oltre 1 anno nelle tue cure!</string>
+    <string name="ach_des_47">Basta visitare la pagina delle Statistiche!</string>
+    <string name="ach_des_48">Scrivi note su 5 marimo.</string>
+    <string name="ach_des_49">Ottieni 25 obiettivi per raggiungere la metà.</string>
+    <string name="ach_des_50">Ottieni ogni singolo obiettivo — l\'obiettivo finale!</string>
+    <string name="ach_des_51">Aggiungi almeno una decorazione (ghiaia, roccia, cristallo, ecc.) al vaso di qualsiasi marimo tramite il modulo Aggiungi o Modifica.</string>
+    <string name="ach_des_52">Aggiungi almeno una decorazione a 3 diversi marimo nella tua collezione.</string>
+    <string name="ach_des_53">Aggiungi decorazioni ai tuoi marimo fino a quando il conteggio totale in tutta la tua collezione raggiunge 10.</string>
+
     <string-array name="marimo_frequencies">
         <item>Ogni 7 giorni (settimanale)</item>
         <item>Ogni 10 giorni</item>
@@ -343,4 +600,126 @@
         <item>Pianta acquatica</item>
         <item>Altro</item>
     </string-array>
+    <string-array name="decoration_color_names">
+        <!-- Greyscale Names -->
+        <item>Nessuno</item>
+        <item>Bianco</item>
+        <item>Grigio 50</item>
+        <item>Grigio 100</item>
+        <item>Grigio 200</item>
+        <item>Grigio 300</item>
+        <item>Grigio 400</item>
+        <item>Grigio 500</item>
+        <item>Grigio 600</item>
+        <item>Grigio 700</item>
+        <item>Nero</item>
+        <!-- Grid Names -->
+        <item>Blu 900</item>
+        <item>Indaco 900</item>
+        <item>Viola 900</item>
+        <item>Rosa 900</item>
+        <item>Rosso 900</item>
+        <item>Arancione scuro 900</item>
+        <item>Arancione 900</item>
+        <item>Ambra 900</item>
+        <item>Giallo 900</item>
+        <item>Lime 900</item>
+        <item>Verde 900</item>
+        <item>Blu 800</item>
+        <item>Indaco 800</item>
+        <item>Viola 800</item>
+        <item>Rosa 800</item>
+        <item>Rosso 800</item>
+        <item>Arancione scuro 800</item>
+        <item>Arancione 800</item>
+        <item>Ambra 800</item>
+        <item>Giallo 800</item>
+        <item>Lime 800</item>
+        <item>Verde 800</item>
+        <item>Blu 700</item>
+        <item>Indaco 700</item>
+        <item>Viola 700</item>
+        <item>Rosa 700</item>
+        <item>Rosso 700</item>
+        <item>Arancione scuro 700</item>
+        <item>Arancione 700</item>
+        <item>Ambra 700</item>
+        <item>Giallo 700</item>
+        <item>Lime 700</item>
+        <item>Verde 700</item>
+        <item>Blu 600</item>
+        <item>Indaco 600</item>
+        <item>Viola 600</item>
+        <item>Rosa 600</item>
+        <item>Rosso 600</item>
+        <item>Arancione scuro 600</item>
+        <item>Arancione 600</item>
+        <item>Ambra 600</item>
+        <item>Giallo 600</item>
+        <item>Lime 600</item>
+        <item>Verde 600</item>
+        <item>Blu 500</item>
+        <item>Indaco 500</item>
+        <item>Viola 500</item>
+        <item>Rosa 500</item>
+        <item>Rosso 500</item>
+        <item>Arancione scuro 500</item>
+        <item>Arancione 500</item>
+        <item>Ambra 500</item>
+        <item>Giallo 500</item>
+        <item>Lime 500</item>
+        <item>Verde 500</item>
+        <item>Blu 400</item>
+        <item>Indaco 400</item>
+        <item>Viola 400</item>
+        <item>Rosa 400</item>
+        <item>Rosso 400</item>
+        <item>Arancione scuro 400</item>
+        <item>Arancione 400</item>
+        <item>Ambra 400</item>
+        <item>Giallo 400</item>
+        <item>Lime 400</item>
+        <item>Verde 400</item>
+        <item>Blu 300</item>
+        <item>Indaco 300</item>
+        <item>Viola 300</item>
+        <item>Rosa 300</item>
+        <item>Rosso 300</item>
+        <item>Arancione scuro 300</item>
+        <item>Arancione 300</item>
+        <item>Ambra 300</item>
+        <item>Giallo 300</item>
+        <item>Lime 300</item>
+        <item>Verde 300</item>
+        <item>Blu 200</item>
+        <item>Indaco 200</item>
+        <item>Viola 200</item>
+        <item>Rosa 200</item>
+        <item>Rosso 200</item>
+        <item>Arancione scuro 200</item>
+        <item>Arancione 200</item>
+        <item>Ambra 200</item>
+        <item>Giallo 200</item>
+        <item>Lime 200</item>
+        <item>Verde 200</item>
+        <item>Blu 100</item>
+        <item>Indaco 100</item>
+        <item>Viola 100</item>
+        <item>Rosa 100</item>
+        <item>Rosso 100</item>
+        <item>Arancione scuro 100</item>
+        <item>Arancione 100</item>
+        <item>Ambra 100</item>
+        <item>Giallo 100</item>
+        <item>Lime 100</item>
+        <item>Verde 100</item>
+    </string-array>
+    <string name="achievement_earned">Obiettivo Ottenuto!</string>
+    <string name="great">Ottimo!</string>
+    <string name="_100">100%</string>
+    <string name="achievement_unlocked">Obiettivo sbloccato!</string>
+    <string name="decorations">Decorazioni</string>
+    <string name="pot_decorations">Decorazioni vaso</string>
+    <string name="_total">totale</string>
+    <string name="new_stats_2">Nuova statistica aggiunta, riguarda le decorazioni dei vasi dei tuoi Marimo</string>
 </resources>

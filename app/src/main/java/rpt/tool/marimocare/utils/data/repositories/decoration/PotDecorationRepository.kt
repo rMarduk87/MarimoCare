@@ -1,14 +1,18 @@
 package rpt.tool.marimocare.utils.data.repositories.decoration
 
-import rpt.tool.marimocare.utils.data.appmodels.decoration.PotDecoration
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.map
+import rpt.tool.marimocare.utils.data.appmodels.PotDecoration
 import rpt.tool.marimocare.utils.data.database.dao.decoration.PotDecorationDao
-import rpt.tool.marimocare.utils.data.database.mappers.decoration.PotDecorationMappers
 
 class PotDecorationRepository(private val potDecorationDao: PotDecorationDao) {
 
+    val allPotDecorations: LiveData<List<PotDecoration>> =
+        potDecorationDao.getDecorations().map { it -> it.map { it.map() } }
+
     fun getDecorationsForMarimo(marimoCode: Int): List<PotDecoration> {
         return potDecorationDao.getDecorationsForMarimo(marimoCode).map {
-            PotDecorationMappers.fromModel(it)
+            it.toAppModel()
         }
     }
 
@@ -16,12 +20,19 @@ class PotDecorationRepository(private val potDecorationDao: PotDecorationDao) {
         potDecorationDao.deleteDecorationsForMarimo(marimoCode)
         if (decorations.isNotEmpty()) {
             potDecorationDao.insertAll(decorations.map {
-                PotDecorationMappers.toModel(it, marimoCode)
+                it.marimoCode = marimoCode
+                it.toDBModel()
             })
         }
     }
 
     fun deleteDecorationsForMarimo(marimoCode: Int) {
         potDecorationDao.deleteDecorationsForMarimo(marimoCode)
+    }
+
+    fun getAllDecorations(): List<PotDecoration> {
+        return potDecorationDao.getAllDecorations().map {
+            it.toAppModel()
+        }
     }
 }

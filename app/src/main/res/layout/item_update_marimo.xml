@@ -53,7 +53,7 @@
             android:id="@+id/txtLastChange"
             android:layout_marginTop="4dp"
             android:textSize="12sp"
-            android:textColor="@color/marimo_text_dim"
+            android:textColor="@color/marimo_gray_666"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>

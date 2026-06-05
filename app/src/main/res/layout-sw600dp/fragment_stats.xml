@@ -155,6 +155,11 @@
                     android:layout_height="wrap_content"
                     android:text="@string/compare"
                     android:icon="@android:drawable/ic_menu_sort_by_size"/>
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/decorations"
+                    android:icon="@drawable/ic_decorations"/>
             </com.google.android.material.tabs.TabLayout>
 
             <FrameLayout
@@ -208,6 +213,19 @@
                     <include
                         android:id="@+id/includeMC"
                         layout="@layout/marimo_compare" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tabContentDecorations"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <include
+                        android:id="@+id/includePD"
+                        layout="@layout/pot_decoration" />
 
                 </LinearLayout>
 

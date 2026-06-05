@@ -7,7 +7,7 @@
     <!-- Corpo del calendario -->
     <path
         android:fillColor="@android:color/transparent"
-        android:strokeColor="@color/text_body"
+        android:strokeColor="@color/marimo_gray_6B7280"
         android:strokeWidth="2"
         android:strokeLineCap="round"
         android:strokeLineJoin="round"
@@ -16,7 +16,7 @@
     <!-- Ganci superiori -->
     <path
         android:fillColor="@android:color/transparent"
-        android:strokeColor="@color/text_body"
+        android:strokeColor="@color/marimo_gray_6B7280"
         android:strokeWidth="2"
         android:strokeLineCap="round"
         android:pathData="M8,3v4M16,3v4" />
