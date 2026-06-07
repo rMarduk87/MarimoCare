@@ -20,6 +20,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.core.content.FileProvider
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.graphics.toColorInt
@@ -86,6 +87,7 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
         marimoCode = args.MarimoCode
 
         addDataToMarimo(marimoCode)
+        setupGuide()
 
         binding.include.appLogo.setOnClickListener {
             safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
@@ -193,6 +195,26 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
                         includeHealthGraph(marimoHealths)
                     }
                 }
+            }
+        }
+    }
+
+    private fun setupGuide() {
+        val guideBinding = binding.include5
+
+        val sections = listOf(
+            Triple(guideBinding.cardWater, guideBinding.contentWater, guideBinding.arrowWater),
+            Triple(guideBinding.cardLight, guideBinding.contentLight, guideBinding.arrowLight),
+            Triple(guideBinding.cardTemp, guideBinding.contentTemp, guideBinding.arrowTemp),
+            Triple(guideBinding.cardGrowth, guideBinding.contentGrowth, guideBinding.arrowGrowth),
+            Triple(guideBinding.cardTrouble, guideBinding.contentTrouble, guideBinding.arrowTrouble),
+            Triple(guideBinding.cardFacts, guideBinding.contentFacts, guideBinding.arrowFacts)
+        )
+
+        sections.forEach { (card, content, arrow) ->
+            card.setOnClickListener {
+                content.isVisible = !content.isVisible
+                arrow.animate().rotation(if (content.isVisible) 180f else 0f).setDuration(200).start()
             }
         }
     }

@@ -846,4 +846,78 @@ Please note: the final date retrieved will be the same as the app release date, 
     <string name="pot_decorations">Pot Decorations</string>
     <string name="_total">total</string>
     <string name="new_stats_2">New statistic added, regarding the decorations of your Marimo\'s vases/jars</string>
+    <string name="marimo_guide"><![CDATA[Marimo Care Guide & Facts]]></string>
+    <string name="happy_marimo">Everything you need to know about keeping your marimo happy</string>
+
+    <!-- Water Care -->
+    <string name="guide_water_title">Water Care</string>
+    <string name="guide_water_type_title">WATER TYPE</string>
+    <string name="guide_water_type_desc">Tap water (let it sit 24h to dechlorinate) or filtered water. Avoid distilled water — it lacks minerals marimos need.</string>
+    <string name="guide_water_freq_title">CHANGE FREQUENCY</string>
+    <string name="guide_water_freq_desc">Every 1–2 weeks. In summer or warm rooms, change more often. Cloudy water = change immediately.</string>
+    <string name="guide_water_clean_title">HOW TO CLEAN</string>
+    <string name="guide_water_clean_desc">Gently squeeze the marimo under running water to flush out debris. Reshape it into a ball after cleaning.</string>
+    <string name="guide_water_salinity_title">SALINITY</string>
+    <string name="guide_water_salinity_desc">A small pinch of aquarium salt once a month can boost health and give a subtle ocean feel — totally optional.</string>
+
+    <!-- Light Requirements -->
+    <string name="guide_light_title">Light Requirements</string>
+    <string name="guide_light_ideal_title">IDEAL LIGHT</string>
+    <string name="guide_light_ideal_desc">Indirect, low to medium light. A north-facing window or a spot a few feet from a window is perfect.</string>
+    <string name="guide_light_avoid_title">AVOID</string>
+    <string name="guide_light_avoid_desc">Direct sunlight — it turns marimos brown and can cause algae overgrowth. Even a few hours of direct sun can be harmful.</string>
+    <string name="guide_light_artificial_title">ARTIFICIAL LIGHT</string>
+    <string name="guide_light_artificial_desc">Fluorescent or LED grow lights on a 12h on/off cycle work great, especially in rooms with little natural light.</string>
+    <string name="guide_light_signs_title">SIGNS OF TOO MUCH LIGHT</string>
+    <string name="guide_light_signs_desc">Brown patches, bleaching, or slimy texture. Move to a shadier spot immediately.</string>
+
+    <!-- Temperature -->
+    <string name="guide_temp_title">Temperature</string>
+    <string name="guide_temp_range_title">OPTIMAL RANGE</string>
+    <string name="guide_temp_range_desc">15°C – 25°C (59°F – 77°F). Marimos thrive in cool-to-room temperature water.</string>
+    <string name="guide_temp_summer_title">SUMMER CARE</string>
+    <string name="guide_temp_summer_desc">Move marimos to the coolest room. Add a few ice cubes to the water occasionally during heat waves.</string>
+    <string name="guide_temp_cold_title">COLD TOLERANCE</string>
+    <string name="guide_temp_cold_desc">They tolerate cool water well — marimos naturally live in cold lakes. Cooler water holds more oxygen, which they love.</string>
+    <string name="guide_temp_avoid_title">AVOID</string>
+    <string name="guide_temp_avoid_desc">Temperatures above 28°C (82°F) for prolonged periods — this can cause deterioration and smell.</string>
+
+    <!-- Growth & Biology -->
+    <string name="guide_growth_title">Growth &amp; Biology</string>
+    <string name="guide_growth_rate_title">GROWTH RATE</string>
+    <string name="guide_growth_rate_desc">Extremely slow — about 5 mm per year. A marimo 5 cm across may already be 10+ years old.</string>
+    <string name="guide_growth_what_title">WHAT IS A MARIMO?</string>
+    <string name="guide_growth_what_desc">A marimo (Aegagropila linnaei) is a rare form of filamentous green algae that naturally grows into a sphere shape due to lake currents.</string>
+    <string name="guide_growth_habitat_title">NATIVE HABITAT</string>
+    <string name="guide_growth_habitat_desc">Found naturally in Lake Akan (Japan) and Lake Mývatn (Iceland). They\'re protected in Japan and considered a national treasure.</string>
+    <string name="guide_growth_propagation_title">PROPAGATION</string>
+    <string name="guide_growth_propagation_desc">When a marimo gets large enough, it can be split by hand into two pieces. Reshape each half into a ball — both will grow independently.</string>
+    <string name="guide_growth_lifespan_title">LIFESPAN</string>
+    <string name="guide_growth_lifespan_desc">With proper care, marimos can live for hundreds of years. The oldest known natural marimos are estimated at over 200 years old.</string>
+
+    <!-- Troubleshooting -->
+    <string name="guide_trouble_title">Troubleshooting</string>
+    <string name="guide_trouble_brown_title">TURNING BROWN</string>
+    <string name="guide_trouble_brown_desc">Usually caused by too much direct light or very warm water. Move to a cooler, shadier spot and do a water change.</string>
+    <string name="guide_trouble_shape_title">LOSING ITS SHAPE</string>
+    <string name="guide_trouble_shape_desc">Gently roll the marimo between your palms under cool water to reshape it into a ball. Do this after each water change.</string>
+    <string name="guide_trouble_sinking_title">SINKING</string>
+    <string name="guide_trouble_sinking_desc">Healthy marimos sometimes sink — that\'s normal! They may float after photosynthesizing (producing oxygen bubbles). Sinking doesn\'t mean it\'s unhealthy.</string>
+    <string name="guide_trouble_smelly_title">SMELLY WATER</string>
+    <string name="guide_trouble_smelly_desc">Change the water immediately. This usually means bacterial build-up. Clean the container and the marimo thoroughly.</string>
+    <string name="guide_trouble_white_title">TURNING WHITE/YELLOW</string>
+    <string name="guide_trouble_white_desc">Often a sign of insufficient light or rotting inside. Gently squeeze to check — if it smells, you may need to trim away dead parts.</string>
+
+    <!-- Fun Facts -->
+    <string name="guide_facts_title">Fun Facts</string>
+    <string name="guide_facts_culture_title">CULTURAL SIGNIFICANCE</string>
+    <string name="guide_facts_culture_desc">In Japan, marimos are called \'Marimo\' (毬藻) meaning \'ball seaweed\'. The Ainu people of Hokkaido consider them a symbol of love and good luck.</string>
+    <string name="guide_facts_photo_title">PHOTOSYNTHESIS</string>
+    <string name="guide_facts_photo_desc">You can sometimes see tiny oxygen bubbles on the surface — that\'s your marimo actively photosynthesizing! A great sign of health.</string>
+    <string name="guide_facts_social_title">THEY\'RE SOCIAL</string>
+    <string name="guide_facts_social_desc">Marimos can be kept together in the same container. They don\'t compete and can even coexist with small fish or shrimp.</string>
+    <string name="guide_facts_soil_title">NO SOIL NEEDED</string>
+    <string name="guide_facts_soil_desc">Unlike most plants, marimos don\'t root in soil. They get all nutrients from the water around them.</string>
+    <string name="guide_facts_festival_title">FESTIVAL</string>
+    <string name="guide_facts_festival_desc">Lake Akan in Japan holds an annual Marimo Festival (October) where locals float marimos in the lake to protect them.</string>
 </resources>

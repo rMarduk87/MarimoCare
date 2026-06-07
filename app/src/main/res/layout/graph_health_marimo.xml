@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="18dp"
-    app:cardElevation="4dp"
+    app:cardElevation="0dp"
     app:strokeColor="@color/light_green"
     app:strokeWidth="1dp"
     android:backgroundTint="@color/marimo_bg_light">

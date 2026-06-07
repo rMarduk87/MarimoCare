@@ -722,4 +722,78 @@
     <string name="pot_decorations">화분 장식</string>
     <string name="_total">총</string>
     <string name="new_stats_2">새로운 통계가 추가되었습니다. 마리모 그릇 장식에 관한 내용입니다</string>
+    <string name="marimo_guide"><![CDATA[마리모 관리 가이드 및 상식]]></string>
+    <string name="happy_marimo">마리모를 행복하게 키우기 위해 알아야 할 모든 것</string>
+
+    <!-- Water Care -->
+    <string name="guide_water_title">물 관리</string>
+    <string name="guide_water_type_title">물 종류</string>
+    <string name="guide_water_type_desc">수돗물(염소 제거를 위해 24시간 방치) 또는 여과수. 증류수는 마리모에게 필요한 미네랄이 부족하므로 피하십시오.</string>
+    <string name="guide_water_freq_title">물 갈아주기 주기</string>
+    <string name="guide_water_freq_desc">1~2주마다. 여름철이나 따뜻한 방에서는 더 자주 갈아주세요. 물이 탁해지면 즉시 갈아주어야 합니다.</string>
+    <string name="guide_water_clean_title">세척 방법</string>
+    <string name="guide_water_clean_desc">흐르는 물에 마리모를 가볍게 짜서 불순물을 씻어냅니다. 세척 후에는 다시 둥근 모양으로 잡아주세요.</string>
+    <string name="guide_water_salinity_title">염분</string>
+    <string name="guide_water_salinity_desc">한 달에 한 번 소량의 천일염을 넣어주면 건강에 도움이 되며 은은한 바다 느낌을 줍니다(선택 사항).</string>
+
+    <!-- Light Requirements -->
+    <string name="guide_light_title">빛 조건</string>
+    <string name="guide_light_ideal_title">이상적인 빛</string>
+    <string name="guide_light_ideal_desc">간접적이고 낮거나 중간 정도의 빛. 북향 창가나 창문에서 몇 미터 떨어진 곳이 적당합니다.</string>
+    <string name="guide_light_avoid_title">주의사항</string>
+    <string name="guide_light_avoid_desc">직사광선: 마리모를 갈색으로 변하게 하거나 이끼가 과도하게 자라게 할 수 있습니다. 몇 시간의 직사광선도 해로울 수 있습니다.</string>
+    <string name="guide_light_artificial_title">인공 조명</string>
+    <string name="guide_light_artificial_desc">자연광이 부족한 방에서는 12시간 주기의 형광등이나 LED 식물 등도 효과적입니다.</string>
+    <string name="guide_light_signs_title">빛이 과할 때의 징후</string>
+    <string name="guide_light_signs_desc">갈색 반점, 탈색 또는 끈적이는 질감. 발견 즉시 그늘진 곳으로 옮겨주세요.</string>
+
+    <!-- Temperature -->
+    <string name="guide_temp_title">온도</string>
+    <string name="guide_temp_range_title">최적 범위</string>
+    <string name="guide_temp_range_desc">15°C – 25°C. 마리모는 시원하거나 실온 정도의 물에서 잘 자랍니다.</string>
+    <string name="guide_temp_summer_title">여름철 관리</string>
+    <string name="guide_temp_summer_desc">가장 시원한 방으로 옮겨주세요. 폭염 시에는 물에 얼음을 몇 개 넣어주는 것도 좋습니다.</string>
+    <string name="guide_temp_cold_title">추위 내성</string>
+    <string name="guide_temp_cold_desc">시원한 물에 강합니다. 마리모는 원래 차가운 호수에 삽니다. 찬물일수록 산소가 많아 마리모가 좋아합니다.</string>
+    <string name="guide_temp_avoid_title">주의사항</string>
+    <string name="guide_temp_avoid_desc">28°C 이상의 온도에 장시간 노출되면 상태가 악화되거나 냄새가 날 수 있습니다.</string>
+
+    <!-- Growth & Biology -->
+    <string name="guide_growth_title">성장 및 생태</string>
+    <string name="guide_growth_rate_title">성장 속도</string>
+    <string name="guide_growth_rate_desc">매우 느립니다(연간 약 5mm). 지름 5cm의 마리모는 이미 10년 이상 되었을 가능성이 높습니다.</string>
+    <string name="guide_growth_what_title">마리모란?</string>
+    <string name="guide_growth_what_desc">마리모(Aegagropila linnaei)는 호수의 물살에 의해 자연스럽게 구형으로 자라는 희귀한 사상 녹조류의 일종입니다.</string>
+    <string name="guide_growth_habitat_title">자생지</string>
+    <string name="guide_growth_habitat_desc">일본의 아칸 호수와 아이슬란드의 미바튼 호수에서 자생합니다. 일본에서는 국가 천연기념물로 보호받고 있습니다.</string>
+    <string name="guide_growth_propagation_title">번식</string>
+    <string name="guide_growth_propagation_desc">마리모가 충분히 커지면 손으로 두 개로 나눌 수 있습니다. 각각을 둥근 모양으로 잡아주면 독립적으로 자랍니다.</string>
+    <string name="guide_growth_lifespan_title">수명</string>
+    <string name="guide_growth_lifespan_desc">적절히 관리하면 수백 년 동안 살 수 있습니다. 알려진 가장 오래된 자생 마리모는 200년 이상으로 추정됩니다.</string>
+
+    <!-- Troubleshooting -->
+    <string name="guide_trouble_title">문제 해결</string>
+    <string name="guide_trouble_brown_title">갈색으로 변함</string>
+    <string name="guide_trouble_brown_desc">주로 직사광선이 너무 강하거나 물 온도가 높을 때 발생합니다. 시원한 그늘로 옮기고 물을 갈아주세요.</string>
+    <string name="guide_trouble_shape_title">모양 변형</string>
+    <string name="guide_trouble_shape_desc">물 갈아줄 때 찬물 속에서 손바닥으로 부드럽게 굴려 둥근 모양을 다시 잡아주세요.</string>
+    <string name="guide_trouble_sinking_title">가라앉음</string>
+    <string name="guide_trouble_sinking_desc">건강한 마리모도 가라앉는 것은 정상입니다! 광합성(산소 방울 발생) 후에 떠오를 수도 있습니다. 가라앉아 있다고 해서 건강하지 않은 것은 아닙니다.</string>
+    <string name="guide_trouble_smelly_title">물 냄새</string>
+    <string name="guide_trouble_smelly_desc">즉시 물을 갈아주세요. 보통 박테리아 번식을 의미합니다. 용기와 마리모를 깨끗이 씻어주세요.</string>
+    <string name="guide_trouble_white_title">흰색/노란색으로 변함</string>
+    <string name="guide_trouble_white_desc">빛이 부족하거나 내부가 썩고 있다는 신호일 수 있습니다. 살짝 짜서 확인해보고 냄새가 나면 죽은 부분을 잘라내야 할 수도 있습니다.</string>
+
+    <!-- Fun Facts -->
+    <string name="guide_facts_title">재미있는 상식</string>
+    <string name="guide_facts_culture_title">문화적 의미</string>
+    <string name="guide_facts_culture_desc">일본에서는 \'마리모(毬藻)\'라고 부르며, 홋카이도의 아이누 족은 사랑과 행운의 상징으로 여깁니다.</string>
+    <string name="guide_facts_photo_title">광합성</string>
+    <string name="guide_facts_photo_desc">표면에 작은 산소 방울이 보일 수 있습니다. 마리모가 활발하게 광합성을 하고 있다는 건강한 증거입니다!</string>
+    <string name="guide_facts_social_title">사회적인 친구</string>
+    <string name="guide_facts_social_desc">마리모들은 한 용기에서 함께 키울 수 있습니다. 서로 경쟁하지 않으며 작은 물고기나 새우와도 잘 지냅니다.</string>
+    <string name="guide_facts_soil_title">흙이 필요 없음</string>
+    <string name="guide_facts_soil_desc">대부분의 식물과 달리 마리모는 흙에 뿌리를 내리지 않습니다. 주변의 물에서 모든 영양분을 흡수합니다.</string>
+    <string name="guide_facts_festival_title">축제</string>
+    <string name="guide_facts_festival_desc">일본 아칸 호수에서는 매년 10월에 마리모를 호수로 돌려보내며 보호를 기원하는 \'마리모 축제\'가 열립니다.</string>
 </resources>

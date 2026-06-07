@@ -722,4 +722,78 @@
     <string name="pot_decorations">Decorazioni vaso</string>
     <string name="_total">totale</string>
     <string name="new_stats_2">Nuova statistica aggiunta, riguarda le decorazioni dei vasi dei tuoi Marimo</string>
+    <string name="marimo_guide"><![CDATA[Guida e fatti sulla cura dei Marimo]]></string>
+    <string name="happy_marimo">Tutto quello che devi sapere per mantenere felice il tuo marimo</string>
+
+    <!-- Water Care -->
+    <string name="guide_water_title">Cura dell\'acqua</string>
+    <string name="guide_water_type_title">TIPO DI ACQUA</string>
+    <string name="guide_water_type_desc">Acqua del rubinetto (lasciala riposare 24 ore per declorarla) o acqua filtrata. Evita l\'acqua distillata: è priva dei minerali di cui i marimo hanno bisogno.</string>
+    <string name="guide_water_freq_title">FREQUENZA DEI CAMBI</string>
+    <string name="guide_water_freq_desc">Ogni 1–2 settimane. In estate o in stanze calde, cambia l\'acqua più spesso. Acqua torbida = cambia immediatamente.</string>
+    <string name="guide_water_clean_title">COME PULIRE</string>
+    <string name="guide_water_clean_desc">Strizza delicatamente il marimo sotto l\'acqua corrente per eliminare i detriti. Ridagli la forma a palla dopo la pulizia.</string>
+    <string name="guide_water_salinity_title">SALINITÀ</string>
+    <string name="guide_water_salinity_desc">Un piccolo pizzico di sale per acquari una volta al mese può migliorare la salute e dare una sottile sensazione oceanica — totalmente facoltativo.</string>
+
+    <!-- Light Requirements -->
+    <string name="guide_light_title">Requisiti di luce</string>
+    <string name="guide_light_ideal_title">LUCE IDEALE</string>
+    <string name="guide_light_ideal_desc">Luce indiretta, da bassa a media. Una finestra rivolta a nord o un punto a pochi metri da una finestra sono perfetti.</string>
+    <string name="guide_light_avoid_title">EVITA</string>
+    <string name="guide_light_avoid_desc">Luce solare diretta: rende i marimo marroni e può causare una crescita eccessiva di alghe. Anche poche ore di sole diretto possono essere dannose.</string>
+    <string name="guide_light_artificial_title">LUCE ARTIFICIALE</string>
+    <string name="guide_light_artificial_desc">Le lampade fluorescenti o a LED con un ciclo di 12 ore acceso/spento funzionano alla grande, specialmente in stanze con poca luce naturale.</string>
+    <string name="guide_light_signs_title">SEGNI DI TROPPA LUCE</string>
+    <string name="guide_light_signs_desc">Macchie marroni, sbiancamento o consistenza viscida. Sposta immediatamente in un punto più ombreggiato.</string>
+
+    <!-- Temperature -->
+    <string name="guide_temp_title">Temperatura</string>
+    <string name="guide_temp_range_title">RANGE OTTIMALE</string>
+    <string name="guide_temp_range_desc">15°C – 25°C. I marimo prosperano in acqua fresca o a temperatura ambiente.</string>
+    <string name="guide_temp_summer_title">CURA ESTIVA</string>
+    <string name="guide_temp_summer_desc">Sposta i marimo nella stanza più fresca. Aggiungi occasionalmente qualche cubetto di ghiaccio all\'acqua durante le ondate di calore.</string>
+    <string name="guide_temp_cold_title">TOLLERANZA AL FREDDO</string>
+    <string name="guide_temp_cold_desc">Tollerano bene l\'acqua fresca — i marimo vivono naturalmente in laghi freddi. L\'acqua più fredda trattiene più ossigeno, che loro amano.</string>
+    <string name="guide_temp_avoid_title">EVITA</string>
+    <string name="guide_temp_avoid_desc">Temperature superiori a 28°C per periodi prolungati — questo può causare deterioramento e cattivo odore.</string>
+
+    <!-- Growth & Biology -->
+    <string name="guide_growth_title">Crescita e Biologia</string>
+    <string name="guide_growth_rate_title">TASSO DI CRESCITA</string>
+    <string name="guide_growth_rate_desc">Estremamente lento — circa 5 mm all\'anno. Un marimo di 5 cm di diametro può avere già più di 10 anni.</string>
+    <string name="guide_growth_what_title">COS\'È UN MARIMO?</string>
+    <string name="guide_growth_what_desc">Un marimo (Aegagropila linnaei) è una rara forma di alga verde filamentosa che cresce naturalmente in forma sferica a causa delle correnti lacustri.</string>
+    <string name="guide_growth_habitat_title">HABITAT NATURALE</string>
+    <string name="guide_growth_habitat_desc">Trovati naturalmente nel lago Akan (Giappone) e nel lago Mývatn (Islanda). Sono protetti in Giappone e considerati un tesoro nazionale.</string>
+    <string name="guide_growth_propagation_title">PROPAGAZIONE</string>
+    <string name="guide_growth_propagation_desc">Quando un marimo diventa abbastanza grande, può essere diviso a mano in due pezzi. Ridai a ogni metà la forma a palla — entrambe cresceranno in modo indipendente.</string>
+    <string name="guide_growth_lifespan_title">DURATA DELLA VITA</string>
+    <string name="guide_growth_lifespan_desc">Con le cure adeguate, i marimo possono vivere per centinaia di anni. I più antichi marimo naturali conosciuti hanno un\'età stimata di oltre 200 anni.</string>
+
+    <!-- Troubleshooting -->
+    <string name="guide_trouble_title">Risoluzione dei problemi</string>
+    <string name="guide_trouble_brown_title">DIVENTA MARRONE</string>
+    <string name="guide_trouble_brown_desc">Solitamente causato da troppa luce diretta o acqua molto calda. Sposta in un punto più fresco e ombreggiato e fai un cambio d\'acqua.</string>
+    <string name="guide_trouble_shape_title">PERDITA DELLA FORMA</string>
+    <string name="guide_trouble_shape_desc">Arrotola delicatamente il marimo tra i palmi delle mani sotto l\'acqua fresca per ridargli la forma a palla. Farlo dopo ogni cambio d\'acqua.</string>
+    <string name="guide_trouble_sinking_title">AFFONDAMENTO</string>
+    <string name="guide_trouble_sinking_desc">I marimo sani a volte affondano — è normale! Possono galleggiare dopo la fotosintesi (producendo bolle di ossigeno). Affondare non significa che non sia sano.</string>
+    <string name="guide_trouble_smelly_title">ACQUA MALEODORANTE</string>
+    <string name="guide_trouble_smelly_desc">Cambia l\'acqua immediatamente. Solitamente significa accumulo di batteri. Pulisci accuratamente il contenitore e il marimo.</string>
+    <string name="guide_trouble_white_title">DIVENTA BIANCO/GIALLO</string>
+    <string name="guide_trouble_white_desc">Spesso un segno di luce insufficiente o marciume interno. Strizza delicatamente per controllare — se puzza, potrebbe essere necessario tagliare le parti morte.</string>
+
+    <!-- Fun Facts -->
+    <string name="guide_facts_title">Fatti divertenti</string>
+    <string name="guide_facts_culture_title">SIGNIFICATO CULTURALE</string>
+    <string name="guide_facts_culture_desc">In Giappone, i marimo sono chiamati \'Marimo\' (毬藻) che significa \'alga a palla\'. Il popolo Ainu di Hokkaido li considera un simbolo di amore e buona fortuna.</string>
+    <string name="guide_facts_photo_title">FOTOSINTESI</string>
+    <string name="guide_facts_photo_desc">A volte puoi vedere piccole bolle di ossigeno sulla superficie — è il tuo marimo che sta facendo attivamente la fotosintesi! Un ottimo segno di salute.</string>
+    <string name="guide_facts_social_title">SONO SOCIALI</string>
+    <string name="guide_facts_social_desc">I marimo possono essere tenuti insieme nello stesso contenitore. Non competono e possono persino coesistere con piccoli pesci o gamberetti.</string>
+    <string name="guide_facts_soil_title">NESSUN TERRENO NECESSARIO</string>
+    <string name="guide_facts_soil_desc">A differenza della maggior parte delle piante, i marimo non radicano nel terreno. Ricevono tutti i nutrienti dall\'acqua circostante.</string>
+    <string name="guide_facts_festival_title">FESTIVAL</string>
+    <string name="guide_facts_festival_desc">Il lago Akan in Giappone ospita un festival annuale del Marimo (ottobre) in cui i locali fanno galleggiare i marimo nel lago per proteggerli.</string>
 </resources>
