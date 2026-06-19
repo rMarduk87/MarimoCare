@@ -3,7 +3,7 @@ package rpt.tool.marimocare.utils.notification
 import android.content.Context
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.work.Worker
+import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.utils.AlertDataUtils
@@ -13,10 +13,10 @@ import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 import java.time.LocalTime
 
 class NotifyWorker(appContext: Context, workerParams: WorkerParameters) :
-    Worker(appContext, workerParams) {
+    CoroutineWorker(appContext, workerParams) {
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override fun doWork(): Result {
+    override suspend fun doWork(): androidx.work.ListenableWorker.Result {
 
         d("NotifyWorker", "Worker START")
 
@@ -70,6 +70,6 @@ class NotifyWorker(appContext: Context, workerParams: WorkerParameters) :
             SharedPreferencesManager.lastDailyNotificationDate = todayDate
         }
 
-        return Result.success()
+        return androidx.work.ListenableWorker.Result.success()
     }
 }

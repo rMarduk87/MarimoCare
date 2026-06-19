@@ -24,7 +24,7 @@ object AlertDataUtils {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun getMarimosLate(): List<Marimo> {
+    suspend fun getMarimosLate(): List<Marimo> {
         return RepositoryManager.marimoRepository.getAllSync()
             .filter {
                 val next = calculateNextChange(it)
@@ -33,7 +33,7 @@ object AlertDataUtils {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun getMarimosDueSoon(days: Int): List<Marimo> {
+    suspend fun getMarimosDueSoon(days: Int): List<Marimo> {
         return RepositoryManager.marimoRepository.getAllSync()
             .filter {
                 val next = calculateNextChange(it)
@@ -44,7 +44,7 @@ object AlertDataUtils {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun getMarimosToNotifyToday(): List<Marimo> {
+    suspend fun getMarimosToNotifyToday(): List<Marimo> {
         return RepositoryManager.marimoRepository.getAllSync()
             .filter {
                 val next = calculateNextChange(it)
@@ -53,7 +53,7 @@ object AlertDataUtils {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun recalc(context: Context) {
+    suspend fun recalc(context: Context) {
         val marimosLate = getMarimosLate()
         val marimosToday = getMarimosToNotifyToday()
         val marimosSoon = getMarimosDueSoon(1)

@@ -20,6 +20,9 @@ import java.time.LocalDate
 import java.time.temporal.ChronoUnit
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.graphics.toColorInt
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import rpt.tool.marimocare.utils.data.appmodels.PotDecoration
 
 class AchievementManager {
@@ -38,7 +41,7 @@ class AchievementManager {
         }
 
         @RequiresApi(Build.VERSION_CODES.O)
-        fun recalculateAll(showDialogEarned: Boolean = false,
+        suspend fun recalculateAll(showDialogEarned: Boolean = false,
                            userMeta: Map<String, Any> = emptyMap(),
                            context: Context = MarimoCareApplication.instance) {
             if (SharedPreferencesManager.showAchievement) return
@@ -50,11 +53,13 @@ class AchievementManager {
             calculateAchievement(context, achievement, marimos, waterChanges,
                 showDialogEarned,
                 userMeta,allDecorations)
-            listener?.onDataChanged()
+            withContext(Dispatchers.Main) {
+                listener?.onDataChanged()
+            }
         }
 
         @RequiresApi(Build.VERSION_CODES.O)
-        private fun calculateAchievement(
+        private suspend fun calculateAchievement(
             context: Context,
             achievements: List<AchievementComplex>,
             marimos: List<Marimo>,
@@ -188,29 +193,35 @@ class AchievementManager {
             }
         }
 
-        fun deleteAllAchievement() {
+        suspend fun deleteAllAchievement() {
             RepositoryManager.marimoRepository.resetAllAchievements()
-            listener?.onDataChanged()
+            withContext(Dispatchers.Main) {
+                listener?.onDataChanged()
+            }
         }
 
-        fun earnAchievement(id: Int, date: String, showDialogEarned: Boolean,
+        suspend fun earnAchievement(id: Int, date: String, showDialogEarned: Boolean,
                             context: Context = MarimoCareApplication.instance) {
             RepositoryManager.marimoRepository.earnAchievement(id, date)
             if (showDialogEarned) {
                 showAchievementEarnedDialog(context, id)
             }
-            listener?.onAchievementEarned(id)
-            listener?.onDataChanged()
+            withContext(Dispatchers.Main) {
+                listener?.onAchievementEarned(id)
+                listener?.onDataChanged()
+            }
         }
 
         @RequiresApi(Build.VERSION_CODES.O)
-        fun updateProgressForAchievement(id: Int, current: Int, showDialogEarned: Boolean,
+        suspend fun updateProgressForAchievement(id: Int, current: Int, showDialogEarned: Boolean,
                                          context: Context = MarimoCareApplication.instance) {
             val earned = RepositoryManager.marimoRepository.updateAchievementDetail(id, current)
             if (earned) {
                 earnAchievement(id, AppUtils.getCurrentDate(), showDialogEarned, context)
             } else {
-                listener?.onDataChanged()
+                withContext(Dispatchers.Main) {
+                    listener?.onDataChanged()
+                }
             }
         }
 
@@ -232,82 +243,86 @@ class AchievementManager {
             isDialogShowing = true
             val (currentContext, id) = achievementQueue.removeAt(0)
 
-            val achievement = RepositoryManager.marimoRepository.getAllAchievement().find {
-                it.id == id }
+            MarimoCareApplication.instance.applicationScope.launch(Dispatchers.IO) {
+                val achievement = RepositoryManager.marimoRepository.getAllAchievement().find {
+                    it.id == id }
 
-            achievement?.let { ach ->
-                try {
-                    if (currentContext !is Activity || currentContext.isFinishing || currentContext.isDestroyed) {
+                withContext(Dispatchers.Main) {
+                    achievement?.let { ach ->
+                        try {
+                            if (currentContext !is Activity || currentContext.isFinishing || currentContext.isDestroyed) {
+                                showNextAchievementDialog()
+                                return@withContext
+                            }
+
+                            val inflater = LayoutInflater.from(currentContext)
+                            val view = inflater.inflate(R.layout.dialog_achievement_earned,
+                                null)
+
+                            val title = view.findViewById<TextView>(R.id.txtAchievementTitle)
+                            val icon = view.findViewById<TextView>(R.id.txtAchievementIcon)
+                            val desc = view.findViewById<TextView>(R.id.txtAchievementDesc)
+                            val btnOk = view.findViewById<Button>(R.id.btnOk)
+                            val btnClose = view.findViewById<android.widget.ImageView>(R.id.btnClose)
+                            val iconContainer = view.findViewById<android.view.View>(R.id.iconContainer)
+                            val txtUnlocked = view.findViewById<TextView>(R.id.txtUnlocked)
+                            val rootLayout = view.findViewById<android.view.View>(R.id.root_layout)
+
+                            title.text = currentContext.getString(ach.titleID)
+                            desc.text = currentContext.getString(ach.descriptionValue)
+                            icon.text = currentContext.getString(ach.imageId)
+
+                            try {
+                                val color = ach.backgroundColor.toColorInt()
+                                txtUnlocked.setTextColor(color)
+
+                                val rootBg = rootLayout.background?.mutate() as?
+                                        android.graphics.drawable.GradientDrawable
+                                rootBg?.setStroke(AppUtils.dpToPx(1), color)
+
+                                val iconBg = iconContainer.background?.mutate() as?
+                                        android.graphics.drawable.GradientDrawable
+                                iconBg?.setStroke(AppUtils.dpToPx(2), color)
+
+                                val btnBg = btnOk.background?.mutate() as?
+                                        android.graphics.drawable.GradientDrawable
+                                btnBg?.setStroke(AppUtils.dpToPx(1), color)
+                                btnOk.setTextColor(color)
+
+                            } catch (e: Exception) {
+                                e.printStackTrace()
+                            }
+
+                            val dialog = AlertDialog.Builder(currentContext,
+                                R.style.CustomDialogTheme)
+                                .setView(view)
+                                .setCancelable(true)
+                                .create()
+
+
+                            dialog.window?.setBackgroundDrawable(
+                                android.graphics.Color.TRANSPARENT.toDrawable())
+
+                            btnOk.setOnClickListener { dialog.dismiss() }
+                            btnClose.setOnClickListener { dialog.dismiss() }
+
+                            dialog.setOnDismissListener {
+                                showNextAchievementDialog()
+                            }
+
+                            dialog.show()
+
+                            val width = AppUtils.dpToPx(340)
+                            dialog.window?.setLayout(width, android.view.ViewGroup
+                                .LayoutParams.WRAP_CONTENT)
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                            showNextAchievementDialog()
+                        }
+                    } ?: run {
                         showNextAchievementDialog()
-                        return
                     }
-
-                    val inflater = LayoutInflater.from(currentContext)
-                    val view = inflater.inflate(R.layout.dialog_achievement_earned,
-                        null)
-
-                    val title = view.findViewById<TextView>(R.id.txtAchievementTitle)
-                    val icon = view.findViewById<TextView>(R.id.txtAchievementIcon)
-                    val desc = view.findViewById<TextView>(R.id.txtAchievementDesc)
-                    val btnOk = view.findViewById<Button>(R.id.btnOk)
-                    val btnClose = view.findViewById<android.widget.ImageView>(R.id.btnClose)
-                    val iconContainer = view.findViewById<android.view.View>(R.id.iconContainer)
-                    val txtUnlocked = view.findViewById<TextView>(R.id.txtUnlocked)
-                    val rootLayout = view.findViewById<android.view.View>(R.id.root_layout)
-
-                    title.text = currentContext.getString(ach.titleID)
-                    desc.text = currentContext.getString(ach.descriptionValue)
-                    icon.text = currentContext.getString(ach.imageId)
-
-                    try {
-                        val color = ach.backgroundColor.toColorInt()
-                        txtUnlocked.setTextColor(color)
-
-                        val rootBg = rootLayout.background?.mutate() as?
-                                android.graphics.drawable.GradientDrawable
-                        rootBg?.setStroke(AppUtils.dpToPx(1), color)
-
-                        val iconBg = iconContainer.background?.mutate() as?
-                                android.graphics.drawable.GradientDrawable
-                        iconBg?.setStroke(AppUtils.dpToPx(2), color)
-
-                        val btnBg = btnOk.background?.mutate() as?
-                                android.graphics.drawable.GradientDrawable
-                        btnBg?.setStroke(AppUtils.dpToPx(1), color)
-                        btnOk.setTextColor(color)
-
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
-
-                    val dialog = AlertDialog.Builder(currentContext,
-                        R.style.CustomDialogTheme)
-                        .setView(view)
-                        .setCancelable(true)
-                        .create()
-
-
-                    dialog.window?.setBackgroundDrawable(
-                        android.graphics.Color.TRANSPARENT.toDrawable())
-
-                    btnOk.setOnClickListener { dialog.dismiss() }
-                    btnClose.setOnClickListener { dialog.dismiss() }
-
-                    dialog.setOnDismissListener {
-                        showNextAchievementDialog()
-                    }
-
-                    dialog.show()
-
-                    val width = AppUtils.dpToPx(340)
-                    dialog.window?.setLayout(width, android.view.ViewGroup
-                        .LayoutParams.WRAP_CONTENT)
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                    showNextAchievementDialog()
                 }
-            } ?: run {
-                showNextAchievementDialog()
             }
         }
     }
