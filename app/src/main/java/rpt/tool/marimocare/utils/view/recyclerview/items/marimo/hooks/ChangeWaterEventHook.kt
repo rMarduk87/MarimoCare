@@ -211,8 +211,8 @@ class ChangeWaterEventHook(
                             if (daysUntilDeadline >= 2) {
                                 earlyBird = true
                             }
-                        } catch (e: Exception) {
-                            e.printStackTrace()
+                        } catch (_: Exception) {
+                            // ignore
                         }
                     }
 
@@ -248,7 +248,7 @@ class ChangeWaterEventHook(
                             .sortedBy { it.waterChangeData }
 
                         var lastDate: LocalDate? = m.registrationDate?.let {
-                            try { LocalDate.parse(it) } catch (e: Exception) { null }
+                            try { LocalDate.parse(it) } catch (_: Exception) { null }
                         }
 
                         mChanges.forEach { change ->
@@ -262,8 +262,8 @@ class ChangeWaterEventHook(
                                     }
                                 }
                                 lastDate = changeDate
-                            } catch (e: Exception) {
-                                e.printStackTrace()
+                            } catch (_: Exception) {
+                                // ignore
                             }
                         }
                     }

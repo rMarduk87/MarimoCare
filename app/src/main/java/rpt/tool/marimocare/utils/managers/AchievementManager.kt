@@ -82,9 +82,15 @@ class AchievementManager {
             val marimosWithNotes = marimos.count { !it.notes.isNullOrBlank() }
 
             val maxMonthsOfOwnership = marimos.mapNotNull { m ->
-                m.registrationDate?.let { dateStr ->
-                    ChronoUnit.MONTHS.between(LocalDate.parse(dateStr),
-                        LocalDate.now()).toInt()
+                m.registrationDate?.takeIf { it.isNotBlank() }?.let { dateStr ->
+                    try {
+                        ChronoUnit.MONTHS.between(
+                            LocalDate.parse(dateStr),
+                            LocalDate.now()
+                        ).toInt()
+                    } catch (_: Exception) {
+                        null
+                    }
                 }
             }.maxOrNull() ?: 0
 
@@ -97,10 +103,15 @@ class AchievementManager {
                 if (lastChange.isNullOrBlank() || frequency <= 0) {
                     false
                 } else {
-                    val daysAgo = ChronoUnit.DAYS.between(
-                        LocalDate.parse(lastChange),
-                        LocalDate.now())
-                    daysAgo <= frequency
+                    try {
+                        val daysAgo = ChronoUnit.DAYS.between(
+                            LocalDate.parse(lastChange),
+                            LocalDate.now()
+                        )
+                        daysAgo <= frequency
+                    } catch (_: Exception) {
+                        false
+                    }
                 }
             }
 
