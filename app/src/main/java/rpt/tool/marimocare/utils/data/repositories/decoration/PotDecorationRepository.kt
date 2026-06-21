@@ -10,13 +10,13 @@ class PotDecorationRepository(private val potDecorationDao: PotDecorationDao) {
     val allPotDecorations: LiveData<List<PotDecoration>> =
         potDecorationDao.getDecorations().map { it -> it.map { it.map() } }
 
-    fun getDecorationsForMarimo(marimoCode: Int): List<PotDecoration> {
+    suspend fun getDecorationsForMarimo(marimoCode: Int): List<PotDecoration> {
         return potDecorationDao.getDecorationsForMarimo(marimoCode).map {
             it.toAppModel()
         }
     }
 
-    fun saveDecorations(marimoCode: Int, decorations: List<PotDecoration>) {
+    suspend fun saveDecorations(marimoCode: Int, decorations: List<PotDecoration>) {
         potDecorationDao.deleteDecorationsForMarimo(marimoCode)
         if (decorations.isNotEmpty()) {
             potDecorationDao.insertAll(decorations.map {
@@ -26,11 +26,11 @@ class PotDecorationRepository(private val potDecorationDao: PotDecorationDao) {
         }
     }
 
-    fun deleteDecorationsForMarimo(marimoCode: Int) {
+    suspend fun deleteDecorationsForMarimo(marimoCode: Int) {
         potDecorationDao.deleteDecorationsForMarimo(marimoCode)
     }
 
-    fun getAllDecorations(): List<PotDecoration> {
+    suspend fun getAllDecorations(): List<PotDecoration> {
         return potDecorationDao.getAllDecorations().map {
             it.toAppModel()
         }

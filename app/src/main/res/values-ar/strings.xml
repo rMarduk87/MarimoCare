@@ -586,6 +586,80 @@
     <string name="pot_decorations">زينة الحوض</string>
     <string name="_total">إجمالي</string>
     <string name="new_stats_2">تم إضافة إحصائية جديدة تتعلق بزينة أحواض الماريمو الخاصة بك</string>
+    <string name="marimo_guide"><![CDATA[دليل العناية بالماريمو وحقائق عنه]]></string>
+    <string name="happy_marimo">كل ما تحتاج معرفته للحفاظ على سعادة الماريمو الخاص بك</string>
+
+    <!-- Water Care -->
+    <string name="guide_water_title">العناية بالماء</string>
+    <string name="guide_water_type_title">نوع الماء</string>
+    <string name="guide_water_type_desc">ماء الصنبور (اتركه لمدة 24 ساعة لإزالة الكلور) أو ماء مفلتر. تجنب الماء المقطر - فهو يفتقر إلى المعادن التي يحتاجها الماريمو.</string>
+    <string name="guide_water_freq_title">تكرار التغيير</string>
+    <string name="guide_water_freq_desc">كل 1-2 أسبوع. في الصيف أو الغرف الدافئة، قم بتغييره بشكل متكرر. ماء عكر = تغيير فوري.</string>
+    <string name="guide_water_clean_title">كيفية التنظيف</string>
+    <string name="guide_water_clean_desc">اضغط بلطف على الماريمو تحت الماء الجاري للتخلص من الشوائب. أعد تشكيله على شكل كرة بعد التنظيف.</string>
+    <string name="guide_water_salinity_title">الملوحة</string>
+    <string name="guide_water_salinity_desc">رشة صغيرة من ملح حوض السمك مرة واحدة في الشهر يمكن أن تعزز الصحة وتعطي طابعاً محيطياً خفيفاً - اختياري تماماً.</string>
+
+    <!-- Light Requirements -->
+    <string name="guide_light_title">متطلبات الإضاءة</string>
+    <string name="guide_light_ideal_title">الإضاءة المثالية</string>
+    <string name="guide_light_ideal_desc">إضاءة غير مباشرة، من منخفضة إلى متوسطة. نافذة تواجه الشمال أو مكان يبعد بضعة أقدام عن النافذة هو الأفضل.</string>
+    <string name="guide_light_avoid_title">تجنب</string>
+    <string name="guide_light_avoid_desc">ضوء الشمس المباشر - فهو يحول الماريمو إلى اللون البني ويمكن أن يسبب نمواً مفرطاً للطحالب. حتى بضع ساعات من الشمس المباشرة يمكن أن تكون ضارة.</string>
+    <string name="guide_light_artificial_title">الإضاءة الاصطناعية</string>
+    <string name="guide_light_artificial_desc">تعمل أضواء النمو الفلورية أو LED على دورة تشغيل/إيقاف لمدة 12 ساعة بشكل رائع، خاصة في الغرف ذات الإضاءة الطبيعية القليلة.</string>
+    <string name="guide_light_signs_title">علامات الإضاءة الزائدة</string>
+    <string name="guide_light_signs_desc">بقع بنية، أو تبييض، أو ملمس لزج. انتقل إلى مكان أكثر ظلاً على الفور.</string>
+
+    <!-- Temperature -->
+    <string name="guide_temp_title">درجة الحرارة</string>
+    <string name="guide_temp_range_title">النطاق الأمثل</string>
+    <string name="guide_temp_range_desc">15 درجة مئوية - 25 درجة مئوية. يزدهر الماريمو في الماء البارد إلى درجة حرارة الغرفة.</string>
+    <string name="guide_temp_summer_title">العناية في الصيف</string>
+    <string name="guide_temp_summer_desc">انقل الماريمو إلى أبرد غرفة. أضف بضع مكعبات ثلج إلى الماء من حين لآخر خلال موجات الحر.</string>
+    <string name="guide_temp_cold_title">تحمل البرودة</string>
+    <string name="guide_temp_cold_desc">يتحملون الماء البارد جيداً - يعيش الماريمو بشكل طبيعي في البحيرات الباردة. الماء الأبرد يحتوي على المزيد من الأكسجين، وهو ما يحبونه.</string>
+    <string name="guide_temp_avoid_title">تجنب</string>
+    <string name="guide_temp_avoid_desc">درجات الحرارة التي تزيد عن 28 درجة مئوية لفترات طويلة - يمكن أن يسبب ذلك تدهوراً وظهور روائح.</string>
+
+    <!-- Growth & Biology -->
+    <string name="guide_growth_title">النمو والبيولوجيا</string>
+    <string name="guide_growth_rate_title">معدل النمو</string>
+    <string name="guide_growth_rate_desc">بطيء للغاية - حوالي 5 ملم في السنة. قد يكون عمر الماريمو الذي يبلغ قطره 5 سم أكثر من 10 سنوات بالفعل.</string>
+    <string name="guide_growth_what_title">ما هو الماريمو؟</string>
+    <string name="guide_growth_what_desc">الماريمو (Aegagropila linnaei) هو شكل نادر من الطحالب الخضراء الخيطية التي تنمو طبيعياً على شكل كرة بسبب تيارات البحيرة.</string>
+    <string name="guide_growth_habitat_title">الموطن الأصلي</string>
+    <string name="guide_growth_habitat_desc">يوجد بشكل طبيعي في بحيرة آكان (اليابان) وبحيرة ميفاتن (أيسلندا). هم محميون في اليابان ويعتبرون كنزاً وطنياً.</string>
+    <string name="guide_growth_propagation_title">التكاثر</string>
+    <string name="guide_growth_propagation_desc">عندما يصبح الماريمو كبيراً بما يكفي، يمكن تقسيمه يدوياً إلى قطعتين. أعد تشكيل كل نصف على شكل كرة - سينمو كلاهما بشكل مستقل.</string>
+    <string name="guide_growth_lifespan_title">العمر الافتراضي</string>
+    <string name="guide_growth_lifespan_desc">مع العناية المناسبة، يمكن أن يعيش الماريمو لمئات السنين. يقدر عمر أقدم أنواع الماريمو الطبيعية المعروفة بأكثر من 200 عام.</string>
+
+    <!-- Troubleshooting -->
+    <string name="guide_trouble_title">استكشاف الأخطاء وإصلاحها</string>
+    <string name="guide_trouble_brown_title">التحول للبني</string>
+    <string name="guide_trouble_brown_desc">يحدث عادةً بسبب الكثير من الضوء المباشر أو الماء الدافئ جداً. انتقل إلى مكان أبرد وأكثر ظلاً وقم بتغيير الماء.</string>
+    <string name="guide_trouble_shape_title">فقدان الشكل</string>
+    <string name="guide_trouble_shape_desc">دحرج الماريمو بلطف بين راحتيك تحت الماء البارد لإعادة تشكيله على شكل كرة. افعل ذلك بعد كل تغيير للماء.</string>
+    <string name="guide_trouble_sinking_title">الغرق</string>
+    <string name="guide_trouble_sinking_desc">الماريمو الصحي يغرق أحياناً - هذا طبيعي! قد يطفو بعد التمثيل الضوئي (إنتاج فقاعات الأكسجين). الغرق لا يعني أنه غير صحي.</string>
+    <string name="guide_trouble_smelly_title">رائحة الماء الكريهة</string>
+    <string name="guide_trouble_smelly_desc">غير الماء فوراً. هذا يعني عادةً تراكم البكتيريا. نظف الحاوية والماريمو جيداً.</string>
+    <string name="guide_trouble_white_title">التحول للأبيض/الأصفر</string>
+    <string name="guide_trouble_white_desc">غالباً ما يكون علامة على عدم كفاية الضوء أو التعفن الداخلي. اضغط بلطف للتحقق - إذا كانت له رائحة، فقد تحتاج إلى قطع الأجزاء الميتة.</string>
+
+    <!-- Fun Facts -->
+    <string name="guide_facts_title">حقائق ممتعة</string>
+    <string name="guide_facts_culture_title">الأهمية الثقافية</string>
+    <string name="guide_facts_culture_desc">في اليابان، يطلق على الماريمو اسم \'Marimo\' (毬藻) وتعني \'طحالب الكرة\'. يعتبرهم شعب الأينو في هوكايدو رمزاً للحب والحظ السعيد.</string>
+    <string name="guide_facts_photo_title">التمثيل الضوئي</string>
+    <string name="guide_facts_photo_desc">يمكنك أحياناً رؤية فقاعات أكسجين صغيرة على السطح - هذا يعني أن الماريمو الخاص بك يقوم بالتمثيل الضوئي بنشاط! علامة رائعة على الصحة.</string>
+    <string name="guide_facts_social_title">هم اجتماعيون</string>
+    <string name="guide_facts_social_desc">يمكن الاحتفاظ بالماريمو معاً في نفس الحاوية. هم لا يتنافسون ويمكنهم حتى التعايش مع الأسماك الصغيرة أو الروبيان.</string>
+    <string name="guide_facts_soil_title">لا حاجة للتربة</string>
+    <string name="guide_facts_soil_desc">على عكس معظم النباتات، لا يتجذر الماريمو في التربة. يحصلون على جميع العناصر الغذائية من الماء من حولهم.</string>
+    <string name="guide_facts_festival_title">المهرجان</string>
+    <string name="guide_facts_festival_desc">تقيم بحيرة آكان في اليابان مهرجاناً سنوياً للماريمو (أكتوبر) حيث يقوم السكان المحليون بتعويم الماريمو في البحيرة لحمايتهم.</string>
     <string-array name="decoration_types">
         <item>اختر النوع...</item>
         <item>حصاة</item>

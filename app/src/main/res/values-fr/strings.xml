@@ -587,6 +587,80 @@
     <string name="pot_decorations">Décorations du pot</string>
     <string name="_total">total</string>
     <string name="new_stats_2">Nouvelle statistique ajoutée, concernant les décorations des pots de vos Marimos</string>
+    <string name="marimo_guide"><![CDATA[Guide d\'entretien et faits sur le Marimo]]></string>
+    <string name="happy_marimo">Tout ce que vous devez savoir pour garder votre marimo heureux</string>
+
+    <!-- Water Care -->
+    <string name="guide_water_title">Soin de l\'eau</string>
+    <string name="guide_water_type_title">TYPE D\'EAU</string>
+    <string name="guide_water_type_desc">Eau du robinet (laissez-la reposer 24h pour la déclorer) ou eau filtrée. Évitez l\'eau distillée — elle manque de minéraux dont les marimos ont besoin.</string>
+    <string name="guide_water_freq_title">FRÉQUENCE DE CHANGEMENT</string>
+    <string name="guide_water_freq_desc">Toutes les 1 à 2 semaines. En été ou dans les pièces chaudes, changez-la plus souvent. Eau trouble = changer immédiatement.</string>
+    <string name="guide_water_clean_title">COMMENT NETTOYER</string>
+    <string name="guide_water_clean_desc">Pressez doucement le marimo sous l\'eau courante pour éliminer les débris. Reformez-le en boule après le nettoyage.</string>
+    <string name="guide_water_salinity_title">SALINITÉ</string>
+    <string name="guide_water_salinity_desc">Une petite pincée de sel d\'aquarium une fois par mois peut booster la santé et donner une subtile sensation océanique — totalement optionnel.</string>
+
+    <!-- Light Requirements -->
+    <string name="guide_light_title">Besoins en lumière</string>
+    <string name="guide_light_ideal_title">LUMIÈRE IDÉALE</string>
+    <string name="guide_light_ideal_desc">Lumière indirecte, faible à moyenne. Une fenêtre orientée au nord ou un endroit à quelques mètres d\'une fenêtre est parfait.</string>
+    <string name="guide_light_avoid_title">À ÉVITER</string>
+    <string name="guide_light_avoid_desc">Lumière directe du soleil — elle rend les marimos bruns et peut provoquer une prolifération d\'algues. Même quelques heures de soleil direct peuvent être nocives.</string>
+    <string name="guide_light_artificial_title">LUMIÈRE ARTIFICIELLE</string>
+    <string name="guide_light_artificial_desc">Les lampes de culture fluorescents ou à LED avec un cycle de 12h allumé/éteint fonctionnent très bien, surtout dans les pièces peu éclairées naturellement.</string>
+    <string name="guide_light_signs_title">SIGNES DE TROP DE LUMIÈRE</string>
+    <string name="guide_light_signs_desc">Taches brunes, blanchiment ou texture gluante. Déplacez immédiatement vers un endroit plus ombragé.</string>
+
+    <!-- Temperature -->
+    <string name="guide_temp_title">Température</string>
+    <string name="guide_temp_range_title">PLAGE OPTIMALE</string>
+    <string name="guide_temp_range_desc">15°C – 25°C. Les marimos s\'épanouissent dans une eau fraîche ou à température ambiante.</string>
+    <string name="guide_temp_summer_title">SOINS D\'ÉTÉ</string>
+    <string name="guide_temp_summer_desc">Déplacez les marimos dans la pièce la plus fraîche. Ajoutez occasionnellement quelques glaçons à l\'eau pendant les vagues de chaleur.</string>
+    <string name="guide_temp_cold_title">TOLÉRANCE AU FROID</string>
+    <string name="guide_temp_cold_desc">Ils tolèrent bien l\'eau fraîche — les marimos vivent naturellement dans des lacs froids. L\'eau plus fraîche retient plus d\'oxygène, ce qu\'ils adorent.</string>
+    <string name="guide_temp_avoid_title">À ÉVITER</string>
+    <string name="guide_temp_avoid_desc">Températures supérieures à 28°C pendant des périodes prolongées — cela peut provoquer une détérioration et des odeurs.</string>
+
+    <!-- Growth & Biology -->
+    <string name="guide_growth_title">Croissance et Biologie</string>
+    <string name="guide_growth_rate_title">TAUX DE CROISSANCE</string>
+    <string name="guide_growth_rate_desc">Extrêmement lent — environ 5 mm par an. Un marimo de 5 cm de diamètre peut déjà avoir plus de 10 ans.</string>
+    <string name="guide_growth_what_title">QU\'EST-CE QU\'UN MARIMO ?</string>
+    <string name="guide_growth_what_desc">Un marimo (Aegagropila linnaei) est une forme rare d\'algue verte filamenteuse qui pousse naturellement en forme de sphère grâce aux courants lacustres.</string>
+    <string name="guide_growth_habitat_title">HABITAT NATUREL</string>
+    <string name="guide_growth_habitat_desc">Trouvés naturellement dans le lac Akan (Japon) et le lac Mývatn (Islande). Ils sont protégés au Japon et considérés comme un trésor national.</string>
+    <string name="guide_growth_propagation_title">PROPAGATION</string>
+    <string name="guide_growth_propagation_desc">Quand un marimo devient assez grand, il peut être divisé à la main en deux morceaux. Reformez chaque moitié en boule — les deux pousseront indépendamment.</string>
+    <string name="guide_growth_lifespan_title">DURÉE DE VIE</string>
+    <string name="guide_growth_lifespan_desc">Avec des soins appropriés, les marimos peuvent vivre des centaines d\'années. Les plus vieux marimos naturels connus sont estimés à plus de 200 ans.</string>
+
+    <!-- Troubleshooting -->
+    <string name="guide_trouble_title">Dépannage</string>
+    <string name="guide_trouble_brown_title">DEVIENT BRUN</string>
+    <string name="guide_trouble_brown_desc">Généralement causé par trop de lumière directe ou une eau très chaude. Déplacez vers un endroit plus frais et ombragé et faites un changement d\'eau.</string>
+    <string name="guide_trouble_shape_title">PERD SA FORME</string>
+    <string name="guide_trouble_shape_desc">Roulez doucement le marimo entre vos paumes sous l\'eau fraîche pour le reformer en boule. Faites-le après chaque changement d\'eau.</string>
+    <string name="guide_trouble_sinking_title">COULE</string>
+    <string name="guide_trouble_sinking_desc">Les marimos sains coulent parfois — c\'est normal ! Ils peuvent flotter après la photosynthèse (en produisant des bulles d\'oxygène). Couler ne signifie pas qu\'il est en mauvaise santé.</string>
+    <string name="guide_trouble_smelly_title">EAU MALODORANTE</string>
+    <string name="guide_trouble_smelly_desc">Changez l\'eau immédiatement. Cela signifie généralement une accumulation bactérienne. Nettoyez soigneusement le récipient et le marimo.</string>
+    <string name="guide_trouble_white_title">DEVIENT BLANC/JAUNE</string>
+    <string name="guide_trouble_white_desc">Souvent un signe de lumière insuffisante ou de pourriture interne. Pressez doucement pour vérifier — s\'il sent mauvais, vous devrez peut-être couper les parties mortes.</string>
+
+    <!-- Fun Facts -->
+    <string name="guide_facts_title">Faits amusants</string>
+    <string name="guide_facts_culture_title">SIGNIFICATION CULTURELLE</string>
+    <string name="guide_facts_culture_desc">En Japon, les marimos sont appelés \'Marimo\' (毬藻) signifiant \'algue boule\'. Le peuple Ainu d\'Hokkaido les considère comme un symbole d\'amour et de chance.</string>
+    <string name="guide_facts_photo_title">PHOTOSYNTHÈSE</string>
+    <string name="guide_facts_photo_desc">Vous pouvez parfois voir de minuscules bulles d\'oxygène à la surface — c\'est votre marimo qui fait activement la photosynthèse ! Un excellent signe de santé.</string>
+    <string name="guide_facts_social_title">ILS SONT SOCIAUX</string>
+    <string name="guide_facts_social_desc">Les marimos peuvent être gardés ensemble dans le même récipient. Ils ne sont pas en compétition et peuvent même coexister avec de petits poissons ou des crevettes.</string>
+    <string name="guide_facts_soil_title">PAS BESOIN DE TERRE</string>
+    <string name="guide_facts_soil_desc">À la différence de la plupart des plantes, les marimos ne s\'enracinent pas dans le sol. Ils tirent tous leurs nutriments de l\'eau qui les entoure.</string>
+    <string name="guide_facts_festival_title">FESTIVAL</string>
+    <string name="guide_facts_festival_desc">Le lac Akan au Japon organise un festival annuel du Marimo (octobre) où les habitants font flotter les marimos dans le lac pour les protéger.</string>
     <string-array name="decoration_types">
         <item>Sélectionner le type…</item>
         <item>Galet</item>

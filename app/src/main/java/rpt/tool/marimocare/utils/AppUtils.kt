@@ -33,19 +33,27 @@ class AppUtils {
             date: String?,
             lastFrequencyChanges: Int,
         ): String {
-            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-            val nextChange = LocalDate.parse(date, formatter)
-            val dataNext = nextChange.plusDays(lastFrequencyChanges.toLong()).format(formatter)
-            return dataNext
+            if (date.isNullOrBlank()) return ""
+            return try {
+                val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+                val nextChange = LocalDate.parse(date, formatter)
+                nextChange.plusDays(lastFrequencyChanges.toLong()).format(formatter)
+            } catch (_: Exception) {
+                ""
+            }
         }
 
         @RequiresApi(Build.VERSION_CODES.O)
         fun daysUntil(date: String?): Int {
-            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-            val nextChange = LocalDate.parse(date, formatter)
-            val today = LocalDate.now()
-            val left = ChronoUnit.DAYS.between(today, nextChange).toInt()
-            return left
+            if (date.isNullOrBlank()) return 0
+            return try {
+                val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+                val nextChange = LocalDate.parse(date, formatter)
+                val today = LocalDate.now()
+                ChronoUnit.DAYS.between(today, nextChange).toInt()
+            } catch (_: Exception) {
+                0
+            }
         }
 
         @RequiresApi(Build.VERSION_CODES.O)
@@ -233,26 +241,29 @@ class AppUtils {
 
         @RequiresApi(Build.VERSION_CODES.O)
         fun calculateHealth(currentDate: String, lastWater: String): Int {
-
-            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-
-            val current = LocalDate.parse(currentDate, formatter)
-            val last = LocalDate.parse(lastWater, formatter)
-
-            val daysBetween = ChronoUnit.DAYS.between(last,
-                current).toInt()
-
-            return 100 - daysBetween
+            if (currentDate.isBlank() || lastWater.isBlank()) return 0
+            return try {
+                val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+                val current = LocalDate.parse(currentDate, formatter)
+                val last = LocalDate.parse(lastWater, formatter)
+                val daysBetween = ChronoUnit.DAYS.between(last, current).toInt()
+                100 - daysBetween
+            } catch (_: Exception) {
+                0
+            }
         }
 
         @RequiresApi(Build.VERSION_CODES.O)
         fun getDifferenceBetweenDates(nextChange: String, currentDate: String): Int {
-            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
-            val next = LocalDate.parse(nextChange, formatter)
-            val current = LocalDate.parse(currentDate, formatter)
-
-            return ChronoUnit.DAYS.between(current, next).toInt()
-
+            if (nextChange.isBlank() || currentDate.isBlank()) return 0
+            return try {
+                val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+                val next = LocalDate.parse(nextChange, formatter)
+                val current = LocalDate.parse(currentDate, formatter)
+                ChronoUnit.DAYS.between(current, next).toInt()
+            } catch (_: Exception) {
+                0
+            }
         }
 
         @RequiresApi(Build.VERSION_CODES.O)

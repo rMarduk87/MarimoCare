@@ -14,17 +14,27 @@ import java.time.temporal.ChronoUnit
 object AlertDataUtils {
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun parse(date: String): LocalDate =
-        LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+    private fun parse(date: String): LocalDate {
+        return try {
+            LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+        } catch (_: Exception) {
+            LocalDate.now()
+        }
+    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun calculateNextChange(marimo: Marimo): LocalDate {
-        val lastChangeDate = parse(marimo.lastChanged ?: LocalDate.now().toString())
+        val dateString = if (marimo.lastChanged.isNullOrBlank()) {
+            LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+        } else {
+            marimo.lastChanged!!
+        }
+        val lastChangeDate = parse(dateString)
         return lastChangeDate.plusDays(marimo.changeFrequencyDays.toLong())
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun getMarimosLate(): List<Marimo> {
+    suspend fun getMarimosLate(): List<Marimo> {
         return RepositoryManager.marimoRepository.getAllSync()
             .filter {
                 val next = calculateNextChange(it)
@@ -33,7 +43,7 @@ object AlertDataUtils {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun getMarimosDueSoon(days: Int): List<Marimo> {
+    suspend fun getMarimosDueSoon(days: Int): List<Marimo> {
         return RepositoryManager.marimoRepository.getAllSync()
             .filter {
                 val next = calculateNextChange(it)
@@ -44,7 +54,7 @@ object AlertDataUtils {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun getMarimosToNotifyToday(): List<Marimo> {
+    suspend fun getMarimosToNotifyToday(): List<Marimo> {
         return RepositoryManager.marimoRepository.getAllSync()
             .filter {
                 val next = calculateNextChange(it)
@@ -53,7 +63,7 @@ object AlertDataUtils {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun recalc(context: Context) {
+    suspend fun recalc(context: Context) {
         val marimosLate = getMarimosLate()
         val marimosToday = getMarimosToNotifyToday()
         val marimosSoon = getMarimosDueSoon(1)

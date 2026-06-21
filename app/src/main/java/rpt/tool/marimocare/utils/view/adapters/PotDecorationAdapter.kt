@@ -11,6 +11,8 @@ import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.TextWatcher
 import android.text.style.StyleSpan
+import android.text.style.ForegroundColorSpan
+import android.text.style.RelativeSizeSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -68,8 +70,7 @@ class PotDecorationAdapter(
         // Setup inputs
         binding.inputDecName.setText(item.name)
 
-        val colorName = getColorName(item.colour)
-        binding.inputDecColour.setText(colorName)
+        binding.inputDecColour.setText(item.colour)
 
         binding.inputDecColour.isFocusable = false
         binding.inputDecColour.isFocusableInTouchMode = false
@@ -134,7 +135,7 @@ class PotDecorationAdapter(
     }
 
     /**
-     * Funzione Helper per comporre il titolo: Nome(grassetto) - Tipo - Colore
+     * Funzione Helper per comporre il titolo: Nome(grassetto) - Tipo - Colore (Icona)
      */
     private fun updateDynamicTitle(binding: ItemPotDecorationBinding, item: PotDecoration, position: Int) {
 
@@ -146,9 +147,6 @@ class PotDecorationAdapter(
 
         val typeToDisplay = if (!item.type.isNullOrBlank()) " - ${item.type}" else ""
 
-        val colorName = getColorName(item.colour)
-        val colorToDisplay = if (colorName.isNotBlank()) " - $colorName" else ""
-
         val builder = SpannableStringBuilder()
 
         // 1. Aggiungiamo il Nome
@@ -158,9 +156,29 @@ class PotDecorationAdapter(
         // Rendiamo SOLO il Nome in grassetto
         builder.setSpan(StyleSpan(Typeface.BOLD), startName, builder.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
 
-        // 2. Aggiungiamo Tipo e Colore (stile normale)
+        // 2. Aggiungiamo Tipo
         builder.append(typeToDisplay)
-        builder.append(colorToDisplay)
+
+        // 3. Aggiungiamo il Colore come cerchietto colorato (Icon Style) se presente
+        if (!item.colour.isNullOrBlank()) {
+            builder.append("  ●") // Usiamo un cerchio unicode come base
+            try {
+                val color = item.colour.toColorInt()
+                builder.setSpan(
+                    ForegroundColorSpan(color),
+                    builder.length - 1,
+                    builder.length,
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
+                // Opzionalmente ingrandiamo un po' il cerchio
+                builder.setSpan(
+                    RelativeSizeSpan(1.2f),
+                    builder.length - 1,
+                    builder.length,
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
+            } catch (_: Exception) {}
+        }
 
         binding.decorationTitle.text = builder
     }
@@ -191,13 +209,13 @@ class PotDecorationAdapter(
     private fun updateColorPreview(binding: ItemPotDecorationBinding, colour: String?) {
         if (colour.isNullOrBlank()) return
         try {
-            val drawable = (binding.colorPreview.background as? GradientDrawable) ?: GradientDrawable()
+            val drawable = GradientDrawable()
+            drawable.shape = GradientDrawable.OVAL
             drawable.setColor(colour.toColorInt())
             drawable.setStroke(2, ContextCompat.getColor(context, R.color.marimo_milestone_bg))
-            drawable.cornerRadius = 8f
             binding.colorPreview.background = drawable
         } catch (_: Exception) {
-            binding.colorPreview.setBackgroundColor(Color.LTGRAY)
+            binding.colorPreview.setBackgroundResource(R.drawable.bg_icon_circle)
         }
     }
 

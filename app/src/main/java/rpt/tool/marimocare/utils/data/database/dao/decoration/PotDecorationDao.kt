@@ -11,16 +11,16 @@ import rpt.tool.marimocare.utils.data.database.models.decoration.PotDecorationMo
 @Dao
 interface PotDecorationDao {
     @Query("SELECT * FROM pot_decoration WHERE marimo_code = :marimoCode")
-    fun getDecorationsForMarimo(marimoCode: Int): List<PotDecorationModel>
+    suspend fun getDecorationsForMarimo(marimoCode: Int): List<PotDecorationModel>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(decorations: List<PotDecorationModel>)
+    suspend fun insertAll(decorations: List<PotDecorationModel>)
 
     @Query("DELETE FROM pot_decoration WHERE marimo_code = :marimoCode")
-    fun deleteDecorationsForMarimo(marimoCode: Int)
+    suspend fun deleteDecorationsForMarimo(marimoCode: Int)
 
     @Query("SELECT * FROM pot_decoration")
-    fun getAllDecorations(): List<PotDecorationModel>
+    suspend fun getAllDecorations(): List<PotDecorationModel>
 
     @Transaction
     @Query("SELECT * FROM pot_decoration ORDER BY id COLLATE NOCASE ASC")
