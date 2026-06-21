@@ -587,6 +587,80 @@
     <string name="pot_decorations">Украшения для аквариума</string>
     <string name="_total">всего</string>
     <string name="new_stats_2">Добавлена новая статистика по украшениям в аквариумах ваших маримо</string>
+    <string name="marimo_guide"><![CDATA[Руководство по уходу за маримо и факты]]></string>
+    <string name="happy_marimo">Все, что вам нужно знать, чтобы ваш маримо был счастлив</string>
+
+    <!-- Water Care -->
+    <string name="guide_water_title">Уход за водой</string>
+    <string name="guide_water_type_title">ТИП ВОДЫ</string>
+    <string name="guide_water_type_desc">Водопроводная вода (дайте ей постоять 24 часа для дехлорирования) или фильтрованная вода. Избегайте дистиллированной воды — в ней не хватает минералов, необходимых маримо.</string>
+    <string name="guide_water_freq_title">ЧАСТОТА ЗАМЕНЫ</string>
+    <string name="guide_water_freq_desc">Каждые 1–2 недели. Летом или в теплых помещениях меняйте чаще. Мутная вода = немедленная замена.</string>
+    <string name="guide_water_clean_title">КАК ЧИСТИТЬ</string>
+    <string name="guide_water_clean_desc">Аккуратно сожмите маримо под проточной водой, чтобы смыть мусор. Придайте ему форму шара после чистки.</string>
+    <string name="guide_water_salinity_title">СОЛЕНОСТЬ</string>
+    <string name="guide_water_salinity_desc">Небольшая щепотка аквариумной соли раз в месяц может укрепить здоровье и придать едва уловимый океанский оттенок — совершенно необязательно.</string>
+
+    <!-- Light Requirements -->
+    <string name="guide_light_title">Требования к свету</string>
+    <string name="guide_light_ideal_title">ИДЕАЛЬНЫЙ СВЕТ</string>
+    <string name="guide_light_ideal_desc">Непрямой, от слабого до среднего света. Окно, выходящее на север, или место в нескольких метрах от окна — идеальный вариант.</string>
+    <string name="guide_light_avoid_title">ИЗБЕГАЙТЕ</string>
+    <string name="guide_light_avoid_desc">Прямых солнечных лучей — маримо от них коричневеет, и это может вызвать чрезмерный рост водорослей. Даже несколько часов прямого солнца могут быть вредны.</string>
+    <string name="guide_light_artificial_title">ИСКУССТВЕННЫЙ СВЕТ</string>
+    <string name="guide_light_artificial_desc">Люминесцентные или светодиодные фитолампы с 12-часовым циклом вкл/выкл отлично подходят, особенно в комнатах с недостатком естественного света.</string>
+    <string name="guide_light_signs_title">ПРИЗНАКИ ИЗБЫТКА СВЕТА</string>
+    <string name="guide_light_signs_desc">Коричневые пятна, обесцвечивание или слизистая текстура. Немедленно переставьте в более затененное место.</string>
+
+    <!-- Temperature -->
+    <string name="guide_temp_title">Температура</string>
+    <string name="guide_temp_range_title">ОПТИМАЛЬНЫЙ ДИАПАЗОН</string>
+    <string name="guide_temp_range_desc">15°C – 25°C. Маримо процветает в прохладной воде или воде комнатной температуры.</string>
+    <string name="guide_temp_summer_title">ЛЕТНИЙ УХОД</string>
+    <string name="guide_temp_summer_desc">Перенесите маримо в самую прохладную комнату. Во время жары иногда добавляйте в воду несколько кубиков льда.</string>
+    <string name="guide_temp_cold_title">ХОЛОДОСТОЙКОСТЬ</string>
+    <string name="guide_temp_cold_desc">Они хорошо переносят прохладную воду — маримо естественным образом живут в холодных озерах. Более прохладная вода содержит больше кислорода, который они любят.</string>
+    <string name="guide_temp_avoid_title">ИЗБЕГАЙТЕ</string>
+    <string name="guide_temp_avoid_desc">Температуры выше 28°C в течение длительного времени — это может привести к порче и появлению запаха.</string>
+
+    <!-- Growth & Biology -->
+    <string name="guide_growth_title">Рост и биология</string>
+    <string name="guide_growth_rate_title">СКОРОСТЬ РОСТА</string>
+    <string name="guide_growth_rate_desc">Чрезвычайно медленная — около 5 мм в год. Маримо диаметром 5 см может быть уже более 10 лет.</string>
+    <string name="guide_growth_what_title">ЧТО ТАКОЕ МАРИМО?</string>
+    <string name="guide_growth_what_desc">Маримо (Aegagropila linnaei) — редкая форма нитчатых зеленых водорослей, которые естественным образом растут в форме сферы благодаря озерным течениям.</string>
+    <string name="guide_growth_habitat_title">ЕСТЕСТВЕННАЯ СРЕДА ОБИТАНИЯ</string>
+    <string name="guide_growth_habitat_desc">Встречается в естественных условиях в озерах Акан (Япония) и Миватн (Исландия). В Японии они находятся под защитой и считаются национальным достоянием.</string>
+    <string name="guide_growth_propagation_title">РАЗМНОЖЕНИЕ</string>
+    <string name="guide_growth_propagation_desc">Когда маримо становится достаточно большим, его можно разделить вручную на две части. Сформируйте каждую половину в шар — обе будут расти независимо.</string>
+    <string name="guide_growth_lifespan_title">ПРОДОЛЖИТЕЛЬНОСТЬ ЖИЗНИ</string>
+    <string name="guide_growth_lifespan_desc">При правильном уходе маримо могут жить сотни лет. Возраст старейших известных природных маримо оценивается более чем в 200 лет.</string>
+
+    <!-- Troubleshooting -->
+    <string name="guide_trouble_title">Устранение неполадок</string>
+    <string name="guide_trouble_brown_title">СТАНОВИТСЯ КОРИЧНЕВЫМ</string>
+    <string name="guide_trouble_brown_desc">Обычно вызвано избытком прямого света или очень теплой водой. Переставьте в более прохладное, затененное место и замените воду.</string>
+    <string name="guide_trouble_shape_title">ПОТЕРЯ ФОРМЫ</string>
+    <string name="guide_trouble_shape_desc">Аккуратно покатайте маримо между ладонями под прохладной водой, чтобы придать ему форму шара. Делайте это после каждой замены воды.</string>
+    <string name="guide_trouble_sinking_title">ПОГРУЖЕНИЕ</string>
+    <string name="guide_trouble_sinking_desc">Здоровые маримо иногда тонут — это нормально! Они могут всплывать после фотосинтеза (выделения пузырьков кислорода). Погружение не означает нездоровье.</string>
+    <string name="guide_trouble_smelly_title">ПАХУЧАЯ ВОДА</string>
+    <string name="guide_trouble_smelly_desc">Немедленно замените воду. Обычно это означает размножение бактерий. Тщательно вымойте контейнер и маримо.</string>
+    <string name="guide_trouble_white_title">СТАНОВИТСЯ БЕЛЫМ/ЖЕЛТЫМ</string>
+    <string name="guide_trouble_white_desc">Часто признак недостаточного освещения или гниения внутри. Аккуратно сожмите, чтобы проверить — если есть запах, возможно, потребуется удалить отмершие части.</string>
+
+    <!-- Fun Facts -->
+    <string name="guide_facts_title">Интересные факты</string>
+    <string name="guide_facts_culture_title">КУЛЬТУРНОЕ ЗНАЧЕНИЕ</string>
+    <string name="guide_facts_culture_desc">В Японии маримо называют \'Marimo\' (毬藻), что означает \'водоросль-шар\'. Народ айну на Хоккайдо считает их символом любви и удачи.</string>
+    <string name="guide_facts_photo_title">ФОТОСИНТЕЗ</string>
+    <string name="guide_facts_photo_desc">Иногда на поверхности можно увидеть крошечные пузырьки кислорода — это ваш маримо активно фотосинтезирует! Отличный признак здоровья.</string>
+    <string name="guide_facts_social_title">ОНИ ОБЩИТЕЛЬНЫ</string>
+    <string name="guide_facts_social_desc">Маримо можно держать вместе в одном контейнере. Они не конкурируют и могут даже сосуществовать с мелкими рыбками или креветками.</string>
+    <string name="guide_facts_soil_title">ПОЧВА НЕ НУЖНА</string>
+    <string name="guide_facts_soil_desc">В отличие от большинства растений, маримо не укореняются в почве. Они получают все питательные вещества из воды вокруг них.</string>
+    <string name="guide_facts_festival_title">ФЕСТИВАЛЬ</string>
+    <string name="guide_facts_festival_desc">На озере Акан в Японии ежегодно проводится фестиваль маримо (октябрь), где местные жители пускают маримо в озеро, чтобы защитить их.</string>
     <string-array name="decoration_types">
         <item>Выберите тип…</item>
         <item>Галька</item>

@@ -10,6 +10,8 @@ import androidx.work.NetworkType
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
 import com.google.firebase.crashlytics.FirebaseCrashlytics
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.SupervisorJob
 import rpt.tool.marimocare.utils.workers.AchievementWorker
 import rpt.tool.marimocare.utils.notification.AlertWorker
 import rpt.tool.marimocare.utils.notification.NotificationHelper
@@ -19,6 +21,8 @@ import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
 class MarimoCareApplication : Application() {
+
+    val applicationScope = CoroutineScope(SupervisorJob())
 
     companion object {
 

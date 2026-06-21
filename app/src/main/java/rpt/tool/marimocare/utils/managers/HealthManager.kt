@@ -8,7 +8,7 @@ import rpt.tool.marimocare.utils.AppUtils.Companion.calculateHealth
 class HealthManager {
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun calculateAndInsertHealthRobust(currentDay: String) {
+    suspend fun calculateAndInsertHealthRobust(currentDay: String) {
 
         val marimos = RepositoryManager.marimoRepository.getAllSync()
 

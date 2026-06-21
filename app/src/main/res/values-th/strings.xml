@@ -589,6 +589,80 @@
     <string name="pot_decorations">ของตกแต่งกระถาง</string>
     <string name="_total">ทั้งหมด</string>
     <string name="new_stats_2">เพิ่มสถิติใหม่เกี่ยวกับการตกแต่งกระถางมาริโมะของคุณ</string>
+    <string name="marimo_guide"><![CDATA[คู่มือการดูแลและข้อเท็จจริงเกี่ยวกับมาริโมะ]]></string>
+    <string name="happy_marimo">ทุกสิ่งที่คุณจำเป็นต้องรู้เพื่อให้มาริโมะของคุณมีความสุข</string>
+
+    <!-- Water Care -->
+    <string name="guide_water_title">การดูแลเรื่องน้ำ</string>
+    <string name="guide_water_type_title">ประเภทของน้ำ</string>
+    <string name="guide_water_type_desc">น้ำประปา (พักไว้ 24 ชม. เพื่อให้คลอรีนระเหย) หรือน้ำกรอง หลีกเลี่ยงน้ำกลั่นเพราะขาดแร่ธาตุที่มาริโมะต้องการ</string>
+    <string name="guide_water_freq_title">ความถี่ในการเปลี่ยนน้ำ</string>
+    <string name="guide_water_freq_desc">ทุก 1-2 สัปดาห์ ในฤดูร้อนหรือห้องที่ร้อนควรเปลี่ยนบ่อยขึ้น หากน้ำขุ่นให้เปลี่ยนทันที</string>
+    <string name="guide_water_clean_title">วิธีทำความสะอาด</string>
+    <string name="guide_water_clean_desc">บีบมาริโมะเบาๆ ใต้ก๊อกน้ำเพื่อล้างสิ่งสกปรกออก ปั้นให้เป็นก้อนกลมเหมือนเดิมหลังทำความสะอาด</string>
+    <string name="guide_water_salinity_title">ความเค็ม</string>
+    <string name="guide_water_salinity_desc">เกลือสำหรับตู้ปลาเพียงเล็กน้อยเดือนละครั้งจะช่วยส่งเสริมสุขภาพและให้ความรู้สึกเหมือนอยู่ในทะเล (เลือกทำได้)</string>
+
+    <!-- Light Requirements -->
+    <string name="guide_light_title">ความต้องการแสง</string>
+    <string name="guide_light_ideal_title">แสงที่เหมาะสม</string>
+    <string name="guide_light_ideal_desc">แสงรำไร แสงน้อยถึงปานกลาง ริมหน้าต่างทางทิศเหนือหรือจุดที่ห่างจากหน้าต่างไม่กี่ฟุตจะดีที่สุด</string>
+    <string name="guide_light_avoid_title">สิ่งที่ควรหลีกเลี่ยง</string>
+    <string name="guide_light_avoid_desc">แสงแดดส่องโดยตรง เพราะจะทำให้มาริโมะกลายเป็นสีน้ำตาลและทำให้ตะไคร่โตเกินไป แสงแดดตรงๆ แม้ไม่กี่ชั่วโมงก็อันตราย</string>
+    <string name="guide_light_artificial_title">แสงสังเคราะห์</string>
+    <string name="guide_light_artificial_desc">หลอดไฟฟลูออเรสเซนต์หรือ LED สำหรับปลูกต้นไม้ (เปิด/ปิด 12 ชม.) ใช้ได้ดี โดยเฉพาะในห้องที่มีแสงธรรมชาติไม่พอ</string>
+    <string name="guide_light_signs_title">สัญญาณเมื่อได้รับแสงมากเกินไป</string>
+    <string name="guide_light_signs_desc">จุดสีน้ำตาล สีซีดลง หรือผิวเหนียว ให้ย้ายไปจุดที่ร่มกว่าเดิมทันที</string>
+
+    <!-- Temperature -->
+    <string name="guide_temp_title">อุณหภูมิ</string>
+    <string name="guide_temp_range_title">ช่วงที่เหมาะสม</string>
+    <string name="guide_temp_range_desc">15°C – 25°C มาริโมะเจริญเติบโตได้ดีในน้ำที่เย็นถึงอุณหภูมิห้อง</string>
+    <string name="guide_temp_summer_title">ดูแลช่วงฤดูร้อน</string>
+    <string name="guide_temp_summer_desc">ย้ายมาริโมะไปห้องที่เย็นที่สุด ใส่น้ำแข็งก้อนเล็กน้อยลงในน้ำเป็นครั้งคราวในช่วงที่อากาศร้อนจัด</string>
+    <string name="guide_temp_cold_title">ความทนทานต่อความเย็น</string>
+    <string name="guide_temp_cold_desc">พวกมันทนน้ำเย็นได้ดี เพราะตามธรรมชาติมาริโมะอาศัยในทะเลสาบที่เย็น น้ำเย็นจะมีออกซิเจนมากกว่าซึ่งมาริโมะชอบ</string>
+    <string name="guide_temp_avoid_title">สิ่งที่ควรหลีกเลี่ยง</string>
+    <string name="guide_temp_avoid_desc">อุณหภูมิสูงกว่า 28°C เป็นเวลานาน เพราะอาจทำให้มาริโมะเน่าและส่งกลิ่นเหม็น</string>
+
+    <!-- Growth & Biology -->
+    <string name="guide_growth_title">การเติบโตและชีววิทยา</string>
+    <string name="guide_growth_rate_title">อัตราการเติบโต</string>
+    <string name="guide_growth_rate_desc">ช้ามาก ประมาณ 5 มม. ต่อปี มาริโมะขนาด 5 ซม. อาจมีอายุมากกว่า 10 ปีแล้ว</string>
+    <string name="guide_growth_what_title">มาริโมะคืออะไร?</string>
+    <string name="guide_growth_what_desc">มาริโมะ (Aegagropila linnaei) คือสาหร่ายสีเขียวชนิดหนึ่งที่หายาก ซึ่งเติบโตเป็นรูปทรงกลมตามธรรมชาติเนื่องจากกระแสน้ำในทะเลสาบ</string>
+    <string name="guide_growth_habitat_title">ถิ่นที่อยู่ตามธรรมชาติ</string>
+    <string name="guide_growth_habitat_desc">พบตามธรรมชาติในทะเลสาบอาคัน (ญี่ปุ่น) และทะเลสาบมิวาทน์ (ไอซ์แลนด์) ได้รับการคุ้มครองและถือเป็นสมบัติของชาติในญี่ปุ่น</string>
+    <string name="guide_growth_propagation_title">การขยายพันธุ์</string>
+    <string name="guide_growth_propagation_desc">เมื่อมาริโมะใหญ่พอ สามารถใช้มือแบ่งเป็นสองส่วนได้ ปั้นแต่ละส่วนให้เป็นทรงกลม แล้วทั้งคู่จะโตแยกกัน</string>
+    <string name="guide_growth_lifespan_title">อายุขัย</string>
+    <string name="guide_growth_lifespan_desc">หากดูแลอย่างถูกต้อง มาริโมะมีอายุได้หลายร้อยปี มาริโมะตามธรรมชาติที่เก่าแก่ที่สุดคาดว่ามีอายุมากกว่า 200 ปี</string>
+
+    <!-- Troubleshooting -->
+    <string name="guide_trouble_title">การแก้ไขปัญหา</string>
+    <string name="guide_trouble_brown_title">กลายเป็นสีน้ำตาล</string>
+    <string name="guide_trouble_brown_desc">มักเกิดจากแสงแดดตรงๆ หรือน้ำร้อนเกินไป ให้ย้ายไปจุดที่เย็นและร่มกว่าเดิม แล้วเปลี่ยนน้ำ</string>
+    <string name="guide_trouble_shape_title">เสียรูปทรง</string>
+    <string name="guide_trouble_shape_desc">คลึงมาริโมะเบาๆ ระหว่างฝ่ามือในน้ำเย็นเพื่อจัดทรงให้เป็นก้อนกลม ทำทุกครั้งหลังเปลี่ยนน้ำ</string>
+    <string name="guide_trouble_sinking_title">การจม</string>
+    <string name="guide_trouble_sinking_desc">มาริโมะที่แข็งแรงอาจจมน้ำได้เป็นปกติ! และอาจลอยได้หลังสังเคราะห์แสง (ปล่อยฟองออกซิเจน) การจมไม่ได้แปลว่าไม่แข็งแรง</string>
+    <string name="guide_trouble_smelly_title">น้ำมีกลิ่นเหม็น</string>
+    <string name="guide_trouble_smelly_desc">ให้เปลี่ยนน้ำทันที มักหมายถึงการสะสมของแบคทีเรีย ทำความสะอาดภาชนะและมาริโมะอย่างทั่วถึง</string>
+    <string name="guide_trouble_white_title">กลายเป็นสีขาว/เหลือง</string>
+    <string name="guide_trouble_white_desc">มักเป็นสัญญาณว่าแสงไม่พอหรือเน่าจากข้างใน ให้บีบดูเบาๆ หากมีกลิ่นเหม็นอาจต้องตัดส่วนที่ตายออก</string>
+
+    <!-- Fun Facts -->
+    <string name="guide_facts_title">ข้อเท็จจริงที่น่าสนใจ</string>
+    <string name="guide_facts_culture_title">ความสำคัญทางวัฒนธรรม</string>
+    <string name="guide_facts_culture_desc">ในญี่ปุ่นเรียกว่า \'มาริโมะ\' (毬藻) แปลว่า \'สาหร่ายบอล\' ชาวไอนุในฮอกไกโดถือเป็นสัญลักษณ์ของความรักและความโชคดี</string>
+    <string name="guide_facts_photo_title">การสังเคราะห์แสง</string>
+    <string name="guide_facts_photo_desc">บางครั้งคุณจะเห็นฟองออกซิเจนจิ๋วบนผิว นั่นคือมาริโมะกำลังสังเคราะห์แสง! เป็นสัญญาณที่ดีของสุขภาพ</string>
+    <string name="guide_facts_social_title">พวกมันชอบเข้าสังคม</string>
+    <string name="guide_facts_social_desc">มาริโมะเลี้ยงรวมกันในภาชนะเดียวได้ พวกมันไม่แย่งอาหารกัน และอยู่ร่วมกับปลาขนาดเล็กหรือกุ้งได้</string>
+    <string name="guide_facts_soil_title">ไม่ต้องใช้ดิน</string>
+    <string name="guide_facts_soil_desc">มาริโมะไม่มีรากและไม่ต้องใช้ดิน พวกมันได้รับสารอาหารทั้งหมดจากน้ำรอบๆ ตัว</string>
+    <string name="guide_facts_festival_title">เทศกาล</string>
+    <string name="guide_facts_festival_desc">ทะเลสาบอาคันในญี่ปุ่นมีเทศกาลมาริโมะประจำปี (เดือนตุลาคม) ซึ่งคนท้องถิ่นจะนำมาริโมะไปลอยในทะเลสาบเพื่อคุ้มครองพวกมัน</string>
 
     <string-array name="decoration_types">
         <item>เลือกประเภท…</item>

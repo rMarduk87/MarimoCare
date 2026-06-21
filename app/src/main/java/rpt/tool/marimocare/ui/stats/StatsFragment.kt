@@ -112,41 +112,45 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
                     .actionStatsFragmentToDashboardFragment())
         }
 
-        if(SharedPreferencesManager.showBallonNewStats){
-            SharedPreferencesManager.showBallonNewStats = false
-
+        if(SharedPreferencesManager.showBallonNewStats || SharedPreferencesManager.showBallonNewPotStats){
             scrollToTabLayoutAndShowBalloon(binding.scrollView, binding.tabLayout) {
-
-                newStatsBalloon.showAlign(
-                    align = BalloonAlign.BOTTOM,
-                    mainAnchor = binding.tabLayout as View,
-                    subAnchorList = listOf(binding.tabLayout as View)
-                )
+                showBalloonsSequentially()
             }
         }
-
-        if(SharedPreferencesManager.showBallonNewPotStats){
-            SharedPreferencesManager.showBallonNewPotStats = false
-
-            scrollToTabLayoutAndShowBalloon(binding.scrollView, binding.tabLayout) {
-
-                newStatsPieBalloon.showAlign(
-                    align = BalloonAlign.BOTTOM,
-                    mainAnchor = binding.tabLayout as View,
-                    subAnchorList = listOf(binding.tabLayout as View)
-                )
-
-            }
-
-        }
-
-
 
         val context = requireContext()
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
             AchievementManager.recalculateAll(true,
                 mapOf("visited_stats" to true), context)
         }
+    }
+
+    private fun showBalloonsSequentially() {
+        if (SharedPreferencesManager.showBallonNewStats) {
+            SharedPreferencesManager.showBallonNewStats = false
+            newStatsBalloon.showAlign(
+                align = BalloonAlign.BOTTOM,
+                mainAnchor = binding.tabLayout as View,
+                subAnchorList = listOf(binding.tabLayout as View)
+            )
+
+            if (SharedPreferencesManager.showBallonNewPotStats) {
+                newStatsBalloon.setOnBalloonDismissListener {
+                    showSecondBalloon()
+                }
+            }
+        } else if (SharedPreferencesManager.showBallonNewPotStats) {
+            showSecondBalloon()
+        }
+    }
+
+    private fun showSecondBalloon() {
+        SharedPreferencesManager.showBallonNewPotStats = false
+        newStatsPieBalloon.showAlign(
+            align = BalloonAlign.BOTTOM,
+            mainAnchor = binding.tabLayout as View,
+            subAnchorList = listOf(binding.tabLayout as View)
+        )
     }
 
     fun scrollToTabLayoutAndShowBalloon(

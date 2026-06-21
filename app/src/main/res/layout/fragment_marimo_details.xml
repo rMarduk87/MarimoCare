@@ -59,7 +59,11 @@
             </include>
 
             <include
-                android:id="@+id/include5" layout="@layout/footer">
+                android:id="@+id/include5" layout="@layout/marimo_guide">
+            </include>
+
+            <include
+                android:id="@+id/include6" layout="@layout/footer">
             </include>
 
         </LinearLayout>

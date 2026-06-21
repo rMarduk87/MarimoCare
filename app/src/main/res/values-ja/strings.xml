@@ -722,4 +722,78 @@
     <string name="pot_decorations">ポットの装飾</string>
     <string name="_total">合計</string>
     <string name="new_stats_2">新しい統計が追加されました。マリモの器の装飾に関するものです</string>
+    <string name="marimo_guide"><![CDATA[マリモのお手入れガイドと豆知識]]></string>
+    <string name="happy_marimo">マリモを元気に育てるために知っておくべきことすべて</string>
+
+    <!-- Water Care -->
+    <string name="guide_water_title">水のお手入れ</string>
+    <string name="guide_water_type_title">水の種類</string>
+    <string name="guide_water_type_desc">水道水（カルキを抜くために24時間放置したもの）またはろ過水。蒸留水はマリモに必要なミネラルが不足しているため避けてください。</string>
+    <string name="guide_water_freq_title">水換えの頻度</string>
+    <string name="guide_water_freq_desc">1〜2週間ごと。夏場や暖かい部屋では、より頻繁に換えてください。水が濁ったらすぐに換えてください。</string>
+    <string name="guide_water_clean_title">洗い方</string>
+    <string name="guide_water_clean_desc">流水の下でマリモを優しく絞り、汚れを洗い流します。洗った後は丸い形に整えてください。</string>
+    <string name="guide_water_salinity_title">塩分</string>
+    <string name="guide_water_salinity_desc">月に一度、少量の観賞魚用塩を加えると健康が促進され、ほのかな海の雰囲気が出ます（完全にオプションです）。</string>
+
+    <!-- Light Requirements -->
+    <string name="guide_light_title">光の条件</string>
+    <string name="guide_light_ideal_title">理想的な光</string>
+    <string name="guide_light_ideal_desc">間接的で、低〜中程度の光。北向きの窓辺や、窓から数メートル離れた場所が最適です。</string>
+    <string name="guide_light_avoid_title">避けるべきこと</string>
+    <string name="guide_light_avoid_desc">直射日光：マリモが茶色くなったり、藻が異常発生したりする原因になります。数時間の直射日光でも害になることがあります。</string>
+    <string name="guide_light_artificial_title">人工光</string>
+    <string name="guide_light_artificial_desc">12時間のオン/オフサイクルの蛍光灯やLED育成ライトも、特に自然光の少ない部屋では効果的です。</string>
+    <string name="guide_light_signs_title">光が強すぎる兆候</string>
+    <string name="guide_light_signs_desc">茶色の斑点、色あせ、またはヌルヌルした質感。すぐに日陰に移動させてください。</string>
+
+    <!-- Temperature -->
+    <string name="guide_temp_title">温度</string>
+    <string name="guide_temp_range_title">最適な範囲</string>
+    <string name="guide_temp_range_desc">15°C 〜 25°C。マリモは涼しい〜室温の水でよく育ちます。</string>
+    <string name="guide_temp_summer_title">夏のケア</string>
+    <string name="guide_temp_summer_desc">マリモを一番涼しい部屋に移動させます。猛暑の時は、時々氷を数個水に加えてください。</string>
+    <string name="guide_temp_cold_title">耐寒性</string>
+    <string name="guide_temp_cold_desc">涼しい水には強いです。マリモはもともと冷たい湖に住んでいます。冷たい水ほど酸素を多く含み、マリモはそれを好みます。</string>
+    <string name="guide_temp_avoid_title">避けるべきこと</string>
+    <string name="guide_temp_avoid_desc">28°C以上の温度が長時間続くと、劣化や臭いの原因になります。</string>
+
+    <!-- Growth & Biology -->
+    <string name="guide_growth_title">成長と生態</string>
+    <string name="guide_growth_rate_title">成長速度</string>
+    <string name="guide_growth_rate_desc">非常に遅く、年間約5mmです。直径5cmのマリモは、すでに10年以上経過している可能性があります。</string>
+    <string name="guide_growth_what_title">マリモとは？</string>
+    <string name="guide_growth_what_desc">マリモ（Aegagropila linnaei）は、湖の電流によって自然に球状に成長する、珍しい糸状の緑藻の一種です。</string>
+    <string name="guide_growth_habitat_title">自生地</string>
+    <string name="guide_growth_habitat_desc">阿寒湖（日本）とミーヴァトン湖（アイスランド）に自生しています。日本では国の特別天然記念物に指定されています。</string>
+    <string name="guide_growth_propagation_title">増やし方</string>
+    <string name="guide_growth_propagation_desc">マリモが十分に大きくなったら、手で2つに分けることができます。それぞれを丸い形に整えれば、独立して成長します。</string>
+    <string name="guide_growth_lifespan_title">寿命</string>
+    <string name="guide_growth_lifespan_desc">適切なお手入れをすれば、マリモは何百年も生きることができます。自生の大きなマリモは、推定200年以上生きていることが知られています。</string>
+
+    <!-- Troubleshooting -->
+    <string name="guide_trouble_title">トラブルシューティング</string>
+    <string name="guide_trouble_brown_title">茶色くなる</string>
+    <string name="guide_trouble_brown_desc">通常、直射日光の当たりすぎや水温の上昇が原因です。涼しい日陰に移動し、水換えを行ってください。</string>
+    <string name="guide_trouble_shape_title">形が崩れる</string>
+    <string name="guide_trouble_shape_desc">水換えの際に、涼しい水の中で手のひらで優しく転がして、丸い形に整えてください。</string>
+    <string name="guide_trouble_sinking_title">沈む</string>
+    <string name="guide_trouble_sinking_desc">健康なマリモが沈むのは普通のことです！光合成（酸素の泡を出す）の後に浮くことがありますが、沈んでいても不健康というわけではありません。</string>
+    <string name="guide_trouble_smelly_title">水が臭う</string>
+    <string name="guide_trouble_smelly_desc">すぐに水換えをしてください。これは通常、細菌の繁殖を意味します。容器とマリモを徹底的に洗ってください。</string>
+    <string name="guide_trouble_white_title">白・黄色くなる</string>
+    <string name="guide_trouble_white_desc">光不足や内部の腐敗の兆候であることが多いです。優しく絞って確認し、臭う場合は枯れた部分を取り除く必要があるかもしれません。</string>
+
+    <!-- Fun Facts -->
+    <string name="guide_facts_title">豆知識</string>
+    <string name="guide_facts_culture_title">文化的意義</string>
+    <string name="guide_facts_culture_desc">日本では「マリモ（毬藻）」と呼ばれ、阿寒湖周辺のアイヌの人々は、マリモを愛と幸運のシンボルと考えています。</string>
+    <string name="guide_facts_photo_title">光合成</string>
+    <string name="guide_facts_photo_desc">表面に小さな酸素の泡が見えることがあります。これはマリモが活発に光合成をしている証拠で、健康なサインです！</string>
+    <string name="guide_facts_social_title">仲間が好き</string>
+    <string name="guide_facts_social_desc">マリモは同じ容器で一緒に飼育できます。喧嘩をすることもなく、小さな魚やエビとも共生できます。</string>
+    <string name="guide_facts_soil_title">土は不要</string>
+    <string name="guide_facts_soil_desc">ほとんどの植物とは異なり、マリモは土に根を張りません。周囲の水からすべての栄養分を吸収します。</string>
+    <string name="guide_facts_festival_title">マリモ祭り</string>
+    <string name="guide_facts_festival_desc">阿寒湖では毎年10月に「まりも祭り」が開催され、マリモを湖に還す儀式などが行われます。</string>
 </resources>

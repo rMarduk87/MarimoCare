@@ -3,7 +3,7 @@ package rpt.tool.marimocare.utils.notification
 import android.content.Context
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.work.Worker
+import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import rpt.tool.marimocare.utils.AlertDataUtils
 import rpt.tool.marimocare.utils.managers.RepositoryManager
@@ -13,12 +13,12 @@ import rpt.com.base.log.d
 import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 
 class AlertWorker(appContext: Context, params: WorkerParameters) :
-    Worker(appContext, params) {
+    CoroutineWorker(appContext, params) {
 
     private val context = appContext
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override fun doWork(): Result {
+    override suspend fun doWork(): androidx.work.ListenableWorker.Result {
 
         d("AlertWorker", "Worker START")
 
@@ -47,6 +47,6 @@ class AlertWorker(appContext: Context, params: WorkerParameters) :
 
         d("AlertWorker", "Overdue: $overdueNames | Soon: $soonNames")
 
-        return Result.success()
+        return androidx.work.ListenableWorker.Result.success()
     }
 }
