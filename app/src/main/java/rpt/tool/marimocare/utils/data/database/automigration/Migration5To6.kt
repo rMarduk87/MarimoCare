@@ -5,8 +5,21 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 
 object Migration5To6 : Migration(5, 6) {
     override fun migrate(db: SupportSQLiteDatabase) {
-        // Ensure achievement table exists
-        db.execSQL("CREATE TABLE IF NOT EXISTS `achievement` (`id` INTEGER NOT NULL, `code` TEXT NOT NULL, `title` INTEGER NOT NULL, `description` INTEGER NOT NULL, `image` INTEGER NOT NULL, `color` TEXT NOT NULL, `category` TEXT NOT NULL, `order` INTEGER NOT NULL, `earned` INTEGER NOT NULL DEFAULT 0, `acquired_date` TEXT, PRIMARY KEY(`id`))")
+        // Recreate achievement table to fix the default value of the 'earned' column
+        // which changed from 'false' (string) to '0' (integer)
+        val cursor = db.query("SELECT name FROM sqlite_master WHERE type='table' AND name='achievement'")
+        val exists = cursor.moveToFirst()
+        cursor.close()
+
+        if (exists) {
+            db.execSQL("DROP TABLE IF EXISTS `achievement_new`")
+            db.execSQL("CREATE TABLE `achievement_new` (`id` INTEGER NOT NULL, `code` TEXT NOT NULL, `title` INTEGER NOT NULL, `description` INTEGER NOT NULL, `image` INTEGER NOT NULL, `color` TEXT NOT NULL, `category` TEXT NOT NULL, `order` INTEGER NOT NULL, `earned` INTEGER NOT NULL DEFAULT 0, `acquired_date` TEXT, PRIMARY KEY(`id`))")
+            db.execSQL("INSERT INTO `achievement_new` (`id`, `code`, `title`, `description`, `image`, `color`, `category`, `order`, `earned`, `acquired_date`) SELECT `id`, `code`, `title`, `description`, `image`, `color`, `category`, `order`, `earned`, `acquired_date` FROM `achievement`")
+            db.execSQL("DROP TABLE `achievement`")
+            db.execSQL("ALTER TABLE `achievement_new` RENAME TO `achievement`")
+        } else {
+            db.execSQL("CREATE TABLE IF NOT EXISTS `achievement` (`id` INTEGER NOT NULL, `code` TEXT NOT NULL, `title` INTEGER NOT NULL, `description` INTEGER NOT NULL, `image` INTEGER NOT NULL, `color` TEXT NOT NULL, `category` TEXT NOT NULL, `order` INTEGER NOT NULL, `earned` INTEGER NOT NULL DEFAULT 0, `acquired_date` TEXT, PRIMARY KEY(`id`))")
+        }
 
         // Ensure achievement_details table exists
         db.execSQL("CREATE TABLE IF NOT EXISTS `achievement_details` (`id` INTEGER NOT NULL, `achievement_id` INTEGER NOT NULL, `desc` TEXT NOT NULL, `type` INTEGER NOT NULL, `type_desc` INTEGER NOT NULL, `unit` INTEGER NOT NULL, `unit_desc` INTEGER NOT NULL, `current` INTEGER NOT NULL, `target` INTEGER NOT NULL, PRIMARY KEY(`id`))")
