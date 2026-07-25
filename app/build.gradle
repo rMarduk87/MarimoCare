@@ -29,6 +29,12 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    secrets {
+        // Specify the name of the file containing the default secrets.
+        // This file is useful for CI or when local.properties is missing secrets.
+        defaultPropertiesFileName 'secrets.defaults.properties'
+    }
+
     buildTypes {
         release {
             minifyEnabled true

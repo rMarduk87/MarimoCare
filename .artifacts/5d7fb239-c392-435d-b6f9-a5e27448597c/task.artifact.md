@@ -1,0 +1,4 @@
+- [x] Create `secrets.defaults.properties`
+- [x] Configure `secrets-gradle-plugin` in `app/build.gradle`
+- [x] Add placeholder to `local.properties`
+- [x] Verify build with `./gradlew :app:assembleDebug`
