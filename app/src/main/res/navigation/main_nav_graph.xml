@@ -32,6 +32,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_achievementFragment"
             app:destination="@id/achievementFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_questionsAnswersChatFragment"
+            app:destination="@id/questionsAnswersChatFragment" />
     </fragment>
     <fragment
         android:id="@+id/addOrEditFragment"
@@ -204,5 +207,14 @@
         <action
             android:id="@+id/action_achievementFragment_to_statsFragment"
             app:destination="@id/statsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionsAnswersChatFragment"
+        android:name="rpt.tool.marimocare.ui.chat.QuestionsAnswersChatFragment"
+        tools:layout="@layout/fragment_chat"
+        android:label="QuestionsAnswersChatFragment">
+        <action
+            android:id="@+id/action_questionsAnswersChatFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
     </fragment>
 </navigation>

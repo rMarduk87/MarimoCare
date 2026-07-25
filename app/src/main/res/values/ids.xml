@@ -2,4 +2,6 @@
 <resources>
     <!-- RecyclerView Item Id -->
     <item name="rv_marimo" type="id" />
+    <item name="chat_sent_item_id" type="id" />
+    <item name="chat_received_item_id" type="id" />
 </resources>

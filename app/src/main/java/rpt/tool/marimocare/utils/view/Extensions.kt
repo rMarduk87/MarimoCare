@@ -37,6 +37,8 @@ import android.net.Uri
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import java.io.FileOutputStream
+import android.content.Intent
+import android.widget.Toast
 
 fun View.enable(enabled: Boolean) {
     this.alpha = if (enabled) {
@@ -165,4 +167,20 @@ fun Context.copyUriToInternalFile(uri: Uri): File {
         }
     }
     return file
+}
+
+fun Context.shareViaWhatsApp(message: String) {
+    val intent = Intent(Intent.ACTION_SEND).apply {
+        type = "text/plain"
+        setPackage("com.whatsapp")
+        putExtra(Intent.EXTRA_TEXT, message)
+    }
+
+    try {
+        startActivity(intent)
+    } catch (e: Exception) {
+        Toast.makeText(this,
+            getString(R.string.whatsapp_is_not_installed_on_this_device),
+            Toast.LENGTH_SHORT).show()
+    }
 }

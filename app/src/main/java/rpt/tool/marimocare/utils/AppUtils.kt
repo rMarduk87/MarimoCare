@@ -2,6 +2,8 @@ package rpt.tool.marimocare.utils
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Build
 import android.util.Base64
 import androidx.annotation.RequiresApi
@@ -323,16 +325,42 @@ class AppUtils {
         const val SHOW_BALLON_NEW_STATS : String = "show_ballon-new_stats"
         const val SHOW_BALLON_NEW_POT_STATS : String = "show_ballon-new_pot_stats"
         const val SHOW_BALLON_FEEDBACK : String = "show_ballon-feedback"
+        const val SHOW_BALLON_CHAT : String = "show_ballon-chat"
         const val SHOW_ALERT_TODAY : String = "showAlertToday"
         const val ALERT_TODAY : String = "alertToday"
         const val LAST_DAILY_NOTIFICATION_DATE : String = "last_daily_notification_date"
         const val SHOW_NEW_SETTINGS_BALLOON : String = "show_new_settings_balloon"
         const val SHOW_ACHIEVEMENTS_DIALOG : String = "show_achievements_dialog"
+        const val APP_LANGUAGE : String = "app_language"
+        const val CHAT_MODE_ENABLED : String = "chat_mode_enabled"
+        const val RESET_AND_RECALCULATE_ACHIEVEMENTS : String = "reset_and_recalculate_achievements"
 
 
 
         fun dpToPx(dp: Int): Int {
             return (dp * android.content.res.Resources.getSystem().displayMetrics.density).toInt()
+        }
+
+        fun isNetworkAvailable(context: Context): Boolean {
+            val connectivityManager =
+                context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                val network = connectivityManager.activeNetwork ?: return false
+                val activeNetwork =
+                    connectivityManager.getNetworkCapabilities(network) ?: return false
+                return when {
+                    activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+                    activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                    activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
+                    activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_BLUETOOTH) -> true
+                    else -> false
+                }
+            } else {
+                @Suppress("DEPRECATION")
+                val networkInfo = connectivityManager.activeNetworkInfo ?: return false
+                @Suppress("DEPRECATION")
+                return networkInfo.isConnected
+            }
         }
 
     }

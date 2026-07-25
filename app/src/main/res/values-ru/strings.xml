@@ -268,15 +268,25 @@
     <string name="riccardo_pezzolati_gmail_com">riccardo.pezzolati@gmail.com</string>
     <string name="choose_email_client">Выберите почтовый клиент…</string>
     <string name="no_email_app_found_on_your_device">На вашем устройстве не найдено почтовое приложение.</string>
+    <string name="internet_connection_required">Требуется подключение к Интернету</string>
+    <string name="missed_connection">Для этой функции требуется активное подключение к Интернету. Хотите включить его сейчас?</string>
+    <string name="open_settings">Открыть настройки</string>
     <string name="https_www_reddit_com_r_marimo">https://www.reddit.com/r/Marimo/</string>
     <string name="https_www_instagram_com_explore_tags_marimo">https://www.instagram.com/explore/tags/marimo/</string>
     <string name="https_play_google_com_store_apps_details_id_rpt_tool_marimocare">https://play.google.com/store/apps/details?id=rpt.tool.marimocare</string>
     <string name="check_out_marimo_care">Оцените Marimo Care! %1$s</string>
     <string name="unable_to_open_link">Невозможно открыть ссылку.</string>
     <string name="whatsapp_is_not_installed_on_this_device">На этом устройстве не установлен WhatsApp.</string>
+    <string name="forward_to_whatsapp">Переслать в WhatsApp</string>
     <string name="clear_all">Очистить все</string>
     <string name="form_cleared">Форма очищена</string>
     <string name="feedback_balloon">Нажатие здесь откроет экран обратной связи, где вы сможете оставить предложения по улучшению приложения и присоединиться к сообществу Маримо.</string>
+    <string name="questions">Вопросы</string>
+    <string name="chat_balloon_text">Представляем новый режим чата «Вопросы и ответы»! Спрашивайте что угодно об уходе за вашим маримо.</string>
+    <string name="chat_mode">Режим чата</string>
+    <string name="enable_chat_mode_subtitle">Включить или отключить функцию чата «Вопросы и ответы»</string>
+    <string name="enable_chat_mode">Включить режим чата</string>
+    <string name="disable_chat_mode">Отключить режим чата</string>
     <string name="achievement">Достижение</string>
     <string name="achievement_intro_title">Достижения</string>
     <string name="achievement_intro_message">В этой версии добавлены цели, которых нужно достичь. Хотите рассчитать прогресс или предпочитаете начать с нуля?</string>
@@ -661,6 +671,18 @@
     <string name="guide_facts_soil_desc">В отличие от большинства растений, маримо не укореняются в почве. Они получают все питательные вещества из воды вокруг них.</string>
     <string name="guide_facts_festival_title">ФЕСТИВАЛЬ</string>
     <string name="guide_facts_festival_desc">На озере Акан в Японии ежегодно проводится фестиваль маримо (октябрь), где местные жители пускают маримо в озеро, чтобы защитить их.</string>
+    <string name="instruction">\n    Вы виртуальный помощник, специализирующийся исключительно на уходе за маримо (японскими водорослевыми шариками). \n    Отвечайте только на вопросы о: смене воды, освещении, температуре, чистке, болезнях и истории маримо.\n    Если пользователь задает вам вопрос на любую другую тему (например, кулинария, программирование, погода), \n    вежливо ответьте, что вы можете говорить только об уходе за маримо.\n</string>
+    <string name="no_answer">Ответ не получен.</string>
+    <string name="ai_response">Ответ ИИ</string>
+    <string name="_10_01_am">10:01 AM</string>
+    <string name="user_message">Сообщение пользователя</string>
+    <string name="reset_progress">Сбросить прогресс?</string>
+    <string name="reset_all_achivement">Это действие удалит все ваши достижения. \n\nВы можете использовать кнопку «Пересчитать», чтобы восстановить значки, связанные с уходом за маримо, но достижения, связанные с вашими действиями (например, статистика или настройки), нужно будет разблокировать вручную снова.</string>
+    <string name="cancel_reset">Отмена</string>
+    <string name="go_back_without_deleting_anything">Вернуться без удаления.</string>
+    <string name="s_reset_all">Да, сбросить все</string>
+    <string name="i_am_aware">Я осознаю, что действия нужно будет повторить.</string>
+    <string name="no_achievements_to_reset">Нет достижений для сброса</string>
     <string-array name="decoration_types">
         <item>Выберите тип…</item>
         <item>Галька</item>
@@ -791,4 +813,13 @@
         <item>Лаймовый 100</item>
         <item>Зеленый 100</item>
     </string-array>
+    <string name="clear_conversation_title">Очистить переписку?</string>
+    <string name="clear_conversation_message">Это действие навсегда удалит все сообщения в этом чате. Это действие нельзя отменить.</string>
+    <string name="clear_conversation_confirm">Да, очистить всё</string>
+    <string name="clear_conversation_confirm_desc">Я хочу начать новый чат.</string>
+    <string name="clear_conversation_cancel">Отмена</string>
+    <string name="clear_conversation_cancel_desc">Сохранить историю переписки.</string>
+    <string name="add_photo">Добавить фото</string>
+    <string name="_take_photo">Сделать фото</string>
+    <string name="_choose_from_gallery">Выбрать из галереи</string>
 </resources>

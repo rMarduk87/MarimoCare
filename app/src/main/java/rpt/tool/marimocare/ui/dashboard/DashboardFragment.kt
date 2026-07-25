@@ -56,6 +56,7 @@ import rpt.com.base.BaseFragment
 import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.balloon.achievement.AchievementBalloonFactory
 import rpt.tool.marimocare.utils.balloon.achievement.AchievementUnlockedBalloonFactory
+import rpt.tool.marimocare.utils.balloon.chat.ChatBalloonFactory
 import rpt.tool.marimocare.utils.balloon.feedback.FeedbackBalloonFactory
 import rpt.tool.marimocare.utils.balloon.waterchange.DialogChangeWaterBalloonFactory
 import rpt.tool.marimocare.utils.balloon.settings.SettingsBalloonFactory
@@ -75,6 +76,7 @@ import rpt.tool.marimocare.utils.view.enable
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.DeleteMarimoEventHook
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.ShowMarimoDetailsEventHook
 import java.io.File
+import kotlin.time.Duration.Companion.milliseconds
 
 class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     FragmentDashboardBinding::inflate,true) {
@@ -96,6 +98,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     private var isBalloonShowing = false
     private val achievementBalloon by balloon<AchievementBalloonFactory>()
     private val achievementUnlockedBalloon by balloon<AchievementUnlockedBalloonFactory>()
+    private val chatBalloon by balloon<ChatBalloonFactory>()
     private var isAchievementDialogOpen = false
     private var isFeedbackShowing = false
 
@@ -106,6 +109,13 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if (SharedPreferencesManager.resetAndRecalculateAchievement) {
+            SharedPreferencesManager.resetAndRecalculateAchievement = false
+            viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+                AchievementManager.silentReset(requireContext())
+            }
+        }
 
         sorting = resources.getStringArray(R.array.marimo_sorting).toList()
 
@@ -311,8 +321,32 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         setupCompactFilters()
 
         binding.btnOpenFeedbackDashboard.setOnClickListener {
-            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(DashboardFragmentDirections
+            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                DashboardFragmentDirections
                 .actionDashboardFragmentToFeedbackFragment())
+        }
+
+        binding.btnOpenChatDashboard?.let { anchor ->
+            anchor.isVisible = SharedPreferencesManager.isChatModeEnabled
+            anchor.setOnClickListener {
+                if (AppUtils.isNetworkAvailable(requireContext())) {
+                    safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                        DashboardFragmentDirections
+                            .actionDashboardFragmentToQuestionsAnswersChatFragment()
+                    )
+                } else {
+                    AlertDialog.Builder(requireContext())
+                        .setTitle(getString(R.string.internet_connection_required))
+                        .setMessage(getString(R.string.
+                        missed_connection))
+                        .setPositiveButton(getString(R.string.open_settings)) { _, _ ->
+                            startActivity(Intent(android.provider.Settings
+                                .ACTION_WIFI_SETTINGS))
+                        }
+                        .setNegativeButton(getString(R.string.cancel), null)
+                        .show()
+                }
+            }
         }
 
         checkAndShowBalloons()
@@ -465,7 +499,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
         autoScrollJob = CoroutineScope(Dispatchers.Main).launch {
             while (isActive) {
-                delay(intervalMillis)
+                delay(intervalMillis.milliseconds)
 
                 val current = binding.tipsPager.currentItem
                 val next = if (current < itemCount - 1) current + 1 else 0
@@ -907,8 +941,9 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         currentImageCallback = callback
 
         AlertDialog.Builder(requireContext())
-            .setTitle("Add Photo")
-            .setItems(arrayOf("Take Photo", "Choose from Gallery")) { _, which ->
+            .setTitle(getString(R.string.add_photo))
+            .setItems(arrayOf(getString(R.string._take_photo),
+                getString(R.string._choose_from_gallery))) { _, which ->
                 when (which) {
                     0 -> openCamera()
                     1 -> galleryLauncher.launch("image/*")
@@ -1095,7 +1130,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         view.findViewById<View>(R.id.btnRestart).setOnClickListener {
             SharedPreferencesManager.showAchievement = false
             viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-                AchievementManager.deleteAllAchievement()
+                AchievementManager.deleteAllAchievement(requireContext())
             }
             dialog.dismiss()
         }
@@ -1195,6 +1230,24 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                         align = BalloonAlign.BOTTOM,
                         mainAnchor = binding.include1.btnOpenSettings
                     )
+                }
+                SharedPreferencesManager.showBallonChat && SharedPreferencesManager.isChatModeEnabled -> {
+                    binding.btnOpenChatDashboard?.let { anchor ->
+                        isBalloonShowing = true
+                        SharedPreferencesManager.showBallonChat = false
+                        chatBalloon.setOnBalloonDismissListener {
+                            isBalloonShowing = false
+                            checkAndShowBalloons()
+                        }
+                        chatBalloon.showAlign(
+                            align = BalloonAlign.BOTTOM,
+                            mainAnchor = anchor,
+                            subAnchorList = listOf(anchor)
+                        )
+                    } ?: run {
+                        SharedPreferencesManager.showBallonChat = false
+                        checkAndShowBalloons()
+                    }
                 }
             }
         }

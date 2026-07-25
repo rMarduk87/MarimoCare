@@ -212,6 +212,14 @@ class MarimoRepository(
         marimoDao.resetAllAchievements()
     }
 
+    suspend fun clearAchievements() {
+        marimoDao.clearAchievements()
+    }
+
+    suspend fun clearAchievementDetails() {
+        marimoDao.clearAchievementDetails()
+    }
+
     suspend fun addAchievementToTable(context: Context, resource: Int, resourceDetail: Int) {
         withContext(Dispatchers.IO) {
             val achievementList = mutableListOf<Achievement>()
@@ -248,7 +256,7 @@ class MarimoRepository(
                                 backgroundColor = colonne[6].cleanValue(),
                                 category = colonne[4].cleanValue(),
                                 sortOrder = colonne[9].cleanValue().toIntOrNull() ?: 0,
-                                earned = colonne[8].cleanValue().equals("True", ignoreCase = true),
+                                earned = colonne[7].cleanValue().equals("True", ignoreCase = true),
                                 date = colonne[8].cleanValue().takeIf { it.isNotEmpty() && it != "NULL" }
                             )
                             achievementList.add(newAchievement)

@@ -268,15 +268,25 @@
     <string name="riccardo_pezzolati_gmail_com">riccardo.pezzolati@gmail.com</string>
     <string name="choose_email_client">เลือกแอปอีเมล…</string>
     <string name="no_email_app_found_on_your_device">ไม่พบแอปอีเมลในอุปกรณ์ของคุณ</string>
+    <string name="internet_connection_required">จำเป็นต้องมีการเชื่อมต่ออินเทอร์เน็ต</string>
+    <string name="missed_connection">คุณสมบัตินี้ต้องการการเชื่อมต่ออินเทอร์เน็ตที่ใช้งานอยู่ คุณต้องการเปิดใช้งานตอนนี้หรือไม่?</string>
+    <string name="open_settings">เปิดการตั้งค่า</string>
     <string name="https_www_reddit_com_r_marimo">https://www.reddit.com/r/Marimo/</string>
     <string name="https_www_instagram_com_explore_tags_marimo">https://www.instagram.com/explore/tags/marimo/</string>
     <string name="https_play_google_com_store_apps_details_id_rpt_tool_marimocare">https://play.google.com/store/apps/details?id=rpt.tool.marimocare</string>
     <string name="check_out_marimo_care">ลองใช้ Marimo Care สิ! %1$s</string>
     <string name="unable_to_open_link">ไม่สามารถเปิดลิงก์ได้</string>
     <string name="whatsapp_is_not_installed_on_this_device">ไม่ได้ติดตั้ง WhatsApp ในอุปกรณ์นี้</string>
+    <string name="forward_to_whatsapp">ส่งต่อใน WhatsApp</string>
     <string name="clear_all">ล้างข้อมูลทั้งหมด</string>
     <string name="form_cleared">แบบฟอร์มถูกล้างแล้ว</string>
     <string name="feedback_balloon">การคลิกที่นี่จะเปิดหน้าจอแสดงความคิดเห็น ซึ่งคุณสามารถส่งคำแนะนำเพื่อปรับปรุงแอปและเข้าร่วมชุมชน Marimo ได้</string>
+    <string name="questions">คำถาม</string>
+    <string name="chat_balloon_text">ขอแนะนำโหมดแชทถาม-ตอบใหม่! ถามอะไรก็ได้เกี่ยวกับการดูแลมาริโมะของคุณ</string>
+    <string name="chat_mode">โหมดแชท</string>
+    <string name="enable_chat_mode_subtitle">เปิดหรือปิดใช้งานฟีเจอร์แชทถาม-ตอบ</string>
+    <string name="enable_chat_mode">เปิดใช้งานโหมดแชท</string>
+    <string name="disable_chat_mode">ปิดใช้งานโหมดแชท</string>
     <string name="achievement">ความสำเร็จ</string>
     <string name="achievement_intro_title">ความสำเร็จ</string>
     <string name="achievement_intro_message">ในเวอร์ชันนี้ได้เพิ่มวัตถุประสงค์ที่ต้องบรรลุแล้ว คุณต้องการคำนวณความคืบหน้าหรือต้องการเริ่มใหม่ตั้งแต่ต้น?</string>
@@ -663,6 +673,18 @@
     <string name="guide_facts_soil_desc">มาริโมะไม่มีรากและไม่ต้องใช้ดิน พวกมันได้รับสารอาหารทั้งหมดจากน้ำรอบๆ ตัว</string>
     <string name="guide_facts_festival_title">เทศกาล</string>
     <string name="guide_facts_festival_desc">ทะเลสาบอาคันในญี่ปุ่นมีเทศกาลมาริโมะประจำปี (เดือนตุลาคม) ซึ่งคนท้องถิ่นจะนำมาริโมะไปลอยในทะเลสาบเพื่อคุ้มครองพวกมัน</string>
+    <string name="instruction">\n    คุณคือผู้ช่วยเสมือนที่เชี่ยวชาญด้านการดูแลมาริโมะ (สาหร่ายทรงกลมของญี่ปุ่น) โดยเฉพาะ \n    โปรดตอบคำถามเกี่ยวกับ: การเปลี่ยนน้ำ, แสง, อุณหภูมิ, การทำความสะอาด, โรค และประวัติของมาริโมะเท่านั้น \n    หากผู้ใช้ถามคำถามในหัวข้ออื่น (เช่น การทำอาหาร, การเขียนโปรแกรม, สภาพอากาศ) \n    โปรดตอบอย่างสุภาพว่าคุณสามารถพูดคุยเกี่ยวกับการดูแลมาริโมะเท่านั้น\n</string>
+    <string name="no_answer">ไม่ได้รับการตอบกลับ</string>
+    <string name="ai_response">การตอบกลับของ AI</string>
+    <string name="_10_01_am">10:01 AM</string>
+    <string name="user_message">ข้อความจากผู้ใช้</string>
+    <string name="reset_progress">รีเซ็ตความคืบหน้าหรือไม่?</string>
+    <string name="reset_all_achivement">การดำเนินการนี้จะล้างความสำเร็จทั้งหมดของคุณ \n\nคุณสามารถใช้ปุ่ม \'คำนวณใหม่\' เพื่อกู้คืนตราสัญลักษณ์ที่เกี่ยวข้องกับการดูแลมาริโมะ แต่ความสำเร็จที่เกี่ยวข้องกับการดำเนินการของคุณ (เช่น สถิติหรือการตั้งค่า) จะต้องปลดล็อกด้วยตนเองอีกครั้ง</string>
+    <string name="cancel_reset">ยกเลิก</string>
+    <string name="go_back_without_deleting_anything">กลับไปโดยไม่ลบอะไรเลย</string>
+    <string name="s_reset_all">ใช่ รีเซ็ตทั้งหมด</string>
+    <string name="i_am_aware">ฉันรับทราบว่าต้องดำเนินการซ้ำอีกครั้ง</string>
+    <string name="no_achievements_to_reset">ไม่มีความสำเร็จให้รีเซ็ต</string>
 
     <string-array name="decoration_types">
         <item>เลือกประเภท…</item>
@@ -794,4 +816,13 @@
         <item>มะนาว 100</item>
         <item>เขียว 100</item>
     </string-array>
+    <string name="clear_conversation_title">ล้างการสนทนาหรือไม่?</string>
+    <string name="clear_conversation_message">การดำเนินการนี้จะลบข้อความทั้งหมดในแชทนี้อย่างถาวร ไม่สามารถย้อนคืนการดำเนินการนี้ได้</string>
+    <string name="clear_conversation_confirm">ใช่ ล้างทั้งหมด</string>
+    <string name="clear_conversation_confirm_desc">ฉันต้องการเริ่มการแชทใหม่</string>
+    <string name="clear_conversation_cancel">ยกเลิก</string>
+    <string name="clear_conversation_cancel_desc">เก็บประวัติการสนทนาไว้</string>
+    <string name="add_photo">เพิ่มรูปภาพ</string>
+    <string name="_take_photo">ถ่ายรูป</string>
+    <string name="_choose_from_gallery">เลือกจากแกลเลอรี</string>
 </resources>

@@ -1,8 +1,11 @@
 package rpt.tool.marimocare.ui.achievement
 
+import android.app.AlertDialog
 import android.os.Build
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.navGraphViewModels
@@ -21,9 +24,7 @@ import rpt.tool.marimocare.utils.view.HeaderHelper
 import rpt.tool.marimocare.utils.view.adapters.AchievementAdapter
 
 class AchievementFragment :
-    BaseFragment<FragmentAchievementBinding>({ inflater, parent, attach ->
-        FragmentAchievementBinding.inflate(inflater, parent, attach)
-    }, true),
+    BaseFragment<FragmentAchievementBinding>(FragmentAchievementBinding::inflate,true),
     AchievementManager.AchievementListener {
 
     private val viewModel: AchievementViewModel by
@@ -55,9 +56,45 @@ class AchievementFragment :
         }
 
         binding.resetAllBtn.setOnClickListener {
-            viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-                AchievementManager.deleteAllAchievement()
+            val earnedCount = viewModel.earnedAchievements.value?.size ?: 0
+            val hasPartialProgress = viewModel.lockedAchievements.value?.any { it.detail.current >
+                    0 } == true
+            if (earnedCount == 0 && !hasPartialProgress) {
+                Toast.makeText(requireContext(),
+                    getString(R.string.no_achievements_to_reset),
+                    Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
+
+            val dialogView = LayoutInflater.from(requireContext()).inflate(
+                R.layout.dialog_reset_achievement, null)
+
+            val dialog = AlertDialog.Builder(requireContext(),
+                R.style.CustomDialogTheme)
+                .setView(dialogView)
+                .create()
+
+            dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+            val btnClose = dialogView.findViewById<android.view.View>(R.id.btnClose)
+            val btnCancel = dialogView.findViewById<android.view.View>(R.id.btnCancel)
+            val btnConfirmReset = dialogView.findViewById<android.view.View>(R.id.btnConfirmReset)
+
+            val dismissListener = android.view.View.OnClickListener { dialog.dismiss() }
+            btnClose.setOnClickListener(dismissListener)
+            btnCancel.setOnClickListener(dismissListener)
+
+            btnConfirmReset.setOnClickListener {
+                viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+                    AchievementManager.deleteAllAchievement(requireContext())
+                }
+                dialog.dismiss()
+            }
+
+            dialog.show()
+
+            val width = (resources.displayMetrics.widthPixels * 0.90).toInt()
+            dialog.window?.setLayout(width, android.view.ViewGroup.LayoutParams.WRAP_CONTENT)
         }
     }
 
