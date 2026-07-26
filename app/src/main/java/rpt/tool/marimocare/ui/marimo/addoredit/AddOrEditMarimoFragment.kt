@@ -533,7 +533,9 @@ class AddOrEditMarimoFragment :
             append(requireContext().getString(R.string.qr_code_you_can_scan_it_later))
         }
 
-        icon.setImageBitmap(qrCode)
+        Glide.with(requireContext())
+            .load(qrCode)
+            .into(icon)
 
         dialog.findViewById<ImageView>(R.id.btnCloseDialog).setOnClickListener {
             dialog.dismiss() }

@@ -1,25 +1,30 @@
-# Fix Unresolved Reference 'OPENAI_API_KEY'
+# Optimize Bitmap Image Loading
 
-The build error `Unresolved reference 'OPENAI_API_KEY'` occurs because the `OPENAI_API_KEY` property is missing from the project configuration. The project uses the `secrets-gradle-plugin`, which expects secrets to be defined in `local.properties`.
+The app has some locations where images are loaded manually using `setImageURI` or `setImageBitmap`, which can lead to performance issues and excessive memory usage. This plan replaces these manual operations with Glide to take advantage of its automatic caching, downsampling, and memory management.
 
 ## Proposed Changes
 
-### Build Configuration
+### [Component Name] [Image Loading Optimization]
 
-#### [NEW] [secrets.defaults.properties](file:///Users/marduk87/Sviluppo/MarimoCare/secrets.defaults.properties)
-- Create a new file to hold default values for secrets. This ensures the build passes even if the actual secret is missing from `local.properties`.
-- Add `OPENAI_API_KEY=` to this file.
+#### [MODIFY] [ChangeWaterEventHook.kt](file:///Users/marduk87/Sviluppo/MarimoCare/app/src/main/java/rpt/tool/marimocare/utils/view/recyclerview/items/marimo/hooks/ChangeWaterEventHook.kt)
+- Replace `imagePreview?.setImageURI(it.toUri())` with `Glide.with(context).load(it.toUri()).into(imagePreview)`.
+- This ensures that images picked from the gallery are loaded efficiently and cached.
 
-#### [MODIFY] [app/build.gradle](file:///Users/marduk87/Sviluppo/MarimoCare/app/build.gradle)
-- Add a `secrets` configuration block to specify `secrets.defaults.properties` as the default source for secrets.
+#### [MODIFY] [AddOrEditMarimoFragment.kt](file:///Users/marduk87/Sviluppo/MarimoCare/app/src/main/java/rpt/tool/marimocare/ui/marimo/addoredit/AddOrEditMarimoFragment.kt)
+- Replace `icon.setImageBitmap(qrCode)` with `Glide.with(requireContext()).load(qrCode).into(icon)` in `showMarimoQR`.
+- Even for locally generated bitmaps, Glide provides better management of the image lifecycle and memory.
 
-#### [MODIFY] [local.properties](file:///Users/marduk87/Sviluppo/MarimoCare/local.properties)
-- Add `OPENAI_API_KEY=` placeholder to guide the user on where to put their actual API key.
+### [Component Name] [General Cleanup]
+
+#### [MODIFY] [Extensions.kt](file:///Users/marduk87/Sviluppo/MarimoCare/app/src/main/java/rpt/tool/marimocare/utils/view/Extensions.kt)
+- Ensure `loadMarimoImage` is used consistently across the app. (It is already mostly consistent).
 
 ## Verification Plan
 
 ### Automated Tests
-- Run `./gradlew :app:assembleDebug` to verify that the project builds successfully.
+- Run `./gradlew :app:assembleDebug` to ensure the project still builds.
 
 ### Manual Verification
-- Verify that `BuildConfig.OPENAI_API_KEY` is now resolved in `OpenAiApi.kt`.
+- Verify that images picked for water changes are displayed correctly.
+- Verify that the QR code is displayed correctly in the dialog.
+- Observe app performance and memory usage during image-heavy operations (e.g., browsing the care timeline).

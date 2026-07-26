@@ -1,4 +1,3 @@
-- [x] Create `secrets.defaults.properties`
-- [x] Configure `secrets-gradle-plugin` in `app/build.gradle`
-- [x] Add placeholder to `local.properties`
+- [x] Update `ChangeWaterEventHook.kt` to use Glide
+- [x] Update `AddOrEditMarimoFragment.kt` to use Glide for QR code
 - [x] Verify build with `./gradlew :app:assembleDebug`
