@@ -31,6 +31,7 @@ import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.tool.marimocare.utils.view.getFastAdapterItemViewBinding
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.MarimoItem
 import androidx.core.graphics.drawable.toDrawable
+import com.bumptech.glide.Glide
 import com.google.android.material.textfield.TextInputEditText
 import androidx.core.net.toUri
 import com.skydoves.balloon.Balloon
@@ -126,7 +127,12 @@ class ChangeWaterEventHook(
 
                 selectedPath?.let {
 
-                    imagePreview?.setImageURI(it.toUri())
+                    imagePreview?.let { iv ->
+                        Glide.with(context)
+                            .load(it.toUri())
+                            .centerCrop()
+                            .into(iv)
+                    }
 
                     uploadContainer.visibility = View.GONE
                     imagePreview?.visibility = View.VISIBLE

@@ -192,6 +192,10 @@ interface MarimoDao {
     suspend fun resetAllAchievements()
 
     @Transaction
+    @Query("DELETE FROM achievement")
+    suspend fun clearAchievements()
+
+    @Transaction
     @Query("UPDATE achievement SET earned = 1, acquired_date = :date where id = :id")
     suspend fun earnAchievement(id: Int, date: String)
 

@@ -59,6 +59,35 @@ class AchievementManager {
         }
 
         @RequiresApi(Build.VERSION_CODES.O)
+        suspend fun silentReset(context: Context) {
+            val earnedAchievements = RepositoryManager.marimoRepository.getAllAchievement()
+                .filter { it.earned == 1 }
+                .map { Pair(it.code, it.date) }
+
+            // Clear existing data using repository
+            RepositoryManager.marimoRepository.clearAchievements()
+            RepositoryManager.marimoRepository.clearAchievementDetails()
+
+            // Re-import corrected data
+            RepositoryManager.marimoRepository.addAchievementToTable(
+                context,
+                R.raw.achievement,
+                R.raw.achievement_detail
+            )
+
+            // Restore earned status by code
+            val newAchievements = RepositoryManager.marimoRepository.getAllAchievement()
+            earnedAchievements.forEach { (code, date) ->
+                newAchievements.find { it.code == code }?.let { newAch ->
+                    RepositoryManager.marimoRepository.earnAchievement(newAch.id, date ?: AppUtils.getCurrentDate())
+                }
+            }
+
+            // Recalculate progress based on current app state
+            recalculateAll(showDialogEarned = false, context = context)
+        }
+
+        @RequiresApi(Build.VERSION_CODES.O)
         private suspend fun calculateAchievement(
             context: Context,
             achievements: List<AchievementComplex>,
@@ -173,16 +202,16 @@ class AchievementManager {
                     "senior_marimo" -> minOf(maxMonthsOfOwnership, 6)
                     "ancient_marimo" -> minOf(maxMonthsOfOwnership, 12)
 
-                    "marimo_biographer_5" -> minOf(marimosWithNotes, 5)
+                    "marimo_biographer_5" -> if (marimosWithNotes >= 5) 5 else 0
                     "marimo_notes" -> if (marimosWithNotes > 0) 1 else 0
 
+                    "never_overdue" -> if (marimos.isNotEmpty() && allUpToDate) 1 else 0
                     "on_time_streak_5" -> minOf(waterChanges.size, 5)
                     "on_time_streak_20" -> minOf(waterChanges.size, 20)
-                    "never_overdue" -> if (allUpToDate) 1 else 0
                     "speedy" -> if (speedyEarned) 1 else 0
 
                     "early_bird" -> if (userMeta["earned_early_bird"] == true) 1 else null
-                    "night_owl" -> if (userMeta["overdue_log_count"] == true) 1 else null
+                    "night_owl" -> if (userMeta["overdue_log_count"] != null) 1 else null
                     "feedback_giver" -> if (userMeta["submitted_feedback"] == true) 1 else null
                     "settings_explorer" -> if (userMeta["customized_settings"] == true) 1 else null
                     "stats_viewer" -> if (userMeta["visited_stats"] == true) 1 else null
@@ -204,8 +233,17 @@ class AchievementManager {
             }
         }
 
-        suspend fun deleteAllAchievement() {
-            RepositoryManager.marimoRepository.resetAllAchievements()
+        suspend fun deleteAllAchievement(context: Context) {
+            RepositoryManager.marimoRepository.clearAchievements()
+            RepositoryManager.marimoRepository.clearAchievementDetails()
+
+
+            RepositoryManager.marimoRepository.addAchievementToTable(
+                context,
+                R.raw.achievement,
+                R.raw.achievement_detail
+            )
+
             withContext(Dispatchers.Main) {
                 listener?.onDataChanged()
             }

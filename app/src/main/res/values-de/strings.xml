@@ -270,15 +270,25 @@
     <string name="riccardo_pezzolati_gmail_com">riccardo.pezzolati@gmail.com</string>
     <string name="choose_email_client">E-Mail-Client auswählen…</string>
     <string name="no_email_app_found_on_your_device">Auf Ihrem Gerät wurde keine E-Mail-App gefunden.</string>
+    <string name="internet_connection_required">Internetverbindung erforderlich</string>
+    <string name="missed_connection">Diese Funktion erfordert eine aktive Internetverbindung. Möchten Sie diese jetzt aktivieren?</string>
+    <string name="open_settings">Einstellungen öffnen</string>
     <string name="https_www_reddit_com_r_marimo">https://www.reddit.com/r/Marimo/</string>
     <string name="https_www_instagram_com_explore_tags_marimo">https://www.instagram.com/explore/tags/marimo/</string>
     <string name="https_play_google_com_store_apps_details_id_rpt_tool_marimocare">https://play.google.com/store/apps/details?id=rpt.tool.marimocare</string>
     <string name="check_out_marimo_care">Entdecke Marimo Care! %1$s</string>
     <string name="unable_to_open_link">Link konnte nicht geöffnet werden.</string>
     <string name="whatsapp_is_not_installed_on_this_device">WhatsApp ist auf diesem Gerät nicht installiert.</string>
+    <string name="forward_to_whatsapp">An WhatsApp weiterleiten</string>
     <string name="clear_all">Alle löschen</string>
     <string name="form_cleared">Formular gelöscht</string>
     <string name="feedback_balloon">Durch Klicken hier öffnet sich der Feedback-Bildschirm, auf dem Sie Verbesserungsvorschläge für die App einreichen und der Marimo-Community beitreten können.</string>
+    <string name="questions">Fragen</string>
+    <string name="chat_balloon_text">Wir stellen den neuen Frage-und-Antwort-Chatmodus vor! Frag alles über deine Marimo-Pflege.</string>
+    <string name="chat_mode">Chat-Modus</string>
+    <string name="enable_chat_mode_subtitle">Aktiviere oder deaktiviere die Frage-und-Antwort-Chat-Funktion</string>
+    <string name="enable_chat_mode">Chat-Modus aktivieren</string>
+    <string name="disable_chat_mode">Chat-Modus deaktivieren</string>
     <string name="achievement">Erfolge</string>
     <string name="achievement_intro_title">Erfolge</string>
     <string name="achievement_intro_message">In dieser Version wurden die zu erreichenden Ziele hinzugefügt. Möchten Sie den Fortschritt berechnen oder lieber von vorne beginnen?</string>
@@ -682,6 +692,18 @@
     <string name="guide_facts_soil_desc">Im Gegensatz zu den meisten Pflanzen wurzeln Marimos nicht in Erde. Sie nehmen alle Nährstoffe aus dem Wasser auf.</string>
     <string name="guide_facts_festival_title">FESTIVAL</string>
     <string name="guide_facts_festival_desc">Am Akan-See in Japan gibt es jährlich das Marimo-Festival (Oktober), bei dem Einheimische Marimos im See schwimmen lassen, um sie zu schützen.</string>
+    <string name="instruction">\n    Sie sind ein virtueller Assistent, der ausschließlich auf die Pflege von Marimos (japanische Moosbälle) spezialisiert ist.\n    Beantworten Sie nur Fragen zu: Wasserwechsel, Licht, Temperatur, Reinigung, Krankheiten und Geschichte der Marimos.\n    Wenn der Benutzer Sie zu einem anderen Thema fragt (z. B. Kochen, Programmieren, Wetter),\n    antworten Sie freundlich, dass Sie nur über die Marimo-Pflege sprechen können.\n</string>
+    <string name="no_answer">Keine Antwort erhalten.</string>
+    <string name="ai_response">KI-Antwort</string>
+    <string name="_10_01_am">10:01</string>
+    <string name="user_message">Benutzernachricht</string>
+    <string name="reset_progress">Fortschritt zurücksetzen?</string>
+    <string name="reset_all_achivement">Diese Aktion löscht alle Ihre Erfolge. \n\nSie können die Schaltfläche \'Neu berechnen\' verwenden, um Abzeichen im Zusammenhang mit der Marimo-Pflege wiederherzustellen, aber Erfolge im Zusammenhang mit Ihren Aktionen (z. B. Statistiken oder Einstellungen) müssen manuell erneut freigeschaltet werden.</string>
+    <string name="cancel_reset">Abbrechen</string>
+    <string name="go_back_without_deleting_anything">Zurückgehen, ohne etwas zu löschen.</string>
+    <string name="s_reset_all">Ja, alles zurücksetzen</string>
+    <string name="i_am_aware">Ich bin mir bewusst, dass Aktionen wiederholt werden müssen.</string>
+    <string name="no_achievements_to_reset">Keine Erfolge zum Zurücksetzen</string>
     <string-array name="decoration_color_names">
         <!-- Greyscale Names -->
         <item>Keiner</item>
@@ -796,4 +818,13 @@
         <item>Limette 100</item>
         <item>Grün 100</item>
     </string-array>
+    <string name="clear_conversation_title">Konversation löschen?</string>
+    <string name="clear_conversation_message">Diese Aktion löscht dauerhaft alle Nachrichten in diesem Chat. Dies kann nicht rückgängig gemacht werden.</string>
+    <string name="clear_conversation_confirm">Ja, alles löschen</string>
+    <string name="clear_conversation_confirm_desc">Ich möchte einen neuen Chat starten.</string>
+    <string name="clear_conversation_cancel">Abbrechen</string>
+    <string name="clear_conversation_cancel_desc">Konversationsverlauf behalten.</string>
+    <string name="add_photo">Foto hinzufügen</string>
+    <string name="_take_photo">Foto aufnehmen</string>
+    <string name="_choose_from_gallery">Aus Galerie auswählen</string>
 </resources>

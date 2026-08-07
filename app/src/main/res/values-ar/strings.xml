@@ -268,15 +268,25 @@
     <string name="riccardo_pezzolati_gmail_com">riccardo.pezzolati@gmail.com</string>
     <string name="choose_email_client">اختر عميل البريد الإلكتروني…</string>
     <string name="no_email_app_found_on_your_device">لم يتم العثور على تطبيق بريد إلكتروني على جهازك.</string>
+    <string name="internet_connection_required">الاتصال بالإنترنت مطلوب</string>
+    <string name="missed_connection">تتطلب هذه الميزة اتصالاً نشطاً بالإنترنت. هل تريد تفعيله الآن؟</string>
+    <string name="open_settings">افتح الإعدادات</string>
     <string name="https_www_reddit_com_r_marimo">https://www.reddit.com/r/Marimo/</string>
     <string name="https_www_instagram_com_explore_tags_marimo">https://www.instagram.com/explore/tags/marimo/</string>
     <string name="https_play_google_com_store_apps_details_id_rpt_tool_marimocare">https://play.google.com/store/apps/details?id=rpt.tool.marimocare</string>
     <string name="check_out_marimo_care">تحقق من Marimo Care! %1$s</string>
     <string name="unable_to_open_link">غير قادر على فتح الرابط.</string>
     <string name="whatsapp_is_not_installed_on_this_device">تطبيق WhatsApp غير مثبت على هذا الجهاز.</string>
+    <string name="forward_to_whatsapp">إعادة توجيه إلى WhatsApp</string>
     <string name="clear_all">مسح الكل</string>
     <string name="form_cleared">تم مسح النموذج</string>
     <string name="feedback_balloon">سيؤدي النقر هنا إلى فتح شاشة الملاحظات حيث يمكنك إرسال اقتراحات لتحسين التطبيق والانضمام إلى مجتمع الماريمو.</string>
+    <string name="questions">أسئلة</string>
+    <string name="chat_balloon_text">نقدم لك وضع دردشة الأسئلة والأجوبة الجديد! اسأل أي شيء عن رعاية الماريمو الخاصة بك.</string>
+    <string name="chat_mode">وضع الدردشة</string>
+    <string name="enable_chat_mode_subtitle">تفعيل أو تعطيل ميزة دردشة الأسئلة والأجوبة</string>
+    <string name="enable_chat_mode">تفعيل وضع الدردشة</string>
+    <string name="disable_chat_mode">تعطيل وضع الدردشة</string>
     <string name="achievement">إنجاز</string>
     <string name="achievement_intro_title">الإنجازات</string>
     <string name="achievement_intro_message">في هذا الإصدار تمت إضافة الأهداف المراد تحقيقها، هل تريد حساب التقدم أم تفضل البدء من الصفر؟</string>
@@ -660,6 +670,18 @@
     <string name="guide_facts_soil_desc">على عكس معظم النباتات، لا يتجذر الماريمو في التربة. يحصلون على جميع العناصر الغذائية من الماء من حولهم.</string>
     <string name="guide_facts_festival_title">المهرجان</string>
     <string name="guide_facts_festival_desc">تقيم بحيرة آكان في اليابان مهرجاناً سنوياً للماريمو (أكتوبر) حيث يقوم السكان المحليون بتعويم الماريمو في البحيرة لحمايتهم.</string>
+    <string name="instruction">\n    أنت مساعد افتراضي متخصص حصريًا في رعاية ماريمو (كرات الطحالب اليابانية). \n    أجب فقط على الأسئلة المتعلقة بـ: تغيير المياه، والضوء، ودرجة الحرارة، والتنظيف، والأمراض، وتاريخ الماريمو.\n    إذا سألك المستخدم سؤالاً حول أي موضوع آخر (مثل الطبخ، والبرمجة، والطقس)، \n    فقم بالرد بلطف بأنك لا تستطيع التحدث إلا عن رعاية الماريمو.\n</string>
+    <string name="no_answer">لم يتم تلقي رد.</string>
+    <string name="ai_response">رد الذكاء الاصطناعي</string>
+    <string name="_10_01_am">١٠:٠١ ص</string>
+    <string name="user_message">رسالة المستخدم</string>
+    <string name="reset_progress">إعادة تعيين التقدم؟</string>
+    <string name="reset_all_achivement">سيؤدي هذا الإجراء إلى مسح جميع إنجازاتك. \n\nيمكنك استخدام زر \'إعادة الحساب\' لاستعادة الأوسمة المتعلقة برعاية الماريمو، ولكن الإنجازات المتعلقة بأفعالك (مثل الإحصائيات أو الإعدادات) ستحتاج إلى إلغاء قفلها يدويًا مرة أخرى.</string>
+    <string name="cancel_reset">إلغاء</string>
+    <string name="go_back_without_deleting_anything">العودة دون حذف أي شيء.</string>
+    <string name="s_reset_all">نعم، إعادة تعيين كل شيء</string>
+    <string name="i_am_aware">أنا أدرك أنه سيلزم تكرار الإجراءات.</string>
+    <string name="no_achievements_to_reset">لا توجد إنجازات لإعادة تعيينها</string>
     <string-array name="decoration_types">
         <item>اختر النوع...</item>
         <item>حصاة</item>
@@ -790,4 +812,13 @@
         <item>ليموني 100</item>
         <item>أخضر 100</item>
     </string-array>
+    <string name="clear_conversation_title">هل تريد مسح المحادثة؟</string>
+    <string name="clear_conversation_message">سيؤدي هذا الإجراء إلى حذف جميع الرسائل في هذه الدردشة بشكل دائم. لا يمكن التراجع عن هذا الإجراء.</string>
+    <string name="clear_conversation_confirm">نعم، مسح الكل</string>
+    <string name="clear_conversation_confirm_desc">أريد بدء دردشة جديدة.</string>
+    <string name="clear_conversation_cancel">إلغاء</string>
+    <string name="clear_conversation_cancel_desc">الاحتفاظ بسجل المحادثة.</string>
+    <string name="add_photo">إضافة صورة</string>
+    <string name="_take_photo">التقاط صورة</string>
+    <string name="_choose_from_gallery">اختر من المعرض</string>
 </resources>

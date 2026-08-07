@@ -21,6 +21,7 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import rpt.tool.marimocare.utils.managers.AchievementManager
+import rpt.tool.marimocare.utils.view.shareViaWhatsApp
 
 class FeedbackFragment :
     BaseFragment<FragmentFeedbackBinding>({ inflater, parent, attach ->
@@ -99,7 +100,7 @@ class FeedbackFragment :
         binding.btnWhatsapp.setOnClickListener {
             val appStoreLink =
                 getString(R.string.https_play_google_com_store_apps_details_id_rpt_tool_marimocare)
-            shareViaWhatsApp(getString(R.string.check_out_marimo_care, appStoreLink))
+            requireContext().shareViaWhatsApp(getString(R.string.check_out_marimo_care, appStoreLink))
         }
 
         binding.btnClearAll.setOnClickListener {
@@ -225,22 +226,6 @@ class FeedbackFragment :
         } catch (e: Exception) {
             Toast.makeText(requireContext(),
                 getString(R.string.unable_to_open_link),
-                Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private fun shareViaWhatsApp(message: String) {
-        val intent = Intent(Intent.ACTION_SEND).apply {
-            type = "text/plain"
-            setPackage("com.whatsapp")
-            putExtra(Intent.EXTRA_TEXT, message)
-        }
-
-        try {
-            startActivity(intent)
-        } catch (e: Exception) {
-            Toast.makeText(requireContext(),
-                getString(R.string.whatsapp_is_not_installed_on_this_device),
                 Toast.LENGTH_SHORT).show()
         }
     }

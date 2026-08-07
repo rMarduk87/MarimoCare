@@ -34,6 +34,7 @@ class SettingsFragment :
     private var showAlertToday = true
     private var showAlertSoon = true
     private var showAlertOverdue = true
+    private var isChatModeEnabled = true
 
     private val speedViews: MutableMap<Int, TextView> = mutableMapOf()
     private val filterViews: MutableMap<Int, TextView> = mutableMapOf()
@@ -63,6 +64,8 @@ class SettingsFragment :
         setupStatPeriodListeners()
         setupNotificationSelection()
         setupNotificationListeners()
+        setupChatModeSelection()
+        setupChatModeListeners()
         setupSaveCancelListeners()
 
         binding.include1.appLogo.setOnClickListener {
@@ -148,6 +151,7 @@ class SettingsFragment :
             containerOrderAndFilters.setBackgroundResource(R.drawable.bg_card_settings)
             containerStatsPeriod.setBackgroundResource(R.drawable.bg_card_settings)
             containerNotifications.setBackgroundResource(R.drawable.bg_card_settings)
+            containerChatMode.setBackgroundResource(R.drawable.bg_card_settings)
         }
     }
 
@@ -414,6 +418,27 @@ class SettingsFragment :
         view.setCompoundDrawablesWithIntrinsicBounds(null, null, checkIcon, null)
     }
 
+    private fun setupChatModeSelection() {
+        isChatModeEnabled = SharedPreferencesManager.isChatModeEnabled
+        updateChatModeSelection()
+    }
+
+    private fun setupChatModeListeners() {
+        binding.inputEnableChat.setOnClickListener {
+            isChatModeEnabled = true
+            updateChatModeSelection()
+        }
+        binding.inputDisableChat.setOnClickListener {
+            isChatModeEnabled = false
+            updateChatModeSelection()
+        }
+    }
+
+    private fun updateChatModeSelection() {
+        binding.inputEnableChat.let { updateNotificationView(it, isChatModeEnabled) }
+        binding.inputDisableChat.let { updateNotificationView(it, !isChatModeEnabled) }
+    }
+
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setupSaveCancelListeners() {
         binding.btnSave.setOnClickListener {
@@ -426,6 +451,7 @@ class SettingsFragment :
             SharedPreferencesManager.showAlertToday = showAlertToday
             SharedPreferencesManager.showAlertSoon = showAlertSoon
             SharedPreferencesManager.showAlertOverdue = showAlertOverdue
+            SharedPreferencesManager.isChatModeEnabled = isChatModeEnabled
             Toast.makeText(
                 requireContext(),
                 getString(R.string.option_correctly_updated),
@@ -448,11 +474,13 @@ class SettingsFragment :
             showAlertToday = SharedPreferencesManager.showAlertToday
             showAlertSoon = SharedPreferencesManager.showAlertSoon
             showAlertOverdue = SharedPreferencesManager.showAlertOverdue
+            isChatModeEnabled = SharedPreferencesManager.isChatModeEnabled
             updateDashboardSelection()
             updateSpeedTipsSelection()
             updateFilterAndSortSelection()
             updateStatPeriodSelection()
             updateNotificationSelection()
+            updateChatModeSelection()
         }
     }
 }

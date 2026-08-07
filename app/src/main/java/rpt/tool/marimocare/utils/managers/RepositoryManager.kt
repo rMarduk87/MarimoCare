@@ -6,6 +6,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import rpt.tool.marimocare.MarimoCareApplication
 import rpt.tool.marimocare.utils.data.database.AppDatabase
+import rpt.tool.marimocare.utils.data.repositories.ChatHistoryRepository
 import rpt.tool.marimocare.utils.data.repositories.decoration.PotDecorationRepository
 
 object RepositoryManager {
@@ -21,6 +22,10 @@ object RepositoryManager {
 
     val potDecorationRepository: PotDecorationRepository by lazy {
         PotDecorationRepository(db.potDecorationDao())
+    }
+
+    val chatHistoryRepository: ChatHistoryRepository by lazy {
+        ChatHistoryRepository(db.chatHistoryDao())
     }
 
     suspend fun clear() {

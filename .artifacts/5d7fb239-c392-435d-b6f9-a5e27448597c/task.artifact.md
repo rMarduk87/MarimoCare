@@ -1,0 +1,3 @@
+- [x] Update `ChangeWaterEventHook.kt` to use Glide
+- [x] Update `AddOrEditMarimoFragment.kt` to use Glide for QR code
+- [x] Verify build with `./gradlew :app:assembleDebug`

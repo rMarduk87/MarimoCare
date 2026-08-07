@@ -102,6 +102,10 @@ object SharedPreferencesManager {
         get() = sharedPreferences.getBoolean(AppUtils.SHOW_BALLON_FEEDBACK, true)
         set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_BALLON_FEEDBACK, value)}
 
+    var showBallonChat: Boolean
+        get() = sharedPreferences.getBoolean(AppUtils.SHOW_BALLON_CHAT, true)
+        set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_BALLON_CHAT, value)}
+
     var showAlertToday: Boolean
         get() = sharedPreferences.getBoolean(AppUtils.SHOW_ALERT_TODAY, true)
         set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_ALERT_TODAY, value) }
@@ -120,5 +124,17 @@ object SharedPreferencesManager {
     var showAchievement: Boolean
         get() = sharedPreferences.getBoolean(AppUtils.SHOW_ACHIEVEMENTS_DIALOG, true)
         set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_ACHIEVEMENTS_DIALOG, value)}
+
+    var appLanguage: String
+        get() = sharedPreferences.getString(AppUtils.APP_LANGUAGE, "") ?: ""
+        set(value) = sharedPreferences.edit() { putString(AppUtils.APP_LANGUAGE, value) }
+
+    var isChatModeEnabled: Boolean
+        get() = sharedPreferences.getBoolean(AppUtils.CHAT_MODE_ENABLED, true)
+        set(value) = sharedPreferences.edit() { putBoolean(AppUtils.CHAT_MODE_ENABLED, value) }
+
+    var resetAndRecalculateAchievement: Boolean
+        get() = sharedPreferences.getBoolean(AppUtils.RESET_AND_RECALCULATE_ACHIEVEMENTS, true)
+        set(value) = sharedPreferences.edit() { putBoolean(AppUtils.RESET_AND_RECALCULATE_ACHIEVEMENTS, value) }
 
 }
