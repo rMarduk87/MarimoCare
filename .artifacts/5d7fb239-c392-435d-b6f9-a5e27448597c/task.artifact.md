@@ -1,3 +1,9 @@
-- [x] Update `ChangeWaterEventHook.kt` to use Glide
-- [x] Update `AddOrEditMarimoFragment.kt` to use Glide for QR code
-- [x] Verify build with `./gradlew :app:assembleDebug`
+- `[x]` Define constant and preference for migration UI visibility.
+- `[x]` Create the MigrationBalloonFactory.
+- `[x]` Integration into DashboardFragment logic sequence.
+- `[x]` Resolve Kotlin compiler/metadata version mismatch.
+    - `[x]` Align Kotlin, KGP, and KSP versions.
+    - `[x]` Enable Jetpack Compose and add missing dependencies.
+    - `[x]` Fix SettingsFragment code errors.
+    - `[x]` Fix navigation graph destination.
+- `[x]` Verify balloon appearance and behavior once build is stable.

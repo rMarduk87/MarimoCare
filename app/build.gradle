@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.plugin.compose'
     id 'androidx.navigation.safeargs.kotlin'
     id 'kotlin-parcelize'
     id 'com.google.gms.google-services'
@@ -17,8 +18,8 @@ android {
         applicationId "rpt.tool.marimocare"
         minSdk 24
         targetSdk 36
-        versionCode 15
-        versionName "1.0.1.2"
+        versionCode 16
+        versionName "1.0.2"
 
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas".toString())
@@ -58,6 +59,7 @@ android {
     buildFeatures {
         viewBinding true
         buildConfig true
+        compose true
     }
     packaging {
         resources {
@@ -78,6 +80,14 @@ dependencies {
     implementation libs.androidx.recyclerview
     implementation libs.androidx.gridlayout
     implementation libs.flexbox
+    //Compose
+    implementation platform(libs.androidx.compose.bom)
+    implementation libs.androidx.compose.ui
+    implementation libs.androidx.compose.ui.graphics
+    implementation libs.androidx.compose.ui.tooling.preview
+    implementation libs.androidx.compose.material3
+    implementation libs.androidx.compose.runtime
+    implementation libs.androidx.compose.foundation
     //Misc
     implementation libs.material
     implementation libs.jsr305

@@ -812,7 +812,7 @@
     <string name="_10_01_am">10:01 AM</string>
     <string name="user_message">사용자 메시지</string>
     <string name="reset_progress">진행 상황을 초기화하시겠습니까?</string>
-    <string name="reset_all_achivement">이 작업은 모든 업적을 지웁니다. \n\n\'재계산\' 버튼을 사용하여 마리모 관리와 관련된 배지를 복구할 수 있지만, 활동과 관련된 업적(예: 통계 또는 설정)은 수동으로 다시 잠금 해제해야 합니다.</string>
+    <string name="reset_all_achievement">이 작업은 모든 업적을 지웁니다. \n\n\'재계산\' 버튼을 사용하여 마리모 관리와 관련된 배지를 복구할 수 있지만, 활동과 관련된 업적(예: 통계 또는 설정)은 수동으로 다시 잠금 해제해야 합니다.</string>
     <string name="cancel_reset">취소</string>
     <string name="go_back_without_deleting_anything">삭제하지 않고 돌아가기.</string>
     <string name="s_reset_all">예, 모두 초기화</string>
@@ -827,4 +827,5 @@
     <string name="add_photo">사진 추가</string>
     <string name="_take_photo">사진 찍기</string>
     <string name="_choose_from_gallery">갤러리에서 선택</string>
+    <string name="migration_balloon_text">앱의 그래픽 디자인을 새롭게 개편 중이며(신기술 적용), 현재는 설정 및 피드백 페이지가 대상입니다.</string>
 </resources>

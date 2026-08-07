@@ -74,7 +74,7 @@
     <string name="stats">Stats</string>
     <string name="marimo_care_settings">⚙️ Marimo Care Settings</string>
     <string name="customize_your_marimo_care_experience">Customize your marimo care experience</string>
-    <string name="btn_save">Save Changes</string>
+    <string name="btn_save">Save</string>
     <string name="dashboard_card_style">Dashboard Card Style</string>
     <string name="choose_how_you_want_your_marimo_statistics_cards_to_appear_on_the_dashboard">Choose how you want your marimo\nstatistics cards to appear on the dashboard</string>
     <string name="default_style">Default Style</string>
@@ -82,7 +82,7 @@
     <string name="colored_style">Colored Style</string>
     <string name="bold_colored_backgrounds_without_icons">Bold colored backgrounds without icons</string>
     <string name="option_correctly_updated">Option correctly updated</string>
-    <string name="update">Save Changes</string>
+    <string name="update">Save</string>
     <string name="updated_ok">updated correctly</string>
     <string name="new_marimo_added">New Marimo Added</string>
     <string name="automatic_notification">Automatic notification 🤖</string>
@@ -936,7 +936,7 @@ Please note: the final date retrieved will be the same as the app release date, 
     <string name="_10_01_am">10:01 AM</string>
     <string name="user_message">User message</string>
     <string name="reset_progress">Reset progress?</string>
-    <string name="reset_all_achivement">This action will clear all your achievements. \n\nYou can use the \'Recalculate\' button to recover badges related to Marimo care, but achievements related to your actions (e.g., Stats or Settings) will need to be unlocked manually again.</string>
+    <string name="reset_all_achievement">This action will clear all your achievements. \n\nYou can use the \'Recalculate\' button to recover badges related to Marimo care, but achievements related to your actions (e.g., Stats or Settings) will need to be unlocked manually again.</string>
     <string name="cancel_reset">Cancel</string>
     <string name="go_back_without_deleting_anything">Go back without deleting anything.</string>
     <string name="s_reset_all">Yes, reset everything</string>
@@ -951,4 +951,5 @@ Please note: the final date retrieved will be the same as the app release date, 
     <string name="add_photo">Add Photo</string>
     <string name="_take_photo">Take Photo</string>
     <string name="_choose_from_gallery">Choose from Gallery</string>
+    <string name="migration_balloon_text">The app is undergoing a graphical redesign (new technology) and for now this will concern the Settings and Feedback page.</string>
 </resources>

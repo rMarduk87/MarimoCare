@@ -677,7 +677,7 @@
     <string name="_10_01_am">10:01 AM</string>
     <string name="user_message">Message de l\'utilisateur</string>
     <string name="reset_progress">Réinitialiser la progression ?</string>
-    <string name="reset_all_achivement">Cette action effacera tous vos succès. \n\nVous pouvez utiliser le bouton \'Recalculer\' pour récupérer les badges liés à l\'entretien des Marimo, mais les succès liés à vos actions (ex: Statistiques ou Paramètres) devront être débloqués manuellement à nouveau.</string>
+    <string name="reset_all_achievement">Cette action effacera tous vos succès. \n\nVous pouvez utiliser le bouton \'Recalculer\' pour récupérer les badges liés à l\'entretien des Marimo, mais les succès liés à vos actions (ex: Statistiques ou Paramètres) devront être débloqués manuellement à nouveau.</string>
     <string name="cancel_reset">Annuler</string>
     <string name="go_back_without_deleting_anything">Retourner sans rien supprimer.</string>
     <string name="s_reset_all">Oui, tout réinitialiser</string>
@@ -822,4 +822,5 @@
     <string name="add_photo">Ajouter une photo</string>
     <string name="_take_photo">Prendre une photo</string>
     <string name="_choose_from_gallery">Choisir dans la galerie</string>
+    <string name="migration_balloon_text">L\'application fait l\'objet d\'une refonte graphique (nouvelle technologie) et pour l\'instant, cela concerne les pages Paramètres et Commentaires.</string>
 </resources>

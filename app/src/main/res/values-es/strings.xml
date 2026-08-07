@@ -696,7 +696,7 @@
     <string name="_10_01_am">10:01 AM</string>
     <string name="user_message">Mensaje del usuario</string>
     <string name="reset_progress">¿Restablecer progreso?</string>
-    <string name="reset_all_achivement">Esta acción borrará todos tus logros. \n\nPuedes usar el botón \'Recalcular\' para recuperar las insignias relacionadas con el cuidado de Marimo, pero los logros relacionados con tus acciones (p. ej., Estadísticas o Configuración) deberán desbloquearse manualmente de nuevo.</string>
+    <string name="reset_all_achievement">Esta acción borrará todos tus logros. \n\nPuedes usar el botón \'Recalcular\' para recuperar las insignias relacionadas con el cuidado de Marimo, pero los logros relacionados con tus acciones (p. ej., Estadísticas o Configuración) deberán desbloquearse manualmente de nuevo.</string>
     <string name="cancel_reset">Cancelar</string>
     <string name="go_back_without_deleting_anything">Volver sin borrar nada.</string>
     <string name="s_reset_all">Sí, restablecer todo</string>
@@ -825,4 +825,5 @@
     <string name="add_photo">Añadir foto</string>
     <string name="_take_photo">Tomar foto</string>
     <string name="_choose_from_gallery">Elegir de la galería</string>
+    <string name="migration_balloon_text">La aplicación está experimentando un rediseño gráfico (nueva tecnología) y, por ahora, esto afectará a las páginas de Ajustes y Comentarios.</string>
 </resources>

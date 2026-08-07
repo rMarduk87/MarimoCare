@@ -679,7 +679,7 @@
     <string name="_10_01_am">10:01 AM</string>
     <string name="user_message">ข้อความจากผู้ใช้</string>
     <string name="reset_progress">รีเซ็ตความคืบหน้าหรือไม่?</string>
-    <string name="reset_all_achivement">การดำเนินการนี้จะล้างความสำเร็จทั้งหมดของคุณ \n\nคุณสามารถใช้ปุ่ม \'คำนวณใหม่\' เพื่อกู้คืนตราสัญลักษณ์ที่เกี่ยวข้องกับการดูแลมาริโมะ แต่ความสำเร็จที่เกี่ยวข้องกับการดำเนินการของคุณ (เช่น สถิติหรือการตั้งค่า) จะต้องปลดล็อกด้วยตนเองอีกครั้ง</string>
+    <string name="reset_all_achievement">การดำเนินการนี้จะล้างความสำเร็จทั้งหมดของคุณ \n\nคุณสามารถใช้ปุ่ม \'คำนวณใหม่\' เพื่อกู้คืนตราสัญลักษณ์ที่เกี่ยวข้องกับการดูแลมาริโมะ แต่ความสำเร็จที่เกี่ยวข้องกับการดำเนินการของคุณ (เช่น สถิติหรือการตั้งค่า) จะต้องปลดล็อกด้วยตนเองอีกครั้ง</string>
     <string name="cancel_reset">ยกเลิก</string>
     <string name="go_back_without_deleting_anything">กลับไปโดยไม่ลบอะไรเลย</string>
     <string name="s_reset_all">ใช่ รีเซ็ตทั้งหมด</string>
@@ -825,4 +825,5 @@
     <string name="add_photo">เพิ่มรูปภาพ</string>
     <string name="_take_photo">ถ่ายรูป</string>
     <string name="_choose_from_gallery">เลือกจากแกลเลอรี</string>
+    <string name="migration_balloon_text">แอปกำลังอยู่ระหว่างการออกแบบกราฟิกใหม่ (เทคโนโลยีใหม่) และในขณะนี้จะเกี่ยวข้องกับหน้าการตั้งค่าและข้อเสนอแนะ</string>
 </resources>

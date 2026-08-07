@@ -1,30 +1,39 @@
-# Optimize Bitmap Image Loading
+# Implementation Plan - Add Restyling Migration Balloon
 
-The app has some locations where images are loaded manually using `setImageURI` or `setImageBitmap`, which can lead to performance issues and excessive memory usage. This plan replaces these manual operations with Glide to take advantage of its automatic caching, downsampling, and memory management.
+Add a new informative balloon to the `DashboardFragment` that notifies users about the ongoing graphical restyling. This balloon will appear at the end of the existing balloon sequence and only once if the user hasn't seen it yet.
 
 ## Proposed Changes
 
-### [Component Name] [Image Loading Optimization]
+### Build Configuration & Utils
 
-#### [MODIFY] [ChangeWaterEventHook.kt](file:///Users/marduk87/Sviluppo/MarimoCare/app/src/main/java/rpt/tool/marimocare/utils/view/recyclerview/items/marimo/hooks/ChangeWaterEventHook.kt)
-- Replace `imagePreview?.setImageURI(it.toUri())` with `Glide.with(context).load(it.toUri()).into(imagePreview)`.
-- This ensures that images picked from the gallery are loaded efficiently and cached.
+#### [MODIFY] [AppUtils.kt](file:///Users/marduk87/Sviluppo/MarimoCare/app/src/main/java/rpt/tool/marimocare/utils/AppUtils.kt)
+- Add `SHOW_MIGRATION_BALLOON` constant with value `"is_show_migration_ui"`.
 
-#### [MODIFY] [AddOrEditMarimoFragment.kt](file:///Users/marduk87/Sviluppo/MarimoCare/app/src/main/java/rpt/tool/marimocare/ui/marimo/addoredit/AddOrEditMarimoFragment.kt)
-- Replace `icon.setImageBitmap(qrCode)` with `Glide.with(requireContext()).load(qrCode).into(icon)` in `showMarimoQR`.
-- Even for locally generated bitmaps, Glide provides better management of the image lifecycle and memory.
+#### [MODIFY] [SharedPreferencesManager.kt](file:///Users/marduk87/Sviluppo/MarimoCare/app/src/main/java/rpt/tool/marimocare/utils/managers/SharedPreferencesManager.kt)
+- Add `isShowMigrationUI` property to manage the visibility of the new balloon.
 
-### [Component Name] [General Cleanup]
+### Resources
 
-#### [MODIFY] [Extensions.kt](file:///Users/marduk87/Sviluppo/MarimoCare/app/src/main/java/rpt/tool/marimocare/utils/view/Extensions.kt)
-- Ensure `loadMarimoImage` is used consistently across the app. (It is already mostly consistent).
+#### [MODIFY] [strings.xml](file:///Users/marduk87/Sviluppo/MarimoCare/app/src/main/res/values/strings.xml)
+- Add `migration_balloon_text`: "The app is undergoing a graphical redesign (new technology) and for now this will concern the Settings and Feedback page.".
+
+### UI Components
+
+#### [NEW] [MigrationBalloonFactory.kt](file:///Users/marduk87/Sviluppo/MarimoCare/app/src/main/java/rpt/tool/marimocare/utils/balloon/migration/MigrationBalloonFactory.kt)
+- Create a new balloon factory for the migration announcement.
+
+#### [MODIFY] [DashboardFragment.kt](file:///Users/marduk87/Sviluppo/MarimoCare/app/src/main/java/rpt/tool/marimocare/ui/dashboard/DashboardFragment.kt)
+- Declare and initialize `migrationBalloon` using the new factory.
+- Update `checkAndShowBalloons()` to include the migration balloon at the end of the logic chain, checking `SharedPreferencesManager.isShowMigrationUI`.
 
 ## Verification Plan
 
 ### Automated Tests
-- Run `./gradlew :app:assembleDebug` to ensure the project still builds.
+- Run `./gradlew :app:assembleDebug` to ensure the project builds correctly.
 
 ### Manual Verification
-- Verify that images picked for water changes are displayed correctly.
-- Verify that the QR code is displayed correctly in the dialog.
-- Observe app performance and memory usage during image-heavy operations (e.g., browsing the care timeline).
+- Ensure `is_show_migration_ui` is set to `false` (default).
+- Open the app and check the Dashboard.
+- Verify the new balloon appears after all other balloons (if any).
+- Verify the balloon is anchored appropriately (e.g., to the settings/feedback area).
+- Dismiss the balloon and verify it doesn't reappear on subsequent launches.

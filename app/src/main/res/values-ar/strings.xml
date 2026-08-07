@@ -676,7 +676,7 @@
     <string name="_10_01_am">١٠:٠١ ص</string>
     <string name="user_message">رسالة المستخدم</string>
     <string name="reset_progress">إعادة تعيين التقدم؟</string>
-    <string name="reset_all_achivement">سيؤدي هذا الإجراء إلى مسح جميع إنجازاتك. \n\nيمكنك استخدام زر \'إعادة الحساب\' لاستعادة الأوسمة المتعلقة برعاية الماريمو، ولكن الإنجازات المتعلقة بأفعالك (مثل الإحصائيات أو الإعدادات) ستحتاج إلى إلغاء قفلها يدويًا مرة أخرى.</string>
+    <string name="reset_all_achievement">سيؤدي هذا الإجراء إلى مسح جميع إنجازاتك. \n\nيمكنك استخدام زر \'إعادة الحساب\' لاستعادة الأوسمة المتعلقة برعاية الماريمو، ولكن الإنجازات المتعلقة بأفعالك (مثل الإحصائيات أو الإعدادات) ستحتاج إلى إلغاء قفلها يدويًا مرة أخرى.</string>
     <string name="cancel_reset">إلغاء</string>
     <string name="go_back_without_deleting_anything">العودة دون حذف أي شيء.</string>
     <string name="s_reset_all">نعم، إعادة تعيين كل شيء</string>
@@ -821,4 +821,5 @@
     <string name="add_photo">إضافة صورة</string>
     <string name="_take_photo">التقاط صورة</string>
     <string name="_choose_from_gallery">اختر من المعرض</string>
+    <string name="migration_balloon_text">يخضع التطبيق لإعادة تصميم رسومي (تقنية جديدة) وفي الوقت الحالي سيتعلق هذا بصفحة الإعدادات والملاحظات.</string>
 </resources>

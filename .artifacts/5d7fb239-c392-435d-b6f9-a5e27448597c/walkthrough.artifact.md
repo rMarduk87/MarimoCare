@@ -1,20 +1,32 @@
-# Walkthrough - Optimize Bitmap Image Loading
+# Walkthrough - Restyling Migration Balloon and Build Fix
 
-I have optimized the image loading in several key areas by replacing manual `ImageView` updates with Glide. This ensures better memory management and performance, especially when dealing with high-resolution photos.
+I have successfully added the migration announcement balloon and resolved critical Kotlin compilation issues.
 
 ## Changes Made
 
-### 1. Updated `ChangeWaterEventHook.kt`
-Replaced manual `setImageURI` with Glide in the water change log dialog. This is particularly important because users often pick high-resolution photos from their gallery, and Glide will automatically handle downsampling and memory efficiency.
+### 1. Build & Dependency Fixes
+- **Kotlin Version Alignment**: Synchronized Kotlin (`2.4.10`), Kotlin Gradle Plugin (`2.4.10`), and KSP (`2.3.11`) to resolve metadata incompatibility errors.
+- **Compose Integration**: Enabled Jetpack Compose in the `app` module, added the Kotlin Compose plugin, and included the necessary Compose dependencies (BOM `2026.06.01`).
+- **SettingsFragment Fixes**:
+    - Deleted `SettingsFragment_old.kt` to resolve class redeclaration.
+    - Updated `SettingsFragment.kt` to correctly override `BaseJetCompose()`.
+    - Fixed unresolved references for `findNavController` and `marimo_bg_mint_selected`.
+    - Corrected the `saveState` lambda return type.
+- **Navigation Graph**: Fixed `main_nav_graph.xml` to point to the correct `SettingsFragment` class.
 
-### 2. Updated `AddOrEditMarimoFragment.kt`
-Replaced manual `setImageBitmap` with Glide for displaying the generated QR code. While this is a locally generated bitmap, using Glide ensures consistent image lifecycle management and prevents potential UI jank on the main thread during image assignment.
+### 2. Migration Balloon Feature
+- **AppUtils**: Added `SHOW_MIGRATION_BALLOON` constant.
+- **SharedPreferences**: Integrated `isShowMigrationUI` for persistence.
+- **Resources**: Added `migration_balloon_text` to `strings.xml`.
+- **Factory**: Created `MigrationBalloonFactory.kt`.
+- **Dashboard**: Integrated `migrationBalloon` into the tutorial sequence in `DashboardFragment.kt`.
 
 ## Verification Results
 
-### Automated Tests
-- Ran `./gradlew :app:assembleDebug` and the build finished successfully.
+### Automated Build
+- Ran `./gradlew app:assembleDebug` and the build finished successfully.
 
-### Manual Verification
-- Images selected during the water change process are now loaded asynchronously and efficiently by Glide.
-- The QR code display in the dialog is now handled through the Glide pipeline.
+### Implementation Verification
+- `checkAndShowBalloons()` logic correctly triggers the migration balloon last in the sequence.
+- Persistence is handled via `SharedPreferencesManager`.
+- Compose UI in `SettingsFragment` is now compiling and correctly integrated into the app.

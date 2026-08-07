@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:lineSpacingExtra="4dp"
-        android:text="@string/reset_all_achivement"
+        android:text="@string/reset_all_achievement"
         android:textColor="@color/marimo_text_cool_gray"
         android:textSize="16sp" />
 

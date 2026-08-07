@@ -812,7 +812,7 @@
     <string name="_10_01_am">10:01</string>
     <string name="user_message">Messaggio utente</string>
     <string name="reset_progress">Azzerare i progressi?</string>
-    <string name="reset_all_achivement">Questa azione svuoterà tutti i tuoi achievement. \n\nPotrai usare il tasto \'Ricalcola\' per recuperare i badge legati alla cura dei Marimo, ma gli achievement legati alle tue azioni (es. Statistiche o Impostazioni) andranno sbloccati di nuovo manualmente.</string>
+    <string name="reset_all_achievement">Questa azione svuoterà tutti i tuoi achievement. \n\nPotrai usare il tasto \'Ricalcola\' per recuperare i badge legati alla cura dei Marimo, ma gli achievement legati alle tue azioni (es. Statistiche o Impostazioni) andranno sbloccati di nuovo manualmente.</string>
     <string name="cancel_reset">Annulla</string>
     <string name="go_back_without_deleting_anything">Torna indietro senza cancellare nulla.</string>
     <string name="s_reset_all">Sì, azzera tutto</string>
@@ -827,4 +827,5 @@
     <string name="add_photo">Aggiungi foto</string>
     <string name="_take_photo">Scatta foto</string>
     <string name="_choose_from_gallery">Scegli dalla galleria</string>
+    <string name="migration_balloon_text">L\'app è in fase di restyling grafico (nuova tecnologia) e per ora questo riguarderà le pagine Impostazioni e Feedback.</string>
 </resources>

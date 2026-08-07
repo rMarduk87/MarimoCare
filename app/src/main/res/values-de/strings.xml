@@ -698,7 +698,7 @@
     <string name="_10_01_am">10:01</string>
     <string name="user_message">Benutzernachricht</string>
     <string name="reset_progress">Fortschritt zurücksetzen?</string>
-    <string name="reset_all_achivement">Diese Aktion löscht alle Ihre Erfolge. \n\nSie können die Schaltfläche \'Neu berechnen\' verwenden, um Abzeichen im Zusammenhang mit der Marimo-Pflege wiederherzustellen, aber Erfolge im Zusammenhang mit Ihren Aktionen (z. B. Statistiken oder Einstellungen) müssen manuell erneut freigeschaltet werden.</string>
+    <string name="reset_all_achievement">Diese Aktion löscht alle Ihre Erfolge. \n\nSie können die Schaltfläche \'Neu berechnen\' verwenden, um Abzeichen im Zusammenhang mit der Marimo-Pflege wiederherzustellen, aber Erfolge im Zusammenhang mit Ihren Aktionen (z. B. Statistiken oder Einstellungen) müssen manuell erneut freigeschaltet werden.</string>
     <string name="cancel_reset">Abbrechen</string>
     <string name="go_back_without_deleting_anything">Zurückgehen, ohne etwas zu löschen.</string>
     <string name="s_reset_all">Ja, alles zurücksetzen</string>
@@ -827,4 +827,5 @@
     <string name="add_photo">Foto hinzufügen</string>
     <string name="_take_photo">Foto aufnehmen</string>
     <string name="_choose_from_gallery">Aus Galerie auswählen</string>
+    <string name="migration_balloon_text">Die App wird grafisch neu gestaltet (neue Technologie), und dies betrifft vorerst die Einstellungs- und Feedback-Seite.</string>
 </resources>

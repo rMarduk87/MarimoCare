@@ -812,7 +812,7 @@
     <string name="_10_01_am">10:01 AM</string>
     <string name="user_message">ユーザーのメッセージ</string>
     <string name="reset_progress">進捗をリセットしますか？</string>
-    <string name="reset_all_achivement">この操作を行うと、すべての実績が消去されます。\n\n「再計算」ボタンを使用してマリモのケアに関するバッジを回復できますが、アクションに関連する実績（統計や設定など）は手動で再度ロックを解除する必要があります。</string>
+    <string name="reset_all_achievement">この操作を行うと、すべての実績が消去されます。\n\n「再計算」ボタンを使用してマリモのケアに関するバッジを回復できますが、アクションに関連する実績（統計や設定など）は手動で再度ロックを解除する必要があります。</string>
     <string name="cancel_reset">キャンセル</string>
     <string name="go_back_without_deleting_anything">何も削除せずに戻る。</string>
     <string name="s_reset_all">はい、すべてリセットします</string>
@@ -827,4 +827,5 @@
     <string name="add_photo">写真を追加</string>
     <string name="_take_photo">写真を撮る</string>
     <string name="_choose_from_gallery">ギャラリーから選択</string>
+    <string name="migration_balloon_text">アプリはグラフィックの再設計（新技術）を行っており、当面の間、設定とフィードバックのページが対象となります。</string>
 </resources>
