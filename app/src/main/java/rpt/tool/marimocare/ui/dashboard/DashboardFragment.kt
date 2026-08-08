@@ -58,6 +58,7 @@ import rpt.tool.marimocare.utils.balloon.achievement.AchievementBalloonFactory
 import rpt.tool.marimocare.utils.balloon.achievement.AchievementUnlockedBalloonFactory
 import rpt.tool.marimocare.utils.balloon.chat.ChatBalloonFactory
 import rpt.tool.marimocare.utils.balloon.feedback.FeedbackBalloonFactory
+import rpt.tool.marimocare.utils.balloon.migration.MigrationBalloonFactory
 import rpt.tool.marimocare.utils.balloon.waterchange.DialogChangeWaterBalloonFactory
 import rpt.tool.marimocare.utils.balloon.settings.SettingsBalloonFactory
 import rpt.tool.marimocare.utils.balloon.waterchange.WaterChangeInfoBalloonFactory
@@ -99,6 +100,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     private val achievementBalloon by balloon<AchievementBalloonFactory>()
     private val achievementUnlockedBalloon by balloon<AchievementUnlockedBalloonFactory>()
     private val chatBalloon by balloon<ChatBalloonFactory>()
+    private val migrationBalloon by balloon<MigrationBalloonFactory>()
     private var isAchievementDialogOpen = false
     private var isFeedbackShowing = false
 
@@ -1248,6 +1250,18 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                         SharedPreferencesManager.showBallonChat = false
                         checkAndShowBalloons()
                     }
+                }
+                SharedPreferencesManager.showMigrationBalloon -> {
+                    isBalloonShowing = true
+                    SharedPreferencesManager.showMigrationBalloon = false
+                    migrationBalloon.setOnBalloonDismissListener {
+                        isBalloonShowing = false
+                        checkAndShowBalloons()
+                    }
+                    migrationBalloon.showAlign(
+                        align = BalloonAlign.BOTTOM,
+                        mainAnchor = binding.include1.btnOpenSettings
+                    )
                 }
             }
         }

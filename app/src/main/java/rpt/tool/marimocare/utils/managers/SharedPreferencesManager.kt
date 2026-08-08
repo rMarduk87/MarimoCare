@@ -137,4 +137,7 @@ object SharedPreferencesManager {
         get() = sharedPreferences.getBoolean(AppUtils.RESET_AND_RECALCULATE_ACHIEVEMENTS, true)
         set(value) = sharedPreferences.edit() { putBoolean(AppUtils.RESET_AND_RECALCULATE_ACHIEVEMENTS, value) }
 
+    var showMigrationBalloon: Boolean
+        get() = sharedPreferences.getBoolean(AppUtils.SHOW_MIGRATION_BALLOON, true)
+        set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_MIGRATION_BALLOON, value) }
 }

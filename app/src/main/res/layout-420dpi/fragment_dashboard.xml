@@ -766,13 +766,6 @@
 
                 </FrameLayout>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/buttonFilter3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
                 <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -810,6 +803,13 @@
                 </FrameLayout>
 
             </LinearLayout>
+
+            <!-- Hidden view for ViewBinding compatibility -->
+            <View
+                android:id="@+id/buttonFilter3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone" />
 
             <LinearLayout
                 android:id="@+id/sorts"

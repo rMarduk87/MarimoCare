@@ -334,8 +334,7 @@ class AppUtils {
         const val APP_LANGUAGE : String = "app_language"
         const val CHAT_MODE_ENABLED : String = "chat_mode_enabled"
         const val RESET_AND_RECALCULATE_ACHIEVEMENTS : String = "reset_and_recalculate_achievements"
-
-
+        const val SHOW_MIGRATION_BALLOON : String = "show_migration_balloon"
 
         fun dpToPx(dp: Int): Int {
             return (dp * android.content.res.Resources.getSystem().displayMetrics.density).toInt()

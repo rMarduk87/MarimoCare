@@ -3,6 +3,7 @@ package rpt.tool.marimocare.ui.settings
 import android.os.Build
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -21,6 +22,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -568,14 +570,15 @@ fun Header(
         }
 
         Row(modifier = Modifier.horizontalScroll(rememberScrollState())) {
-            HeaderIconButton(iconRes = R.drawable.ic_dashboard, colorRes = R.color.marimo_item_green, onClick = onNavigateToDashboard)
-            HeaderIconButton(iconRes = R.drawable.ic_stats, colorRes = R.color.marimo_add_icon, onClick = onNavigateToStats)
-            HeaderIconButton(iconRes = R.drawable.ic_add, colorRes = R.color.marimo_add_icon, onClick = onNavigateToAddMarimo)
-            HeaderIconButton(iconRes = R.drawable.ic_coccard, colorRes = R.color.marimo_add_icon, onClick = onNavigateToAchievement)
+            HeaderIconButton(iconRes = R.drawable.ic_dashboard, colorRes = R.color.marimo_add_icon, text = stringResource(id = R.string.dashboard), onClick = onNavigateToDashboard)
+            HeaderIconButton(iconRes = R.drawable.ic_stats, colorRes = R.color.marimo_add_icon, text = stringResource(id = R.string.stats), onClick = onNavigateToStats)
+            HeaderIconButton(iconRes = R.drawable.ic_add, colorRes = R.color.marimo_add_icon, text = stringResource(id = R.string.add_marimo), onClick = onNavigateToAddMarimo)
+            HeaderIconButton(iconRes = R.drawable.ic_coccard, colorRes = R.color.marimo_add_icon, text = stringResource(id = R.string.achievement), onClick = onNavigateToAchievement)
             HeaderIconButton(
                 iconRes = R.drawable.ic_settings,
                 colorRes = R.color.marimo_item_green,
-                bgColorRes = R.color.light_green,
+                text = stringResource(id = R.string.settings),
+                bgColorRes = R.color.marimo_header,
                 onClick = {}
             )
         }
@@ -583,20 +586,77 @@ fun Header(
 }
 
 @Composable
-fun HeaderIconButton(iconRes: Int, colorRes: Int, bgColorRes: Int = android.R.color.transparent, onClick: () -> Unit) {
-    Box(
-        modifier = Modifier
-            .size(38.dp)
-            .clip(RoundedCornerShape(8.dp))
-            .background(colorResource(id = bgColorRes))
-            .clickable(onClick = onClick),
-        contentAlignment = Alignment.Center
-    ) {
-        Icon(
-            painter = painterResource(id = iconRes),
-            contentDescription = null,
-            tint = colorResource(id = colorRes)
-        )
+fun HeaderIconButton(
+    iconRes: Int,
+    colorRes: Int,
+    text: String? = null,
+    bgColorRes: Int = android.R.color.transparent,
+    onClick: () -> Unit
+) {
+    val configuration = LocalConfiguration.current
+    val isTablet = configuration.screenWidthDp >= 600
+
+    if (isTablet && text != null) {
+        val isInactive = colorRes == R.color.marimo_add_icon
+
+        val containerColor = if (isInactive) {
+            colorResource(id = R.color.marimo_surface)
+        } else {
+            colorResource(id = bgColorRes)
+        }
+
+        val contentColor = colorResource(id = colorRes)
+
+        Surface(
+            modifier = Modifier
+                .padding(start = 9.dp)
+                .height(42.dp)
+                .widthIn(min = 120.dp)
+                .clip(RoundedCornerShape(50.dp))
+                .clickable(onClick = onClick),
+            color = containerColor,
+            shape = RoundedCornerShape(50.dp),
+            border = if (isInactive) BorderStroke(
+                1.dp,
+                colorResource(id = R.color.marimo_button_white_stroke)
+            ) else null
+        ) {
+            Row(
+                modifier = Modifier.padding(horizontal = 16.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Icon(
+                    painter = painterResource(id = iconRes),
+                    contentDescription = null,
+                    modifier = Modifier.size(20.dp),
+                    tint = contentColor
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    text = text,
+                    color = contentColor,
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Medium,
+                    maxLines = 1
+                )
+            }
+        }
+    } else {
+        Box(
+            modifier = Modifier
+                .size(38.dp)
+                .clip(RoundedCornerShape(8.dp))
+                .background(colorResource(id = bgColorRes))
+                .clickable(onClick = onClick),
+            contentAlignment = Alignment.Center
+        ) {
+            Icon(
+                painter = painterResource(id = iconRes),
+                contentDescription = null,
+                tint = colorResource(id = colorRes)
+            )
+        }
     }
 }
 
