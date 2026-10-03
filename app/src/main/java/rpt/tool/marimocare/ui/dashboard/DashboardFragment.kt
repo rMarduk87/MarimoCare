@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.AdapterView
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
@@ -34,6 +35,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.ChangeWaterEventHook
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.EditMarimoEventHook
+import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.SelectMarimoEventHook
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentDashboardBinding
 import rpt.tool.marimocare.utils.AlertDataUtils
@@ -74,9 +76,11 @@ import rpt.tool.marimocare.utils.view.adapters.MarimoUpdateAdapter
 import rpt.tool.marimocare.utils.view.copyUriToInternalFile
 import rpt.tool.marimocare.utils.view.enable
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.DeleteMarimoEventHook
-import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.ShowMarimoDetailsEventHook
 import java.io.File
 import kotlin.time.Duration.Companion.milliseconds
+import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.ShowMarimoDetailsEventHook
+import java.time.LocalDate
+import java.time.temporal.ChronoUnit
 
 class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     FragmentDashboardBinding::inflate,true) {
@@ -105,6 +109,9 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     private val REQUEST_CAMERA = 1001
     private val REQUEST_GALLERY = 1002
 
+    // Variabili per la modalità di selezione
+    private var isSelectionMode = false
+    private val selectedMarimoIds = mutableSetOf<Int>()
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -119,7 +126,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
         sorting = resources.getStringArray(R.array.marimo_sorting).toList()
 
-        itemAdapter = ItemAdapter()
+        itemAdapter = ItemAdapter<MarimoItem>()
         fastAdapter = FastAdapter.with(itemAdapter)
 
         binding.include1.btnDashboardHeader.enable(false)
@@ -146,9 +153,20 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
             layoutManager = if (!isTablet) LinearLayoutManager(
                 requireContext()) else
-                    GridLayoutManager(requireContext(), span)
+                GridLayoutManager(requireContext(), span)
             adapter = fastAdapter
         }
+
+        // Setup della UI per la selezione
+        setupSelectionModeUI()
+
+        // Registrazione dell'hook per la modalità Selezione
+        fastAdapter.addEventHook(
+            SelectMarimoEventHook(
+                isSelectionModeActive = { isSelectionMode },
+                onToggleSelection = { item -> toggleItemSelection(item) }
+            )
+        )
 
         fastAdapter.addEventHook(
             ChangeWaterEventHook(
@@ -183,6 +201,13 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             } else {
                 binding.recyclerMarimos.visible()
                 binding.emptyListLabel.gone()
+
+                // Mantiene lo stato di selezione quando gli items vengono ricaricati
+                items.forEach {
+                    it.isSelectionMode = this.isSelectionMode
+                    it.isItemSelected = selectedMarimoIds.contains(it.marimo.code)
+                }
+
                 itemAdapter.set(items)
                 binding.totalMarimo.text = items.size.toString()
                 binding.totalMarimoAlternative.text = items.size.toString()
@@ -323,7 +348,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         binding.btnOpenFeedbackDashboard.setOnClickListener {
             safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
                 DashboardFragmentDirections
-                .actionDashboardFragmentToFeedbackFragment())
+                    .actionDashboardFragmentToFeedbackFragment())
         }
 
         binding.btnOpenChatDashboard?.let { anchor ->
@@ -375,7 +400,113 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             }
             updateAlertsUI()
         }
+
     }
+
+    // --- FUNZIONI PER LA MODALITÀ DI SELEZIONE ---
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun setupSelectionModeUI() {
+        binding.btnSelect.setOnClickListener {
+            isSelectionMode = true
+            updateSelectionUI()
+            notifyItemsSelectionModeChanged()
+        }
+
+        binding.btnDone.setOnClickListener {
+            exitSelectionMode()
+        }
+
+        binding.btnSelectAll.setOnClickListener {
+            val allItems = itemAdapter.adapterItems
+            if (selectedMarimoIds.size == allItems.size) {
+                selectedMarimoIds.clear() // Deseleziona tutto
+            } else {
+                allItems.forEach { selectedMarimoIds.add(it.marimo.code) } // Seleziona tutto
+            }
+            notifyItemsSelectionModeChanged()
+            updateFloatingCardVisibility()
+        }
+
+        binding.btnCloseSelection.setOnClickListener {
+            exitSelectionMode()
+        }
+
+        binding.btnMarkWatered.setOnClickListener {
+            val selectedMarimos = marimoToUpdate.filter { selectedMarimoIds.contains(it.id) }
+            if (selectedMarimos.isNotEmpty()) {
+                updateMarimos(selectedMarimos)
+            }
+            exitSelectionMode()
+        }
+
+        binding.btnAddNoteSelection.setOnClickListener {
+            openAddNoteDialog()
+        }
+    }
+
+    private fun toggleItemSelection(item: MarimoItem) {
+        val id = item.marimo.code
+        if (selectedMarimoIds.contains(id)) {
+            selectedMarimoIds.remove(id)
+        } else {
+            selectedMarimoIds.add(id)
+        }
+        item.isItemSelected = selectedMarimoIds.contains(id)
+        fastAdapter.notifyAdapterItemChanged(itemAdapter.getAdapterPosition(item))
+        updateFloatingCardVisibility()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun notifyItemsSelectionModeChanged() {
+        itemAdapter.adapterItems.forEach {
+            it.isSelectionMode = this.isSelectionMode
+            it.isItemSelected = selectedMarimoIds.contains(it.marimo.code)
+        }
+        fastAdapter.notifyDataSetChanged()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun exitSelectionMode() {
+        isSelectionMode = false
+        selectedMarimoIds.clear()
+        updateSelectionUI()
+        notifyItemsSelectionModeChanged()
+
+        // Ricalcola e aggiorna gli alert quando si esce dalla selezione
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+            AlertDataUtils.recalc(requireContext())
+            withContext(Dispatchers.Main) {
+                updateAlertsUI()
+            }
+        }
+    }
+
+    private fun updateSelectionUI() {
+        if (isSelectionMode) {
+            binding.btnSelect.gone()
+            binding.btnAddMarimo.gone()
+            binding.btnSelectAll.visible()
+            binding.btnDone.visible()
+        } else {
+            binding.btnSelect.visible()
+            binding.btnAddMarimo.visible()
+            binding.btnSelectAll.gone()
+            binding.btnDone.gone()
+            binding.floatingSelectionCard.gone()
+        }
+        updateFloatingCardVisibility()
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun updateFloatingCardVisibility() {
+        if (isSelectionMode && selectedMarimoIds.isNotEmpty()) {
+            binding.floatingSelectionCard.visible()
+            binding.tvSelectedCount.text = "${selectedMarimoIds.size} selected"
+        } else {
+            binding.floatingSelectionCard.gone()
+        }
+    }
+    // ----------------------------------------------
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun handleAchievementLogic(marimos: List<Marimo>) {
@@ -816,7 +947,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                 view4.visibility = if (SharedPreferencesManager.coloredIsSelected) View.VISIBLE
                 else View.GONE
             }
-                }
+            }
         }else if(isSmall){
             binding.italian1?.let { view ->
                 view.visibility = if (!SharedPreferencesManager.coloredIsSelected)
@@ -892,21 +1023,75 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     private fun updateMarimos(list: List<MarimoUpdate>) {
         val context = requireContext()
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+            var anyEarlyBird = false
 
             list.forEach {
                 val marimo = RepositoryManager.marimoRepository.getMarimo(it.id)
                 if (marimo != null) {
                     val lastChanged = AppUtils.getCurrentDate()
+
+                    if (marimo.nextChange.isNotBlank()) {
+                        try {
+                            val nextChangeDate = LocalDate.parse(marimo.nextChange)
+                            val today = LocalDate.now()
+                            val daysUntilDeadline = ChronoUnit.DAYS.between(today, nextChangeDate)
+                            if (daysUntilDeadline >= 2) {
+                                anyEarlyBird = true
+                            }
+                        } catch (_: Exception) {
+                            // ignore
+                        }
+                    }
+
                     RepositoryManager.marimoRepository.updateWaterMarimo(lastChanged, it.id)
                 }
             }
 
-            AchievementManager.recalculateAll(true, context = context)
+            // Calcolo conteggio log scaduti per achievement Night Owl
+            val allMarimos = RepositoryManager.marimoRepository.getAllSync()
+            val allChanges = RepositoryManager.marimoRepository.getAllChanges()
+            var overdueTotalCount = 0
 
-            AlertDataUtils.recalc(requireContext())
-            
+            allMarimos.forEach { m ->
+                val mChanges = allChanges.filter { it.coderMarimo == m.code.toString() }
+                    .filter { !it.waterChangeData.isNullOrBlank() }
+                    .sortedBy { it.waterChangeData }
+
+                var lastDate: LocalDate? = m.registrationDate?.let {
+                    try { LocalDate.parse(it) } catch (_: Exception) { null }
+                }
+
+                mChanges.forEach { change ->
+                    try {
+                        val changeDate = LocalDate.parse(change.waterChangeData)
+                        if (lastDate != null) {
+                            val daysSince = ChronoUnit.DAYS.between(lastDate, changeDate)
+                            if (daysSince > m.changeFrequencyDays) {
+                                overdueTotalCount++
+                            }
+                        }
+                        lastDate = changeDate
+                    } catch (_: Exception) {
+                        // ignore
+                    }
+                }
+            }
+
+            val meta = mutableMapOf<String, Any>()
+            if (anyEarlyBird) meta["earned_early_bird"] = true
+            if (overdueTotalCount >= 10) meta["overdue_log_count"] = true
+
+            AchievementManager.recalculateAll(
+                showDialogEarned = true,
+                userMeta = meta,
+                context = context
+            )
+
+            AlertDataUtils.recalc(context)
+
             withContext(Dispatchers.Main) {
                 updateAlertsUI()
+                applyFilterAndSort()
             }
         }
     }
@@ -1249,6 +1434,128 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                         checkAndShowBalloons()
                     }
                 }
+            }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun openAddNoteDialog() {
+        val count = selectedMarimoIds.size
+        if (count == 0) return
+
+        val view = layoutInflater.inflate(R.layout.dialog_add_note_selection, null)
+        val tvTitle = view.findViewById<TextView>(R.id.tvDialogTitle)
+        val etNote = view.findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.etNoteInput)
+        val btnCancel = view.findViewById<Button>(R.id.btnCancel)
+        val btnAdd = view.findViewById<Button>(R.id.btnAddNoteToAll)
+        val btnClose = view.findViewById<ImageView>(R.id.btnCloseDialog)
+
+        tvTitle.text = buildString {
+        append(getString(R.string.add_note_to))
+        append(" ")
+        append(count)
+        append(" ")
+        append(getString(R.string.marimos))
+    }
+
+        val dialog = AlertDialog.Builder(requireContext())
+            .setView(view)
+            .create()
+
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        btnCancel.setOnClickListener { dialog.dismiss() }
+        btnClose.setOnClickListener { dialog.dismiss() }
+
+        btnAdd.setOnClickListener {
+            val noteText = etNote.text.toString().trim()
+
+            updateMarimosWithNote(noteText.ifEmpty { null })
+
+            dialog.dismiss()
+            exitSelectionMode()
+        }
+
+        dialog.show()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun updateMarimosWithNote(note: String?) {
+        if (selectedMarimoIds.isEmpty()) return
+        val context = requireContext()
+        val idsToUpdate = selectedMarimoIds.toList()
+
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+            var anyEarlyBird = false
+
+            idsToUpdate.forEach { marimoId ->
+                val marimo = RepositoryManager.marimoRepository.getMarimo(marimoId)
+                if (marimo != null) {
+                    // Calcolo Early Bird se applicabile
+                    if (marimo.nextChange.isNotBlank()) {
+                        try {
+                            val nextChangeDate = LocalDate.parse(marimo.nextChange)
+                            val today = LocalDate.now()
+                            val daysUntilDeadline = ChronoUnit.DAYS.between(today, nextChangeDate)
+                            if (daysUntilDeadline >= 2) {
+                                anyEarlyBird = true
+                            }
+                        } catch (_: Exception) {
+                            // ignore
+                        }
+                    }
+
+                    // Salvataggio nota
+                    marimo.notes = note
+                    RepositoryManager.marimoRepository.updateMarimo(marimo)
+                }
+            }
+
+            // Calcolo conteggio log scaduti per achievement Night Owl
+            val allMarimos = RepositoryManager.marimoRepository.getAllSync()
+            val allChanges = RepositoryManager.marimoRepository.getAllChanges()
+            var overdueTotalCount = 0
+
+            allMarimos.forEach { m ->
+                val mChanges = allChanges.filter { it.coderMarimo == m.code.toString() }
+                    .filter { !it.waterChangeData.isNullOrBlank() }
+                    .sortedBy { it.waterChangeData }
+
+                var lastDate: LocalDate? = m.registrationDate?.let {
+                    try { LocalDate.parse(it) } catch (_: Exception) { null }
+                }
+
+                mChanges.forEach { change ->
+                    try {
+                        val changeDate = LocalDate.parse(change.waterChangeData)
+                        if (lastDate != null) {
+                            val daysSince = ChronoUnit.DAYS.between(lastDate, changeDate)
+                            if (daysSince > m.changeFrequencyDays) {
+                                overdueTotalCount++
+                            }
+                        }
+                        lastDate = changeDate
+                    } catch (_: Exception) {
+                        // ignore
+                    }
+                }
+            }
+
+            val meta = mutableMapOf<String, Any>()
+            if (anyEarlyBird) meta["earned_early_bird"] = true
+            if (overdueTotalCount >= 10) meta["overdue_log_count"] = true
+
+            AchievementManager.recalculateAll(
+                showDialogEarned = true,
+                userMeta = meta,
+                context = context
+            )
+
+            AlertDataUtils.recalc(context)
+
+            withContext(Dispatchers.Main) {
+                updateAlertsUI()
+                applyFilterAndSort()
             }
         }
     }

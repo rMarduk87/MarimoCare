@@ -822,4 +822,14 @@
     <string name="add_photo">Ajouter une photo</string>
     <string name="_take_photo">Prendre une photo</string>
     <string name="_choose_from_gallery">Choisir dans la galerie</string>
+    <string name="select">Sélectionner</string>
+    <string name="select_all">Tout sélectionner</string>
+    <string name="done">Terminé</string>
+    <string name="selected">sélectionnés</string>
+    <string name="add_note">Ajouter une note</string>
+    <string name="add_note_to_1_marimos">Ajouter une note à 1 Marimo</string>
+    <string name="write_a_note_to_add_to_each_selected_marimo">Écrivez une note à ajouter à chaque marimo sélectionné...</string>
+    <string name="add_to_all">Ajouter à tous</string>
+    <string name="add_note_to">Ajouter une note à</string>
+    <string name="marimos">Marimos</string>
 </resources>

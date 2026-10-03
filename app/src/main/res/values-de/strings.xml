@@ -827,4 +827,14 @@
     <string name="add_photo">Foto hinzufügen</string>
     <string name="_take_photo">Foto aufnehmen</string>
     <string name="_choose_from_gallery">Aus Galerie auswählen</string>
+    <string name="select">Auswählen</string>
+    <string name="select_all">Alle auswählen</string>
+    <string name="done">Fertig</string>
+    <string name="selected">ausgewählt</string>
+    <string name="add_note">Notiz hinzufügen</string>
+    <string name="add_note_to_1_marimos">Notiz zu 1 Marimo hinzufügen</string>
+    <string name="write_a_note_to_add_to_each_selected_marimo">Schreibe eine Notiz, die zu jedem ausgewählten Marimo hinzugefügt werden soll...</string>
+    <string name="add_to_all">Zu allen hinzufügen</string>
+    <string name="add_note_to">Notiz hinzufügen zu</string>
+    <string name="marimos">Marimos</string>
 </resources>

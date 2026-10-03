@@ -951,4 +951,14 @@ Please note: the final date retrieved will be the same as the app release date, 
     <string name="add_photo">Add Photo</string>
     <string name="_take_photo">Take Photo</string>
     <string name="_choose_from_gallery">Choose from Gallery</string>
+    <string name="select">Select</string>
+    <string name="select_all">Select All</string>
+    <string name="done">Done</string>
+    <string name="selected">selected</string>
+    <string name="add_note">Add Note</string>
+    <string name="add_note_to_1_marimos">Add Note to 1 Marimos</string>
+    <string name="write_a_note_to_add_to_each_selected_marimo">Write a note to add to each selected marimo...</string>
+    <string name="add_to_all">Add to All</string>
+    <string name="add_note_to">Add Note to</string>
+    <string name="marimos">Marimos</string>
 </resources>

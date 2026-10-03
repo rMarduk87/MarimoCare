@@ -822,4 +822,14 @@
     <string name="add_photo">Добавить фото</string>
     <string name="_take_photo">Сделать фото</string>
     <string name="_choose_from_gallery">Выбрать из галереи</string>
+    <string name="select">Выбрать</string>
+    <string name="select_all">Выбрать все</string>
+    <string name="done">Готово</string>
+    <string name="selected">выбрано</string>
+    <string name="add_note">Добавить заметку</string>
+    <string name="add_note_to_1_marimos">Добавить заметку к 1 маримо</string>
+    <string name="write_a_note_to_add_to_each_selected_marimo">Напишите заметку для добавления к каждому выбранному маримо...</string>
+    <string name="add_to_all">Добавить ко всем</string>
+    <string name="add_note_to">Добавить заметку к</string>
+    <string name="marimos">Маримо</string>
 </resources>

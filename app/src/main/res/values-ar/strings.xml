@@ -821,4 +821,14 @@
     <string name="add_photo">إضافة صورة</string>
     <string name="_take_photo">التقاط صورة</string>
     <string name="_choose_from_gallery">اختر من المعرض</string>
+    <string name="select">تحديد</string>
+    <string name="select_all">تحديد الكل</string>
+    <string name="done">تم</string>
+    <string name="selected">المحدد</string>
+    <string name="add_note">إضافة ملاحظة</string>
+    <string name="add_note_to_1_marimos">إضافة ملاحظة إلى 1 ماريمو</string>
+    <string name="write_a_note_to_add_to_each_selected_marimo">اكتب ملاحظة لإضافتها إلى كل ماريمو محدد...</string>
+    <string name="add_to_all">إضافة للكل</string>
+    <string name="add_note_to">إضافة ملاحظة إلى</string>
+    <string name="marimos">ماريمو</string>
 </resources>
