@@ -833,15 +833,15 @@
     <string name="add_note_to">Добавить заметку к</string>
     <string name="marimos">Маримо</string>
     <string name="bulk_selection_balloon_text">Выберите один или несколько маримо для массового обновления смены воды и/или добавления общей заметки.</string>
-    <string name="active_reminder">ACTIVE REMINDER</string>
-    <string name="retarded">Retarded</string>
-    <string name="overdue_by_19_days">Overdue by 19 days</string>
-    <string name="_19d_12_44_37">+19d 12:44:37</string>
-    <string name="was_due_sep_16_2026">Was due Sep 16, 2026</string>
-    <string name="overdue_by">Overdue by</string>
-    <string name="was_due">Was due</string>
-    <string name="due">Due</string>
-    <string name="next_change_in">Next change in</string>
-    <string name="error">Error</string>
-    <string name="day_format">d</string>
+    <string name="active_reminder">АКТИВНОЕ НАПОМИНАНИЕ</string>
+    <string name="retarded">Задержано</string>
+    <string name="overdue_by_19_days">Просрочено на 19 дней</string>
+    <string name="_19d_12_44_37">+19д 12:44:37</string>
+    <string name="was_due_sep_16_2026">Срок истек 16 сен 2026</string>
+    <string name="overdue_by">Просрочено на</string>
+    <string name="was_due">Срок истекал</string>
+    <string name="due">Срок</string>
+    <string name="next_change_in">Следующая смена через</string>
+    <string name="error">Ошибка</string>
+    <string name="day_format">д</string>
 </resources>
