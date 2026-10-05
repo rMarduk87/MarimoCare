@@ -15,7 +15,7 @@ class DashboardViewModel : ViewModel() {
 
     val allMarimos: LiveData<List<Marimo>> = RepositoryManager.marimoRepository.marimos
 
-    val marimoItems: LiveData<List<MarimoItem>> = allMarimos.map { marimos ->
+    val marimoItems: LiveData<List<MarimoItem>> = allMarimos.map<List<Marimo>, List<MarimoItem>> { marimos ->
         d("ViewModelLog", "All Marimos LiveData updated. Count: ${marimos.size}")
 
         marimos.map { marimo ->
@@ -37,26 +37,26 @@ class DashboardViewModel : ViewModel() {
     val allMarimosToUpdate = getMarimosToUpdate(allMarimos)
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun getMarimosToUpdate(allMarimos: LiveData<List<Marimo>>) =
-        allMarimos.map { marimos -> marimos.filter {
+    private fun getMarimosToUpdate(allMarimos: LiveData<List<Marimo>>): LiveData<List<Marimo>> =
+        allMarimos.map<List<Marimo>, List<Marimo>> { marimos -> marimos.filter {
             MarimoStatus.from(it.daysLeft) == MarimoStatus.OVERDUE } }
 
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun getOverdueMarimoCounter(marimoItems: LiveData<List<MarimoItem>>): LiveData<Int> =
-        marimoItems.map { items ->
+        marimoItems.map<List<MarimoItem>, Int> { items ->
             items.count { MarimoStatus.from(it.marimo.daysLeft) == MarimoStatus.OVERDUE }
         }
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun getDueSoonMarimoCounter(marimoItems: LiveData<List<MarimoItem>>): LiveData<Int> =
-        marimoItems.map { items ->
+        marimoItems.map<List<MarimoItem>, Int> { items ->
             items.count { MarimoStatus.from(it.marimo.daysLeft) == MarimoStatus.DUE_SOON }
         }
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun getUpToDateMarimoCounter(marimoItems: LiveData<List<MarimoItem>>): LiveData<Int> =
-        marimoItems.map { items ->
+        marimoItems.map<List<MarimoItem>, Int> { items ->
             items.count { MarimoStatus.from(it.marimo.daysLeft) == MarimoStatus.NORMAL }
         }
 

@@ -137,4 +137,8 @@ object SharedPreferencesManager {
         get() = sharedPreferences.getBoolean(AppUtils.RESET_AND_RECALCULATE_ACHIEVEMENTS, true)
         set(value) = sharedPreferences.edit() { putBoolean(AppUtils.RESET_AND_RECALCULATE_ACHIEVEMENTS, value) }
 
+    var showBulkSelectionBalloon: Boolean
+        get() = sharedPreferences.getBoolean(AppUtils.SHOW_BULK_SELECTION_BALLOON, true)
+        set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_BULK_SELECTION_BALLOON, value) }
+
 }

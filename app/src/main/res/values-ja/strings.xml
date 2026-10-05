@@ -827,4 +827,26 @@
     <string name="add_photo">写真を追加</string>
     <string name="_take_photo">写真を撮る</string>
     <string name="_choose_from_gallery">ギャラリーから選択</string>
+    <string name="select">選択</string>
+    <string name="select_all">すべて選択</string>
+    <string name="done">完了</string>
+    <string name="selected">選択済み</string>
+    <string name="add_note">メモを追加</string>
+    <string name="add_note_to_1_marimos">1個のマリモにメモを追加</string>
+    <string name="write_a_note_to_add_to_each_selected_marimo">選択したマリモごとにメモを入力してください…</string>
+    <string name="add_to_all">すべてに追加</string>
+    <string name="add_note_to">メモの追加先：</string>
+    <string name="marimos">マリモ</string>
+    <string name="bulk_selection_balloon_text">1つ以上のマリモを選択して、水換えの一括更新や一括メモの追加を行います。</string>
+    <string name="active_reminder">ACTIVE REMINDER</string>
+    <string name="retarded">Retarded</string>
+    <string name="overdue_by_19_days">Overdue by 19 days</string>
+    <string name="_19d_12_44_37">+19d 12:44:37</string>
+    <string name="was_due_sep_16_2026">Was due Sep 16, 2026</string>
+    <string name="overdue_by">Overdue by</string>
+    <string name="was_due">Was due</string>
+    <string name="due">Due</string>
+    <string name="next_change_in">Next change in</string>
+    <string name="error">Error</string>
+    <string name="day_format">d</string>
 </resources>
