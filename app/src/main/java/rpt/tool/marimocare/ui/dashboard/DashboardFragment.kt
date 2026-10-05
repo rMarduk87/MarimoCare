@@ -62,6 +62,7 @@ import rpt.tool.marimocare.utils.balloon.chat.ChatBalloonFactory
 import rpt.tool.marimocare.utils.balloon.feedback.FeedbackBalloonFactory
 import rpt.tool.marimocare.utils.balloon.waterchange.DialogChangeWaterBalloonFactory
 import rpt.tool.marimocare.utils.balloon.settings.SettingsBalloonFactory
+import rpt.tool.marimocare.utils.balloon.bulkselection.BulkSelectionBalloonFactory
 import rpt.tool.marimocare.utils.balloon.waterchange.WaterChangeInfoBalloonFactory
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.data.appmodels.MarimoToFix
@@ -98,6 +99,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     private val newDialogChangeWaterBalloon by balloon<DialogChangeWaterBalloonFactory>()
     private val feedBackBalloon by balloon<FeedbackBalloonFactory>()
     private val settingsBalloon by balloon<SettingsBalloonFactory>()
+    private val bulkSelectionBalloon by balloon<BulkSelectionBalloonFactory>()
     private var imagePath: String? = null
     private var tempImageUri: Uri? = null
     private var isBalloonShowing = false
@@ -1454,6 +1456,26 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                     } ?: run {
                         SharedPreferencesManager.showBallonChat = false
                         checkAndShowBalloons()
+                    }
+                }
+                SharedPreferencesManager.showBulkSelectionBalloon -> {
+                    isBalloonShowing = true
+                    SharedPreferencesManager.showBulkSelectionBalloon = false
+                    bulkSelectionBalloon.setOnBalloonDismissListener {
+                        isBalloonShowing = false
+                        checkAndShowBalloons()
+                    }
+                    binding.scrollView.post {
+                        binding.btnSelect.requestRectangleOnScreen(android.graphics.Rect(0, 0, binding.btnSelect.width, binding.btnSelect.height))
+                        binding.root.postDelayed({
+                            if (isAdded) {
+                                bulkSelectionBalloon.showAlign(
+                                    align = BalloonAlign.BOTTOM,
+                                    mainAnchor = binding.btnSelect,
+                                    subAnchorList = listOf(binding.btnSelect)
+                                )
+                            }
+                        }, 100)
                     }
                 }
             }

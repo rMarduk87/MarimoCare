@@ -833,10 +833,11 @@
     <string name="selected">선택됨</string>
     <string name="add_note">메모 추가</string>
     <string name="add_note_to_1_marimos">마리모 1개에 메모 추가</string>
-    <string name="write_a_note_to_add_to_each_selected_marimo">선택한 각 마리모에 추가할 메모를 작성하세요...</string>
+    <string name="write_a_note_to_add_to_each_selected_marimo">선택한 각 마리모에 추가할 메모를 작성하세요…</string>
     <string name="add_to_all">모두에게 추가</string>
     <string name="add_note_to">메모 추가 대상:</string>
     <string name="marimos">마리모</string>
+    <string name="bulk_selection_balloon_text">물 갈기 일괄 업데이트 및/또는 일괄 메모 추가를 위해 하나 이상의 마리모를 선택하세요.</string>
     <string name="active_reminder">ACTIVE REMINDER</string>
     <string name="retarded">Retarded</string>
     <string name="overdue_by_19_days">Overdue by 19 days</string>

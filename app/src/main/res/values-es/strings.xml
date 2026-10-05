@@ -831,10 +831,11 @@
     <string name="selected">seleccionados</string>
     <string name="add_note">Añadir nota</string>
     <string name="add_note_to_1_marimos">Añadir nota a 1 Marimo</string>
-    <string name="write_a_note_to_add_to_each_selected_marimo">Escribe una nota para añadir a cada marimo seleccionado...</string>
+    <string name="write_a_note_to_add_to_each_selected_marimo">Escribe una nota para añadir a cada marimo seleccionado…</string>
     <string name="add_to_all">Añadir a todos</string>
     <string name="add_note_to">Añadir nota a</string>
     <string name="marimos">Marimos</string>
+    <string name="bulk_selection_balloon_text">Selecciona uno o más marimos para la actualización colectiva de cambio de agua y/o agregar una nota colectiva.</string>
     <string name="active_reminder">ACTIVE REMINDER</string>
     <string name="retarded">Retarded</string>
     <string name="overdue_by_19_days">Overdue by 19 days</string>

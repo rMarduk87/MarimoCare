@@ -831,10 +831,11 @@
     <string name="selected">เลือกแล้ว</string>
     <string name="add_note">เพิ่มบันทึก</string>
     <string name="add_note_to_1_marimos">เพิ่มบันทึกไปยัง 1 มาริโมะ</string>
-    <string name="write_a_note_to_add_to_each_selected_marimo">เขียนบันทึกเพื่อเพิ่มไปยังมาริโมะที่เลือกแต่ละตัว...</string>
+    <string name="write_a_note_to_add_to_each_selected_marimo">เขียนบันทึกเพื่อเพิ่มไปยังมาริโมะที่เลือกแต่ละตัว…</string>
     <string name="add_to_all">เพิ่มทั้งหมด</string>
     <string name="add_note_to">เพิ่มบันทึกไปยัง</string>
     <string name="marimos">มาริโมะ</string>
+    <string name="bulk_selection_balloon_text">เลือกมาริโมะหนึ่งตัวหรือมากกว่าสำหรับการอัปเดตการเปลี่ยนน้ำแบบกลุ่ม และ/หรือเพิ่มบันทึกแบบกลุ่ม</string>
     <string name="active_reminder">ACTIVE REMINDER</string>
     <string name="retarded">Retarded</string>
     <string name="overdue_by_19_days">Overdue by 19 days</string>

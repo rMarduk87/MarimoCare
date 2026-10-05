@@ -587,11 +587,11 @@
     <string name="dimensions">الأبعاد</string>
     <string name="material">المادة</string>
     <string name="e_g_blue_pebble">مثلاً: حصاة زرقاء</string>
-    <string name="select_type">اختر النوع...</string>
+    <string name="select_type">اختر النوع…</string>
     <string name="e_g_cobalt_blue">مثلاً: أزرق كوبالتي</string>
     <string name="e_g_2cm_x_1cm">مثلاً: 2 سم × 1 سم</string>
     <string name="e_g_natural_quartz">مثلاً: كوارتز طبيعي</string>
-    <string name="any_extra_details">أي تفاصيل إضافية...</string>
+    <string name="any_extra_details">أي تفاصيل إضافية…</string>
     <string name="decorations">الزينة</string>
     <string name="pot_decorations">زينة الحوض</string>
     <string name="_total">إجمالي</string>
@@ -683,7 +683,7 @@
     <string name="i_am_aware">أنا أدرك أنه سيلزم تكرار الإجراءات.</string>
     <string name="no_achievements_to_reset">لا توجد إنجازات لإعادة تعيينها</string>
     <string-array name="decoration_types">
-        <item>اختر النوع...</item>
+        <item>اختر النوع…</item>
         <item>حصاة</item>
         <item>صخرة</item>
         <item>حجر</item>
@@ -827,10 +827,11 @@
     <string name="selected">المحدد</string>
     <string name="add_note">إضافة ملاحظة</string>
     <string name="add_note_to_1_marimos">إضافة ملاحظة إلى 1 ماريمو</string>
-    <string name="write_a_note_to_add_to_each_selected_marimo">اكتب ملاحظة لإضافتها إلى كل ماريمو محدد...</string>
+    <string name="write_a_note_to_add_to_each_selected_marimo">اكتب ملاحظة لإضافتها إلى كل ماريمو محدد…</string>
     <string name="add_to_all">إضافة للكل</string>
     <string name="add_note_to">إضافة ملاحظة إلى</string>
     <string name="marimos">ماريمو</string>
+    <string name="bulk_selection_balloon_text">حدد ماريمو واحداً أو أكثر للتحديث الجماعي لتغيير الماء و/وإضافة ملاحظة جماعية.</string>
     <string name="active_reminder">ACTIVE REMINDER</string>
     <string name="retarded">Retarded</string>
     <string name="overdue_by_19_days">Overdue by 19 days</string>

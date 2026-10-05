@@ -828,10 +828,11 @@
     <string name="selected">выбрано</string>
     <string name="add_note">Добавить заметку</string>
     <string name="add_note_to_1_marimos">Добавить заметку к 1 маримо</string>
-    <string name="write_a_note_to_add_to_each_selected_marimo">Напишите заметку для добавления к каждому выбранному маримо...</string>
+    <string name="write_a_note_to_add_to_each_selected_marimo">Напишите заметку для добавления к каждому выбранному маримо…</string>
     <string name="add_to_all">Добавить ко всем</string>
     <string name="add_note_to">Добавить заметку к</string>
     <string name="marimos">Маримо</string>
+    <string name="bulk_selection_balloon_text">Выберите один или несколько маримо для массового обновления смены воды и/или добавления общей заметки.</string>
     <string name="active_reminder">ACTIVE REMINDER</string>
     <string name="retarded">Retarded</string>
     <string name="overdue_by_19_days">Overdue by 19 days</string>

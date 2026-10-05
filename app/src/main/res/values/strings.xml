@@ -957,10 +957,11 @@ Please note: the final date retrieved will be the same as the app release date, 
     <string name="selected">selected</string>
     <string name="add_note">Add Note</string>
     <string name="add_note_to_1_marimos">Add Note to 1 Marimos</string>
-    <string name="write_a_note_to_add_to_each_selected_marimo">Write a note to add to each selected marimo...</string>
+    <string name="write_a_note_to_add_to_each_selected_marimo">Write a note to add to each selected marimo…</string>
     <string name="add_to_all">Add to All</string>
     <string name="add_note_to">Add Note to</string>
     <string name="marimos">Marimos</string>
+    <string name="bulk_selection_balloon_text">Select one or more marimo for collective update of water change and/or adding a collective note.</string>
     <string name="active_reminder">ACTIVE REMINDER</string>
     <string name="retarded">Retarded</string>
     <string name="overdue_by_19_days">Overdue by 19 days</string>
