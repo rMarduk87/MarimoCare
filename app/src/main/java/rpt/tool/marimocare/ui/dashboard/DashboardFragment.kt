@@ -71,6 +71,7 @@ import rpt.tool.marimocare.utils.managers.HealthManager
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.tool.marimocare.utils.view.HeaderButtonConfig
 import rpt.tool.marimocare.utils.view.HeaderHelper
+import rpt.tool.marimocare.utils.view.adapters.AlertPagerAdapter
 import rpt.tool.marimocare.utils.view.adapters.MarimoToFixAdapter
 import rpt.tool.marimocare.utils.view.adapters.MarimoUpdateAdapter
 import rpt.tool.marimocare.utils.view.copyUriToInternalFile
@@ -109,9 +110,10 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     private val REQUEST_CAMERA = 1001
     private val REQUEST_GALLERY = 1002
 
-    // Variabili per la modalità di selezione
     private var isSelectionMode = false
     private val selectedMarimoIds = mutableSetOf<Int>()
+
+    private lateinit var alertPagerAdapter: AlertPagerAdapter
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -157,10 +159,8 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             adapter = fastAdapter
         }
 
-        // Setup della UI per la selezione
         setupSelectionModeUI()
 
-        // Registrazione dell'hook per la modalità Selezione
         fastAdapter.addEventHook(
             SelectMarimoEventHook(
                 isSelectionModeActive = { isSelectionMode },
@@ -202,7 +202,6 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                 binding.recyclerMarimos.visible()
                 binding.emptyListLabel.gone()
 
-                // Mantiene lo stato di selezione quando gli items vengono ricaricati
                 items.forEach {
                     it.isSelectionMode = this.isSelectionMode
                     it.isItemSelected = selectedMarimoIds.contains(it.marimo.code)
@@ -244,7 +243,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
             val marimo = RepositoryManager.marimoRepository.getAllSync(true)
-            if(marimo.count()>0){
+            if(marimo.isNotEmpty()){
                 marimoToFix.apply {
                     clear()
                     addAll(
@@ -401,9 +400,24 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             updateAlertsUI()
         }
 
+        alertPagerAdapter = AlertPagerAdapter()
+        val alertPager = view.findViewById<androidx.viewpager2.widget.ViewPager2>(R.id.alertViewPager)
+        val alertArrowLeft = view.findViewById<View>(R.id.alertArrowLeft)
+        val alertArrowRight = view.findViewById<View>(R.id.alertArrowRight)
+
+        alertPager.adapter = alertPagerAdapter
+
+        alertArrowLeft.setOnClickListener {
+            val current = alertPager.currentItem
+            if (current > 0) alertPager.setCurrentItem(current - 1, true)
+        }
+
+        alertArrowRight.setOnClickListener {
+            val current = alertPager.currentItem
+            if (current < alertPagerAdapter.itemCount - 1) alertPager.setCurrentItem(current + 1, true)
+        }
     }
 
-    // --- FUNZIONI PER LA MODALITÀ DI SELEZIONE ---
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setupSelectionModeUI() {
         binding.btnSelect.setOnClickListener {
@@ -726,11 +740,19 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             if (!hasOverdue && !hasSoon) {
                 binding.alertCounterLayout.visibility = View.GONE
             }
+
+            val allMarimos = viewModel.allMarimos.value ?: emptyList()
+
+            val alertMarimos = allMarimos.sortedBy { it.daysLeft }
+
+            if (alertMarimos.isNotEmpty()) {
+                binding.alertCarouselContainer.visibility = View.VISIBLE
+                alertPagerAdapter.updateData(alertMarimos)
+            } else {
+                binding.alertCarouselContainer.visibility = View.GONE
+            }
         }
     }
-
-
-
     @RequiresApi(Build.VERSION_CODES.O)
     private fun manageFilters() {
         manageFiltersFromSharedPreferences()

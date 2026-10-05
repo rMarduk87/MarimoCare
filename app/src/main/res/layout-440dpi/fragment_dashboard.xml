@@ -737,23 +737,32 @@
                         app:drawableStartCompat="@drawable/ic_filter" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/buttonFilter"
-                    android:layout_width="wrap_content"
+                <!-- GRIGLIA UNIFORME A 2 RIGHE E 2 COLONNE PER I 4 FILTRI -->
+                <GridLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="24dp"
-                    android:clipChildren="false"
-                    android:clipToPadding="false">
+                    android:alignmentMode="alignMargins"
+                    android:columnCount="2"
+                    android:columnOrderPreserved="false"
+                    android:rowCount="2"
+                    android:useDefaultMargins="true">
 
+                    <!-- 1. ALL FILTER -->
                     <FrameLayout
-                        android:layout_width="wrap_content"
+                        android:id="@+id/buttonFilter"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="25dp">
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:layout_margin="4dp"
+                        android:clipChildren="false"
+                        android:clipToPadding="false">
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btnAllFilter"
-                            android:layout_width="160dp"
-                            android:layout_height="48dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="46dp"
                             android:background="@drawable/bg_btn_primary"
                             android:text="@string/all"
                             android:textAllCaps="false"
@@ -774,20 +783,26 @@
                             android:textStyle="bold"
                             android:translationX="6dp"
                             android:translationY="-6dp" />
-
                     </FrameLayout>
 
+                    <!-- 2. OVERDUE FILTER -->
                     <FrameLayout
-                        android:layout_width="wrap_content"
+                        android:id="@+id/buttonFilter2"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="25dp">
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:layout_margin="4dp"
+                        android:clipChildren="false"
+                        android:clipToPadding="false">
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btnOverdueFilter"
-                            android:layout_width="160dp"
-                            android:layout_height="48dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="46dp"
                             android:background="@drawable/bg_btn_white"
                             android:drawableEnd="@drawable/ic_warning_triangle_red"
+                            android:drawablePadding="6dp"
                             android:text="@string/overdue"
                             android:textAllCaps="false"
                             android:textColor="@color/marimo_dark"
@@ -808,31 +823,26 @@
                             android:translationX="6dp"
                             android:translationY="-6dp"
                             tools:ignore="TooManyViews" />
-
                     </FrameLayout>
-                </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/buttonFilter2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="24dp"
-                    android:clipChildren="false"
-                    android:clipToPadding="false">
-
+                    <!-- 3. DUE SOON FILTER -->
                     <FrameLayout
-                        android:layout_width="wrap_content"
+                        android:id="@+id/buttonFilter3"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="25dp"
-                        tools:ignore="UselessParent">
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:layout_margin="4dp"
+                        android:clipChildren="false"
+                        android:clipToPadding="false">
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btnDueSoonFilter"
-                            android:layout_width="160dp"
-                            android:layout_height="48dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="46dp"
                             android:background="@drawable/bg_btn_white"
                             android:drawableEnd="@drawable/ic_calendar_due_soon"
-                            android:drawablePadding="8dp"
+                            android:drawablePadding="6dp"
                             android:text="@string/soon_f"
                             android:textAllCaps="false"
                             android:textColor="@color/marimo_dark"
@@ -853,29 +863,25 @@
                             android:textStyle="bold"
                             android:translationX="6dp"
                             android:translationY="-6dp" />
-
                     </FrameLayout>
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/buttonFilter3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
+                    <!-- 4. UP TO DATE FILTER -->
                     <FrameLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="25dp"
-                        tools:ignore="UselessParent">
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:layout_margin="4dp"
+                        android:clipChildren="false"
+                        android:clipToPadding="false">
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btnUpToDateFilter"
-                            android:layout_width="160dp"
-                            android:layout_height="48dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="46dp"
                             android:background="@drawable/bg_btn_white"
                             android:drawableEnd="@drawable/ic_clock"
-                            android:drawablePadding="8dp"
+                            android:drawablePadding="6dp"
                             android:text="@string/upToDate"
                             android:textAllCaps="false"
                             android:textColor="@color/marimo_dark"
@@ -896,10 +902,9 @@
                             android:textStyle="bold"
                             android:translationX="6dp"
                             android:translationY="-6dp" />
-
                     </FrameLayout>
 
-                </LinearLayout>
+                </GridLayout>
 
                 <LinearLayout
                     android:id="@+id/sorts"

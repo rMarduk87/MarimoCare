@@ -24,7 +24,7 @@
     <string name="marimo_tip_body_10">Agitare l\'acqua di tanto in tanto per aiutare i marimo a muoversi e a rimanere in salute.</string>
     <string name="total">Totale</string>
     <string name="_3">3</string>
-    <string name="overdue">In ritardo</string>
+    <string name="overdue">Rinviato</string>
     <string name="due_soon">Da cambiare</string>
     <string name="_0">0</string>
     <string name="your_marimos">I tuoi Marimo</string>
@@ -88,8 +88,8 @@
     <string name="automatic_notification">Notifica automatica 🤖</string>
     <string name="filters">\t\tFiltro:</string>
     <string name="all">Tutti</string>
-    <string name="overdue_f">In ritardo</string>
-    <string name="soon_f">In scadenza</string>
+    <string name="overdue_f">Rinviato</string>
+    <string name="soon_f">Cambia ora</string>
     <string name="upToDate">Cambiato</string>
     <string name="water_change_today">Ehi, oggi devi cambiare l\'acqua ad alcuni Marimo</string>
     <string name="soon_marimo">Ci sono alcuni Marimo che a breve necessiteranno il cambio d\' acqua:\n%1$s</string>
@@ -837,4 +837,15 @@
     <string name="add_to_all">Aggiungi a tutti</string>
     <string name="add_note_to">Aggiungi nota a</string>
     <string name="marimos">Marimi</string>
+    <string name="active_reminder">ACTIVE REMINDER</string>
+    <string name="retarded">Retarded</string>
+    <string name="overdue_by_19_days">Overdue by 19 days</string>
+    <string name="_19d_12_44_37">+19d 12:44:37</string>
+    <string name="was_due_sep_16_2026">Was due Sep 16, 2026</string>
+    <string name="overdue_by">Overdue by</string>
+    <string name="was_due">Was due</string>
+    <string name="due">Due</string>
+    <string name="next_change_in">Next change in</string>
+    <string name="error">Error</string>
+    <string name="day_format">d</string>
 </resources>
