@@ -3,6 +3,7 @@ package rpt.tool.marimocare.utils.view.recyclerview.items.marimo
 import android.annotation.SuppressLint
 import android.graphics.PorterDuff
 import android.os.Build
+import android.view.View
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
@@ -20,6 +21,9 @@ class MarimoItem(var marimo: Marimo) :
 
     override val type: Int = R.id.rv_marimo
     private var binding: ItemMarimoBinding? = null
+
+    var isSelectionMode: Boolean = false
+    var isItemSelected: Boolean = false
 
     @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("SetTextI18n")
@@ -66,6 +70,17 @@ class MarimoItem(var marimo: Marimo) :
 
         binding.cardNotes.setBackgroundResource(status.notesCardBg)
         binding.cardDate.setBackgroundResource(status.cardDateBg)
+
+        binding.checkboxSelection.visibility = if (isSelectionMode) View.VISIBLE else View.GONE
+        binding.checkboxSelection.isChecked = isItemSelected
+
+        if (isItemSelected) {
+            binding.cardMarimo.strokeWidth = 4
+            binding.cardMarimo.strokeColor =
+                ContextCompat.getColor(binding.root.context, R.color.marimo_item_green)
+        } else {
+            binding.cardMarimo.strokeWidth = 0
+        }
     }
     @RequiresApi(Build.VERSION_CODES.O)
     fun update(newMarimo: Marimo) {

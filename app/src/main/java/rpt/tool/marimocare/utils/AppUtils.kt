@@ -248,7 +248,8 @@ class AppUtils {
                 val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
                 val current = LocalDate.parse(currentDate, formatter)
                 val last = LocalDate.parse(lastWater, formatter)
-                val daysBetween = ChronoUnit.DAYS.between(last, current).toInt()
+                val daysBetween = ChronoUnit.DAYS.between(last,
+                    current).toInt()
                 100 - daysBetween
             } catch (_: Exception) {
                 0
@@ -300,7 +301,8 @@ class AppUtils {
                 }
             }.sorted()
             if (dates.isEmpty()) return 0
-            return ChronoUnit.DAYS.between(dates[0], LocalDate.now()).toInt()
+            return ChronoUnit.DAYS.between(dates[0],
+                LocalDate.now()).toInt()
         }
 
         const val USERS_SHARED_PREF : String = "user_pref"
@@ -334,6 +336,7 @@ class AppUtils {
         const val APP_LANGUAGE : String = "app_language"
         const val CHAT_MODE_ENABLED : String = "chat_mode_enabled"
         const val RESET_AND_RECALCULATE_ACHIEVEMENTS : String = "reset_and_recalculate_achievements"
+        const val SHOW_BULK_SELECTION_BALLOON : String = "show_bulk_selection_balloon"
 
 
 
@@ -344,22 +347,15 @@ class AppUtils {
         fun isNetworkAvailable(context: Context): Boolean {
             val connectivityManager =
                 context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                val network = connectivityManager.activeNetwork ?: return false
-                val activeNetwork =
-                    connectivityManager.getNetworkCapabilities(network) ?: return false
-                return when {
-                    activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
-                    activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
-                    activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
-                    activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_BLUETOOTH) -> true
-                    else -> false
-                }
-            } else {
-                @Suppress("DEPRECATION")
-                val networkInfo = connectivityManager.activeNetworkInfo ?: return false
-                @Suppress("DEPRECATION")
-                return networkInfo.isConnected
+            val network = connectivityManager.activeNetwork ?: return false
+            val activeNetwork =
+                connectivityManager.getNetworkCapabilities(network) ?: return false
+            return when {
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_BLUETOOTH) -> true
+                else -> false
             }
         }
 

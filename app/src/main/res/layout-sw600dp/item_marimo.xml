@@ -17,13 +17,21 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- HEADER -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
             android:padding="20dp">
+
+            <!-- CheckBox per la selezione multipla (Aggiunta qui) -->
+            <CheckBox
+                android:id="@+id/checkboxSelection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:visibility="gone"
+                tools:visibility="visible" />
 
             <ImageView
                 android:id="@+id/imgMarimoIcon"
@@ -47,7 +55,7 @@
                     android:text="@string/mochi"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="#1A1A1A"
+                    android:textColor="@color/marimo_text_black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
@@ -55,7 +63,7 @@
                     android:id="@+id/txtFrequency"
                     android:text="@string/changes_every_14_days"
                     android:textSize="14sp"
-                    android:textColor="#777777"
+                    android:textColor="@color/marimo_text_gray"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -82,7 +90,7 @@
                     android:id="@+id/txtDaysLeft"
                     android:text="@string/_12_days_left"
                     android:textSize="12sp"
-                    android:textColor="#0A9A67"
+                    android:textColor="@color/marimo_text_accent"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />

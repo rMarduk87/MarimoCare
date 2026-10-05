@@ -822,4 +822,26 @@
     <string name="add_photo">Ajouter une photo</string>
     <string name="_take_photo">Prendre une photo</string>
     <string name="_choose_from_gallery">Choisir dans la galerie</string>
+    <string name="select">Sélectionner</string>
+    <string name="select_all">Tout sélectionner</string>
+    <string name="done">Terminé</string>
+    <string name="selected">sélectionnés</string>
+    <string name="add_note">Ajouter une note</string>
+    <string name="add_note_to_1_marimos">Ajouter une note à 1 Marimo</string>
+    <string name="write_a_note_to_add_to_each_selected_marimo">Écrivez une note à ajouter à chaque marimo sélectionné…</string>
+    <string name="add_to_all">Ajouter à tous</string>
+    <string name="add_note_to">Ajouter une note à</string>
+    <string name="marimos">Marimos</string>
+    <string name="bulk_selection_balloon_text">Sélectionnez un ou plusieurs marimos pour une mise à jour collective du changement d\'eau et/ou l\'ajout d\'une note collective.</string>
+    <string name="active_reminder">ACTIVE REMINDER</string>
+    <string name="retarded">Retarded</string>
+    <string name="overdue_by_19_days">Overdue by 19 days</string>
+    <string name="_19d_12_44_37">+19d 12:44:37</string>
+    <string name="was_due_sep_16_2026">Was due Sep 16, 2026</string>
+    <string name="overdue_by">Overdue by</string>
+    <string name="was_due">Was due</string>
+    <string name="due">Due</string>
+    <string name="next_change_in">Next change in</string>
+    <string name="error">Error</string>
+    <string name="day_format">d</string>
 </resources>
