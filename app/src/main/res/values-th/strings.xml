@@ -847,4 +847,6 @@
     <string name="next_change_in">เปลี่ยนครั้งต่อไปใน</string>
     <string name="error">ข้อผิดพลาด</string>
     <string name="day_format">ว</string>
+    <string name="compact_layout">เค้าโครงแบบ compact</string>
+    <string name="compact_layout_subtitle">ในโหมด compact ย้ายตัวกรองและการจัดเรียงไปไว้ในคอลัมน์ด้านข้างพร้อมแท็บ และทำให้การ์ดมาริโมะง่ายขึ้น มือถือยังคงไม่เปลี่ยนแปลง</string>
 </resources>

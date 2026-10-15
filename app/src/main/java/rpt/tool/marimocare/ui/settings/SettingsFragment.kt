@@ -35,6 +35,7 @@ class SettingsFragment :
     private var showAlertSoon = true
     private var showAlertOverdue = true
     private var isChatModeEnabled = true
+    private var isDesktopMode = false
 
     private val speedViews: MutableMap<Int, TextView> = mutableMapOf()
     private val filterViews: MutableMap<Int, TextView> = mutableMapOf()
@@ -66,6 +67,8 @@ class SettingsFragment :
         setupNotificationListeners()
         setupChatModeSelection()
         setupChatModeListeners()
+        setupDesktopModeSelection()
+        setupDesktopModeListeners()
         setupSaveCancelListeners()
 
         binding.include1.appLogo.setOnClickListener {
@@ -152,6 +155,7 @@ class SettingsFragment :
             containerStatsPeriod.setBackgroundResource(R.drawable.bg_card_settings)
             containerNotifications.setBackgroundResource(R.drawable.bg_card_settings)
             containerChatMode.setBackgroundResource(R.drawable.bg_card_settings)
+            containerDesktopLayout.setBackgroundResource(R.drawable.bg_card_settings)
         }
     }
 
@@ -400,9 +404,9 @@ class SettingsFragment :
     }
 
     private fun updateNotificationSelection() {
-        binding.inputTodayAlert.let { updateNotificationView(it, showAlertToday) }
-        binding.inputDueSoonAlert.let { updateNotificationView(it, showAlertSoon) }
-        binding.inputOverdueAlert.let { updateNotificationView(it, showAlertOverdue) }
+        updateNotificationView(binding.inputTodayAlert, showAlertToday)
+        updateNotificationView(binding.inputDueSoonAlert, showAlertSoon)
+        updateNotificationView(binding.inputOverdueAlert, showAlertOverdue)
     }
 
     private fun updateNotificationView(view: TextView, selected: Boolean) {
@@ -434,9 +438,30 @@ class SettingsFragment :
         }
     }
 
+    private fun setupDesktopModeSelection() {
+        isDesktopMode = SharedPreferencesManager.desktopMode
+        updateDesktopModeSelection()
+    }
+
+    private fun setupDesktopModeListeners() {
+        binding.inputDesktopEnabled.setOnClickListener {
+            isDesktopMode = true
+            updateDesktopModeSelection()
+        }
+        binding.inputDesktopDisabled.setOnClickListener {
+            isDesktopMode = false
+            updateDesktopModeSelection()
+        }
+    }
+
     private fun updateChatModeSelection() {
-        binding.inputEnableChat.let { updateNotificationView(it, isChatModeEnabled) }
-        binding.inputDisableChat.let { updateNotificationView(it, !isChatModeEnabled) }
+        updateNotificationView(binding.inputEnableChat, isChatModeEnabled)
+        updateNotificationView(binding.inputDisableChat, !isChatModeEnabled)
+    }
+
+    private fun updateDesktopModeSelection() {
+        updateNotificationView(binding.inputDesktopEnabled, isDesktopMode)
+        updateNotificationView(binding.inputDesktopDisabled, !isDesktopMode)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -452,6 +477,7 @@ class SettingsFragment :
             SharedPreferencesManager.showAlertSoon = showAlertSoon
             SharedPreferencesManager.showAlertOverdue = showAlertOverdue
             SharedPreferencesManager.isChatModeEnabled = isChatModeEnabled
+            SharedPreferencesManager.desktopMode = isDesktopMode
             Toast.makeText(
                 requireContext(),
                 getString(R.string.option_correctly_updated),
@@ -475,12 +501,14 @@ class SettingsFragment :
             showAlertSoon = SharedPreferencesManager.showAlertSoon
             showAlertOverdue = SharedPreferencesManager.showAlertOverdue
             isChatModeEnabled = SharedPreferencesManager.isChatModeEnabled
+            isDesktopMode = SharedPreferencesManager.desktopMode
             updateDashboardSelection()
             updateSpeedTipsSelection()
             updateFilterAndSortSelection()
             updateStatPeriodSelection()
             updateNotificationSelection()
             updateChatModeSelection()
+            updateDesktopModeSelection()
         }
     }
 }

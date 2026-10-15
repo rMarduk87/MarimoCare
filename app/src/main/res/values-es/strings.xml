@@ -847,4 +847,6 @@
     <string name="next_change_in">Próximo cambio en</string>
     <string name="error">Error</string>
     <string name="day_format">d</string>
+    <string name="compact_layout">Diseño compacto</string>
+    <string name="compact_layout_subtitle">En modo compacto, mueve los filtros y el ordenamiento a una columna lateral con pestañas y simplifica las tarjetas de marimo. El móvil permanece sin cambios.</string>
 </resources>

@@ -141,4 +141,7 @@ object SharedPreferencesManager {
         get() = sharedPreferences.getBoolean(AppUtils.SHOW_BULK_SELECTION_BALLOON, true)
         set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_BULK_SELECTION_BALLOON, value) }
 
+    var desktopMode: Boolean
+        get() = sharedPreferences.getBoolean(AppUtils.DESKTOP_MODE, false)
+        set(value) = sharedPreferences.edit() { putBoolean(AppUtils.DESKTOP_MODE, value) }
 }

@@ -337,6 +337,7 @@ class AppUtils {
         const val CHAT_MODE_ENABLED : String = "chat_mode_enabled"
         const val RESET_AND_RECALCULATE_ACHIEVEMENTS : String = "reset_and_recalculate_achievements"
         const val SHOW_BULK_SELECTION_BALLOON : String = "show_bulk_selection_balloon"
+        const val DESKTOP_MODE : String = "desktop_mode"
 
 
 

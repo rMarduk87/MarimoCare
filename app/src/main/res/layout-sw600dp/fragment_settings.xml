@@ -74,7 +74,10 @@
 
                     <TextView
                         android:id="@+id/txtTitle"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:maxLines="1"
+                        android:ellipsize="end"
                         android:layout_height="wrap_content"
                         android:text="@string/dashboard_card_style"
                         android:textSize="20sp"
@@ -86,13 +89,14 @@
 
                 <TextView
                     android:id="@+id/txtSubtitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:ellipsize="end"
                     android:text="@string/choose_how_you_want_your_marimo_statistics_cards_to_appear_on_the_dashboard"
                     android:textColor="@color/marimo_dark"
                     android:textSize="14sp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="5dp"
                     android:paddingBottom="16dp" />
 
                 <!-- DASHBOARD DEFAULT -->
@@ -121,7 +125,9 @@
                             android:text="@string/default_style"
                             android:textSize="21sp"
                             android:textStyle="bold"
-                            android:textColor="@color/marimo_black" />
+                            android:textColor="@color/marimo_black"
+                            android:maxLines="1"
+                            android:ellipsize="end" />
 
                         <include android:id="@+id/includeDef" layout="@layout/checkmark"
                             android:layout_width="wrap_content"
@@ -132,13 +138,14 @@
 
                     <TextView
                         android:id="@+id/txtSubtitleDefault"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:ellipsize="end"
                         android:text="@string/clean_cards_with_icons_and_subtle_backgrounds"
                         android:textColor="@color/marimo_dark"
                         android:textSize="14sp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="5dp"
                         android:paddingBottom="16dp"
                         android:layout_marginBottom="4dp"/>
 
@@ -304,7 +311,9 @@
                             android:text="@string/colored_style"
                             android:textSize="21sp"
                             android:textStyle="bold"
-                            android:textColor="@color/marimo_black" />
+                            android:textColor="@color/marimo_black"
+                            android:maxLines="1"
+                            android:ellipsize="end" />
 
                         <include android:id="@+id/includeCol" layout="@layout/checkmark"
                             android:layout_width="wrap_content"
@@ -315,13 +324,14 @@
 
                     <TextView
                         android:id="@+id/txtSubtitleColored"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:ellipsize="end"
                         android:text="@string/bold_colored_backgrounds_without_icons"
                         android:textColor="@color/marimo_dark"
                         android:textSize="14sp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="5dp"
                         android:layout_marginBottom="4dp"
                         android:paddingBottom="16dp" />
 
@@ -459,7 +469,10 @@
 
                         <TextView
                             android:id="@+id/txtTitleSpeed"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:maxLines="1"
+                            android:ellipsize="end"
                             android:layout_height="wrap_content"
                             android:text="@string/tips_auto_scroll_speed"
                             android:textColor="@color/marimo_black"
@@ -474,21 +487,23 @@
 
                     <TextView
                         android:id="@+id/txtSubtitleSpeed"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:ellipsize="end"
                         android:text="@string/choose_how_quickly_the_marimo_care_tips_automatically_rotate"
                         android:textColor="@color/marimo_dark"
                         android:textSize="14sp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="5dp"
                         android:paddingBottom="16dp" />
 
                     <LinearLayout
                         android:id="@+id/speed"
-                        android:layout_width="350dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_gravity="center"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
                         android:padding="16dp"
                         android:layout_marginBottom="16dp">
 
@@ -506,7 +521,10 @@
                             android:focusableInTouchMode="false"
                             android:cursorVisible="false"
                             android:clickable="true"
-                            android:inputType="none" />
+                            android:inputType="none"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:ellipsize="end" />
 
                         <EditText
                             android:id="@+id/inputFast"
@@ -522,7 +540,10 @@
                             android:focusableInTouchMode="false"
                             android:cursorVisible="false"
                             android:clickable="true"
-                            android:inputType="none" />
+                            android:inputType="none"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:ellipsize="end" />
 
                         <EditText
                             android:id="@+id/inputNormal"
@@ -538,7 +559,10 @@
                             android:focusableInTouchMode="false"
                             android:cursorVisible="false"
                             android:clickable="true"
-                            android:inputType="none" />
+                            android:inputType="none"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:ellipsize="end" />
 
                         <EditText
                             android:id="@+id/inputSlow"
@@ -554,7 +578,10 @@
                             android:focusableInTouchMode="false"
                             android:cursorVisible="false"
                             android:clickable="true"
-                            android:inputType="none" />
+                            android:inputType="none"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:ellipsize="end" />
 
                         <EditText
                             android:id="@+id/inputVerySlow"
@@ -570,7 +597,10 @@
                             android:focusableInTouchMode="false"
                             android:cursorVisible="false"
                             android:clickable="true"
-                            android:inputType="none" />
+                            android:inputType="none"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:ellipsize="end" />
 
                     </LinearLayout>
 
@@ -608,7 +638,10 @@
 
                         <TextView
                             android:id="@+id/txtTitleFilterAndOrder"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:maxLines="1"
+                            android:ellipsize="end"
                             android:layout_height="wrap_content"
                             android:text="@string/dashboard_filters_amp_sorting"
                             android:textColor="@color/marimo_black"
@@ -623,21 +656,23 @@
 
                     <TextView
                         android:id="@+id/txtSubtitleFilterAndOrder"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:ellipsize="end"
                         android:text="@string/customize_how_marimos_are_filtered_and_sorted_on_the_dashboard"
                         android:textColor="@color/marimo_dark"
                         android:textSize="14sp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="5dp"
                         android:paddingBottom="16dp" />
 
                     <LinearLayout
                         android:id="@+id/filterAndOrder"
-                        android:layout_width="350dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_gravity="center"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
                         android:padding="16dp"
                         android:layout_marginBottom="4dp">
 
@@ -665,7 +700,10 @@
                             android:focusableInTouchMode="false"
                             android:cursorVisible="false"
                             android:clickable="true"
-                            android:inputType="none" />
+                            android:inputType="none"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:ellipsize="end" />
 
                         <EditText
                             android:id="@+id/inputHide"
@@ -681,16 +719,20 @@
                             android:focusableInTouchMode="false"
                             android:cursorVisible="false"
                             android:clickable="true"
-                            android:inputType="none" />
+                            android:inputType="none"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:ellipsize="end" />
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/defaultFilters"
-                        android:layout_width="350dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_gravity="center"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
                         android:padding="16dp"
                         android:visibility="gone"
                         android:layout_marginBottom="4dp">
@@ -719,7 +761,10 @@
                             android:focusableInTouchMode="false"
                             android:cursorVisible="false"
                             android:clickable="true"
-                            android:inputType="none" />
+                            android:inputType="none"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:ellipsize="end" />
 
                         <EditText
                             android:id="@+id/inputOverdue"
@@ -735,7 +780,10 @@
                             android:focusableInTouchMode="false"
                             android:cursorVisible="false"
                             android:clickable="true"
-                            android:inputType="none" />
+                            android:inputType="none"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:ellipsize="end" />
 
                         <EditText
                             android:id="@+id/inputDueSoon"
@@ -751,7 +799,10 @@
                             android:focusableInTouchMode="false"
                             android:cursorVisible="false"
                             android:clickable="true"
-                            android:inputType="none" />
+                            android:inputType="none"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:ellipsize="end" />
 
                         <EditText
                             android:id="@+id/inputUpToDate"
@@ -767,16 +818,20 @@
                             android:focusableInTouchMode="false"
                             android:cursorVisible="false"
                             android:clickable="true"
-                            android:inputType="none" />
+                            android:inputType="none"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:ellipsize="end" />
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/defaultSort"
-                        android:layout_width="350dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_gravity="center"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
                         android:padding="16dp"
                         android:visibility="gone"
                         android:layout_marginBottom="16dp">
@@ -805,7 +860,10 @@
                             android:focusableInTouchMode="false"
                             android:cursorVisible="false"
                             android:clickable="true"
-                            android:inputType="none" />
+                            android:inputType="none"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:ellipsize="end" />
 
                         <EditText
                             android:id="@+id/inputName"
@@ -821,7 +879,10 @@
                             android:focusableInTouchMode="false"
                             android:cursorVisible="false"
                             android:clickable="true"
-                            android:inputType="none" />
+                            android:inputType="none"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:ellipsize="end" />
 
                         <EditText
                             android:id="@+id/inputLastChanged"
@@ -837,7 +898,10 @@
                             android:focusableInTouchMode="false"
                             android:cursorVisible="false"
                             android:clickable="true"
-                            android:inputType="none" />
+                            android:inputType="none"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:ellipsize="end" />
 
                     </LinearLayout>
 
@@ -876,7 +940,10 @@
 
                         <TextView
                             android:id="@+id/txtTitleStatsPeriod"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:maxLines="1"
+                            android:ellipsize="end"
                             android:layout_height="wrap_content"
                             android:text="@string/stats_period"
                             android:textColor="@color/marimo_black"
@@ -891,21 +958,23 @@
 
                     <TextView
                         android:id="@+id/txtSubtitleStatsPeriod"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:ellipsize="end"
                         android:text="@string/default_time_range_shown_in_the_water_change_trend_chart"
                         android:textColor="@color/marimo_dark"
                         android:textSize="14sp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="5dp"
                         android:paddingBottom="16dp" />
 
                     <LinearLayout
                         android:id="@+id/statsPeriod"
-                        android:layout_width="350dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_gravity="center"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
                         android:padding="16dp"
                         android:layout_marginBottom="4dp">
 
@@ -923,7 +992,10 @@
                             android:focusableInTouchMode="false"
                             android:cursorVisible="false"
                             android:clickable="true"
-                            android:inputType="none" />
+                            android:inputType="none"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:ellipsize="end" />
 
                         <EditText
                             android:id="@+id/inputOneYear"
@@ -939,7 +1011,10 @@
                             android:focusableInTouchMode="false"
                             android:cursorVisible="false"
                             android:clickable="true"
-                            android:inputType="none" />
+                            android:inputType="none"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:ellipsize="end" />
 
                     </LinearLayout>
 
@@ -978,7 +1053,10 @@
 
                         <TextView
                             android:id="@+id/txtTitleNotifications"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:maxLines="1"
+                            android:ellipsize="end"
                             android:layout_height="wrap_content"
                             android:text="@string/notification_settings"
                             android:textColor="@color/marimo_black"
@@ -989,21 +1067,23 @@
 
                     <TextView
                         android:id="@+id/txtSubtitleNotifications"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:ellipsize="end"
                         android:text="@string/choose_which_notifications_you_want_to_receive"
                         android:textColor="@color/marimo_dark"
                         android:textSize="14sp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="5dp"
                         android:paddingBottom="16dp" />
 
                     <LinearLayout
                         android:id="@+id/notifications"
-                        android:layout_width="350dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_gravity="center"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
                         android:padding="16dp"
                         android:layout_marginBottom="16dp">
 
@@ -1021,7 +1101,10 @@
                             android:focusableInTouchMode="false"
                             android:cursorVisible="false"
                             android:clickable="true"
-                            android:inputType="none" />
+                            android:inputType="none"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:ellipsize="end" />
 
                         <EditText
                             android:id="@+id/inputDueSoonAlert"
@@ -1037,7 +1120,10 @@
                             android:focusableInTouchMode="false"
                             android:cursorVisible="false"
                             android:clickable="true"
-                            android:inputType="none" />
+                            android:inputType="none"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:ellipsize="end" />
 
                         <EditText
                             android:id="@+id/inputOverdueAlert"
@@ -1053,7 +1139,10 @@
                             android:focusableInTouchMode="false"
                             android:cursorVisible="false"
                             android:clickable="true"
-                            android:inputType="none" />
+                            android:inputType="none"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:ellipsize="end" />
 
                     </LinearLayout>
 
@@ -1092,7 +1181,10 @@
 
                         <TextView
                             android:id="@+id/txtTitleChatMode"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:maxLines="1"
+                            android:ellipsize="end"
                             android:layout_height="wrap_content"
                             android:text="@string/chat_mode"
                             android:textColor="@color/marimo_black"
@@ -1103,21 +1195,23 @@
 
                     <TextView
                         android:id="@+id/txtSubtitleChatMode"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:ellipsize="end"
                         android:text="@string/enable_chat_mode_subtitle"
                         android:textColor="@color/marimo_dark"
                         android:textSize="14sp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="5dp"
                         android:paddingBottom="16dp" />
 
                     <LinearLayout
                         android:id="@+id/chatMode"
-                        android:layout_width="350dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_gravity="center"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
                         android:padding="16dp"
                         android:layout_marginBottom="16dp">
 
@@ -1135,7 +1229,10 @@
                             android:focusableInTouchMode="false"
                             android:cursorVisible="false"
                             android:clickable="true"
-                            android:inputType="none" />
+                            android:inputType="none"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:ellipsize="end" />
 
                         <EditText
                             android:id="@+id/inputDisableChat"
@@ -1151,7 +1248,119 @@
                             android:focusableInTouchMode="false"
                             android:cursorVisible="false"
                             android:clickable="true"
-                            android:inputType="none" />
+                            android:inputType="none"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:ellipsize="end" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/container_desktop_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:padding="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal"
+                        android:paddingStart="15dp"
+                        tools:ignore="UseCompoundDrawables">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginEnd="10dp"
+                            android:src="@drawable/ic_compact"
+                            app:tint="@color/marimo_text_primary"
+                            android:contentDescription="@string/img" />
+
+                        <TextView
+                            android:id="@+id/txtTitleDesktopLayout"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:maxLines="1"
+                            android:ellipsize="end"
+                            android:layout_height="wrap_content"
+                            android:text="@string/compact_layout"
+                            android:textColor="@color/marimo_black"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:paddingBottom="4dp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/txtSubtitleDesktopLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:text="@string/compact_layout_subtitle"
+                        android:textColor="@color/marimo_dark"
+                        android:textSize="14sp"
+                        android:paddingBottom="16dp" />
+
+                    <LinearLayout
+                        android:id="@+id/desktopLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:padding="16dp"
+                        android:layout_marginBottom="16dp">
+
+                        <EditText
+                            android:id="@+id/inputDesktopDisabled"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="@drawable/edittext_outline_grey"
+                            android:hint="Disabled (default)"
+                            android:padding="14dp"
+                            android:textColor="@color/text_title"
+                            android:textColorHint="@color/marimo_text_hint_alt"
+                            android:layout_marginBottom="12dp"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:cursorVisible="false"
+                            android:clickable="true"
+                            android:inputType="none"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:ellipsize="end" />
+
+                        <EditText
+                            android:id="@+id/inputDesktopEnabled"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:background="@drawable/edittext_outline_grey"
+                            android:hint="Enabled"
+                            android:padding="14dp"
+                            android:textColor="@color/text_title"
+                            android:textColorHint="@color/marimo_text_hint_alt"
+                            android:layout_marginBottom="12dp"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:cursorVisible="false"
+                            android:clickable="true"
+                            android:inputType="none"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:ellipsize="end" />
 
                     </LinearLayout>
 

@@ -973,4 +973,6 @@ Please note: the final date retrieved will be the same as the app release date, 
     <string name="next_change_in">Next change in</string>
     <string name="error">Error</string>
     <string name="day_format">d</string>
+    <string name="compact_layout">Compact Layout</string>
+    <string name="compact_layout_subtitle">On compact mode, move filters and sorting into a side column with tabs and simplify the marimo cards. Mobile stays unchanged.</string>
 </resources>
