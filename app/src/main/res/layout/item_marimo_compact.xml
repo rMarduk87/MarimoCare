@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardMarimo"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="12dp"
+    android:padding="16dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/marimo_item_board"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- HEADER INVARIATO -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="20dp">
+
+            <CheckBox
+                android:id="@+id/checkboxSelection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/imgMarimoIcon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_circle_green"
+                android:contentDescription="@string/img"
+                android:padding="8dp"
+                android:src="@drawable/ic_water_drop_green" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingStart="12dp">
+
+                <TextView
+                    android:id="@+id/txtName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mochi"
+                    android:textColor="@color/marimo_text_black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtFrequency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/changes_every_14_days"
+                    android:textColor="@color/marimo_text_gray"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_days_left_pill"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp">
+
+                <ImageView
+                    android:id="@+id/txtDaysLeft_icon"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_marginEnd="6dp"
+                    android:contentDescription="@string/img"
+                    android:src="@drawable/ic_clock" />
+
+                <TextView
+                    android:id="@+id/txtDaysLeft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_12_days_left"
+                    android:textColor="@color/marimo_text_accent"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- RIGHE AZIONI SPOSTATE SU -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp"
+            android:paddingBottom="16dp">
+
+            <!-- Pulsante Edit (quadrato per contenere solo l'icona) -->
+            <Button
+                android:id="@+id/btnEdit"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_btn_edit_border"
+                app:backgroundTint="@null" />
+
+            <!-- Pulsante Delete (quadrato) -->
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/bg_btn_delete_border"
+                app:backgroundTint="@null" />
+
+            <!-- Pulsante Details con freccia e testo -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDetails"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_compact_btn_detail_border"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/details"
+                android:textAllCaps="false"
+                android:textColor="@color/marimo_red"
+                app:backgroundTint="@null"
+                app:icon="@drawable/ic_chevron_down"
+                app:iconGravity="textStart"
+                app:iconTint="@color/marimo_red" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutExpanded"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- DATE ROW -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                app:backgroundTint="@null"
+                app:cardElevation="2dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="5dp"
+                            android:text="@string/last_changed"
+                            android:textColor="@color/marimo_text_gray"
+                            android:textSize="13sp"
+                            app:drawableStartCompat="@drawable/ic_clock_mini" />
+
+                        <TextView
+                            android:id="@+id/txtLastChange"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/marimo_text_black"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="5dp"
+                            android:text="@string/next_change"
+                            android:textColor="@color/marimo_text_gray"
+                            android:textSize="13sp"
+                            app:drawableStartCompat="@drawable/ic_calendar_mini" />
+
+                        <TextView
+                            android:id="@+id/txtNextChange"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/marimo_item_green"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- NOTES -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingStart="20dp"
+                android:text="@string/notes"
+                android:textColor="@color/marimo_text_gray"
+                android:textSize="13sp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardNotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="16dp"
+                app:backgroundTint="@null"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true">
+
+                <TextView
+                    android:id="@+id/txtNotes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:textColor="@color/marimo_text_black"
+                    android:textSize="14sp" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- AZIONI ESPANSE -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
+
+                <!-- PULSANTE VIEW PROFILE -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnViewProfile"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_btn_detail_border"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/marimo_red"
+                    app:backgroundTint="@null"
+                    app:iconGravity="textStart"
+                    app:iconTint="@color/marimo_red" />
+
+                <!-- PULSANTE WATER CHANGED -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnWaterChanged"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="@string/water_changed"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    app:backgroundTint="@null"
+                    app:icon="@drawable/ic_water_drop_white_mini"
+                    app:iconGravity="textStart"
+                    app:iconTint="@android:color/white" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

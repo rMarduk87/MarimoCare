@@ -51,6 +51,7 @@ import rpt.tool.marimocare.utils.data.appmodels.MarimoHealthScore
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.com.base.navigation.safeNavController
 import rpt.com.base.navigation.safeNavigate
+import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 import rpt.tool.marimocare.utils.view.HeaderButtonConfig
 import rpt.tool.marimocare.utils.view.HeaderHelper
 import rpt.tool.marimocare.utils.view.adapters.CareTimeLineAdapter
@@ -75,9 +76,6 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
     private var dataToAdapter: MutableList<MarimoChange> = mutableListOf()
     private lateinit var adapter: CareTimeLineAdapter
 
-
-
-
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -90,10 +88,18 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
         setupGuide()
 
         binding.include.appLogo.setOnClickListener {
-            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
-                MarimoDetailsFragmentDirections
-                    .actionMarimoDetailFragmentToDashboardFragment()
-            )
+            if(!SharedPreferencesManager.desktopMode){
+                safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                    MarimoDetailsFragmentDirections
+                        .actionMarimoDetailFragmentToDashboardFragment()
+                )
+            }
+            else{
+                safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                    MarimoDetailsFragmentDirections
+                        .actionMarimoDetailFragmentToCompactDashboardFragment()
+                )
+            }
         }
     }
 
@@ -109,10 +115,18 @@ class MarimoDetailsFragment : BaseFragment<FragmentMarimoDetailsBinding>(
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.dashboard),
                     onClick = {
-                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
-                            MarimoDetailsFragmentDirections
-                                .actionMarimoDetailFragmentToDashboardFragment()
-                        )
+                        if(!SharedPreferencesManager.desktopMode){
+                            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                                MarimoDetailsFragmentDirections
+                                    .actionMarimoDetailFragmentToDashboardFragment()
+                            )
+                        }
+                        else{
+                            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                                MarimoDetailsFragmentDirections
+                                    .actionMarimoDetailFragmentToCompactDashboardFragment()
+                            )
+                        }
                     }
                 ),
                 HeaderButtonConfig(

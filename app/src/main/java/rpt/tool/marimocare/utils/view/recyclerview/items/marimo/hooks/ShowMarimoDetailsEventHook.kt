@@ -6,7 +6,7 @@ import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.listeners.ClickEventHook
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.ItemMarimoBinding
-import rpt.tool.marimocare.ui.dashboard.DashboardFragmentDirections
+import rpt.tool.marimocare.ui.dashboard.classic.DashboardFragmentDirections
 import rpt.com.base.navigation.safeNavController
 import rpt.com.base.navigation.safeNavigate
 import rpt.tool.marimocare.utils.view.getFastAdapterItemViewBinding

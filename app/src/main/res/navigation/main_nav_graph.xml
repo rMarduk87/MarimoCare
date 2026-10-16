@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="rpt.tool.marimocare.ui.dashboard.DashboardFragment"
+        android:name="rpt.tool.marimocare.ui.dashboard.classic.DashboardFragment"
         tools:layout="@layout/fragment_dashboard"
         android:label="DashboardFragment">
 
@@ -47,6 +47,10 @@
             app:destination="@id/dashboardFragment" />
 
         <action
+            android:id="@+id/action_addOrEditFragment_to_compactDashboardFragment"
+            app:destination="@id/compactDashboardFragment" />
+
+        <action
             android:id="@+id/action_addOrEditFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
         <action
@@ -70,6 +74,9 @@
             android:id="@+id/action_settingsFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment" />
         <action
+            android:id="@+id/action_settingsFragment_to_compactDashboardFragment"
+            app:destination="@id/compactDashboardFragment" />
+        <action
             android:id="@+id/action_settingsFragment_to_addOrEditFragment"
             app:destination="@id/addOrEditFragment" />
         <action
@@ -89,6 +96,9 @@
         <action
             android:id="@+id/action_statsFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_statsFragment_to_compactDashboardFragment"
+            app:destination="@id/compactDashboardFragment" />
 
         <action
             android:id="@+id/action_statsFragment_to_settingsFragment"
@@ -113,6 +123,9 @@
         <action
             android:id="@+id/action_feedbackFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_feedbackFragment_to_compactDashboardFragment"
+            app:destination="@id/compactDashboardFragment" />
 
         <action
             android:id="@+id/action_feedbackFragment_to_settingsFragment"
@@ -135,6 +148,9 @@
         <action
             android:id="@+id/action_fromQRCodeMarimoFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_fromQRCodeMarimoFragment_to_compactDashboardFragment"
+            app:destination="@id/compactDashboardFragment" />
         <action
             android:id="@+id/action_fromQRCodeMarimoFragment_to_addOrEditFragment"
             app:destination="@id/addOrEditFragment" />
@@ -167,6 +183,9 @@
         <action
             android:id="@+id/action_marimoDetailFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_marimoDetailFragment_to_compactDashboardFragment"
+            app:destination="@id/compactDashboardFragment" />
 
         <action
             android:id="@+id/action_marimoDetailFragment_to_statsFragment"
@@ -197,6 +216,9 @@
         <action
             android:id="@+id/action_achievementFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_achievementFragment_to_compactDashboardFragment"
+            app:destination="@id/compactDashboardFragment" />
 
         <action
             android:id="@+id/action_achievementFragment_to_settingsFragment"
@@ -216,5 +238,39 @@
         <action
             android:id="@+id/action_questionsAnswersChatFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment" />
+        <action
+            android:id="@+id/action_questionsAnswersChatFragment_to_compactDashboardFragment"
+            app:destination="@id/compactDashboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/compactDashboardFragment"
+        android:name="rpt.tool.marimocare.ui.dashboard.compact.CompactDashboardFragment"
+        tools:layout="@layout/fragment_compact_dashboard"
+        android:label="CompactDashboardFragment">
+
+        <action
+            android:id="@+id/action_compactDashboardFragment_to_addOrEditFragment"
+            app:destination="@id/addOrEditFragment" />
+        <action
+            android:id="@+id/action_compactDashboardFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_compactDashboardFragment_to_statsFragment"
+            app:destination="@id/statsFragment" />
+        <action
+            android:id="@+id/action_compactDashboardFragment_to_fromQRCodeMarimoFragment"
+            app:destination="@id/fromQRCodeMarimoFragment" />
+        <action
+            android:id="@+id/action_compactDashboardFragment_to_marimoDetailFragment"
+            app:destination="@id/marimoDetailFragment" />
+        <action
+            android:id="@+id/action_compactDashboardFragment_to_feedbackFragment"
+            app:destination="@id/feedbackFragment" />
+        <action
+            android:id="@+id/action_compactDashboardFragment_to_achievementFragment"
+            app:destination="@id/achievementFragment" />
+        <action
+            android:id="@+id/action_compactDashboardFragment_to_questionsAnswersChatFragment"
+            app:destination="@id/questionsAnswersChatFragment" />
     </fragment>
 </navigation>

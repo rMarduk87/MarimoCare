@@ -851,4 +851,5 @@
     <string name="day_format">日</string>
     <string name="compact_layout">コンパクトレイアウト</string>
     <string name="compact_layout_subtitle">コンパクトモードでは、フィルターと並び替えをタブ付きのサイドカラムに移動し、マリモカードを簡素化します。モバイルは変更されません。</string>
+    <string name="details">Details</string>
 </resources>

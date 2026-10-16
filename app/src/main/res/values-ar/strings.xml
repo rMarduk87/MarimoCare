@@ -845,4 +845,5 @@
     <string name="day_format">ي</string>
     <string name="compact_layout">التخطيط المدمج</string>
     <string name="compact_layout_subtitle">في الوضع المدمج، قم بربط عوامل التصفية والفرز في عمود جانبي مع علامات التبويب وتبسيط بطاقات الماريمو. يظل الجوال دون تغيير.</string>
+    <string name="details">Details</string>
 </resources>

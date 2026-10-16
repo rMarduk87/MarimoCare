@@ -1,14 +1,16 @@
-package rpt.tool.marimocare.ui.dashboard
+package rpt.tool.marimocare.ui.dashboard.classic
 
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.content.res.ColorStateList
+import android.graphics.Rect
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.provider.Settings
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
@@ -52,8 +54,12 @@ import kotlin.getValue
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.textfield.TextInputEditText
 import com.skydoves.balloon.BalloonAlign
+import com.skydoves.balloon.BalloonAnimation
 import com.skydoves.balloon.balloon
+import com.skydoves.balloon.createBalloon
 import rpt.com.base.BaseFragment
 import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.balloon.achievement.AchievementBalloonFactory
@@ -83,6 +89,7 @@ import kotlin.time.Duration.Companion.milliseconds
 import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.ShowMarimoDetailsEventHook
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
+import kotlin.math.abs
 
 class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     FragmentDashboardBinding::inflate,true) {
@@ -136,10 +143,12 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         binding.include1.btnDashboardHeader.enable(false)
         binding.include1.btnAddMarimoHeader.setOnClickListener { addNewMarimo() }
         binding.include1.btnOpenSettings.setOnClickListener {
-            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(DashboardFragmentDirections.
+            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                DashboardFragmentDirections.
             actionDashboardFragmentToSettingsFragment()) }
         binding.include1.btnOpenStats.setOnClickListener {
-            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(DashboardFragmentDirections
+            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                DashboardFragmentDirections
                 .actionDashboardFragmentToStatsFragment()) }
         setupHeaderButtons()
 
@@ -198,7 +207,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                 binding.recyclerMarimos.gone()
                 binding.emptyListLabel.visible()
                 binding.totalMarimo.text = "0"
-                binding.totalMarimoAlternative.text = "0"
+                binding.totalMarimoAlternative?.text = "0"
                 binding.badgeAll.text = "0"
             } else {
                 binding.recyclerMarimos.visible()
@@ -211,7 +220,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
                 itemAdapter.set(items)
                 binding.totalMarimo.text = items.size.toString()
-                binding.totalMarimoAlternative.text = items.size.toString()
+                binding.totalMarimoAlternative?.text = items.size.toString()
                 fastAdapter.notifyAdapterDataSetChanged()
                 binding.badgeAll.text = items.size.toString()
             }
@@ -219,7 +228,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
         viewModel.overdueMarimo.observe(viewLifecycleOwner) { count ->
             binding.overdueMarimo.text = count.toString()
-            binding.overdueMarimoAlternative.text = count.toString()
+            binding.overdueMarimoAlternative?.text = count.toString()
             binding.badgeOverdue.text = count.toString()
         }
 
@@ -235,7 +244,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
         viewModel.dueSoonMarimo.observe(viewLifecycleOwner) { count ->
             binding.dueSoonMarimo.text = count.toString()
-            binding.dueSoonMarimoAlternative.text = count.toString()
+            binding.dueSoonMarimoAlternative?.text = count.toString()
             binding.badgeDueSoon.text = count.toString()
         }
 
@@ -300,7 +309,8 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         val adapter = TipsPagerAdapter(tips)
         binding.tipsPager.adapter = adapter
         binding.tipsPager.setPageTransformer { page, position -> page.alpha = 1 -
-                kotlin.math.abs(position) }
+                abs(position)
+        }
         binding.dotsIndicator.attachTo(binding.tipsPager)
 
         binding.arrowLeft.setOnClickListener {
@@ -328,7 +338,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
         binding.gridStatus.visibility = if(!SharedPreferencesManager.coloredIsSelected)
             View.VISIBLE else View.GONE
-        binding.gridStatusAlternative.visibility = if(SharedPreferencesManager.coloredIsSelected)
+        binding.gridStatusAlternative?.visibility = if(SharedPreferencesManager.coloredIsSelected)
             View.VISIBLE else View.GONE
 
         setupSpinner(sorting, SharedPreferencesManager.marimoSorting)
@@ -339,7 +349,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
             openWaterChangeDialog()
         }
 
-        if(SharedPreferencesManager.fixWaterChanges && marimoToFix.count() > 0){
+        if(SharedPreferencesManager.fixWaterChanges && marimoToFix.isNotEmpty()){
             openFixWaterChangeDialog()
             SharedPreferencesManager.fixWaterChanges = false
         }
@@ -366,7 +376,8 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                         .setMessage(getString(R.string.
                         missed_connection))
                         .setPositiveButton(getString(R.string.open_settings)) { _, _ ->
-                            startActivity(Intent(android.provider.Settings
+                            startActivity(Intent(
+                                Settings
                                 .ACTION_WIFI_SETTINGS))
                         }
                         .setNegativeButton(getString(R.string.cancel), null)
@@ -403,7 +414,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
         }
 
         alertPagerAdapter = AlertPagerAdapter()
-        val alertPager = view.findViewById<androidx.viewpager2.widget.ViewPager2>(R.id.alertViewPager)
+        val alertPager = view.findViewById<ViewPager2>(R.id.alertViewPager)
         val alertArrowLeft = view.findViewById<View>(R.id.alertArrowLeft)
         val alertArrowRight = view.findViewById<View>(R.id.alertArrowRight)
 
@@ -550,7 +561,8 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     }
 
     private fun addNewMarimo() {
-        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(DashboardFragmentDirections.
+        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+            DashboardFragmentDirections.
         actionDashboardFragmentToAddOrEditFragment()
         )
     }
@@ -1371,13 +1383,13 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                 button.text = ""
                 button.iconPadding = 0
 
-                val tooltip = com.skydoves.balloon.createBalloon(requireContext()) {
+                val tooltip = createBalloon(requireContext()) {
                     setText(label)
                     setTextColorResource(android.R.color.white)
                     setBackgroundColorResource(R.color.marimo_dark)
                     setPadding(8)
                     setCornerRadius(8f)
-                    setBalloonAnimation(com.skydoves.balloon.BalloonAnimation.FADE)
+                    setBalloonAnimation(BalloonAnimation.FADE)
                     setAutoDismissDuration(2000L)
                     build()
                 }
@@ -1466,7 +1478,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                         checkAndShowBalloons()
                     }
                     binding.scrollView.post {
-                        binding.btnSelect.requestRectangleOnScreen(android.graphics.Rect(0, 0, binding.btnSelect.width, binding.btnSelect.height))
+                        binding.btnSelect.requestRectangleOnScreen(Rect(0, 0, binding.btnSelect.width, binding.btnSelect.height))
                         binding.root.postDelayed({
                             if (isAdded) {
                                 bulkSelectionBalloon.showAlign(
@@ -1489,7 +1501,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
 
         val view = layoutInflater.inflate(R.layout.dialog_add_note_selection, null)
         val tvTitle = view.findViewById<TextView>(R.id.tvDialogTitle)
-        val etNote = view.findViewById<com.google.android.material.textfield.TextInputEditText>(R.id.etNoteInput)
+        val etNote = view.findViewById<TextInputEditText>(R.id.etNoteInput)
         val btnCancel = view.findViewById<Button>(R.id.btnCancel)
         val btnAdd = view.findViewById<Button>(R.id.btnAddNoteToAll)
         val btnClose = view.findViewById<ImageView>(R.id.btnCloseDialog)

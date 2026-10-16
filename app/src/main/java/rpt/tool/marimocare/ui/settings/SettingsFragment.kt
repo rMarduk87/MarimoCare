@@ -72,9 +72,16 @@ class SettingsFragment :
         setupSaveCancelListeners()
 
         binding.include1.appLogo.setOnClickListener {
-            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
-                SettingsFragmentDirections.actionSettingsFragmentToDashboardFragment()
-            )
+            if(!SharedPreferencesManager.desktopMode){
+                safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                    SettingsFragmentDirections.actionSettingsFragmentToDashboardFragment()
+                )
+            }
+            else{
+                safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                    SettingsFragmentDirections.actionSettingsFragmentToCompactDashboardFragment()
+                )
+            }
         }
     }
 
@@ -90,9 +97,16 @@ class SettingsFragment :
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.dashboard),
                     onClick = {
-                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
-                            SettingsFragmentDirections.actionSettingsFragmentToDashboardFragment()
-                        )
+                        if(!SharedPreferencesManager.desktopMode){
+                            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                                SettingsFragmentDirections.actionSettingsFragmentToDashboardFragment()
+                            )
+                        }
+                        else{
+                            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                                SettingsFragmentDirections.actionSettingsFragmentToCompactDashboardFragment()
+                            )
+                        }
                     }
                 ),
                 HeaderButtonConfig(

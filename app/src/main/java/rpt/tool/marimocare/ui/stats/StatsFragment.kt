@@ -107,9 +107,16 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
         setUpPotDecorationStats()
 
         binding.include1.appLogo.setOnClickListener {
-            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
-                StatsFragmentDirections
-                    .actionStatsFragmentToDashboardFragment())
+            if(!SharedPreferencesManager.desktopMode){
+                safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                    StatsFragmentDirections
+                        .actionStatsFragmentToDashboardFragment())
+            }
+            else{
+                safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                    StatsFragmentDirections
+                        .actionStatsFragmentToDashboardFragment())
+            }
         }
 
         if(SharedPreferencesManager.showBallonNewStats || SharedPreferencesManager.showBallonNewPotStats){
@@ -194,10 +201,19 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>(FragmentStatsBinding::i
                     backgroundRes = R.drawable.bg_button_white,
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.dashboard),
-                    onClick = { safeNavController(
-                        R.id.main_activity_nav_host_fragment)?.safeNavigate(
-                        StatsFragmentDirections
-                            .actionStatsFragmentToDashboardFragment()) }
+                    onClick = {
+                        if (!SharedPreferencesManager.desktopMode) {
+                            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                                StatsFragmentDirections
+                                    .actionStatsFragmentToDashboardFragment()
+                            )
+                        } else {
+                            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                                StatsFragmentDirections
+                                    .actionStatsFragmentToDashboardFragment()
+                            )
+                        }
+                    }
                 ),
                 HeaderButtonConfig(
                     button = binding.include1.btnAddMarimoHeader,

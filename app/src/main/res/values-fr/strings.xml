@@ -846,4 +846,5 @@
     <string name="day_format">j</string>
     <string name="compact_layout">Mise en page compacte</string>
     <string name="compact_layout_subtitle">En mode compact, déplacez les filtres et le tri dans une colonne latérale avec des onglets et simplifiez les cartes marimo. Les mobiles restent inchangés.</string>
+    <string name="details">Details</string>
 </resources>

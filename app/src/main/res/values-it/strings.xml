@@ -851,4 +851,5 @@
     <string name="day_format">g</string>
     <string name="compact_layout">Layout compatto</string>
     <string name="compact_layout_subtitle">In modalità compatta, sposta filtri e ordinamento in una colonna laterale con schede e semplifica le schede dei marimo. I dispositivi mobili rimangono invariati.</string>
+    <string name="details">Details</string>
 </resources>

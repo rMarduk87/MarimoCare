@@ -162,10 +162,18 @@ class AddOrEditMarimoFragment :
         }
 
         binding.include1.appLogo.setOnClickListener {
-            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
-                AddOrEditMarimoFragmentDirections.Companion
-                    .actionAddOrEditFragmentToDashboardFragment()
-            )
+            if(!SharedPreferencesManager.desktopMode){
+                safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                    AddOrEditMarimoFragmentDirections
+                        .actionAddOrEditFragmentToDashboardFragment()
+                )
+            }
+            else{
+                safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                    AddOrEditMarimoFragmentDirections
+                        .actionAddOrEditFragmentToCompactDashboardFragment()
+                )
+            }
         }
     }
 
@@ -210,10 +218,18 @@ class AddOrEditMarimoFragment :
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.dashboard),
                     onClick = {
-                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
-                            AddOrEditMarimoFragmentDirections.Companion
-                                .actionAddOrEditFragmentToDashboardFragment()
-                        )
+                        if(!SharedPreferencesManager.desktopMode){
+                            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                                AddOrEditMarimoFragmentDirections.Companion
+                                    .actionAddOrEditFragmentToDashboardFragment()
+                            )
+                        }
+                        else{
+                            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                                AddOrEditMarimoFragmentDirections.Companion
+                                    .actionAddOrEditFragmentToCompactDashboardFragment()
+                            )
+                        }
                     }
                 ),
                 HeaderButtonConfig(

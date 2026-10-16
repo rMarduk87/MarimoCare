@@ -849,4 +849,5 @@
     <string name="day_format">ว</string>
     <string name="compact_layout">เค้าโครงแบบ compact</string>
     <string name="compact_layout_subtitle">ในโหมด compact ย้ายตัวกรองและการจัดเรียงไปไว้ในคอลัมน์ด้านข้างพร้อมแท็บ และทำให้การ์ดมาริโมะง่ายขึ้น มือถือยังคงไม่เปลี่ยนแปลง</string>
+    <string name="details">Details</string>
 </resources>

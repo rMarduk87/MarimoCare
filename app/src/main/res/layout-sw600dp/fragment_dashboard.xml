@@ -27,8 +27,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp"> <!-- Header -->
+                android:padding="16dp">
 
+                <!-- Header Dashboard -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -251,7 +252,7 @@
                     android:layout_marginBottom="16dp"
                     android:baselineAligned="false">
 
-                    <!-- TIPS CARD (Metà sinistra, va per primo) -->
+                    <!-- TIPS CARD -->
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/tipsCard"
                         android:layout_width="0dp"
@@ -270,7 +271,6 @@
                             android:orientation="vertical"
                             android:padding="12dp">
 
-                            <!-- TITLE ROW -->
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -297,7 +297,6 @@
                                     android:textStyle="bold" />
                             </LinearLayout>
 
-                            <!-- VIEWPAGER + ARROWS -->
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
@@ -330,7 +329,6 @@
                                     android:padding="4dp"
                                     android:src="@drawable/ic_arrow_left" />
 
-                                <!-- DOTS -->
                                 <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
                                     android:id="@+id/dotsIndicator"
                                     android:layout_width="wrap_content"
@@ -358,8 +356,6 @@
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
 
-                    <!-- SLIDER ANIMATO (Metà destra) -->
-                    <!-- Nota: se visibility è gone, i tips si allargheranno al 100% -->
                     <RelativeLayout
                         android:id="@+id/alertCarouselContainer"
                         android:layout_width="0dp"
@@ -401,11 +397,12 @@
 
                 </LinearLayout>
 
+                <!-- GRIGLIA DELLE STATISTICHE (Con android:layout_marginBottom="24dp" per evitare tagli) -->
                 <GridLayout
                     android:id="@+id/grid_status"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginBottom="24dp"
                     android:alignmentMode="alignMargins"
                     android:columnCount="3"
                     android:columnOrderPreserved="false"
@@ -462,9 +459,7 @@
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
 
-
                     <!-- OVERDUE -->
-
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/card_counter_overdue"
                         android:layout_width="0dp"
@@ -513,7 +508,6 @@
 
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
-
 
                     <!-- DUE SOON -->
                     <com.google.android.material.card.MaterialCardView
@@ -577,7 +571,7 @@
                     android:columnOrderPreserved="false"
                     android:rowCount="1"
                     android:useDefaultMargins="true"
-                    android:visibility="gone"> <!-- Total Marimos -->
+                    android:visibility="gone">
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -605,7 +599,7 @@
                             android:textColor="@color/marimo_text_primary"
                             android:textSize="22sp"
                             android:textStyle="bold" />
-                    </LinearLayout> <!-- Overdue -->
+                    </LinearLayout>
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -632,7 +626,7 @@
                             android:textColor="@color/marimo_red"
                             android:textSize="22sp"
                             android:textStyle="bold" />
-                    </LinearLayout> <!-- Due Soon -->
+                    </LinearLayout>
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -660,8 +654,184 @@
                             android:textSize="22sp"
                             android:textStyle="bold" />
                     </LinearLayout>
-                </GridLayout> <!-- Section Title -->
+                </GridLayout>
 
+                <!-- BLOCCO UNICO ORIZZONTALE: FILTRI + ORDINAMENTO ASSIEME SULLA STESSA RIGA -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:clipChildren="false"
+                    android:clipToPadding="false">
+
+                    <!-- Sezione Filtri -->
+                    <LinearLayout
+                        android:id="@+id/filterTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:clipChildren="false"
+                        android:clipToPadding="false">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:text="@string/filters"
+                            android:textColor="@color/marimo_black"
+                            android:textSize="18sp"
+                            app:drawableStartCompat="@drawable/ic_filter" />
+
+                        <HorizontalScrollView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="12dp"
+                            android:scrollbars="none">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <FrameLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="12dp">
+                                    <com.google.android.material.button.MaterialButton
+                                        android:id="@+id/btnAllFilter"
+                                        android:layout_width="140dp"
+                                        android:layout_height="48dp"
+                                        android:background="@drawable/bg_btn_primary"
+                                        android:text="@string/all"
+                                        android:textAllCaps="false"
+                                        android:textColor="@android:color/white"
+                                        app:backgroundTint="@null" />
+                                    <TextView
+                                        android:id="@+id/badgeAll"
+                                        android:layout_width="22dp"
+                                        android:layout_height="22dp"
+                                        android:layout_gravity="top|end"
+                                        android:background="@drawable/bg_badge_all"
+                                        android:gravity="center"
+                                        android:text="@string/_1"
+                                        android:textColor="@color/marimo_dark"
+                                        android:textSize="12sp"
+                                        android:textStyle="bold" />
+                                </FrameLayout>
+
+                                <FrameLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="12dp">
+                                    <com.google.android.material.button.MaterialButton
+                                        android:id="@+id/btnOverdueFilter"
+                                        android:layout_width="140dp"
+                                        android:layout_height="48dp"
+                                        android:background="@drawable/bg_btn_white"
+                                        android:text="@string/overdue"
+                                        android:textAllCaps="false"
+                                        android:textColor="@color/marimo_dark"
+                                        app:backgroundTint="@null" />
+                                    <TextView
+                                        android:id="@+id/badgeOverdue"
+                                        android:layout_width="22dp"
+                                        android:layout_height="22dp"
+                                        android:layout_gravity="top|end"
+                                        android:background="@drawable/bg_badge_red"
+                                        android:gravity="center"
+                                        android:text="@string/_6"
+                                        android:textColor="@color/marimo_red"
+                                        android:textSize="12sp"
+                                        android:textStyle="bold" />
+                                </FrameLayout>
+
+                                <FrameLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="12dp">
+                                    <com.google.android.material.button.MaterialButton
+                                        android:id="@+id/btnDueSoonFilter"
+                                        android:layout_width="140dp"
+                                        android:layout_height="48dp"
+                                        android:background="@drawable/bg_btn_white"
+                                        android:text="@string/soon_f"
+                                        android:textAllCaps="false"
+                                        android:textColor="@color/marimo_dark"
+                                        app:backgroundTint="@null" />
+                                    <TextView
+                                        android:id="@+id/badgeDueSoon"
+                                        android:layout_width="22dp"
+                                        android:layout_height="22dp"
+                                        android:layout_gravity="top|end"
+                                        android:background="@drawable/bg_badge_orange"
+                                        android:gravity="center"
+                                        android:text="@string/_3"
+                                        android:textColor="@color/marimo_orange"
+                                        android:textSize="12sp"
+                                        android:textStyle="bold" />
+                                </FrameLayout>
+
+                                <FrameLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+                                    <com.google.android.material.button.MaterialButton
+                                        android:id="@+id/btnUpToDateFilter"
+                                        android:layout_width="140dp"
+                                        android:layout_height="48dp"
+                                        android:background="@drawable/bg_btn_white"
+                                        android:text="@string/upToDate"
+                                        android:textAllCaps="false"
+                                        android:textColor="@color/marimo_dark"
+                                        app:backgroundTint="@null" />
+                                    <TextView
+                                        android:id="@+id/badgeUpToDate"
+                                        android:layout_width="22dp"
+                                        android:layout_height="22dp"
+                                        android:layout_gravity="top|end"
+                                        android:background="@drawable/bg_badge_green"
+                                        android:gravity="center"
+                                        android:text="@string/_4"
+                                        android:textColor="@color/marimo_item_green"
+                                        android:textSize="12sp"
+                                        android:textStyle="bold" />
+                                </FrameLayout>
+                            </LinearLayout>
+                        </HorizontalScrollView>
+                    </LinearLayout>
+
+                    <!-- Sezione Ordinamento (Assieme sulla stessa riga) -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:text="@string/sort"
+                            android:textColor="@color/marimo_black"
+                            android:textSize="18sp"
+                            app:drawableStartCompat="@drawable/ic_sort" />
+
+                        <include
+                            android:id="@+id/marimoSpinnerLayout"
+                            layout="@layout/spinner_sorting_with_arrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- SEZIONE "YOUR MARIMOS" + PULSANTI SELECT E NEW MARIMO -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -731,175 +901,7 @@
                         app:backgroundTint="@null" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/filterTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clipChildren="false"
-                    android:clipToPadding="false"
-                    android:paddingBottom="16dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:text="@string/filters"
-                        android:textColor="@color/marimo_black"
-                        android:textSize="18sp"
-                        app:drawableStartCompat="@drawable/ic_filter" />
-
-                    <FrameLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="25dp">
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnAllFilter"
-                            android:layout_width="160dp"
-                            android:layout_height="48dp"
-                            android:background="@drawable/bg_btn_primary"
-                            android:text="@string/all"
-                            android:textAllCaps="false"
-                            android:textColor="@android:color/white"
-                            app:backgroundTint="@null" />
-
-                        <!-- BADGE -->
-                        <TextView
-                            android:id="@+id/badgeAll"
-                            android:layout_width="22dp"
-                            android:layout_height="22dp"
-                            android:layout_gravity="top|end"
-                            android:background="@drawable/bg_badge_all"
-                            android:gravity="center"
-                            android:text="@string/_1"
-                            android:textColor="@color/marimo_dark"
-                            android:textSize="12sp"
-                            android:textStyle="bold"
-                            android:translationX="6dp"
-                            android:translationY="-6dp" />
-
-                    </FrameLayout>
-
-                    <FrameLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="25dp">
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnOverdueFilter"
-                            android:layout_width="160dp"
-                            android:layout_height="48dp"
-                            android:background="@drawable/bg_btn_white"
-                            android:drawableEnd="@drawable/ic_warning_triangle_red"
-                            android:text="@string/overdue"
-                            android:textAllCaps="false"
-                            android:textColor="@color/marimo_dark"
-                            app:backgroundTint="@null" />
-
-                        <!-- BADGE -->
-                        <TextView
-                            android:id="@+id/badgeOverdue"
-                            android:layout_width="22dp"
-                            android:layout_height="22dp"
-                            android:layout_gravity="top|end"
-                            android:background="@drawable/bg_badge_red"
-                            android:gravity="center"
-                            android:text="@string/_6"
-                            android:textColor="@color/marimo_red"
-                            android:textSize="12sp"
-                            android:textStyle="bold"
-                            android:translationX="6dp"
-                            android:translationY="-6dp" />
-
-                    </FrameLayout>
-
-                    <FrameLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="25dp"
-                        tools:ignore="TooManyViews">
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnDueSoonFilter"
-                            android:layout_width="160dp"
-                            android:layout_height="48dp"
-                            android:background="@drawable/bg_btn_white"
-                            android:drawableEnd="@drawable/ic_calendar_due_soon"
-                            android:drawablePadding="8dp"
-                            android:text="@string/soon_f"
-                            android:textAllCaps="false"
-                            android:textColor="@color/marimo_dark"
-                            app:backgroundTint="@null"
-                            app:drawableTint="@color/marimo_dark" />
-
-                        <!-- BADGE -->
-                        <TextView
-                            android:id="@+id/badgeDueSoon"
-                            android:layout_width="22dp"
-                            android:layout_height="22dp"
-                            android:layout_gravity="top|end"
-                            android:background="@drawable/bg_badge_orange"
-                            android:gravity="center"
-                            android:text="@string/_3"
-                            android:textColor="@color/marimo_orange"
-                            android:textSize="12sp"
-                            android:textStyle="bold"
-                            android:translationX="6dp"
-                            android:translationY="-6dp" />
-
-                    </FrameLayout>
-
-                    <FrameLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="25dp">
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnUpToDateFilter"
-                            android:layout_width="160dp"
-                            android:layout_height="48dp"
-                            android:background="@drawable/bg_btn_white"
-                            android:drawableEnd="@drawable/ic_clock"
-                            android:drawablePadding="8dp"
-                            android:text="@string/upToDate"
-                            android:textAllCaps="false"
-                            android:textColor="@color/marimo_dark"
-                            app:backgroundTint="@null"
-                            app:drawableTint="@color/marimo_dark" />
-
-                        <!-- BADGE -->
-                        <TextView
-                            android:id="@+id/badgeUpToDate"
-                            android:layout_width="22dp"
-                            android:layout_height="22dp"
-                            android:layout_gravity="top|end"
-                            android:background="@drawable/bg_badge_green"
-                            android:gravity="center"
-                            android:text="@string/_4"
-                            android:textColor="@color/marimo_item_green"
-                            android:textSize="12sp"
-                            android:textStyle="bold"
-                            android:translationX="6dp"
-                            android:translationY="-6dp" />
-
-                    </FrameLayout>
-
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="20dp"
-                    android:text="@string/sort"
-                    android:textColor="@color/marimo_black"
-                    android:textSize="18sp"
-                    app:drawableStartCompat="@drawable/ic_sort" />
-
-                <include
-                    android:id="@+id/marimoSpinnerLayout"
-                    layout="@layout/spinner_sorting_with_arrow" />
-
+                <!-- RECYCLERVIEW -->
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerMarimos"
                     android:layout_width="match_parent"

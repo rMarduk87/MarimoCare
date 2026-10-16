@@ -851,4 +851,5 @@
     <string name="day_format">일</string>
     <string name="compact_layout">컴팩트 레이아웃</string>
     <string name="compact_layout_subtitle">컴팩트 모드에서는 필터와 정렬을 탭이 있는 사이드 컬럼으로 이동하고 마리모 카드를 단순화합니다. 모바일은 변경되지 않습니다.</string>
+    <string name="details">Details</string>
 </resources>

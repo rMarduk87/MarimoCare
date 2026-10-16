@@ -1,4 +1,4 @@
-package rpt.tool.marimocare.ui.dashboard
+package rpt.tool.marimocare.ui.dashboard.classic
 
 import android.os.Build
 import androidx.annotation.RequiresApi

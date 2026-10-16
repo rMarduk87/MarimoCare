@@ -19,6 +19,7 @@ import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.managers.AchievementManager
 import rpt.com.base.navigation.safeNavController
 import rpt.com.base.navigation.safeNavigate
+import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 import rpt.tool.marimocare.utils.view.HeaderButtonConfig
 import rpt.tool.marimocare.utils.view.HeaderHelper
 import rpt.tool.marimocare.utils.view.adapters.AchievementAdapter
@@ -39,10 +40,19 @@ class AchievementFragment :
         setupHeaderButtons()
 
         binding.include1.appLogo.setOnClickListener {
-            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
-                AchievementFragmentDirections
-                    .actionAchievementFragmentToDashboardFragment()
-            )
+            if(!SharedPreferencesManager.desktopMode){
+                safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                    AchievementFragmentDirections
+                        .actionAchievementFragmentToDashboardFragment()
+                )
+            }
+            else{
+                safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                    AchievementFragmentDirections.
+                    actionAchievementFragmentToCompactDashboardFragment()
+                )
+            }
+
         }
 
         setupDataForAchievement()

@@ -26,6 +26,7 @@ import rpt.tool.marimocare.utils.managers.AchievementManager
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.com.base.navigation.safeNavController
 import rpt.com.base.navigation.safeNavigate
+import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 import rpt.tool.marimocare.utils.view.HeaderButtonConfig
 import rpt.tool.marimocare.utils.view.HeaderHelper
 
@@ -49,9 +50,19 @@ class FromQRCodeMarimoFragment :
         initializeCard(code!!.toInt())
 
         binding.include1.appLogo.setOnClickListener {
-            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
-                FromQRCodeMarimoFragmentDirections.Companion.actionFromQRCodeMarimoFragmentToDashboardFragment()
-            )
+            if(!SharedPreferencesManager.desktopMode){
+                safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                    FromQRCodeMarimoFragmentDirections
+                        .actionFromQRCodeMarimoFragmentToDashboardFragment()
+                )
+
+            }
+            else{
+                safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                    FromQRCodeMarimoFragmentDirections
+                        .actionFromQRCodeMarimoFragmentToCompactDashboardFragment()
+                )
+            }
         }
     }
 
@@ -68,9 +79,18 @@ class FromQRCodeMarimoFragment :
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.dashboard),
                     onClick = {
-                        safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
-                            FromQRCodeMarimoFragmentDirections.Companion.actionFromQRCodeMarimoFragmentToDashboardFragment()
-                        )
+                        if(!SharedPreferencesManager.desktopMode){
+                            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                                FromQRCodeMarimoFragmentDirections
+                                    .actionFromQRCodeMarimoFragmentToDashboardFragment()
+                            )
+                        }
+                        else{
+                            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                                FromQRCodeMarimoFragmentDirections
+                                    .actionFromQRCodeMarimoFragmentToCompactDashboardFragment()
+                            )
+                        }
                     }
                 ),
                 HeaderButtonConfig(

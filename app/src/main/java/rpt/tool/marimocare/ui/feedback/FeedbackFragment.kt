@@ -21,6 +21,7 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import rpt.tool.marimocare.utils.managers.AchievementManager
+import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 import rpt.tool.marimocare.utils.view.shareViaWhatsApp
 
 class FeedbackFragment :
@@ -38,9 +39,17 @@ class FeedbackFragment :
         setupHeaderButtons()
 
         binding.include1.appLogo.setOnClickListener {
-            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
-                FeedbackFragmentDirections
-                    .actionFeedbackFragmentToDashboardFragment())
+            if(!SharedPreferencesManager.desktopMode){
+                safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                    FeedbackFragmentDirections
+                        .actionFeedbackFragmentToDashboardFragment())
+            }
+            else{
+                safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                    FeedbackFragmentDirections
+                        .actionFeedbackFragmentToCompactDashboardFragment())
+            }
+
         }
 
         val topics = listOf(
@@ -146,10 +155,20 @@ class FeedbackFragment :
                     backgroundRes = R.drawable.bg_button_white,
                     isTablet = resources.configuration.smallestScreenWidthDp >= 600,
                     text = requireContext().getString(R.string.dashboard),
-                    onClick = { safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
-                        FeedbackFragmentDirections.
-                        actionFeedbackFragmentToDashboardFragment()
-                    ) }
+                    onClick = {
+                        if(!SharedPreferencesManager.desktopMode){
+                            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                                FeedbackFragmentDirections
+                                    .actionFeedbackFragmentToDashboardFragment()
+                            )
+                        }
+                        else{
+                            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                                FeedbackFragmentDirections
+                                    .actionFeedbackFragmentToCompactDashboardFragment()
+                            )
+                        }
+                    }
                 ),
                 HeaderButtonConfig(
                     button = binding.include1.btnAddMarimoHeader,

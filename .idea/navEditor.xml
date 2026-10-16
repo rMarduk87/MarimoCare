@@ -19,27 +19,22 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_feedbackFragment_to_achievementFragment">
+                            <entry key="action_achievementFragment_to_addOrEditFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_feedbackFragment_to_addOrEditFragment">
+                            <entry key="action_achievementFragment_to_dashboardFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_feedbackFragment_to_dashboardFragment">
+                            <entry key="action_achievementFragment_to_settingsFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_feedbackFragment_to_settingsFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
-                            <entry key="action_feedbackFragment_to_statsFragment">
+                            <entry key="action_achievementFragment_to_statsFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -85,6 +80,62 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="cdashboardFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_dashboardFragment_to_achievementFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_dashboardFragment_to_addOrEditFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_dashboardFragment_to_feedbackFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_dashboardFragment_to_fromQRCodeMarimoFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_dashboardFragment_to_marimoDetailFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_dashboardFragment_to_questionsAnswersChatFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_dashboardFragment_to_settingsFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_dashboardFragment_to_statsFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="dashboardFragment">
                     <value>
                       <LayoutPositions>
@@ -117,6 +168,11 @@
                               </value>
                             </entry>
                             <entry key="action_dashboardFragment_to_marimoDetailFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_dashboardFragment_to_questionsAnswersChatFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -250,6 +306,27 @@
                               </value>
                             </entry>
                             <entry key="action_marimoDetailFragment_to_statsFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="questionsAnswersChatFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_questionsAnswersChatFragment_to_dashboardFragment">
                               <value>
                                 <LayoutPositions />
                               </value>

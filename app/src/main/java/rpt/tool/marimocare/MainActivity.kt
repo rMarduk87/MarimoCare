@@ -11,7 +11,9 @@ import androidx.core.view.WindowInsetsControllerCompat
 import androidx.navigation.fragment.NavHostFragment
 import rpt.tool.marimocare.databinding.ActivityMainBinding
 import rpt.com.base.BaseActivity
-import rpt.tool.marimocare.ui.dashboard.DashboardFragmentDirections
+import rpt.tool.marimocare.ui.dashboard.classic.DashboardFragmentDirections
+import rpt.tool.marimocare.ui.dashboard.compact.CompactDashboardFragmentDirections
+import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
 
 class MainActivity : BaseActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -62,9 +64,16 @@ class MainActivity : BaseActivity() {
             // Evita navigazioni doppie / crash
             if (currentDestinationId != R.id.fromQRCodeMarimoFragment) {
 
-                val action =
-                    DashboardFragmentDirections
-                        .actionDashboardFragmentToFromQRCodeMarimoFragment(code, name)
+                val action = when(SharedPreferencesManager.desktopMode){
+                    true -> {
+                        CompactDashboardFragmentDirections
+                            .actionCompactDashboardFragmentToFromQRCodeMarimoFragment(code, name)
+                    }
+                    else -> {
+                        DashboardFragmentDirections
+                            .actionDashboardFragmentToFromQRCodeMarimoFragment(code, name)
+                    }
+                }
 
                 try {
                     navController.navigate(action)
