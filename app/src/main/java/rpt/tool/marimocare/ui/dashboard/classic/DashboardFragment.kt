@@ -35,9 +35,9 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.ChangeWaterEventHook
-import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.EditMarimoEventHook
-import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.SelectMarimoEventHook
+import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.classic.hooks.ChangeWaterEventHook
+import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.classic.hooks.EditMarimoEventHook
+import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.classic.hooks.SelectMarimoEventHook
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.FragmentDashboardBinding
 import rpt.tool.marimocare.utils.AlertDataUtils
@@ -47,7 +47,7 @@ import rpt.com.base.navigation.safeNavController
 import rpt.com.base.navigation.safeNavigate
 import rpt.tool.marimocare.utils.view.adapters.CustomSpinnerAdapter
 import rpt.tool.marimocare.utils.view.gone
-import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.MarimoItem
+import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.classic.MarimoItem
 import rpt.tool.marimocare.utils.view.viewpager.tips.TipsPagerAdapter
 import rpt.tool.marimocare.utils.view.visible
 import kotlin.getValue
@@ -83,10 +83,10 @@ import rpt.tool.marimocare.utils.view.adapters.MarimoToFixAdapter
 import rpt.tool.marimocare.utils.view.adapters.MarimoUpdateAdapter
 import rpt.tool.marimocare.utils.view.copyUriToInternalFile
 import rpt.tool.marimocare.utils.view.enable
-import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.DeleteMarimoEventHook
+import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.classic.hooks.DeleteMarimoEventHook
 import java.io.File
 import kotlin.time.Duration.Companion.milliseconds
-import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks.ShowMarimoDetailsEventHook
+import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.classic.hooks.ShowMarimoDetailsEventHook
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
 import kotlin.math.abs

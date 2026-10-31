@@ -1,16 +1,14 @@
-package rpt.tool.marimocare.utils.view.recyclerview.items.marimo
+package rpt.tool.marimocare.utils.view.recyclerview.items.marimo.compact
 
 import android.annotation.SuppressLint
-import android.graphics.PorterDuff
 import android.os.Build
 import android.view.View
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.toColorInt
 import com.bumptech.glide.Glide
+import com.google.android.material.button.MaterialButton
 import rpt.tool.marimocare.R
-import rpt.tool.marimocare.databinding.ItemMarimoBinding
 import rpt.tool.marimocare.databinding.ItemMarimoCompactBinding
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.view.recyclerview.BaseRecyclerViewBindingItem
@@ -67,9 +65,9 @@ class MarimoCompactItem(var marimo: Marimo) :
         binding.btnWaterChanged.setBackgroundResource(status.buttonChangeBg)
         binding.btnEdit.setBackgroundResource(status.buttonEditBg)
         binding.btnDelete.setBackgroundResource(status.buttonDeleteBg)
-        binding.btnDetails.setBackgroundResource(status.buttonDetailBg)
+        binding.btnDetails.setBackgroundResource(status.buttonDetailCompactBg)
 
-        (binding.btnDetails as? com.google.android.material.button.MaterialButton)?.apply {
+        (binding.btnDetails as? MaterialButton)?.apply {
             setTextColor(ContextCompat.getColor(context, status.color))
             iconTint = ContextCompat.getColorStateList(context, status.color)
         }

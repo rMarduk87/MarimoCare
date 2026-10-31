@@ -17,6 +17,7 @@ enum class MarimoStatus(
     val buttonEditBg: Int,
     val buttonDeleteBg: Int,
     val buttonDetailBg: Int,
+    val buttonDetailCompactBg: Int,
     val notesCardBg: Int,
     val cardDateBg: Int,
 ) {
@@ -32,7 +33,8 @@ enum class MarimoStatus(
         buttonDeleteBg = R.drawable.bg_btn_delete_border,
         buttonDetailBg = R.drawable.bg_btn_detail_border,
         notesCardBg = R.drawable.bg_notes_card,
-        cardDateBg = R.drawable.bg_card_date
+        cardDateBg = R.drawable.bg_card_date,
+        buttonDetailCompactBg = R.drawable.bg_compact_btn_detail_border
     ),
     DUE_SOON(
         color = R.color.marimo_orange,
@@ -46,7 +48,8 @@ enum class MarimoStatus(
         buttonDeleteBg = R.drawable.bg_btn_delete_border_orange,
         buttonDetailBg = R.drawable.bg_btn_detail_border_orange,
         notesCardBg = R.drawable.bg_notes_card,
-        cardDateBg = R.drawable.bg_card_date_orange
+        cardDateBg = R.drawable.bg_card_date_orange,
+        buttonDetailCompactBg = R.drawable.bg_compact_btn_detail_border_orange
     ),
     OVERDUE(
         color = R.color.marimo_red,
@@ -60,7 +63,8 @@ enum class MarimoStatus(
         buttonDeleteBg = R.drawable.bg_btn_delete_border_red,
         buttonDetailBg = R.drawable.bg_btn_detail_border_red,
         notesCardBg = R.drawable.bg_notes_card,
-        cardDateBg = R.drawable.bg_card_date_red
+        cardDateBg = R.drawable.bg_card_date_red,
+        buttonDetailCompactBg = R.drawable.bg_compact_btn_detail_border_red
 
     );
 

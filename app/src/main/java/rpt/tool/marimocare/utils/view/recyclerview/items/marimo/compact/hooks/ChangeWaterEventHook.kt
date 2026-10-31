@@ -1,0 +1,303 @@
+package rpt.tool.marimocare.utils.view.recyclerview.items.marimo.compact.hooks
+
+import android.app.Dialog
+import android.content.Context
+import android.graphics.Color
+import android.net.Uri
+import android.os.Build
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import android.widget.CheckBox
+import android.widget.ImageButton
+import android.widget.ImageView
+import androidx.activity.result.ActivityResultCaller
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.RecyclerView
+import com.mikepenz.fastadapter.FastAdapter
+import com.mikepenz.fastadapter.listeners.ClickEventHook
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import rpt.tool.marimocare.R
+import rpt.tool.marimocare.databinding.ItemMarimoBinding
+import rpt.tool.marimocare.utils.AlertDataUtils
+import rpt.tool.marimocare.utils.AppUtils
+import rpt.tool.marimocare.utils.managers.RepositoryManager
+import rpt.tool.marimocare.utils.view.getFastAdapterItemViewBinding
+import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.classic.MarimoItem
+import androidx.core.graphics.drawable.toDrawable
+import com.bumptech.glide.Glide
+import com.google.android.material.textfield.TextInputEditText
+import androidx.core.net.toUri
+import com.skydoves.balloon.Balloon
+import com.skydoves.balloon.BalloonAlign
+import rpt.tool.marimocare.databinding.ItemMarimoCompactBinding
+import rpt.tool.marimocare.utils.managers.AchievementManager
+import java.time.LocalDate
+import java.time.temporal.ChronoUnit
+import rpt.tool.marimocare.utils.managers.SharedPreferencesManager
+import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.compact.MarimoCompactItem
+
+class ChangeWaterEventHook(
+    private val lifecycleOwner: LifecycleOwner,
+    private val context: Context,
+    private val onWaterChanged: () -> Unit,
+    private val onPickImage: (callback: (String?) -> Unit) -> Unit,
+    private val newDialogChangeWaterBalloon: Balloon
+) : ClickEventHook<MarimoCompactItem>() {
+
+    private var imagePath: String? = null
+    private lateinit var cameraLauncher: ActivityResultLauncher<Uri>
+    private lateinit var galleryLauncher: ActivityResultLauncher<String>
+    private var tempImageUri: Uri? = null
+
+
+    init {
+        if (lifecycleOwner is ActivityResultCaller) {
+
+            cameraLauncher = lifecycleOwner.registerForActivityResult(
+                ActivityResultContracts.TakePicture()
+            ) { success ->
+                if (success) {
+                    imagePath = tempImageUri?.path
+                }
+            }
+
+            galleryLauncher = lifecycleOwner.registerForActivityResult(
+                ActivityResultContracts.GetContent()
+            ) { uri ->
+                uri?.let {
+                    imagePath = it.toString()
+                }
+            }
+        }
+    }
+
+    override fun onBind(viewHolder: RecyclerView.ViewHolder): View? {
+        val binding = viewHolder.getFastAdapterItemViewBinding<ItemMarimoCompactBinding>()
+        return binding?.btnWaterChanged
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onClick(
+        v: View,
+        position: Int,
+        fastAdapter: FastAdapter<MarimoCompactItem>,
+        item: MarimoCompactItem,
+    ) {
+
+        showLogDialog(item, fastAdapter, position, context)
+
+    }
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun showLogDialog(
+        item: MarimoCompactItem,
+        fastAdapter: FastAdapter<MarimoCompactItem>,
+        position: Int,
+        context: Context
+    ) {
+        val dialog = Dialog(context)
+        dialog.setContentView(R.layout.dialog_log_water_change)
+
+        dialog.window?.apply {
+            setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
+            val width = (context.resources.displayMetrics.widthPixels * 0.90).toInt()
+            setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT)
+        }
+
+        val etNotes = dialog.findViewById<TextInputEditText>(R.id.etNotes)
+        val icon = dialog.findViewById<ImageView>(R.id.icon)
+        val btnSave = dialog.findViewById<Button>(R.id.btnSave)
+        val btnCancel = dialog.findViewById<Button>(R.id.btnCancel)
+        val btnClose = dialog.findViewById<ImageButton>(R.id.btnClose)
+        val checkboxMilestone = dialog.findViewById<CheckBox>(R.id.checkboxMilestone)
+        val uploadContainer = dialog.findViewById<View>(R.id.uploadContainer)
+        val imagePreview = dialog.findViewById<ImageView>(R.id.imagePreview)
+        val btnRemoveImage = dialog.findViewById<ImageButton>(R.id.btnRemoveImage)
+
+        var imagePath: String? = null
+
+        uploadContainer?.setOnClickListener {
+
+            onPickImage { selectedPath ->
+                imagePath = selectedPath
+
+                selectedPath?.let {
+
+                    imagePreview?.let { iv ->
+                        Glide.with(context)
+                            .load(it.toUri())
+                            .centerCrop()
+                            .into(iv)
+                    }
+
+                    uploadContainer.visibility = View.GONE
+                    imagePreview?.visibility = View.VISIBLE
+                    btnRemoveImage?.visibility = View.VISIBLE
+                }
+            }
+        }
+
+        btnRemoveImage?.setOnClickListener {
+
+            imagePath = null
+
+            imagePreview?.setImageDrawable(null)
+
+            imagePreview?.visibility = View.GONE
+            btnRemoveImage.visibility = View.GONE
+            uploadContainer?.visibility = View.VISIBLE
+        }
+
+        btnClose?.setOnClickListener { dialog.dismiss() }
+        btnCancel?.setOnClickListener { dialog.dismiss() }
+
+        btnSave?.setOnClickListener {
+
+            val notes = etNotes?.text?.toString()?.trim()
+            val isMilestone = checkboxMilestone?.isChecked ?: false
+
+            updateMarimo(
+                item = item,
+                fastAdapter = fastAdapter,
+                position = position,
+                notes = if (notes.isNullOrEmpty()) null else notes,
+                imagePath = imagePath,
+                isMilestone = isMilestone
+            )
+
+            dialog.dismiss()
+        }
+
+        dialog.show()
+
+        if (SharedPreferencesManager.showNewLogChangeWater) {
+            SharedPreferencesManager.showNewLogChangeWater = false
+
+            icon.post {
+                newDialogChangeWaterBalloon.showAlign(
+                    align = BalloonAlign.BOTTOM,
+                    mainAnchor = icon,
+                    subAnchorList = listOf(icon),
+                )
+            }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun updateMarimo(
+        item: MarimoCompactItem,
+        fastAdapter: FastAdapter<MarimoCompactItem>,
+        position: Int,
+        notes: String?,
+        imagePath: String?,
+        isMilestone: Boolean
+    ) {
+        lifecycleOwner.lifecycleScope.launch {
+
+            val updated = withContext(Dispatchers.IO) {
+
+                val marimo = RepositoryManager.marimoRepository
+                    .getMarimo(item.marimo.code)
+
+                if (marimo != null) {
+
+                    val lastChanged = AppUtils.getCurrentDate()
+                    var earlyBird = false
+
+                    if (marimo.nextChange.isNotBlank()) {
+                        try {
+                            val nextChangeDate = LocalDate.parse(marimo.nextChange)
+                            val today = LocalDate.now()
+                            val daysUntilDeadline = ChronoUnit.DAYS.between(today,
+                                nextChangeDate)
+                            if (daysUntilDeadline >= 2) {
+                                earlyBird = true
+                            }
+                        } catch (_: Exception) {
+                            // ignore
+                        }
+                    }
+
+                    RepositoryManager.marimoRepository.updateWaterMarimo(
+                        lastChanged,
+                        item.marimo.code
+                    )
+
+                    RepositoryManager.marimoRepository.addWaterChanges(
+                        item.marimo.code,
+                        lastChanged,
+                        notes,
+                        imagePath,
+                        isMilestone
+                    )
+
+                    RepositoryManager.marimoRepository.updateHealthScore(
+                        item.marimo.code,
+                        lastChanged,
+                        100
+                    )
+
+                    AlertDataUtils.recalc(context)
+
+                    // Calculate overdue log count for Night Owl achievement
+                    val allMarimos = RepositoryManager.marimoRepository.getAllSync()
+                    val allChanges = RepositoryManager.marimoRepository.getAllChanges()
+                    var overdueTotalCount = 0
+
+                    allMarimos.forEach { m ->
+                        val mChanges = allChanges.filter { it.coderMarimo == m.code.toString() }
+                            .filter { !it.waterChangeData.isNullOrBlank() }
+                            .sortedBy { it.waterChangeData }
+
+                        var lastDate: LocalDate? = m.registrationDate?.let {
+                            try { LocalDate.parse(it) } catch (_: Exception) { null }
+                        }
+
+                        mChanges.forEach { change ->
+                            try {
+                                val changeDate = LocalDate.parse(change.waterChangeData)
+                                if (lastDate != null) {
+                                    val daysSince = ChronoUnit.DAYS.between(
+                                        lastDate, changeDate)
+                                    if (daysSince > m.changeFrequencyDays) {
+                                        overdueTotalCount++
+                                    }
+                                }
+                                lastDate = changeDate
+                            } catch (_: Exception) {
+                                // ignore
+                            }
+                        }
+                    }
+
+                    val meta = mutableMapOf<String, Any>()
+                    if (earlyBird) meta["earned_early_bird"] = true
+                    if (overdueTotalCount >= 10) meta["overdue_log_count"] = true
+
+                    AchievementManager.recalculateAll(
+                        showDialogEarned = true,
+                        userMeta = meta,
+                        context = context
+                    )
+
+                    RepositoryManager.marimoRepository
+                        .getMarimo(item.marimo.code)
+
+                } else null
+            }
+
+            if (updated != null) {
+                item.update(updated)
+                fastAdapter.notifyAdapterItemChanged(position)
+            }
+
+            onWaterChanged()
+        }
+    }
+}

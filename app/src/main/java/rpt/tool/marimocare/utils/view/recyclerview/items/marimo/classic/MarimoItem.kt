@@ -1,13 +1,11 @@
-package rpt.tool.marimocare.utils.view.recyclerview.items.marimo
+package rpt.tool.marimocare.utils.view.recyclerview.items.marimo.classic
 
 import android.annotation.SuppressLint
-import android.graphics.PorterDuff
 import android.os.Build
 import android.view.View
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.toColorInt
 import com.bumptech.glide.Glide
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.ItemMarimoBinding

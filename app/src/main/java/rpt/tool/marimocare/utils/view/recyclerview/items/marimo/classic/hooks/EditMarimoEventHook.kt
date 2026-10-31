@@ -1,4 +1,4 @@
-package rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks
+package rpt.tool.marimocare.utils.view.recyclerview.items.marimo.classic.hooks
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
@@ -9,7 +9,7 @@ import rpt.tool.marimocare.ui.dashboard.classic.DashboardFragmentDirections
 import rpt.com.base.navigation.safeNavController
 import rpt.com.base.navigation.safeNavigate
 import rpt.tool.marimocare.utils.view.getFastAdapterItemViewBinding
-import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.MarimoItem
+import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.classic.MarimoItem
 
 class EditMarimoEventHook : ClickEventHook<MarimoItem>() {
 

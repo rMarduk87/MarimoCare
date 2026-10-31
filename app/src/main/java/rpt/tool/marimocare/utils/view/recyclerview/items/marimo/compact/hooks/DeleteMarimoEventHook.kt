@@ -1,4 +1,4 @@
-package rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks
+package rpt.tool.marimocare.utils.view.recyclerview.items.marimo.compact.hooks
 
 import android.content.Context
 import android.os.Build
@@ -22,13 +22,13 @@ import rpt.tool.marimocare.utils.AlertDataUtils
 import rpt.tool.marimocare.utils.managers.AchievementManager
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.tool.marimocare.utils.view.getFastAdapterItemViewBinding
-import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.MarimoItem
+import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.compact.MarimoCompactItem
 
 class DeleteMarimoEventHook(
     private val lifecycleOwner: LifecycleOwner,
     private val context: Context,
     private val onDelete: () -> Unit
-) : ClickEventHook<MarimoItem>() {
+) : ClickEventHook<MarimoCompactItem>() {
 
     override fun onBind(viewHolder: RecyclerView.ViewHolder): View? {
         val binding = viewHolder.getFastAdapterItemViewBinding<ItemMarimoBinding>()
@@ -39,16 +39,16 @@ class DeleteMarimoEventHook(
     override fun onClick(
         v: View,
         position: Int,
-        fastAdapter: FastAdapter<MarimoItem>,
-        item: MarimoItem,
+        fastAdapter: FastAdapter<MarimoCompactItem>,
+        item: MarimoCompactItem,
     ) {
         showDeleteMarimoDialog(item, fastAdapter, position)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun showDeleteMarimoDialog(
-        item: MarimoItem,
-        fastAdapter: FastAdapter<MarimoItem>,
+        item: MarimoCompactItem,
+        fastAdapter: FastAdapter<MarimoCompactItem>,
         position: Int
     ) {
 
@@ -90,7 +90,7 @@ class DeleteMarimoEventHook(
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun deleteMarimo(item: MarimoItem, fastAdapter: FastAdapter<MarimoItem>, position: Int) {
+    private fun deleteMarimo(item: MarimoCompactItem, fastAdapter: FastAdapter<MarimoCompactItem>, position: Int) {
         lifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
 
             val marimo = RepositoryManager.marimoRepository.getMarimo(item.marimo.code)

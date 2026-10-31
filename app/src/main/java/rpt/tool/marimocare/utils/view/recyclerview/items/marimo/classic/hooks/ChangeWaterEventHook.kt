@@ -1,4 +1,4 @@
-package rpt.tool.marimocare.utils.view.recyclerview.items.marimo.hooks
+package rpt.tool.marimocare.utils.view.recyclerview.items.marimo.classic.hooks
 
 import android.app.Dialog
 import android.content.Context
@@ -29,7 +29,7 @@ import rpt.tool.marimocare.utils.AlertDataUtils
 import rpt.tool.marimocare.utils.AppUtils
 import rpt.tool.marimocare.utils.managers.RepositoryManager
 import rpt.tool.marimocare.utils.view.getFastAdapterItemViewBinding
-import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.MarimoItem
+import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.classic.MarimoItem
 import androidx.core.graphics.drawable.toDrawable
 import com.bumptech.glide.Glide
 import com.google.android.material.textfield.TextInputEditText

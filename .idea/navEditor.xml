@@ -24,6 +24,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_achievementFragment_to_compactDashboardFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_achievementFragment_to_dashboardFragment">
                               <value>
                                 <LayoutPositions />
@@ -60,6 +65,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_addOrEditFragment_to_compactDashboardFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_addOrEditFragment_to_dashboardFragment">
                               <value>
                                 <LayoutPositions />
@@ -80,7 +90,7 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="cdashboardFragment">
+                  <entry key="compactDashboardFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
@@ -91,42 +101,42 @@
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_dashboardFragment_to_achievementFragment">
+                            <entry key="action_compactDashboardFragment_to_achievementFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_dashboardFragment_to_addOrEditFragment">
+                            <entry key="action_compactDashboardFragment_to_addOrEditFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_dashboardFragment_to_feedbackFragment">
+                            <entry key="action_compactDashboardFragment_to_feedbackFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_dashboardFragment_to_fromQRCodeMarimoFragment">
+                            <entry key="action_compactDashboardFragment_to_fromQRCodeMarimoFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_dashboardFragment_to_marimoDetailFragment">
+                            <entry key="action_compactDashboardFragment_to_marimoDetailFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_dashboardFragment_to_questionsAnswersChatFragment">
+                            <entry key="action_compactDashboardFragment_to_questionsAnswersChatFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_dashboardFragment_to_settingsFragment">
+                            <entry key="action_compactDashboardFragment_to_settingsFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_dashboardFragment_to_statsFragment">
+                            <entry key="action_compactDashboardFragment_to_statsFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -213,6 +223,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_feedbackFragment_to_compactDashboardFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_feedbackFragment_to_dashboardFragment">
                               <value>
                                 <LayoutPositions />
@@ -250,6 +265,11 @@
                               </value>
                             </entry>
                             <entry key="action_fromQRCodeMarimoFragment_to_addOrEditFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_fromQRCodeMarimoFragment_to_compactDashboardFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -295,6 +315,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_marimoDetailFragment_to_compactDashboardFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_marimoDetailFragment_to_dashboardFragment">
                               <value>
                                 <LayoutPositions />
@@ -326,6 +351,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_questionsAnswersChatFragment_to_compactDashboardFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_questionsAnswersChatFragment_to_dashboardFragment">
                               <value>
                                 <LayoutPositions />
@@ -353,6 +383,11 @@
                               </value>
                             </entry>
                             <entry key="action_settingsFragment_to_addOrEditFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_settingsFragment_to_compactDashboardFragment">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -394,6 +429,11 @@
                               </value>
                             </entry>
                             <entry key="action_statsFragment_to_addOrEditFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_statsFragment_to_compactDashboardFragment">
                               <value>
                                 <LayoutPositions />
                               </value>

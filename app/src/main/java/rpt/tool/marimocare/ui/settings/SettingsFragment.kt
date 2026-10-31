@@ -83,6 +83,9 @@ class SettingsFragment :
                 )
             }
         }
+
+        binding.containerDesktopLayout.visibility = if
+                    (resources.configuration.smallestScreenWidthDp >= 600) View.VISIBLE else View.GONE
     }
 
     private fun setupHeaderButtons() {

@@ -9,7 +9,7 @@ import rpt.com.base.log.d
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
 import rpt.tool.marimocare.utils.data.enums.MarimoStatus
 import rpt.tool.marimocare.utils.managers.RepositoryManager
-import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.MarimoItem
+import rpt.tool.marimocare.utils.view.recyclerview.items.marimo.classic.MarimoItem
 
 class DashboardViewModel : ViewModel() {
 
