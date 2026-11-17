@@ -850,4 +850,6 @@
     <string name="compact_layout">Diseño compacto</string>
     <string name="compact_layout_subtitle">En modo compacto, mueve los filtros y el ordenamiento a una columna lateral con pestañas y simplifica las tarjetas de marimo. El móvil permanece sin cambios.</string>
     <string name="details">Details</string>
+    <string name="up_to_date">Up To Date</string>
+    <string name="status">Status</string>
 </resources>

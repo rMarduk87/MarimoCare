@@ -847,4 +847,6 @@
     <string name="compact_layout">Компактный макет</string>
     <string name="compact_layout_subtitle">В компактном режиме перемещает фильтры и сортировку в боковую колонку с вкладками и упрощает карточки маримо. Мобильная версия остается без изменений.</string>
     <string name="details">Details</string>
+    <string name="up_to_date">Up To Date</string>
+    <string name="status">Status</string>
 </resources>

@@ -406,231 +406,269 @@
                     android:baselineAligned="false"
                     android:orientation="horizontal">
 
-                    <!-- LATO SINISTRO: FILTRI E ORDINAMENTO -->
                     <LinearLayout
-                        android:layout_width="280dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
-                        android:orientation="vertical">
+    android:layout_width="280dp"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="20dp"
+    android:orientation="vertical">
 
-                        <com.google.android.material.card.MaterialCardView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:cardBackgroundColor="@android:color/white"
-                            app:cardCornerRadius="12dp"
-                            app:cardElevation="2dp"
-                            app:strokeColor="@color/marimo_item_edit_board"
-                            app:strokeWidth="1dp">
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="2dp"
+        app:strokeColor="@color/marimo_item_edit_board"
+        app:strokeWidth="1dp">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:padding="16dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-                                <!-- Toggles: Filters / Sorting -->
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="16dp"
-                                    android:orientation="horizontal">
+            <!-- Toggles: Filters / Sorting -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal">
 
-                                    <com.google.android.material.button.MaterialButton
-                                        android:id="@+id/btnTabFilters"
-                                        android:layout_width="0dp"
-                                        android:layout_height="48dp"
-                                        android:layout_marginEnd="4dp"
-                                        android:layout_weight="1"
-                                        android:background="@drawable/bg_btn_filled_green"
-                                        android:text="@string/filters"
-                                        android:textAllCaps="false"
-                                        android:textColor="@android:color/white"
-                                        app:backgroundTint="@null"
-                                        app:icon="@drawable/ic_filter"
-                                        app:iconTint="@android:color/white" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnTabFilters"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_btn_filled_green"
+                    android:text="@string/filters"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    app:backgroundTint="@null"
+                    app:icon="@drawable/ic_filter"
+                    app:iconGravity="textStart"
+                    app:iconPadding="8dp"
+                    app:iconTint="@android:color/white" />
 
-                                    <com.google.android.material.button.MaterialButton
-                                        android:id="@+id/btnTabSorting"
-                                        android:layout_width="0dp"
-                                        android:layout_height="48dp"
-                                        android:layout_marginStart="4dp"
-                                        android:layout_weight="1"
-                                        android:background="@drawable/bg_btn_white"
-                                        android:text="@string/sort"
-                                        android:textAllCaps="false"
-                                        android:textColor="@color/marimo_black"
-                                        app:backgroundTint="@null"
-                                        app:icon="@drawable/ic_sort"
-                                        app:iconTint="@color/marimo_black" />
-                                </LinearLayout>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnTabSorting"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_btn_white"
+                    android:text="@string/sort"
+                    android:textAllCaps="false"
+                    android:textColor="@color/marimo_black"
+                    app:backgroundTint="@null"
+                    app:icon="@drawable/ic_sort"
+                    app:iconGravity="textStart"
+                    app:iconPadding="8dp"
+                    app:iconTint="@color/marimo_black" />
+            </LinearLayout>
 
-                                <LinearLayout
-                                    android:id="@+id/filterTitle"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
-                                    android:visibility="gone"></LinearLayout>
+            <LinearLayout
+                android:id="@+id/filterTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone" />
 
-                                <!-- Filtri -->
-                                <LinearLayout
-                                    android:id="@+id/buttonFilter"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="8dp"
-                                    android:clipChildren="false"
-                                    android:clipToPadding="false"
-                                    android:orientation="vertical">
+            <!-- Contenitore Filtri -->
+            <LinearLayout
+                android:id="@+id/buttonFilter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                                    <FrameLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="8dp">
+                <!-- All Filter -->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
 
-                                        <com.google.android.material.button.MaterialButton
-                                            android:id="@+id/btnAllFilter"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="48dp"
-                                            android:background="@drawable/bg_btn_primary"
-                                            android:paddingStart="16dp"
-                                            android:text="@string/all"
-                                            android:textAlignment="viewStart"
-                                            android:textAllCaps="false"
-                                            android:textColor="@android:color/white"
-                                            app:backgroundTint="@null" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAllFilter"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_btn_primary"
+                        android:paddingStart="16dp"
+                        android:text="@string/all"
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        app:backgroundTint="@null" />
 
-                                        <TextView
-                                            android:id="@+id/badgeAll"
-                                            android:layout_width="24dp"
-                                            android:layout_height="24dp"
-                                            android:layout_gravity="center_vertical|end"
-                                            android:layout_marginEnd="12dp"
-                                            android:background="@drawable/bg_badge_all"
-                                            android:gravity="center"
-                                            android:text="@string/_1"
-                                            android:textColor="@color/marimo_dark"
-                                            android:textSize="12sp"
-                                            android:textStyle="bold" />
-                                    </FrameLayout>
+                    <TextView
+                        android:id="@+id/badgeAll"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/bg_badge_all"
+                        android:gravity="center"
+                        android:text="@string/_1"
+                        android:textColor="@color/marimo_dark"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </FrameLayout>
 
-                                    <FrameLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content">
+                <!-- Overdue Filter -->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
 
-                                        <com.google.android.material.button.MaterialButton
-                                            android:id="@+id/btnOverdueFilter"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="48dp"
-                                            android:background="@drawable/bg_btn_white"
-                                            android:drawableEnd="@drawable/ic_warning_triangle_red"
-                                            android:paddingStart="16dp"
-                                            android:text="@string/overdue"
-                                            android:textAlignment="viewStart"
-                                            android:textAllCaps="false"
-                                            android:textColor="@color/marimo_dark"
-                                            app:backgroundTint="@null" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnOverdueFilter"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_btn_white"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="48dp"
+                        android:text="@string/overdue"
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="false"
+                        android:textColor="@color/marimo_dark"
+                        app:backgroundTint="@null" />
 
-                                        <TextView
-                                            android:id="@+id/badgeOverdue"
-                                            android:layout_width="24dp"
-                                            android:layout_height="24dp"
-                                            android:layout_gravity="center_vertical|end"
-                                            android:layout_marginEnd="12dp"
-                                            android:background="@drawable/bg_badge_red"
-                                            android:gravity="center"
-                                            android:text="@string/_6"
-                                            android:textColor="@color/marimo_red"
-                                            android:textSize="12sp"
-                                            android:textStyle="bold" />
-                                    </FrameLayout>
-                                </LinearLayout>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginEnd="48dp"
+                        android:src="@drawable/ic_warning_triangle_red"
+                        android:contentDescription="@string/img" />
 
-                                <LinearLayout
-                                    android:id="@+id/buttonFilter2"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:clipChildren="false"
-                                    android:clipToPadding="false"
-                                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/badgeOverdue"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/bg_badge_red"
+                        android:gravity="center"
+                        android:text="@string/_6"
+                        android:textColor="@color/marimo_red"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </FrameLayout>
 
-                                    <FrameLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginBottom="8dp">
+                <!-- Due Soon Filter -->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
 
-                                        <com.google.android.material.button.MaterialButton
-                                            android:id="@+id/btnDueSoonFilter"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="48dp"
-                                            android:background="@drawable/bg_btn_white"
-                                            android:drawableEnd="@drawable/ic_calendar_due_soon"
-                                            android:paddingStart="16dp"
-                                            android:text="@string/soon_f"
-                                            android:textAlignment="viewStart"
-                                            android:textAllCaps="false"
-                                            android:textColor="@color/marimo_dark"
-                                            app:backgroundTint="@null" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnDueSoonFilter"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_btn_white"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="48dp"
+                        android:text="@string/soon_f"
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="false"
+                        android:textColor="@color/marimo_dark"
+                        app:backgroundTint="@null" />
 
-                                        <TextView
-                                            android:id="@+id/badgeDueSoon"
-                                            android:layout_width="24dp"
-                                            android:layout_height="24dp"
-                                            android:layout_gravity="center_vertical|end"
-                                            android:layout_marginEnd="12dp"
-                                            android:background="@drawable/bg_badge_orange"
-                                            android:gravity="center"
-                                            android:text="@string/_3"
-                                            android:textColor="@color/marimo_orange"
-                                            android:textSize="12sp"
-                                            android:textStyle="bold" />
-                                    </FrameLayout>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginEnd="48dp"
+                        android:src="@drawable/ic_calendar_due_soon"
+                        android:contentDescription="@string/img" />
 
-                                    <FrameLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/badgeDueSoon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/bg_badge_orange"
+                        android:gravity="center"
+                        android:text="@string/_3"
+                        android:textColor="@color/marimo_orange"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </FrameLayout>
 
-                                        <com.google.android.material.button.MaterialButton
-                                            android:id="@+id/btnUpToDateFilter"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="48dp"
-                                            android:background="@drawable/bg_btn_white"
-                                            android:drawableEnd="@drawable/ic_clock"
-                                            android:paddingStart="16dp"
-                                            android:text="@string/upToDate"
-                                            android:textAlignment="viewStart"
-                                            android:textAllCaps="false"
-                                            android:textColor="@color/marimo_dark"
-                                            app:backgroundTint="@null" />
+                <!-- Up to Date Filter -->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
 
-                                        <TextView
-                                            android:id="@+id/badgeUpToDate"
-                                            android:layout_width="24dp"
-                                            android:layout_height="24dp"
-                                            android:layout_gravity="center_vertical|end"
-                                            android:layout_marginEnd="12dp"
-                                            android:background="@drawable/bg_badge_green"
-                                            android:gravity="center"
-                                            android:text="@string/_4"
-                                            android:textColor="@color/marimo_item_green"
-                                            android:textSize="12sp"
-                                            android:textStyle="bold" />
-                                    </FrameLayout>
-                                </LinearLayout>
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnUpToDateFilter"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_btn_white"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="48dp"
+                        android:text="@string/up_to_date"
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="false"
+                        android:textColor="@color/marimo_dark"
+                        app:backgroundTint="@null" />
 
-                                <!-- Ordinamento -->
-                                <LinearLayout
-                                    android:id="@+id/sorts"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
-                                    android:visibility="gone">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginEnd="48dp"
+                        android:src="@drawable/ic_water_drop_green"
+                        android:contentDescription="@string/img" />
 
-                                    <include
-                                        android:id="@+id/marimoSpinnerLayout"
-                                        layout="@layout/spinner_sorting_with_arrow" />
-                                </LinearLayout>
-                            </LinearLayout>
-                        </com.google.android.material.card.MaterialCardView>
-                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/badgeUpToDate"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/bg_badge_all"
+                        android:gravity="center"
+                        android:text="@string/_1"
+                        android:textColor="@color/marimo_dark"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </FrameLayout>
+
+                <!-- Status Filter (Allineato e della stessa larghezza) -->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnStatusFilter"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_btn_white"
+                        android:paddingStart="16dp"
+                        android:text="@string/status"
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="false"
+                        android:textColor="@color/marimo_dark"
+                        app:backgroundTint="@null" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/ic_filter"
+                        android:contentDescription="@string/img"
+                        app:tint="@color/marimo_dark" />
+                </FrameLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>
 
                     <!-- LATO DESTRO: GRIGLIE E RECYCLER VIEW -->
                     <LinearLayout

@@ -852,4 +852,6 @@
     <string name="compact_layout">Kompaktes Layout</string>
     <string name="compact_layout_subtitle">Verschiebt im kompakten Modus Filter und Sortierung in eine Seitenleiste mit Tabs und vereinfacht die Marimo-Karten. Mobil bleibt unverändert.</string>
     <string name="details">Details</string>
+    <string name="up_to_date">Up To Date</string>
+    <string name="status">Status</string>
 </resources>
