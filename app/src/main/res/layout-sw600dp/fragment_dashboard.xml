@@ -256,7 +256,7 @@
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/tipsCard"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_marginEnd="6dp"
                         android:elevation="2dp"
@@ -267,7 +267,7 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:orientation="vertical"
                             android:padding="12dp">
 
@@ -297,21 +297,13 @@
                                     android:textStyle="bold" />
                             </LinearLayout>
 
-                            <RelativeLayout
+                            <androidx.viewpager2.widget.ViewPager2
+                                android:id="@+id/tipsPager"
                                 android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="1"
-                                android:layout_marginTop="8dp">
-
-                                <androidx.viewpager2.widget.ViewPager2
-                                    android:id="@+id/tipsPager"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:clipToOutline="false"
-                                    android:clipToPadding="false"
-                                    android:minHeight="48dp" />
-
-                            </RelativeLayout>
+                                android:layout_height="72dp"
+                                android:layout_marginTop="8dp"
+                                android:clipToOutline="false"
+                                android:clipToPadding="false" />
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
@@ -359,7 +351,7 @@
                     <RelativeLayout
                         android:id="@+id/alertCarouselContainer"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_marginStart="6dp"
                         android:visibility="gone">

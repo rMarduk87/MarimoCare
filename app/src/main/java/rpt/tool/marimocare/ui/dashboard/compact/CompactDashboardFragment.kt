@@ -130,6 +130,13 @@ class CompactDashboardFragment: BaseFragment<FragmentCompactDashboardBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if(!SharedPreferencesManager.desktopMode){
+            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                CompactDashboardFragmentDirections
+                    .actionCompactDashboardFragmentToDashboardFragment())
+            return
+        }
+
         if (SharedPreferencesManager.resetAndRecalculateAchievement) {
             SharedPreferencesManager.resetAndRecalculateAchievement = false
             viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
@@ -563,8 +570,8 @@ class CompactDashboardFragment: BaseFragment<FragmentCompactDashboardBinding>(
 
     private fun addNewMarimo() {
         safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
-            DashboardFragmentDirections.
-            actionDashboardFragmentToAddOrEditFragment()
+            CompactDashboardFragmentDirections.
+            actionCompactDashboardFragmentToAddOrEditFragment()
         )
     }
 
@@ -712,6 +719,7 @@ class CompactDashboardFragment: BaseFragment<FragmentCompactDashboardBinding>(
                     AlertDataUtils.recalc(requireContext())
                 }
             }
+            if (view == null || !isAdded) return@launch
 
             val userPrefOverdue = SharedPreferencesManager.showAlertOverdue
             val userPrefSoon = SharedPreferencesManager.showAlertSoon

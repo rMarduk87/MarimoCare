@@ -128,6 +128,13 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if(SharedPreferencesManager.desktopMode){
+            safeNavController(R.id.main_activity_nav_host_fragment)?.safeNavigate(
+                DashboardFragmentDirections
+                    .actionDashboardFragmentToCompactDashboardFragment())
+            return
+        }
+
         if (SharedPreferencesManager.resetAndRecalculateAchievement) {
             SharedPreferencesManager.resetAndRecalculateAchievement = false
             viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
@@ -711,6 +718,7 @@ class DashboardFragment: BaseFragment<FragmentDashboardBinding>(
                     AlertDataUtils.recalc(requireContext())
                 }
             }
+            if (view == null || !isAdded) return@launch
 
             val userPrefOverdue = SharedPreferencesManager.showAlertOverdue
             val userPrefSoon = SharedPreferencesManager.showAlertSoon
