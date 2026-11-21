@@ -850,8 +850,9 @@
     <string name="error">Fehler</string>
     <string name="day_format">t</string>
     <string name="compact_layout">Kompaktes Layout</string>
-    <string name="compact_layout_subtitle">Verschiebt im kompakten Modus Filter und Sortierung in eine Seitenleiste mit Tabs und vereinfacht die Marimo-Karten. Mobil bleibt unverändert.</string>
+    <string name="compact_layout_subtitle">Verschiebt im kompakten Modus Filter und Sortierung in eine Seitenleiste mit Tabs und vereinfacht die Marimo-Karten</string>
     <string name="details">Details</string>
     <string name="up_to_date">Up To Date</string>
     <string name="status">Status</string>
+    <string name="new_desktop_mode_settings_balloon_text">Es wurden neue Einstellungen hinzugefügt! Du kannst jetzt den Kompaktmodus wählen, um mehr Platz im Dashboard zu gewinnen!</string>
 </resources>

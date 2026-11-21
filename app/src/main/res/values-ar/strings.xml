@@ -844,8 +844,9 @@
     <string name="error">خطأ</string>
     <string name="day_format">ي</string>
     <string name="compact_layout">التخطيط المدمج</string>
-    <string name="compact_layout_subtitle">في الوضع المدمج، قم بربط عوامل التصفية والفرز في عمود جانبي مع علامات التبويب وتبسيط بطاقات الماريمو. يظل الجوال دون تغيير.</string>
+    <string name="compact_layout_subtitle">في الوضع المدمج، يتم نقل عوامل التصفية وخيارات الفرز إلى عمود جانبي مزود بعلامات تبويب، مع تبسيط بطاقات "ماريمو".</string>
     <string name="details">Details</string>
     <string name="up_to_date">Up To Date</string>
     <string name="status">Status</string>
+    <string name="new_desktop_mode_settings_balloon_text">تمت إضافة إعدادات جديدة! يمكنك الآن اختيار "الوضع المدمج" (Compact Mode) لتوفير المزيد من المساحة في لوحة التحكم!</string>
 </resources>

@@ -848,8 +848,9 @@
     <string name="error">ข้อผิดพลาด</string>
     <string name="day_format">ว</string>
     <string name="compact_layout">เค้าโครงแบบ compact</string>
-    <string name="compact_layout_subtitle">ในโหมด compact ย้ายตัวกรองและการจัดเรียงไปไว้ในคอลัมน์ด้านข้างพร้อมแท็บ และทำให้การ์ดมาริโมะง่ายขึ้น มือถือยังคงไม่เปลี่ยนแปลง</string>
+    <string name="compact_layout_subtitle">ในโหมดกะทัดรัด ให้ย้ายตัวกรองและการจัดเรียงไปไว้ในคอลัมน์ด้านข้างโดยแบ่งเป็นแท็บต่างๆ พร้อมทั้งปรับรูปแบบการ์ดมาริโมะให้เรียบง่ายขึ้น</string>
     <string name="details">Details</string>
     <string name="up_to_date">Up To Date</string>
     <string name="status">Status</string>
+    <string name="new_desktop_mode_settings_balloon_text">มีการเพิ่มการตั้งค่าใหม่เข้ามาแล้ว! ตอนนี้คุณสามารถเลือกใช้โหมดกะทัดรัด (Compact Mode) เพื่อเพิ่มพื้นที่ว่างบนแดชบอร์ดได้!</string>
 </resources>

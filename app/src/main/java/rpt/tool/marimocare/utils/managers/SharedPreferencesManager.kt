@@ -144,4 +144,8 @@ object SharedPreferencesManager {
     var desktopMode: Boolean
         get() = sharedPreferences.getBoolean(AppUtils.DESKTOP_MODE, false)
         set(value) = sharedPreferences.edit() { putBoolean(AppUtils.DESKTOP_MODE, value) }
+
+    var showCompactSettingsBalloon: Boolean
+        get() = sharedPreferences.getBoolean(AppUtils.SHOW_COMPACT_SETTINGS_BALLOON, true)
+        set(value) = sharedPreferences.edit() { putBoolean(AppUtils.SHOW_COMPACT_SETTINGS_BALLOON, value) }
 }

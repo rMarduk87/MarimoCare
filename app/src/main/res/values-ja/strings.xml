@@ -850,8 +850,9 @@
     <string name="error">エラー</string>
     <string name="day_format">日</string>
     <string name="compact_layout">コンパクトレイアウト</string>
-    <string name="compact_layout_subtitle">コンパクトモードでは、フィルターと並び替えをタブ付きのサイドカラムに移動し、マリモカードを簡素化します。モバイルは変更されません。</string>
+    <string name="compact_layout_subtitle">コンパクトモードでは、フィルターと並べ替えをタブ付きのサイドカラムに移動し、マリモカードの表示を簡略化します。</string>
     <string name="details">Details</string>
     <string name="up_to_date">Up To Date</string>
     <string name="status">Status</string>
+    <string name="new_desktop_mode_settings_balloon_text">新しい設定が追加されました！「コンパクトモード」を選択することで、ダッシュボードの表示スペースをより広く確保できるようになります。</string>
 </resources>

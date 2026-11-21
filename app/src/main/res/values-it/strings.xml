@@ -850,8 +850,9 @@
     <string name="error">Errore</string>
     <string name="day_format">g</string>
     <string name="compact_layout">Layout compatto</string>
-    <string name="compact_layout_subtitle">In modalità compatta, sposta filtri e ordinamento in una colonna laterale con schede e semplifica le schede dei marimo. I dispositivi mobili rimangono invariati.</string>
+    <string name="compact_layout_subtitle">In modalità compatta, sposta filtri e ordinamento in una colonna laterale con schede e semplifica le schede dei marimo.</string>
     <string name="details">Details</string>
     <string name="up_to_date">Up To Date</string>
     <string name="status">Status</string>
+    <string name="new_desktop_mode_settings_balloon_text">Sono state aggiunte nuove impostazioni! Ora puoi scegliere la Modalità compatta per recuperare più spazio nella Dashboard!</string>
 </resources>

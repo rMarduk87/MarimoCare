@@ -850,8 +850,9 @@
     <string name="error">오류</string>
     <string name="day_format">일</string>
     <string name="compact_layout">컴팩트 레이아웃</string>
-    <string name="compact_layout_subtitle">컴팩트 모드에서는 필터와 정렬을 탭이 있는 사이드 컬럼으로 이동하고 마리모 카드를 단순화합니다. 모바일은 변경되지 않습니다.</string>
+    <string name="compact_layout_subtitle">콤팩트 모드에서는 필터와 정렬 기능을 탭이 있는 측면 열로 옮기고, 마리모 카드를 간소화합니다.</string>
     <string name="details">Details</string>
     <string name="up_to_date">Up To Date</string>
     <string name="status">Status</string>
+    <string name="new_desktop_mode_settings_balloon_text">새로운 설정이 추가되었습니다! 이제 \'컴팩트 모드\'를 선택하여 대시보드에서 더 많은 공간을 확보할 수 있습니다!</string>
 </resources>

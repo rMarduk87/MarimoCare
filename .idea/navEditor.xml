@@ -111,6 +111,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_compactDashboardFragment_to_dashboardFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_compactDashboardFragment_to_feedbackFragment">
                               <value>
                                 <LayoutPositions />
@@ -163,6 +168,11 @@
                               </value>
                             </entry>
                             <entry key="action_dashboardFragment_to_addOrEditFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_dashboardFragment_to_compactDashboardFragment">
                               <value>
                                 <LayoutPositions />
                               </value>

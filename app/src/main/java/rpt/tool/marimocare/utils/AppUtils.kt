@@ -338,6 +338,7 @@ class AppUtils {
         const val RESET_AND_RECALCULATE_ACHIEVEMENTS : String = "reset_and_recalculate_achievements"
         const val SHOW_BULK_SELECTION_BALLOON : String = "show_bulk_selection_balloon"
         const val DESKTOP_MODE : String = "desktop_mode"
+        const val SHOW_COMPACT_SETTINGS_BALLOON : String = "show_compact_settings_balloon"
 
 
 

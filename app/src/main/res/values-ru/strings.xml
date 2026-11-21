@@ -845,8 +845,9 @@
     <string name="error">Ошибка</string>
     <string name="day_format">д</string>
     <string name="compact_layout">Компактный макет</string>
-    <string name="compact_layout_subtitle">В компактном режиме перемещает фильтры и сортировку в боковую колонку с вкладками и упрощает карточки маримо. Мобильная версия остается без изменений.</string>
+    <string name="compact_layout_subtitle">В компактном режиме фильтры и сортировка переносятся в боковую панель с вкладками, а карточки маримо — упрощаются.</string>
     <string name="details">Details</string>
     <string name="up_to_date">Up To Date</string>
     <string name="status">Status</string>
+    <string name="new_desktop_mode_settings_balloon_text">Добавлены новые настройки! Теперь можно выбрать компактный режим, чтобы освободить больше места на панели управления!</string>
 </resources>

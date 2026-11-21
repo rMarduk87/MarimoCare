@@ -3,30 +3,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="180dp"
     android:layout_height="48dp"
-    android:orientation="horizontal"
-    android:gravity="center_vertical"
-    android:layout_marginStart="50dp"
     android:background="@drawable/spinner_sorting_background"
-    android:paddingHorizontal="12dp"
     android:clickable="false"
     android:focusable="false"
-    android:focusableInTouchMode="false">
+    android:focusableInTouchMode="false"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingHorizontal="12dp">
 
     <Spinner
         android:id="@+id/customSpinner"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:spinnerMode="dropdown"
         android:background="@android:color/transparent"
         android:gravity="center_vertical"
         android:paddingEnd="8dp"
+        android:spinnerMode="dropdown"
         tools:ignore="RtlSymmetry" />
 
     <ImageView
         android:id="@+id/arrow"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:src="@drawable/ic_arrow_down"
-        android:contentDescription="@string/img" />
+        android:contentDescription="@string/img"
+        android:src="@drawable/ic_arrow_down" />
 </LinearLayout>

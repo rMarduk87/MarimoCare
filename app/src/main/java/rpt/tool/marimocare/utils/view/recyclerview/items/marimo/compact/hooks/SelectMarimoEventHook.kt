@@ -16,9 +16,9 @@ class SelectMarimoEventHook(
         val view = viewHolder.itemView
 
         val card = view.findViewById<View>(R.id.cardMarimo)
-        val checkbox = view.findViewById<View>(R.id.checkboxSelection)
+        //val checkbox = view.findViewById<View>(R.id.checkboxSelection)
 
-        return listOfNotNull(card, checkbox)
+        return listOfNotNull(card)
     }
 
     override fun onClick(

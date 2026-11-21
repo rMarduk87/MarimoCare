@@ -124,6 +124,8 @@ class CompactDashboardFragment: BaseFragment<FragmentCompactDashboardBinding>(
     private var isSelectionMode = false
     private val selectedMarimoIds = mutableSetOf<Int>()
 
+    private var isSortingTabSelected = false
+
     private lateinit var alertPagerAdapter: AlertPagerAdapter
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -437,6 +439,56 @@ class CompactDashboardFragment: BaseFragment<FragmentCompactDashboardBinding>(
             if (current < alertPagerAdapter.itemCount - 1)
                 alertPager.setCurrentItem(current + 1, true)
         }
+
+        binding.btnTabFilters.setOnClickListener {
+            updateTabSelection(isFiltersSelected = true)
+        }
+
+        binding.btnTabSorting.setOnClickListener {
+            updateTabSelection(isFiltersSelected = false)
+        }
+    }
+
+    private fun updateTabSelection(isFiltersSelected: Boolean) {
+        isSortingTabSelected = !isFiltersSelected
+
+        val whiteColor = ContextCompat.getColor(requireContext(), android.R.color.white)
+        val blackColor = ContextCompat.getColor(requireContext(), R.color.marimo_black)
+
+        val whiteTint = ColorStateList.valueOf(whiteColor)
+        val blackTint = ColorStateList.valueOf(blackColor)
+
+        if (isFiltersSelected) {
+            binding.btnTabFilters.background = ContextCompat.getDrawable(
+                requireContext(),
+                R.drawable.bg_btn_filled_green
+            )
+            binding.btnTabFilters.setTextColor(whiteColor)
+            binding.btnTabFilters.iconTint = whiteTint
+
+            binding.btnTabSorting.background = ContextCompat.getDrawable(
+                requireContext(),
+                R.drawable.bg_btn_white
+            )
+            binding.btnTabSorting.setTextColor(blackColor)
+            binding.btnTabSorting.iconTint = blackTint
+        } else {
+            binding.btnTabFilters.background = ContextCompat.getDrawable(
+                requireContext(),
+                R.drawable.bg_btn_white
+            )
+            binding.btnTabFilters.setTextColor(blackColor)
+            binding.btnTabFilters.iconTint = blackTint
+
+            binding.btnTabSorting.background = ContextCompat.getDrawable(
+                requireContext(),
+                R.drawable.bg_btn_filled_green
+            )
+            binding.btnTabSorting.setTextColor(whiteColor)
+            binding.btnTabSorting.iconTint = whiteTint
+        }
+
+        applyFilterAndSortVisibility()
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -834,12 +886,29 @@ class CompactDashboardFragment: BaseFragment<FragmentCompactDashboardBinding>(
         itemAdapter.set(finalList)
     }
 
+    private fun applyFilterAndSortVisibility() {
+        val isSectionVisible = SharedPreferencesManager.showFilterAndSort
+
+        binding.filterTitle.visibility = if (isSectionVisible && !isSortingTabSelected) {
+            View.VISIBLE
+        } else {
+            View.GONE
+        }
+
+        val showFilters = isSectionVisible && !isSortingTabSelected
+        binding.buttonFilter.visibility = if (showFilters) View.VISIBLE else View.GONE
+        binding.buttonFilter2.visibility = if (showFilters) View.VISIBLE else View.GONE
+
+        val showSorting = isSectionVisible && isSortingTabSelected
+        binding.sorts.visibility = if (showSorting) View.VISIBLE else View.GONE
+    }
+
     @RequiresApi(Build.VERSION_CODES.O)
     private fun manageFiltersFromSharedPreferences() {
         val savedFilter = SharedPreferencesManager.marimoFilter
         applyFilterAndSort()
 
-        if(savedFilter == -1) {
+        if (savedFilter == -1) {
             highlightFilterButton(binding.btnAllFilter)
         } else {
             var viewToBind: View? = binding.btnAllFilter
@@ -851,13 +920,7 @@ class CompactDashboardFragment: BaseFragment<FragmentCompactDashboardBinding>(
             viewToBind?.let { highlightFilterButton(it) }
         }
 
-        val isVisible = if(SharedPreferencesManager.showFilterAndSort) View.VISIBLE else View.GONE
-
-        binding.filterTitle.visibility = isVisible
-        binding.sorts?.visibility = isVisible
-
-        binding.buttonFilter?.visibility = isVisible
-        binding.buttonFilter2?.visibility = isVisible
+        applyFilterAndSortVisibility()
         setupCompactFilters()
     }
 

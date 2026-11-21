@@ -848,8 +848,9 @@
     <string name="error">Error</string>
     <string name="day_format">d</string>
     <string name="compact_layout">Diseño compacto</string>
-    <string name="compact_layout_subtitle">En modo compacto, mueve los filtros y el ordenamiento a una columna lateral con pestañas y simplifica las tarjetas de marimo. El móvil permanece sin cambios.</string>
+    <string name="compact_layout_subtitle">En modo compacto, mueve los filtros y el ordenamiento a una columna lateral con pestañas y simplifica las tarjetas de marimo.</string>
     <string name="details">Details</string>
     <string name="up_to_date">Up To Date</string>
     <string name="status">Status</string>
+    <string name="new_desktop_mode_settings_balloon_text">¡Se han añadido nuevas opciones! ¡Ahora puedes elegir el modo compacto para ganar más espacio en el panel de control!</string>
 </resources>

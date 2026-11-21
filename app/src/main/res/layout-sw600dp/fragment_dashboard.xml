@@ -252,140 +252,147 @@
                     android:layout_marginBottom="16dp"
                     android:baselineAligned="false">
 
-                    <!-- TIPS CARD -->
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/tipsCard"
-                        android:layout_width="0dp"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginEnd="6dp"
-                        android:elevation="2dp"
-                        app:cardBackgroundColor="@color/marimo_background"
-                        app:cardCornerRadius="12dp"
-                        app:strokeColor="@color/marimo_item_edit_board"
-                        app:strokeWidth="1dp">
+                        android:orientation="horizontal">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="12dp">
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/tipsCard"
+                            android:layout_width="0dp"
+                            android:layout_height="180dp"
+                            android:layout_marginEnd="6dp"
+                            android:layout_weight="1"
+                            android:elevation="2dp"
+                            app:cardBackgroundColor="@color/marimo_background"
+                            app:cardCornerRadius="12dp"
+                            app:strokeColor="@color/marimo_item_edit_board"
+                            app:strokeWidth="1dp">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center_vertical"
-                                android:orientation="horizontal"
-                                tools:ignore="UseCompoundDrawables">
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:padding="12dp">
 
-                                <ImageView
-                                    android:layout_width="32dp"
-                                    android:layout_height="32dp"
-                                    android:background="@drawable/bg_tip_icon_circle"
-                                    android:contentDescription="@string/img"
-                                    android:padding="4dp"
-                                    android:src="@drawable/ic_tip_lightbulb" />
-
-                                <TextView
-                                    android:id="@+id/tipTitle"
-                                    android:layout_width="wrap_content"
+                                <LinearLayout
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="8dp"
-                                    android:text="@string/marimo_tip_title_1"
-                                    android:textColor="@color/marimo_text_forest"
-                                    android:textSize="13sp"
-                                    android:textStyle="bold" />
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal"
+                                    tools:ignore="UseCompoundDrawables">
+
+                                    <ImageView
+                                        android:layout_width="32dp"
+                                        android:layout_height="32dp"
+                                        android:background="@drawable/bg_tip_icon_circle"
+                                        android:contentDescription="@string/img"
+                                        android:padding="4dp"
+                                        android:src="@drawable/ic_tip_lightbulb" />
+
+                                    <TextView
+                                        android:id="@+id/tipTitle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="8dp"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:text="@string/marimo_tip_title_1"
+                                        android:textColor="@color/marimo_text_forest"
+                                        android:textSize="13sp"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+
+                                <androidx.viewpager2.widget.ViewPager2
+                                    android:id="@+id/tipsPager"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_marginTop="8dp"
+                                    android:layout_weight="1"
+                                    android:clipToOutline="false"
+                                    android:clipToPadding="false" />
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp">
+
+                                    <ImageButton
+                                        android:id="@+id/arrowLeft"
+                                        android:layout_width="24dp"
+                                        android:layout_height="24dp"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_centerVertical="true"
+                                        android:background="@android:color/transparent"
+                                        android:contentDescription="@string/img"
+                                        android:padding="4dp"
+                                        android:src="@drawable/ic_arrow_left" />
+
+                                    <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+                                        android:id="@+id/dotsIndicator"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerHorizontal="true"
+                                        android:layout_centerVertical="true"
+                                        app:dotsColor="@color/marimo_item_edit_board"
+                                        app:dotsSize="5dp"
+                                        app:dotsSpacing="5dp"
+                                        app:selectedDotColor="@color/green_primary" />
+
+                                    <ImageButton
+                                        android:id="@+id/arrowRight"
+                                        android:layout_width="24dp"
+                                        android:layout_height="24dp"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_centerVertical="true"
+                                        android:background="@android:color/transparent"
+                                        android:contentDescription="@string/img"
+                                        android:padding="4dp"
+                                        android:src="@drawable/ic_arrow_right" />
+
+                                </RelativeLayout>
                             </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <RelativeLayout
+                            android:id="@+id/alertCarouselContainer"
+                            android:layout_width="0dp"
+                            android:layout_height="180dp"
+                            android:layout_marginStart="6dp"
+                            android:layout_weight="1"
+                            android:visibility="gone">
 
                             <androidx.viewpager2.widget.ViewPager2
-                                android:id="@+id/tipsPager"
+                                android:id="@+id/alertViewPager"
                                 android:layout_width="match_parent"
-                                android:layout_height="72dp"
-                                android:layout_marginTop="8dp"
-                                android:clipToOutline="false"
-                                android:clipToPadding="false" />
+                                android:layout_height="match_parent"
+                                android:clipToPadding="false"
+                                android:paddingHorizontal="24dp" />
 
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp">
+                            <ImageButton
+                                android:id="@+id/alertArrowLeft"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:background="@android:color/transparent"
+                                android:contentDescription="@string/img"
+                                android:padding="4dp"
+                                android:src="@drawable/ic_arrow_left" />
 
-                                <ImageButton
-                                    android:id="@+id/arrowLeft"
-                                    android:layout_width="24dp"
-                                    android:layout_height="24dp"
-                                    android:layout_alignParentStart="true"
-                                    android:layout_centerVertical="true"
-                                    android:background="@android:color/transparent"
-                                    android:contentDescription="@string/img"
-                                    android:padding="4dp"
-                                    android:src="@drawable/ic_arrow_left" />
+                            <ImageButton
+                                android:id="@+id/alertArrowRight"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:background="@android:color/transparent"
+                                android:contentDescription="@string/img"
+                                android:padding="4dp"
+                                android:src="@drawable/ic_arrow_right" />
+                        </RelativeLayout>
 
-                                <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
-                                    android:id="@+id/dotsIndicator"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_centerHorizontal="true"
-                                    android:layout_gravity="center_horizontal"
-                                    android:layout_marginTop="4dp"
-                                    app:dotsColor="@color/marimo_item_edit_board"
-                                    app:dotsSize="5dp"
-                                    app:dotsSpacing="5dp"
-                                    app:selectedDotColor="@color/green_primary" />
-
-                                <ImageButton
-                                    android:id="@+id/arrowRight"
-                                    android:layout_width="24dp"
-                                    android:layout_height="24dp"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_centerVertical="true"
-                                    android:background="@android:color/transparent"
-                                    android:contentDescription="@string/img"
-                                    android:padding="4dp"
-                                    android:src="@drawable/ic_arrow_right" />
-
-                            </RelativeLayout>
-                        </LinearLayout>
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <RelativeLayout
-                        android:id="@+id/alertCarouselContainer"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginStart="6dp"
-                        android:visibility="gone">
-
-                        <androidx.viewpager2.widget.ViewPager2
-                            android:id="@+id/alertViewPager"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:clipToPadding="false"
-                            android:paddingHorizontal="24dp" />
-
-                        <ImageButton
-                            android:id="@+id/alertArrowLeft"
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:layout_alignParentStart="true"
-                            android:layout_centerVertical="true"
-                            android:background="@android:color/transparent"
-                            android:contentDescription="@string/img"
-                            android:src="@drawable/ic_arrow_left"
-                            android:padding="4dp" />
-
-                        <ImageButton
-                            android:id="@+id/alertArrowRight"
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:background="@android:color/transparent"
-                            android:contentDescription="@string/img"
-                            android:src="@drawable/ic_arrow_right"
-                            android:padding="4dp" />
-                    </RelativeLayout>
+                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -648,16 +655,15 @@
                     </LinearLayout>
                 </GridLayout>
 
-                <!-- BLOCCO UNICO ORIZZONTALE: FILTRI + ORDINAMENTO ASSIEME SULLA STESSA RIGA -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="16dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
                     android:clipChildren="false"
-                    android:clipToPadding="false">
+                    android:clipToPadding="false"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
                     <!-- Sezione Filtri -->
                     <LinearLayout
@@ -665,10 +671,10 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
                         android:clipChildren="false"
-                        android:clipToPadding="false">
+                        android:clipToPadding="false"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -682,19 +688,24 @@
                         <HorizontalScrollView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:clipChildren="false"
+                            android:clipToPadding="false"
                             android:scrollbars="none">
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:clipChildren="false"
+                                android:clipToPadding="false"
                                 android:orientation="horizontal">
 
                                 <FrameLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginEnd="12dp">
+
                                     <com.google.android.material.button.MaterialButton
                                         android:id="@+id/btnAllFilter"
                                         android:layout_width="140dp"
@@ -704,6 +715,7 @@
                                         android:textAllCaps="false"
                                         android:textColor="@android:color/white"
                                         app:backgroundTint="@null" />
+
                                     <TextView
                                         android:id="@+id/badgeAll"
                                         android:layout_width="22dp"
@@ -721,6 +733,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginEnd="12dp">
+
                                     <com.google.android.material.button.MaterialButton
                                         android:id="@+id/btnOverdueFilter"
                                         android:layout_width="140dp"
@@ -730,6 +743,7 @@
                                         android:textAllCaps="false"
                                         android:textColor="@color/marimo_dark"
                                         app:backgroundTint="@null" />
+
                                     <TextView
                                         android:id="@+id/badgeOverdue"
                                         android:layout_width="22dp"
@@ -747,6 +761,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginEnd="12dp">
+
                                     <com.google.android.material.button.MaterialButton
                                         android:id="@+id/btnDueSoonFilter"
                                         android:layout_width="140dp"
@@ -756,6 +771,7 @@
                                         android:textAllCaps="false"
                                         android:textColor="@color/marimo_dark"
                                         app:backgroundTint="@null" />
+
                                     <TextView
                                         android:id="@+id/badgeDueSoon"
                                         android:layout_width="22dp"
@@ -772,6 +788,7 @@
                                 <FrameLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content">
+
                                     <com.google.android.material.button.MaterialButton
                                         android:id="@+id/btnUpToDateFilter"
                                         android:layout_width="140dp"
@@ -781,6 +798,7 @@
                                         android:textAllCaps="false"
                                         android:textColor="@color/marimo_dark"
                                         app:backgroundTint="@null" />
+
                                     <TextView
                                         android:id="@+id/badgeUpToDate"
                                         android:layout_width="22dp"
@@ -797,18 +815,18 @@
                         </HorizontalScrollView>
                     </LinearLayout>
 
-                    <!-- Sezione Ordinamento (Assieme sulla stessa riga) -->
+                    <!-- Sezione Ordinamento -->
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="12dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
                             android:text="@string/sort"
                             android:textColor="@color/marimo_black"
                             android:textSize="18sp"
@@ -817,8 +835,8 @@
                         <include
                             android:id="@+id/marimoSpinnerLayout"
                             layout="@layout/spinner_sorting_with_arrow"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="170dp"
+                            android:layout_height="48dp"
                             android:layout_marginStart="8dp" />
                     </LinearLayout>
                 </LinearLayout>

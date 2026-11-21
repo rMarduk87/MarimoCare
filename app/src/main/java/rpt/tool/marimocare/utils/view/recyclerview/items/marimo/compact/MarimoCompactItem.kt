@@ -2,7 +2,6 @@ package rpt.tool.marimocare.utils.view.recyclerview.items.marimo.compact
 
 import android.annotation.SuppressLint
 import android.os.Build
-import android.view.View
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
@@ -11,9 +10,10 @@ import com.google.android.material.button.MaterialButton
 import rpt.tool.marimocare.R
 import rpt.tool.marimocare.databinding.ItemMarimoCompactBinding
 import rpt.tool.marimocare.utils.data.appmodels.Marimo
-import rpt.tool.marimocare.utils.view.recyclerview.BaseRecyclerViewBindingItem
 import rpt.tool.marimocare.utils.data.enums.MarimoStatus
+import rpt.tool.marimocare.utils.view.recyclerview.BaseRecyclerViewBindingItem
 import java.io.File
+import kotlin.math.roundToInt
 
 class MarimoCompactItem(var marimo: Marimo) :
     BaseRecyclerViewBindingItem<ItemMarimoCompactBinding>(ItemMarimoCompactBinding::inflate) {
@@ -46,8 +46,10 @@ class MarimoCompactItem(var marimo: Marimo) :
         val status = MarimoStatus.from(daysLeft)
 
         binding.txtName.text = marimo.name
-        binding.txtFrequency.text = res.getString(R.string.changes_every_days,
-            marimo.changeFrequencyDays)
+        binding.txtFrequency.text = res.getString(
+            R.string.changes_every_days,
+            marimo.changeFrequencyDays
+        )
         binding.txtLastChange.text = marimo.lastChanged
         binding.txtNextChange.text = marimo.nextChange
         binding.txtNotes.text = marimo.notes ?: res.getString(R.string.no_notes)
@@ -59,8 +61,7 @@ class MarimoCompactItem(var marimo: Marimo) :
         binding.layoutText.setBackgroundResource(status.daysLeftBackground)
         binding.cardMarimo.setBackgroundResource(status.cardBackground)
 
-        setImageForIcon(binding.imgMarimoIcon,status)
-
+        setImageForIcon(binding.imgMarimoIcon, status)
 
         binding.btnWaterChanged.setBackgroundResource(status.buttonChangeBg)
         binding.btnEdit.setBackgroundResource(status.buttonEditBg)
@@ -75,17 +76,15 @@ class MarimoCompactItem(var marimo: Marimo) :
         binding.cardNotes.setBackgroundResource(status.notesCardBg)
         binding.cardDate.setBackgroundResource(status.cardDateBg)
 
-        binding.checkboxSelection.visibility = if (isSelectionMode) View.VISIBLE else View.GONE
-        binding.checkboxSelection.isChecked = isItemSelected
-
         if (isItemSelected) {
-            binding.cardMarimo.strokeWidth = 4
-            binding.cardMarimo.strokeColor =
-                ContextCompat.getColor(binding.root.context, R.color.marimo_item_green)
+            val selectedStrokeWidthPx = (3f * res.displayMetrics.density).roundToInt()
+            binding.cardMarimo.strokeWidth = selectedStrokeWidthPx
+            binding.cardMarimo.strokeColor = ContextCompat.getColor(context, status.color)
         } else {
             binding.cardMarimo.strokeWidth = 0
         }
     }
+
     @RequiresApi(Build.VERSION_CODES.O)
     fun update(newMarimo: Marimo) {
         this.marimo = newMarimo
@@ -93,7 +92,6 @@ class MarimoCompactItem(var marimo: Marimo) :
     }
 
     fun setImageForIcon(imgMarimoIcon: ImageView, status: MarimoStatus) {
-
         val context = imgMarimoIcon.context
 
         imgMarimoIcon.setImageDrawable(null)
@@ -107,7 +105,6 @@ class MarimoCompactItem(var marimo: Marimo) :
             val file = File(photoPath)
 
             if (file.exists() && file.length() > 0) {
-
                 Glide.with(imgMarimoIcon)
                     .load(file)
                     .centerCrop()
